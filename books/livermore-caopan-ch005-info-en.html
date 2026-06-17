@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Trade in Stocks · Chapter 5 "The Pivotal Point"</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ── Reset & Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#f5f1eb;color:#1a1a1a;
+  font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+}
+
+/* ── Container ── */
+.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
+
+/* ── Lang Switch ── */
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{
+  display:inline-block;padding:6px 16px;border-radius:8px;
+  font-size:13px;text-decoration:none;letter-spacing:0.03em;
+  font-family:'FZXPYZS','PingFang SC',serif;
+  background:#fef2f2;color:#dc2626;border:1px solid #fecaca;
+  transition:opacity 0.15s;
+}
+.lang-btn:hover{opacity:0.75}
+
+/* ── KPI Row ── */
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{
+  flex:1;min-width:120px;
+  background:#fff;border:1px solid #e8e0d5;border-radius:12px;
+  padding:20px 16px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-num{font-size:32px;font-weight:700;color:#db2777;letter-spacing:-0.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+
+/* ── Header ── */
+.header h1{
+  font-size:36px;font-weight:400;color:#1a1a1a;
+  letter-spacing:0.03em;margin-bottom:8px;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.header h2{
+  font-size:14px;font-weight:400;color:#888;
+  letter-spacing:0.02em;line-height:1.7;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.divider{
+  width:60px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#4f46e5,#db2777);
+  margin:20px 0 24px;
+}
+
+/* ── Cards ── */
+.card{
+  background:#fff;border:1px solid #e8e0d5;border-radius:14px;
+  padding:28px 32px;margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03);
+}
+.overview{
+  background:#fdf2f8;border:2px solid #fbcfe8;
+  border-radius:14px;padding:24px 28px;margin-bottom:18px;
+}
+
+/* ── Overview ── */
+.overview-label{
+  font-size:11px;font-weight:700;color:#db2777;
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+}
+.overview-question{
+  font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px;
+}
+.overview-answer{
+  font-size:15px;color:#555;line-height:2.0;
+}
+
+/* ── Section Base ── */
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
+}
+.circle-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;flex-shrink:0;
+}
+.section-tag{
+  font-size:12px;padding:3px 10px;border-radius:20px;
+  font-weight:500;letter-spacing:0.02em;
+}
+.section h3{font-size:18px;font-weight:700}
+.section-body p{
+  font-size:15px;color:#555;line-height:2.0;margin-bottom:12px;
+}
+
+/* ── Per-section color classes ── */
+.s01{border-left:4px solid #dc2626}
+.s01 .circle-num{background:#fef2f2;color:#dc2626}
+.s01 .section-tag{background:#fef2f2;color:#dc2626}
+.s01 h3{color:#dc2626}
+
+.s02{border-left:4px solid #ea580c}
+.s02 .circle-num{background:#fff7ed;color:#ea580c}
+.s02 .section-tag{background:#fff7ed;color:#ea580c}
+.s02 h3{color:#ea580c}
+
+.s03{border-left:4px solid #ca8a04}
+.s03 .circle-num{background:#fefce8;color:#ca8a04}
+.s03 .section-tag{background:#fefce8;color:#ca8a04}
+.s03 h3{color:#ca8a04}
+
+.s04{border-left:4px solid #4f46e5}
+.s04 .circle-num{background:#eef2ff;color:#4f46e5}
+.s04 .section-tag{background:#eef2ff;color:#4f46e5}
+.s04 h3{color:#4f46e5}
+
+.s05{border-left:4px solid #db2777}
+.s05 .circle-num{background:#fdf2f8;color:#db2777}
+.s05 .section-tag{background:#fdf2f8;color:#db2777}
+.s05 h3{color:#db2777}
+
+/* ── Quote Block ── */
+.quote-block{
+  background:#faf5ff;border-left:4px solid #c084fc;border-radius:0 10px 10px 0;
+  padding:16px 20px;margin-top:14px;position:relative;
+}
+.quote-mark{
+  position:absolute;top:-10px;left:12px;
+  font-size:32px;color:#c084fc;font-family:Georgia,serif;line-height:1;
+}
+.quote-text{
+  font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px;
+}
+.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
+
+/* ── Dual Grid ── */
+.dual-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;
+}
+.dual-card{border-radius:10px;padding:16px 18px}
+.dual-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-card.bad{background:#fef2f2;border:1px solid #fecaca}
+.dual-label{font-size:13px;font-weight:700;margin-bottom:6px}
+.dual-card.good .dual-label{color:#166534}
+.dual-card.bad .dual-label{color:#991b1b}
+.dual-card p{font-size:13px;color:#555;line-height:1.8}
+
+/* ── Flow Row ── */
+.flow-row{
+  display:flex;align-items:flex-start;justify-content:center;
+  gap:8px;margin-top:16px;flex-wrap:wrap;
+}
+.flow-step,.flow-step.end{
+  background:#fff7ed;border:2px solid #fed7aa;border-radius:10px;
+  padding:14px 16px;text-align:center;font-size:13px;
+  color:#9a3412;font-weight:700;min-width:95px;
+}
+.flow-step-num{
+  display:block;font-size:11px;font-weight:400;color:#ea580c;
+  margin-bottom:4px;letter-spacing:0.04em;
+}
+.flow-step.end{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.flow-label{font-size:11px;font-weight:400;color:#888;margin-top:4px}
+.flow-arrow{font-size:18px;color:#ea580c;font-weight:700;padding-top:14px}
+
+/* ── Data Row ── */
+.data-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.data-card{
+  flex:1;min-width:140px;
+  border-radius:12px;padding:20px 16px;text-align:center;
+}
+.data-card.pink{background:#fdf2f8;border:1px solid #fbcfe8}
+.data-card.gold{background:#fefce8;border:1px solid #fde68a}
+.data-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
+.data-big{font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1.3}
+.data-card.pink .data-big{color:#db2777}
+.data-card.gold .data-big{color:#ca8a04}
+.data-card.indigo .data-big{color:#4f46e5}
+.data-sm{font-size:12px;color:#888;margin-top:6px;line-height:1.6}
+.data-note{font-size:12px;color:#555;margin-top:8px;line-height:1.6}
+
+/* ── Callout ── */
+.callout{
+  display:flex;gap:10px;align-items:flex-start;
+  border-radius:10px;padding:14px 16px;margin-top:14px;
+}
+.callout.warn{background:#fffbeb;border:1px solid #fde68a}
+.callout.info{background:#eff6ff;border:1px solid #bfdbfe}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.callout-text{font-size:13px;color:#555;line-height:1.8}
+.callout-text strong{color:#1a1a1a}
+
+/* ── Takeaway ── */
+.takeaway{
+  background:#fdf2f8;border:2px solid #fbcfe8;border-radius:14px;
+  padding:24px 28px;margin-bottom:18px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.takeaway-label{
+  font-size:13px;font-weight:700;color:#db2777;text-transform:uppercase;
+  letter-spacing:0.06em;margin-bottom:6px;
+}
+.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
+
+/* ── Footer ── */
+.footer{
+  text-align:center;font-size:12px;color:#bbb;line-height:1.8;
+  padding-top:16px;border-top:1px solid #e8e0d5;
+}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  body{padding:16px 12px 40px}
+  .container{padding:0}
+  .header h1{font-size:22px}
+  .card,.overview,.section{padding:18px 16px}
+  .section-header{flex-wrap:wrap;gap:8px}
+  .circle-num{width:34px;height:34px;font-size:14px}
+  .section h3{font-size:16px}
+  .flow-row{flex-direction:column;align-items:stretch}
+  .flow-arrow{display:none}
+  .dual-grid{grid-template-columns:1fr}
+  .data-row{flex-direction:column}
+  .kpi-row{flex-direction:column}
+}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Lang Switch -->
+<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="股票大作手操盘术-ch005-info-zh.html">中文版</a>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">50/100</div>
+    <div class="kpi-label">Key Integer Levels<br>200/300</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3 pts</div>
+    <div class="kpi-label">Breakthrough<br>Confirmation Rule</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">30 yrs</div>
+    <div class="kpi-label">Painstaking Research<br>Time-Price Fusion</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5 mos</div>
+    <div class="kpi-label">Cocoa 600-Point<br>Classic Case</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>How to Trade in Stocks · Ch5 "The Pivotal Point"</h1>
+  <h2>"I never benefited much from a move if I did not get in at somewhere near the beginning of that move."</h2>
+  <div class="divider"></div>
+</div>
+
+<!-- Overview (SCQA) -->
+<div class="overview">
+  <div class="overview-label">▎SCQA Framework</div>
+  <div class="overview-question">How does one capture the critical psychological moment when a trend begins — for maximum profit with minimum risk?</div>
+  <div class="overview-answer">
+    Livermore distilled the "Pivotal Point" method through 30+ years of fusing time and price. <strong>S</strong> (Situation) — markets always move in trends, and every major move has a critical breakout level. <strong>C</strong> (Complication) — most traders lack patience, entering too early or too late and missing the optimal psychological moment. <strong>Q</strong> (Question) — how to precisely identify the moment when a trend launches? <strong>A</strong> (Answer) — wait patiently at pivotal levels, confirm direction with the "3-point breakthrough" rule, build your position progressively, watch the market unfold, and exit decisively at danger signals.
+  </div>
+</div>
+
+<!-- Block 01: What Are Pivotal Points -->
+<div class="card s01">
+  <div class="section-header">
+    <div class="circle-num">01</div>
+    <div class="section-tag">Core Concept</div>
+    <h3>What Are Pivotal Points</h3>
+  </div>
+  <div class="section-body">
+    <p>Pivotal points are the <strong>critical psychological price levels</strong> where trends launch — especially integer levels like 50, 100, 200, and 300. Once effectively breached, they almost invariably trigger straight-line rapid movements. Livermore calls these "the critical psychological moment marking the beginning of a move." Trade at pivotal points, and you never have to worry about losses.</p>
+
+    <div class="flow-row">
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 1</span>
+        Identify Pivotal Level
+        <div class="flow-label">50/100/200/300</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 2</span>
+        Wait for Price to Arrive
+        <div class="flow-label">Patience Required</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 3</span>
+        3-Pt Break Confirm
+        <div class="flow-label">Verify Direction</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 4</span>
+        Build Position Gradually
+        <div class="flow-label">Follow the Signal</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">
+        <span class="flow-step-num">RESULT</span>
+        Sit Tight & Watch
+        <div class="flow-label">Await Exit Signal</div>
+      </div>
+    </div>
+
+    <p>If a stock does <strong>not behave as it should</strong> after crossing a pivotal point — no rapid advance, instead an oversupply of stock — that is a danger signal demanding immediate attention.</p>
+  </div>
+</div>
+
+<!-- Block 02: Dual Signals -->
+<div class="card s02">
+  <div class="section-header">
+    <div class="circle-num">02</div>
+    <div class="section-tag">Signal Recognition</div>
+    <h3>Dual Signals: Breakthrough Confirmed &amp; Failed</h3>
+  </div>
+  <div class="section-body">
+    <p>Using the concrete example of $40→$45→$49½, Livermore reveals the two classic trading signals around pivotal points — the market gives both positive entry signals and negative exit signals, provided you have the patience to wait.</p>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">✅ Failed to Break Pivotal Point</div>
+        <p>Price rallies <strong>3 points</strong> from the latest downside reaction low — buy immediately. The market's refusal to break the pivotal point signals exhaustion of selling pressure and the birth of a new trend.</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">⚠️ Broke Pivotal Point but Under 3 Pts</div>
+        <p>Price dips below $40 but by <strong>less than 3 points</strong>, then rallies back to $43 (pivotal point + 3) — also buy. The inability to sustain the break confirms the uptrend instead.</p>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-icon">🔑</div>
+      <div class="callout-text"><strong>Core Rule:</strong> If the market validates the new trend decisively, price will continue rising past the next pivotal point at $49½ — and exceed it by 3 points or more.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 03: Classic Battles -->
+<div class="card s03">
+  <div class="section-header">
+    <div class="circle-num">03</div>
+    <div class="section-tag">Case Studies</div>
+    <h3>Three Classic Battles</h3>
+  </div>
+  <div class="section-body">
+    <p>Livermore demonstrates the power of the pivotal-point method through personal experience — and the discipline to exit decisively when danger signals appear.</p>
+
+    <div class="data-row">
+      <div class="data-card pink">
+        <div class="data-big">100→300</div>
+        <div class="data-sm">Anaconda Copper<br>森蚺公司</div>
+        <div class="data-note">Rode the 100, 200, and 300 pivots. On the third breakout, the stock lacked follow-through — heavy supply appeared. Sold decisively, avoiding the plunge to 225.</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">87¾→155</div>
+        <div class="data-sm">Bethlehem Steel<br>伯利恒钢铁</div>
+        <div class="data-note">April 1915. After breaking its pivotal point, it soared to 155 in <strong>just 5 days</strong>. Repeated the feat at 200, 300, and 400.</div>
+      </div>
+      <div class="data-card indigo">
+        <div class="data-big">600 pts</div>
+        <div class="data-sm">Cocoa Futures<br>可可 1936-1937</div>
+        <div class="data-note">Rallied 600 points in 5 months, from 6.88 to 12.86. The pivotal point breakout revealed a severe supply shortage — a perfect opportunity.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">From then on ... I have rarely been left out of the big moves when I had a pivotal point to guide me.</div>
+      <div class="quote-author">— Jesse Livermore</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 04: Time-Price Fusion -->
+<div class="card s04">
+  <div class="section-header">
+    <div class="circle-num">04</div>
+    <div class="section-tag">Recording Method</div>
+    <h3>The Fusion of Time and Price</h3>
+  </div>
+  <div class="section-body">
+    <p>Livermore's recording method is the fruit of over 30 years of painstaking research. At first his records brought little help. Iteration after iteration, only when he <strong>fused the time element with price movement</strong> did his records begin to speak to him.</p>
+
+    <div class="flow-row">
+      <div class="flow-step">
+        <span class="flow-step-num">Phase 1</span>
+        Record by Hand
+        <div class="flow-label">Every Price Datum</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">Phase 2</span>
+        Incorporate Time
+        <div class="flow-label">Time-Price Fusion</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">Phase 3</span>
+        Patterns Emerge
+        <div class="flow-label">Clear Market Contours</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">Phase 4</span>
+        Locate Pivotal Points
+        <div class="flow-label">Reveal Opportunities</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">
+        <span class="flow-step-num">Outcome</span>
+        Records Speak
+        <div class="flow-label">Anticipate Future Moves</div>
+      </div>
+    </div>
+
+    <p>Livermore stresses: "I do not claim these records are perfect, but their help to me is irreplaceable." The very act of <strong>maintaining records by hand</strong> is training — you must personally select data, enter it yourself, and mark the pivotal points.</p>
+  </div>
+</div>
+
+<!-- Block 05: Trading Discipline -->
+<div class="card s05">
+  <div class="section-header">
+    <div class="circle-num">05</div>
+    <div class="section-tag">Trading Discipline</div>
+    <h3>The Trader's Path of Discipline</h3>
+  </div>
+  <div class="section-body">
+    <p>Patience and discipline are the core of the pivotal-point method. Livermore confesses: "Every time I lost patience and traded recklessly instead of waiting for the pivotal point, I always lost money."</p>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">✅ The Right Way</div>
+        <p>Wait patiently for pivotal points<br>Discover opportunities independently<br>Watch closely for danger signals<br>Maintain records by hand<br>Profit through your own judgment</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ The Wrong Way</div>
+        <p>Trade recklessly without patience<br>Rely on tips or others' advice<br>Ignore danger signals<br>Neglect price record study<br>Depend on others for guidance</p>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">💡</div>
+      <div class="callout-text"><strong>Livermore's Advice:</strong> You might also profit through tips or others' guidance — but you will find that independently earned profits bring far greater satisfaction. If you discover opportunities on your own, trade independently, wait patiently, and watch for danger signals, you will enter a virtuous cycle of thinking.</div>
+    </div>
+
+    <p>Consider the anecdote: a lady pestered Livermore at a party for a tip. He recommended Cerro de Pasco (which had just broken its pivotal point). The stock rose 15 points in a week. When he called to advise selling, she admitted she had never bought it — "wanted to see if his tip was accurate first." Such is the fickle world of tips.</p>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-icon">🔑</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p><strong>The Essence of the Pivotal Point Method:</strong> The market will, at the proper time, give you both positive entry signals and negative exit signals — if only you have the patience to wait. By combining the time element with price records and maintaining them by hand, you will discover pivotal points and use them to build positions. When a stock lacks follow-through after crossing a pivotal point, the market easily reverses — close your position immediately. Studying pivotal points is like mining gold — incredibly fascinating, and the profits you earn independently will bring unmatched satisfaction.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Source: Jesse Livermore, <em>How to Trade in Stocks</em>, Chapter 5 "The Pivotal Point"<br>
+  Infographic generated: June 17, 2026 · For educational reference only — not investment advice
+</div>
+
+</div><!-- /container -->
+
+</body>
+</html>

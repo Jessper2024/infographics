@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reminiscences of a Stock Operator · Ch. 17 · The Tip Addiction</title>
+<style>
+@font-face { font-family: 'FZXPYZS'; src: url('https://cdn.jsdelivr.net/gh/liumingye/web-fonts@main/FZXiaoPingYouYaSong_R.woff2') format('woff2'); font-display: swap; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f5f1eb; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; color: #555; line-height: 2.0; font-size: 15px; -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-switch a { font-size: 13px; color: #888; text-decoration: none; padding: 6px 14px; border: 1px solid #e8e0d5; border-radius: 20px; transition: all 0.2s; }
+.lang-switch a:hover { color: #4f46e5; border-color: #c7d2fe; background: #eef2ff; }
+.kpi-row { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 160px; background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px; padding: 20px 16px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.kpi-num { font-size: 36px; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
+.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.6; }
+.header { text-align: center; margin-bottom: 24px; }
+.header h1 { font-size: 32px; font-weight: 400; color: #1a1a1a; letter-spacing: 0.03em; margin-bottom: 8px; }
+.header h2 { font-size: 18px; font-weight: 400; color: #888; letter-spacing: 0.02em; }
+.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 24px auto; border-radius: 2px; }
+.overview { background: #faf5ff; border: 2px solid #d8b4fe; border-radius: 14px; padding: 28px 32px; margin-bottom: 32px; }
+.overview .one-liner { font-size: 17px; color: #6b21a8; font-weight: 700; margin-bottom: 12px; }
+.overview .scqa-item { font-size: 14px; color: #555; margin-bottom: 6px; line-height: 1.8; }
+.overview .scqa-item strong { color: #4f46e5; }
+.card { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03); }
+.card.section { border-left-width: 4px; border-left-style: solid; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.circle-num { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.section-tag { font-size: 12px; color: #888; background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 12px; padding: 2px 10px; }
+.section h3 { font-size: 18px; font-weight: 700; }
+.section-body .bluf { color: #1a1a1a; font-weight: 600; margin-bottom: 8px; font-size: 15px; }
+.section-body p { margin-bottom: 8px; }
+.section-body .detail { font-size: 13px; color: #777; }
+.quote-block { background: #fafaf7; border-left: 3px solid #ca8a04; padding: 14px 18px; margin: 12px 0; border-radius: 0 8px 8px 0; font-size: 14px; color: #92400e; }
+.story-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+.story-card .story-title { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+.story-card p { font-size: 13px; color: #666; margin-bottom: 0; }
+.warn-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 16px 20px; margin: 14px 0; font-size: 14px; color: #92400e; }
+.takeaway { background: linear-gradient(135deg, #faf5ff, #fdf2f8); border: 2px solid #d8b4fe; border-radius: 14px; padding: 24px 28px; margin-top: 32px; display: flex; gap: 16px; align-items: flex-start; }
+.takeaway-icon { font-size: 28px; flex-shrink: 0; }
+.takeaway-label { font-size: 13px; color: #6b21a8; font-weight: 700; margin-bottom: 6px; }
+.takeaway-text p { font-size: 15px; color: #1a1a1a; font-weight: 600; }
+.footer { text-align: center; margin-top: 40px; font-size: 12px; color: #bbb; line-height: 1.8; }
+@media (max-width: 640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 22px; }
+  .header h2 { font-size: 15px; }
+  .kpi-row { flex-direction: column; }
+  .kpi-num { font-size: 28px; }
+  .kpi-label { font-size: 11px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .takeaway { margin-top: 20px; order: -1; }
+  .bluf { font-size: 16px; }
+}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="gupiao-dazuoshou-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a href="gupiao-dazuoshou-ch017-info-zh.html" target="_blank">中文</a>
+</div>
+<a href="gupiao-dazuoshou-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;" target="_blank">← 返回详情页</a>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-num">$500</div><div class="kpi-label">Mrs. Livingston's<br>Borneo stake</div></div>
+  <div class="kpi-card"><div class="kpi-num">$60K</div><div class="kpi-label">Gates' profit<br>doing the opposite</div></div>
+  <div class="kpi-card"><div class="kpi-num">$3,500</div><div class="kpi-label">broker's loss<br>on a "reliable" tip</div></div>
+  <div class="kpi-card"><div class="kpi-num">0</div><div class="kpi-label">tips Livermore<br>ever gave anyone</div></div>
+</div>
+<a href="gupiao-dazuoshou-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;">← 返回详情页</a>
+
+<div class="header">
+  <h1>Reminiscences of a Stock Operator · Ch. 17</h1>
+  <h2>The Irresistible Allure of Tips Is Human Weakness</h2>
+</div>
+<div class="divider"></div>
+
+<div class="overview">
+  
+  <div class="scqa-item"><strong>A · Answer:</strong> Tips are "the alcohol of hope"—they let you substitute someone else's judgment for your own thinking. Only by forging independent thought into an iron rule can you become immune to all tips.</div>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">01</div>
+    <span class="section-tag">Case</span>
+    <h3 style="color:#dc2626;">Borneo Tin: The Most Carefully Crafted Tip Trap</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf"><strong>The chairman of Borneo Tin meticulously orchestrated a "honey trap" to deliver a tip through Livermore's wife—and it spectacularly backfired.</strong></p>
+    <p>At a Palm Beach dinner party, Borneo Tin chairman Wisenstein deliberately sat next to Mrs. Livingston and whispered a "top secret" tip in her ear: buy Borneo Tin with everything you've got. Mrs. Livingston used the $500 pocket money her husband had just given her to buy 100 shares, which rose 3 points that day. However, Livermore was bearish on the broad market at the time, and noticing the stock's unusual activity, decided to start his short-selling campaign with this very stock—and made a killing instead.</p>
+    <div class="quote-block">"Of all the tips I ever heard, that one was the most carefully planned and the most painstakingly delivered. Yet, that tip went wrong. It had to go wrong."</div>
+    <p class="detail">Wisenstein made two mistakes: he miscalculated Mrs. Livingston's reluctance to tell her husband, and he mistakenly assumed Livermore was the kind of trader who listened to tips.</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
+    <span class="section-tag">Psychology</span>
+    <h3 style="color:#ea580c;">The Psychology of Tip Addiction: Wishful Thinking Syndrome</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf"><strong>The root of tip-chasing isn't a lack of intelligence—it's laziness. Having someone tell you what to buy is far easier and more pleasant than independent research.</strong></p>
+    <p>Livermore hit the nail on the head: tip-seekers are "drunks on hope." They suffer from wishful-thinking syndrome—it's less about greed blinding their eyes than about laziness breeding wishful thinking. As long as someone tells you what to do, you feel happy—"it's almost the best thing after happiness itself."</p>
+    <div class="warn-box"><strong>⚠️ Key insight:</strong> Both givers and receivers of tips are relay runners in an endless chain—tip propagation is a never-ending vine of advertisement. Those who distribute tips don't care about credibility because those who seek tips never demand quality. "A tip is a tip."</div>
+    <p class="detail">It's not just the outside public—even professional traders on the floor of the New York Stock Exchange are equally tip addicts. The reason they harbored hostility toward Livermore was precisely that he "never gave anyone any tips."</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">03</div>
+    <span class="section-tag">Variation</span>
+    <h3 style="color:#ca8a04;">The Reverse Tip: The Myth of "Bear Raids"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf"><strong>The so-called "bear raid" is nothing but a carefully packaged placebo—designed to spare losers from admitting their own judgment was wrong.</strong></p>
+    <p>A normal tip tells you what to buy or sell; the reverse tip explains a decline that's already happened. When a stock suddenly drops, brokers and the media tell you "someone is raiding it"—which spares you from having to sell at a loss or admit you were wrong. Livermore exposed this: of 100 alleged "bear raids," 99 are simply the acceleration phase of a legitimate decline. If a raid truly drove a stock below its value, insiders would immediately buy hand over fist—because it would be the deal of a lifetime.</p>
+    <p class="detail">"Attributing most sudden declines to the manipulation of some gambler... is a convenient excuse, easily used to satisfy the speculator's need for a reason—those speculators who are themselves nothing but blind gamblers."</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">04</div>
+    <span class="section-tag">Contrast</span>
+    <h3 style="color:#4f46e5;">Independent Thinking vs. Tip-Following: Worlds Apart</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf"><strong>The fork in the road for two investors: one made decisions using a scrap-paper basket, the other chased tips relentlessly.</strong></p>
+    <p>A Pennsylvania German investor noticed that the chairman of Atchison Railroad casually jotted numbers on fine stationery and threw it in the wastebasket—he immediately sold the stock and switched to Delaware Railroad, whose chairman tore up old envelopes for note paper. The latter stock doubled year after year. Meanwhile, J.T. Hood (an NYSE member) advised a friend not to send an angry telegram to an insider whose "tip had failed"—"If you send that telegram, you'll never get another tip from him again!"</p>
+    <div class="quote-block">"It isn't only the outside public that are tip addicts. The professional traders on the floor of the New York Stock Exchange are just as bad."</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fdf2f8;color:#db2777;">05</div>
+    <span class="section-tag">Anecdotes</span>
+    <h3 style="color:#db2777;">The Theater of Tip Absurdity: Four Classic Tales</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf"><strong>The absurdity of tips has been proven again and again through different stories—yet it has never stopped anyone from chasing the next one.</strong></p>
+    <div class="story-card"><div class="story-title">🎩 Westlake vs. Gates</div><p>Old Westlake solemnly advised Gates to short Reading—Gates went long instead and made $60,000. "I always make money doing the opposite of your tips!" Old Westlake sighed: "If I had your brains, what a fortune I'd make."</p></div>
+    <div class="story-card"><div class="story-title">🧢 WAR in the Hat</div><p>Cartoonist Rogers had "WAR" embroidered inside his bowler hat lining. A broker friend borrowed the hat, saw the word, connected it to the possibility of the Spanish-American War, and decided to go short—war was indeed declared, and he made a killing. He never gave the hat back.</p></div>
+    <div class="story-card"><div class="story-title">👴 Son-in-Law Traps Father-in-Law</div><p>A broker followed a journalist friend's "reliable source" tip and bought G.O.H.—only to lose $3,500. Upon further inquiry, he discovered the source was his own father-in-law. The farther the source, the "purer" the tip seems.</p></div>
+    <div class="story-card"><div class="story-title">📉 Hood's Absurd Logic</div><p>Two floor traders were twice burned by a director's "gratitude tips," suffering heavy losses. When one wanted to send an angry cable, Hood stopped him: "If you send that cable, you'll never get another tip from him again!"</p></div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>Tips are the cheapest and most expensive narcotic in the trading world. They let you temporarily escape thinking—but permanently forfeit the ability to think for yourself. The Rothschild secret to success applies to every trader: "I never buy at the bottom, and I always sell too soon." The deeper meaning: only the judgment you make yourself is profit that truly belongs to you.</p>
+  </div>
+</div>
+
+<div class="footer">
+  Source: Edwin Lefèvre · Reminiscences of a Stock Operator · 1923<br>
+  For informational purposes only · Not investment advice
+</div>
+</div>
+</body>
+</html>

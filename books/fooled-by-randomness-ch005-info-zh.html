@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>随机漫步的傻瓜 · 第5章 最不适者可能生存吗？</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Typography ── */
+  h1 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; font-size: 14px; color: #888; margin-bottom: 24px;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #db2777, #f472b6);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .body-text {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    background: #fdf2f8; color: #db2777; border: 1px solid #fbcfe8;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Splash / Overview card ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Section card base (all pink) ── */
+  .section {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    margin-bottom: 18px; padding: 28px 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid #db2777;
+  }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    background: #fdf2f8; color: #db2777;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-body { flex: 1; }
+
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    background: #fdf2f8; color: #db2777;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-title {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    color: #db2777;
+  }
+
+  .section-desc {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Component A: Flow Steps ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 10px;
+    padding: 10px 14px; text-align: center; min-width: 90px; flex: 1;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #be185d; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #db2777; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fce7f3; border-color: #f9a8d4; color: #9d174d; }
+
+  /* ── Component B: Data Cards ── */
+  .data-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px;
+  }
+  .data-card {
+    border-radius: 12px; padding: 20px; text-align: center;
+    background: #fdf2f8; border: 1px solid #fbcfe8;
+  }
+  .data-big {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 32px; color: #db2777; font-weight: bold; line-height: 1.2;
+  }
+  .data-sm {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #9d174d; margin-top: 6px; line-height: 1.5;
+  }
+  .data-card.danger { background: #fce7f3; border-color: #f9a8d4; }
+  .data-big.danger { color: #be185d; }
+
+  /* ── Component C: Dual Grid ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.pos { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-card.neg { background: #fce7f3; border: 1px solid #f9a8d4; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #1a1a1a; margin-bottom: 4px;
+  }
+  .dual-text p {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #777; line-height: 1.6;
+  }
+
+  /* ── Component: Trait Pills ── */
+  .trait-list {
+    display: flex; flex-direction: column; gap: 8px; margin-top: 10px;
+  }
+  .trait-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 14px; border-radius: 10px;
+    background: #fdf2f8; border: 1px solid #fbcfe8;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+  .trait-num {
+    flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+    background: #db2777; color: #fff; font-size: 12px; font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .trait-text {
+    font-size: 13px; color: #be185d; line-height: 1.6;
+  }
+
+  /* ── Component: Key Insight Box ── */
+  .insight-box {
+    background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 12px;
+    padding: 18px 22px; margin-top: 10px; text-align: center;
+  }
+  .insight-quote {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 16px; color: #db2777; line-height: 1.8; font-style: italic;
+    margin-bottom: 8px;
+  }
+  .insight-note {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #9d174d; line-height: 1.6;
+  }
+
+  /* ── Component: Quote Box ── */
+  .quote-box {
+    background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 12px;
+    padding: 16px 20px; margin-top: 10px;
+  }
+  .quote-line {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #be185d; line-height: 1.8; font-style: italic;
+    margin-bottom: 6px;
+  }
+  .quote-line:last-child { margin-bottom: 0; }
+  .quote-attr {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 11px; color: #f472b6; margin-top: 8px; text-align: right;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid #db2777; padding-top: 20px; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch005-info-en.html">中文 / English</a>
+</div>
+
+  <h1>随机漫步的傻瓜 · 第5章<br>「最不适者可能生存吗？」</h1>
+  <p class="subtitle body-text">两位交易员的兴衰，以及一个刺穿达尔文主义的随机性之问</p>
+  <div class="divider"></div>
+<div class="chapter-overview">
+  <p>卡洛斯靠经济分析在新兴市场赚了八千万美元，一个夏天赔掉三亿。约翰凭统计模型累积一千六百万身家，几天内归零。他们不是个例——在任何一个时间点，赚钱最多的交易员，往往是最差的交易员。塔勒布用两个真实故事，揭示了一个令人不安的真相：随机性不仅能愚弄个体，还能愚弄进化本身。适者生存？也许只是最幸运者刚好没碰到稀有事件。</p>
+</div>
+
+
+  <!-- 01: 卡洛斯 — 经济学的信徒（流程） -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <div class="section-body">
+      <div class="tag">卡洛斯案例</div>
+      <div class="section-title">卡洛斯：经济直觉铺就的黄金路，被稀有事件一夜碾碎</div>
+      <div class="section-desc">
+        哈佛经济学硕士卡洛斯，1992年进入新兴市场债券交易。他坚信经济学分析能解释一切——逢低加码、基本面良好就继续买。七年累计盈利近8000万美元。1998年夏，俄罗斯债务危机爆发。他不断逢低摊平，对质疑者大吼"那只是平仓！"最终，一个夏天赔掉3亿美元，被保安送出大门。
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">1992–1997<br>持续盈利</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">1998.6<br>开始下跌<br>加码摊平</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">1998.7<br>继续加码<br>"太大不能倒"</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">1998.8<br>俄罗斯违约<br>被开除</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: 约翰 — 统计学的赌注（数据卡） -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <div class="section-body">
+      <div class="tag">约翰案例</div>
+      <div class="section-title">约翰：十年一遇的"十西格玛"事件，在杠杆下只需几天</div>
+      <div class="section-desc">
+        约翰依靠数字专家亨利的风险模型，在全球做高收益债券利差交易。他用五倍杠杆撬动五千万美元组合。模型说：这种亏损的发生概率是100万亿亿年才有一次。1998年夏，高收益债券市场崩盘，他的对冲策略全部失灵。短短几天，1400万美元个人财富蒸发，丢掉工作。
+      </div>
+      <div class="data-row">
+        <div class="data-card">
+          <div class="data-big">$2.5亿</div>
+          <div class="data-sm">7年间为雇主创造的利润</div>
+        </div>
+        <div class="data-card danger">
+          <div class="data-big danger">−$6亿+</div>
+          <div class="data-sm">几天内最后一位雇主的损失</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: 六种特质（特质列表） -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <div class="section-body">
+      <div class="tag">共性特征</div>
+      <div class="section-title">被随机性愚弄的交易员，都有这六种致命特质</div>
+      <div class="section-desc">
+        卡洛斯和约翰不是个例——1992至1998年多头走势中最成功的交易员，几乎都具备这些特质。它们没有明确定义，但当你看到时，一眼就能认出。
+      </div>
+      <div class="trait-list">
+        <div class="trait-item">
+          <div class="trait-num">1</div>
+          <div class="trait-text"><strong>高估信念的精确性。</strong>卡洛斯相信经济学，约翰相信统计学。他们从未想过，过去的成功可能只是巧合——经济学刚好在那段时期适用。</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">2</div>
+          <div class="trait-text"><strong>死守头寸。</strong>有句格言说，要叫烂交易员放弃头寸，比叫他们离婚还难。他们打死不认赔。</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">3</div>
+          <div class="trait-text"><strong>改变说辞。</strong>赔钱时自称"长线投资人"。交易员和投资人混为一谈，只是拒绝认赔的借口。</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">4</div>
+          <div class="trait-text"><strong>否认现实。</strong>亏损时不相信屏幕上的价格。"这只是平仓、失望性卖盘"，继续忽视市场发出的信息。</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">5</div>
+          <div class="trait-text"><strong>无事先应对计划。</strong>市场重挫后买进更多，但不是根据预定方案，而是情绪驱动。</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">6</div>
+          <div class="trait-text"><strong>缺乏批判性自我审视。</strong>不接受自己的估值方法可能有缺陷。索罗斯则会在不利结果面前检讨自己的分析框架。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: 横断面问题（双栏对比 + 金句） -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <div class="section-body">
+      <div class="tag">核心悖论</div>
+      <div class="section-title">横断面问题：最赚钱的，可能是最差的</div>
+      <div class="section-desc">
+        卡洛斯和约翰犯下每一项错误后还能赚那么多钱——答案在于随机性的简单原理。他们赚钱不仅因为选对市场，更因为"逢低买进"的交易风格恰好匹配了1992至1998年这段历史时期的市场特质。那个时期，碰巧拥有这种特质的人主宰了市场，把可能更优秀的交易员挤到一边。
+      </div>
+      <div class="insight-box">
+        <div class="insight-quote">"在任何一个时间点，赚钱最多的交易员，往往是最差的交易员。"</div>
+        <div class="insight-note">—— 塔勒布 · 横断面问题（Cross-Sectional Problem）</div>
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card pos">
+          <div class="dual-icon">🔍</div>
+          <div class="dual-text">
+            <h4>倒果为因的错觉</h4>
+            <p>我们认为交易员能赚钱，是因为他们是好交易员。或许该反过来：我们认为他们是好交易员，只是因为他们赚了钱。一个人完全可能靠随机现象在金融市场获利。</p>
+          </div>
+        </div>
+        <div class="dual-card neg">
+          <div class="dual-icon">🎯</div>
+          <div class="dual-text">
+            <h4>样本路径的陷阱</h4>
+            <p>卡洛斯与约翰都受益于市场循环。他们的成功是过度适应某一条"样本路径"——那条路径恰好没有出现稀有事件。稀有事件缺席越久，他们越脆弱。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: 进化被愚弄（引文 + 进化对比） -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <div class="section-body">
+      <div class="tag">进化迷思</div>
+      <div class="section-title">进化论也会被随机性愚弄：适应一个样本，不等于适应所有可能</div>
+      <div class="section-desc">
+        达尔文被误用了。进化论说的是繁殖适应性，而非短期生存。古尔德发现"负突变"——更差的特质也能暂时存活。一旦发生体制转换，原本适应的物种反而最先灭绝。动物只能适应它经历过的某一时间序列，而不是所有可能环境的平均值。时间越长没遇到稀有事件，该物种对该事件的承受力越脆弱。
+      </div>
+      <div class="quote-box">
+        <div class="quote-line">"如果我们把时间无限延长，依照遍历性原则，那个事件肯定会发生——那些物种必会遭毁灭！"</div>
+        <div class="quote-line">"不管约翰和卡洛斯去做什么事，他们仍将是不懂随机性的傻瓜。"</div>
+        <div class="quote-attr">—— 塔勒布 · 第5章</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">《随机漫步的傻瓜》第5章信息图 · Nassim Nicholas Taleb 著 · 内容仅供学习参考</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>以交易为生II：卖出的艺术 · 第八章「做空非权益类产品」</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #555;
+  line-height: 2.0;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  padding: 48px 32px 60px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
+
+/* Language Switch */
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+/* KPI Row */
+.kpi-row {
+  display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;
+}
+.kpi-card {
+  flex: 1; min-width: 120px;
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
+  padding: 20px 16px; text-align: center;
+}
+.kpi-num { font-size: 32px; font-weight: bold; color: #ea580c; letter-spacing: -0.02em; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+
+/* Header */
+.header { margin-bottom: 32px; }
+.header h1 {
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  font-size: 36px; font-weight: 400; color: #1a1a1a;
+  letter-spacing: 0.03em; line-height: 1.4;
+}
+.header h2 {
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  font-size: 14px; font-weight: 400; color: #888;
+  letter-spacing: 0.02em; margin-top: 8px; line-height: 1.6;
+}
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #ea580c, #f5f1eb);
+  margin: 20px 0 28px;
+}
+
+/* Card Base */
+.card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* Overview Card */
+.overview { }
+.overview-label {
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  font-size: 13px; font-weight: 700; color: #ea580c;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;
+}
+.overview h3 {
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  font-size: 18px; font-weight: 700; color: #1a1a1a;
+  margin-bottom: 10px; line-height: 1.5;
+}
+.overview p { font-size: 15px; color: #555; line-height: 2.0; margin-bottom: 10px; }
+.overview .highlight {
+  display: inline-block; background: #fff7ed; color: #ea580c;
+  padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 14px;
+}
+
+/* Section Blocks */
+.section { border-left: 4px solid; }
+.section-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.circle-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+}
+.section-tag {
+  font-size: 12px; padding: 3px 10px; border-radius: 20px;
+  font-weight: 500; letter-spacing: 0.02em;
+}
+.section h3 {
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  font-size: 18px; font-weight: 700; line-height: 1.4;
+}
+.section-body p { margin-bottom: 12px; }
+
+/* Flow Chart */
+.flow-row {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 8px; margin-top: 16px; flex-wrap: wrap;
+}
+.flow-step, .flow-step.end {
+  background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px;
+  padding: 14px 16px; text-align: center; font-size: 13px;
+  color: #9a3412; font-weight: 700; min-width: 90px;
+}
+.flow-step-num {
+  display: block; font-size: 11px; font-weight: 400; color: #ea580c;
+  margin-bottom: 4px; letter-spacing: 0.04em;
+}
+.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
+.flow-arrow { font-size: 18px; color: #ea580c; font-weight: 700; padding-top: 14px; }
+
+/* Quote Block */
+.quote-block {
+  background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0;
+  padding: 16px 20px; margin-top: 14px; position: relative;
+}
+.quote-mark {
+  position: absolute; top: -10px; left: 12px;
+  font-size: 32px; color: #c084fc; font-family: Georgia, serif; line-height: 1;
+}
+.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
+.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+
+/* Dual Compare */
+.dual-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
+}
+.dual-card {
+  border-radius: 10px; padding: 16px 18px;
+}
+.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-label { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.dual-card.good .dual-label { color: #166534; }
+.dual-card.bad .dual-label { color: #991b1b; }
+.dual-card p { font-size: 13px; color: #555; line-height: 1.8; }
+
+/* Data Cards */
+.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.data-card {
+  flex: 1; min-width: 100px;
+  border-radius: 12px; padding: 18px 14px; text-align: center;
+}
+.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.data-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.data-card.blue { background: #eff6ff; border: 1px solid #bfdbfe; }
+.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+.data-card.orange .data-big { color: #ea580c; }
+.data-card.green .data-big { color: #16a34a; }
+.data-card.blue .data-big { color: #4f46e5; }
+.data-card.gold .data-big { color: #ca8a04; }
+.data-card.red .data-big { color: #dc2626; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+/* Multi-Column Compare */
+.cmp-grid { display: grid; gap: 12px; margin-top: 14px; }
+.cmp-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.cmp-card {
+  border-radius: 12px; padding: 20px 16px 16px; text-align: center;
+}
+.cmp-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.cmp-card.blue { background: #eef2ff; border: 1px solid #c7d2fe; }
+.cmp-icon { font-size: 28px; margin-bottom: 8px; }
+.cmp-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+.cmp-features { list-style: none; padding: 0; text-align: left; font-size: 12px; color: #555; line-height: 1.7; }
+.cmp-features li::before { content: '• '; color: #888; }
+.cmp-bar { height: 4px; border-radius: 2px; margin: 10px 0; }
+.cmp-bar.orange { background: #fdba74; }
+.cmp-bar.blue { background: #a5b4fc; }
+.cmp-note { font-size: 11px; color: #999; line-height: 1.5; }
+
+/* Callout */
+.callout {
+  display: flex; gap: 10px; align-items: flex-start;
+  border-radius: 10px; padding: 14px 16px; margin-top: 14px;
+}
+.callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
+.callout.info { background: #eff6ff; border: 1px solid #bfdbfe; }
+.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.callout-text { font-size: 13px; color: #555; line-height: 1.8; }
+.callout-text strong { color: #1a1a1a; }
+
+/* Bar Chart */
+.bar-group { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.bar-item { display: flex; align-items: center; gap: 12px; }
+.bar-label { font-size: 13px; color: #555; min-width: 100px; flex-shrink: 0; }
+.bar-track { flex: 1; height: 12px; background: #e8e0d5; border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; min-width: 4px; }
+.bar-fill.orange { background: #ea580c; }
+.bar-fill.indigo { background: #4f46e5; }
+.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 40px; text-align: right; }
+
+/* Takeaway */
+.takeaway {
+  background: #faf5ff; border: 2px solid #d8b4fe; border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 24px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.takeaway-label {
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  font-size: 13px; font-weight: 700; color: #7c3aed; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 6px;
+}
+.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
+
+/* Footer */
+.footer {
+  border-top: 1px solid #e8e0d5;
+  padding-top: 20px;
+  font-size: 12px; color: #bbb; line-height: 1.6;
+  font-family: 'PingFang SC', 'Noto Serif SC', Georgia, serif;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 24px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .cmp-grid.cols-2, .dual-grid { grid-template-columns: 1fr; }
+  .data-row { flex-direction: column; }
+  .kpi-row { flex-direction: column; }
+  .bar-item { flex-wrap: wrap; }
+}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch008-info-en.html">中文 / English</a>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">400:1</div>
+    <div class="kpi-label">外汇商号<br>保证金比例</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">64%</div>
+    <div class="kpi-label">黄金涨幅<br>3天被吞掉</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">90%+</div>
+    <div class="kpi-label">期权买家<br>长期亏损率</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5%</div>
+    <div class="kpi-label">期货市场<br>保证金比例</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>以交易为生II：卖出的艺术<br>第八章 · 做空非权益类产品</h1>
+  <h2>期货、期权、外汇——三个市场，三类对手，三种做空逻辑。埃尔德揭示非权益类做空的底层规律与实战框架。</h2>
+  <div class="divider"></div>
+<div class="chapter-overview">
+  <p>▎概述 做空非权益类产品：三道门，三种生存法则 做空在期货、期权和外汇市场上完全自由，不存在股票市场的报升规则或内幕交易限制。然而自由不等于安全——期货市场遵循"慢涨快跌"的残酷节奏，期权市场买家如同赌徒注定亏损，外汇零售市场更是平台与客户对赌的利益陷阱。 核心发现：成功的做空者必须理解每个市场的独特性——期货做空要利用周期性急跌，期权要永远站在卖方，外汇要选择透明平台并利用趋势的持续性。三个市场，三种做空逻辑，但纪律和风险控制是共同的底线。</p>
+</div>
+
+</div>
+
+<!-- Overview Card -->
+<h3>做空非权益类产品：三道门，三种生存法则</h3>
+  <p>做空在期货、期权和外汇市场上<span class="highlight">完全自由</span>，不存在股票市场的报升规则或内幕交易限制。然而自由不等于安全——期货市场遵循"慢涨快跌"的残酷节奏，期权市场买家如同赌徒注定亏损，外汇零售市场更是<span class="highlight">平台与客户对赌</span>的利益陷阱。</p>
+  <p><strong>核心发现：</strong>成功的做空者必须理解每个市场的独特性——期货做空要利用周期性急跌，期权要永远站在卖方，外汇要选择透明平台并利用趋势的持续性。三个市场，三种做空逻辑，但纪律和风险控制是共同的底线。</p>
+</div>
+
+<!-- Block 01: 期货慢涨快跌 -->
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">01</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">核心规律</div>
+    <h3 style="color:#ea580c;">期货慢涨快跌：持有成本驱动的价格节奏</h3>
+  </div>
+  <div class="section-body">
+    <p>期货价格因储存、资金和保险等持有成本持续推升，形成缓慢上涨趋势；但基本面价值并未同步增长，价格结构必须被<strong>周期性急跌所打断</strong>。可可期货上涨持续数周甚至数月，而只需一周就跌回原点。黄金用3个月涨了85美元，却用3天暴跌吞掉64%的涨幅。</p>
+
+    <div class="flow-row">
+      <div class="flow-step"><span class="flow-step-num">①</span>持有成本积累<div class="flow-label">储存·资金·保险</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">②</span>价格缓慢上涨<div class="flow-label">新手误以为安全</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">③</span>利空触发<div class="flow-label">飓风·政策·假突破</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end"><span class="flow-step-num">④</span>快速崩塌<div class="flow-label">做空获利窗口</div></div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">海浪将沙子推向岸边，形成沙丘，当潮水退去时，沙丘也随着向下滑落，如此往复。这就是你所看到的大多数期货市场的运动情形，缓慢向上、快速崩塌。</div>
+      <div class="quote-author">— 亚历山大·埃尔德，《以交易为生II》</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 02: 期货定价锚点 -->
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">定价锚点</div>
+    <h3 style="color:#ea580c;">天花板与地板：期货做空的定价之锚</h3>
+  </div>
+  <div class="section-body">
+    <p>与股票不同，期货有天然的定价边界。做空前必须判断价格距离天花板和地板哪个更近。当价格接近天花板时做空，当价格跌破地板时平空。</p>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">📈 天花板 · 替代品成本</div>
+        <p>商品价格上限由替代品成本决定。例如谷物价格上涨时，农民转向更便宜的替代饲料，拉低谷物需求。市场极度兴奋时价格可能短暂突破，但不会停留——这正是精明交易者的做空时机。</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">📉 地板 · 生产成本</div>
+        <p>商品价格底线是生产成本。当价格跌破生产成本，生产者减产、供应下降、价格回升。例外是穷国以贬值本币支付工人、廉价出口换取硬通货，但不会持久。</p>
+      </div>
+    </div>
+
+    <div class="bar-group">
+      <div class="bar-item">
+        <div class="bar-label">假突破+顶背离信号</div>
+        <div class="bar-track"><div class="bar-fill orange" style="width:92%"></div></div>
+        <div class="bar-val">强</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">MACD丢失的右肩</div>
+        <div class="bar-track"><div class="bar-fill orange" style="width:85%"></div></div>
+        <div class="bar-val">强</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">周线图＞日线图</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:78%"></div></div>
+        <div class="bar-val">优先</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">止损反转指令</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:70%"></div></div>
+        <div class="bar-val">可选</div>
+      </div>
+    </div>
+
+    <p style="margin-top:14px;"><strong>橘汁期货实战案例：</strong>周线图出现向上假突破 + MACD顶背离 + "丢失的右肩"，入场逻辑清晰。日线图虽信号较弱但不矛盾。周一开盘做空，两天后价格跌破下轨价平仓出场，盈利目标达成。</p>
+
+    <div class="data-row">
+      <div class="data-card orange">
+        <div class="data-big">周线</div>
+        <div class="data-sm">假突破+顶背离<br>信号最可靠</div>
+      </div>
+      <div class="data-card green">
+        <div class="data-big">日线</div>
+        <div class="data-sm">信号较弱但不矛盾<br>确认后入场</div>
+      </div>
+      <div class="data-card blue">
+        <div class="data-big">2天</div>
+        <div class="data-sm">快速下跌<br>盈利目标达成</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 03: 期权买vs卖 -->
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">03</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">零和博弈</div>
+    <h3 style="color:#ea580c;">期权买卖：赢家与输家的分界线</h3>
+  </div>
+  <div class="section-body">
+    <p>期权市场上，赢家与输家的分界线不在技术水平，而在买入者与卖出者之间。<strong>赢家永远是卖出者，输家恰好相反。</strong>期权是消耗性资产——即使看对方向，只要时间耗尽，期权也将一文不值。</p>
+
+    <div class="cmp-grid cols-2">
+      <div class="cmp-card orange">
+        <div class="cmp-icon">🎰</div>
+        <div class="cmp-name">买入方 · 赌徒</div>
+        <ul class="cmp-features">
+          <li>买入希望，期待一夜暴富</li>
+          <li>看对方向仍可能亏损（时间衰减）</li>
+          <li>必须同时判断趋势和时机</li>
+          <li>长期资产曲线整体向下</li>
+          <li>入门门槛低，亏损概率高</li>
+        </ul>
+        <div class="cmp-bar orange"></div>
+        <div class="cmp-note">90%+ 长期亏损</div>
+      </div>
+      <div class="cmp-card blue">
+        <div class="cmp-icon">🏦</div>
+        <div class="cmp-name">卖出方 · 庄家</div>
+        <ul class="cmp-features">
+          <li>卖出希望，立即收取现金</li>
+          <li>时间流逝对卖方有利</li>
+          <li>股价上涨/下跌/横盘均可盈利</li>
+          <li>期权到期归零=最大利润</li>
+          <li>需充足资本和交易经验</li>
+        </ul>
+        <div class="cmp-bar blue"></div>
+        <div class="cmp-note">持续盈利的专家路径</div>
+      </div>
+    </div>
+
+    <div class="quote-block" style="margin-top:16px;">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">期权就是在交易希望，人们可以买入希望或卖出希望。我是专家，所以我卖出希望。每天早晨到交易所时，我就开始寻找那些需要希望的人，给希望定价，然后把希望卖给这些人。</div>
+      <div class="quote-author">— 一位做市商老板</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 04: 期权策略 -->
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">04</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">实战策略</div>
+    <h3 style="color:#ea580c;">存量卖出与裸卖出：两种做空期权的路径</h3>
+  </div>
+  <div class="section-body">
+    <p>卖出期权有两条路径：<strong>存量卖出</strong>以自有股票为担保赚取期权费，<strong>裸卖出</strong>以账户资本为担保凭空创造期权。前者稳健增收，后者利润最大但最考验纪律。</p>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">🛡️ 存量卖出 Covered</div>
+        <p>以持有股票为标的卖出看涨期权（或做空后卖出看跌期权）。股价平稳→赚期权费；股价下跌→期权费减损；股价上涨但行权→赚上涨+期权费。适合大型股票组合增收，但单只股票费力获益小。</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">⚡ 裸卖出 Naked</div>
+        <p>凭空创造期权抛向市场，无股票担保。最紧张、最有前途、也最危险。需要充足资本（10万-25万美元）和冷酷纪律。最糟情况是以行权价买入股票——对专家而言完全可接受。</p>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">我就像赌场里的荷官，赚取那些非常自负的人的钱……轮盘不停地转，他们很以此为乐，但在某个月第三周周五轮盘停止时，我全盘通吃。</div>
+      <div class="quote-author">— 迪安·巴菲林博士，裸卖空专家</div>
+    </div>
+
+    <div class="data-row">
+      <div class="data-card orange">
+        <div class="data-big">ATI</div>
+        <div class="data-sm">卖出4月看涨期权<br>获$4,800期权费</div>
+      </div>
+      <div class="data-card green">
+        <div class="data-big">CHL</div>
+        <div class="data-sm">卖出6月看涨期权<br>3个月赚$3,000</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">$100K+</div>
+        <div class="data-sm">裸卖出最低<br>资本门槛</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 05: 外汇 -->
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">05</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">风险警示</div>
+    <h3 style="color:#ea580c;">外汇：投机商号陷阱与趋势交易之道</h3>
+  </div>
+  <div class="section-body">
+    <p>外汇市场是全球趋势特征最明显的市场——货币趋势可持续数年。但零售外汇商号存在严重利益冲突：它们充当客户对手盘，客户赚钱即商号亏钱，且提供疯狂的<strong>400:1保证金</strong>使资金管理失效。外汇期货是更透明的替代选择。</p>
+
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text"><strong>警惕投机商号：</strong>多数外汇商号不将客户单子抛向市场，而是与客户对赌。价差、佣金和利息持续侵蚀本金。埃尔德直言——在透明系统出现之前，只有一个词：小心谨慎！</div>
+    </div>
+
+    <div class="callout info" style="margin-top:10px;">
+      <div class="callout-icon">💡</div>
+      <div class="callout-text"><strong>选择外汇期货：</strong>外汇期货电子化交易、信誉卓著、更加透明。做空前必须先学会期货交易。所有外汇交易都是价差交易：买入一种货币即自动做空另一种货币。</div>
+    </div>
+
+    <div class="data-row">
+      <div class="data-card red">
+        <div class="data-big">400:1</div>
+        <div class="data-sm">投机商号<br>保证金比例</div>
+      </div>
+      <div class="data-card orange">
+        <div class="data-big">50%</div>
+        <div class="data-sm">股票市场<br>保证金要求</div>
+      </div>
+      <div class="data-card blue">
+        <div class="data-big">5%</div>
+        <div class="data-sm">期货市场<br>保证金要求</div>
+      </div>
+      <div class="data-card green">
+        <div class="data-big">24h</div>
+        <div class="data-sm">外汇市场<br>全天交易</div>
+      </div>
+    </div>
+
+    <p style="margin-top:14px;"><strong>做空信号：</strong>顶背离 + 假突破 + MACD丢失的右肩，镜像般反射底部做多信号（底背离+向下假突破）。欧元案例清晰展示：趋势持续数年，回调提供做空和做多双向机会。</p>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>做空非权益类产品的核心不在技术，而在理解每个市场的博弈结构：<strong>期货做空要利用慢涨快跌的定价节奏，期权做空要永远站在时间一边（卖方），外汇做空要避开与客户对赌的投机商号。</strong>三个市场的共同底线是：充足资本、冷酷纪律、截短亏损让利润奔跑。</p>
+  </div>
+
+
+<!-- Footer -->
+<div class="footer">
+  来源：亚历山大·埃尔德《以交易为生II：卖出的艺术》第八章「做空非权益类产品」<br>
+  信息图生成日期：2026年6月17日 · 仅供学习参考，
+</div>
+不构成投资建议
+
+
+
+</body>
+</html>
+
+</div>

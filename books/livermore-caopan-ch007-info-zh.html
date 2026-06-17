@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股票大作手操盘术 · 第7章「300万美元的盈利」</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ── Reset & Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#f5f1eb;color:#1a1a1a;
+  font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+}
+
+/* ── Container ── */
+.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
+
+/* ── Lang Switch ── */
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{
+  display:inline-block;padding:6px 16px;border-radius:8px;
+  font-size:13px;text-decoration:none;letter-spacing:0.03em;
+  font-family:'FZXPYZS','PingFang SC',serif;
+  background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;
+  transition:opacity 0.15s;
+}
+.lang-btn:hover{opacity:0.75}
+
+/* ── KPI Row ── */
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{
+  flex:1;min-width:120px;
+  background:#fff;border:1px solid #e8e0d5;border-radius:12px;
+  padding:20px 16px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-num{font-size:32px;font-weight:700;color:#db2777;letter-spacing:-0.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+
+/* ── Header ── */
+.header h1{
+  font-size:36px;font-weight:400;color:#1a1a1a;
+  letter-spacing:0.03em;margin-bottom:8px;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.header h2{
+  font-size:14px;font-weight:400;color:#888;
+  letter-spacing:0.02em;line-height:1.7;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.divider{
+  width:60px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#4f46e5,#db2777);
+  margin:20px 0 24px;
+}
+
+/* ── Cards ── */
+.card{
+  background:#fff;border:1px solid #e8e0d5;border-radius:14px;
+  padding:28px 32px;margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03);
+}
+.overview{
+  background:#fdf2f8;border:2px solid #fbcfe8;
+  border-radius:14px;padding:24px 28px;margin-bottom:18px;
+}
+
+/* ── Overview ── */
+.overview-label{
+  font-size:11px;font-weight:700;color:#db2777;
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+}
+.overview-question{
+  font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px;
+}
+.overview-answer{
+  font-size:15px;color:#555;line-height:2.0;
+}
+
+/* ── Section Base ── */
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
+}
+.circle-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;flex-shrink:0;
+}
+.section-tag{
+  font-size:12px;padding:3px 10px;border-radius:20px;
+  font-weight:500;letter-spacing:0.02em;
+}
+.section h3{font-size:18px;font-weight:700}
+.section-body p{
+  font-size:15px;color:#555;line-height:2.0;margin-bottom:12px;
+}
+
+/* ── Per-section color classes ── */
+.s01{border-left:4px solid #dc2626}
+.s01 .circle-num{background:#fef2f2;color:#dc2626}
+.s01 .section-tag{background:#fef2f2;color:#dc2626}
+.s01 h3{color:#dc2626}
+
+.s02{border-left:4px solid #ea580c}
+.s02 .circle-num{background:#fff7ed;color:#ea580c}
+.s02 .section-tag{background:#fff7ed;color:#ea580c}
+.s02 h3{color:#ea580c}
+
+.s03{border-left:4px solid #ca8a04}
+.s03 .circle-num{background:#fefce8;color:#ca8a04}
+.s03 .section-tag{background:#fefce8;color:#ca8a04}
+.s03 h3{color:#ca8a04}
+
+.s04{border-left:4px solid #4f46e5}
+.s04 .circle-num{background:#eef2ff;color:#4f46e5}
+.s04 .section-tag{background:#eef2ff;color:#4f46e5}
+.s04 h3{color:#4f46e5}
+
+.s05{border-left:4px solid #db2777}
+.s05 .circle-num{background:#fdf2f8;color:#db2777}
+.s05 .section-tag{background:#fdf2f8;color:#db2777}
+.s05 h3{color:#db2777}
+
+/* ── Quote Block ── */
+.quote-block{
+  background:#faf5ff;border-left:4px solid #c084fc;border-radius:0 10px 10px 0;
+  padding:16px 20px;margin-top:14px;position:relative;
+}
+.quote-mark{
+  position:absolute;top:-10px;left:12px;
+  font-size:32px;color:#c084fc;font-family:Georgia,serif;line-height:1;
+}
+.quote-text{
+  font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px;
+}
+.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
+
+/* ── Flow Row ── */
+.flow-row{
+  display:flex;align-items:flex-start;justify-content:center;
+  gap:8px;margin-top:16px;flex-wrap:wrap;
+}
+.flow-step,.flow-step.end{
+  background:#fff7ed;border:2px solid #fed7aa;border-radius:10px;
+  padding:14px 16px;text-align:center;font-size:13px;
+  color:#9a3412;font-weight:700;min-width:95px;
+}
+.flow-step-num{
+  display:block;font-size:11px;font-weight:400;color:#ea580c;
+  margin-bottom:4px;letter-spacing:0.04em;
+}
+.flow-step.end{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.flow-label{font-size:11px;font-weight:400;color:#888;margin-top:4px}
+.flow-arrow{font-size:18px;color:#ea580c;font-weight:700;padding-top:14px}
+
+/* ── Data Row ── */
+.data-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.data-card{
+  flex:1;min-width:140px;
+  border-radius:12px;padding:20px 16px;text-align:center;
+}
+.data-card.pink{background:#fdf2f8;border:1px solid #fbcfe8}
+.data-card.gold{background:#fefce8;border:1px solid #fde68a}
+.data-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
+.data-card.red{background:#fef2f2;border:1px solid #fecaca}
+.data-big{font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1.3}
+.data-card.pink .data-big{color:#db2777}
+.data-card.gold .data-big{color:#ca8a04}
+.data-card.indigo .data-big{color:#4f46e5}
+.data-card.red .data-big{color:#dc2626}
+.data-sm{font-size:12px;color:#888;margin-top:6px;line-height:1.6}
+.data-note{font-size:12px;color:#555;margin-top:8px;line-height:1.6}
+
+/* ── Callout ── */
+.callout{
+  display:flex;gap:10px;align-items:flex-start;
+  border-radius:10px;padding:14px 16px;margin-top:14px;
+}
+.callout.warn{background:#fffbeb;border:1px solid #fde68a}
+.callout.info{background:#eff6ff;border:1px solid #bfdbfe}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.callout-text{font-size:13px;color:#555;line-height:1.8}
+.callout-text strong{color:#1a1a1a}
+
+/* ── Dual Grid ── */
+.dual-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;
+}
+.dual-card{border-radius:10px;padding:16px 18px}
+.dual-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-card.bad{background:#fef2f2;border:1px solid #fecaca}
+.dual-label{font-size:13px;font-weight:700;margin-bottom:6px}
+.dual-card.good .dual-label{color:#166534}
+.dual-card.bad .dual-label{color:#991b1b}
+.dual-card p{font-size:13px;color:#555;line-height:1.8}
+
+/* ── Takeaway ── */
+.takeaway{
+  background:#fdf2f8;border:2px solid #fbcfe8;border-radius:14px;
+  padding:24px 28px;margin-bottom:18px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.takeaway-label{
+  font-size:13px;font-weight:700;color:#db2777;text-transform:uppercase;
+  letter-spacing:0.06em;margin-bottom:6px;
+}
+.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
+
+/* ── Footer ── */
+.footer{
+  text-align:center;font-size:12px;color:#bbb;line-height:1.8;
+  padding-top:16px;border-top:1px solid #e8e0d5;
+}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  body{padding:16px 12px 40px}
+  .container{padding:0}
+  .header h1{font-size:22px}
+  .card,.overview,.section{padding:18px 16px}
+  .section-header{flex-wrap:wrap;gap:8px}
+  .circle-num{width:34px;height:34px;font-size:14px}
+  .section h3{font-size:16px}
+  .flow-row{flex-direction:column;align-items:stretch}
+  .flow-arrow{display:none}
+  .dual-grid{grid-template-columns:1fr}
+  .data-row{flex-direction:column}
+  .kpi-row{flex-direction:column}
+}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Lang Switch -->
+<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="livermore-caopan-ch007-info-en.html">English</a>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">1500万</div>
+    <div class="kpi-label">小麦期货空头<br>最终持仓规模</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">300万+</div>
+    <div class="kpi-label">美元净利润<br>历史性战役</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3次</div>
+    <div class="kpi-label">黑麦测试卖出<br>探明市场真相</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">1924-1925</div>
+    <div class="kpi-label">夏→次年3月<br>完整操作周期</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>股票大作手操盘术 · 第7章「300万美元的盈利」</h1>
+  <h2>在投机性市场允许卖空机制的价值——持有卖空头寸的人会变成主动买入者，一旦发生恐慌便可发挥稳定作用</h2>
+  <div class="divider"></div>
+<div class="chapter-overview">
+  <p>▎SCQA 框架 如何通过耐心等待关键点、关联市场交叉验证和大规模趋势操作，在一次行情中获取超过300万美元的利润？ 本章是利弗莫尔职业生涯中最辉煌的一次战役实录：S（情境）——1924年夏小麦市场到达关键点，为期数月的牛市展开；C（冲突）——因过早了结利润而错失行情延续，而后高价追回；Q（问题）——如何准确识别趋势尾声的信号并大规模做空？A（答案）——通过关联市场（黑麦）的背离发现危险信号，大胆在市场关键点下方建立1500万蒲式耳空头头寸，最终在恐慌性暴跌中净赚超300万美元。 01</p>
+</div>
+
+</div>
+
+<!-- Overview (SCQA) -->
+<div class="overview-question">如何通过耐心等待关键点、关联市场交叉验证和大规模趋势操作，在一次行情中获取超过300万美元的利润？</div>
+  <div class="overview-answer">
+    本章是利弗莫尔职业生涯中最辉煌的一次战役实录：<strong>S</strong>（情境）——1924年夏小麦市场到达关键点，为期数月的牛市展开；<strong>C</strong>（冲突）——因过早了结利润而错失行情延续，而后高价追回；<strong>Q</strong>（问题）——如何准确识别趋势尾声的信号并大规模做空？<strong>A</strong>（答案）——通过关联市场（黑麦）的背离发现危险信号，大胆在市场关键点下方建立1500万蒲式耳空头头寸，最终在恐慌性暴跌中净赚超300万美元。
+  </div>
+</div>
+
+<!-- Block 01: 耐心等待关键点 -->
+<div class="card s01">
+  <div class="section-header">
+    <div class="circle-num">01</div>
+    <div class="section-tag">耐心建仓</div>
+    <h3>静候关键点，分批入场</h3>
+  </div>
+  <div class="section-body">
+    <p>在经历了前一章因急躁而错失机会的教训之后，利弗莫尔这次展现出了教科书式的耐心。1924年夏，小麦到达关键点，他<strong>分批两次</strong>入场建仓：</p>
+
+    <div class="flow-row">
+      <div class="flow-step">
+        <span class="flow-step-num">第一笔</span>
+        买入500万蒲式耳
+        <div class="flow-label">小麦触及关键点</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">观察期</span>
+        市场进入牛皮状态
+        <div class="flow-label">从未跌破关键点</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">第二笔</span>
+        再买500万蒲式耳
+        <div class="flow-label">比关键点高1.5美分</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">
+        <span class="flow-step-num">确认信号</span>
+        次日上涨3美分
+        <div class="flow-label">牛市正式启动</div>
+      </div>
+    </div>
+
+    <p>第二笔的执行比第一笔困难得多，这恰恰证明了<strong>市场正在为进入强势状态做好准备</strong>——如果分析正确，这正是市场应有的表现。此后小麦逐步展开了一轮名副其实的牛市行情，持续了好几个月。</p>
+  </div>
+</div>
+
+<!-- Block 02: 过早了结与高价追回 -->
+<div class="card s02">
+  <div class="section-header">
+    <div class="circle-num">02</div>
+    <div class="section-tag">人性弱点</div>
+    <h3>过早了结利润，高价追回</h3>
+  </div>
+  <div class="section-body">
+    <p>当利弗莫尔获得了每蒲式耳<strong>25美分</strong>的利润后，便清仓套现。然而市场在几天之内继续上涨了20多美分。他痛彻反思："<strong>为什么我要害怕失去那些自己从来没有真正拥有过的东西呢？</strong>"</p>
+
+    <div class="data-row">
+      <div class="data-card pink">
+        <div class="data-big">25美分</div>
+        <div class="data-sm">已实现利润<br>每蒲式耳</div>
+        <div class="data-note">急于将账面利润转换为现金</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">+20美分</div>
+        <div class="data-sm">错失利润<br>几天内继续上涨</div>
+        <div class="data-note">"坐在一旁眼睁睁看着"</div>
+      </div>
+      <div class="data-card indigo">
+        <div class="data-big">+25美分</div>
+        <div class="data-sm">追回成本<br>重新入场平均价</div>
+        <div class="data-note">仅投入原来一半头寸</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text"><strong>关键教训：</strong>"我太急于求成，太急于将账面利润转换成真正的现金了，本应更耐心一点，鼓起勇气把头寸持有到底。我知道，一旦时机成熟，当市场最终到达某个关键点后，就会向我发出危险信号，并给我留下充裕的时间。"</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 03: 黑麦背离信号 -->
+<div class="card s03">
+  <div class="section-header">
+    <div class="circle-num">03</div>
+    <div class="section-tag">关联验证</div>
+    <h3>黑麦市场的秘密警告信号</h3>
+  </div>
+  <div class="section-body">
+    <p>在整个大牛市期间，<strong>黑麦始终领先小麦一步</strong>。但当主要运动接近终点时，出现了关键背离：</p>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">✅ 牛市正常时期</div>
+        <p>黑麦永远领先小麦前进<br>黑麦市场虽小，但方向一致<br>总有人在大额买进黑麦<br>以此支撑小麦行情</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">⚠️ 危险背离信号</div>
+        <p>小麦反弹至2.02美元（仅差3⅞美分至前高）<br>黑麦仅反弹至1.70⅛美元（差12⅛美分！）<br>黑麦非但没有领导上涨<br>自己反倒落后了</p>
+      </div>
+    </div>
+
+    <p>利弗莫尔随即进行三次试探性卖出——每次20万蒲式耳黑麦。前两次：跌3美分后反弹；<strong>第三次：跌后不再回升——市场下跌势头已成</strong>。这就是他正在等待的"秘密警告信号"。</p>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">如果某人在小麦市场上持有巨额头寸，却由于种种原因没有保护黑麦市场……那么他同样不会或者不能支撑小麦市场。</div>
+      <div class="quote-author">— 杰西·利弗莫尔</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 04: 大规模做空 -->
+<div class="card s04">
+  <div class="section-header">
+    <div class="circle-num">04</div>
+    <div class="section-tag">执行操作</div>
+    <h3>大规模做空：1500万蒲式耳</h3>
+  </div>
+  <div class="section-body">
+    <p>信号确认后，利弗莫尔毫不犹豫地发动了大规模做空操作。整个战役的节奏紧凑而精准：</p>
+
+    <div class="flow-row">
+      <div class="flow-step">
+        <span class="flow-step-num">第一步</span>
+        卖出500万蒲式耳小麦
+        <div class="flow-label">$2.01→$1.99</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">第二步</span>
+        继续加仓至1500万
+        <div class="flow-label">跌破$2.00关键点</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">第三步</span>
+        3月16日收于$1.64½
+        <div class="flow-label">利物浦低开3美分</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">
+        <span class="flow-step-num">最终</span>
+        次日回升至$1.64
+        <div class="flow-label">净盈利超300万$</div>
+      </div>
+    </div>
+
+    <div class="data-row">
+      <div class="data-card red">
+        <div class="data-big">$2.05⅞</div>
+        <div class="data-sm">小麦最高价</div>
+        <div class="data-note">1925年1月28日</div>
+      </div>
+      <div class="data-card pink">
+        <div class="data-big">$1.51</div>
+        <div class="data-sm">当日最低价</div>
+        <div class="data-note">3月17日恐慌低点</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">25万$</div>
+        <div class="data-sm">黑麦测试利润</div>
+        <div class="data-note">纯探测操作</div>
+      </div>
+      <div class="data-card indigo">
+        <div class="data-big">300万+$</div>
+        <div class="data-sm">总净利润</div>
+        <div class="data-note">多空双向完美操作</div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">📉</div>
+      <div class="callout-text"><strong>关键时刻的失误：</strong>3月17日，利弗莫尔在市场开盘前下达了限价指令——以1.61美元买入平仓——这违背了他自己的原则。开盘价格从1.61跌至1.54美元，当日最低1.51美元。他随后追加买入，最终平仓成功。他坦言："你明知故犯，活该落得这样的下场"——即便是大师也会被情绪诱惑战胜理智判断。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 05: 投机者的未来 -->
+<div class="card s05">
+  <div class="section-header">
+    <div class="circle-num">05</div>
+    <div class="section-tag">展望未来</div>
+    <h3>卖空机制的价值与投机者的未来</h3>
+  </div>
+  <div class="section-body">
+    <p>利弗莫尔以这场300万美元的经典战役收官全书核心章节，提出了超越时代的深刻洞见：</p>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">✅ 卖空机制的价值</div>
+        <p>持有卖空头寸的人是<strong>主动买入者</strong><br>一旦发生恐慌可发挥<strong>稳定市场</strong>作用<br>卖空者天然是市场的"减震器"<br>双向操作是成熟市场的标志</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">⚠️ 新时代的约束</div>
+        <p>商品交易管理委员会将个人持仓限制为<strong>200万蒲式耳</strong><br>股票市场卖空规定限制了空头规模<br>"老式投机者的日子一去不返"<br>再无法复制此等规模的战役</p>
+      </div>
+    </div>
+
+    <p>利弗莫尔预言，未来属于那些<strong>聪明、信息灵通、耐心的投机者</strong>。他将这批人称为"<strong>半投资者</strong>"——他们不急于快速集聚巨额利润，而是在关键市场心理时刻入市操作，最终能从每一轮不同规模的市场运动中<strong>获得更高比例的盈利</strong>，比纯粹的投机操作者历来所获都要多得多。</p>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">未来成功的"半投资者"将仅仅在关键的市场心理时刻入市操作，并且最终能够从每一轮不同规模的市场运动中获得更高比例的盈利。</div>
+      <div class="quote-author">— 杰西·利弗莫尔</div>
+    </div>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-icon">🔑</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p><strong>耐心·纪律·关联验证：</strong>第7章完整呈现了利弗莫尔交易哲学的最高实践——从耐心等待关键点进场，到过早了结利润后勇于认错高价追回；从发现关联市场（黑麦）的背离信号，到果断大规模做空小麦；从利用卖空机制获取暴利，到冷静反思人性弱点。这场300万美元的胜利不是运气的产物，而是<strong>"关键点法则 + 关联市场交叉验证 + 耐心持有至信号出现"</strong>这套体系的完美演绎。利弗莫尔告诫后来者：老式投机者的时代已经结束，未来属于那些在关键心理时刻入市操作的"半投资者"。</p>
+
+</div>
+  </div>
+
+
+<!-- Footer -->
+<div class="footer">
+  来源：杰西·利弗莫尔《股票大作手操盘术》第7章「300万美元的盈利」<br>
+  信息图生成日期：2026年6月17日 · 仅供参考学习，不构成投资建议
+
+
+<!-- /container -->
+
+</body>
+</html>
+
+</div>

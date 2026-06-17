@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defending Bilibili — Infographic</title>
+<style>
+@font-face {
+  font-family: 'FZPXYS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: normal; font-style: normal;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZPXYS', 'STSong', 'Songti SC', 'Georgia', serif;
+  color: #1a1a1a;
+  display: flex; justify-content: center;
+  padding: 48px 20px 64px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 780px; width: 100%; }
+
+.header { text-align: center; margin-bottom: 32px; }
+.header h1 { font-size: 36px; font-weight: normal; color: #1a1a1a; letter-spacing: 0.04em; line-height: 1.3; }
+.header .subtitle { font-size: 14px; color: #888; margin-top: 10px; letter-spacing: 0.03em; }
+.divider { width: 60px; height: 3px; margin: 24px auto 28px; border-radius: 2px; background: linear-gradient(90deg, #dc2626, #ea580c); }
+
+.overview {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 22px 28px; margin-bottom: 18px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+  font-size: 14px; color: #555; line-height: 2.0; letter-spacing: 0.02em;
+}
+
+.card {
+  background: #ffffff; border-radius: 14px; margin-bottom: 18px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+  padding: 24px 28px 24px 24px;
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.card-body { flex: 1; min-width: 0; }
+.card-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: bold; flex-shrink: 0; margin-top: 2px;
+}
+.tag {
+  display: inline-block; padding: 3px 12px; border-radius: 20px;
+  font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;
+}
+.card-title { font-size: 18px; font-weight: bold; line-height: 1.5; margin-bottom: 10px; letter-spacing: 0.03em; }
+.card-desc { font-size: 14px; color: #555; line-height: 1.9; letter-spacing: 0.02em; margin-bottom: 16px; }
+
+.card.c01 { border-left: 4px solid #dc2626; }
+.card.c02 { border-left: 4px solid #ea580c; }
+.card.c03 { border-left: 4px solid #ca8a04; }
+.card.c04 { border-left: 4px solid #4f46e5; }
+.card.c05 { border-left: 4px solid #db2777; }
+.card.c06 { border-left: 4px solid #0891b2; }
+
+.c01 .card-num { background: #fef2f2; color: #dc2626; }
+.c01 .tag { background: #fef2f2; color: #dc2626; }
+.c01 .card-title { color: #dc2626; }
+
+.c02 .card-num { background: #fff7ed; color: #ea580c; }
+.c02 .tag { background: #fff7ed; color: #ea580c; }
+.c02 .card-title { color: #ea580c; }
+
+.c03 .card-num { background: #fefce8; color: #ca8a04; }
+.c03 .tag { background: #fefce8; color: #ca8a04; }
+.c03 .card-title { color: #ca8a04; }
+
+.c04 .card-num { background: #eef2ff; color: #4f46e5; }
+.c04 .tag { background: #eef2ff; color: #4f46e5; }
+.c04 .card-title { color: #4f46e5; }
+
+.c05 .card-num { background: #fdf2f8; color: #db2777; }
+.c05 .tag { background: #fdf2f8; color: #db2777; }
+.c05 .card-title { color: #db2777; }
+
+.c06 .card-num { background: #ecfeff; color: #0891b2; }
+.c06 .tag { background: #ecfeff; color: #0891b2; }
+.c06 .card-title { color: #0891b2; }
+
+.flow-row { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: center; }
+.flow-step, .flow-end { padding: 8px 12px; border-radius: 8px; font-size: 13px; text-align: center; line-height: 1.4; min-width: 70px; max-width: 105px; }
+.flow-step { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; }
+.flow-end  { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+.flow-arrow { color: #ea580c; font-size: 16px; flex-shrink: 0; }
+
+.dual-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+.dual-card { flex: 1; min-width: 200px; padding: 14px 16px; border-radius: 10px; font-size: 13px; line-height: 1.7; }
+.dual-card .dual-head { font-size: 15px; font-weight: bold; margin-bottom: 6px; }
+.dual-card .dual-item { margin-bottom: 4px; }
+.good { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.bad  { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+.data-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.data-card { flex: 1; min-width: 120px; text-align: center; padding: 16px 10px; border-radius: 10px; }
+.data-card.red  { background: #fef2f2; border: 1px solid #fecaca; }
+.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.data-card.gold  { background: #fefce8; border: 1px solid #fde68a; }
+.data-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+.data-big { font-size: 28px; font-weight: bold; line-height: 1.2; letter-spacing: 0.02em; }
+.data-big.r { color: #dc2626; }
+.data-big.o { color: #ea580c; }
+.data-big.g { color: #ca8a04; }
+.data-big.i { color: #4f46e5; }
+.data-sm { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+
+.risk-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; }
+.risk-row + .risk-row { border-top: 1px solid #f0ebe0; }
+.risk-label { width: 120px; font-size: 13px; color: #555; flex-shrink: 0; }
+.risk-meter { flex: 1; height: 10px; background: #f0ebe0; border-radius: 5px; overflow: hidden; }
+.risk-fill { height: 100%; border-radius: 5px; }
+.risk-fill.high  { background: linear-gradient(90deg, #dc2626, #ea580c); }
+.risk-fill.mid   { background: linear-gradient(90deg, #ea580c, #f59e0b); }
+.risk-fill.low   { background: linear-gradient(90deg, #f59e0b, #10b981); }
+.risk-val { width: 80px; font-size: 13px; font-weight: bold; flex-shrink: 0; text-align: right; }
+
+.cmp-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+.cmp-card { flex: 1; min-width: 160px; padding: 16px 14px; border-radius: 10px; text-align: center; font-size: 13px; line-height: 1.6; }
+.cmp-card .cmp-icon { font-size: 22px; margin-bottom: 6px; }
+.cmp-card .cmp-name { font-size: 15px; font-weight: bold; margin-bottom: 6px; }
+.cmp-card .cmp-bar { height: 4px; border-radius: 2px; margin: 8px 0; }
+.cmp-card.green  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.cmp-card.green .cmp-bar { background: #10b981; }
+.cmp-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.cmp-card.orange .cmp-bar { background: #ea580c; }
+.cmp-card.blue   { background: #eef2ff; border: 1px solid #c7d2fe; }
+.cmp-card.blue .cmp-bar { background: #4f46e5; }
+.cmp-note { font-size: 12px; color: #888; margin-top: 4px; }
+
+.footer { text-align: center; font-size: 13px; color: #bbb; margin-top: 32px; letter-spacing: 0.03em; }
+.footer span { margin: 0 8px; }
+
+@media (max-width: 600px) {
+  .card { flex-direction: column; gap: 12px; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+  .data-row, .dual-grid, .cmp-grid { flex-direction: column; }
+}
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="保卫B站-info-zh.html">English / 中文</a>
+</div>
+
+
+<div class="header">
+  <h1>Defending Bilibili</h1>
+  <div class="subtitle">LatePost · January 2020 · How an "ordinary" man became the guardian of China's largest anime community</div>
+</div>
+<div class="divider"></div>
+
+<div class="overview">
+  A man who couldn't remember his own home address, blew ¥10M in stock options down to ¥2.4M, and dreamed of working at the same company until retirement. How did this "ordinary person" become the controlling shareholder of China's largest ACG community? <strong>He didn't choose Bilibili — the brutal corporate warfare at 360 and Cheetah Mobile drove him into anime as an escape. Fate pushed the least aggressive man into a job that demands the most restraint of all.</strong> The counterintuitive truth: the best community CEO is rarely the hungriest wolf.
+</div>
+
+<!-- Card 01 -->
+<div class="card c01">
+  <div class="card-num">01</div>
+  <div class="card-body">
+    <div class="tag">The Unambitious</div>
+    <div class="card-title">How does a man who can't find his own house and wasted $1.5M in options end up running a $7B company?</div>
+    <div class="card-desc">Chen Rui grew up comfortably in Chengdu. He turned down Huawei's ¥6,300/month offer for Kingsoft because the company talked about "building national software." He forgot his new home's address. He sold stock and fat-fingered an extra zero. His boss Lei Jun had to email him about matching his socks. Zhang Yiming wanted to build the world's greatest company. Lei Jun wanted to be Steve Jobs. Chen Rui wanted to stay at Kingsoft forever. A VC described him: <strong>"His personality is round, like a ball. No sharp edges. No aggression toward anyone."</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card bad">
+        <div class="dual-head">👤 Chen Rui</div>
+        <div class="dual-item">· Forgot his own home address</div>
+        <div class="dual-item">· Wasted $1.5M in stock options</div>
+        <div class="dual-item">· Dreamed of "working at Kingsoft until retirement"</div>
+        <div class="dual-item">· Stressed → watches anime late at night</div>
+      </div>
+      <div class="dual-card good">
+        <div class="dual-head">🦁 Typical Tech CEO</div>
+        <div class="dual-item">· Day one: wants to change the world</div>
+        <div class="dual-item">· Calculates every equity cent</div>
+        <div class="dual-item">· Dreams of being "king of the world"</div>
+        <div class="dual-item">· Stressed → works harder or hits the gym</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 02 -->
+<div class="card c02">
+  <div class="card-num">02</div>
+  <div class="card-body">
+    <div class="tag">Driven to Refuge</div>
+    <div class="card-title">He didn't choose Bilibili. The war with 360 and Fu Sheng pushed him into anime as a shelter.</div>
+    <div class="card-desc">Chen Rui's four years at Cheetah Mobile were his darkest — 90% of his time was spent fighting 360, not creating value. His only daily escape: watching anime alone after midnight. He discovered Bilibili, became an early user, invested as an angel, and was eventually invited to become chairman. Months before Cheetah Mobile's IPO, he walked away — forfeiting options worth over $15M. <strong>"You can only have one thing in life. And you have to give up before you can receive."</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">Kingsoft<br>vs. 360</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Beike Security<br>Failed Startup</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Cheetah Mobile<br>Forced into War</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Late-Night Anime<br>Discovers Bilibili</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-end">Forfeits $15M<br>Joins Bilibili</div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 03 -->
+<div class="card c03">
+  <div class="card-num">03</div>
+  <div class="card-body">
+    <div class="tag">Counterintuitive Calls</div>
+    <div class="card-title">No growth team. 100-question entrance exam. A permanent ban on pre-roll ads. Every call defied internet orthodoxy.</div>
+    <div class="card-desc">Bilibili went years without a user growth team, yet built the highest membership barrier in Chinese internet: answer 100 questions in 60 minutes, score 60+ to comment. When users panicked over pre-roll ads in 2016, Chen Rui publicly promised: never. <strong>"If Bilibili turned bad, it would break my heart. So I have to suppress my own hunger for growth and speed."</strong> In an industry where growth is god, every major decision was a deliberate reversal.</div>
+    <div class="dual-grid">
+      <div class="dual-card bad">
+        <div class="dual-head">🏭 Standard Internet Playbook</div>
+        <div class="dual-item">· Growth team + paid user acquisition</div>
+        <div class="dual-item">· Lowered registration barriers, fast expansion</div>
+        <div class="dual-item">· Pre-roll ads → standard monetization</div>
+        <div class="dual-item">· Data-driven, KPI-oriented</div>
+      </div>
+      <div class="dual-card good">
+        <div class="dual-head">🎯 The Bilibili Way</div>
+        <div class="dual-item">· Zero growth team, zero paid acquisition</div>
+        <div class="dual-item">· 100-question exam with 60-point cutoff</div>
+        <div class="dual-item">· Public promise: no pre-roll ads, ever</div>
+        <div class="dual-item">· "Only let those with初心 become creators"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 04 -->
+<div class="card c04">
+  <div class="card-num">04</div>
+  <div class="card-body">
+    <div class="tag">The Silent Guardian</div>
+    <div class="card-title">"Users should never be able to meet anywhere" — the counterintuitive design that kept community from collapsing</div>
+    <div class="card-desc">Chen Rui barely speaks in meetings. His most common response: "Got it, I'll think about it." But three design choices define his legacy: ① All social interaction must orbit around creator content — no open forums, no chat squares; ② Hypersensitive bullet-comment moderation, instant bans for fights; ③ Gave creators the power to delete comments against online mobs. Scale up 10x — as long as the content structure holds, the culture holds.</div>
+    <div class="cmp-grid">
+      <div class="cmp-card green">
+        <div class="cmp-icon">🛡️</div>
+        <div class="cmp-name">Bilibili</div>
+        <div class="cmp-bar"></div>
+        <div class="cmp-note">Content-anchored social graph<br>Creator-fan emotional bond<br>All discussion under content</div>
+      </div>
+      <div class="cmp-card orange">
+        <div class="cmp-icon">📣</div>
+        <div class="cmp-name">Weibo</div>
+        <div class="cmp-bar"></div>
+        <div class="cmp-note">"One speaks, ten thousand watch"<br>Media-ized, de-communified<br>Low barrier, scale above all</div>
+      </div>
+      <div class="cmp-card blue">
+        <div class="cmp-icon">❓</div>
+        <div class="cmp-name">Zhihu</div>
+        <div class="cmp-bar"></div>
+        <div class="cmp-note">"One speaks, a hundred watch"<br>High conflict density → trolls<br>Content devolves, community decays</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 05 -->
+<div class="card c05">
+  <div class="card-num">05</div>
+  <div class="card-body">
+    <div class="tag">Forced Acceleration</div>
+    <div class="card-title">The most restrained CEO finally said "grow or die" — because preservation isn't about locking the gates</div>
+    <div class="card-desc">In 2019, Chen Rui finally resolved to push Bilibili into high gear, targeting a $10B valuation within three years. This wasn't ambition — it was cold survival logic. Old users age out. If new users can't enter, the community dies. If traffic plateaus, creators lose motivation → less content → further user loss → death spiral. Douban is the cautionary tale: it preserved books/film/music categories but refused to expand, shrinking into a mere utility. <strong>"If you listen to your oldest users, the community's best state is the moment it was born."</strong></div>
+    <div style="margin-top:8px;">
+      <div class="risk-row">
+        <div class="risk-label">Community Moat</div>
+        <div class="risk-meter"><div class="risk-fill low" style="width:85%"></div></div>
+        <div class="risk-val" style="color:#10b981;">Strong</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Growth Pressure</div>
+        <div class="risk-meter"><div class="risk-fill high" style="width:72%"></div></div>
+        <div class="risk-val" style="color:#dc2626;">Urgent</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Culture Dilution</div>
+        <div class="risk-meter"><div class="risk-fill mid" style="width:55%"></div></div>
+        <div class="risk-val" style="color:#ea580c;">Watch</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">User Retention</div>
+        <div class="risk-meter"><div class="risk-fill low" style="width:90%"></div></div>
+        <div class="risk-val" style="color:#10b981;">Elite</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 06 -->
+<div class="card c06">
+  <div class="card-num">06</div>
+  <div class="card-body">
+    <div class="tag">One-Man Company</div>
+    <div class="card-title">$10B is the survival line, but Bilibili's biggest risk isn't the competition — it's "if Chen Rui falls, the company falls."</div>
+    <div class="card-desc">Bilibili's revenue leans heavily on a single game. Its management layer is immature. Chen Rui, inheriting Lei Jun's obsessive attention to detail, does everything himself — an asset and the ultimate liability. He missed the livestreaming window. In late 2019, he began importing senior executives to break the one-man dependency. When asked if he worries Bilibili will end up like Kingsoft — never peaking but never dying — he said: <strong>"If I can make Bilibili like Kingsoft, I've already succeeded. Thirty years from now, how many of today's companies will still be alive?"</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-head">📈 Near-Term Engines</div>
+        <div class="dual-item">· 128M MAU, +38% YoY growth</div>
+        <div class="dual-item">· Extreme loyalty (60%+ 10-year retention)</div>
+        <div class="dual-item">· Bringing in external executive talent</div>
+        <div class="dual-item">· Expanding content categories</div>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-head">⚠️ Structural Risks</div>
+        <div class="dual-item">· Revenue: single-game dependency</div>
+        <div class="dual-item">· Management not yet mature — one-man show</div>
+        <div class="dual-item">· Missed key waves (livestreaming)</div>
+        <div class="dual-item">· TikTok / Kuaishou / Xigua on three fronts</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Source: LatePost "Profile: Chen Rui, the Ordinary Man Defending Bilibili" <span>·</span> January 2020 <span>·</span> Gao Honghao / Song Wei
+</div>
+
+</div>
+</body>
+</html>

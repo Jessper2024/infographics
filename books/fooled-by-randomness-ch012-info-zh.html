@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>随机漫步的傻瓜 · 第12章</title>
+<style>
+@font-face {
+  font-family: 'FZPingXian';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #1a1a1a;
+  padding: 48px 20px 60px;
+  display: flex; justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+.page { max-width: 880px; width: 100%; }
+
+/* Header */
+.header { text-align: center; margin-bottom: 32px; }
+.header h1 {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 34px; font-weight: normal; color: #1a1a1a;
+  line-height: 1.5; margin-bottom: 6px;
+}
+.header .sub {
+  font-size: 14px; color: #888; margin-bottom: 16px;
+}
+.divider {
+  width: 60px; height: 3px; border-radius: 2px;
+  background: #ea580c; margin: 0 auto 28px;
+}
+
+/* Overview */
+.overview {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  font-size: 15px; color: #444; line-height: 2.0;
+}
+
+/* Section card */
+.section {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 18px; padding: 28px 32px;
+  position: relative; overflow: hidden;
+}
+.section::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: #ea580c; border-radius: 0;
+}
+.sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.sec-head .num-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fff7ed; color: #ea580c;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: bold; flex-shrink: 0;
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+}
+.sec-head .tag {
+  display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 20px;
+  background: #fff7ed; color: #ea580c; font-weight: bold; letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.sec-head .sec-title {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 19px; font-weight: bold; color: #ea580c; line-height: 1.5;
+}
+.sec-body { font-size: 14px; color: #555; line-height: 1.95; }
+
+/* Quote */
+.quote {
+  background: #fff7ed; border-left: 4px solid #ea580c;
+  border-radius: 0 12px 12px 0; padding: 16px 20px;
+  margin-top: 14px; font-size: 14px; color: #9a3412;
+  line-height: 1.9; font-style: italic;
+}
+.quote-author {
+  margin-top: 8px; font-size: 12px; color: #c2410c; font-style: normal;
+}
+
+/* SCQA flow */
+.scqa-row {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;
+}
+.scqa-item {
+  flex: 1; min-width: 120px; border-radius: 10px;
+  padding: 14px 16px; font-size: 13px; line-height: 1.7;
+  text-align: center;
+}
+.scqa-label {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 16px; font-weight: bold; margin-bottom: 6px;
+}
+.s-badge { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; }
+.c-badge { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; }
+.q-badge { background: #fff7ed; border: 1.5px solid #ea580c; color: #9a3412; }
+.a-badge { background: #fff7ed; border: 1px solid #ea580c; color: #9a3412; }
+
+/* Experiment showcase */
+.exp-showcase {
+  display: flex; align-items: center; gap: 14px; margin-top: 14px;
+  flex-wrap: wrap;
+}
+.exp-box {
+  flex: 1; min-width: 160px; background: #fff7ed;
+  border: 1px solid #fed7aa; border-radius: 12px;
+  padding: 18px 16px; text-align: center; line-height: 1.6;
+}
+.exp-icon { font-size: 32px; margin-bottom: 6px; }
+.exp-title {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 15px; font-weight: bold; color: #9a3412; margin-bottom: 4px;
+}
+.exp-desc { font-size: 13px; color: #92400e; }
+.exp-arrow {
+  font-size: 24px; color: #ea580c; font-weight: bold; flex-shrink: 0;
+}
+
+/* Insight grid */
+.insight-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin-top: 14px;
+}
+.insight-card {
+  border-radius: 12px; padding: 18px; font-size: 13px; line-height: 1.8;
+}
+.insight-card.a {
+  background: #fff7ed; border-left: 3px solid #fed7aa;
+}
+.insight-card.b {
+  background: #fff7ed; border-left: 3px solid #fed7aa;
+}
+.insight-card .insight-num {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 20px; font-weight: bold; color: #ea580c; margin-bottom: 4px;
+}
+.insight-card .insight-title {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 14px; font-weight: bold; color: #9a3412; margin-bottom: 6px;
+}
+
+/* Dual cards */
+.dual-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin-top: 14px;
+}
+.dual-card {
+  border-radius: 12px; padding: 18px; font-size: 13px; line-height: 1.8;
+}
+.dual-card.dark {
+  background: #fff7ed; border-left: 3px solid #fed7aa;
+}
+.dual-card.light {
+  background: #fff7ed; border-left: 3px solid #fed7aa;
+}
+.dual-card .dual-label {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 14px; font-weight: bold; color: #9a3412; margin-bottom: 6px;
+}
+.dual-card .dual-sub {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 13px; font-weight: bold; color: #ea580c; margin-bottom: 6px;
+}
+
+/* Data row */
+.data-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  margin-top: 14px;
+}
+.data-card {
+  border-radius: 12px; padding: 18px 14px; text-align: center;
+  background: #fff7ed; border: 1px solid #fed7aa;
+}
+.data-big {
+  font-size: 26px; font-weight: bold; margin-bottom: 4px; color: #ea580c;
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+}
+.data-sm { font-size: 12px; color: #92400e; line-height: 1.5; }
+
+/* Solution list */
+.solution-list { margin-top: 12px; }
+.solution-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid #fed7aa;
+}
+.solution-item:last-child { border-bottom: none; }
+.solution-icon {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #fff7ed; border: 2px solid #fed7aa;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #ea580c; flex-shrink: 0;
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+}
+.solution-text { font-size: 14px; color: #555; line-height: 1.7; }
+.solution-text strong { color: #9a3412; }
+
+/* Key takeaway banner */
+.takeaway {
+  background: #fff7ed; border: 1px solid #fed7aa;
+  border-radius: 12px; padding: 20px 24px; margin-top: 16px;
+  font-size: 14px; color: #9a3412; line-height: 1.9;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 32px;
+  font-size: 13px; color: #bbb;
+}
+.footer span { color: #ea580c; }
+
+.lang-switch {
+  text-align: right; margin-bottom: 16px;
+}
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none;
+  background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+@media (max-width: 600px) {
+  .insight-grid, .dual-grid, .data-row { grid-template-columns: 1fr; }
+  .scqa-row { flex-direction: column; }
+  .exp-showcase { flex-direction: column; }
+  .exp-arrow { transform: rotate(90deg); }
+}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" href="fooled-by-randomness-ch012-info-en.html">EN</a>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>随机漫步的傻瓜 · 第12章</h1>
+  <div class="sub">赌徒的迷信和笼中的鸽子</div>
+  <div class="divider"></div>
+<div class="chapter-overview">
+  <p>SCQA 核心框架：金融市场充满随机噪声，理性的交易员每天都在噪声中寻找信号。 但斯金纳 1948 年的鸽子实验揭示了一个残酷事实——当喂食完全随机时，鸽子也会发展出复杂的迷信仪式。 核心问题：受过高等教育的专业人士，面对随机性时，真的比笼中鸽子更理性吗？ 答案是不——理性认知不等于行为改变。接受我们只是动物，用实用技巧代替道德说教，才是务实的解法。</p>
+</div>
+
+</div>
+
+<!-- Overview: SCQA -->
+<!-- Section 01: Pigeon Experiment -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">01</div>
+    <div>
+      <span class="tag">经典实验</span>
+      <div class="sec-title">斯金纳的鸽子：随机喂养催生迷信仪式</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      1948 年，哈佛大学心理学家 B.F. 斯金纳设计了一个实验。他将非常饥饿的鸽子放进笼中，
+      笼子配有自动喂食装置——<strong>以完全随机的方式投送食物</strong>，与鸽子的任何行为毫无关联。
+    </p>
+    <div class="exp-showcase">
+      <div class="exp-box">
+        <div class="exp-icon">🐦</div>
+        <div class="exp-title">输入</div>
+        <div class="exp-desc">随机投食<br>无规律可循</div>
+      </div>
+      <div class="exp-arrow">→</div>
+      <div class="exp-box">
+        <div class="exp-icon">🔄</div>
+        <div class="exp-title">鸽子反应</div>
+        <div class="exp-desc">发展出复杂仪式<br>有规律地摇头<br>逆时针方向转头</div>
+      </div>
+      <div class="exp-arrow">→</div>
+      <div class="exp-box">
+        <div class="exp-icon">💡</div>
+        <div class="exp-title">结论</div>
+        <div class="exp-desc">每只鸽子都发展出<br>与喂食"联结"的<br>特定迷信行为</div>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:16px;">
+      「鸽子根据内在根深蒂固的统计机制，发展出极其复杂、有如祈雨舞般的行为。」
+      <div class="quote-author">—— 斯金纳实验观察</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 02: Personal Discovery -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">02</div>
+    <div>
+      <span class="tag">自我观察</span>
+      <div class="sec-title">交易员的觉醒：我也是一只迷信的鸽子</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      作者 25 岁时在纽约做衍生品交易员。某天因出租车司机听不懂英语、多走了一个街区，
+      从五十二街入口进公司——那一天汇率剧烈波动，<strong>他的投资组合赚了很多钱</strong>。
+    </p>
+    <div class="dual-grid">
+      <div class="dual-card dark">
+        <div class="dual-label">🚕 出租车入口迷信</div>
+        <div class="dual-sub">行为</div>
+        <p>第二天刻意让司机开到同一个地点下车的入口，还发现自己打了前一天那条沾咖啡渍的领带</p>
+      </div>
+      <div class="dual-card light">
+        <div class="dual-label">👓 眼镜迷信</div>
+        <div class="dual-sub">行为</div>
+        <p>戴起眼镜后收入增加——尽管只有晚上开车才需要，却一直戴着，内心深处相信眼镜与绩效有关联</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:14px;">
+      「我为自己的行为举止像个骗子、犹如扮演别人角色的演员而忐忑不安。一方面，我的谈吐像具有明确科学标准的概率论者；另一方面，我和蓝领场内交易员没有两样，依然抱持盲目的迷信。」
+      <div class="quote-author">—— 作者的自我反思</div>
+    </div>
+    <p style="margin-top:10px;font-size:13px;color:#999;">
+      更令人忧虑的是：迷信已从日常生活中的「文化礼仪」悄悄潜入专业生活。
+      智力与日俱增，随机现象源源不绝——迷信反而越来越深。
+    </p>
+  </div>
+</div>
+
+<!-- Section 03: The Mechanism -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">03</div>
+    <div>
+      <span class="tag">心理机制</span>
+      <div class="sec-title">因果幻觉：我们的大脑天生就会自欺欺人</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      观察 A 和 B 两件事时，人类很难不假设「A 导致 B、B 导致 A，或者两者互相影响」。
+      <strong>这不是后天文化，而是生物本能</strong>——我们还在使用「旧头脑的残存部分」处理随机事件。
+    </p>
+    <div class="insight-grid">
+      <div class="insight-card a">
+        <div class="insight-num">🧬</div>
+        <div class="insight-title">生物本能，非文化习得</div>
+        迷信根植于生物构造。过去数千年来，我们体内的某种东西并没有发展得很适当。
+      </div>
+      <div class="insight-card b">
+        <div class="insight-num">🕊️</div>
+        <div class="insight-title">鸽子与我们并无二致</div>
+        斯金纳实验证明，低等生命同样会在随机事件中建立因果关联。人并不比鸽子更高明。
+      </div>
+      <div class="insight-card a">
+        <div class="insight-num">📊</div>
+        <div class="insight-title">天生的统计直觉也会骗人</div>
+        「天生的统计本能，并没有因为我在假说检验上的专长而有所抑制。」样本太小导致的错觉。
+      </div>
+      <div class="insight-card b">
+        <div class="insight-num">🏛️</div>
+        <div class="insight-title">皮浪的洞见</div>
+        希腊哲学家皮浪主张过平静生活，却在被牛追时失去冷静。他说：人有时很难完全抛弃本性。
+      </div>
+    </div>
+    <div class="takeaway">
+      <strong>核心真相：</strong>我们生来不会把不同的事情独立开来看待。
+      无知的人和聪明人的区别，仅在于聪明人更懂得如何行动——但在因果幻觉面前，人人平等。
+    </div>
+  </div>
+</div>
+
+<!-- Section 04: Knowledge-Behavior Gap -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">04</div>
+    <div>
+      <span class="tag">核心悖论</span>
+      <div class="sec-title">知与行的分裂：懂概率不等于做得到</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      理性计算出的概率结果，并没有深入影响作者的实际行为。正如第十一章的医生——明知道患病概率只有 2%，
+      却不知不觉以 95% 罹患率的心态对待病患。<strong>大脑和本能并没有协调运作。</strong>
+    </p>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">2%</div>
+        <div class="data-sm">理性认知<br>策略确实能获利的概率</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">95%</div>
+        <div class="data-sm">实际心态<br>不知不觉以高概率对待</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🎲</div>
+        <div class="data-sm">噪声驱动<br>即使是噪声产生的利润<br>也会令人雀跃不已</div>
+      </div>
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card dark">
+        <div class="dual-label">🧠 大脑（理性）</div>
+        <p>知道噪声和信号不同<br>应该忽视噪声、正视信号<br>用最基本的方法计算预期噪声与信号成分</p>
+      </div>
+      <div class="dual-card light">
+        <div class="dual-label">💓 本能（情绪）</div>
+        <p>噪声结果也会雀跃<br>无统计显著性的结果会沮丧<br>大多数精力和能量源于情绪</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:14px;">
+      「即使只是噪声产生的结果，也会令我雀跃不已，但如果结果不具任何统计显著性，则会令我沮丧万分。我就是忍不住会有那样的反应。」
+      <div class="quote-author">—— 概率论者的诚实自白</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 05: Practical Solutions -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">05</div>
+    <div>
+      <span class="tag">务实的解法</span>
+      <div class="sec-title">接受人性：不要讲大道理，用技巧改变行为</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      解决方法不是靠驾驭心灵，也不是听人说教。<strong>我们必须先接受自己只是动物的事实，
+      需要靠低等形式的窍门来帮助我们，而不是讲大道理。</strong>
+    </p>
+    <div class="solution-list">
+      <div class="solution-item">
+        <div class="solution-icon">❶</div>
+        <div class="solution-text">
+          <strong>物理隔离：</strong>不让自己接触绩效报告，除非绩效到达预定门槛。
+          就像想吃巧克力时——绝不在交易台下摆巧克力。
+        </div>
+      </div>
+      <div class="solution-item">
+        <div class="solution-icon">❷</div>
+        <div class="solution-text">
+          <strong>接受情绪：</strong>忍不住有情绪反应是正常的。大多数精力和能量源于情绪，
+          关键是避免情绪驱动不理性的决策，而非压抑情绪本身。
+        </div>
+      </div>
+      <div class="solution-item">
+        <div class="solution-icon">❸</div>
+        <div class="solution-text">
+          <strong>窍门优于说教：</strong>大部分人都知道言谈举止应该如何，问题出在「没有起而行」。
+          需要的是低等形式的行为窍门，而不是搬出老掉牙的大道理。
+        </div>
+      </div>
+      <div class="solution-item">
+        <div class="solution-icon">❹</div>
+        <div class="solution-text">
+          <strong>警示参照：</strong>吸烟者知道每三人中有一人罹患肺癌，但癌症中心的护士仍在门外抽烟。
+          认知风险与实际行为之间的鸿沟，远比我们想象的更大。
+        </div>
+      </div>
+    </div>
+    <div class="takeaway">
+      <strong>本章终极启示：</strong>理性认知 ≠ 行为改变。我们并不比笼中鸽子更聪明。
+      承认自己只是动物，用物理隔离、行为窍门来绕过本能的陷阱——这才是概率论者真正该做的事。
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：纳西姆·塔勒布《随机漫步的傻瓜》第12章 · <span>赌徒的迷信和笼中的鸽子</span>
+</div>
+
+</div>
+</body>
+</html>

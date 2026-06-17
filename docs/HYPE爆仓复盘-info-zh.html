@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYPE爆仓复盘 · 1000U的教训</title>
+<style>
+@font-face {
+  font-family: 'FZPingXian';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZPingXian', 'PingFang SC', 'Hiragino Sans GB', serif;
+  color: #1a1a1a;
+  padding: 48px 20px 60px;
+  display: flex; justify-content: center;
+}
+.page {
+  max-width: 780px; width: 100%;
+}
+/* ---- Header ---- */
+.header { text-align: center; margin-bottom: 32px; }
+.header h1 {
+  font-size: 36px; font-weight: normal; color: #1a1a1a;
+  line-height: 1.4; margin-bottom: 8px;
+}
+.header .sub {
+  font-size: 14px; color: #888; margin-bottom: 16px;
+}
+.divider {
+  width: 60px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, #dc2626, #ea580c);
+  margin: 0 auto 28px;
+}
+/* ---- Overview card ---- */
+.overview {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 22px 28px; margin-bottom: 20px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+  font-size: 14px; color: #555; line-height: 2.0;
+}
+/* ---- Section cards ---- */
+.section {
+  background: #ffffff; border-radius: 14px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+  margin-bottom: 18px; padding: 24px 28px;
+  position: relative; overflow: hidden;
+}
+.section::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+.s1::before { background: #dc2626; }
+.s2::before { background: #ea580c; }
+.s3::before { background: #ca8a04; }
+.s4::before { background: #4f46e5; }
+.s5::before { background: #db2777; }
+.sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.num-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: bold; flex-shrink: 0;
+}
+.c1 .num-circle { background: #fef2f2; color: #dc2626; }
+.c2 .num-circle { background: #fff7ed; color: #ea580c; }
+.c3 .num-circle { background: #fefce8; color: #ca8a04; }
+.c4 .num-circle { background: #eef2ff; color: #4f46e5; }
+.c5 .num-circle { background: #fdf2f8; color: #db2777; }
+.tag {
+  font-size: 11px; padding: 3px 10px; border-radius: 20px;
+  font-weight: bold; letter-spacing: 0.5px;
+}
+.c1 .tag { background: #fef2f2; color: #dc2626; }
+.c2 .tag { background: #fff7ed; color: #ea580c; }
+.c3 .tag { background: #fefce8; color: #ca8a04; }
+.c4 .tag { background: #eef2ff; color: #4f46e5; }
+.c5 .tag { background: #fdf2f8; color: #db2777; }
+.sec-title {
+  font-size: 18px; font-weight: bold; line-height: 1.5;
+}
+.c1 .sec-title { color: #dc2626; }
+.c2 .sec-title { color: #ea580c; }
+.c3 .sec-title { color: #ca8a04; }
+.c4 .sec-title { color: #4f46e5; }
+.c5 .sec-title { color: #db2777; }
+.sec-body { font-size: 14px; color: #555; line-height: 1.9; }
+
+/* ---- Flow chart (5-step) ---- */
+.flow-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 14px; flex-wrap: wrap;
+}
+.flow-step {
+  background: #fff7ed; border: 1px solid #fed7aa;
+  border-radius: 10px; padding: 10px 14px;
+  font-size: 13px; color: #9a3412; text-align: center;
+  flex: 1; min-width: 80px; line-height: 1.6;
+}
+.flow-arrow { color: #ea580c; font-size: 18px; font-weight: bold; flex-shrink: 0; }
+.flow-step.end {
+  background: #fef2f2; border-color: #fecaca; color: #991b1b;
+}
+
+/* ---- Dual comparison ---- */
+.dual-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin-top: 14px;
+}
+.dual-card {
+  border-radius: 12px; padding: 16px; font-size: 13px; line-height: 1.8;
+}
+.dual-card.bad {
+  background: #fef2f2; border-left: 3px solid #fecaca;
+}
+.dual-card.good {
+  background: #f0fdf4; border-left: 3px solid #bbf7d0;
+}
+.dual-label {
+  font-weight: bold; font-size: 14px; margin-bottom: 8px;
+}
+.bad .dual-label { color: #dc2626; }
+.good .dual-label { color: #166534; }
+
+/* ---- Risk meter ---- */
+.risk-row {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 10px;
+}
+.risk-label {
+  font-size: 13px; color: #92400e; min-width: 90px; font-weight: bold;
+}
+.risk-meter {
+  flex: 1; height: 10px; background: #fefce8;
+  border-radius: 5px; overflow: hidden;
+}
+.risk-fill {
+  height: 100%; border-radius: 5px; background: linear-gradient(90deg, #fbbf24, #dc2626);
+}
+.risk-val {
+  font-size: 13px; color: #92400e; min-width: 70px; text-align: right;
+}
+
+/* ---- Data cards row ---- */
+.data-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  margin-top: 14px;
+}
+.data-card {
+  border-radius: 12px; padding: 18px 14px; text-align: center;
+}
+.data-card.red { background: #fef2f2; }
+.data-card.blue { background: #eef2ff; }
+.data-card.amber { background: #fffbeb; }
+.data-big {
+  font-size: 28px; font-weight: bold; margin-bottom: 4px;
+}
+.data-big.r { color: #dc2626; }
+.data-big.b { color: #4f46e5; }
+.data-big.a { color: #b45309; }
+.data-sm { font-size: 12px; color: #888; line-height: 1.5; }
+
+/* ---- Quote ---- */
+.quote {
+  background: #fef2f2; border-left: 4px solid #dc2626;
+  border-radius: 0 12px 12px 0; padding: 16px 20px;
+  margin-top: 14px; font-size: 14px; color: #991b1b;
+  line-height: 1.9; font-style: italic;
+}
+.quote-author { margin-top: 8px; font-size: 12px; color: #b91c1c; font-style: normal; }
+
+/* ---- Rule list ---- */
+.rule-list { margin-top: 12px; }
+.rule-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid #fce7f3;
+}
+.rule-item:last-child { border-bottom: none; }
+.rule-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #fdf2f8; display: flex; align-items: center;
+  justify-content: center; font-size: 14px; flex-shrink: 0;
+}
+.rule-text { font-size: 14px; color: #555; line-height: 1.7; }
+.rule-text strong { color: #be185d; }
+
+/* ---- Footer ---- */
+.footer {
+  text-align: center; margin-top: 32px;
+  font-size: 13px; color: #bbb;
+}
+.footer span { color: #dc2626; }
+
+@media (max-width: 600px) {
+  .dual-grid, .data-row { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- Header -->
+<div class="header">
+  <h1>千里砍柴一日烧</h1>
+  <div class="sub">HYPE 做空爆仓 1000U 复盘 · 2026年6月16日</div>
+  <div class="divider"></div>
+</div>
+
+<!-- Overview -->
+<div class="overview">
+  <strong>一句话结论：</strong>本次爆仓不是在错误的时间、错误的方向、错误的仓位管理、错误的心理应对——四者叠加。<br>
+  单独任何一个不至于致命，但四者同时发生 = 千里砍柴一日烧。下次只需改变任一维度，结果截然不同。
+</div>
+
+<!-- Block 01: Macro -->
+<div class="section s1 c1">
+  <div class="sec-head">
+    <div class="num-circle">01</div>
+    <div>
+      <span class="tag">外部环境</span>
+      <div class="sec-title">宏观风暴：美伊和解引爆市场</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>美伊签署停火备忘录，霍尔木兹海峡重新开放。地缘风险悬崖式下跌，全球风险资产集体暴涨。</p>
+    <div class="flow-row">
+      <div class="flow-step">🕊️ 地缘和解</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📈 风险情绪改善</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">💰 风险资产暴涨</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">💥 加密主爆空头</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">❌ 逆势做空被爆</div>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#999;">
+      BTC 突破 $67K · ETH 涨逾 10% · HYPE $60.2 → $72.14（+20%）· 全市场爆仓 $1157万，主爆空头
+    </p>
+    <p style="margin-top:6px;font-size:13px;color:#b91c1c;">
+      ⚠️ 关键失误：开单前已看到停火消息，但不了解「地缘和解→风险资产暴涨」的传导链
+    </p>
+  </div>
+</div>
+
+<!-- Block 02: Five Fatal Mistakes -->
+<div class="section s2 c2">
+  <div class="sec-head">
+    <div class="num-circle">02</div>
+    <div>
+      <span class="tag">行为错误</span>
+      <div class="sec-title">五大致命错误</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <div class="dual-grid">
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 浮亏加仓</div>
+        亏损时在新高点连续加仓做空，不断放大风险敞口
+      </div>
+      <div class="dual-card good">
+        <div class="dual-label">✅ 浮亏不加仓</div>
+        止损出局或维持不动，绝不追加赌注
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 不开止损</div>
+        完全依赖主观判断，没有硬止损保护本金
+      </div>
+      <div class="dual-card good">
+        <div class="dual-label">✅ 硬止损前置</div>
+        入场即设止损，先保本再谈盈利
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 方向混乱</div>
+        同一时段既多又空，想吃双向震荡，两边都亏
+      </div>
+      <div class="dual-card good">
+        <div class="dual-label">✅ 方向唯一</div>
+        要么赚做多的钱，要么赚做空的钱，不同时押注
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 仓位失控</div>
+        逐仓拉满，风险敞口最大化
+      </div>
+      <div class="dual-card good">
+        <div class="dual-label">✅ 仓位管理</div>
+        单笔风险不超过本金 1-2%
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 止盈纪律崩溃</div>
+        不断上移止盈点，最终盈变亏、亏变爆
+      </div>
+      <div class="dual-card good">
+        <div class="dual-label">✅ 分批止盈</div>
+        到达预定点位分批执行，不受贪婪驱动
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 03: Psychology -->
+<div class="section s3 c3">
+  <div class="sec-head">
+    <div class="num-circle">03</div>
+    <div>
+      <span class="tag">心理根因</span>
+      <div class="sec-title">心理崩塌的四步下坠</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <div class="risk-row">
+      <div class="risk-label">损失厌恶</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:40%"></div></div>
+      <div class="risk-val">不愿认亏</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">侥幸心理</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:60%"></div></div>
+      <div class="risk-val">以前扛回来过</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">心理磨损</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:82%"></div></div>
+      <div class="risk-val">反复震荡消磨</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">解脱感</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+      <div class="risk-val">爆了反而踏实</div>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:#999;">
+      最致命的不是亏钱，而是「明知要止损却按不下去」。赚900U和亏900U之间差了1800U（≈12600元），够生活很久——这种对比让痛苦成倍放大。
+    </p>
+  </div>
+</div>
+
+<!-- Block 04: Real-time state -->
+<div class="section s4 c4">
+  <div class="sec-head">
+    <div class="num-circle">04</div>
+    <div>
+      <span class="tag">抗单实录</span>
+      <div class="sec-title">强平边缘的48小时</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <div class="data-row">
+      <div class="data-card red">
+        <div class="data-big r">1000U</div>
+        <div class="data-sm">初始本金<br>≈ 6700元</div>
+      </div>
+      <div class="data-card amber">
+        <div class="data-big a">83%</div>
+        <div class="data-sm">亏损率<br>强平前一刻</div>
+      </div>
+      <div class="data-card blue">
+        <div class="data-big b">0.3U</div>
+        <div class="data-sm">距强平价<br>仅差 0.4%</div>
+      </div>
+    </div>
+    <div class="quote">
+      「爆仓了反而踏实了，因为它一直在你的点位上磨你的心理状态——这才是抗单最糟糕的地方，不是钱没了，是人先垮了。」
+      <div class="quote-author">—— 关键洞察</div>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#999;">
+      标记价格 71.79 · 强平价格 72.4 · 价格在 71.9–72.1 之间来回磨损。<br>
+      身体极度内耗，靠洗澡换衣服短暂转移注意力，但最终仍回到电脑前盯K线。
+    </p>
+  </div>
+</div>
+
+<!-- Block 05: Four Iron Rules -->
+<div class="section s5 c5">
+  <div class="sec-head">
+    <div class="num-circle">05</div>
+    <div>
+      <span class="tag">改进原则</span>
+      <div class="sec-title">四条铁律：以后不改不行</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <div class="rule-list">
+      <div class="rule-item">
+        <div class="rule-icon">❶</div>
+        <div class="rule-text">
+          <strong>方向唯一原则</strong><br>
+          同一时段只做一个方向。如需切换，必须经过慎重复盘。
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">❷</div>
+        <div class="rule-text">
+          <strong>四价体系执行</strong><br>
+          入场价 → 止损价 → 保本价 → 止盈价，缺一不可。先保本再谈盈利。
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">❸</div>
+        <div class="rule-text">
+          <strong>分批止盈纪律</strong><br>
+          到达预定点位分批执行，绝不允许不断上调止盈目标。
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">❹</div>
+        <div class="rule-text">
+          <strong>浮亏禁止加仓</strong><br>
+          浮亏只有两种处理：止损出局，或维持不动。永不追加赌注。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：jessper 交易复盘（Notion 导出）· 2026.06.16 · <span>1000U 买来的教训</span>
+</div>
+
+</div>
+</body>
+</html>

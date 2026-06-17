@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 13 "Probability and Skepticism"</title>
+<style>
+@font-face {
+  font-family: 'FZPingXian';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #1a1a1a;
+  padding: 48px 20px 60px;
+  display: flex; justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+.page { max-width: 880px; width: 100%; }
+
+/* Header */
+.header { text-align: center; margin-bottom: 32px; }
+.header h1 {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 34px; font-weight: normal; color: #1a1a1a;
+  line-height: 1.5; margin-bottom: 6px;
+}
+.header .sub {
+  font-size: 14px; color: #888; margin-bottom: 16px;
+}
+.divider {
+  width: 60px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, #ca8a04, #eab308);
+  margin: 0 auto 28px;
+}
+
+/* Overview */
+.overview {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  font-size: 15px; color: #444; line-height: 2.0;
+  position: relative; overflow: hidden;
+}
+.overview::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: #ca8a04; border-radius: 0;
+}
+.overview .ov-head {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+}
+.overview .ov-circle {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #fefce8; color: #ca8a04;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: bold; flex-shrink: 0;
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+}
+.overview .ov-title {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 18px; font-weight: bold; color: #ca8a04;
+}
+
+/* Section card */
+.section {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 18px; padding: 28px 32px;
+  position: relative; overflow: hidden;
+}
+.section::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: #ca8a04; border-radius: 0;
+}
+.sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.sec-head .num-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fefce8; color: #ca8a04;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: bold; flex-shrink: 0;
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+}
+.sec-head .tag {
+  display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 20px;
+  background: #fefce8; color: #ca8a04; font-weight: bold; letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.sec-head .sec-title {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 19px; font-weight: bold; color: #ca8a04; line-height: 1.5;
+}
+.sec-body { font-size: 14px; color: #555; line-height: 1.95; }
+
+/* Quote */
+.quote {
+  background: #fefce8; border-left: 4px solid #ca8a04;
+  border-radius: 0 12px 12px 0; padding: 16px 20px;
+  margin-top: 14px; font-size: 14px; color: #92400e;
+  line-height: 1.9; font-style: italic;
+}
+.quote-author {
+  margin-top: 8px; font-size: 12px; color: #a16207; font-style: normal;
+}
+
+/* Dual comparison */
+.dual-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin-top: 14px;
+}
+.dual-card {
+  border-radius: 12px; padding: 18px; font-size: 13px; line-height: 1.8;
+}
+.dual-card.a {
+  background: #fefce8; border-left: 3px solid #fde68a;
+}
+.dual-card.b {
+  background: #fefce8; border-left: 3px solid #fde68a;
+}
+.dual-card .dual-label {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 14px; font-weight: bold; color: #92400e; margin-bottom: 6px;
+}
+.dual-card .dual-sub {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 13px; font-weight: bold; color: #ca8a04; margin-bottom: 6px;
+}
+
+/* Flow process */
+.flow-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 14px; flex-wrap: wrap;
+}
+.flow-step {
+  background: #fefce8; border: 1px solid #fde68a;
+  border-radius: 10px; padding: 14px 16px;
+  font-size: 13px; color: #92400e; text-align: center;
+  flex: 1; min-width: 100px; line-height: 1.6;
+}
+.flow-arrow { color: #ca8a04; font-size: 20px; font-weight: bold; flex-shrink: 0; }
+
+/* Test decision */
+.test-visual {
+  background: #fefce8; border: 1px solid #fde68a;
+  border-radius: 12px; padding: 22px 24px; margin-top: 14px;
+}
+.test-q {
+  font-size: 15px; font-weight: bold; color: #92400e;
+  margin-bottom: 16px; text-align: center;
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+}
+.test-branches {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.test-branch {
+  border-radius: 10px; padding: 14px 16px; text-align: center;
+  font-size: 13px; line-height: 1.7;
+}
+.test-branch.yes {
+  background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534;
+}
+.test-branch.no {
+  background: #fefce8; border: 1px solid #fde68a; color: #92400e;
+}
+.test-branch .branch-icon {
+  font-size: 22px; margin-bottom: 4px;
+}
+.test-branch .branch-label {
+  font-weight: bold; font-size: 14px; margin-bottom: 4px;
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+}
+
+/* Insight / Contrast cards */
+.contrast-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin-top: 14px;
+}
+.contrast-card {
+  border-radius: 12px; padding: 18px; font-size: 13px; line-height: 1.8;
+}
+.contrast-card.neg {
+  background: #fefce8; border-left: 3px solid #eab308;
+}
+.contrast-card.pos {
+  background: #fefce8; border-left: 3px solid #ca8a04;
+}
+.contrast-card .ct-icon {
+  font-size: 26px; margin-bottom: 4px;
+}
+.contrast-card .ct-label {
+  font-family: 'FZPingXian', 'PingFang SC', 'STSong', Georgia, serif;
+  font-size: 14px; font-weight: bold; color: #92400e; margin-bottom: 6px;
+}
+
+/* Takeaway */
+.takeaway {
+  background: #fefce8; border: 1px solid #fde68a;
+  border-radius: 12px; padding: 20px 24px; margin-top: 16px;
+  font-size: 14px; color: #92400e; line-height: 1.9;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 32px;
+  font-size: 13px; color: #bbb;
+}
+.footer span { color: #ca8a04; }
+
+.lang-switch {
+  text-align: right; margin-bottom: 16px;
+}
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none;
+  background: #fefce8; color: #ca8a04; border: 1px solid #fde68a;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+@media (max-width: 600px) {
+  .dual-grid, .contrast-grid, .test-branches { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+</head>
+<body>
+<div class="page">
+
+<div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" href="fooled-by-randomness-ch013-info-zh.html">中文</a>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>Fooled by Randomness · Chapter 13 "Probability and Skepticism"</h1>
+  <div class="sub">Nothing is certain — only conclusions of varying degrees of probability</div>
+  <div class="divider"></div>
+</div>
+
+<!-- Overview: SCQA -->
+<div class="overview">
+  <div class="ov-head">
+    <div class="ov-circle">13</div>
+    <div class="ov-title">Probability Is a Measure of Belief, Not a Computation</div>
+  </div>
+  <p>
+    <strong>Situation:</strong> Probability found a home in the mathematics of gambling, but its roots lie much deeper — it began as a <strong>subjective measure of belief</strong> in the hands of ancient Greek rhetoricians.<br>
+    <strong>Complication:</strong> Modern financial academia attempts to "scientifically" measure market risk — forgetting that nature's game has no written rules.<br>
+    <strong>Question:</strong> Do we have the courage to embrace skepticism — to admit uncertainty, and overturn our most firmly held opinions at a moment's notice?<br>
+    <strong>Answer:</strong> Scientists are more dangerous than science. True rationality lies not in precise calculation, but in <strong>refusing to defend your past self</strong>.
+  </p>
+</div>
+
+<!-- Section 01: Carneades -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">01</div>
+    <div>
+      <span class="tag">Classical Skepticism</span>
+      <div class="sec-title">Carneades in Rome: Two Truths, One Location</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      In 155 BC, the Greek skeptic Carneades arrived in Rome and delivered a dialectical performance at the Senate that would echo through two millennia.
+      <strong>In the same place, over two days, he persuaded the same audience of two completely opposite arguments.</strong>
+    </p>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-label">🏛️ Day 1 · Justice Supreme</div>
+        <div class="dual-sub">Justice is the highest motive</div>
+        <p>With flawless logic and compelling rhetoric, he argued that exercising justice stands at the apex of human motivation. The Roman audience was deeply moved.</p>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-label">🔄 Day 2 · Everything Overturned</div>
+        <div class="dual-sub">Demolished his own argument with equal force</div>
+        <p>Using equally persuasive reasoning, he argued that justice should rank at the bottom of human motives. No knowledge is absolutely certain.</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:16px;">
+      "Carneades was not only a skeptic but a dialectician — he never clung to the premises behind his reasoning, nor to any conclusions derived from them. He spent his life opposing the dogma of a single truth."
+      <div class="quote-author">— The core tenet of skepticism: nothing is absolutely certain</div>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#999;">
+      The elderly Censor Cato was outraged and persuaded the Senate to expel the three envoys from Rome — he could not tolerate such intellectual "uncertainty."
+      Yet this event profoundly shaped generations of thinkers, cementing the skeptic's most rigorous stance: <strong>we can reach conclusions of varying probability, and use them as guides for action.</strong>
+    </p>
+  </div>
+</div>
+
+<!-- Section 02: Origins of Probability -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">02</div>
+    <div>
+      <span class="tag">Historical Roots</span>
+      <div class="sec-title">The Birth of "the Most Probable": Probability as Argument</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      The earliest known probability thinking emerged in <strong>6th-century BC Sicily</strong>. The rhetorician Corax first introduced the concept of "the most probable" into legal argumentation — when direct evidence is lacking, decide based on the most likely scenario.
+    </p>
+    <div class="flow-row">
+      <div class="flow-step">
+        <strong>Corax</strong><br>
+        Sicily · 6th century BC<br>
+        "The Most Probable"<br>
+        Probability in legal debate
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <strong>Gorgias</strong><br>
+        Corax's disciple<br>
+        Refined the method<br>
+        Brought it to Athens
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <strong>Spread in Athens</strong><br>
+        Widely disseminated<br>
+        Possible events treated as<br>
+        distinct, with distinct probabilities
+      </div>
+    </div>
+    <div class="quote" style="margin-top:16px;">
+      "For instance, land ownership — in the absence of further information or physical evidence — belongs to the person most people know as the owner."
+      <div class="quote-author">— Corax's "most probable" method, an example</div>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#999;">
+      Probability began as a <strong>tool of argument and judgment</strong>, not cold mathematical computation. It is inherently about "what we believe" — perfectly aligned with Taleb's definition in Chapter 3: probability concerns belief in alternative outcomes, causes, or motives, not the calculation of odds.
+    </p>
+  </div>
+</div>
+
+<!-- Section 03: The Right to Contradict -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">03</div>
+    <div>
+      <span class="tag">Intellectual Liberation</span>
+      <div class="sec-title">The Right to Contradict Oneself: Proust vs. Soros</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      In 1968, during the French student uprising, Paris protesters scrawled on walls: <strong>"We demand the right to contradict ourselves!"</strong> — the weight of always having to appear intellectually consistent had become suffocating.
+      Yet our culture treats changing one's mind as a betrayal.
+    </p>
+    <div class="contrast-grid">
+      <div class="contrast-card neg">
+        <div class="ct-icon">📖</div>
+        <div class="ct-label">Proust's Marquis de Norpois</div>
+        <p>A semi-retired diplomat who publicly contradicted himself. Proust pilloried him: "He wasn't lying. He simply forgot." Society framed inconsistency as <strong>shameful</strong>.</p>
+      </div>
+      <div class="contrast-card pos">
+        <div class="ct-icon">🎯</div>
+        <div class="ct-label">George Soros: Flipping in a Snap</div>
+        <p>Bearish and heavily short, then completely reversed within days — not only covering shorts but building a massive long position. Made a fortune, <strong>without embarrassment</strong>. His actions are never shackled by the past.</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:14px;">
+      "One of Soros's strengths is his ability to revise his opinions at considerable speed, without the slightest embarrassment. What sets true speculators like him apart is their lack of path dependence — they are completely unshackled from past actions. Every day is a blank slate."
+      <div class="quote-author">— Taleb on Soros's non-path-dependent trait</div>
+    </div>
+    <p style="margin-top:10px;font-size:13px;color:#999;">
+      The trader Bebic was the same — he might impulsively buy a currency he had strongly predicted would fall just hours earlier, <strong>without feeling the least bit awkward</strong>.
+      What changed his mind? He saw no need to answer that question.
+    </p>
+  </div>
+</div>
+
+<!-- Section 04: Path-Dependent Beliefs -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">04</div>
+    <div>
+      <span class="tag">Behavioral Trap</span>
+      <div class="sec-title">Path-Dependent Beliefs: Would You Keep the Painting?</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      Evolution has wired us to defend ideas into which we've sunk time — we treat them like our own children.
+      But Taleb proposes a <strong>simple test</strong> that exposes this path dependence:
+    </p>
+    <div class="test-visual">
+      <div class="test-q">🖼️ You own a painting bought at $20,000, now worth $40,000.<br>If you didn't own it, would you buy it at the current market price?</div>
+      <div class="test-branches">
+        <div class="test-branch yes">
+          <div class="branch-icon">✅</div>
+          <div class="branch-label">Yes, I Would Buy</div>
+          <p>Non-path-dependent. You decide based on true current value, unshackled by historical cost. Every day is a blank slate.</p>
+        </div>
+        <div class="test-branch no">
+          <div class="branch-icon">⚠️</div>
+          <div class="branch-label">No, I Would Not</div>
+          <p>Path-dependent. If you wouldn't buy at the market price, the price exceeds its true worth — holding it is <strong>emotional investment</strong>. You are clinging to the status quo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:14px;">
+      "Many people cling to their ideas until the grave. When a chain of ideas takes its marching orders from the first one, we call that path-dependent belief."
+      <div class="quote-author">— Rational investors view this as a genetic anomaly, perhaps a rare mutation</div>
+    </div>
+    <p style="margin-top:10px;font-size:13px;color:#999;">
+      Politicians don't switch parties based on new evidence. Academics won't say anything that undermines their past achievements. Party-switchers are branded "turncoats" or "traitors."
+      <strong>Soros-types may be products of a genetic defect — their amygdalae are flawed, yet this makes them rational decision-makers.</strong>
+    </p>
+  </div>
+</div>
+
+<!-- Section 05: Scientists vs Science -->
+<div class="section">
+  <div class="sec-head">
+    <div class="num-circle">05</div>
+    <div>
+      <span class="tag">Sober Reflection</span>
+      <div class="sec-title">Science Is Great, Scientists Are Dangerous: LTCM & the "Measurement" Illusion</div>
+    </div>
+  </div>
+  <div class="sec-body">
+    <p>
+      <strong>Nobel laureates Merton and Scholes</strong> believed they could "scientifically" measure market risk. In 1998, their <strong>Long-Term Capital Management (LTCM)</strong> nearly brought down the global financial system. What did they do after the crisis?
+    </p>
+    <div class="contrast-grid">
+      <div class="contrast-card neg">
+        <div class="ct-icon">💥</div>
+        <div class="ct-label">LTCM's Scientists</div>
+        <p>Denied any misunderstanding of markets. Refused to admit their method was flawed. <strong>Blamed "vultures" in the market</strong> for accelerating their collapse. Defended themselves with all their might instead of learning and profiting from the episode.</p>
+      </div>
+      <div class="contrast-card pos">
+        <div class="ct-icon">🪞</div>
+        <div class="ct-label">The Soros Style</div>
+        <p>Tells anyone patient enough to listen: <strong>"I am fallible."</strong> Learns from mistakes, revises quickly, feels no embarrassment. Every day is a blank slate.</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:14px;">
+      "People often confuse science with scientists. Science is great, but individual scientists are dangerous. They are human and contaminated by human biases, perhaps even more so. Science evolves from funeral to funeral."
+      <div class="quote-author">— Taleb: not through scientists changing their minds, but through old ones exiting and new ones entering</div>
+    </div>
+    <div class="takeaway">
+      <strong>Chapter's Ultimate Insight:</strong> Probability is a measure of belief, not a tool of computation. Embrace skepticism, admit uncertainty,
+      refuse to defend your past self — <strong>those unshackled from path dependence are the ones who survive and profit from randomness.</strong>
+      Science advances not because scientists admit error, but because generations of old guards exit. So too does the market.
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Source: Nassim Nicholas Taleb, <em>Fooled by Randomness</em>, Chapter 13 · <span>Probability and Skepticism</span>
+</div>
+
+</div>
+</body>
+</html>

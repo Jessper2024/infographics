@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QDII Premium — On-Exchange vs OTC</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: '方正屏显雅宋', 'Noto Serif SC', 'Songti SC', serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 900px; width: 100%; }
+
+  h1 {
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1px;
+  }
+  .subtitle { text-align: center; font-size: 14px; color: #888; margin-bottom: 24px; }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  /* Flow diagram (section 02) */
+  .flow-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 14px; text-align: center; min-width: 90px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* 3-column comparison (section 03) */
+  .cmp-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .cmp-card {
+    border-radius: 12px; padding: 16px 14px; text-align: center;
+    border: 1px solid #e8e0d5;
+  }
+  .cmp-card.otc { background: #f0fdf4; border-color: #bbf7d0; }
+  .cmp-card.etf { background: #fff7ed; border-color: #fed7aa; }
+  .cmp-card.lof { background: #eef2ff; border-color: #c7d2fe; }
+  .cmp-icon { font-size: 28px; margin-bottom: 6px; }
+  .cmp-name { font-size: 14px; font-weight: bold; color: #1a1a1a; margin-bottom: 4px; }
+  .cmp-price { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .cmp-bar { height: 6px; border-radius: 3px; margin-bottom: 6px; }
+  .cmp-bar.green { background: #22c55e; }
+  .cmp-bar.orange { background: #f97316; }
+  .cmp-bar.blue { background: #6366f1; }
+  .cmp-note { font-size: 11px; color: #777; line-height: 1.5; }
+
+  /* Side-by-side (section 04) */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Risk meter (section 05) */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 10px; background: #fdf2f8; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #db2777; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #db2777; width: 60px; text-align: right; flex-shrink: 0; }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .cmp-grid, .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="QDII溢价-info-zh.html">English / 中文</a>
+</div>
+
+
+  <h1>QDII Premium<br>On-Exchange vs OTC</h1>
+  <p class="subtitle">Why you pay more than NAV for QDII funds — 2026 Edition</p>
+  <div class="divider"></div>
+
+  <div class="splash">
+    Premiums only exist on-exchange. OTC subscriptions execute at NAV (zero premium), but QDII funds hit forex quotas fast. When the OTC door shuts, everyone rushes on-exchange for second-hand shares — pushing prices above NAV. As of late May 2026, nearly 50% of US-equity QDII funds have suspended or restricted subscriptions.
+  </div>
+
+  <!-- 01: Core Concept -->
+  <div class="section section-01">
+    <div class="section-num num-01">01</div>
+    <div class="section-body">
+      <div class="tag tag-01">Core Concept</div>
+      <div class="section-title t-01">What Is the Premium? Two Pricing Mechanisms</div>
+      <div class="section-desc">OTC subscriptions execute at NAV — zero premium. On-exchange ETFs are priced by supply and demand. When OTC channels close, all buying pressure funnels on-exchange, pushing prices above NAV.</div>
+    </div>
+  </div>
+
+  <!-- 02: Flow -->
+  <div class="section section-02">
+    <div class="section-num num-02">02</div>
+    <div class="section-body">
+      <div class="tag tag-02">How It Forms</div>
+      <div class="section-title t-02">The Five-Step Premium Engine</div>
+      <div class="section-desc">Arbitrageurs can't short the premium because the OTC subscription gate is locked — premiums persist.</div>
+      <div class="flow-row">
+        <div class="flow-step">You want<br>overseas assets</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">OTC quota<br>exhausted</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Rush on-exchange<br>for second-hand<br>shares</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Buyers ≫ Sellers<br>price surges</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Premium born<br>Price ＞ NAV</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: Three Channels -->
+  <div class="section section-03">
+    <div class="section-num num-03">03</div>
+    <div class="section-body">
+      <div class="tag tag-03">Three Channels</div>
+      <div class="section-title t-03">OTC, On-Exchange &amp; LOF: Who Premiums?</div>
+      <div class="cmp-grid">
+        <div class="cmp-card otc">
+          <div class="cmp-icon">🏦</div>
+          <div class="cmp-name">OTC Subscription</div>
+          <div class="cmp-price">At NAV, always</div>
+          <div class="cmp-bar green"></div>
+          <div class="cmp-note">Premium: <b style="color:#16a34a">Never exists</b><br>Risk: Closed when quota runs out</div>
+        </div>
+        <div class="cmp-card etf">
+          <div class="cmp-icon">📈</div>
+          <div class="cmp-name">On-Exchange ETF</div>
+          <div class="cmp-price">Supply &amp; demand price</div>
+          <div class="cmp-bar orange"></div>
+          <div class="cmp-note">Premium: <b style="color:#c2410c">Typical 5–15%</b><br>Risk: Buying at a premium = loss</div>
+        </div>
+        <div class="cmp-card lof">
+          <div class="cmp-icon">🔁</div>
+          <div class="cmp-name">LOF (Dual-Listed)</div>
+          <div class="cmp-price">Custody transfer possible</div>
+          <div class="cmp-bar blue"></div>
+          <div class="cmp-note">Premium: <b style="color:#4338ca">Arbitrageable</b><br>Risk: T+2 window, premium may vanish</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: Custody Transfer -->
+  <div class="section section-04">
+    <div class="section-num num-04">04</div>
+    <div class="section-body">
+      <div class="tag tag-04">Custody Transfer</div>
+      <div class="section-title t-04">Can OTC Shares Move On-Exchange? Only LOFs</div>
+      <div class="section-desc">OTC subscribe → custody transfer to broker → sell at premium on-exchange. But not all funds qualify.</div>
+      <div class="dual-grid">
+        <div class="dual-card yes">
+          <div class="dual-icon">✅</div>
+          <div class="dual-text">
+            <h4>LOF Funds: Transfer OK</h4>
+            <p>OTC subscribe → T+2 transfer → shares land in brokerage → sell at premium. Beware premium retracing during the 2-day window.</p>
+          </div>
+        </div>
+        <div class="dual-card no">
+          <div class="dual-icon">❌</div>
+          <div class="dual-text">
+            <h4>ETF Feeder / Plain QDII: Cannot Transfer</h4>
+            <p>Most QDII funds bought on Alipay have no on-exchange ticker. You can only redeem at NAV — the premium is never yours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: Risk -->
+  <div class="section section-05">
+    <div class="section-num num-05">05</div>
+    <div class="section-body">
+      <div class="tag tag-05">Risk Warning</div>
+      <div class="section-title t-05">Premiums Only Move One Way: Down</div>
+      <div class="section-desc">A premium is not a bullish signal — it's a congestion signal. When quotas reopen or sentiment shifts, premiums can collapse overnight.</div>
+      <div class="risk-bars">
+        <div class="risk-row">
+          <div class="risk-label">Collapse Risk</div>
+          <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+          <div class="risk-val">Extreme</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-label">Guaranteed Loss</div>
+          <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+          <div class="risk-val">¥1.10→¥1.00</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-label">Regulatory Scrutiny</div>
+          <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+          <div class="risk-val">Under Monitor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">QDII Premium Infographic · 2026.06 · Sources: Wind / Fund Filings / Financial News · Not investment advice</div>
+
+</div>
+</body>
+</html>

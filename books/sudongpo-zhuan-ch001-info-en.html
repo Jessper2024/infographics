@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Su Dongpo Biography · Ch. 1 — 信息图</title>
+<style>
+@font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); }
+:root { --bg: #f5f1eb; --card-bg: #ffffff; --card-border: #e8e0d5; --text: #555; --dark: #1a1a1a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif; color: var(--text); line-height: 2.0; font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
+.lang-switch { text-align: right; margin-bottom: 8px; }
+.lang-switch a { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; text-decoration: none; border: 1px solid #d5cfc5; border-radius: 20px; padding: 4px 16px; transition: background 0.2s; }
+.lang-switch a:hover { background: #e8e0d5; }
+.header { margin-bottom: 24px; }
+.header h1 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--dark); margin-bottom: 8px; }
+.header h2 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: #888; }
+.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c, #ca8a04, #4f46e5, #db2777, #0891b2); border-radius: 2px; margin-bottom: 24px; }
+.overview, .card, .takeaway { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03); }
+.overview p { margin-bottom: 6px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.overview .oneliner { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 12px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.overview .scqa-label { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; margin-right: 6px; font-weight: 700; }
+.section { border-left: 4px solid transparent; }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.circle-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
+.section-tag { font-size: 12px; font-family: 'FZXPYZS','PingFang SC',serif; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 12px; }
+.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
+.section-body { margin-top: 8px; }
+.section-body p { font-family: 'FZXPYZS','PingFang SC',serif; }
+.bluf { color: var(--dark); font-weight: 600; margin-bottom: 8px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.detail { font-size: 13px; color: #777; line-height: 1.6; font-family: 'FZXPYZS','PingFang SC',serif; }
+.blockquote { border-left: 3px solid #d5cfc5; padding-left: 14px; color: #666; font-style: italic; margin: 12px 0; font-size: 14px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+.dual-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 14px 16px; }
+.dual-card h4 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
+.dual-card p { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 13px; color: #666; line-height: 1.7; }
+.flow-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #9a3412; text-align: center; font-family: 'FZXPYZS','PingFang SC',serif; }
+.flow-arrow { color: #ea580c; font-size: 18px; font-weight: 700; font-family: 'FZXPYZS','PingFang SC',serif; }
+.data-row { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.data-card { flex: 1; min-width: 100px; padding: 16px; border-radius: 10px; text-align: center; }
+.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.data-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+.data-big { font-size: 28px; font-weight: 700; font-family: 'FZXPYZS',serif; }
+.data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #ca8a04; } .data-big.i { color: #4f46e5; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.cmp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 10px; }
+.cmp-card { padding: 16px; border-radius: 10px; text-align: center; }
+.cmp-card.c1 { background: #fef2f2; border: 1px solid #fecaca; }
+.cmp-card.c2 { background: #fff7ed; border: 1px solid #fed7aa; }
+.cmp-card.c3 { background: #fefce8; border: 1px solid #fde68a; }
+.cmp-icon { font-size: 24px; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.cmp-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.cmp-note { font-size: 12px; color: #888; line-height: 1.5; font-family: 'FZXPYZS','PingFang SC',serif; }
+.takeaway { display: flex; gap: 16px; align-items: flex-start; }
+.takeaway-icon { font-size: 28px; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
+.takeaway-label { font-size: 12px; color: #888; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'FZXPYZS','PingFang SC',serif; }
+.takeaway p { color: var(--dark); font-weight: 600; font-size: 15px; line-height: 1.8; font-family: 'FZXPYZS','PingFang SC',serif; }
+.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; }
+.footer p { margin-bottom: 2px; font-family: 'FZXPYZS','PingFang SC',serif; }
+@media (max-width:640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 22px; }
+  .header h2 { font-size: 15px; }
+  .takeaway { order: -1; margin-bottom: 20px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .bluf { font-size: 16px; }
+  .dual-grid, .cmp-grid { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .data-row { flex-direction: column; }
+}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog"><a class="back-catalog-btn" href="sudongpo-zhuan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch"><a href="sudongpo-zhuan-ch001-info-zh.html" target="_blank">中文</a></div>
+<a href="sudongpo-zhuan-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;">← 返回详情页</a>
+
+<div class="header">
+  <h1>Su Dongpo Biography · Ch. 1 &ldquo;原序&rdquo;</h1>
+  <h2>An Incurable Optimist — Why Lin Yutang wrote the biography of Su Dongpo</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">1,700+</div>
+      <div class="data-sm">Surviving Poems</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">800</div>
+      <div class="data-sm">Personal Letters</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">1,000 yrs</div>
+      <div class="data-sm">Enduring Admiration</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">1M chars</div>
+      <div class="data-sm">Total Works</div>
+    </div>
+</div>
+<div class="overview">
+  <div class="oneliner">Core Insight：With a childlike innocence and irresistible personal charm, Su Dongpo has become the most beloved literary figure in Chinese history — he lived naturally, faithfully, and joyfully, always reserving the right to speak for himself</div>
+  <p><span class="scqa-label">Core Question</span>Why has every generation of Chinese people for a thousand years sincerely admired Su Dongpo?</p>
+  <p><span class="scqa-label">Core Answer</span>Su Dongpo possessed a multifaceted genius rich in variety, change, and humor — his intellect was outstanding, yet his heart was like that of an innocent child: "the wisdom of the serpent plus the gentleness of the dove." He was completely natural and faithful to himself throughout his life, and his works flowed from a pure heart. He sang and played through life, always accepting sorrow and misfortune with a smile.</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">Motivation</div>
+    <h3 style="color:#dc2626;">Why Did Lin Yutang Write About Su Dongpo?</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Lin Yutang wrote this biography for no other reason than he simply wanted to — for years the idea had been in his mind, and when he went to America in 1936 he brought Su Dongpo's rare editions with him.</p>
+    <p>Lin Yutang said: "To have the works of a charming, creative, righteous, broad-minded, and uniquely insightful man on one's bookshelf is a great tonic for the soul." Writing this book brought him joy, and that alone was reason enough. This biography is not cold academic research, but one soul paying tribute to another.</p>
+    <p class="detail">Lin Yutang translated some of Su Dongpo's poems and essays into English, hoping Su Dongpo would "keep him company" abroad. This spiritual companionship across a thousand years itself testifies to Su Dongpo's eternal charm.</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">Multifaceted Genius</div>
+    <h3 style="color:#ea580c;">The Incurable Optimist: Su Dongpo's Many Identities</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Su Dongpo was an incurable optimist, a great humanitarian, a friend of the people, a great prose master, a great calligrapher, an innovative painter, a wine experimenter, an engineer, a yoga practitioner, a Buddhist, a Confucian statesman — yet even this does not capture him fully.</p>
+    <p>Lin Yutang listed over a dozen of Su Dongpo's identities and concluded: "At the mention of Su Dongpo, the Chinese always smile with warmth and affection — this perhaps best captures his essential quality." Su Dongpo possessed a richer sense of variety, change, and humor than any other Chinese poet.</p>
+    <p class="detail">Su Dongpo was naturally unsuited to political cunning and calculation. His impromptu poems and essays were natural outpourings of the heart, driven by instinct and reckless impulse. He was always caught in political whirlpools yet always transcended politics.</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">Personal Magnetism</div>
+    <h3 style="color:#ca8a04;">Why Is Su Dongpo's Charm So Hard to Describe?</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Su Dongpo's charm is like a woman's allure or a flower's beauty and fragrance — easy to sense, yet hard to analyze. He wielded his brush like a toy, and from its tip came music reflecting every human emotion.</p>
+    <p>Su Dongpo joked freely with friends and enemies alike, once mocking a neo-Confucian scholar in front of all the ministers at a grand court ceremony. What people least understood was that he could be angry at things but incapable of hating people. He hated evil deeds but was merely indifferent to evildoers. Resentment is a sign of impotence, and he never knew what impotence was.</p>
+    <p class="detail">Su Dongpo described himself as impatient by nature: when encountering something disagreeable, "like a fly in one's food, one must spit it out." Of a poet he disliked, he said the work was "exactly what a capital pedant would produce after drinking bootleg liquor and eating diseased beef."</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">Philosophy of Life</div>
+    <h3 style="color:#4f46e5;">The Secret of the Joyful Genius: Three Philosophies Fused</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Su Dongpo was a Buddhist in metaphysics, knowing life is the temporary manifestation of an eternal soul; but he could not accept the theory that life is a burden and a misfortune — at least he himself savored every moment of life.</p>
+    <p>From the Buddhist belief in life's extinction, the Confucian philosophy of living, and the Taoist belief in simplifying life, Su Dongpo's mind and senses fused a new alloy in their crucible. He knew his physical body would die, but in his next life he would become stars in the sky and rain on the earth, shining, nourishing, and supporting all life.</p>
+    <p class="detail">Su Dongpo's best self-description was what he told his brother Ziyou: "I can accompany the Jade Emperor above and the beggars of the lowest slums below. Before my eyes, there is not a single bad person in the world." No wonder he lived joyfully, without worry or fear, like a whirlwind through his life.</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">Poet's True Nature</div>
+    <h3 style="color:#db2777;">A Story of the Soul: Natural and Faithful</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Su Dongpo's story is fundamentally the story of a soul — he had no schemes, no goals; he sang, wrote, and commented along the way, simply wanting to express what was in his heart, regardless of consequences.</p>
+    <p>His works radiate a vivid personality — sometimes mischievous, sometimes solemn, depending on the occasion, but always sincere, earnest, and never self-deceiving. He wrote for no other reason than that he loved to write. Today we appreciate his works for no other reason than that they are beautiful, rich, and flow from his innocent heart.</p>
+    <p class="detail">Su Dongpo was a poet, a painter, and a friend of the common people. He felt intensely, thought clearly, wrote beautifully, and acted bravely, never changing direction for his own interests or the tide of public opinion. He was kind and generous, never able to save a penny, yet felt as rich as an emperor.</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>Su Dongpo's charm lies in his absolute fidelity to himself — he cannot be defined by labels; he is a spiritual specimen proving the possibility of "living authentically." As Lin Yutang put it: his story is fundamentally the story of a soul.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Source: Lin Yutang, &ldquo;The Gay Genius: The Life and Times of Su Tungpo&rdquo; · 2015 | Ch. 1 &ldquo;原序&rdquo; · For educational reference only</p>
+</div>
+
+</div>
+</body>
+</html>

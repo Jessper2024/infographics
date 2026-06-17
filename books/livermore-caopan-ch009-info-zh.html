@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股票大作手操盘术 · 第9章「利弗莫尔操盘规则」</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ── Reset & Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#f5f1eb;color:#1a1a1a;
+  font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+}
+
+/* ── Container ── */
+.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
+
+/* ── Lang Switch ── */
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{
+  display:inline-block;padding:6px 16px;border-radius:8px;
+  font-size:13px;text-decoration:none;letter-spacing:0.03em;
+  font-family:'FZXPYZS','PingFang SC',serif;
+  background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;
+  transition:opacity 0.15s;
+}
+.lang-btn:hover{opacity:0.75}
+
+/* ── KPI Row ── */
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{
+  flex:1;min-width:120px;
+  background:#fff;border:1px solid #e8e0d5;border-radius:12px;
+  padding:20px 16px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-num{font-size:32px;font-weight:700;color:#dc2626;letter-spacing:-0.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+
+/* ── Header ── */
+.header h1{
+  font-size:32px;font-weight:400;color:#1a1a1a;
+  letter-spacing:0.03em;margin-bottom:8px;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.header h2{
+  font-size:14px;font-weight:400;color:#888;
+  letter-spacing:0.02em;line-height:1.7;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.divider{
+  width:60px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#4f46e5,#db2777);
+  margin:20px 0 24px;
+}
+
+/* ── Cards ── */
+.card{
+  background:#fff;border:1px solid #e8e0d5;border-radius:14px;
+  padding:28px 32px;margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03);
+}
+.overview{
+  background:#fdf2f8;border:2px solid #fbcfe8;
+  border-radius:14px;padding:24px 28px;margin-bottom:18px;
+}
+
+/* ── Overview ── */
+.overview-label{
+  font-size:11px;font-weight:700;color:#db2777;
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+}
+.overview-question{
+  font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px;
+}
+.overview-answer{
+  font-size:15px;color:#555;line-height:2.0;
+}
+
+/* ── Section Base ── */
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
+}
+.circle-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:16px;font-weight:700;flex-shrink:0;
+}
+.section-tag{
+  font-size:12px;padding:3px 10px;border-radius:20px;
+  font-weight:500;letter-spacing:0.02em;
+}
+.section h3{font-size:18px;font-weight:700}
+.section-body p{
+  font-size:15px;color:#555;line-height:2.0;margin-bottom:12px;
+}
+
+/* ── BLUF 结论句 ── */
+.bluf{
+  background:#fafafa;border-left:4px solid #ddd;border-radius:0 8px 8px 0;
+  padding:10px 16px;margin-top:16px;
+  font-size:14px;color:#444;font-weight:500;line-height:1.7;
+}
+
+/* ── Per-section color classes ── */
+.s01{border-left:4px solid #dc2626}
+.s01 .circle-num{background:#dc2626}
+.s01 .section-tag{background:#fef2f2;color:#dc2626}
+.s01 h3{color:#dc2626}
+.s01 .bluf{border-left-color:#dc2626;color:#b91c1c}
+
+.s02{border-left:4px solid #ea580c}
+.s02 .circle-num{background:#ea580c}
+.s02 .section-tag{background:#fff7ed;color:#ea580c}
+.s02 h3{color:#ea580c}
+.s02 .bluf{border-left-color:#ea580c;color:#9a3412}
+
+.s03{border-left:4px solid #ca8a04}
+.s03 .circle-num{background:#ca8a04}
+.s03 .section-tag{background:#fefce8;color:#ca8a04}
+.s03 h3{color:#ca8a04}
+.s03 .bluf{border-left-color:#ca8a04;color:#854d0e}
+
+.s04{border-left:4px solid #4f46e5}
+.s04 .circle-num{background:#4f46e5}
+.s04 .section-tag{background:#eef2ff;color:#4f46e5}
+.s04 h3{color:#4f46e5}
+.s04 .bluf{border-left-color:#4f46e5;color:#3730a3}
+
+.s05{border-left:4px solid #db2777}
+.s05 .circle-num{background:#db2777}
+.s05 .section-tag{background:#fdf2f8;color:#db2777}
+.s05 h3{color:#db2777}
+.s05 .bluf{border-left-color:#db2777;color:#9d174d}
+
+/* ── Dual Grid ── */
+.dual-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;
+}
+.dual-card{border-radius:10px;padding:16px 18px}
+.dual-card.up{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-card.down{background:#fef2f2;border:1px solid #fecaca}
+.dual-label{font-size:13px;font-weight:700;margin-bottom:6px}
+.dual-card.up .dual-label{color:#166534}
+.dual-card.down .dual-label{color:#991b1b}
+.dual-card p{font-size:13px;color:#555;line-height:1.8}
+
+/* ── Rule Table ── */
+.rule-table{
+  width:100%;margin-top:14px;border-collapse:separate;border-spacing:0;
+  font-size:13px;
+}
+.rule-table th{
+  background:#f5f1eb;padding:10px 14px;text-align:left;
+  font-size:12px;font-weight:700;color:#888;text-transform:uppercase;
+  letter-spacing:0.04em;border-bottom:2px solid #e8e0d5;
+}
+.rule-table td{
+  padding:10px 14px;border-bottom:1px solid #f0ece6;
+  color:#555;line-height:1.7;
+}
+.rule-table tr:last-child td{border-bottom:none}
+
+/* ── Flow Row ── */
+.flow-row{
+  display:flex;align-items:flex-start;justify-content:center;
+  gap:8px;margin-top:16px;flex-wrap:wrap;
+}
+.flow-step,.flow-step.end{
+  background:#fff7ed;border:2px solid #fed7aa;border-radius:10px;
+  padding:14px 16px;text-align:center;font-size:13px;
+  color:#9a3412;font-weight:700;min-width:95px;
+}
+.flow-step-num{
+  display:block;font-size:11px;font-weight:400;color:#ea580c;
+  margin-bottom:4px;letter-spacing:0.04em;
+}
+.flow-step.end{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.flow-label{font-size:11px;font-weight:400;color:#888;margin-top:4px}
+.flow-arrow{font-size:18px;color:#ea580c;font-weight:700;padding-top:14px}
+
+/* ── Callout ── */
+.callout{
+  display:flex;gap:10px;align-items:flex-start;
+  border-radius:10px;padding:14px 16px;margin-top:14px;
+}
+.callout.warn{background:#fffbeb;border:1px solid #fde68a}
+.callout.info{background:#eff6ff;border:1px solid #bfdbfe}
+.callout.danger{background:#fef2f2;border:1px solid #fecaca}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.callout-text{font-size:13px;color:#555;line-height:1.8}
+
+/* ── Quote Block ── */
+.quote-block{
+  background:#faf5ff;border-left:4px solid #c084fc;border-radius:0 10px 10px 0;
+  padding:16px 20px;margin-top:14px;position:relative;
+}
+.quote-mark{
+  position:absolute;top:-10px;left:12px;
+  font-size:32px;color:#c084fc;font-family:Georgia,serif;line-height:1;
+}
+.quote-text{
+  font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px;
+}
+.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
+
+/* ── Data Row ── */
+.data-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.data-card{
+  flex:1;min-width:140px;
+  border-radius:12px;padding:20px 16px;text-align:center;
+}
+.data-card.red{background:#fef2f2;border:1px solid #fecaca}
+.data-card.gold{background:#fefce8;border:1px solid #fde68a}
+.data-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
+.data-big{font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1.3}
+.data-card.red .data-big{color:#dc2626}
+.data-card.gold .data-big{color:#ca8a04}
+.data-card.indigo .data-big{color:#4f46e5}
+.data-sm{font-size:12px;color:#888;margin-top:6px;line-height:1.6}
+.data-note{font-size:12px;color:#555;margin-top:8px;line-height:1.6}
+
+/* ── Takeaway ── */
+.takeaway{
+  background:#fdf2f8;border:2px solid #fbcfe8;border-radius:14px;
+  padding:24px 28px;margin-bottom:18px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.takeaway-label{
+  font-size:13px;font-weight:700;color:#db2777;text-transform:uppercase;
+  letter-spacing:0.06em;margin-bottom:6px;
+}
+.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
+
+/* ── Footer ── */
+.footer{
+  text-align:center;font-size:12px;color:#bbb;line-height:1.8;
+  padding-top:16px;border-top:1px solid #e8e0d5;
+}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  body{padding:16px 12px 40px}
+  .container{padding:0}
+  .header h1{font-size:22px}
+  .card,.overview,.section{padding:18px 16px}
+  .section-header{flex-wrap:wrap;gap:8px}
+  .circle-num{width:34px;height:34px;font-size:14px}
+  .section h3{font-size:16px}
+  .flow-row{flex-direction:column;align-items:stretch}
+  .flow-arrow{display:none}
+  .dual-grid{grid-template-columns:1fr}
+  .data-row{flex-direction:column}
+  .kpi-row{flex-direction:column}
+}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Lang Switch -->
+<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" href="livermore-caopan-ch009-info-en.html">EN</a>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">10</div>
+    <div class="kpi-label">核心规则<br>系统化操盘</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">6</div>
+    <div class="kpi-label">行情栏目<br>分门别类</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">记录墨水<br>黑/红/铅笔</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">6+3</div>
+    <div class="kpi-label">核心幅度<br>6点转向·3点突破</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>股票大作手操盘术 · 第9章「利弗莫尔操盘规则」</h1>
+  <h2>一整套系统化的操盘规则——以颜色、数字与栏目为语言，让行情记录对你说话</h2>
+  <div class="divider"></div>
+<div class="chapter-overview">
+  <p>▎SCQA 框架 如何用一套系统化的记录规则，客观捕捉市场趋势的转折信号？ 利弗莫尔将数十年交易经验凝练为10项核心操盘规则，构建了一套完整的行情记录与信号识别体系：S（情境）——市场始终在上升趋势、下降趋势与自然调整之间循环；C（冲突）——交易者凭主观感觉操作，缺乏客观标准识别趋势转变；Q（问题）——能否通过严格的记录规则自动揭示趋势转折与交易时机？A（答案）——以6点幅度判定栏目转换，以3点突破确认趋势持续或终结，以关键点标记发出买卖信号，构成一套完全客观的操盘体系。 01</p>
+</div>
+
+</div>
+
+<!-- Overview (SCQA) -->
+<div class="overview-question">如何用一套系统化的记录规则，客观捕捉市场趋势的转折信号？</div>
+  <div class="overview-answer">
+    利弗莫尔将数十年交易经验凝练为10项核心操盘规则，构建了一套完整的行情记录与信号识别体系：<strong>S</strong>（情境）——市场始终在上升趋势、下降趋势与自然调整之间循环；<strong>C</strong>（冲突）——交易者凭主观感觉操作，缺乏客观标准识别趋势转变；<strong>Q</strong>（问题）——能否通过严格的记录规则自动揭示趋势转折与交易时机？<strong>A</strong>（答案）——以6点幅度判定栏目转换，以3点突破确认趋势持续或终结，以关键点标记发出买卖信号，构成一套完全客观的操盘体系。
+  </div>
+</div>
+
+<!-- Block 01: 记录系统 -->
+<div class="card s01">
+  <div class="section-header">
+    <div class="circle-num">01</div>
+    <div class="section-tag">规则1-3</div>
+    <h3>三色墨水记录系统</h3>
+  </div>
+  <div class="section-body">
+    <p>利弗莫尔操盘规则的基础是一套<strong>三色记录系统</strong>，通过颜色直观区分市场趋势方向。每位交易者必须亲笔维护行情记录，这是整个规则体系运转的起点。</p>
+
+    <div class="data-row">
+      <div class="data-card red">
+        <div class="data-big">⬆️ 黑</div>
+        <div class="data-sm">规则1</div>
+        <div class="data-note">上升趋势栏：用<strong>黑墨水</strong>记录价格，代表牛市态势</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">⬇️ 红</div>
+        <div class="data-sm">规则2</div>
+        <div class="data-note">下降趋势栏：用<strong>红墨水</strong>记录价格，代表熊市态势</div>
+      </div>
+      <div class="data-card indigo">
+        <div class="data-big">✏️ 铅笔</div>
+        <div class="data-sm">规则3</div>
+        <div class="data-note">其余栏目：用<strong>铅笔</strong>记录，代表调整与过渡状态</div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">📋</div>
+      <div class="callout-text"><strong>六大栏目：</strong>上升趋势栏 · 下降趋势栏 · 自然回升栏 · 自然回撤栏 · 次级回升栏 · 次级回撤栏 —— 其中前四个为核心栏目，次级栏目用于记录关键点之内的波动。</div>
+    </div>
+
+    <div class="bluf">💡 <strong>BLUF：</strong>墨水颜色即趋势信号——黑为上升、红为下降、铅笔为过渡，一目了然。</div>
+  </div>
+</div>
+
+<!-- Block 02: 6点转向规则 -->
+<div class="card s02">
+  <div class="section-header">
+    <div class="circle-num">02</div>
+    <div class="section-tag">规则4a-4d</div>
+    <h3>6点转向规则：栏目转换信号</h3>
+  </div>
+  <div class="section-body">
+    <p>当市场发生反方向运动且幅度达到<strong>约6点</strong>时，触发栏目转换。每次转换时，在原栏目最后一个数字下方标注<strong>两条横线</strong>，该价位随即成为<strong>关键点</strong>。6点规则是整个系统识别趋势变化的<strong>第一道过滤器</strong>。</p>
+
+    <table class="rule-table">
+      <thead>
+        <tr><th>规则</th><th>转换方向</th><th>触发条件</th><th>标线颜色</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>4a</strong></td>
+          <td>上升趋势栏 → 自然回撤栏</td>
+          <td>回落幅度距上升趋势栏最后数字 ≈6点</td>
+          <td>两条红线</td>
+        </tr>
+        <tr>
+          <td><strong>4b</strong></td>
+          <td>自然回撤栏 → 自然回升栏 / 上升趋势栏</td>
+          <td>回升幅度距自然回撤栏最后数字 ≈6点</td>
+          <td>两条红线</td>
+        </tr>
+        <tr>
+          <td><strong>4c</strong></td>
+          <td>下降趋势栏 → 自然回升栏</td>
+          <td>回升幅度距下降趋势栏最后数字 ≈6点</td>
+          <td>两条黑线</td>
+        </tr>
+        <tr>
+          <td><strong>4d</strong></td>
+          <td>自然回升栏 → 自然回撤栏 / 下降趋势栏</td>
+          <td>回落幅度距自然回升栏最后数字 ≈6点</td>
+          <td>两条黑线</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <div class="callout-icon">🔑</div>
+      <div class="callout-text"><strong>标注关键：</strong>从上升趋势转向时画红线，从下降趋势转向时画黑线——线色与来源趋势相反，以便醒目提示转折。两条横线标注的价格随即成为"关键点"（规则8）。</div>
+    </div>
+
+    <div class="bluf">💡 <strong>BLUF：</strong>6点转向是趋势变化的早期警报——每一次栏目转换都在生成关键点。</div>
+  </div>
+</div>
+
+<!-- Block 03: 3点突破与趋势延续 -->
+<div class="card s03">
+  <div class="section-header">
+    <div class="circle-num">03</div>
+    <div class="section-tag">规则5-7</div>
+    <h3>3点突破确认与趋势延续</h3>
+  </div>
+  <div class="section-body">
+    <p>6点转向触发栏目转换后，市场必须通过<strong>3点突破</strong>才能确认新趋势的成立（组合价格为12点转向、6点突破）。同时，只要价格沿着原趋势方向持续运行不出现6点回调，就应继续留在当前栏目。</p>
+
+    <div class="dual-grid">
+      <div class="dual-card up">
+        <div class="dual-label">▲ 规则5a：上升确认</div>
+        <p>正在自然回升栏记录时，最新价格比自然回升栏内<strong>黑线标记的最后价格高3点或更多</strong> → 用黑墨水记入上升趋势栏，上升趋势确认。</p>
+      </div>
+      <div class="dual-card down">
+        <div class="dual-label">▼ 规则5b：下降确认</div>
+        <p>正在自然回撤栏记录时，最新价格比自然回撤栏内<strong>红线标记的最后价格低3点或更多</strong> → 用红墨水记入下降趋势栏，下降趋势确认。</p>
+      </div>
+    </div>
+
+    <p>规则6a-6h详细规定了<strong>趋势延续期间</strong>的记录方法：在上升趋势栏，只要新价格高于该栏最后记录价，就继续在此记录（6a、6d）；在下降趋势栏同理反向（6c）。关键细节在于<strong>次级栏目</strong>的使用：当6点回调发生但价格未超越自然回升/回撤栏的最后一个记录时，应转入次级回升栏或次级回撤栏记录（6g、6h）。</p>
+
+    <div class="callout info">
+      <div class="callout-icon">📐</div>
+      <div class="callout-text"><strong>规则7——组合价格：</strong>同一原则适用于组合指数，但幅度加倍——以<strong>12点</strong>替代6点转向，以<strong>6点</strong>替代3点突破。单只股票与大盘采用统一逻辑但不同量纲。</div>
+    </div>
+
+    <div class="bluf">💡 <strong>BLUF：</strong>6点转向提供初步信号，3点突破予以确认——两者结合构成利弗莫尔趋势判断的完整逻辑链。</div>
+  </div>
+</div>
+
+<!-- Block 04: 关键点与信号 -->
+<div class="card s04">
+  <div class="section-header">
+    <div class="circle-num">04</div>
+    <div class="section-tag">规则8-9</div>
+    <h3>关键点系统与交易信号</h3>
+  </div>
+  <div class="section-body">
+    <p>正是关键点的形成使行情记录具有了<strong>极大预测价值</strong>。两个关键点形成后——上端极端价格和下端极端价格——市场接下来的动作将围绕它们展开，发出清晰的买卖信号。</p>
+
+    <div class="flow-row">
+      <div class="flow-step">
+        <span class="flow-step-num">形成1</span>
+        栏目转换
+        <div class="flow-label">原栏目末位标线</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">形成2</span>
+        反向运动结束
+        <div class="flow-label">对侧栏目极端价</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">框定</span>
+        上下关键点
+        <div class="flow-label">形成价格区间</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">突破</span>
+        关键点+3点
+        <div class="flow-label">确认新趋势</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">
+        <span class="flow-step-num">信号</span>
+        买进/卖出
+        <div class="flow-label">客观操作</div>
+      </div>
+    </div>
+
+    <p><strong>三个核心信号场景：</strong></p>
+
+    <table class="rule-table">
+      <thead>
+        <tr><th>规则</th><th>信号场景</th><th>信号含义</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>9a</strong></td>
+          <td>下降趋势栏最后价下方标注黑线</td>
+          <td>📈 可能在该点附近获得<strong>买进信号</strong></td>
+        </tr>
+        <tr>
+          <td><strong>9b</strong></td>
+          <td>自然回升栏某价格下方标注黑线，股价接近该关键点</td>
+          <td>🔍 <strong>测试时机</strong>——判断市场是否足够坚挺进入上升趋势</td>
+        </tr>
+        <tr>
+          <td><strong>9c</strong></td>
+          <td>上升趋势栏最后价下方标红线 / 自然回撤栏最后价标红线</td>
+          <td>📉 方向相反但逻辑一致——获得<strong>卖出信号</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="bluf">💡 <strong>BLUF：</strong>关键点是市场多空力量的分水岭——价格如何对待关键点，决定了趋势的方向与力度。</div>
+  </div>
+</div>
+
+<!-- Block 05: 趋势终结判断 -->
+<div class="card s05">
+  <div class="section-header">
+    <div class="circle-num">05</div>
+    <div class="section-tag">规则10a-10f</div>
+    <h3>趋势终结的危险信号</h3>
+  </div>
+  <div class="section-body">
+    <p>整套规则的最高价值在于判断趋势是否终结。当市场突破关键点超出3点（单只股票）或6点（组合），则确认趋势延续；反之，若突破失败并反向运行3点以上，则发出<strong>趋势终结的危险信号</strong>。</p>
+
+    <div class="dual-grid">
+      <div class="dual-card up">
+        <div class="dual-label">✅ 规则10a-c：趋势确认</div>
+        <p>上升趋势恢复 → 突破先前关键点<strong>+3点</strong><br>
+        下降趋势恢复 → 跌破先前关键点<strong>-3点</strong><br>
+        突破成功 → 继续原趋势方向操作</p>
+      </div>
+      <div class="dual-card down">
+        <div class="dual-label">⚠️ 规则10b-d：趋势终结</div>
+        <p>上升趋势失败 → 回落跌破关键点<strong>-3点</strong><br>
+        下降趋势失败 → 回升超越关键点<strong>+3点</strong><br>
+        突破失败 → 趋势可能已经结束</p>
+      </div>
+    </div>
+
+    <div class="callout danger">
+      <div class="callout-icon">🚨</div>
+      <div class="callout-text"><strong>规则10e-f·双重危险信号：</strong>如果价格在关键点附近止步（未达到关键点便折返），并反向运行3点以上，构成<strong>更强的危险信号</strong>。例如：回升至关键点下方停止→回落3点以上→上升趋势可能终结。下降趋势同理反向。</div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">正是在上述两个关键点形成后，这些行情记录具有了极大价值，可以帮助你正确预测下一轮重大运动。</div>
+      <div class="quote-author">— 杰西·利弗莫尔</div>
+    </div>
+
+    <div class="bluf">💡 <strong>BLUF：</strong>3点突破是趋势延续的确认，3点反向突破是趋势终结的警告——规则赋予交易者客观的风险管理框架。</div>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-icon">🔑</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p><strong>利弗莫尔操盘规则的精髓：</strong>10项规则构建了一套完全客观的市场分析系统——以黑红铅三色墨水区分趋势方向，以6点幅度触发栏目转换和关键点生成，以3点突破确认趋势的延续或终结。行情记录本身成为会说话的工具：栏目的转换、墨水的颜色、关键点的标注，每一个细节都在发出清晰的市场信号。这套体系的终极价值在于——它不依赖交易者的主观判断，而是让市场通过价格行为<strong>自动揭示</strong>其真实意图。</p>
+  </div>
+
+
+<!-- Footer -->
+<div class="
+</div>
+footer">
+  来源：杰西·利弗莫尔 · 《股票大作手操盘术》第9章「利弗莫尔操盘规则」 · 人民邮电出版社 2012<br>
+  信息图生成日期：2026年6月17日 · 仅供参考学习，不构成投资建议
+
+
+<!-- /container -->
+
+</body>
+</html>
+</div>

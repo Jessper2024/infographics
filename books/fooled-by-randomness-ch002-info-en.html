@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 2 "A Bizarre Accounting Method"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── History grid (section 01) ── */
+  .history-grid { display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+  .history-cell {
+    flex: 1; min-width: 90px;
+    background: #fef2f2; border: 1px solid #fecaca;
+    border-radius: 10px; padding: 14px 10px; text-align: center;
+  }
+  .history-cell.outcome-death {
+    background: #fef2f2; border-color: #dc2626; border-width: 2px;
+  }
+  .history-cell .hist-icon { font-size: 24px; margin-bottom: 4px; }
+  .history-cell .hist-label {
+    font-size: 12px; color: #991b1b; font-weight: 600;
+    letter-spacing: 0.04em; margin-bottom: 2px;
+  }
+  .history-cell .hist-desc {
+    font-size: 11px; color: #a1a1a1; line-height: 1.5;
+  }
+  .history-verdict {
+    margin-top: 14px; padding: 12px 18px;
+    background: #fef2f2; border: 1px dashed #fecaca;
+    border-radius: 10px; font-size: 13.5px; color: #991b1b; line-height: 1.8;
+  }
+  .history-verdict strong { color: #dc2626; }
+
+  /* ── Risk bars (section 02) ── */
+  .risk-compare { margin-top: 6px; }
+  .risk-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+  }
+  .risk-label {
+    width: 100px; flex-shrink: 0;
+    font-size: 13px; color: #888; text-align: right;
+  }
+  .risk-track {
+    flex: 1; height: 20px;
+    background: #fff7ed; border-radius: 10px; overflow: hidden;
+  }
+  .risk-fill {
+    height: 100%; border-radius: 10px;
+    background: linear-gradient(90deg, #fbbf24, #ea580c, #dc2626);
+  }
+  .risk-val {
+    width: 140px; flex-shrink: 0;
+    font-size: 12.5px; color: #555; line-height: 1.5;
+  }
+
+  /* ── Dual comparison (section 03) ── */
+  .dual-grid { display: flex; gap: 14px; margin-top: 4px; }
+  .dual-card {
+    flex: 1; border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start; border: 1px solid;
+  }
+  .dual-card.person-a { background: #fef2f2; border-color: #fecaca; }
+  .dual-card.person-b { background: #f0fdf4; border-color: #bbf7d0; }
+  .dual-card .dual-icon { font-size: 28px; flex-shrink: 0; }
+  .dual-card .dual-name {
+    font-size: 15px; font-weight: 600; margin-bottom: 6px;
+  }
+  .dual-card.person-a .dual-name { color: #991b1b; }
+  .dual-card.person-b .dual-name { color: #166534; }
+  .dual-card .dual-trait {
+    font-size: 12.5px; color: #666; line-height: 1.8; margin-bottom: 3px;
+  }
+  .dual-text { flex: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* ── Quote box ── */
+  .quote-box {
+    margin-top: 16px; padding: 16px 20px;
+    background: #fff7ed; border-left: 3px solid #ea580c;
+    border-radius: 0 10px 10px 0;
+  }
+  .quote-box .quote-text {
+    font-size: 14.5px; color: #9a3412;
+    font-style: italic; line-height: 1.9;
+  }
+
+  /* ── Insight trio (sections 04, 05) ── */
+  .insight-trio { display: flex; gap: 12px; margin-top: 6px; }
+  .insight-card {
+    flex: 1; border-radius: 10px; padding: 16px 16px; text-align: center;
+    border: 1px solid;
+  }
+
+  .section-04 .insight-card {
+    background: #eef2ff; border-color: #c7d2fe;
+  }
+  .section-04 .insight-card .insight-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; color: #4f46e5; font-weight: normal; margin-bottom: 4px;
+  }
+  .section-04 .insight-card .insight-sm {
+    font-size: 12.5px; color: #4338ca; line-height: 1.6;
+  }
+
+  .section-05 .insight-card {
+    background: #fdf2f8; border-color: #fbcfe8;
+  }
+  .section-05 .insight-card .insight-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; color: #db2777; font-weight: normal; margin-bottom: 4px;
+  }
+  .section-05 .insight-card .insight-sm {
+    font-size: 12.5px; color: #9d174d; line-height: 1.6;
+  }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Nav ── */
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: 0.02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity 0.15s;
+  }
+  .back-catalog-btn:hover { opacity: 0.75; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid { flex-direction: column; }
+    .history-grid { flex-direction: column; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; text-align: left; }
+    .risk-val { width: auto; }
+    .insight-trio { flex-direction: column; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch002-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Fooled by Randomness · Chapter 2<br>"A Bizarre Accounting Method"</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Situation → Conflict → Question → Answer</span>
+  We habitually judge decisions by their outcomes — success implies brilliance, failure implies incompetence.
+  Yet the same wealth can come from radically different risk processes. To an accountant, dice-rolled money looks identical to skill-earned money.
+  If we only see the history that occurred, while ignoring the disastrous outcomes that could have occurred in "alternative histories," how can we distinguish luck from skill?
+  The answer: put on "probability glasses" — treat probability as a qualitative way of thinking, consider all possible outcomes, not just the single observed one when judging decision quality.
+</p>
+<div class="divider"></div>
+
+<div class="splash">
+  <p><strong>"Alternative Accounting"</strong> — judging decisions beyond outcomes. We habitually judge decisions by their results. A trader makes $10 million — we call him a genius. A general wins a battle — we call him a master strategist. But Taleb poses a sharp question: if the same decision would have led to disaster in an "alternative history," is that $10 million truly the same as $10 million earned through the steady practice of dentistry?</p>
+  <p>Through the Russian roulette thought experiment, two contrasting Wall Street archetypes, and the media's distortion of probability, this chapter dismantles the dangers of outcome-oriented thinking, revealing a core truth: <strong>probability is not merely a mathematical tool — it is a qualitative way of thinking.</strong> Understanding alternative histories is the only way to see how randomness fools every one of us.</p>
+</div>
+<div class="chapter-overview">
+  <p>Chapter core: "Alternative Accounting" — judging decisions beyond outcomes. Through the Russian roulette thought experiment, two contrasting Wall Street archetypes, and the media's distortion of probability, this chapter dismantles the dangers of outcome-oriented thinking, revealing that probability is not merely a mathematical tool but a qualitative way of thinking. Understanding alternative histories is the only way to see how randomness fools us all.</p>
+</div>
+
+
+<!-- 01: Thought Experiment · Russian Roulette -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Thought Experiment</div>
+    <div class="section-title t-01">The $10 Million Russian Roulette</div>
+    <div class="section-desc">Imagine an eccentric billionaire offers you $10 million to play Russian roulette. A revolver holds six chambers; he loads one bullet. Each pull of the trigger is a "history" — six histories in total, equally probable. Five histories make you fabulously rich; one history produces a statistic — a creatively gruesome obituary. But we can only observe one history. If the survivor walks away with $10 million, journalists will celebrate him, neighbors will admire him, and no one will see the five "unrealized histories" where he lies in a pool of blood. Taleb's conclusion strikes at the heart of the matter: <strong>$10 million earned through Russian roulette is not worth the same as $10 million earned through diligent effort and skilled dentistry.</strong> Same amount, same purchasing power — but the role of randomness could not be more different. Yet accountants can't tell the difference, and neither can your neighbors.</div>
+
+    <div class="history-grid">
+      <div class="history-cell"><div class="hist-icon">💰</div><div class="hist-label">History 1</div><div class="hist-desc">$10 Million<br>Financial Freedom</div></div>
+      <div class="history-cell"><div class="hist-icon">💰</div><div class="hist-label">History 2</div><div class="hist-desc">$10 Million<br>Financial Freedom</div></div>
+      <div class="history-cell"><div class="hist-icon">💰</div><div class="hist-label">History 3</div><div class="hist-desc">$10 Million<br>Financial Freedom</div></div>
+      <div class="history-cell"><div class="hist-icon">💰</div><div class="hist-label">History 4</div><div class="hist-desc">$10 Million<br>Financial Freedom</div></div>
+      <div class="history-cell"><div class="hist-icon">💰</div><div class="hist-label">History 5</div><div class="hist-desc">$10 Million<br>Financial Freedom</div></div>
+      <div class="history-cell outcome-death"><div class="hist-icon">💀</div><div class="hist-label">History 6</div><div class="hist-desc">Instant Death<br>Obituary Published</div></div>
+    </div>
+
+    <div class="history-verdict">
+      <strong>🎯 Key Insight:</strong> If several thousand 25-year-olds played this game once a year, a handful would reach 50 immensely wealthy — but the vast majority would already be in graveyards. The "success stories" you see may simply be the 5/6 who survived by chance.
+    </div>
+  </div>
+</div>
+
+<!-- 02: Risk Insight · The Invisible Barrel -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Risk Insight</div>
+    <div class="section-title t-02">Reality Is Deadlier Than Russian Roulette: The Invisible Barrel</div>
+    <div class="section-desc">Russian roulette at least has transparent rules — six chambers, one bullet, elementary-school math. But in real life, the risk generators are <strong>invisible</strong>. First, reality's "cylinder" can hold hundreds or thousands of chambers. After surviving dozens of trials unscathed, we forget a bullet is still inside and convince ourselves we are safe. This is the <strong>Black Swan problem</strong> — gamblers, investors, and decision-makers always believe "what happened to others won't happen to me." Second, we <strong>never see the losers</strong>. We observe people amassing enormous wealth without understanding the underlying mechanics or risks, and we never witness those eliminated from the game. The game looks easy, so we play it with gusto — until our own number comes up.</div>
+
+    <div class="risk-compare">
+      <div class="risk-row">
+        <div class="risk-label">Russian Roulette</div>
+        <div class="risk-track"><div class="risk-fill" style="width:17%"></div></div>
+        <div class="risk-val">Death Probability 16.7%<br>Rules clearly visible</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Financial Trading</div>
+        <div class="risk-track"><div class="risk-fill" style="width:60%"></div></div>
+        <div class="risk-val">High blow-up probability<br>Risk generator invisible</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Life Decisions</div>
+        <div class="risk-track"><div class="risk-fill" style="width:40%"></div></div>
+        <div class="risk-val">Unknown risk exposure<br>Hidden by survivorship bias</div>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      <div class="quote-text">"We see people amassing enormous wealth without understanding the underlying mechanics, so we don't see their risks, nor do we see the losers. The game looks easy, and we play it with great enthusiasm."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Character Contrast · Kenny vs Patrice -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Character Contrast</div>
+    <div class="section-title t-03">Two Kinds of People on Wall Street: Kenny vs. Patrice</div>
+    <div class="section-desc">Taleb encountered two polar-opposite bosses on Wall Street. They serve as the perfect case study in "outcome-oriented" versus "process-oriented" thinking. <strong>Kenny</strong> was the quintessential "results guy" — conservative dark suits, white shirts, Hermès ties. Articulate and handsome, he won the chairman's complete trust. Though he understood nothing about financial derivatives, he rose rapidly because his traders happened to make money. He couldn't grasp survivorship bias and refused to consider alternative histories. Eventually, all his traders left the industry — and so did he. <strong>Patrice</strong> was the complete opposite — flashy plaid sport jackets, calling from nightclubs at 3 a.m. to discuss minute risk details. He <strong>cared only about the risk generator, not the outcomes.</strong> He taught Taleb to watch for invisible risks that could blow up a portfolio, respected science deeply, and encouraged rigorous study of randomness.</div>
+
+    <div class="dual-grid">
+      <div class="dual-card person-a">
+        <div class="dual-icon">👔</div>
+        <div class="dual-text">
+          <h4>Kenny · Outcome-Oriented</h4>
+          <div class="dual-trait">🔴 Judges only by P&amp;L</div>
+          <div class="dual-trait">🔴 Rejects probabilistic thinking</div>
+          <div class="dual-trait">🔴 Rises through charm &amp; polish</div>
+          <div class="dual-trait">🔴 Eventually forced to resign</div>
+          <div class="dual-trait">🔴 "A ticking time bomb"</div>
+        </div>
+      </div>
+      <div class="dual-card person-b">
+        <div class="dual-icon">🦚</div>
+        <div class="dual-text">
+          <h4>Patrice · Process-Oriented</h4>
+          <div class="dual-trait">🟢 Cares only about risk generators</div>
+          <div class="dual-trait">🟢 Deeply understands probability</div>
+          <div class="dual-trait">🟢 Encourages scientific thinking</div>
+          <div class="dual-trait">🟢 Attends his protégé's PhD defense</div>
+          <div class="dual-trait">🟢 Possesses "Solonic wisdom"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Cognitive Trap · Media Distorts Probability -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Cognitive Trap</div>
+    <div class="section-title t-04">The Journalist's Russian Roulette: How Media Distorts Probability</div>
+    <div class="section-desc">Taleb presents a classic case: Nobel laureate Robert Shiller had long warned that stock prices were overvalued. Journalist Louis Rukeyser confronted him on television — "If people had listened to you, they'd have lost money, because prices have more than doubled since you started warning." This is a textbook <strong>outcome-backward</strong> fallacy. Markets can remain irrational for a long time; a correct risk assessment does not lose its validity just because short-term outcomes appear to contradict it. Yet Shiller's rigorous reasoning was utterly defenseless against Rukeyser's sound-bite rhetoric — because <strong>easy-sounding arguments always overpower correct-but-complex ones.</strong> Taleb draws out a profound contradiction: <strong>"Do not confuse correctness with comprehensibility."</strong> Einstein's theory of relativity was also dismissed as a crazy fantasy in 1905 — even the Nobel committee didn't award him for it. Statements that sound wise are often the most suspect.</div>
+
+    <div class="insight-trio">
+      <div class="insight-card">
+        <div class="insight-big">The Media</div>
+        <div class="insight-sm">Judges everything by outcomes<br>"If they'd listened to you,<br>they'd have lost money"</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-big">Probability Scholars</div>
+        <div class="insight-sm">See unrealized histories<br>"A single forecast error<br>should not be sensationalized"</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-big">Common Sense</div>
+        <div class="insight-sm">Confuses clarity with truth<br>"What is easy to state<br>must be easy to understand" ← Fallacy</div>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      <div class="quote-text">"Einstein said that common sense is nothing but a collection of misconceptions acquired by age eighteen. A glance through the history of science shows that almost all the clever things science has proven were initially dismissed as foolish madness."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Method of Thinking · The Risk Manager's Dilemma -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Method of Thinking</div>
+    <div class="section-title t-05">Wearing Probability Glasses: The Risk Manager's Dilemma</div>
+    <div class="section-desc">Corporations and financial institutions have created a peculiar role: the Risk Manager, tasked with ensuring the organization doesn't play Russian roulette too aggressively. Yet their position is excruciating: if they stop traders from taking risks, they are blamed retroactively for "costing shareholders profits"; if they let things slide and a blow-up occurs, they bear the blame. This drives risk managers toward political gamesmanship: issuing vaguely worded internal memos that warn without being explicit enough to provoke pushback. Taleb's own solution was to <strong>serve simultaneously as risk manager and head of his own trading operation</strong> — bearing responsibility for his own risks. The chapter closes on a deep irony: Taleb's probabilistic worldview inherently puts him at odds with conventional thinking, making him difficult to understand. Yet he manages other people's money — and <strong>needs most people to remain randomness-blind fools</strong> so he can profit by trading against them. His greatest risk is being "too successful" — because that would mean his profession is about to vanish.</div>
+
+    <div class="insight-trio">
+      <div class="insight-card">
+        <div class="insight-big">Probability ≠ Arithmetic</div>
+        <div class="insight-sm">Assessing the nature of a problem<br>matters more than calculation.<br>It is a way of thinking.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-big">Alternative Histories</div>
+        <div class="insight-sm">Consider what could have<br>happened but didn't —<br>not just what did happen.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-big">Counterintuitive Truth</div>
+        <div class="insight-sm">Success ≠ good decisions.<br>Failure ≠ bad decisions.<br>Randomness fools us all.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Probability is not merely a mathematical tool — it is a qualitative way of thinking. $10 million earned through Russian roulette is not worth the same as $10 million earned through diligent effort and skilled dentistry. We must learn to consider "alternative histories" — the outcomes that didn't happen but could have — because the invisible losers often reveal more truth than the visible winners. Success does not prove decisions were brilliant; failure does not prove decisions were poor. Randomness is the true protagonist hidden behind every narrative.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <em>Fooled by Randomness</em> Chapter 2 Infographic · Nassim Nicholas Taleb · Based on "A Bizarre Accounting Method" · For educational reference
+</div>
+
+</div>
+</body>
+</html>
