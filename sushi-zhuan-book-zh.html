@@ -5,223 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>苏轼传 · 全书</title>
 <style>
+/* ── Font ── */
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
 
-@font-face {
-  font-family: 'FZXPYZS';
-  src: url('../方正屏显雅宋简体.TTF') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
+/* ── Base ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:#f5f1eb;color:#1a1a1a;
-  font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
-  line-height:1.6;-webkit-font-smoothing:antialiased;
-}
-:root{
-  --red:#dc2626;--red-light:#fef2f2;--red-border:#fecaca;
-  --orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;
-  --gold:#ca8a04;--gold-light:#fefce8;--gold-border:#fde68a;
-  --indigo:#4f46e5;--indigo-light:#eef2ff;--indigo-border:#c7d2fe;
-  --teal:#0891b2;--teal-light:#ecfeff;--teal-border:#a5f3fc;
-}
+body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;background:#f5f1eb;color:#555;line-height:2.0;font-size:15px;-webkit-font-smoothing:antialiased;margin:0}
 
-.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
+/* ── Book wrapper ── */
+.book-wrapper{max-width:1200px;margin:0 auto;display:flex;gap:32px;padding:48px 16px 60px;align-items:flex-start;min-height:100vh}
 
-.lang-switch{text-align:right;margin-bottom:16px}
-.lang-btn{
-  display:inline-block;padding:6px 16px;border-radius:8px;
-  font-size:13px;text-decoration:none;letter-spacing:0.03em;
-  font-family:'FZXPYZS','PingFang SC',serif;
-  background:#fef2f2;color:#dc2626;border:1px solid #fecaca;
-  transition:opacity 0.15s;
-}
-.lang-btn:hover{opacity:0.75}
+/* ── Book header ── */
+.book-header{text-align:center;margin-bottom:48px}
+.book-header h1{font-size:28px;color:#1a1a1a;margin-bottom:8px;font-family:'FZXPYZS',serif;font-weight:normal;letter-spacing:.03em}
+.book-header .meta{font-size:14px;color:#888}
 
-.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
-.kpi-card{
-  flex:1;min-width:120px;
-  background:#fff;border:1px solid #e8e0d5;border-radius:12px;
-  padding:20px 16px;text-align:center;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
-}
-.kpi-num{font-size:32px;font-weight:700;color:var(--color, #dc2626);letter-spacing:-0.02em}
-.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+/* ── Sidebar ── */
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:48px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);max-height:calc(100vh - 96px);overflow-y:auto}
+.sidebar h3{font-size:16px;color:#1a1a1a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8e0d5;font-family:'FZXPYZS',serif}
+.sidebar-nav a{display:block;padding:5px 0;font-size:13px;color:#4f46e5;text-decoration:none;border-bottom:1px solid #f0ece6;transition:color .15s;line-height:1.6}
+.sidebar-nav a:hover{color:#dc2626}
+.sidebar-nav a:last-child{border-bottom:none}
 
-.header h1{
-  font-size:36px;font-weight:400;color:#1a1a1a;
-  letter-spacing:0.03em;margin-bottom:8px;
-  font-family:'FZXPYZS','PingFang SC',serif;
-}
-.header h2{
-  font-size:14px;font-weight:400;color:#888;
-  letter-spacing:0.02em;line-height:1.7;
-  font-family:'FZXPYZS','PingFang SC',serif;
-}
-.divider{
-  width:60px;height:3px;border-radius:2px;
-  background:linear-gradient(90deg,#dc2626,#fca5a5);
-  margin:20px 0 24px;
-}
+/* ── Main content ── */
+.main-content{flex:1;min-width:0;max-width:880px}
 
-.card{
-  background:#fff;border:1px solid #e8e0d5;border-radius:14px;
-  padding:28px 32px;margin-bottom:24px;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
-}
-.overview{
-  background:var(--light, #fef2f2);border:2px solid var(--border-color, #fecaca);
-  border-radius:14px;padding:24px 28px;margin-bottom:24px;
-}
+/* ── Chapter title ── */
+.chapter-title{font-family:'FZXPYZS','PingFang SC',serif;font-size:22px;color:#1a1a1a;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5;letter-spacing:.02em}
 
-.overview-label{
-  font-size:11px;font-weight:700;color:var(--color, #dc2626);
-  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
-}
-.overview-question{
-  font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px;
-}
-.overview-answer{
-  font-size:15px;color:#555;line-height:2.0;
-}
+/* ── Chapter divider ── */
+.chapter-divider{max-width:880px;margin:40px auto;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px;user-select:none}
 
-.section{border-left-width:4px;border-left-style:solid}
-.section-header{
-  display:flex;align-items:center;gap:12px;margin-bottom:16px;
-}
-.circle-num{
-  width:42px;height:42px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;font-weight:700;flex-shrink:0;
-}
-.section-tag{
-  font-size:12px;padding:3px 10px;border-radius:20px;
-  font-weight:500;letter-spacing:0.02em;
-}
+/* ── Responsive ── */
+@media(max-width:768px){.sidebar{display:none}.book-wrapper{display:block;padding:24px 12px 40px}}
+
+/* ── Original card styles ── */
+.container{max-width:100%;padding:0}
+.card, .overview, .section, .takeaway{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.overview p{margin-bottom:6px}
+.overview .oneliner{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:12px}
+.overview .scqa-label{font-size:12px;color:#888;margin-right:6px;font-weight:700}
+.overview .overview-label{font-size:11px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.overview .overview-question{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px}
+.overview .overview-answer{font-size:15px;color:#555;line-height:2.0}
+.section{border-left:4px solid transparent}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.circle-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700;flex-shrink:0}
+.section-tag{font-size:12px;letter-spacing:.04em;padding:2px 10px;border-radius:12px}
 .section h3{font-size:18px;font-weight:700}
-.section-body p{
-  font-size:15px;color:#555;line-height:2.0;margin-bottom:12px;
-}
+.section-body{margin-top:8px}
+.section-body p{}
 .bluf{color:#1a1a1a;font-weight:600;margin-bottom:8px}
-.detail{font-size:13px;color:#777}
-
-.quote-block{
-  background:#faf5ff;border-left:4px solid #c084fc;border-radius:0 10px 10px 0;
-  padding:16px 20px;margin-top:14px;position:relative;
-}
-.quote-mark{
-  position:absolute;top:-10px;left:12px;
-  font-size:32px;color:#c084fc;font-family:Georgia,serif;line-height:1;
-}
-.quote-text{
-  font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px;
-}
-.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
-
-.dual-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;
-}
-.dual-card{border-radius:10px;padding:16px 18px}
-.dual-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
-.dual-card.bad{background:#fef2f2;border:1px solid #fecaca}
-.dual-label{font-size:13px;font-weight:700;margin-bottom:6px}
-.dual-card.good .dual-label{color:#166534}
-.dual-card.bad .dual-label{color:#991b1b}
-.dual-card p{font-size:13px;color:#555;line-height:1.8}
-
-.flow-row{
-  display:flex;align-items:flex-start;justify-content:center;
-  gap:8px;margin-top:16px;flex-wrap:wrap;
-}
-.flow-step{
-  background:var(--light, #fff7ed);border:2px solid var(--border-color, #fed7aa);
-  border-radius:10px;padding:14px 16px;text-align:center;
-  font-size:13px;color:var(--color, #ea580c);font-weight:700;min-width:90px;
-}
-.flow-step-num{
-  display:block;font-size:11px;font-weight:400;
-  margin-bottom:4px;letter-spacing:0.04em;
-}
-.flow-arrow{font-size:18px;color:#ea580c;font-weight:700;padding-top:14px}
-
-.callout{
-  display:flex;gap:10px;align-items:flex-start;
-  border-radius:10px;padding:14px 16px;margin-top:14px;
-}
-.callout-text{font-size:13px;color:#555;line-height:1.8}
-.callout-text strong{color:#1a1a1a}
-.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-
-.data-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
-.data-card{
-  flex:1;min-width:100px;
-  border-radius:12px;padding:18px 14px;text-align:center;
-}
-.data-card.red{background:#fef2f2;border:1px solid #fecaca}
-.data-card.gold{background:#fefce8;border:1px solid #fde68a}
-.data-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
-.data-card.orange{background:#fff7ed;border:1px solid #fed7aa}
-.data-big{font-size:30px;font-weight:700;letter-spacing:-0.02em}
-.data-card.red .data-big{color:#dc2626}
-.data-card.gold .data-big{color:#ca8a04}
-.data-card.indigo .data-big{color:#4f46e5}
-.data-card.orange .data-big{color:#ea580c}
-.data-sm{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
-
-.takeaway{
-  background:#faf5ff;border:2px solid #d8b4fe;border-radius:14px;
-  padding:24px 28px;margin-bottom:24px;
-  display:flex;gap:16px;align-items:flex-start;
-}
-.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
-.takeaway-label{
-  font-size:13px;font-weight:700;color:#7c3aed;text-transform:uppercase;
-  letter-spacing:0.06em;margin-bottom:6px;
-}
-.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
-
-.footer{
-  text-align:center;font-size:12px;color:#bbb;line-height:1.8;
-  padding-top:16px;border-top:1px solid #e8e0d5;
-}
+.detail{font-size:13px;color:#777;line-height:1.6}
+.blockquote{border-left:3px solid #d5cfc5;padding-left:14px;color:#666;font-style:italic;margin:12px 0;font-size:14px}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.dual-card{background:#fafaf7;border:1px solid #e8e0d5;border-radius:10px;padding:14px 16px}
+.dual-card h4{font-size:14px;color:#1a1a1a;margin-bottom:4px}
+.dual-card p{font-size:13px;color:#666;line-height:1.7}
+.flow-row{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:8px 14px;font-size:13px;color:#9a3412;text-align:center}
+.flow-arrow{color:#ea580c;font-size:18px;font-weight:700}
+.data-row{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.data-card{flex:1;min-width:100px;padding:16px;border-radius:10px;text-align:center}
+.data-big{font-size:28px;font-weight:700}
+.data-sm{font-size:12px;color:#888;margin-top:4px}
+.cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.cmp-card{padding:16px;border-radius:10px;text-align:center}
+.cmp-icon{font-size:24px;margin-bottom:4px}
+.cmp-name{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.cmp-note{font-size:12px;color:#888;line-height:1.5}
+.takeaway{display:flex;gap:16px;align-items:flex-start}
+.takeaway-icon{font-size:28px;flex-shrink:0}
+.takeaway-label{font-size:12px;color:#888;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
+.takeaway p{color:#1a1a1a;font-weight:600;font-size:15px;line-height:1.8}
+.takeaway-text{flex:1}
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:120px;background:#fff;border:1px solid #e8e0d5;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.kpi-num{font-size:32px;font-weight:700;letter-spacing:-.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+.footer{text-align:center;font-size:12px;color:#bbb;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5}
+.header h1{font-size:32px;font-weight:400;color:#1a1a1a;letter-spacing:.03em;margin-bottom:8px}
+.header h2{font-size:14px;font-weight:400;color:#888;letter-spacing:.02em;line-height:1.7}
+.divider{width:60px;height:3px;border-radius:2px;background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#4f46e5,#db2777,#0891b2);margin:20px 0 24px}
+.quote-mark{font-size:48px;color:#d5cfc5;line-height:1;margin-bottom:4px}
+.quote-text{font-size:15px;color:#555;line-height:2.0;margin-bottom:8px}
+.quote-author{font-size:13px;color:#888}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+.lang-btn:hover{opacity:.75}
 
 @media(max-width:640px){
-  body{padding:16px 12px 40px}
-  .container{padding:0}
-  .header h1{font-size:22px}
-  .header h2{font-size:15px}
-  .takeaway{order:-1;margin-bottom:20px}
-  .kpi-num{font-size:28px}
-  .kpi-label{font-size:11px}
-  .card,.overview,.section{padding:18px 16px}
-  .section-header{flex-wrap:wrap;gap:8px}
-  .circle-num{width:34px;height:34px;font-size:14px}
-  .section h3{font-size:16px}
-  .flow-row{flex-direction:column;align-items:stretch}
-  .flow-arrow{display:none}
-  .dual-grid{grid-template-columns:1fr}
-  .data-row{flex-direction:column}
-  .kpi-row{flex-direction:column}
-  .bluf{font-size:16px}
+.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}
+.dual-grid,.data-row,.cmp-grid{grid-template-columns:1fr}
+.flow-row{flex-direction:column}
+.flow-arrow{display:none}
+.card,.overview,.section,.takeaway{padding:18px 16px}
 }
-
-@media(max-width:640px){html{font-size:14px}body{padding:40px 12px 48px}}
 </style>
 </head>
 <body>
 
-<div style="text-align:center;padding:60px 32px 40px;">
-  <h1 style="font-family:'FZXPYZS','PingFang SC',serif;font-size:36px;font-weight:400;color:#1a1a1a;letter-spacing:.06em;">苏轼传</h1>
-  <div style="font-size:14px;color:#888;margin-top:8px;letter-spacing:.04em;">13章全本</div>
+<div class="book-wrapper">
+<div class="sidebar">
+<h3>📖 目录</h3>
+<nav class="sidebar-nav">
+<a href="#ch0">引言 · 物华地灵铸伟才</a>
+<a href="#ch1">第1章 · 奋厉当世雄鹰出</a>
+<a href="#ch2">第2章 · 世事惟艰力难任</a>
+<a href="#ch3">第3章 · 德泽雅韵满余杭</a>
+<a href="#ch4">第4章 · 惟有悯农心尚在</a>
+<a href="#ch5">第5章 · 柏台霜气夜凄凄</a>
+<a href="#ch6">第6章 · 吟啸徐行迎风雨</a>
+<a href="#ch7">第7章 · 三咏赤壁成绝唱</a>
+<a href="#ch8">第8章 · 投老江湖终不失</a>
+<a href="#ch9">第9章 · 华灯飞盖寓京华</a>
+<a href="#ch10">第10章 · 四任知州泽生民</a>
+<a href="#ch11">第11章 · 白头萧散谪岭海</a>
+<a href="#ch12">第12章 · 皇天后土同悲悼</a>
+</nav>
 </div>
-
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sushi-zhuan-ch000-info-en.html">English</a>
+<div class="main-content">
+<div class="book-header">
+<h1>苏轼传</h1>
+<div class="meta">王水照 / 崔铭 · 13章全本</div>
 </div>
-
+<section id="ch0">
+<h2 class="chapter-title">引言 · 物华地灵铸伟才</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num" style="color:#dc2626">13</div>
@@ -241,10 +150,6 @@ body{
   </div>
 </div>
 
-<div class="header">
-  <h1>苏轼传 · 引言「物华地灵铸伟才」</h1>
-  <h2>宋仁宗景祐三年，彭老山忽然荒瘠——直到多年后人们才恍然大悟，原来这一年，一位不世之才诞生在这片土地上，山川灵气独钟于他一身。</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca">
@@ -339,13 +244,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sushi-zhuan-ch001-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch1">
+<h2 class="chapter-title">第1章 · 奋厉当世雄鹰出</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num" style="color:#dc2626">21</div>
@@ -365,10 +267,6 @@ body{
   </div>
 </div>
 
-<div class="header">
-  <h1>苏轼传 · 第一章「奋厉当世雄鹰出」</h1>
-  <h2>嘉祐元年三月，二十一岁的苏轼告别故乡，踏上艰险蜀道前往汴京——他并不知道，此行将使他如雄鹰展翅，一举震动文坛。</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca">
@@ -499,13 +397,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sushi-zhuan-ch002-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch2">
+<h2 class="chapter-title">第2章 · 世事惟艰力难任</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num" style="color:#dc2626">18年</div>
@@ -525,10 +420,6 @@ body{
   </div>
 </div>
 
-<div class="header">
-  <h1>苏轼传 · 第二章「世事惟艰力难任」</h1>
-  <h2>熙宁元年，苏轼第三次赴京——他不知这将是他最后一次亲近故土。千里之外的京城，新旧两党的激烈斗争已拉开帷幕，一场改变他一生轨迹的风暴正在酝酿。</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca">
@@ -681,17 +572,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch003-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第三章「德泽雅韵满余杭」</h1>
-  <h2>从汴京政治风暴中脱身的苏轼，在西湖的湖光山色中重新找回了诗心与生命的欢愉，留下"淡妆浓抹总相宜"的千古绝唱</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch3">
+<h2 class="chapter-title">第3章 · 德泽雅韵满余杭</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1071年</div>
@@ -807,17 +691,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch004-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第四章「惟有悯农心尚在」</h1>
-  <h2>从天堂杭州到荒凉密州，在蝗旱交加的绝境中，苏轼以"悯农"之心身先士卒抗灾救民，践行了儒家士大夫最可贵的民本精神</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch4">
+<h2 class="chapter-title">第4章 · 惟有悯农心尚在</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">3万斛</div>
@@ -940,17 +817,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch005-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第五章「柏台霜气夜凄凄」</h1>
-  <h2>赴湖州途中，苏轼在故人已逝的沧桑中完成了"不必仕不必不仕"的哲学升华，却不知一场致命的政治风暴——乌台诗案——正在京城悄然酝酿</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch5">
+<h2 class="chapter-title">第5章 · 柏台霜气夜凄凄</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1079年</div>
@@ -1062,17 +932,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch006-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第6章「吟啸徐行迎风雨」</h1>
-  <h2>元丰三年，苏轼抵达偏僻萧条的黄州——"自笑平生为口忙，老来事业转荒唐"，从皇帝誉为宰相之才到流放犯官，一场看不到尽头的苦刑开始了</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch6">
+<h2 class="chapter-title">第6章 · 吟啸徐行迎风雨</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1080年</div>
@@ -1171,17 +1034,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch007-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第7章「三咏赤壁成绝唱」</h1>
-  <h2>元丰五年，黄州第三年——"已将地狱等天宫"，一个崭新的自我在苦难中蜕变。东坡躬耕、雪堂雅集、赤壁放歌，催生了中国文学史上最辉煌的篇章</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch7">
+<h2 class="chapter-title">第7章 · 三咏赤壁成绝唱</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1082年</div>
@@ -1280,17 +1136,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch008-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第8章「投老江湖终不失」</h1>
-  <h2>元丰七年三月，量移汝州的诏命抵达黄州——四年零两个月的东坡岁月戛然而止。"归去来兮，吾归何处？"离别之际，黄州的山水、父老、鼓角，都化作了最深沉的眷恋</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch8">
+<h2 class="chapter-title">第8章 · 投老江湖终不失</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1084年</div>
@@ -1389,17 +1238,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch009-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第9章「华灯飞盖寓京华」</h1>
-  <h2>元丰八年，旧党复起，六年贬谪终告结束——但苏轼心中已无狂喜，只有"樽酒不空田百亩，归来分得闲中趣"的淡泊。密州父老夹道欢迎、登州海市倏忽即逝，再到京城华丽灯火的召唤</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch9">
+<h2 class="chapter-title">第9章 · 华灯飞盖寓京华</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1085年</div>
@@ -1498,17 +1340,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch010-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第10章「四任知州泽生民」</h1>
-  <h2>"一肚皮都是不合时宜"——朝中不容，苏轼出守四州，却成就了苏堤春晓、东坡肉、安乐坊与万民福祉</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch10">
+<h2 class="chapter-title">第10章 · 四任知州泽生民</h2>
 <div class="data-row" style="margin-bottom:24px;">
   <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
     <div class="data-big" style="color:#dc2626;">4州</div>
@@ -1644,17 +1479,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch011-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第11章「白头萧散谪岭海」</h1>
-  <h2>"报道先生春睡美，道人轻打五更钟"——章惇读到这句诗，笑着说"苏子瞻竟然如此快活"，于是把他贬到了天涯海角</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch11">
+<h2 class="chapter-title">第11章 · 白头萧散谪岭海</h2>
 <div class="data-row" style="margin-bottom:24px;">
   <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
     <div class="data-big" style="color:#dc2626;">5次</div>
@@ -1790,17 +1618,10 @@ body{
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sushi-zhuan-ch012-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏轼传 · 第12章「皇天后土同悲悼」</h1>
-  <h2>"着力即差"——这是苏轼留给世界的最后一句话。一代文宗以最清醒的姿态告别尘世，天下恸哭</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch12">
+<h2 class="chapter-title">第12章 · 皇天后土同悲悼</h2>
 <div class="data-row" style="margin-bottom:24px;">
   <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
     <div class="data-big" style="color:#dc2626;">66岁</div>
@@ -1938,6 +1759,10 @@ body{
   <p>来源：王水照/崔铭《苏轼传》· 人民文学出版社 2019 | 第12章「皇天后土同悲悼」· 信息图仅供学习参考</p>
 </div>
 
+</div>
+
+</section>
+</div>
 </div>
 
 </body>

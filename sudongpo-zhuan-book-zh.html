@@ -5,100 +5,148 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>苏东坡传 · 全书</title>
 <style>
+/* ── Font ── */
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
 
-@font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); }
-:root { --bg: #f5f1eb; --card-bg: #ffffff; --card-border: #e8e0d5; --text: #555; --dark: #1a1a1a; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif; color: var(--text); line-height: 2.0; font-size: 15px; }
-.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
-.lang-switch { text-align: right; margin-bottom: 8px; }
-.lang-switch a { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; text-decoration: none; border: 1px solid #d5cfc5; border-radius: 20px; padding: 4px 16px; transition: background 0.2s; }
-.lang-switch a:hover { background: #e8e0d5; }
-.header { margin-bottom: 24px; }
-.header h1 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--dark); margin-bottom: 8px; }
-.header h2 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: #888; }
-.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c, #ca8a04, #4f46e5, #db2777, #0891b2); border-radius: 2px; margin-bottom: 24px; }
-.overview, .card, .takeaway { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03); }
-.overview p { margin-bottom: 6px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.overview .oneliner { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 12px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.overview .scqa-label { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; margin-right: 6px; font-weight: 700; }
-.section { border-left: 4px solid transparent; }
-.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.circle-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
-.section-tag { font-size: 12px; font-family: 'FZXPYZS','PingFang SC',serif; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 12px; }
-.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
-.section-body { margin-top: 8px; }
-.section-body p { font-family: 'FZXPYZS','PingFang SC',serif; }
-.bluf { color: var(--dark); font-weight: 600; margin-bottom: 8px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.detail { font-size: 13px; color: #777; line-height: 1.6; font-family: 'FZXPYZS','PingFang SC',serif; }
-.blockquote { border-left: 3px solid #d5cfc5; padding-left: 14px; color: #666; font-style: italic; margin: 12px 0; font-size: 14px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-.dual-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 14px 16px; }
-.dual-card h4 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
-.dual-card p { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 13px; color: #666; line-height: 1.7; }
-.flow-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-.flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #9a3412; text-align: center; font-family: 'FZXPYZS','PingFang SC',serif; }
-.flow-arrow { color: #ea580c; font-size: 18px; font-weight: 700; font-family: 'FZXPYZS','PingFang SC',serif; }
-.data-row { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-.data-card { flex: 1; min-width: 100px; padding: 16px; border-radius: 10px; text-align: center; }
-.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
-.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.data-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
-.data-big { font-size: 28px; font-weight: 700; font-family: 'FZXPYZS',serif; }
-.data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #ca8a04; } .data-big.i { color: #4f46e5; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 10px; }
-.cmp-card { padding: 16px; border-radius: 10px; text-align: center; }
-.cmp-card.c1 { background: #fef2f2; border: 1px solid #fecaca; }
-.cmp-card.c2 { background: #fff7ed; border: 1px solid #fed7aa; }
-.cmp-card.c3 { background: #fefce8; border: 1px solid #fde68a; }
-.cmp-icon { font-size: 24px; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-note { font-size: 12px; color: #888; line-height: 1.5; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway { display: flex; gap: 16px; align-items: flex-start; }
-.takeaway-icon { font-size: 28px; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway-label { font-size: 12px; color: #888; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway p { color: var(--dark); font-weight: 600; font-size: 15px; line-height: 1.8; font-family: 'FZXPYZS','PingFang SC',serif; }
-.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; }
-.footer p { margin-bottom: 2px; font-family: 'FZXPYZS','PingFang SC',serif; }
-@media (max-width:640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 22px; }
-  .header h2 { font-size: 15px; }
-  .takeaway { order: -1; margin-bottom: 20px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .bluf { font-size: 16px; }
-  .dual-grid, .cmp-grid { grid-template-columns: 1fr; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .data-row { flex-direction: column; }
+/* ── Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;background:#f5f1eb;color:#555;line-height:2.0;font-size:15px;-webkit-font-smoothing:antialiased;margin:0}
+
+/* ── Book wrapper ── */
+.book-wrapper{max-width:1200px;margin:0 auto;display:flex;gap:32px;padding:48px 16px 60px;align-items:flex-start;min-height:100vh}
+
+/* ── Book header ── */
+.book-header{text-align:center;margin-bottom:48px}
+.book-header h1{font-size:28px;color:#1a1a1a;margin-bottom:8px;font-family:'FZXPYZS',serif;font-weight:normal;letter-spacing:.03em}
+.book-header .meta{font-size:14px;color:#888}
+
+/* ── Sidebar ── */
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:48px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);max-height:calc(100vh - 96px);overflow-y:auto}
+.sidebar h3{font-size:16px;color:#1a1a1a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8e0d5;font-family:'FZXPYZS',serif}
+.sidebar-nav a{display:block;padding:5px 0;font-size:13px;color:#4f46e5;text-decoration:none;border-bottom:1px solid #f0ece6;transition:color .15s;line-height:1.6}
+.sidebar-nav a:hover{color:#dc2626}
+.sidebar-nav a:last-child{border-bottom:none}
+
+/* ── Main content ── */
+.main-content{flex:1;min-width:0;max-width:880px}
+
+/* ── Chapter title ── */
+.chapter-title{font-family:'FZXPYZS','PingFang SC',serif;font-size:22px;color:#1a1a1a;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5;letter-spacing:.02em}
+
+/* ── Chapter divider ── */
+.chapter-divider{max-width:880px;margin:40px auto;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px;user-select:none}
+
+/* ── Responsive ── */
+@media(max-width:768px){.sidebar{display:none}.book-wrapper{display:block;padding:24px 12px 40px}}
+
+/* ── Original card styles ── */
+.container{max-width:100%;padding:0}
+.card, .overview, .section, .takeaway{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.overview p{margin-bottom:6px}
+.overview .oneliner{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:12px}
+.overview .scqa-label{font-size:12px;color:#888;margin-right:6px;font-weight:700}
+.overview .overview-label{font-size:11px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.overview .overview-question{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px}
+.overview .overview-answer{font-size:15px;color:#555;line-height:2.0}
+.section{border-left:4px solid transparent}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.circle-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700;flex-shrink:0}
+.section-tag{font-size:12px;letter-spacing:.04em;padding:2px 10px;border-radius:12px}
+.section h3{font-size:18px;font-weight:700}
+.section-body{margin-top:8px}
+.section-body p{}
+.bluf{color:#1a1a1a;font-weight:600;margin-bottom:8px}
+.detail{font-size:13px;color:#777;line-height:1.6}
+.blockquote{border-left:3px solid #d5cfc5;padding-left:14px;color:#666;font-style:italic;margin:12px 0;font-size:14px}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.dual-card{background:#fafaf7;border:1px solid #e8e0d5;border-radius:10px;padding:14px 16px}
+.dual-card h4{font-size:14px;color:#1a1a1a;margin-bottom:4px}
+.dual-card p{font-size:13px;color:#666;line-height:1.7}
+.flow-row{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:8px 14px;font-size:13px;color:#9a3412;text-align:center}
+.flow-arrow{color:#ea580c;font-size:18px;font-weight:700}
+.data-row{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.data-card{flex:1;min-width:100px;padding:16px;border-radius:10px;text-align:center}
+.data-big{font-size:28px;font-weight:700}
+.data-sm{font-size:12px;color:#888;margin-top:4px}
+.cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.cmp-card{padding:16px;border-radius:10px;text-align:center}
+.cmp-icon{font-size:24px;margin-bottom:4px}
+.cmp-name{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.cmp-note{font-size:12px;color:#888;line-height:1.5}
+.takeaway{display:flex;gap:16px;align-items:flex-start}
+.takeaway-icon{font-size:28px;flex-shrink:0}
+.takeaway-label{font-size:12px;color:#888;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
+.takeaway p{color:#1a1a1a;font-weight:600;font-size:15px;line-height:1.8}
+.takeaway-text{flex:1}
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:120px;background:#fff;border:1px solid #e8e0d5;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.kpi-num{font-size:32px;font-weight:700;letter-spacing:-.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+.footer{text-align:center;font-size:12px;color:#bbb;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5}
+.header h1{font-size:32px;font-weight:400;color:#1a1a1a;letter-spacing:.03em;margin-bottom:8px}
+.header h2{font-size:14px;font-weight:400;color:#888;letter-spacing:.02em;line-height:1.7}
+.divider{width:60px;height:3px;border-radius:2px;background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#4f46e5,#db2777,#0891b2);margin:20px 0 24px}
+.quote-mark{font-size:48px;color:#d5cfc5;line-height:1;margin-bottom:4px}
+.quote-text{font-size:15px;color:#555;line-height:2.0;margin-bottom:8px}
+.quote-author{font-size:13px;color:#888}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+.lang-btn:hover{opacity:.75}
+
+@media(max-width:640px){
+.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}
+.dual-grid,.data-row,.cmp-grid{grid-template-columns:1fr}
+.flow-row{flex-direction:column}
+.flow-arrow{display:none}
+.card,.overview,.section,.takeaway{padding:18px 16px}
 }
-
-@media(max-width:640px){html{font-size:14px}body{padding:40px 12px 48px}}
 </style>
 </head>
 <body>
 
-<div style="text-align:center;padding:60px 32px 40px;">
-  <h1 style="font-family:'FZXPYZS','PingFang SC',serif;font-size:36px;font-weight:400;color:#1a1a1a;letter-spacing:.06em;">苏东坡传</h1>
-  <div style="font-size:14px;color:#888;margin-top:8px;letter-spacing:.04em;">林语堂 · 29章全本</div>
+<div class="book-wrapper">
+<div class="sidebar">
+<h3>📖 目录</h3>
+<nav class="sidebar-nav">
+<a href="#ch1">第1章 · 原序</a>
+<a href="#ch2">第2章 · 苏轼</a>
+<a href="#ch3">第3章 · 峨嵋山金顶</a>
+<a href="#ch4">第4章 · 少年时代</a>
+<a href="#ch5">第5章 · 应试</a>
+<a href="#ch6">第6章 · 父子进京</a>
+<a href="#ch7">第7章 · 初仕凤翔</a>
+<a href="#ch8">第8章 · 王安石变法</a>
+<a href="#ch9">第9章 · 拗相公</a>
+<a href="#ch10">第10章 · 反对风暴</a>
+<a href="#ch11">第11章 · 杭州与密州</a>
+<a href="#ch12">第12章 · 人间天堂</a>
+<a href="#ch13">第13章 · 狱中百姓</a>
+<a href="#ch14">第14章 · 黄楼时期</a>
+<a href="#ch15">第15章 · 乌台诗案</a>
+<a href="#ch16">第16章 · 东坡居士</a>
+<a href="#ch17">第17章 · 赤壁赋</a>
+<a href="#ch18">第18章 · 黄州之乐</a>
+<a href="#ch19">第19章 · 流放岁月</a>
+<a href="#ch20">第20章 · 太后恩宠</a>
+<a href="#ch21">第21章 · 国画</a>
+<a href="#ch22">第22章 · 谦退之道</a>
+<a href="#ch23">第23章 · 杭州太守</a>
+<a href="#ch24">第24章 · 抗灾救荒</a>
+<a href="#ch25">第25章 · 二度流放</a>
+<a href="#ch26">第26章 · 惠州谪居</a>
+<a href="#ch27">第27章 · 朝云</a>
+<a href="#ch28">第28章 · 海外海南</a>
+<a href="#ch29">第29章 · 北归</a>
+</nav>
 </div>
-
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch001-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第1章「原序」</h1>
-  <h2>一个不可救药的乐天派——林语堂为何要为苏东坡作传？</h2>
+<div class="main-content">
+<div class="book-header">
+<h1>苏东坡传</h1>
+<div class="meta">林语堂 · 29章全本</div>
 </div>
-<div class="divider"></div>
-
+<section id="ch1">
+<h2 class="chapter-title">第1章 · 原序</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1700+</div>
@@ -197,17 +245,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch002-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第2章「苏轼」</h1>
-  <h2>要认识一个死去千年的人其实并不难——苏东坡伟大的人格比任何中国作家更完整地蚀刻在他的生活和作品中</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch2">
+<h2 class="chapter-title">第2章 · 苏轼</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1037</div>
@@ -306,17 +347,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch003-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第3章「峨嵋山金顶」</h1>
-  <h2>眉山三苏——中国文学史上最著名的文学世家，诞生在峨眉山阴影下的稻田与荷塘之间</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch3">
+<h2 class="chapter-title">第3章 · 峨嵋山金顶</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">唐宋八大家</div>
@@ -415,17 +449,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch004-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第4章「少年时代」</h1>
-  <h2>"妈，如果我长大变成范滂，你容许吗？"——母亲的正直启蒙、父亲的文体改革、弟弟的终生陪伴，三重力量塑造了少年苏东坡</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch4">
+<h2 class="chapter-title">第4章 · 少年时代</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">6岁</div>
@@ -524,17 +551,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch005-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第5章「应试」</h1>
-  <h2>欧阳修说："读苏东坡的信，我全身喜极流汗。我应当退隐，使这个青年出人头地。"——二十岁的苏东坡以一篇"杜撰典故"的奇文高中进士</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch5">
+<h2 class="chapter-title">第5章 · 应试</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1056年</div>
@@ -645,17 +665,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch006-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第6章「父子进京」</h1>
-  <h2>穿越三峡二百二十哩的壮丽险境——"故乡飘已远，往意浩无边"，两兄弟一路作诗，走了一千一百哩才抵京师</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch6">
+<h2 class="chapter-title">第6章 · 父子进京</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1100+哩</div>
@@ -754,17 +767,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch007-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第7章「初仕凤翔」</h1>
-  <h2>"人生到处知何似，应似飞鸿踏雪泥"——初仕凤翔的苏东坡以赤诚为民祈雨、以雄辩与鬼神争理，展现出烈焰般的生命活力</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch7">
+<h2 class="chapter-title">第7章 · 初仕凤翔</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1061年</div>
@@ -875,17 +881,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch008-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第8章「王安石变法」</h1>
-  <h2>"衣臣虏之衣，食犬彘之食"——苏洵以《辨奸论》预言这位不近人情的怪人，将掀起宋代最剧烈的国家资本主义实验</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch8">
+<h2 class="chapter-title">第8章 · 王安石变法</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">4次</div>
@@ -1039,17 +1038,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch009-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第9章「拗相公」</h1>
-  <h2>"天命不足畏，众言不足从，祖宗之法不足用"——苏东坡给王安石贴上的"三不足"标签，成为这位拗相公最传神的肖像</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch9">
+<h2 class="chapter-title">第9章 · 拗相公</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">三不足</div>
@@ -1206,17 +1198,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch010-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第10章「反对风暴」</h1>
-  <h2>"十日不雨，即乞斩臣宣德门外"——一个安上门小吏郑侠以一幅灾民图为武器，在太后、天灾与内讧的三重夹击下，终结了拗相公的时代</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch10">
+<h2 class="chapter-title">第10章 · 反对风暴</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1073年</div>
@@ -1349,17 +1334,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch011-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第11章「杭州与密州」</h1>
-  <h2>"多生绮语磨不尽，尚有宛转诗人情"——杭州密州八、九年间，苏东坡在兄弟离别、子由劝诫与孟子浩然之气的交织中，开启了最自由奔放的诗篇</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch11">
+<h2 class="chapter-title">第11章 · 杭州与密州</h2>
 <div class="data-row" style="margin-bottom:24px;">
     <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
       <div class="data-big" style="color:#dc2626;">1071年</div>
@@ -1499,17 +1477,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch012-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第12章「人间天堂」</h1>
-  <h2>熙宁四年至七年（1071–1074），杭州通判时期的诗意与自在</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch12">
+<h2 class="chapter-title">第12章 · 人间天堂</h2>
 <div class="data-row">
   <div class="data-card red">
     <div class="data-big r">3年</div>
@@ -1624,17 +1595,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch013-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第13章「狱中百姓」</h1>
-  <h2>杭州天堂的另一面——囚犯、蝗灾与诗人良心的觉醒</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch13">
+<h2 class="chapter-title">第13章 · 狱中百姓</h2>
 <div class="data-row">
   <div class="data-card red">
     <div class="data-big r">17,000</div>
@@ -1737,17 +1701,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="sudongpo-zhuan-ch014-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>苏东坡传 · 第14章「黄楼时期」</h1>
-  <h2>熙宁十年至元丰元年（1077–1078），徐州太守——从诗人到实干家的蜕变</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch14">
+<h2 class="chapter-title">第14章 · 黄楼时期</h2>
 <div class="data-row">
   <div class="data-card red">
     <div class="data-big r">45天</div>
@@ -1873,13 +1830,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a href="sudongpo-zhuan-ch015-info-en.html" target="_blank">English</a></div>
-<div class="header">
-<h1>苏东坡传 · 第15章「乌台诗案」</h1>
-<h2>一句诗，四份状，一场改变中国文学史走向的文字狱</h2>
-<div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch15">
+<h2 class="chapter-title">第15章 · 乌台诗案</h2>
 </div>
 
 <div class="overview">
@@ -1969,13 +1923,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 <p>来源：林语堂 ·《苏东坡传》· 2015<br>日期：2026-06-17 · 信息图仅供学习参考</p>
 </div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a href="sudongpo-zhuan-ch016-info-en.html" target="_blank">English</a></div>
-<div class="header">
-<h1>苏东坡传 · 第16章「东坡居士」</h1>
-<h2>死里逃生之后，一个诗人如何变成了农夫、隐士与哲人</h2>
-<div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch16">
+<h2 class="chapter-title">第16章 · 东坡居士</h2>
 </div>
 
 <div class="kpi-row">
@@ -2072,13 +2023,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 <p>来源：林语堂 ·《苏东坡传》· 2015<br>日期：2026-06-17 · 信息图仅供学习参考</p>
 </div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a href="sudongpo-zhuan-ch017-info-en.html" target="_blank">English</a></div>
-<div class="header">
-<h1>苏东坡传 · 第17章「赤壁赋」</h1>
-<h2>四篇千古绝唱，如何用几百个字道尽人在宇宙中的渺小与丰盛</h2>
-<div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch17">
+<h2 class="chapter-title">第17章 · 赤壁赋</h2>
 </div>
 
 <div class="kpi-row">
@@ -2174,13 +2122,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 <p>来源：林语堂 ·《苏东坡传》· 2015<br>日期：2026-06-17 · 信息图仅供学习参考</p>
 </div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a href="sudongpo-zhuan-ch018-info-en.html" target="_blank">English</a></div>
-<div class="header">
-<h1>苏东坡传 · 第18章「黄州之乐」</h1>
-<h2>瑜伽、炼丹、长生术——中国文人如何用身心修炼寻找灵魂的平静</h2>
-<div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch18">
+<h2 class="chapter-title">第18章 · 黄州之乐</h2>
 </div>
 
 <div class="kpi-row">
@@ -2285,13 +2230,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 <p>来源：林语堂 ·《苏东坡传》· 2015<br>日期：2026-06-17 · 信息图仅供学习参考</p>
 </div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a href="sudongpo-zhuan-ch019-info-en.html" target="_blank">English</a></div>
-<div class="header">
-<h1>苏东坡传 · 第19章「流放岁月」</h1>
-<h2>从黄州到汝州，一段漫长的漂泊中他面见王安石、烧毁房契、寻找归宿</h2>
-<div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch19">
+<h2 class="chapter-title">第19章 · 流放岁月</h2>
 </div>
 
 <div class="overview">
@@ -2388,13 +2330,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 <p>来源：林语堂 ·《苏东坡传》· 2015<br>日期：2026-06-17 · 信息图仅供学习参考</p>
 </div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a href="sudongpo-zhuan-ch020-info-en.html" target="_blank">English</a></div>
-<div class="header">
-<h1>苏东坡传 · 第20章「太后恩宠」</h1>
-<h2>八个月内连升三品——一个不愿做官的人如何被权力追逐</h2>
-<div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch20">
+<h2 class="chapter-title">第20章 · 太后恩宠</h2>
 </div>
 
 <div class="kpi-row">
@@ -2491,13 +2430,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 <p>来源：林语堂 ·《苏东坡传》· 2015<br>日期：2026-06-17 · 信息图仅供学习参考</p>
 </div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a href="sudongpo-zhuan-ch021-info-en.html" target="_blank">English</a></div>
-<div class="header">
-<h1>苏东坡传 · 第21章「国画」</h1>
-<h2>墨竹、士人画与纸上舞蹈——苏东坡如何用一支笔改变中国艺术</h2>
-<div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch21">
+<h2 class="chapter-title">第21章 · 国画</h2>
 </div>
 
 <div class="overview">
@@ -2587,13 +2523,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 <p>来源：林语堂 ·《苏东坡传》· 2015<br>日期：2026-06-17 · 信息图仅供学习参考</p>
 </div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a href="sudongpo-zhuan-ch022-info-en.html" target="_blank">English</a></div>
-<div class="header">
-<h1>苏东坡传 · 第22章「谦退之道」</h1>
-<h2>不随、不诺、不闭嘴——一个拒绝玩政治游戏的人为何成为靶心</h2>
-<div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch22">
+<h2 class="chapter-title">第22章 · 谦退之道</h2>
 </div>
 
 <div class="overview">
@@ -2683,13 +2616,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 <p>来源：林语堂 ·《苏东坡传》· 2015<br>日期：2026-06-17 · 信息图仅供学习参考</p>
 </div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch023-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch23">
+<h2 class="chapter-title">第23章 · 杭州太守</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num">50</div>
@@ -2709,10 +2639,6 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
   </div>
 </div>
 
-<div class="header">
-  <h1>苏东坡传 · 第23章「杭州太守」</h1>
-  <h2>元祐四年（1089年）苏东坡抵达杭州任太守，时年五十二岁。这座五十万人口的古城满目疮痍：官舍倒塌压死百姓、运河淤泥堵塞交通、全城没有一家公立医院、居民只能喝带盐的水——一位诗人太守如何在短短一年半内，将杭州真正变成「人间天堂」？</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview">
@@ -2820,13 +2746,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch024-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch24">
+<h2 class="chapter-title">第24章 · 抗灾救荒</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num">50</div>
@@ -2846,10 +2769,6 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
   </div>
 </div>
 
-<div class="header">
-  <h1>苏东坡传 · 第24章「抗灾救荒」</h1>
-  <h2>苏东坡被召回京师，政敌环伺，三个月后贬至颍州。他看到的是比政治斗争更触目惊心的景象：农民剥榆树皮煮粥充饥，丰年却因官吏逼债而逃离家园——「丰凶皆病」。面对一个让人民进退两难的系统，一个人的抗争能改变什么？</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview">
@@ -2959,13 +2878,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch025-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch25">
+<h2 class="chapter-title">第25章 · 二度流放</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num">1,500</div>
@@ -2985,10 +2901,6 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
   </div>
 </div>
 
-<div class="header">
-  <h1>苏东坡传 · 第25章「二度流放」</h1>
-  <h2>元祐八年（1093年），苏东坡的妻子和太后相继去世——两位守护神陨落后，他的命运急转直下。章惇拜相，元祐大臣尽遭流放。五十七岁的苏东坡被贬至岭南惠州，行程一千五百里，途中连遭三次贬官降职。当命运将一切夺走，一个人如何守住内心的自由？</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview">
@@ -3094,13 +3006,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch026-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch26">
+<h2 class="chapter-title">第26章 · 惠州谪居</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num">1095</div>
@@ -3120,10 +3029,6 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
   </div>
 </div>
 
-<div class="header">
-  <h1>苏东坡传 · 第26章「惠州谪居」</h1>
-  <h2>苏东坡抵达惠州，发现这里桔子、甘蔗、荔枝满园，与想象中瘴疠之地完全不同——「岭南万户皆春色」。但当朝廷宣布元祐大臣「永不叙复」后，北归之望彻底断绝。一个人被永远放逐到了天涯海角，该如何在绝境中建造自己的生活？</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview">
@@ -3248,13 +3153,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch027-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch27">
+<h2 class="chapter-title">第27章 · 朝云</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num">31</div>
@@ -3274,10 +3176,6 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
   </div>
 </div>
 
-<div class="header">
-  <h1>苏东坡传 · 第27章「朝云」</h1>
-  <h2>苏东坡在惠州的故事总是离不开朝云。她从杭州便一路跟随，儿子夭折后依然不离不弃。到惠州那年朝云三十一岁，东坡五十七岁。她聪明、愉快、活泼、有灵气，是苏东坡一生所遇最能理解他的女子。什么是超越年龄与命运的爱？当一位年轻女子选择陪伴年迈诗人走向生命的暮年，这种选择意味着什么？</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview">
@@ -3383,13 +3281,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch028-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch28">
+<h2 class="chapter-title">第28章 · 海外海南</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num">60</div>
@@ -3409,10 +3304,6 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
   </div>
 </div>
 
-<div class="header">
-  <h1>苏东坡传 · 第28章「海外海南」</h1>
-  <h2>海南岛当时是中国版图最边缘的蛮荒之地，居民大部分是黎人。苏东坡是唯一被贬到这里的元祐大臣——章惇觉得把「子瞻」贬到「儋州」很有趣。六十岁的苏东坡渡海时「眩怀丧魄」，上岛后发现「六无」——当生命被剥夺到只剩「活着」本身，一个人还能剩下什么？</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview">
@@ -3506,13 +3397,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch029-info-en.html">English</a>
-</div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch29">
+<h2 class="chapter-title">第29章 · 北归</h2>
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="kpi-num">24</div>
@@ -3532,10 +3420,6 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
   </div>
 </div>
 
-<div class="header">
-  <h1>苏东坡传 · 第29章「北归」</h1>
-  <h2>元符三年（1100年）哲宗去世，年仅二十四岁。徽宗继位，新太后摄政，元祐大臣全部获赦。苏东坡终于可以离开海南，但他面临新的选择：是去颍昌与弟弟团聚，还是回常州湖畔的田庄？然而旅途的酷暑和江河的湿气正在悄悄蚕食他的生命——流放归来的诗人，还有多少时间留给这个世界？</h2>
-  <div class="divider"></div>
 </div>
 
 <div class="overview">
@@ -3640,6 +3524,10 @@ body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif S
   信息图生成日期：2026年6月17日 · 仅供参考学习
 </div>
 
+</div>
+
+</section>
+</div>
 </div>
 
 </body>

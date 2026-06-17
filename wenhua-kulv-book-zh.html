@@ -5,98 +5,145 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>文化苦旅 · 全书</title>
 <style>
+/* ── Font ── */
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
 
-@font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); }
-:root { --bg: #f5f1eb; --card-bg: #ffffff; --card-border: #e8e0d5; --text: #555; --dark: #1a1a1a; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong',Georgia,serif; color: var(--text); line-height: 2.0; font-size: 15px; }
-.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
-.lang-switch { text-align: right; margin-bottom: 8px; }
-.lang-switch a { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; text-decoration: none; border: 1px solid #d5cfc5; border-radius: 20px; padding: 4px 16px; transition: background 0.2s; }
-.lang-switch a:hover { background: #e8e0d5; }
-.header { margin-bottom: 24px; }
-.header h1 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--dark); margin-bottom: 8px; }
-.header h2 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: #888; }
-.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c, #ca8a04, #4f46e5, #db2777, #0891b2); border-radius: 2px; margin-bottom: 24px; }
-.overview, .card, .takeaway { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03); }
-.overview p { margin-bottom: 6px; }
-.overview .oneliner { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 12px; }
-.overview .scqa-label { font-size: 12px; color: #888; margin-right: 6px; font-weight: 700; }
-.section { border-left: 4px solid transparent; }
-.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.circle-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; }
-.section-tag { font-size: 12px; font-family: 'FZXPYZS','PingFang SC',serif; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 12px; }
-.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
-.section-body { margin-top: 8px; }
-.bluf { color: var(--dark); font-weight: 600; margin-bottom: 8px; }
-.detail { font-size: 13px; color: #777; line-height: 1.6; }
-.blockquote { border-left: 3px solid #d5cfc5; padding-left: 14px; color: #666; font-style: italic; margin: 12px 0; font-size: 14px; }
-.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-.dual-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 14px 16px; }
-.dual-card h4 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
-.dual-card p { font-size: 13px; color: #666; line-height: 1.7; }
-.flow-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-.flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #9a3412; text-align: center; }
-.flow-arrow { color: #ea580c; font-size: 18px; font-weight: 700; }
-.data-row { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-.data-card { flex: 1; min-width: 100px; padding: 16px; border-radius: 10px; text-align: center; }
-.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
-.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.data-big { font-size: 28px; font-weight: 700; font-family: 'FZXPYZS',serif; }
-.data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #ca8a04; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; }
-.cmp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 10px; }
-.cmp-card { padding: 16px; border-radius: 10px; text-align: center; }
-.cmp-card.c1 { background: #fef2f2; border: 1px solid #fecaca; }
-.cmp-card.c2 { background: #fff7ed; border: 1px solid #fed7aa; }
-.cmp-card.c3 { background: #fefce8; border: 1px solid #fde68a; }
-.cmp-icon { font-size: 24px; margin-bottom: 4px; }
-.cmp-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-.cmp-note { font-size: 12px; color: #888; line-height: 1.5; }
-.takeaway { display: flex; gap: 16px; align-items: flex-start; }
-.takeaway-icon { font-size: 28px; flex-shrink: 0; }
-.takeaway-label { font-size: 12px; color: #888; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
-.takeaway p { color: var(--dark); font-weight: 600; font-size: 15px; line-height: 1.8; }
-.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; }
-.footer p { margin-bottom: 2px; }
-@media (max-width:640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 22px; }
-  .header h2 { font-size: 15px; }
-  .takeaway { order: -1; margin-bottom: 20px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .bluf { font-size: 16px; }
-  .dual-grid, .cmp-grid { grid-template-columns: 1fr; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .data-row { flex-direction: column; }
+/* ── Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;background:#f5f1eb;color:#555;line-height:2.0;font-size:15px;-webkit-font-smoothing:antialiased;margin:0}
+
+/* ── Book wrapper ── */
+.book-wrapper{max-width:1200px;margin:0 auto;display:flex;gap:32px;padding:48px 16px 60px;align-items:flex-start;min-height:100vh}
+
+/* ── Book header ── */
+.book-header{text-align:center;margin-bottom:48px}
+.book-header h1{font-size:28px;color:#1a1a1a;margin-bottom:8px;font-family:'FZXPYZS',serif;font-weight:normal;letter-spacing:.03em}
+.book-header .meta{font-size:14px;color:#888}
+
+/* ── Sidebar ── */
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:48px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);max-height:calc(100vh - 96px);overflow-y:auto}
+.sidebar h3{font-size:16px;color:#1a1a1a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8e0d5;font-family:'FZXPYZS',serif}
+.sidebar-nav a{display:block;padding:5px 0;font-size:13px;color:#4f46e5;text-decoration:none;border-bottom:1px solid #f0ece6;transition:color .15s;line-height:1.6}
+.sidebar-nav a:hover{color:#dc2626}
+.sidebar-nav a:last-child{border-bottom:none}
+
+/* ── Main content ── */
+.main-content{flex:1;min-width:0;max-width:880px}
+
+/* ── Chapter title ── */
+.chapter-title{font-family:'FZXPYZS','PingFang SC',serif;font-size:22px;color:#1a1a1a;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5;letter-spacing:.02em}
+
+/* ── Chapter divider ── */
+.chapter-divider{max-width:880px;margin:40px auto;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px;user-select:none}
+
+/* ── Responsive ── */
+@media(max-width:768px){.sidebar{display:none}.book-wrapper{display:block;padding:24px 12px 40px}}
+
+/* ── Original card styles ── */
+.container{max-width:100%;padding:0}
+.card, .overview, .section, .takeaway{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.overview p{margin-bottom:6px}
+.overview .oneliner{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:12px}
+.overview .scqa-label{font-size:12px;color:#888;margin-right:6px;font-weight:700}
+.overview .overview-label{font-size:11px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.overview .overview-question{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px}
+.overview .overview-answer{font-size:15px;color:#555;line-height:2.0}
+.section{border-left:4px solid transparent}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.circle-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700;flex-shrink:0}
+.section-tag{font-size:12px;letter-spacing:.04em;padding:2px 10px;border-radius:12px}
+.section h3{font-size:18px;font-weight:700}
+.section-body{margin-top:8px}
+.section-body p{}
+.bluf{color:#1a1a1a;font-weight:600;margin-bottom:8px}
+.detail{font-size:13px;color:#777;line-height:1.6}
+.blockquote{border-left:3px solid #d5cfc5;padding-left:14px;color:#666;font-style:italic;margin:12px 0;font-size:14px}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.dual-card{background:#fafaf7;border:1px solid #e8e0d5;border-radius:10px;padding:14px 16px}
+.dual-card h4{font-size:14px;color:#1a1a1a;margin-bottom:4px}
+.dual-card p{font-size:13px;color:#666;line-height:1.7}
+.flow-row{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:8px 14px;font-size:13px;color:#9a3412;text-align:center}
+.flow-arrow{color:#ea580c;font-size:18px;font-weight:700}
+.data-row{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.data-card{flex:1;min-width:100px;padding:16px;border-radius:10px;text-align:center}
+.data-big{font-size:28px;font-weight:700}
+.data-sm{font-size:12px;color:#888;margin-top:4px}
+.cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.cmp-card{padding:16px;border-radius:10px;text-align:center}
+.cmp-icon{font-size:24px;margin-bottom:4px}
+.cmp-name{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.cmp-note{font-size:12px;color:#888;line-height:1.5}
+.takeaway{display:flex;gap:16px;align-items:flex-start}
+.takeaway-icon{font-size:28px;flex-shrink:0}
+.takeaway-label{font-size:12px;color:#888;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em}
+.takeaway p{color:#1a1a1a;font-weight:600;font-size:15px;line-height:1.8}
+.takeaway-text{flex:1}
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:120px;background:#fff;border:1px solid #e8e0d5;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.kpi-num{font-size:32px;font-weight:700;letter-spacing:-.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+.footer{text-align:center;font-size:12px;color:#bbb;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5}
+.header h1{font-size:32px;font-weight:400;color:#1a1a1a;letter-spacing:.03em;margin-bottom:8px}
+.header h2{font-size:14px;font-weight:400;color:#888;letter-spacing:.02em;line-height:1.7}
+.divider{width:60px;height:3px;border-radius:2px;background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#4f46e5,#db2777,#0891b2);margin:20px 0 24px}
+.quote-mark{font-size:48px;color:#d5cfc5;line-height:1;margin-bottom:4px}
+.quote-text{font-size:15px;color:#555;line-height:2.0;margin-bottom:8px}
+.quote-author{font-size:13px;color:#888}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+.lang-btn:hover{opacity:.75}
+
+@media(max-width:640px){
+.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}
+.dual-grid,.data-row,.cmp-grid{grid-template-columns:1fr}
+.flow-row{flex-direction:column}
+.flow-arrow{display:none}
+.card,.overview,.section,.takeaway{padding:18px 16px}
 }
-
-@media(max-width:640px){html{font-size:14px}body{padding:40px 12px 48px}}
 </style>
 </head>
 <body>
 
-<div style="text-align:center;padding:60px 32px 40px;">
-  <h1 style="font-family:'FZXPYZS','PingFang SC',serif;font-size:36px;font-weight:400;color:#1a1a1a;letter-spacing:.06em;">文化苦旅</h1>
-  <div style="font-size:14px;color:#888;margin-top:8px;letter-spacing:.04em;">余秋雨 · 26章全本</div>
+<div class="book-wrapper">
+<div class="sidebar">
+<h3>📖 目录</h3>
+<nav class="sidebar-nav">
+<a href="#ch1">第1章 · 牌坊</a>
+<a href="#ch2">第2章 · 寺庙</a>
+<a href="#ch3">第3章 · 我的山河</a>
+<a href="#ch4">第4章 · 都江堰</a>
+<a href="#ch5">第5章 · 道士塔</a>
+<a href="#ch6">第6章 · 莫高窟</a>
+<a href="#ch7">第7章 · 沙原隐泉</a>
+<a href="#ch8">第8章 · 阳关雪</a>
+<a href="#ch9">第9章 · 西域喀什</a>
+<a href="#ch10">第10章 · 废井冷眼</a>
+<a href="#ch11">第11章 · 杭州宣言</a>
+<a href="#ch12">第12章 · 黄州突围</a>
+<a href="#ch13">第13章 · 山庄背影</a>
+<a href="#ch14">第14章 · 宁古塔</a>
+<a href="#ch15">第15章 · 抱愧山西</a>
+<a href="#ch16">第16章 · 风雨天一阁</a>
+<a href="#ch17">第17章 · 鱼尾山屋</a>
+<a href="#ch18">第18章 · 北极寒夜</a>
+<a href="#ch19">第19章 · 远方的海</a>
+<a href="#ch20">第20章 · 谢家门孔</a>
+<a href="#ch21">第21章 · 巴金百年</a>
+<a href="#ch22">第22章 · 佐临遗言</a>
+<a href="#ch23">第23章 · 寻石之路</a>
+<a href="#ch24">第24章 · 天人对话</a>
+<a href="#ch25">第25章 · 为妈妈致悼词</a>
+<a href="#ch26">第26章 · 祭笔</a>
+</nav>
 </div>
-
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch001-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第1章「牌坊」</h1>
-  <h2>贞节牌坊是女性“假死”的伪装——新式教育和女教师完成了乡村女性的集体解冻</h2>
+<div class="main-content">
+<div class="book-header">
+<h1>文化苦旅</h1>
+<div class="meta">余秋雨 · 26章全本</div>
 </div>
-<div class="divider"></div>
-
+<section id="ch1">
+<h2 class="chapter-title">第1章 · 牌坊</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：家乡的贞节牌坊并非表彰“从一而终”的道德丰碑，而是父亲们为女儿策划的“假死”仪式——牌坊下埋葬的不是尸体而是希望，尼姑庵变成的小学和雪岭上红头巾的女学生完成了乡村女性跨越百年的自我解冻。</div>
   <p><span class="scqa-label">问题</span>家乡的贞节牌坊和尼姑庵里的小学，隐藏着怎样的女性命运密码？</p>
@@ -174,17 +221,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch002-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第2章「寺庙」</h1>
-  <h2>寺庙的佛灯与学校的煤油灯共同照亮乡村——传统信仰与现代教育殊途同归</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch2">
+<h2 class="chapter-title">第2章 · 寺庙</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：吴山庙的佛灯与小学的煤油灯，一佛一文，分别照亮了被土匪困扰的乡村黑夜。看似对立的传统信仰与现代教育，在“惜生护生”的共同根基上和解——弘一法师（李叔同）的双重身份就是最好的证明。</div>
   <p><span class="scqa-label">问题</span>寺庙和学校，传统信仰与现代教育，是对立还是互补？</p>
@@ -250,17 +290,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch003-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第3章「我的山河」</h1>
-  <h2>一切文化的终极基准在于山河大地——黄河、长江、长城三条线决定中华文明的基因图谱</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch3">
+<h2 class="chapter-title">第3章 · 我的山河</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：中华文明的终极密码不在书本而在山河。黄河是基因底色、长江是迁移方向、长城是文明分界——三条天地之线编织了中国的生存框架。“天时>地利>人和”（而非孟子说的相反），气候在千年尺度上始终是历史的第一推动力。</div>
   <p><span class="scqa-label">问题</span>是什么决定了中华文化的生存状态和精神格局？</p>
@@ -338,17 +371,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch004-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第4章「都江堰」</h1>
-  <h2>一个活了两千年的水利工程，其秘密不是征服自然而是领悟水、顺应水</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch4">
+<h2 class="chapter-title">第4章 · 都江堰</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：都江堰至今仍在灌溉四川平原——它不像万里长城那样早已废弛。李冰不是“治水”而是“领悟水、顺应水”，将一个政治计划转化为生态计划。“道之道，也就是水之道”——拜水和问道是同一件事，这就是中华文化最清澈的秘密。</div>
   <p><span class="scqa-label">问题</span>一个两千年前的水利工程为什么至今仍在执掌亿万人生计？</p>
@@ -415,17 +441,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch005-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第5章「道士塔」</h1>
-  <h2>敦煌劫难不是一个人的罪——无知守护者、殖民学者、文化买办构成三重悲剧</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch5">
+<h2 class="chapter-title">第5章 · 道士塔</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：再小的个子也能给沙漠留下长长的身影。王圆箓的无知破坏、斯坦因的殖民掠夺、蒋孝琬的文化背叛——三个男人在1900年的莫高窟合演了一场人类文明史上最不对等的“交易”。但最深的悲剧在于：即使拦下车队，当时的中国也无力保护这些经卷。</div>
   <p><span class="scqa-label">问题</span>藏经洞文物大规模流失，究竟是谁的责任？</p>
@@ -502,17 +521,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch006-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第6章「莫高窟」</h1>
-  <h2>莫高窟是活了一千年的生命——四重文明在沙漠中层层沉积，两个“陈先生”守护了残存的尊严</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch6">
+<h2 class="chapter-title">第6章 · 莫高窟</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：莫高窟从公元366年起，历经一千年不间断的建造，它不是考古标本，而是一部由坚石雕刻、至今仍在呼吸的中国心灵史。最动人的不是盛唐的辉煌，而是两个“陈先生”——陈寅恪以双目失明见证“吾国学术之伤心史”，陈万里以一次通报守护了最后残存的尊严。</div>
   <p><span class="scqa-label">问题</span>莫高窟为什么能让千年间的各色强人都低下骄傲的头颅？</p>
@@ -589,17 +601,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch007-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第7章「沙原隐泉」</h1>
-  <h2>峰顶只是狭地，真正的温煦美色潜伏深谷——给浮嚣以宁静才是天地的韵律</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch7">
+<h2 class="chapter-title">第7章 · 沙原隐泉</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：鸣沙山的攀登是一场身体哲学——越用力陷得越深。登顶后发现峰顶只是狭地，月牙泉潜伏深谷。但下山只需几步。人生的焦虑大多是自我惊吓。“给浮嚣以宁静，给躁急以清冽，给高蹈以平实，给粗犷以明丽”——这就是天地韵律。</div>
   <p><span class="scqa-label">问题</span>沙漠深处的一湾清泉，能告诉我们关于人生的什么？</p>
@@ -666,17 +671,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch008-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第8章「阳关雪」</h1>
-  <h2>当诗文失去了自由站立的文化人格，文明的疆域也随之坍弛</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch8">
+<h2 class="chapter-title">第8章 · 阳关雪</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：阳关的坍弛不是一场自然风化，而是中国文人从独立的文化创造者沦为政治附庸之后，民族精神疆域收缩的地理象征。</div>
   <p><span class="scqa-label">问题</span>为什么曾经见证过人生壮美与艺术宏广的阳关，最终坍弛在了一个民族的精神疆域中？</p>
@@ -765,17 +763,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch009-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第9章「西域喀什」</h1>
-  <h2>人类各大文明非战争交往的终极汇聚点：天山与昆仑之间的文明史诗</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch9">
+<h2 class="chapter-title">第9章 · 西域喀什</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：喀什之所以成为"中心的中心"，是因为它满足了非战争文明交往的两个必备条件——远离各大文明首府的地广人稀之地 + 一种让所有来者放心的宽容精神——由此成为人类历史上唯一实现了印度、波斯、阿拉伯、希腊、中华文明全体"同台"的地方。</div>
   <p><span class="scqa-label">问题</span>为什么西域喀什值得汤因比说"如果生命重来，我希望生在西域"？</p>
@@ -867,17 +858,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch010-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第10章「废井冷眼」</h1>
-  <h2>一座亚洲名都的千年覆灭史，最终只剩一口废井的漠然注视</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch10">
+<h2 class="chapter-title">第10章 · 废井冷眼</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：渤海国从"海东盛国"到被契丹一把火烧尽的悲剧揭示了一个文明规律——高度发达的文明城堡被征服后，征服者既无法控制、无法融入、也无法改造，除了彻底毁灭，别无他途。</div>
   <p><span class="scqa-label">问题</span>为什么曾经与长安东西并立的渤海国都城，会在千年之后只剩几方石料和一口废井？</p>
@@ -982,17 +966,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch011-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第11章「杭州宣言」</h1>
-  <h2>世界最美城市的秘密：不是天造地设，而是历代文化巨匠赤脚苦斗的生态抢救史</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch11">
+<h2 class="chapter-title">第11章 · 杭州宣言</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：杭州的全部精彩都维系在一条十分脆弱的生态茎脉上——先有生态而后有文化，是中国历史上白居易、钱镠、苏东坡等文化巨匠放下诗文、赤脚苦斗在污泥塘里的成果。</div>
   <p><span class="scqa-label">问题</span>一个浅浅小海湾，本会变成沼泽盐碱地——杭州何以逆自然规律成为世界最美城市？</p>
@@ -1086,17 +1063,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch012-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第12章「黄州突围」</h1>
-  <h2>小人牵着大师，大师牵着历史——苏东坡的冤狱与千古杰作的诞生</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch12">
+<h2 class="chapter-title">第12章 · 黄州突围</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：乌台诗案是中国文化史上最典型的集体构陷——一群小人不约而同地围攻苏东坡，而成熟恰恰诞生于灭寂后的再生；《念奴娇·赤壁怀古》和前、后《赤壁赋》正是在这种孤独的超越中孕育。</div>
   <p><span class="scqa-label">问题</span>为什么越是超时代的文化名人，越不能相容于他所处的具体时代？苏东坡如何在灾难中完成脱胎换骨？</p>
@@ -1204,17 +1174,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch013-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第13章「山庄背影」</h1>
-  <h2>一把罗圈椅休息过一个疲惫的王朝——避暑山庄里的清代命运密码</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch13">
+<h2 class="chapter-title">第13章 · 山庄背影</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：避暑山庄是读懂清王朝的最佳钥匙——从康熙以"修德安民"替代长城的雄健开篇，到慈禧关上大门的落寞收场，再到王国维拖着辫子在颐和园投水自尽，一个王朝的兴衰密码全在这把罗圈椅的起伏之间。</div>
   <p><span class="scqa-label">问题</span>为什么清代帝王要把休息的"罗圈椅"放在长城之外？这座山庄背后隐藏着怎样的文化密码？</p>
@@ -1317,17 +1280,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch014-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第14章「宁古塔」</h1>
-  <h2>流放摧残文明，但苦难中的高贵点燃了超越政治迫害的火种</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch14">
+<h2 class="chapter-title">第14章 · 宁古塔</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：清代流放是对文明的系统性摧残——一百五十万流人中多少名士佳人零落成泥，但部分文人在苦难中显现的高贵却点燃了文明火种；我们能熬过苦难，却绝不赞美苦难。</div>
   <p><span class="scqa-label">问题</span>流放如何摧残了文明，而文人又如何在被剥夺一切后，于苦难中创造了文化？</p>
@@ -1423,13 +1379,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch015-info-en.html">EN</a></div>
-<div class="header">
-  <h1>文化苦旅 · 第15章「抱愧山西」</h1>
-  <h2>十九世纪的中国金融中心不在沿海，而在山西——一段被中国文人集体遗忘的商业传奇</h2>
-  <div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch15">
+<h2 class="chapter-title">第15章 · 抱愧山西</h2>
 </div>
 <div class="card overview">
   <div class="overview-label">核心命题</div>
@@ -1493,13 +1446,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 <div class="takeaway"><div class="takeaway-icon">💡</div><div class="takeaway-text"><div class="takeaway-label">核心结论</div><p>晋商的兴衰揭示了商业文明在中国文化中的尴尬地位：他们创造了「海内最富」的奇迹，却被文人集体遗忘；他们拥有领先世界的金融制度，却因缺少文化力量的支撑而脆弱崩塌。从「走西口」的悲歌到「铁扉双锁」的废墟，这段历史提醒我们——一种文化若不能正视其财富创造者，便注定要在历史转型中付出更高代价。</p></div></div>
 <div class="footer">余秋雨《文化苦旅》第15章「抱愧山西」· 长江文艺出版社 2014<br>信息图仅供阅读辅助，版权归原作者所有</div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch016-info-en.html">EN</a></div>
-<div class="header">
-  <h1>文化苦旅 · 第16章「风雨天一阁」</h1>
-  <h2>一座私家藏书楼如何与焚书、战乱、水火、偷盗对抗了四百余年，成为中华文明不屈的象征</h2>
-  <div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch16">
+<h2 class="chapter-title">第16章 · 风雨天一阁</h2>
 </div>
 <div class="card overview">
   <div class="overview-label">核心命题</div>
@@ -1563,13 +1513,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 <div class="takeaway"><div class="takeaway-icon">💡</div><div class="takeaway-text"><div class="takeaway-label">核心结论</div><p>天一阁的故事回答了「文明如何在绝境中延续」这一终极命题。从范钦的远见、范氏家族的牺牲，到黄宗羲的登楼、张元济的抢救——每一代人都为这座藏书楼注入了超越个人的文化意义。它提醒我们：文明的守护从来不是自然发生的，而是由一个个具体的人、一个个艰难的抉择、一代代不舍的坚持共同完成的悲壮事业。</p></div></div>
 <div class="footer">余秋雨《文化苦旅》第16章「风雨天一阁」· 长江文艺出版社 2014<br>信息图仅供阅读辅助，版权归原作者所有</div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch017-info-en.html">EN</a></div>
-<div class="header">
-  <h1>文化苦旅 · 第17章「鱼尾山屋」</h1>
-  <h2>在喜马拉雅山脚下审视人类文明——为什么在所有古文明中，只有中华文明没有中断？</h2>
-  <div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch17">
+<h2 class="chapter-title">第17章 · 鱼尾山屋</h2>
 </div>
 <div class="card overview">
   <div class="overview-label">核心命题</div>
@@ -1622,13 +1569,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 <div class="takeaway"><div class="takeaway-icon">💡</div><div class="takeaway-text"><div class="takeaway-label">核心结论</div><p>中华文明是唯一未中断的古文明——这个事实背后既有地理的幸运（群山瀚海的天然屏障），也有智慧的自觉（实用理性、中庸之道、科举制度）。但延续本身也带来了沉重的历史包袱。在喜马拉雅山脚下，作者找到了答案的另一个维度：文明的意义不在于积累多厚，而在于能否回归自然——中国文化最深层的密码，是做减法。</p></div></div>
 <div class="footer">余秋雨《文化苦旅》第17章「鱼尾山屋」· 长江文艺出版社 2014<br>信息图仅供阅读辅助，版权归原作者所有</div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch018-info-en.html">EN</a></div>
-<div class="header">
-  <h1>文化苦旅 · 第18章「北极寒夜」</h1>
-  <h2>七组欧洲图像——从美第奇到欧盟蓝旗——为中华文明提供了什么样的对比坐标？</h2>
-  <div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch18">
+<h2 class="chapter-title">第18章 · 北极寒夜</h2>
 </div>
 <div class="card overview">
   <div class="overview-label">核心命题</div>
@@ -1703,13 +1647,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 <div class="takeaway"><div class="takeaway-icon">💡</div><div class="takeaway-text"><div class="takeaway-label">核心结论</div><p>从佛罗伦萨到冰岛，欧洲提供了七面镜子：美第奇的权力-财富-文化集结、德国学人的精神独立、里昂的创新焦虑、英国的渐进智慧、欧洲的休闲伦理、冰岛的法律驯化、欧盟的超越民族国家——每一面都照出了中华文明的某处盲区。学习欧洲不是膜拜，而是在对比中看清自己：中国能否完成从「剥夺式改革」到「集结式创造」的文明转型？</p></div></div>
 <div class="footer">余秋雨《文化苦旅》第18章「北极寒夜」· 长江文艺出版社 2014<br>信息图仅供阅读辅助，版权归原作者所有</div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch019-info-en.html">EN</a></div>
-<div class="header">
-  <h1>文化苦旅 · 第19章「远方的海」</h1>
-  <h2>中国文化长期恐海禁海——但无数活生生的中国人一直在入海亲海，文化和生命毕竟不同</h2>
-  <div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch19">
+<h2 class="chapter-title">第19章 · 远方的海</h2>
 </div>
 <div class="card overview">
   <div class="overview-label">核心命题</div>
@@ -1773,13 +1714,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 <div class="takeaway"><div class="takeaway-icon">💡</div><div class="takeaway-text"><div class="takeaway-label">核心结论</div><p>《远方的海》是整部《文化苦旅》中最具身体性的一章——作者不再以学者的身份观察，而是以血肉之躯对抗怒海。这种身体性揭示了「文化苦旅」的深层含义：中国文化不仅需要在书斋中反思，更需要在大海、在极限中重新发现自己的生命维度。从河姆渡的独木舟到今天惊动海天的中国人，被「恐海」文化压抑的海洋基因始终在暗中奔涌。</p></div></div>
 <div class="footer">余秋雨《文化苦旅》第19章「远方的海」· 长江文艺出版社 2014<br>信息图仅供阅读辅助，版权归原作者所有</div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch020-info-en.html">EN</a></div>
-<div class="header">
-  <h1>文化苦旅 · 第20章「谢家门孔」</h1>
-  <h2>导演谢晋的生命之旅——艺术、苦难、家庭与人性如何在一个人身上完成伟大的集结</h2>
-  <div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch20">
+<h2 class="chapter-title">第20章 · 谢家门孔</h2>
 </div>
 <div class="card overview">
   <div class="overview-label">核心命题</div>
@@ -1843,13 +1781,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 <div class="takeaway"><div class="takeaway-icon">💡</div><div class="takeaway-text"><div class="takeaway-label">核心结论</div><p>谢晋的生命图景是对「文化苦旅」最极致的人性诠释：他的艺术在六十岁才真正成熟，他的家庭被三个残障孩子的命运所考验，他的创作饥渴至死未能满足，他的死亡在故乡东山完成了最后的皈依。余秋雨说，文化苦旅的「苦」不是旅行之苦，而是创造之苦——谢晋用一生证明，真正的文化创造者，是把苦难筑成人道主义圣殿的人。</p></div></div>
 <div class="footer">余秋雨《文化苦旅》第20章「谢家门孔」· 长江文艺出版社 2014<br>信息图仅供阅读辅助，版权归原作者所有</div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-<div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch021-info-en.html">EN</a></div>
-<div class="header">
-  <h1>文化苦旅 · 第21章「巴金百年」</h1>
-  <h2>一个活了整整一百年的作家，用生命接力了二十世纪中国文化中最珍贵的四个词</h2>
-  <div class="divider"></div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch21">
+<h2 class="chapter-title">第21章 · 巴金百年</h2>
 </div>
 <div class="card overview">
   <div class="overview-label">核心命题</div>
@@ -1913,17 +1848,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 <div class="takeaway"><div class="takeaway-icon">💡</div><div class="takeaway-text"><div class="takeaway-label">核心结论</div><p>巴金百年浓缩了二十世纪中国文化的根本命题：如何在一个缺少辨伪机制的文化中坚持「讲真话」，如何在一个棍子横飞的时代保持人道主义的温和目光。他用一生接力了四个关键词——反封建、争人道、斥棍子、讲真话——每一个都是中国文化至今未完成的功课。余秋雨从那个武康路的信箱开始自己的文化苦旅，或许正是对巴金百年精神最恰当的延续。</p></div></div>
 <div class="footer">余秋雨《文化苦旅》第21章「巴金百年」· 长江文艺出版社 2014<br>信息图仅供阅读辅助，版权归原作者所有</div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch022-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第22章「佐临遗言」</h1>
-  <h2>当整个城市在世纪之交遗忘了一位大师，他的遗嘱却穿越五十六年，成为另一个人渡过黑水的木筏</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch22">
+<h2 class="chapter-title">第22章 · 佐临遗言</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：黄佐临以一生诠释了"艺术在黑暗中反而最亮"——从告别萧伯纳赴国难，到在饥荒年代提出震动世界的"三大戏剧观"，他用艺术回答了时代最残酷的追问。</div>
   <p><span class="scqa-label">问题</span>为什么一位对现代世界戏剧学做出里程碑贡献的中国大师，在百年纪念中竟被集体遗忘？</p>
@@ -2015,14 +1943,11 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
 </div>
 
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-  <div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch023-info-en.html">中文 / English</a></div>
-  <div class="header">
-    <h1>文化苦旅 · 第二十三章「寻石之路」</h1>
-    <h2>一个不知所云的笔名"石一歌"，如何被构陷成一个文化猎巫的靶心？当寻真相者反被围剿，"寻石"之路上出现了刑事犯罪的阴影。</h2>
-    <div class="divider" style="background:linear-gradient(90deg,#dc2626,#ea580c);"></div>
-  </div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch23">
+<h2 class="chapter-title">第23章 · 寻石之路</h2>
+</div>
   <div class="overview">
     <div class="overview-label" style="color:#dc2626;">▎概述</div>
     <h3>"石一歌"不是罪名——它是一面照妖镜，照出了当代中国媒体的生态与文人的良知</h3>
@@ -2124,14 +2049,11 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
   </div>
   <div class="footer"><p>来源：余秋雨《文化苦旅》第二十三章「寻石之路」 · 长江文艺出版社 2014 · 2026年6月 · 仅供学习参考</p></div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-  <div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch024-info-en.html">中文 / English</a></div>
-  <div class="header">
-    <h1>文化苦旅 · 第二十四章「天人对话」</h1>
-    <h2>在殡仪馆的安灵堂外，生者与逝者展开了一场关于诽谤、自由与独立的灵魂审讯——当体制成为"城堡"，出走者的命运早已被写在城墙之上。</h2>
-    <div class="divider" style="background:linear-gradient(90deg,#4f46e5,#db2777);"></div>
-  </div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch24">
+<h2 class="chapter-title">第24章 · 天人对话</h2>
+</div>
   <div class="overview">
     <div class="overview-label" style="color:#4f46e5;">▎概述</div>
     <h3>一个被诽谤者与四位亡灵的五场对话，揭示了当代中国知识分子的生存密码</h3>
@@ -2180,14 +2102,11 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
   </div>
   <div class="footer"><p>来源：余秋雨《文化苦旅》第二十四章「天人对话」 · 长江文艺出版社 2014 · 2026年6月 · 仅供学习参考</p></div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-  <div class="lang-switch"><a class="lang-btn" target="_blank" href="wenhua-kulv-ch025-info-en.html">中文 / English</a></div>
-  <div class="header">
-    <h1>文化苦旅 · 第二十五章「为妈妈致悼词」</h1>
-    <h2>一个富家之女，一生从未发过火，用微笑和腼腆完成了最强大的抵抗——沉默不是软弱，而是为天道天理让出位置。</h2>
-    <div class="divider" style="background:linear-gradient(90deg,#db2777,#0891b2);"></div>
-  </div>
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch25">
+<h2 class="chapter-title">第25章 · 为妈妈致悼词</h2>
+</div>
   <div class="overview">
     <div class="overview-label" style="color:#db2777;">▎概述</div>
     <h3>五个无人可解的难题，勾勒出一个沉默者的精神史诗</h3>
@@ -2253,17 +2172,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
   </div>
   <div class="footer"><p>来源：余秋雨《文化苦旅》第二十五章「为妈妈致悼词」 &middot; 长江文艺出版社 2014 &middot; 2026年6月 &middot; 仅供学习参考</p></div>
 </div>
-<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
-<div class="container">
-
-<div class="lang-switch"><a href="wenhua-kulv-ch026-info-en.html" target="_blank">EN</a></div>
-
-<div class="header">
-  <h1>文化苦旅 · 第26章「祭笔」</h1>
-  <h2>一支笔的一生，就是一个人穿越灾难、诽谤与荒原的全部生命轨迹</h2>
-</div>
-<div class="divider"></div>
-
+</section>
+<div class="chapter-divider">◆</div>
+<section id="ch26">
+<h2 class="chapter-title">第26章 · 祭笔</h2>
 <div class="overview">
   <div class="oneliner">核心洞察：余秋雨用一支笔的历程写尽了一个中国文人的一生——从三岁模仿写信到完成二十卷文集，笔在不同时代扮演了信使、拐杖、法官、武器和伴侣。坚持"纯手工写作"不是技术固执，而是对生命忠贞的宣言。</div>
   <p><span class="scqa-label">问题</span>在电脑时代，在持续二十年的诽谤浪潮中，一个文人为什么还要坚持用笔写作？笔对他来说意味着什么？</p>
@@ -2368,6 +2280,10 @@ body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong
   <p>第26章「祭笔」· 信息图仅供学习参考</p>
 </div>
 
+</div>
+
+</section>
+</div>
 </div>
 
 </body>
