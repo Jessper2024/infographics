@@ -10,11 +10,7 @@ body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
 .book-header{max-width:880px;margin:0 auto 48px;text-align:center}
 .book-header h1{font-size:28px;color:#1a1a1a;margin-bottom:8px;letter-spacing:.03em}
 .book-header .meta{font-size:14px;color:#888}
-.chapter-toc{max-width:880px;margin:0 auto 40px;padding:24px 28px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.chapter-toc h3{font-size:16px;color:#1a1a1a;margin-bottom:12px}
-.chapter-toc a{display:block;padding:6px 0;font-size:14px;color:#4f46e5;text-decoration:none;border-bottom:1px solid #f0ece6}
-.chapter-toc a:hover{color:#dc2626}
-.chapter-toc a:last-child{border-bottom:none}
+/* old chapter-toc replaced with sidebar */
 .chapter-divider{max-width:880px;margin:40px auto;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px}
 
 @font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal}
@@ -76,6 +72,19 @@ body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
 .takeaway p{font-size:15px;color:#1a1a1a;font-weight:600;line-height:2.0}
 .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5}
 .footer p{font-size:12px;color:#bbb;line-height:1.8}
+.book-wrapper{max-width:1200px;margin:0 auto;display:flex;gap:32px;padding:48px 16px 60px;align-items:flex-start;min-height:100vh}
+.book-header{max-width:880px;margin:0 auto 40px;text-align:center}
+.book-header h1{font-size:28px;color:#1a1a1a;margin-bottom:8px}
+.book-header .meta{font-size:14px;color:#888}
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:48px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);max-height:calc(100vh - 96px);overflow-y:auto}
+.sidebar h3{font-size:16px;color:#1a1a1a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8e0d5;font-family:'FZXPYZS',serif}
+.sidebar-nav{display:flex;flex-direction:column;gap:2px}
+.sidebar-nav a{padding:5px 0;font-size:13px;color:#4f46e5;text-decoration:none;border-bottom:1px solid #f0ece6;transition:color .15s;line-height:1.6}
+.sidebar-nav a:hover{color:#dc2626}
+.sidebar-nav a:last-child{border-bottom:none}
+.main-content{flex:1;min-width:0}
+.chapter-title{font-family:'FZXPYZS','PingFang SC',serif;font-size:22px;color:#1a1a1a;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5;letter-spacing:.02em}
+@media(max-width:768px){.sidebar{display:none}.book-wrapper{padding:24px 12px 40px}
 @media(max-width:640px){body{padding:16px 12px 40px}.container{padding:0}.header h1{font-size:22px}.header h2{font-size:15px}.takeaway{order:-1;margin-bottom:20px;flex-direction:column}.kpi-num{font-size:28px}.kpi-label{font-size:11px}.card,.overview,.section{padding:18px 16px}.section-header{flex-wrap:wrap;gap:8px}.circle-num{width:34px;height:34px;font-size:14px}.section h3{font-size:16px}.flow-row{flex-direction:column;align-items:stretch}.flow-arrow{display:none}.cmp-grid.cols-3,.cmp-grid.cols-2,.dual-grid{grid-template-columns:1fr}.kpi-row{flex-direction:column}.bluf{font-size:16px}}
 .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
 
@@ -1290,28 +1299,34 @@ body{
 </style>
 </head>
 <body>
+<div class="book-wrapper">
+
+<aside class="sidebar">
+  <h3>📖 章节目录</h3>
+  <nav class="sidebar-nav">
+      <a href="#ch001">01 · 投机，是一项挑战</a>
+      <a href="#ch002">02 · 凭规则抉择交易时机，该等则等、该出则出</a>
+      <a href="#ch003">03 · 追随领头羊</a>
+      <a href="#ch004">04 · 到手的钱财</a>
+      <a href="#ch005">05 · 关键点</a>
+      <a href="#ch006">06 · 百万美元的大错</a>
+      <a href="#ch007">07 · 300万美元的盈利</a>
+      <a href="#ch008">08 · 利弗莫尔市场分析法</a>
+      <a href="#ch009">09 · 利弗莫尔操盘规则</a>
+      <a href="#ch010">10 · 利弗莫尔交易图表手稿和释义</a>
+  </nav>
+</aside>
+<div class="main-content">
 <div class="book-header">
 <h1>股票大作手操盘术</h1>
 <div class="meta">杰西·利弗莫尔 · 人民邮电出版社 2012 · 共10章</div>
 </div>
 
-<div class="chapter-toc">
-<h3>📖 章节目录</h3>
-<a href="#ch001">第1章 · 投机，是一项挑战</a>
-<a href="#ch002">第2章 · 凭规则抉择交易时机，该等则等、该出则出</a>
-<a href="#ch003">第3章 · 追随领头羊</a>
-<a href="#ch004">第4章 · 到手的钱财</a>
-<a href="#ch005">第5章 · 关键点</a>
-<a href="#ch006">第6章 · 百万美元的大错</a>
-<a href="#ch007">第7章 · 300万美元的盈利</a>
-<a href="#ch008">第8章 · 利弗莫尔市场分析法</a>
-<a href="#ch009">第9章 · 利弗莫尔操盘规则</a>
-<a href="#ch010">第10章 · 利弗莫尔交易图表手稿和释义</a>
-</div>
 
 
   <div class="chapter-divider">◆</div>
   <section id="ch001">
+<h2 class="chapter-title">第1章 · 投机，是一项挑战</h2>
 <div class="kpi-row">
       <div class="kpi-card"><div class="kpi-num">40年</div><div class="kpi-label">利弗莫尔<br>投机生涯跨度</div></div>
       <div class="kpi-card"><div class="kpi-num">2要素</div><div class="kpi-label">时间+价格<br>核心判断框架</div></div>
@@ -1447,6 +1462,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch002">
+<h2 class="chapter-title">第2章 · 凭规则抉择交易时机，该等则等、该出则出</h2>
 <div class="kpi-row">
     <div class="kpi-card"><div class="kpi-num">4~5次</div><div class="kpi-label">每年重大<br>交易机会</div></div>
     <div class="kpi-card"><div class="kpi-num">6点+</div><div class="kpi-label">异常回撤<br>危险信号</div></div>
@@ -1584,6 +1600,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch003">
+<h2 class="chapter-title">第3章 · 追随领头羊</h2>
 <div class="kpi-row">
     <div class="kpi-card"><div class="kpi-num">≤5只</div><div class="kpi-label">同时跟踪股票<br>安全上限</div></div>
     <div class="kpi-card"><div class="kpi-num">4</div><div class="kpi-label">利弗莫尔划分<br>核心股票群体</div></div>
@@ -1695,6 +1712,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch004">
+<h2 class="chapter-title">第4章 · 到手的钱财</h2>
 <div class="kpi-row">
     <div class="kpi-card"><div class="kpi-num">50%</div><div class="kpi-label">每笔成功交易<br>提取利润比例</div></div>
     <div class="kpi-card"><div class="kpi-num">$100万</div><div class="kpi-label">利弗莫尔一次<br>提取现金金额</div></div>
@@ -1813,6 +1831,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch005">
+<h2 class="chapter-title">第5章 · 关键点</h2>
 <!-- Lang Switch -->
 
 
@@ -2046,6 +2065,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch006">
+<h2 class="chapter-title">第6章 · 百万美元的大错</h2>
 <div class="kpi-row">
       <div class="kpi-card"><div class="kpi-num">$20万</div><div class="kpi-label">六周内<br>实际亏损</div></div>
       <div class="kpi-card"><div class="kpi-num">$100万</div><div class="kpi-label">因过早出局<br>错失利润</div></div>
@@ -2183,6 +2203,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch007">
+<h2 class="chapter-title">第7章 · 300万美元的盈利</h2>
 <!-- Lang Switch -->
 
 
@@ -2433,6 +2454,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch008">
+<h2 class="chapter-title">第8章 · 利弗莫尔市场分析法</h2>
 <div class="kpi-row">
       <div class="kpi-card"><div class="kpi-num">6列</div><div class="kpi-label">表格记录体系<br>六类价格运动</div></div>
       <div class="kpi-card"><div class="kpi-num">3色墨水</div><div class="kpi-label">黑·红·铅笔<br>视觉编码信号</div></div>
@@ -2568,6 +2590,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch009">
+<h2 class="chapter-title">第9章 · 利弗莫尔操盘规则</h2>
 <!-- Lang Switch -->
 
 
@@ -2846,6 +2869,7 @@ body{
 
   <div class="chapter-divider">◆</div>
   <section id="ch010">
+<h2 class="chapter-title">第10章 · 利弗莫尔交易图表手稿和释义</h2>
 <!-- Lang Switch -->
 
 
@@ -3081,5 +3105,7 @@ body{
   </div>
   </section>
 
+</div>
+</div>
 </body>
 </html>
