@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dragon's Fury: 1931 Yangtze Flood · Chapter 5 · Disaster Experts</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #555;
+  line-height: 2.0;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 32px 60px;
+}
+
+/* Language Switch */
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+/* Header */
+.header { margin-bottom: 32px; }
+.header h1 {
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  font-size: 36px; font-weight: 400; color: #1a1a1a;
+  letter-spacing: 0.03em; margin-bottom: 8px; line-height: 1.3;
+}
+.header h2 {
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  font-size: 14px; font-weight: 400; color: #888;
+  letter-spacing: 0.02em; line-height: 1.6;
+}
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  border-radius: 2px; margin-top: 16px;
+}
+
+/* KPI Row */
+.kpi-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+.kpi-card {
+  flex: 1; min-width: 120px;
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
+  padding: 20px 16px; text-align: center;
+}
+.kpi-num { font-size: 32px; font-weight: bold; color: #4f46e5; letter-spacing: -0.02em; }
+.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+
+/* Overview */
+.overview {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+}
+.overview-label {
+  font-size: 12px; font-weight: 700; color: #4f46e5; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 10px;
+}
+.overview h3 { font-size: 17px; color: #1a1a1a; margin-bottom: 8px; line-height: 1.5; }
+.overview p { font-size: 15px; color: #555; line-height: 2.0; }
+
+/* Card & Section */
+.card {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+}
+.section { border-left: 4px solid; }
+.section-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.circle-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+.section-tag {
+  font-size: 12px; padding: 3px 10px; border-radius: 20px;
+  font-weight: 500; letter-spacing: 0.02em;
+}
+.section h3 { font-family: 'FZXPYZS', serif; font-size: 18px; font-weight: 700; }
+.section-body p { margin-bottom: 12px; }
+
+/* Components */
+/* Data Cards */
+.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.data-card {
+  flex: 1; min-width: 100px;
+  border-radius: 12px; padding: 18px 14px; text-align: center;
+}
+.data-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+.data-card.cyan { background: #ecfeff; border: 1px solid #a5f3fc; }
+.data-card.violet { background: #f5f3ff; border: 1px solid #ddd6fe; }
+.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+.data-card.indigo .data-big { color: #4f46e5; }
+.data-card.cyan .data-big { color: #0891b2; }
+.data-card.violet .data-big { color: #7c3aed; }
+.data-card.gold .data-big { color: #ca8a04; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+/* Duality Grid */
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.dual-card { border-radius: 10px; padding: 16px 18px; }
+.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-label { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.dual-card.good .dual-label { color: #166534; }
+.dual-card.bad .dual-label { color: #991b1b; }
+.dual-card p { font-size: 13px; color: #555; line-height: 1.8; }
+
+/* Flow Row */
+.flow-row { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.flow-step {
+  background: #eef2ff; border: 2px solid #c7d2fe; border-radius: 10px;
+  padding: 14px 16px; text-align: center; font-size: 13px;
+  color: #3730a3; font-weight: 700; min-width: 90px;
+}
+.flow-step-num { display: block; font-size: 11px; font-weight: 400; color: #4f46e5; margin-bottom: 4px; letter-spacing: 0.04em; }
+.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
+.flow-arrow { font-size: 18px; color: #4f46e5; font-weight: 700; padding-top: 14px; }
+
+/* Bar Group */
+.bar-group { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.bar-item { display: flex; align-items: center; gap: 12px; }
+.bar-label { font-size: 13px; color: #555; min-width: 130px; flex-shrink: 0; }
+.bar-track { flex: 1; height: 12px; background: #e8e0d5; border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; min-width: 4px; }
+.bar-fill.indigo { background: #4f46e5; }
+.bar-fill.cyan { background: #0891b2; }
+.bar-fill.red { background: #dc2626; }
+.bar-fill.amber { background: #ea580c; }
+.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 50px; text-align: right; }
+
+/* Quote Block */
+.quote-block {
+  background: #f5f3ff; border-left: 4px solid #a78bfa; border-radius: 0 10px 10px 0;
+  padding: 16px 20px; margin-top: 14px; position: relative;
+}
+.quote-mark { position: absolute; top: -10px; left: 12px; font-size: 32px; color: #a78bfa; font-family: Georgia, serif; line-height: 1; }
+.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
+.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+
+/* Callout */
+.callout { display: flex; gap: 10px; align-items: flex-start; border-radius: 10px; padding: 14px 16px; margin-top: 14px; }
+.callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
+.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.callout-text { font-size: 13px; color: #555; line-height: 1.8; }
+.callout-text strong { color: #1a1a1a; }
+
+/* Compare Grid */
+.cmp-grid { display: grid; gap: 12px; margin-top: 14px; }
+.cmp-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.cmp-card { border-radius: 12px; padding: 16px 12px; text-align: center; }
+.cmp-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+.cmp-icon { font-size: 24px; margin-bottom: 6px; }
+.cmp-name { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+.cmp-note { font-size: 11px; color: #888; line-height: 1.5; }
+
+/* Takeaway */
+.takeaway {
+  background: #eef2ff; border: 2px solid #c7d2fe; border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 24px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.takeaway-label {
+  font-size: 13px; font-weight: 700; color: #4f46e5; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 6px;
+}
+.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
+
+/* Footer */
+.footer { text-align: center; padding-top: 16px; }
+.footer p { font-size: 12px; color: #bbb; line-height: 1.6; }
+
+@media (max-width: 640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 24px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .cmp-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .dual-grid { grid-template-columns: 1fr; }
+  .data-row { flex-direction: column; }
+  .kpi-row { flex-direction: column; }
+  .bar-item { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Language Switch -->
+  <div class="lang-switch">
+    <a class="lang-btn" target="_blank" href="longwang-ch005-info-zh.html">中文 / English</a>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-num">450,000</div>
+      <div class="kpi-label">tons of US wheat loan<br>shipped across the Pacific</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">1.1M+</div>
+      <div class="kpi-label">refugees conscripted<br>into work-relief, 11h/day</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">48.9%</div>
+      <div class="kpi-label">annual death rate in<br>some refugee camps</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">2M+</div>
+      <div class="kpi-label">vaccinations administered<br>yet reached only a fraction</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>The Dragon's Fury · Chapter 5 · Disaster Experts</h1>
+    <h2>When elite technical language met the survival logic of local flood victims, how did disaster relief become a tragedy of miscommunication?</h2>
+    <div class="divider"></div>
+  </div>
+
+  <!-- Overview -->
+  <div class="overview">
+    <div class="overview-label">▎Overview</div>
+    <h3>The Arrogance of Expert Knowledge and the Silence of Disaster Reality</h3>
+    <p>The 1931 Yangtze flood triggered China's largest international relief operation at the time. The National Flood Relief Commission (NFRC), led by T.V. Soong, assembled Harvard and MIT alumni, Rockefeller Foundation experts, League of Nations technocrats, and CIFRC veterans — deploying airplanes, vaccines, and modern engineering. Yet this elite relief apparatus, driven by "pauperization theory" and Malthusian demography, replaced unconditional food aid with disciplinary labor-for-relief, measured success through professional biases while systematically ignoring death tolls, and ultimately staged a tragedy where "victory has many fathers" while failure was silenced and forgotten.</p>
+  </div>
+
+  <!-- Block 1: Elite Network -->
+  <div class="card section" style="border-left-color:#4f46e5;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">01</div>
+      <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">Organization</div>
+      <h3 style="color:#4f46e5;">How did elite networks monopolize relief power?</h3>
+    </div>
+    <div class="section-body">
+      <p>The NFRC appeared meritocratically selected but was woven together by elite connections. T.V. Soong chaired the commission; two Harvard classmates served on the health committee; three MIT friends ran the engineering division. Twenty years earlier, these same men had dined together at a Boston Chinese restaurant celebrating the Republic's founding. Englishman John Hope Simpson — who had never set foot in China — managed day-to-day operations of a 7,000-person organization. Rockefeller Foundation staff, League technocrats, and CIFRC experts communicated in English within the same social circles, forming a closed island of "institutional ideology."</p>
+      <div class="cmp-grid cols-4">
+        <div class="cmp-card indigo">
+          <div class="cmp-icon">🏛️</div>
+          <div class="cmp-name">T.V. Soong</div>
+          <div class="cmp-note">NFRC Chair · Harvard alum · built team through alumni network</div>
+        </div>
+        <div class="cmp-card indigo">
+          <div class="cmp-icon">🛡️</div>
+          <div class="cmp-name">J.H. Simpson</div>
+          <div class="cmp-note">British director · former colonial officer · first time in China</div>
+        </div>
+        <div class="cmp-card indigo">
+          <div class="cmp-icon">🏥</div>
+          <div class="cmp-name">Rockefeller</div>
+          <div class="cmp-note">PUMC network · funded Buck's team · paid Grant's salary</div>
+        </div>
+        <div class="cmp-card indigo">
+          <div class="cmp-icon">🌐</div>
+          <div class="cmp-name">League of Nations</div>
+          <div class="cmp-note">Polish, Romanian, Spanish experts · proto-NGO model</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block 2: Practical Humanitarianism -->
+  <div class="card section" style="border-left-color:#0891b2;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#ecfeff;color:#0891b2;">02</div>
+      <div class="section-tag" style="background:#ecfeff;color:#0891b2;">Ideology</div>
+      <h3 style="color:#0891b2;">Why was food conditional on labor?</h3>
+    </div>
+    <div class="section-body">
+      <p>The CIFRC championed "practical humanitarianism," anchored in "pauperization theory": free aid purportedly breeds parasitic dependency. Malthusian demography provided the "scientific" veneer — Mallory's <em>China: Land of Famine</em> blamed Chinese fertility as famine's ultimate cause — while Protestant work ethic supplied moral legitimacy. Relief was exclusively work-based to "prevent idleness" and filter out the "undeserving poor." Buddhist philanthropists like Zhu Qinglan, who viewed unconditional charity as religious duty, found their voices marginalized within the commission.</p>
+      <div class="dual-grid">
+        <div class="dual-card good">
+          <div class="dual-label">📐 Practical Humanitarianism (Dominant)</div>
+          <p>Work-relief · Malthusian demography · Protestant work ethic · low-wage screening · "the shovel is the best tool for famine relief"</p>
+        </div>
+        <div class="dual-card bad">
+          <div class="dual-label">🙏 Buddhist Charity (Marginalized)</div>
+          <p>Unconditional giving · religious obligation · "it is almost a crime to demand proof of worthiness" · no exclusion mechanism · voice suppressed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block 3: Globalized Relief Economy -->
+  <div class="card section" style="border-left-color:#2563eb;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#eff6ff;color:#2563eb;">03</div>
+      <div class="section-tag" style="background:#eff6ff;color:#2563eb;">Political Economy</div>
+      <h3 style="color:#2563eb;">Was the US wheat loan charity or dumping?</h3>
+    </div>
+    <div class="section-body">
+      <p>The 450,000-ton US wheat credit, packaged as humanitarian aid, was essentially a mechanism for disposing of American agricultural surplus — an early form of "tied aid." Negotiators priced wheat at delivery-day rates (the credit itself inflated prices), mandated half be milled in America, and specified US-flagged shipping. Mussolini similarly used Boxer Indemnity funds to subsidize Italian industry. Overseas Chinese communities contributed the most yet received only brief mention in the official report. Emperor Hirohito's gift was rejected amid Japan's invasion of Manchuria. Celebrities — Lindbergh, Mei Lanfang, Pearl Buck — all joined fundraising.</p>
+      <div class="flow-row">
+        <div class="flow-step"><span class="flow-step-num">1</span>US Farm Surplus<div class="flow-label">Great Depression · wheat glut</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><span class="flow-step-num">2</span>Credit Negotiation<div class="flow-label">tied shipping + mandatory US milling</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><span class="flow-step-num">3</span>4-Month Sea Voyage<div class="flow-label">crossing war zones to Shanghai</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><span class="flow-step-num">4</span>Refugees Reject Wheat<div class="flow-label">traded at 20% loss for rice</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end"><span class="flow-step-num">5</span>Grain Traders Profit<div class="flow-label">local farmers devastated</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block 4: Dangerous Delivery -->
+  <div class="card section" style="border-left-color:#7c3aed;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#f5f3ff;color:#7c3aed;">04</div>
+      <div class="section-tag" style="background:#f5f3ff;color:#7c3aed;">Implementation</div>
+      <h3 style="color:#7c3aed;">Why couldn't aid reach its intended recipients?</h3>
+    </div>
+    <div class="section-body">
+      <p>Transport consumed 14% of the NFRC's total operating budget. Grain shipments traversed bandit-infested flood zones requiring armed escorts; Japanese warplanes bombed the Zhabei refugee camp in Shanghai, causing 50 casualties. Once delivered, central Chinese refugees — unaccustomed to wheat as a staple — lacked both cooking knowledge and equipment, trading it for rice at a 20% loss. Vaccination campaigns met resistance rooted in moral etiology, distrust of foreign biomedicine, and fear of pain. In some camps, the annual death rate reached a staggering 48.9% — far higher than among those who remained in villages fending for themselves.</p>
+      <div class="bar-group">
+        <div class="bar-item">
+          <div class="bar-label">Transport Cost Share</div>
+          <div class="bar-track"><div class="bar-fill indigo" style="width:14%"></div></div>
+          <div class="bar-val">14%</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Wheat→Rice Trade Loss</div>
+          <div class="bar-track"><div class="bar-fill amber" style="width:20%"></div></div>
+          <div class="bar-val">20%</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label">Jiangxi Camp<br>Annual Death Rate</div>
+          <div class="bar-track"><div class="bar-fill red" style="width:49%"></div></div>
+          <div class="bar-val">48.9%</div>
+        </div>
+      </div>
+      <div class="callout warn">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-text"><strong>Counterintuitive finding:</strong> Mortality in NFRC camps far exceeded that among refugees who stayed in rural villages. Forced congregation created lethal disease ecosystems that official food rations and public health campaigns proved powerless against.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block 5: Professional Bias -->
+  <div class="card section" style="border-left-color:#6d28d9;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#faf5ff;color:#6d28d9;">05</div>
+      <div class="section-tag" style="background:#faf5ff;color:#6d28d9;">Cognitive Trap</div>
+      <h3 style="color:#6d28d9;">Who defined relief "success"?</h3>
+    </div>
+    <div class="section-body">
+      <p>"Victory has many fathers." Each party measured success by its own preferred metric: engineers counted dike mileage (enough earthwork to encircle the equator), doctors counted vaccinations, missionaries counted converts, charities counted donations. Death tolls — the most critical metric — were never included. This was "cumulative learning" rather than "fundamental learning": old dikes were rebuilt to the same flawed design, and three years later the 1935 Yangtze flood proved the structural failure. Survival was credited to government; death was blamed on nature — the official narrative was carefully curated.</p>
+      <div class="quote-block">
+        <div class="quote-mark">"</div>
+        <div class="quote-text">When people focus on only one particular sphere of prevention or relief in which they have specific expertise … this results in a failure to understand the closely linked and mutually interpenetrating nature of all the complex problems surrounding a disaster.</div>
+        <div class="quote-author">— Alex de Waal, <em>Famine that Kills</em></div>
+      </div>
+      <div class="data-row">
+        <div class="data-card indigo">
+          <div class="data-big">1,812 km</div>
+          <div class="data-sm">Yangtze dikes rebuilt (engineers' victory metric)</div>
+        </div>
+        <div class="data-card violet">
+          <div class="data-big">1935</div>
+          <div class="data-sm">Yangtze breached again 3 years later (fundamental learning failed)</div>
+        </div>
+        <div class="data-card cyan">
+          <div class="data-big">0</div>
+          <div class="data-sm">Systematic silence on death tolls in official reports</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-icon">💡</div>
+    <div class="takeaway-text">
+      <div class="takeaway-label">Key Takeaway</div>
+      <p>The history of the 1931 Yangtze flood relief is a record of elite knowledge arrogance. While technical experts planned relief strategies in English within closed circles, refugees on sampans could only communicate with them through hand gestures and threats of violence. Institutional ideology — Malthusian demography, pauperization theory, professional bias — collectively manufactured a self-validating narrative of success, while the deaths of millions were excluded from the metrics of evaluation. Disasters are not merely natural events; they are human-made tragedies embedded within political and economic structures.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Source: Chris Courtney, <em>The Nature of Disaster in China: The 1931 Yangzi River Flood</em>, Chapter 5 "Disaster Experts" · June 2026 · For educational reference only</p>
+  </div>
+
+</div>
+</body>
+</html>

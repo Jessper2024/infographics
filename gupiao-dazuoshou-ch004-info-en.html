@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reminiscences of a Stock Operator · Ch.4</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-font-smoothing:antialiased}
+body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;background:#f5f1eb;color:#555;line-height:2.0;min-height:100vh;padding:48px 16px 60px}
+.container{max-width:880px;width:100%;margin:0 auto;padding:0}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-switch a{display:inline-block;font-size:13px;color:#4f46e5;text-decoration:none;padding:6px 16px;border:1px solid #c7d2fe;border-radius:8px;background:#eef2ff;transition:background .2s}
+.lang-btn:hover{opacity:.75}
+.header{margin-bottom:32px}
+.header h1{font-size:32px;font-weight:400;color:#1a1a1a;letter-spacing:.03em;margin-bottom:8px;line-height:1.4}
+.header h2{font-size:18px;font-weight:400;color:#888;letter-spacing:.02em;line-height:1.6}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ca8a04);border-radius:2px;margin-bottom:24px}
+.kpi-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:140px;background:#fff;border:1px solid #e8e0d5;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.kpi-num{font-size:36px;font-weight:700;color:#1a1a1a;line-height:1.2;margin-bottom:6px}
+.kpi-label{font-size:12px;color:#888;line-height:1.6}
+.overview{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03)}
+.overview-label{font-size:13px;font-weight:700;color:#4f46e5;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.overview .scqa-label{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',Georgia,serif}
+.overview .scqa-label.s{background:#fef2f2;color:#dc2626}
+.overview .scqa-label.c{background:#fff7ed;color:#ea580c}
+.overview .scqa-label.q{background:#fefce8;color:#ca8a04}
+.overview .scqa-label.a{background:#eef2ff;color:#4f46e5}
+.overview .scqa-item{margin-bottom:6px;font-size:15px;line-height:2.0;color:#555}
+.card.section{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03)}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.circle-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.section-tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:12px;flex-shrink:0}
+.section h3{font-size:18px;font-weight:700;line-height:1.4}
+.section-body .bluf{color:#1a1a1a;font-weight:600;margin-bottom:8px;font-size:15px;line-height:2.0}
+.section-body p{color:#555;font-size:15px;line-height:2.0;margin-bottom:8px}
+.section-body .detail{font-size:13px;color:#777;line-height:1.8}
+.flow-row{display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:100px;background:#fafaf7;border:1px solid #e8e0d5;border-radius:10px;padding:12px 10px;text-align:center}
+.flow-step .step-num{font-size:11px;font-weight:700;margin-bottom:4px}
+.flow-step .step-text{font-size:13px;color:#555;line-height:1.6}
+.flow-arrow{font-size:18px;color:#bbb;flex-shrink:0}
+.cmp-grid.cols-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.cmp-grid.cols-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+.cmp-card{background:#fafaf7;border:1px solid #e8e0d5;border-radius:10px;padding:14px}
+.cmp-card .cmp-label{font-size:12px;font-weight:700;margin-bottom:6px;color:#1a1a1a}
+.cmp-card .cmp-text{font-size:13px;color:#555;line-height:1.8}
+.quote-block{background:#faf5ff;border-left:4px solid #d8b4fe;border-radius:0 10px 10px 0;padding:14px 18px;margin:12px 0}
+.quote-block p{font-size:14px;color:#6b21a8;font-style:italic;line-height:1.8}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.dual-good{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px}
+.dual-good .dual-label{font-size:12px;font-weight:700;color:#166534;margin-bottom:6px}
+.dual-bad{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px}
+.dual-bad .dual-label{font-size:12px;font-weight:700;color:#991b1b;margin-bottom:6px}
+.dual-grid p{font-size:13px;color:#555;line-height:1.8}
+.warn-box{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px 18px;margin:12px 0}
+.warn-box p{font-size:13px;color:#92400e;line-height:1.8}
+.takeaway{background:linear-gradient(135deg,#fef2f2,#fefce8);border:1px solid #fecaca;border-radius:14px;padding:24px 28px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.takeaway-icon{font-size:28px;flex-shrink:0;line-height:1}
+.takeaway-text{flex:1}
+.takeaway-label{font-size:13px;font-weight:700;color:#dc2626;margin-bottom:6px;letter-spacing:.05em}
+.takeaway p{font-size:15px;color:#1a1a1a;font-weight:600;line-height:2.0}
+.footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5}
+.footer p{font-size:12px;color:#bbb;line-height:1.8}
+@media(max-width:640px){body{padding:16px 12px 40px}.container{padding:0}.header h1{font-size:22px}.header h2{font-size:15px}.takeaway{order:-1;margin-bottom:20px;flex-direction:column}.kpi-num{font-size:28px}.kpi-label{font-size:11px}.card,.overview,.section{padding:18px 16px}.section-header{flex-wrap:wrap;gap:8px}.circle-num{width:34px;height:34px;font-size:14px}.section h3{font-size:16px}.flow-row{flex-direction:column;align-items:stretch}.flow-arrow{display:none}.cmp-grid.cols-3,.cmp-grid.cols-2,.dual-grid{grid-template-columns:1fr}.kpi-row{flex-direction:column}.bluf{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-switch">
+    <a href="gupiao-dazuoshou-ch004-info-zh.html" target="_blank">中文</a>
+  </div>
+  <div class="header">
+    <h1>Reminiscences of a Stock Operator · Ch.4</h1>
+    <h2>Chapter 3 · Execution Slippage Strikes Again — $50,000 Won and Lost</h2>
+    <div class="divider"></div>
+  </div>
+    <div class="kpi-row">
+      <div class="kpi-card"><div class="kpi-num">$50,000</div><div class="kpi-label">Peak Wealth<br>in 1901</div></div>
+      <div class="kpi-card"><div class="kpi-num">1 Day</div><div class="kpi-label">From Peak<br>to Zero</div></div>
+      <div class="kpi-card"><div class="kpi-num">Age 22</div><div class="kpi-label">Age of<br>Event</div></div>
+      <div class="kpi-card"><div class="kpi-num">5 Years</div><div class="kpi-label">Years to Learn<br>Proper Trading</div></div>
+    </div>
+
+  <div class="overview">
+    <p class="one-liner">In one sentence: Livermore made $50,000 during the 1901 boom but, still ignorant of speculation’s fundamental principles, lost it all in a single day on May 9th and left Wall Street for the second time.</p>
+    <div class="scqa-item"><span class="scqa-label s">S Situation</span>After winning back $2,500 from St. Louis bucket shops, Livermore returned to Wall Street more cautiously, improved his results, and made $50,000 during the great boom of 1901.</div>
+    <div class="scqa-item"><span class="scqa-label c">C Complication</span>But he still understood nothing of speculation’s fundamental principles, remaining glued to the ticker — believing his method was sound and the environment was the only problem.</div>
+    <div class="scqa-item"><span class="scqa-label q">Q Question</span>Why did Livermore, holding $50,000, lose everything in a single day?</div>
+    <div class="scqa-item"><span class="scqa-label a">A Answer</span>Because he had never grasped the fundamental principle that ‘the stock market has only one side — the right side.’ He was still trading with a bucket-shop mindset on the real exchange, and had never built a money management system.</div>
+  </div>
+    <div class="card section" style="border-left:4px solid #dc2626;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#dc2626;">01</div>
+        <div class="section-tag" style="color:#dc2626;background:#fef2f2;">Core Principle</div>
+        <h3 style="color:#dc2626;">The Market Has Only One Side: The Right Side</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>It took Livermore longer to drill this fundamental principle into his head than any other technical content — the stock market has only one side, neither the bull side nor the bear side, but the right side.</strong></p>
+        <p>Everything has two sides. But the stock market has only one. It took him a long time to internalize this. Before this insight, he kept oscillating between bullish and bearish, trying to predict the market’s direction instead of following it. The correct stance: don’t preset direction, follow direction.</p>
+        <p class="detail">This principle, seemingly simple, actually demands that traders completely abandon ego and the illusion of ‘being smarter than the market.’ The market is always right — not the bulls, not the bears, but the market.</p>
+        
+      </div>
+    </div>
+    <div class="card section" style="border-left:4px solid #ea580c;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#ea580c;">02</div>
+        <div class="section-tag" style="color:#ea580c;background:#fff7ed;">1901 Boom</div>
+        <h3 style="color:#ea580c;">The Great 1901 Boom: 3 Million Shares a Day</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>1901 saw unprecedented prosperity — industrial consolidations and capital mergers shattered records, daily volume hit 3 million shares, and Steel Trust millionaires spent money like drunken sailors.</strong></p>
+        <p>In previous boom times, Wall Street’s peak daily volume was about 250,000 shares ($25 million changing hands). But in 1901, daily volume reached 3 million. Everyone was making money. In this environment, Livermore made his largest fortune yet — $50,000.</p>
+        <p class="detail">This was Livermore’s first big win, but his victory owed more to the market tide than his own ability — making money in a market where everyone is making money doesn’t prove you’ve mastered speculation.</p>
+        
+      </div>
+    </div>
+    <div class="card section" style="border-left:4px solid #ca8a04;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#ca8a04;">03</div>
+        <div class="section-tag" style="color:#ca8a04;background:#fefce8;">Fatal Error</div>
+        <h3 style="color:#ca8a04;">Hugging the Ticker: Unaware of the True Game</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>While Livermore was adjusting for execution slippage and becoming more cautious, he still clung to the ticker — utterly ignorant of speculation’s fundamentals, he couldn’t possibly identify the real flaws in his method.</strong></p>
+        <p>He said, ‘I thought I was winning the game, but in fact I had merely won at bucket shops.’ He traded at legitimate brokerages with bucket-shop methods, and nobody pointed out the essential difference. He only knew he was wrong when he lost money — he was right only when he made money. That’s speculation.</p>
+        <p class="detail">His education came from the market, learning from real combat. When the market taught him lessons, the rod came down without mercy. Losing $50,000 overnight was the heaviest lesson the market ever dealt him.</p>
+        
+      </div>
+    </div>
+    <div class="card section" style="border-left:4px solid #4f46e5;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#4f46e5;">04</div>
+        <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">Day One Lesson</div>
+        <h3 style="color:#4f46e5;">$1,100 Lost on the Very First Day</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>On his first day trading at a legitimate brokerage, despite some winning trades, Livermore netted a loss of $1,100 — nearly half his capital — yet dismissed it as merely ‘the ticker not working normally.’</strong></p>
+        <p>He watched the board, bought 100 shares at 84, sold at 85 half an hour later. He repeated this pattern, busy as could be. The day’s net result: a $1,100 loss. He wasn’t troubled — he saw nothing wrong with his method. If he’d been at his old bucket shop, he would have been profitable.</p>
+        <p class="detail">He comforted himself: ‘As long as the ticker returns to normal, there’s nothing to worry about.’ The ignorance of a 22-year-old is a fatal defect indeed.</p>
+        
+      </div>
+    </div>
+    <div class="card section" style="border-left:4px solid #db2777;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#db2777;">05</div>
+        <div class="section-tag" style="color:#db2777;background:#fdf2f8;">Self-Belief</div>
+        <h3 style="color:#db2777;">You Must Believe in Yourself</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>After repeated failures, Livermore forged an iron rule: back your opinions with your own money — never trade on tips, because nobody ever made big money being told what to do by someone else.</strong></p>
+        <p>If you buy a stock on Smith’s tip, you must sell it on Smith’s tip too. What if Smith goes on vacation? Money made on tips can never exceed money made on independent judgment. It took him five years to learn how to play this game skillfully enough to make big money when he was right.</p>
+        <p class="detail">He made mistakes his whole life, but losses were never just losses to him. He always knew he’d get another chance, and he’d never repeat the same mistake. He believed in himself.</p>
+        
+      </div>
+    </div>
+
+  <div class="takeaway">
+    <div class="takeaway-icon">💡</div>
+    <div class="takeaway-text">
+      <div class="takeaway-label">Key Takeaway</div>
+      <p>Livermore’s 1901 collapse reveals the cruelest truth in speculation: making money in a bull market doesn’t mean you’ve mastered the game. Mr. Market first gives you a taste — $50,000 — then takes it all back in one night, forcing you to re-examine yourself. Only traders who’ve experienced this ‘won and lost’ can truly begin to respect the market.</p>
+    </div>
+  </div>
+  <div class="footer">
+    <p>Source: Reminiscences of a Stock Operator (Edwin Lefèvre) · Ch.3<br>Date: Revised Edition<br>For educational purposes only. Not investment advice.</p>
+  </div>
+</div>
+</body>
+</html>

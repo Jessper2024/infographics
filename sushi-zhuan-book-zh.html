@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苏轼传 · 全书</title>
+<style>
+
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#f5f1eb;color:#1a1a1a;
+  font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+:root{
+  --red:#dc2626;--red-light:#fef2f2;--red-border:#fecaca;
+  --orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;
+  --gold:#ca8a04;--gold-light:#fefce8;--gold-border:#fde68a;
+  --indigo:#4f46e5;--indigo-light:#eef2ff;--indigo-border:#c7d2fe;
+  --teal:#0891b2;--teal-light:#ecfeff;--teal-border:#a5f3fc;
+}
+
+.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
+
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{
+  display:inline-block;padding:6px 16px;border-radius:8px;
+  font-size:13px;text-decoration:none;letter-spacing:0.03em;
+  font-family:'FZXPYZS','PingFang SC',serif;
+  background:#fef2f2;color:#dc2626;border:1px solid #fecaca;
+  transition:opacity 0.15s;
+}
+.lang-btn:hover{opacity:0.75}
+
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{
+  flex:1;min-width:120px;
+  background:#fff;border:1px solid #e8e0d5;border-radius:12px;
+  padding:20px 16px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-num{font-size:32px;font-weight:700;color:var(--color, #dc2626);letter-spacing:-0.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+
+.header h1{
+  font-size:36px;font-weight:400;color:#1a1a1a;
+  letter-spacing:0.03em;margin-bottom:8px;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.header h2{
+  font-size:14px;font-weight:400;color:#888;
+  letter-spacing:0.02em;line-height:1.7;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.divider{
+  width:60px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,#dc2626,#fca5a5);
+  margin:20px 0 24px;
+}
+
+.card{
+  background:#fff;border:1px solid #e8e0d5;border-radius:14px;
+  padding:28px 32px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+}
+.overview{
+  background:var(--light, #fef2f2);border:2px solid var(--border-color, #fecaca);
+  border-radius:14px;padding:24px 28px;margin-bottom:24px;
+}
+
+.overview-label{
+  font-size:11px;font-weight:700;color:var(--color, #dc2626);
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+}
+.overview-question{
+  font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px;
+}
+.overview-answer{
+  font-size:15px;color:#555;line-height:2.0;
+}
+
+.section{border-left-width:4px;border-left-style:solid}
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
+}
+.circle-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;flex-shrink:0;
+}
+.section-tag{
+  font-size:12px;padding:3px 10px;border-radius:20px;
+  font-weight:500;letter-spacing:0.02em;
+}
+.section h3{font-size:18px;font-weight:700}
+.section-body p{
+  font-size:15px;color:#555;line-height:2.0;margin-bottom:12px;
+}
+.bluf{color:#1a1a1a;font-weight:600;margin-bottom:8px}
+.detail{font-size:13px;color:#777}
+
+.quote-block{
+  background:#faf5ff;border-left:4px solid #c084fc;border-radius:0 10px 10px 0;
+  padding:16px 20px;margin-top:14px;position:relative;
+}
+.quote-mark{
+  position:absolute;top:-10px;left:12px;
+  font-size:32px;color:#c084fc;font-family:Georgia,serif;line-height:1;
+}
+.quote-text{
+  font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px;
+}
+.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
+
+.dual-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;
+}
+.dual-card{border-radius:10px;padding:16px 18px}
+.dual-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-card.bad{background:#fef2f2;border:1px solid #fecaca}
+.dual-label{font-size:13px;font-weight:700;margin-bottom:6px}
+.dual-card.good .dual-label{color:#166534}
+.dual-card.bad .dual-label{color:#991b1b}
+.dual-card p{font-size:13px;color:#555;line-height:1.8}
+
+.flow-row{
+  display:flex;align-items:flex-start;justify-content:center;
+  gap:8px;margin-top:16px;flex-wrap:wrap;
+}
+.flow-step{
+  background:var(--light, #fff7ed);border:2px solid var(--border-color, #fed7aa);
+  border-radius:10px;padding:14px 16px;text-align:center;
+  font-size:13px;color:var(--color, #ea580c);font-weight:700;min-width:90px;
+}
+.flow-step-num{
+  display:block;font-size:11px;font-weight:400;
+  margin-bottom:4px;letter-spacing:0.04em;
+}
+.flow-arrow{font-size:18px;color:#ea580c;font-weight:700;padding-top:14px}
+
+.callout{
+  display:flex;gap:10px;align-items:flex-start;
+  border-radius:10px;padding:14px 16px;margin-top:14px;
+}
+.callout-text{font-size:13px;color:#555;line-height:1.8}
+.callout-text strong{color:#1a1a1a}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+
+.data-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.data-card{
+  flex:1;min-width:100px;
+  border-radius:12px;padding:18px 14px;text-align:center;
+}
+.data-card.red{background:#fef2f2;border:1px solid #fecaca}
+.data-card.gold{background:#fefce8;border:1px solid #fde68a}
+.data-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
+.data-card.orange{background:#fff7ed;border:1px solid #fed7aa}
+.data-big{font-size:30px;font-weight:700;letter-spacing:-0.02em}
+.data-card.red .data-big{color:#dc2626}
+.data-card.gold .data-big{color:#ca8a04}
+.data-card.indigo .data-big{color:#4f46e5}
+.data-card.orange .data-big{color:#ea580c}
+.data-sm{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
+
+.takeaway{
+  background:#faf5ff;border:2px solid #d8b4fe;border-radius:14px;
+  padding:24px 28px;margin-bottom:24px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.takeaway-label{
+  font-size:13px;font-weight:700;color:#7c3aed;text-transform:uppercase;
+  letter-spacing:0.06em;margin-bottom:6px;
+}
+.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
+
+.footer{
+  text-align:center;font-size:12px;color:#bbb;line-height:1.8;
+  padding-top:16px;border-top:1px solid #e8e0d5;
+}
+
+@media(max-width:640px){
+  body{padding:16px 12px 40px}
+  .container{padding:0}
+  .header h1{font-size:22px}
+  .header h2{font-size:15px}
+  .takeaway{order:-1;margin-bottom:20px}
+  .kpi-num{font-size:28px}
+  .kpi-label{font-size:11px}
+  .card,.overview,.section{padding:18px 16px}
+  .section-header{flex-wrap:wrap;gap:8px}
+  .circle-num{width:34px;height:34px;font-size:14px}
+  .section h3{font-size:16px}
+  .flow-row{flex-direction:column;align-items:stretch}
+  .flow-arrow{display:none}
+  .dual-grid{grid-template-columns:1fr}
+  .data-row{flex-direction:column}
+  .kpi-row{flex-direction:column}
+  .bluf{font-size:16px}
+}
+
+@media(max-width:640px){html{font-size:14px}body{padding:40px 12px 48px}}
+</style>
+</head>
+<body>
+
+<div style="text-align:center;padding:60px 32px 40px;">
+  <h1 style="font-family:'FZXPYZS','PingFang SC',serif;font-size:36px;font-weight:400;color:#1a1a1a;letter-spacing:.06em;">苏轼传</h1>
+  <div style="font-size:14px;color:#888;margin-top:8px;letter-spacing:.04em;">13章全本</div>
+</div>
+
+<div class="container">
+
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sushi-zhuan-ch000-info-en.html">English</a>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#dc2626">13</div>
+    <div class="kpi-label">眉山一县进士<br>及第人数</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#ea580c">120</div>
+    <div class="kpi-label">《汉书》卷数<br>苏轼手抄两遍</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#ca8a04">10</div>
+    <div class="kpi-label">岁立范滂之志<br>愿以死相争</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#4f46e5">800+</div>
+    <div class="kpi-label">翰林学士时起草<br>诏命篇数</div>
+  </div>
+</div>
+
+<div class="header">
+  <h1>苏轼传 · 引言「物华地灵铸伟才」</h1>
+  <h2>宋仁宗景祐三年，彭老山忽然荒瘠——直到多年后人们才恍然大悟，原来这一年，一位不世之才诞生在这片土地上，山川灵气独钟于他一身。</h2>
+  <div class="divider"></div>
+</div>
+
+<div class="overview" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca">
+  <div class="overview-label" style="color:var(--color)">▎核心问题</div>
+  <div class="overview-question">是什么力量共同铸就了苏轼这位中国文化史上旷代难逢的全才？</div>
+  <div class="overview-answer">
+    蜀地奇山秀水给予最早的自然陶冶，眉山"郁然千载诗书城"的浓郁文脉提供精神沃土，程氏夫人与苏洵的严格家教完成人格与学问的奠基——三重力量交织，方有苏轼之出。他并非横空出世的天才，而是物华天宝、人杰地灵合力锻造的时代巨人。
+  </div>
+</div>
+
+<div class="card section" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca;border-left-color:#dc2626">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fef2f2;color:#dc2626">01</div>
+    <div class="section-tag" style="background:#fef2f2;color:#dc2626">自然滋养</div>
+    <h3 style="color:#dc2626">蜀地山川是最早的启蒙老师</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">故乡的奇山秀水是苏轼文学灵感的第一个源泉。</p>
+    <p>在大自然的怀抱中，少年苏轼健康快乐、生气勃勃。他吟唱"吾家蜀江上，江水绿如蓝"，回想"每逢蜀叟谈终日，便觉峨嵋翠扫空"。他与表弟"狂走从人觅梨栗"漫山寻找野果，骑在牛背上读书，感觉如"驾百斛舟"般安稳自在。</p>
+    <div class="callout" style="background:#fef2f2;border:1px solid #fecaca">
+      <div class="callout-icon">🌿</div>
+      <div class="callout-text"><strong>关键启蒙：</strong>风花雪月之中，苏轼一年年成长。故乡的山水给予他无穷的乐趣和灵感，这些童年体验成为日后诗词创作中最深沉的底色。</div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="--color:#ea580c;--light:#fff7ed;--border-color:#fed7aa;border-left-color:#ea580c">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c">02</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c">文化沃土</div>
+    <h3 style="color:#ea580c">眉山——"郁然千载诗书城"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">四川自古名人辈出，浓郁的文化氛围为苏轼提供了超越书本的精神滋养。</p>
+    <p>汉代司马相如、扬雄；唐代陈子昂、李白、杜甫——"天下诗人皆入蜀"。晚唐五代，西蜀更成全国文化中心。到苏轼出生年代，眉山一县举荐进士考试者达四十五人，及第十三。六七十年后陆游到此，挥笔写下"孕奇蓄秀当此地，郁然千载诗书城"。</p>
+    <p class="detail">少年苏轼还从九十岁老尼姑口中听到蜀宫旧事，四十年后续写《洞仙歌》；在乡村院落读到"夜凉疑有雨，院静似无僧"，多年后贬谪黄州时心领神会——这些文化浸润伴随了他一生。</p>
+  </div>
+</div>
+
+<div class="card section" style="--color:#ca8a04;--light:#fefce8;--border-color:#fde68a;border-left-color:#ca8a04">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fefce8;color:#ca8a04">03</div>
+    <div class="section-tag" style="background:#fefce8;color:#ca8a04">母亲教诲</div>
+    <h3 style="color:#ca8a04">程氏夫人：以人格教育为基石</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">程氏夫人以范滂故事为十岁的苏轼点燃了"以死相争"的人格火炬。</p>
+    <p>她仁慈果决，注重人格培养，常讲述古往今来人事成败的关键问题。教读《后汉书·范滂传》时，年仅十岁的苏轼激动地说："倘若我也要做一个范滂这样的人，你会同意吗？"程氏夫人答："你如果能做范滂，我怎么就不能做范滂的母亲呢？"</p>
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">程氏夫人从细小事情上入手，培养儿子的仁心慈念，对于苏轼一生有着非常重大的影响。九百余年来，苏轼为历代人民所热爱，不仅在于文学成就，更在于这些作品处处表现的博大、仁慈、热情、温厚的心灵世界。</div>
+      <div class="quote-author">— 《苏轼传》引言</div>
+    </div>
+    <p class="detail">她还严禁家人捕鸟取卵，苏家庭院鸟雀筑巢不怕人。这培养了苏轼对一切有情生命的爱惜之心。</p>
+  </div>
+</div>
+
+<div class="card section" style="--color:#4f46e5;--light:#eef2ff;--border-color:#c7d2fe;border-left-color:#4f46e5">
+  <div class="section-header">
+    <div class="circle-num" style="background:#eef2ff;color:#4f46e5">04</div>
+    <div class="section-tag" style="background:#eef2ff;color:#4f46e5">父亲严教</div>
+    <h3 style="color:#4f46e5">苏洵：古文训练与思想启蒙</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏洵的严格古文训练，让苏轼起步就站在北宋诗文革新运动的最前沿。</p>
+    <p>苏洵二十七岁发愤读书，终成散文大家。他推崇先秦两汉古文和韩愈文章，主张"通经学古，以西汉文词为宗师"，反对辞藻游戏，强调真情实感。在他指导下，少年苏轼研读诸子百家、贾谊陆贽之文，手抄一百二十卷《汉书》两遍，既加深记忆又练习书法。</p>
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">📚 古文根基</div>
+        <p>师法先秦两汉，学韩愈柳宗元。注重内容充实、感情真挚，文风质朴自然，不受时风影响。</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">🧘 道家智慧</div>
+        <p>读《庄子》后感叹"得吾心矣"。将道家思想融入人格修养，对坎坷一生裨益匪浅。</p>
+      </div>
+    </div>
+    <p class="detail">五十年后苏轼在海南仍梦见年少时因功课未完成而惊惧不安——"怛然悸悟心不舒，起坐有如挂钩鱼"，父亲的严格可见一斑。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>苏轼的伟大并非凭空而来。蜀地的灵山秀水、眉山千年诗书城的文化基因、程氏夫人的人格铸魂、苏洵的严格古文训练——<strong>自然、文化、家庭三重力量，像三条大河汇入同一片海洋</strong>，共同锻造出这位中国历史上最富魅力的人文巨匠。了解这"三重锻造"，才能真正理解苏轼一生的底色。</p>
+  </div>
+</div>
+
+<div class="footer">
+  来源：王水照 / 崔铭《苏轼传》引言「物华地灵铸伟才」· 人民文学出版社 2019<br>
+  信息图生成日期：2026年6月17日 · 仅供学习参考
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sushi-zhuan-ch001-info-en.html">English</a>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#dc2626">21</div>
+    <div class="kpi-label">苏轼初出川<br>赴考时的年龄</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#ea580c">600+</div>
+    <div class="kpi-label">《刑赏忠厚之至论》<br>仅用字数</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#ca8a04">22</div>
+    <div class="kpi-label">进士及第时<br>苏轼年龄</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#4f46e5">3</div>
+    <div class="kpi-label">苏氏父子同年<br>名动京师</div>
+  </div>
+</div>
+
+<div class="header">
+  <h1>苏轼传 · 第一章「奋厉当世雄鹰出」</h1>
+  <h2>嘉祐元年三月，二十一岁的苏轼告别故乡，踏上艰险蜀道前往汴京——他并不知道，此行将使他如雄鹰展翅，一举震动文坛。</h2>
+  <div class="divider"></div>
+</div>
+
+<div class="overview" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca">
+  <div class="overview-label" style="color:var(--color)">▎核心问题</div>
+  <div class="overview-question">籍籍无名的蜀地青年苏轼，如何在首次赴京科考中一鸣惊人、名满天下？</div>
+  <div class="overview-answer">
+    关键在于三重因素的完美交汇：苏洵自幼为其奠定的扎实古文功底，与欧阳修发起诗文革新运动的时代方向高度一致；《刑赏忠厚之至论》展现的政治智慧与文学才华；以及欧阳修"放出一头地"的慧眼识才与倾力提携。三者合力，方使青年苏轼一战成名。
+  </div>
+</div>
+
+<div class="card section" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca;border-left-color:#dc2626">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fef2f2;color:#dc2626">01</div>
+    <div class="section-tag" style="background:#fef2f2;color:#dc2626">出川赴考</div>
+    <h3 style="color:#dc2626">蜀道之难，难不住壮志凌云</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">艰险异常的蜀道反而激发了苏氏兄弟昂扬的斗志——这不是流亡，而是一场豪情万丈的出征。</p>
+    <p>父子三人从阆中走上褒斜谷曲折陡峭的古栈道，翻越秦岭进入关中。"蜀道之难，难于上青天"，但初出茅庐的苏氏兄弟壮志满怀，一路兴致勃勃，一边赶路一边游览名胜。到达汴京时已是石榴花开满枝头的五月，他们旋即投入紧张备考。</p>
+    <div class="callout" style="background:#fef2f2;border:1px solid #fecaca">
+      <div class="callout-icon">🦅</div>
+      <div class="callout-text"><strong>八月首战告捷：</strong>苏轼与苏辙在开封府考进士，双双获选。按照宋制，府试之后还需经过礼部考试和皇帝殿试。兄弟俩不敢松懈，继续闭门攻读。</div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="--color:#ea580c;--light:#fff7ed;--border-color:#fed7aa;border-left-color:#ea580c">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c">02</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c">科场扬名</div>
+    <h3 style="color:#ea580c">《刑赏忠厚之至论》——一篇应试文成千古名篇</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼仅用六百余字，将一生以仁治国的思想浓缩于考场之上，文章"引古喻今、说理透辟"，令主考官欧阳修"又惊又喜"。</p>
+    <p>考题要求论述刑罚与奖赏应以忠厚为本。苏轼三易其稿，提出"可以赏，可以无赏，赏之过乎仁；可以罚，可以无罚，罚之过乎义"。核心主张是：可赏可不赏时选择奖赏，可罚可不罚时不要惩罚——因为奖赏重了仍不失为君子，惩罚重了则流于残忍。</p>
+    <div class="flow-row">
+      <div class="flow-step" style="--color:#ea580c;--light:#fff7ed;--border-color:#fed7aa"><span class="flow-step-num">Step 1</span>梅尧臣<br>首读激赏</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="--color:#ea580c;--light:#fff7ed;--border-color:#fed7aa"><span class="flow-step-num">Step 2</span>欧阳修<br>又惊又喜</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="--color:#ea580c;--light:#fff7ed;--border-color:#fed7aa"><span class="flow-step-num">Step 3</span>疑为曾巩<br>屈居第二</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="--color:#ea580c;--light:#fff7ed;--border-color:#fed7aa"><span class="flow-step-num">Step 4</span>礼部复试<br>获得第一</div>
+    </div>
+    <p class="detail">欧阳修本想评为第一，转念一想：如此出色文章恐唯有门下曾巩能写，为避嫌取为第二。事后发现是苏轼所作，欧阳修对梅尧臣感叹："读轼书，不觉汗出。快哉！快哉！老夫当避此人，放出一头地也。"</p>
+  </div>
+</div>
+
+<div class="card section" style="--color:#ca8a04;--light:#fefce8;--border-color:#fde68a;border-left-color:#ca8a04">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fefce8;color:#ca8a04">03</div>
+    <div class="section-tag" style="background:#fefce8;color:#ca8a04">文坛革新</div>
+    <h3 style="color:#ca8a04">应时而至：古文功底遇上诗文革新运动</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼之所以一举高中，是因为他的训练方向恰好与欧阳修发起的诗文革新运动完全一致。</p>
+    <p>当时文坛盛行内容空虚、奇诡艰涩的文风。欧阳修决心利用科考机会推动变革，告诫阅卷同僚：凡险怪奇涩、空洞浮华之文一律不取。而苏轼自幼师法先秦两汉古文和韩柳文章，注重内容充实、感情真挚、文笔自然——"没有受到时风的影响，这次应考，可说是适当其时"。</p>
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">✅ 欧阳修所求</div>
+        <p>言之有物，平易流畅。反对"浮巧轻媚"和"怪僻不可读"。恢复先秦两汉朴实文风。</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 时风积弊</div>
+        <p>内容空虚、矫揉造作、奇诡艰涩。"求深而至于迂，务奇而至于怪僻不可读"。</p>
+      </div>
+    </div>
+    <p class="detail">苏轼在《谢欧阳内翰书》中精要概述了宋初文学发展的艰难进程，欧阳修读后赞不绝口，感叹："更三十年，无人道着我也！"预言未来文坛必将属于苏轼。</p>
+  </div>
+</div>
+
+<div class="card section" style="--color:#4f46e5;--light:#eef2ff;--border-color:#c7d2fe;border-left-color:#4f46e5">
+  <div class="section-header">
+    <div class="circle-num" style="background:#eef2ff;color:#4f46e5">04</div>
+    <div class="section-tag" style="background:#eef2ff;color:#4f46e5">恩师提携</div>
+    <h3 style="color:#4f46e5">欧阳修"放出一头地"与仁宗"为子孙得宰相"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">欧阳修的倾力提携是苏轼成名的最直接推力——一代宗师的一句褒贬，足以关涉青年学子一生的荣辱成败。</p>
+    <p>欧阳修不仅在人前盛赞苏轼"善读书、善用书，他日文章必独步天下"，更介绍他拜见宰相文彦博、富弼，枢密使韩琦等当朝重臣。这些苏轼幼年读《庆历圣德诗》即已心识神交的英杰，如今都将他延为上宾、待为国士。</p>
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">我今天为子孙得了两个太平宰相！</div>
+      <div class="quote-author">— 宋仁宗赵祯，殿试结束后回宫对皇后语</div>
+    </div>
+    <p class="detail">苏轼问欧阳修《刑赏忠厚之至论》中"皋陶三杀、尧帝三赦"典故出处时，苏轼答："以尧帝为人的仁厚和皋陶执法的严格来推测，想当然耳。"欧阳修击节称叹："此人可谓善读书、善用书。"</p>
+  </div>
+</div>
+
+<div class="card section" style="--color:#db2777;--light:#fdf2f8;--border-color:#fbcfe8;border-left-color:#db2777">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fdf2f8;color:#db2777">05</div>
+    <div class="section-tag" style="background:#fdf2f8;color:#db2777">人生转折</div>
+    <h3 style="color:#db2777">丧母丁忧与二次出川——人生无常中坚定前行</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">正当苏轼一举成名、声誉鹊起之时，母亲程氏夫人病故的噩耗从天而降——大喜与大悲的急速切换，是苏轼人生中第一次重大转折。</p>
+    <p>父子三人仓促离京，日夜兼程赶回眉山。眼前"屋庐倒坏，篱落破漏，如逃亡人家"，触目凄凉。苏轼丁忧家居三年。嘉祐四年秋服丧期满，一家人再次启程，这次走水路出三峡。诗曰："故乡飘已远，往意浩无边"——苏轼已不再是当年单纯的少年，而是将"立德、立功、立言"融为人生目标的成熟士子。</p>
+    <div class="data-row">
+      <div class="data-card orange">
+        <div class="data-big">3年</div>
+        <div class="data-sm">丁忧家居<br>守制时间</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">水路</div>
+        <div class="data-sm">二次出川<br>经三峡到江陵</div>
+      </div>
+      <div class="data-card pink">
+        <div class="data-big">三不朽</div>
+        <div class="data-sm">立德·立功·立言<br>人生目标确立</div>
+      </div>
+    </div>
+    <p class="detail">途经忠州屈原塔，苏轼写下"屈原古壮士，就死意甚烈"，借古人之志抒发自己坚持理想、不随波逐流的决心。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>苏轼的一举成名绝非偶然。苏洵的古文训练为他准备了扎实的学问根基，欧阳修的诗文革新运动为他提供了历史性的舞台，而《刑赏忠厚之至论》展现出的政治智慧与文学才华则让他一举俘获了整个文坛。更重要的是，即使遭遇丧母之痛，他依然以"立德、立功、立言"为人生航标，从眉山出发走向天下——<strong>这只雏鹰已然离巢，即将在更广阔的天空中翱翔。</strong></p>
+  </div>
+</div>
+
+<div class="footer">
+  来源：王水照 / 崔铭《苏轼传》第一章「奋厉当世雄鹰出」· 人民文学出版社 2019<br>
+  信息图生成日期：2026年6月17日 · 仅供学习参考
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sushi-zhuan-ch002-info-en.html">English</a>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#dc2626">18年</div>
+    <div class="kpi-label">王安石变法<br>持续时间</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#ea580c">20万两</div>
+    <div class="kpi-label">宋朝每年向辽<br>输纳岁币银</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#ca8a04">20岁</div>
+    <div class="kpi-label">神宗继位<br>锐意求治年龄</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num" style="color:#4f46e5">10项</div>
+    <div class="kpi-label">王安石新法<br>理财+整军</div>
+  </div>
+</div>
+
+<div class="header">
+  <h1>苏轼传 · 第二章「世事惟艰力难任」</h1>
+  <h2>熙宁元年，苏轼第三次赴京——他不知这将是他最后一次亲近故土。千里之外的京城，新旧两党的激烈斗争已拉开帷幕，一场改变他一生轨迹的风暴正在酝酿。</h2>
+  <div class="divider"></div>
+</div>
+
+<div class="overview" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca">
+  <div class="overview-label" style="color:var(--color)">▎核心问题</div>
+  <div class="overview-question">宋朝积贫积弱的困局如何催生了王安石变法？这场变法又为何将苏轼卷入无力自拔的党争旋涡？</div>
+  <div class="overview-answer">
+    宋初"祖宗家法"在巩固中央集权的同时埋下了结构性隐患：军权过度集中导致边防羸弱、政权互相牵制造成机构臃肿、财权上缴中央引发国库空虚。面对内忧外患，神宗与王安石联手推行大刀阔斧的变法。然而新旧两党的激烈对立，让刚刚步入仕途的苏轼面临第一次重大政治抉择——"眼看时世力难任，贪恋君恩退未能"。
+  </div>
+</div>
+
+<div class="card section" style="--color:#dc2626;--light:#fef2f2;--border-color:#fecaca;border-left-color:#dc2626">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fef2f2;color:#dc2626">01</div>
+    <div class="section-tag" style="background:#fef2f2;color:#dc2626">制度根源</div>
+    <h3 style="color:#dc2626">"祖宗家法"：集权设计的先天矛盾</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">宋朝奠基者精心设计的集权制度，在巩固统一的同时，也种下了无法克服的内在矛盾——越到后来越加严重。</p>
+    <div class="cmp-grid cols-2">
+      <div style="border-radius:12px;padding:20px 16px;background:#fef2f2;border:1px solid #fecaca">
+        <div style="font-size:28px;margin-bottom:8px">⚔️</div>
+        <div style="font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:8px">军权集中</div>
+        <p style="font-size:12px;color:#555;line-height:1.7">"杯酒释兵权"→文臣统兵→"更戍法"轮换驻防。杜绝了武将割据，却导致"兵不识将，将不识兵"，军队训练不良、战斗力薄弱。</p>
+      </div>
+      <div style="border-radius:12px;padding:20px 16px;background:#fff7ed;border:1px solid #fed7aa">
+        <div style="font-size:28px;margin-bottom:8px">🏛️</div>
+        <div style="font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:8px">政权集中</div>
+        <p style="font-size:12px;color:#555;line-height:1.7">知州与通判互相牵制——通判由朝廷选派，有权直接向皇帝奏事。两套班子导致机构臃肿、内耗严重。时人笑谈：但求"有螃蟹无通判"之处。</p>
+      </div>
+      <div style="border-radius:12px;padding:20px 16px;background:#fefce8;border:1px solid #fde68a">
+        <div style="font-size:28px;margin-bottom:8px">💰</div>
+        <div style="font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:8px">财权集中</div>
+        <p style="font-size:12px;color:#555;line-height:1.7">地方财赋绝大多数上交中央，刺激了上层穷奢极欲。官吏俸禄极高，蓄养歌妓成风。仁宗时期出现国库空虚"惟存空簿"的严峻形势。</p>
+      </div>
+      <div style="border-radius:12px;padding:20px 16px;background:#eef2ff;border:1px solid #c7d2fe">
+        <div style="font-size:28px;margin-bottom:8px">🛡️</div>
+        <div style="font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:8px">边防羸弱</div>
+        <p style="font-size:12px;color:#555;line-height:1.7">军队战斗力削弱，对辽夏岁输大量"岁币"换和平——银二十万两、绢三十万匹，仍换不来边境安宁。和不成，战不可。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="--color:#ea580c;--light:#fff7ed;--border-color:#fed7aa;border-left-color:#ea580c">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c">02</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c">时代困局</div>
+    <h3 style="color:#ea580c">积贫积弱：太平表象下的危机暗流</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">神宗继位时，宋朝已陷入"内忧外患迫在眉睫"的危险境地——经济枯竭、军事溃败、改革呼声如地下岩浆般汹涌。</p>
+    <p>"庆历新政"失败后，社会矛盾进一步加剧。宋朝每年向西夏输纳银七万两、绢五千匹、茶三万斤，向辽输银二十万两、绢三十万匹，巨额岁币使财政雪上加霜。"恩逮于百官者，唯恐其不足；财取于万民者，不留其有余"——官僚集团膨胀，国库空虚，民间困苦。</p>
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text"><strong>历史拐点：</strong>新的改革浪潮已在士大夫中蓬蓬勃勃地酝酿，"仿佛地下奔腾汹涌的岩浆，只等着一个突破口的打开"——而这个突破口，就是年轻的神宗皇帝与王安石的历史性相遇。</div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="--color:#ca8a04;--light:#fefce8;--border-color:#fde68a;border-left-color:#ca8a04">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fefce8;color:#ca8a04">03</div>
+    <div class="section-tag" style="background:#fefce8;color:#ca8a04">君臣遇合</div>
+    <h3 style="color:#ca8a04">神宗与王安石：百年难逢的历史性相遇</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">二十岁的神宗皇帝面对积贫积弱深感屈辱，在元老大臣的因循保守中陷入孤独苦闷——这时他想起了那个"视富贵如浮云"的当代奇伟之士。</p>
+    <p>神宗广泛征询富弼、司马光等老臣意见，但他们要么劝"二十年口不言兵"，要么讲"修身治国"的空泛道理。在神宗看来，这些人都已失去"庆历新政"时的锐气。而王安石久负盛名——辞不应召、生活俭朴、学识渊博，士大夫交口称为"圣人再世"。君臣一见如故，王安石豪迈而言："大有为之时，正在今日！"</p>
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">大有为之时，正在今日！</div>
+      <div class="quote-author">— 王安石，首次面见神宗时的宣言</div>
+    </div>
+    <p class="detail">神宗曾身着戎装去见祖母，表达发奋图强的志向；谈及太宗被辽军射伤、年年纳币的屈辱往事，泣不成声。年轻皇帝与这位"一世之伟人"的结合，奏响了熙宁变法的激扬序曲。</p>
+  </div>
+</div>
+
+<div class="card section" style="--color:#4f46e5;--light:#eef2ff;--border-color:#c7d2fe;border-left-color:#4f46e5">
+  <div class="section-header">
+    <div class="circle-num" style="background:#eef2ff;color:#4f46e5">04</div>
+    <div class="section-tag" style="background:#eef2ff;color:#4f46e5">变法全景</div>
+    <h3 style="color:#4f46e5">雷厉风行：理财与整军双线推进</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">熙宁二年二月，神宗起用王安石为参知政事，立即设立"制置三司条例司"作为变法中枢——一场历时十八年的改革运动正式拉开大幕。</p>
+    <p>新法分理财与整军两大类。理财为"富国"：青苗法、免役法、均输法、市易法、方田均税法、农田水利法；整军为"强兵"：减兵并营、将兵法、保马法、保甲法。最终目标是缓和危机、巩固赵宋统治。</p>
+    <div class="bar-group">
+      <div class="bar-item">
+        <div class="bar-label">青苗法</div>
+        <div class="bar-track"><div class="bar-fill red" style="width:95%"></div></div>
+        <div class="bar-val">年息4分</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">免役法</div>
+        <div class="bar-track"><div class="bar-fill orange" style="width:90%"></div></div>
+        <div class="bar-val">以钱代役</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">均输法</div>
+        <div class="bar-track"><div class="bar-fill gold" style="width:85%"></div></div>
+        <div class="bar-val">徙贵就贱</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">市易法</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:80%"></div></div>
+        <div class="bar-val">平抑物价</div>
+      </div>
+    </div>
+    <p class="detail">然而，变法从一开始就充满争议。"一时之间朝野震惊，舆论汹汹"。即使用人问题上的分歧就已鲜明——曾公亮赞王安石为"辅相之才"，吴奎则斥其"刚愎自用，所为迂阔"。神宗皇帝"常常夜不成寐"。</p>
+  </div>
+</div>
+
+<div class="card section" style="--color:#db2777;--light:#fdf2f8;--border-color:#fbcfe8;border-left-color:#db2777">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fdf2f8;color:#db2777">05</div>
+    <div class="section-tag" style="background:#fdf2f8;color:#db2777">个人命运</div>
+    <h3 style="color:#db2777">苏轼的抉择：在济世与归隐之间</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">面对新旧两党的激烈对峙，苏轼陷入了深刻的矛盾——既想匡扶社稷，又对政治旋涡心生畏惧。</p>
+    <p>赴任途中的苏轼途经镇江金山寺，面对长江落日写下了内心最真实的写照。他赞美"微风万顷靴文细，断霞半空鱼尾赤"的壮丽晚景，却又在黑夜中看见江心冒出奇异炬火——"非鬼非人竟何物"。他将这奇异现象理解为"江神见怪警我顽"：江山如此美好，而自己却贪恋世俗不肯归隐。</p>
+    <div class="data-row">
+      <div class="data-card pink">
+        <div class="data-big">归隐</div>
+        <div class="data-sm">"有田不归如江水"<br>对江神指水起誓</div>
+      </div>
+      <div class="data-card indigo">
+        <div class="data-big">济世</div>
+        <div class="data-sm">"贪恋君恩退未能"<br>致君尧舜的火种不灭</div>
+      </div>
+    </div>
+    <div class="callout" style="background:#fdf2f8;border:1px solid #fbcfe8">
+      <div class="callout-icon">🔮</div>
+      <div class="callout-text"><strong>宿命的伏笔：</strong>苏轼不会想到，这次离家将是最后一次亲近故土。"作为一名封建士大夫，一旦踏上仕途，他的生命便不再属于自己"——这正是本章标题"世事惟艰力难任"的深意所在。</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>熙宁变法是中国历史上一个经典的"改革困局"案例。宋朝中央集权的结构性矛盾——军权集中导致边防虚弱、政权制衡催生内耗、财权上缴引发国库危机——使得变法具有充分的历史正当性。然而，改革一旦启动，各方利益、思想观念、人际恩怨交织其中，迅速演变为不可调和的新旧党争。对于刚刚步入仕途的苏轼而言，<strong>这场变法不是抽象的政策辩论，而是决定他此后三十年人生起伏的核心变量。</strong>他站在金山寺前许下的"归隐"之誓与心中不灭的"济世"之火，构成了此后人生乐章中不断回旋的双重主题。</p>
+  </div>
+</div>
+
+<div class="footer">
+  来源：王水照 / 崔铭《苏轼传》第二章「世事惟艰力难任」· 人民文学出版社 2019<br>
+  信息图生成日期：2026年6月17日 · 仅供学习参考
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch003-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第三章「德泽雅韵满余杭」</h1>
+  <h2>从汴京政治风暴中脱身的苏轼，在西湖的湖光山色中重新找回了诗心与生命的欢愉，留下"淡妆浓抹总相宜"的千古绝唱</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">1071年</div>
+      <div class="data-sm">抵达杭州通判</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">3年</div>
+      <div class="data-sm">杭城任期</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">西子湖</div>
+      <div class="data-sm">西湖从此得别名</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">36岁</div>
+      <div class="data-sm">苏轼赴杭年龄</div>
+    </div>
+</div>
+
+<div class="overview">
+  <div class="oneliner">一句话：杭州的湖山之美治愈了苏轼的政治创伤，激发了他最璀璨的诗情，留下"欲把西湖比西子，淡妆浓抹总相宜"这一千古绝唱，使西湖从此得名"西子湖"</div>
+  <p><span class="scqa-label">核心问题</span>一位被政治斗争排挤出京的失意文人，如何在杭州的山水之间完成精神的疗愈与诗学的巅峰？</p>
+  <p><span class="scqa-label">核心答案</span>熙宁四年（1071），苏轼抵达杭州通判任。西湖的四季之美、孤山寺的禅境、文人雅集的欢乐，将他活泼开朗的天性重新激发。他从孤山访僧的遗世独立，到望湖楼观雨的瞬息万变，最终在《饮湖上初晴后雨》中以西子喻西湖，达到了诗与自然的完美融合——杭州成就了苏轼的诗魂，苏轼也重塑了杭州的文化基因。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">山水疗愈</div>
+    <h3 style="color:#dc2626;">湖山之美，治愈政治创伤</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼一到杭州，就"情不自禁地陶醉在湖光山色之中"，那些难以自遣的烦恼和郁闷不知不觉消融在山间水畔——纯净无染的大自然将他活泼、开朗、好动的天性重新激发起来。</p>
+    <p>杭州"山明水秀，富庶繁华"，西湖如"璀璨夺目的明珠"，钱塘江潮"状若万马奔腾"。就连仁宗皇帝也赞叹："地有吴山美，东南第一州。"苏轼甚至将办公桌搬到湖边，一边赏景一边处置公务，"落笔如风，谈笑之间便将一应事务处理得清晰妥当"，市井传为美谈。</p>
+    <div class="dual-grid">
+      <div class="dual-card"><h4>🌿 自然疗愈</h4><p>感受到许久不曾有过的宁静、清新和愉悦，诗心与灵感重新被激发</p></div>
+      <div class="dual-card"><h4>⚡ 效率提升</h4><p>在湖边办公，才思敏捷，市井之间传为美谈</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">孤山访僧</div>
+    <h3 style="color:#ea580c;">云遮雾绕孤山寺，遗世独立的精神对话</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">初到杭州，苏轼便拜访了欧阳修推荐的诗僧惠勤与惠思。在云遮雾绕的孤山寺中，"纸窗竹屋，古柏参天"，他与两位高僧"抵掌而谈，滔滔不绝，大有相见恨晚、知音难遇之感"。</p>
+    <p>那是一个"将雪未雪"的日子，西湖"云遮雾绕，亭台楼阁时隐时显，仿佛蓬莱仙境"。苏轼沿盘旋曲折的山径穿云度岭，在清幽素朴的寺院中找到了远离尘寰的宁静。归家后，他"恍恍惚惚如同美梦初醒"，提笔写下《腊日游孤山访惠勤惠思》，以"水清石出鱼可数，林深无人鸟相呼"描绘了这幅独特的冬日山行访僧图。</p>
+    <div class="blockquote">"作诗火急追亡逋，清景一失后难摹。"——苏轼生怕这超凡脱俗的意境稍纵即逝，急忙以诗捕捉</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">诗学巅峰</div>
+    <h3 style="color:#ca8a04;">西湖入诗："淡妆浓抹总相宜"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">西湖的画意在苏轼笔下得到了最完美、最传神的描绘，一首《饮湖上初晴后雨》以浅显的语言、新颖的比喻成为千古绝唱："欲把西湖比西子，淡妆浓抹总相宜"——从此"西子湖"成为西湖的别名。</p>
+    <p>苏轼笔下的西湖四季各有神韵：夏"水涨湖深，幽蓝妩媚"，秋"金风送爽，莲花次第开放"，冬"云雪茫茫，水天相接"，春"新蒲出水，垂柳倒映"。他在望湖楼观雨："黑云翻墨未遮山，白雨跳珠乱入船"；在月夜荡桨："水枕能令山俯仰，风船解与月徘徊"。</p>
+    <div class="cmp-grid">
+      <div class="cmp-card" style="background:#fef2f2;border:1px solid #fecaca;"><div class="cmp-icon">🌧️</div><div class="cmp-name">望湖楼醉书</div><div class="cmp-note">黑云翻墨未遮山<br>白雨跳珠乱入船</div></div>
+      <div class="cmp-card" style="background:#fff7ed;border:1px solid #fed7aa;"><div class="cmp-icon">🌙</div><div class="cmp-name">湖上夜归</div><div class="cmp-note">清吟杂梦寐<br>得句旋已忘</div></div>
+      <div class="cmp-card" style="background:#fefce8;border:1px solid #fde68a;"><div class="cmp-icon">👑</div><div class="cmp-name">饮湖上初晴后雨</div><div class="cmp-note">欲把西湖比西子<br>淡妆浓抹总相宜</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">文人雅集</div>
+    <h3 style="color:#4f46e5;">良辰美景赏心乐事，杭州社交圈的欢乐</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼以"热情诙谐，心胸阔大"迅速融入杭州文人群，"各种各样的宴饮聚会，大家都喜欢有他在场"——在美景、佳肴与情趣相投的朋友们环绕下，他几乎达到了"良辰美景，赏心乐事，四者难并"的人生快乐高境界。</p>
+    <p>他与知州陈襄、继任杨元素建立了深厚友谊。在有美堂上，"正当觥筹交错之际，忽听一声巨雷"，钱塘江水在风中飞溅直立，大雨瓢泼——苏轼当即写下壮丽的诗篇。他还在望湖楼看新月："新月如佳人，出海初弄色"；月夜泛舟："放生鱼鳖逐人来，无主荷花到处开"。</p>
+    <div class="data-row">
+      <div class="data-card" style="background:#faf5ff;border:1px solid #d8b4fe;"><div class="data-big" style="color:#6b21a8;">陈襄</div><div class="data-sm">杭州知州，三年知交</div></div>
+      <div class="data-card" style="background:#faf5ff;border:1px solid #d8b4fe;"><div class="data-big" style="color:#6b21a8;">杨元素</div><div class="data-sm">继任知州，诗酒唱和</div></div>
+      <div class="data-card" style="background:#faf5ff;border:1px solid #d8b4fe;"><div class="data-big" style="color:#6b21a8;">张先</div><div class="data-sm">85岁词人，垂虹亭放歌</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">离愁别恨</div>
+    <h3 style="color:#db2777;">依依惜别：从杭州到密州的伤感迁徙</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">三年杭州任期结束，苏轼依依不舍地告别这片山水。在与杨元素的告别宴上，他写下"天涯同是伤沦落，故山犹负平生约"——离愁别恨之中融入了人生飘零、离合无常的深沉感慨。</p>
+    <p>刘述、张先等追送苏轼至松江垂虹亭。八十五岁的张先自唱《定风波令》，"屈指默计，死生一诀，流涕挽袂"——深知来日无多，生离即为死别。苏轼原计划绕道济南探望弟弟苏辙，却因清河冰冻停航，只得"冒着寒风直接奔赴密州"，从天堂般的杭州走向荒凉的北方。</p>
+    <div class="detail">七年后，苏轼听说垂虹亭被海潮席卷、踪迹全无，无限怅然地写下《书游垂虹亭》追怀这天夜里的盛事——时间将带走一切，唯有诗篇长存。</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>杭州三年是苏轼生命中的"治愈期"：西湖的山水不仅抚平了他被政治排挤的创伤，更激发了他最璀璨的诗情。"欲把西湖比西子"一句，使他与西湖彼此成就——西湖从此有了"西子湖"的诗意别名，而苏轼也在与自然、禅境、友人的深度交融中，完成了从失意官员到伟大诗人的精神蜕变。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>苏轼传 · 王水照 / 崔铭 · 人民文学出版社 2019</p>
+  <p>生成自 infographic-generator · 方正屏显雅宋简体 · #f5f1eb 米白底色</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch004-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第四章「惟有悯农心尚在」</h1>
+  <h2>从天堂杭州到荒凉密州，在蝗旱交加的绝境中，苏轼以"悯农"之心身先士卒抗灾救民，践行了儒家士大夫最可贵的民本精神</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">3万斛</div>
+      <div class="data-sm">报官捕杀蝗虫数</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">数千名</div>
+      <div class="data-sm">救活被弃儿童</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">2年</div>
+      <div class="data-sm">密州任期</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">1074年</div>
+      <div class="data-sm">抵达密州</div>
+    </div>
+</div>
+
+<div class="overview">
+  <div class="oneliner">一句话：在蝗旱交加的密州绝境中，苏轼以"悯农"之心身先士卒抗灾救民——火烧土埋灭蝗、祈雨赈灾、收养弃婴数千——将个人的仕途失意升华为"忧民所忧、乐民所乐"的伟大民本实践</div>
+  <p><span class="scqa-label">核心问题</span>当一位失意的文人从天堂杭州被调往蝗旱肆虐的荒凉密州，他如何在个人前途暗淡与百姓生死存亡之间做出选择？</p>
+  <p><span class="scqa-label">核心答案</span>熙宁七年（1074）冬，苏轼抵达密州。他放下个人愁苦，以"精明练达的才干、踏实勤政的精神"领导灭蝗抗旱。面对饿殍遍野、弃婴满城的惨状，他"洒泪循城拾弃孩"，设立官粮收养制度救活数千儿童。他用行动证明：最伟大的诗篇不一定写在纸上，也可以写在土地上。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">天壤落差</div>
+    <h3 style="color:#dc2626;">从天堂到荒原：密州的残酷现实</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">从温暖繁华的杭州来到偏僻荒凉的密州，"寒风呼啸，景物萧条"——苏轼的心情沉郁落寞，回想起年少时"笔头千字，胸中万卷"的壮志，如今却"满脸尘埃，一身疲惫"，深感"人生之路越走越狭窄"。</p>
+    <p>然而进入密州境内，一个奇怪的现象引起了他的注意：虽是农闲时节，田间男女老幼依然三五成群，深翻土层、铲除草皮，沿途两百余里处处可见。苏轼敏感地意识到——今年密州飞蝗来势极为凶猛。那一刻，"一副沉重的担子压上肩来，个人的愁苦也就暂且搁置在一边了"。</p>
+    <div class="dual-grid">
+      <div class="dual-card"><h4>🌿 杭州</h4><p>山明水秀，富庶繁华<br>西湖胜景，诗酒流连</p></div>
+      <div class="dual-card"><h4>🏜️ 密州</h4><p>偏僻荒凉，寒风呼啸<br>蝗旱肆虐，饿殍遍野</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">灭蝗抗旱</div>
+    <h3 style="color:#ea580c;">身先士卒："我仆既胼胝，我马亦款矻"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼抵达密州后立即展开调查：农民捕杀的蝗虫报官数已达三万斛！可当地官吏却"漠然置之"，甚至有人媚上邀宠说"蝗虫飞来，能为民除草"——苏轼当即厉声反驳，并以杭州亲眼所见的飞蝗蔽日之景为证。</p>
+    <p>他制定了周密的灭蝗方案：在春暖前广泛发动民众以火烧土埋的办法捕杀幼虫，专门拨出粮米奖励积极捕蝗的群众。他本人"从早到晚奔忙在田间地头，巡视督察"，写道："驱攘著令典，农事安可忽。我仆既胼胝，我马亦款矻。"——驱蝗是地方官的职责，不可忽视，自己和仆人马匹都累得精疲力竭。</p>
+    <div class="flow-row">
+      <div class="flow-step">调查灾情<br>报官3万斛</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">发动民众<br>火烧土埋幼虫</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">拨粮奖励<br>积极捕蝗者</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">身先士卒<br>田间巡视督察</div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">人道光辉</div>
+    <h3 style="color:#ca8a04;">"洒泪循城拾弃孩"：救活数千儿童</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">连年蝗旱导致饥民遍野，"饿殍遍野，被遗弃的孩子随处可见"——苏轼怀着沉痛的心情"洒泪循城拾弃孩"，又几经周折设法拨出数百担粮米，专门用于收养这些可怜的弃儿，救活了数千名在死亡线上挣扎的儿童。</p>
+    <p>他张贴告示明文规定：愿意领养孩子的家庭，每月由官府补助六斗米，以此鼓励人们怜惜幼小生命。随着时间推移，"领养者对自己抚养的孩子产生了深厚的骨肉之情，即使生活再苦，也不肯轻易舍弃"——苏轼以伟大的人道精神，在制度层面为弃儿重建了家庭的温暖。</p>
+    <div class="data-row">
+      <div class="data-card" style="background:#f0fdf4;border:1px solid #bbf7d0;"><div class="data-big" style="color:#166534;">数百担</div><div class="data-sm">专储粮米收养弃儿</div></div>
+      <div class="data-card" style="background:#f0fdf4;border:1px solid #bbf7d0;"><div class="data-big" style="color:#166534;">6斗/月</div><div class="data-sm">每户收养补助</div></div>
+      <div class="data-card" style="background:#f0fdf4;border:1px solid #bbf7d0;"><div class="data-big" style="color:#166534;">数千名</div><div class="data-sm">救活的儿童</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">治盗安民</div>
+    <h3 style="color:#4f46e5;">宽政利民："冒死而为盗"亦是"情理之中"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">大荒岁月，盗贼蜂起。但苏轼深知民穷必反的道理："冒死而为盗"可能一死，"畏法而不为盗"也难免饥饿而亡——不少人"相率为盗"，正是情理之中。仅靠"增开告赏之门，申严缉捕之法"终究是治标不治本。</p>
+    <p>他一面制定周密缉盗方案，"磨刀入谷追穷寇"，一面从根本上以宽政利民。他上书朝廷如实报告灾情，呼吁减免赋税。在苏轼看来，治安的根本在于让百姓活下去——只有宽政利民，才可能使百姓"虽驱之为盗而不忍"。这种洞见远超同时代大多数官员。</p>
+    <div class="bar-wrap">
+      <div class="bar-item"><span style="color:#4f46e5;font-weight:700;">治标</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:#4f46e5;"></div></div><span>缉捕追寇</span></div>
+      <div class="bar-item"><span style="color:#ca8a04;font-weight:700;">治本</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:#ca8a04;"></div></div><span>宽政利民，减免赋税</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">诗心悯农</div>
+    <h3 style="color:#db2777;">"父老借问我"：与百姓同甘共苦的吏民相亲</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">在密州的两年，苏轼"无时无刻不像农民一样盼望着瑞雪甘霖"：冬雪纷飞，他联想"遗蝗入地应千尺，宿麦连云有几家"；春雨初晴，他遗憾"天公用意真难会，又作春风烂漫晴"——每一场雨雪都牵动着他的心，因为他深知这关系到百姓的生与死。</p>
+    <p>他经常向老农请教农业知识，得知"从来蝗旱相资"和常山祷雨最灵。在蝗旱最严峻的时刻，他沐浴焚香、素食斋戒前往常山虔诚礼拜。在诗中，他展现了封建时代极为少见的吏民相亲的动人画面："父老借问我：'使君安在哉？'今年好风雪，会见麦千堆。"</p>
+    <div class="blockquote">"崎岖世路尝应遍，寂寞山栖老渐便"——在荒山祈雨中，苏轼将个人失意融入了对苍生的悲悯，完成了从文人到民本官员的精神淬炼</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>密州两年是苏轼从"才子"到"民本官员"的蜕变期。他从天堂杭州坠入蝗旱肆虐的荒凉之地，却没有沉溺于个人困顿，而是将全部心力投入抗灾救民：火烧土埋灭蝗、沐浴斋戒祈雨、洒泪循城拾弃孩、设立官粮收养制度。他以行动证明：一个真正伟大的士大夫，不仅能在纸上写下千古绝唱，更能在土地上写下对苍生的悲悯——"悯农"之心，才是儒家精神最高的诗篇。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>苏轼传 · 王水照 / 崔铭 · 人民文学出版社 2019</p>
+  <p>生成自 infographic-generator · 方正屏显雅宋简体 · #f5f1eb 米白底色</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch005-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第五章「柏台霜气夜凄凄」</h1>
+  <h2>赴湖州途中，苏轼在故人已逝的沧桑中完成了"不必仕不必不仕"的哲学升华，却不知一场致命的政治风暴——乌台诗案——正在京城悄然酝酿</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">1079年</div>
+      <div class="data-sm">元丰二年·抵达湖州</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">44岁</div>
+      <div class="data-sm">苏轼赴湖州年龄</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">三次</div>
+      <div class="data-sm">三过平山堂</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">不仕不隐</div>
+      <div class="data-sm">人生哲学升华</div>
+    </div>
+</div>
+
+<div class="overview">
+  <div class="oneliner">一句话：赴湖州途中，苏轼在故人凋零、江山依旧的沧桑中，完成了"不必仕，不必不仕"的哲学升华，于舟中夜起的禅境中体验到心灵的超越——然而，京城中以王珪、李定为首的政敌已布下罗网，一场致命的"乌台诗案"即将降临</div>
+  <p><span class="scqa-label">核心问题</span>一位在山水与哲理中寻求心灵超越的诗人，为何在抵达湖州后不到三个月，便被投入御史台监狱？</p>
+  <p><span class="scqa-label">核心答案</span>元丰二年（1079）四月，苏轼第三次沿汴河赴任。在扬州平山堂追怀已故恩师欧阳修，写下"休言万事转头空，未转头时皆梦"；在舟中夜起的禅境中感受"心灵与自然冥合无间的快乐"。他总结出"不必仕，不必不仕"的理想人生境界。然而，京城政坛已变天：王珪、蔡确联手李定、舒亶，正以苏轼诗文为"罪证"，罗织一场致命的文字狱。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">故人凋零</div>
+    <h3 style="color:#dc2626;">三过平山堂："未转头时皆梦"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">第三次沿汴河赴任途中，苏轼来到扬州平山堂——三十年前恩师欧阳修修建的名胜。堂前欧公手植的柳树犹在，壁上龙蛇飞动的墨迹如新，而故人已逝——"三过平山堂下，半生弹指声中。十年不见老仙翁，壁上龙蛇飞动"。</p>
+    <p>苏轼在词中化用白居易"百年随手过，万事转头空"的成句，更翻进一层："休言万事转头空，未转头时皆梦"——不要说在掉转头的一瞬间世事终必成空，其实此时此刻所存在的一切，又何尝不像梦一般虚幻？当时他神飘万里，思接千载，完全忘记了身旁观者如堵，争相看他落笔。</p>
+    <div class="dual-grid">
+      <div class="dual-card"><h4>🎋 平山堂</h4><p>欧阳修知扬州时所建<br>"平山栏槛倚晴空<br>山色有无中"</p></div>
+      <div class="dual-card"><h4>🕯️ 故人已逝</h4><p>欧阳修、刁约、张先<br>陈舜俞相继凋零<br>"人亡琴废，帐空鹤唳"</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">舟中禅境</div>
+    <h3 style="color:#ea580c;">"夜深人物不相管"：心灵与自然冥合的狂喜</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">行舟水上，苏轼辗转难眠。夜深人静，万物沉睡——"没有争斗，没有喧哗，也没有机关巧算"——他体验到了心灵与自然冥合无间的快乐："夜深人物不相管，我独形影相嬉娱。"</p>
+    <p>在《舟中夜起》中，苏轼以"微风萧萧吹菰蒲，开门看雨月满湖"开篇，营造出空旷奇逸的意境。江潮暗涨如寒虫低咽，月在柳梢如蜘蛛垂挂丝端——"时间似已停滞，瞬间已成永恒"。但"鸡鸣钟动百鸟散，船头击鼓还相呼"——喧闹的一天又将到来，这样清幽的美景又能欣赏多久？</p>
+    <div class="blockquote">"此生忽忽忧患里，清境过眼能须臾。"——在这匆匆劳碌的忧患人生中，超脱的禅境转瞬即逝，诗人深知短暂的宁静之后，是无尽的世事纷扰</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">哲学升华</div>
+    <h3 style="color:#ca8a04;">"不必仕，不必不仕"：理想人生的平衡之道</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">在《灵壁张氏园亭记》中，苏轼对几年的思考进行了总结，提出了"古之君子，不必仕，不必不仕"的经典论断——一切都需任运自然，在可否之间求得平衡，既要保持个体精神的独立，又不推卸应尽的社会责任和义务。</p>
+    <p>他阐述道："开门而出仕，则跬步市朝之上；闭门而归隐，则俯仰山林之下"——出仕与归隐并非非此即彼，而是可以在不同时空中灵活切换，以"养生治性，行义求志"。这是苏轼历经二十年宦海沉浮后淬炼出的人生智慧，也是他此后应对更大苦难的精神支柱。</p>
+    <div class="data-row">
+      <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;"><div class="data-big" style="color:#ca8a04;">出仕</div><div class="data-sm">跬步市朝之上<br>践行社会责任</div></div>
+      <div class="data-card" style="background:#faf5ff;border:1px solid #d8b4fe;"><div class="data-big" style="color:#6b21a8;">归隐</div><div class="data-sm">俯仰山林之下<br>保持精神独立</div></div>
+      <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;"><div class="data-big" style="color:#4f46e5;">平衡</div><div class="data-sm">无适而不可<br>任运自然</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">湖州赴任</div>
+    <h3 style="color:#4f46e5;">暴风雨前的宁静："顾我无足恋，恋此山水清"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">元丰二年四月二十日，苏轼抵达湖州任所。"湖州风俗阜安，山水清远"——他兴致勃勃地乘软轿绕城漫游，为"环城三十里，处处皆佳绝"的山水所沉醉，心中酝酿着许多新计划：为百姓办实事，为山水放声歌唱。</p>
+    <p>就像在杭州、密州、徐州一样，他想"上以广朝廷之仁，下以慰父老之望"。他写道："顾我无足恋，恋此山水清。新诗如弹丸，脱手不暂停"——诗情如弹丸脱手般喷薄而出。然而，他并不知道，京城中一场"突如其来的严重的政治打击"即将彻底破灭他的所有美好愿望。</p>
+    <div class="detail">此时的苏轼满怀憧憬，计划为湖州百姓修水利、兴文教——与他在杭州、密州、徐州的政绩一脉相承。他深信自己即将开始又一段造福一方的新任期。</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">暗流涌动</div>
+    <h3 style="color:#db2777;">政敌罗网：一帮小人如何将苏轼变成"眼中钉"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">元丰政局的焦点已不再是变法问题，而纯粹是官场倾轧。王安石的变法派与反变法派核心人物都已不在其位，但朝中人事纠纷却日见激烈——宰相王珪为固权拉拢御史李定、舒亶、何正臣，这些人正虎视眈眈寻找打击反变法派潜在势力的机会。</p>
+    <p>王珪号称"三旨相公"：请圣旨、得圣旨、传圣旨——毫无政见却极擅政客手腕。他与参知政事蔡确联手，与李定等人"结成攻守同盟"。李定等以拥护新法骤得高位，眼见变法派无铁腕人物执掌政权，便"终日惴惴不安"，深恐神宗起用反变法人士——苏轼，这个"眼中钉，肉中刺"，成了他们最佳的打击目标。</p>
+    <div class="blockquote">"苏轼自嘉祐二年进士考试名震京师以来，由于种种原因久未获得朝廷重用"——然而在政敌眼中，他的才华本身就是最大的威胁</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>第五章是苏轼命运的分水岭：上半部他在山水与故人中完成了"不必仕，不必不仕"的哲学升华，达到了入世与出世之间最圆融的平衡境界；下半部却揭示了京城政坛的暗黑现实——王珪、李定等一帮小人正以诗文为武器编织罗网。苏轼在哲学上已做好准备去面对人生的任何风浪，但他还不知道，即将到来的"乌台诗案"将是对他全部智慧与勇气的终极考验。柏台的霜气，已经悄然逼近。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>苏轼传 · 王水照 / 崔铭 · 人民文学出版社 2019</p>
+  <p>生成自 infographic-generator · 方正屏显雅宋简体 · #f5f1eb 米白底色</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch006-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第6章「吟啸徐行迎风雨」</h1>
+  <h2>元丰三年，苏轼抵达偏僻萧条的黄州——"自笑平生为口忙，老来事业转荒唐"，从皇帝誉为宰相之才到流放犯官，一场看不到尽头的苦刑开始了</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">1080年</div>
+      <div class="data-sm">抵达黄州</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">45岁</div>
+      <div class="data-sm">贬谪之年</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">犯官</div>
+      <div class="data-sm">不得签书公事</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">定惠院</div>
+      <div class="data-sm">借住小寺庙</div>
+    </div>
+</div>
+<div class="overview">
+  <div class="oneliner">核心洞察：乌台诗案后的黄州贬谪是苏轼人生的至暗时刻——但正是在孤寂与恐惧中，他通过与自然的深度对话，以孤鸿自喻、以海棠自况，完成了从政治犯官到诗意栖居者的首次精神蜕变</div>
+  <p><span class="scqa-label">核心问题</span>从天之骄子跌落为流放犯官，苏轼如何面对这场看不到尽头的贬谪苦刑？</p>
+  <p><span class="scqa-label">核心答案</span>苏轼初到黄州借住定惠院小寺庙，白天昏睡、夜晚独行，以《卜算子》中的孤鸿和东山坡上的海棠自喻。通过安国寺沐浴涤荡心灵，他在与长江、月色、竹林和海棠的对话中，开始修复乌台诗案带来的巨大心理创伤——"拣尽寒枝不肯栖，寂寞沙洲冷"，孤独中亦有不屈的高傲。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">人生巨变</div>
+    <h3 style="color:#dc2626;">贬谪之痛：从宰相之才到流放犯官</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">黄州是一座偏僻萧条的江边小镇——苏轼的正式官衔是"责授检校尚书水部员外郎、充黄州团练副使，本州安置、不得签书公事"，性质近于流放，是一场没有期限的苦刑。</p>
+    <p>"人生真是一个无法预测的怪圈"，想当年在京城一举成名，皇帝誉为宰相之才，重臣延为座上之宾，只以为经天纬地的事业唾手可成——又怎能料到有一天会走到这样荒凉的小镇？他需要怎样的勇气、怎样的毅力、怎样过人的心理承受能力来面对这种看不到尽头的生活巨变！</p>
+    <p class="detail">因为是犯官，没有官舍住，父子只得借住城里一座名为定惠院的小寺庙，跟着和尚们一起吃斋。苏轼自嘲："自笑平生为口忙，老来事业转荒唐。长江绕郭知鱼美，好竹连山觉笋香。"连薪俸也只以实物折支——多半是官府用剩的酒袋。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">心灵创伤</div>
+    <h3 style="color:#ea580c;">恐惧与蛰伏：昼伏夜出的自我封闭</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">这场从天而降的祸事，使苏轼对外界产生了一种莫名的恐惧和战栗——初到黄州，他常常整天闭门不出，从早睡到晚，只在夜深人静时才悄悄出门散步。</p>
+    <p>"昏昏觉还卧，展转无由足。强起出门去，孤梦犹可续。"处处是陷阱，处处是捉摸不透的险恶存在。大难之后，他几乎不知道该怎样待人和处世，才可以使自己免遭无端的陷害。即便偶尔去城边酒店买一杯村酿，也要时时警醒："饮中真味老更浓，醉里狂言醒可怕。"</p>
+    <p class="detail">此后，黄州百姓经常看到一个孤独的异乡人在山间水畔毫无目的地闲逛——有时候站在花下发呆，有时候喃喃自语，他的话似乎都是说给空中的飞鸟、地上的草木、水里的游鱼、天上的流云。他们隐隐约约感觉到：他是一个好心肠的怪人。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">精神自画像</div>
+    <h3 style="color:#ca8a04;">孤鸿之喻：《卜算子》中的绝世词章</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">一夜，苏轼在长江之畔看见一只孤独的鸿雁掠过——寒林千枝，孤雁不肯轻易敛翅，最后一声悲鸣落在寂寞的沙洲。这孤独而高傲的鸿雁，正是苏轼的化身。</p>
+    <p>于是千古绝唱奔涌而出："缺月挂疏桐，漏断人初静。谁见幽人独往来，飘渺孤鸿影。惊起却回头，有恨无人省。拣尽寒枝不肯栖，寂寞沙洲冷。"上片写幽人，下片写孤鸿——幽人寂寞如孤鸿，孤鸿惊惶如幽人，语语双关，深刻地表现了苏轼当时心境的苦闷与凄凉。</p>
+    <p class="detail">这首《卜算子·定惠院寓居作》以深夜萧条冷落的环境描写烘托出诗人凄清的处境。"拣尽寒枝不肯栖"更是一句人格宣言：即便身为犯官流落天涯，他也不肯随世浮沉、放弃自己的品格与操守。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">身世之悲</div>
+    <h3 style="color:#4f46e5;">海棠自况：幽独名花中的生命共鸣</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼在定惠院东面小山坡的杂树中看到一株盛开的海棠——这种原产于故乡四川的名贵花木，竟出现在黄州穷乡僻壤，当地人根本不知道它的贵重。苏轼触景生情，写下千古绝作《海棠曲》。</p>
+    <p>"嫣然一笑竹篱间，桃李漫山总粗俗。也知造物有深意，故遣佳人在空谷。自然富贵出天姿，不待金盘荐华屋。"海棠的高洁出于自然，不靠华堂金盘来抬高身价——这正是苏轼自身境遇与品格的写照。"天涯流落俱可念，为饮一樽歌此曲。明朝酒醒还独来，雪落纷纷那忍触！"</p>
+    <p class="detail">这首诗运用拟人手法，将海棠比作高贵清淑、独拔流俗的佳人，又以海棠自喻，寄托深沉的身世之感。前人誉为千古绝作，苏轼自己极为喜爱，以后经常亲笔书写送人，前后不下数十次。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">心灵涤荡</div>
+    <h3 style="color:#db2777;">浴火重生：安国寺沐浴中的哲理感悟</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼常去城南安国寺沐浴——在洗浴过程中，他不仅洗濯身体的污垢，而且涤除心灵深处的荣辱得失之感，每从澡堂走出便有身心俱净的快感。</p>
+    <p>"岂惟忘净秽，兼以洗荣辱。"沐浴本是苏轼日常生活中的一大爱好，如今更加入了哲理的感悟。"尘垢能几何，倏然脱羁梏。披衣坐小阁，散发临修竹。心困万缘空，身安一床足。"他将沐浴变成了一种精神仪式——在热气蒸腾中反思人生历程，让乌台诗案的阴影在水汽中慢慢消散。</p>
+    <p class="detail">随着对黄州的逐步熟悉，苏轼开始改变昼伏夜出的习惯。虽然依然很少说话、不和人往来，但他已从最初的恐惧和战栗中慢慢走出——山间水畔的闲逛、安国寺的沐浴、月下的独吟，都在帮助他修复那颗被政治风暴击碎的心灵。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>黄州初期的苏轼经历了从"人生真是一个无法预测的怪圈"到"拣尽寒枝不肯栖"的心灵转变。他用孤鸿象征不屈的高傲，用海棠寄托身世之悲，用沐浴仪式洗涤荣辱——这四个月的蛰伏不是消沉，而是涅槃前的蓄力。正如他自己所说："清诗独吟还自和，白酒已尽谁能借。"诗与自然，成为他在至暗时刻最可靠的救赎。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>来源：王水照 / 崔铭《苏轼传》· 人民文学出版社 2019 | 第6章「吟啸徐行迎风雨」· 信息图仅供学习参考</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch007-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第7章「三咏赤壁成绝唱」</h1>
+  <h2>元丰五年，黄州第三年——"已将地狱等天宫"，一个崭新的自我在苦难中蜕变。东坡躬耕、雪堂雅集、赤壁放歌，催生了中国文学史上最辉煌的篇章</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">1082年</div>
+      <div class="data-sm">黄州第三年</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">47岁</div>
+      <div class="data-sm">东坡躬耕</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">3篇</div>
+      <div class="data-sm">赤壁赋+念奴娇</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">雪堂</div>
+      <div class="data-sm">东坡上的精神家园</div>
+    </div>
+</div>
+<div class="overview">
+  <div class="oneliner">核心洞察：黄州第三年，苏轼在躬耕东坡、雪堂雅集与赤壁三咏中完成了人格的全面升华——从"已将地狱等天宫"的超脱到"大江东去"的千古绝唱，苦难催生了中国文学史上最辉煌的篇章</div>
+  <p><span class="scqa-label">核心问题</span>外部环境毫无改善的黄州第三年，苏轼如何完成了从犯官到千古文豪的精神蜕变？</p>
+  <p><span class="scqa-label">核心答案</span>雪堂落成后，苏轼白天躬耕、夜晚读书著述，与渔樵为伍、与朋友夜饮翻墙——完完全全摆脱了声名之累。三月七日沙湖遇雨写下《定风波》，七月十六日与客泛舟赤壁之下写出前《赤壁赋》，十月十五日再游赤壁写出后《赤壁赋》，更有《念奴娇·赤壁怀古》横空出世。超旷放达已成为他性格的主流，思想和艺术由此升华到极其美妙的境界。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">身份转换</div>
+    <h3 style="color:#dc2626;">躬耕东坡：从士大夫到农夫的自觉蜕变</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼大半时间都留在东坡——白天在田间耕耘劳作，晚上在雪堂读书著述。身边总带着一只酒壶，累了便喝上几口，随意倒在草地上头枕破砖酣睡。在自然的怀抱中，他享受着官居时不可能拥有的自在与闲逸。</p>
+    <p>他每天清晨出门、深夜回家，看守城门的士卒都和他熟识了。"悬知百年后，父老说故侯。古来贤达人，此路谁不由。"他在心里说：对于成就千年百世功业与名望的贤达之士来说，苦难何尝不是一条必由之路？</p>
+    <p class="detail">那条通往东坡的黄泥路，晴天尘土飞扬、雨日泥泞满地，在苏轼灵心慧眼观照下也呈现出动人的美质："大江汹以左缭兮，渺云涛之舒卷。"他日复一日往返其上，"朝嬉黄泥之白云兮，暮宿雪堂之青烟"，完全像个普通人一样混迹于渔樵之中。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">生活情趣</div>
+    <h3 style="color:#ea580c;">雪堂人生：饮酒烤牛与翻墙夜归</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">雪堂成为他与朋友欢聚的场所——他们偷饮禁酿私酒，西邻将家中病牛杀了烤来下酒。酒足肉饱之后，一个个摇摇晃晃在山野间放歌漫步，直到三更敲过才翻墙入城。</p>
+    <p>另一次夜归更富传奇色彩：苏轼在雪堂饮酒，醉了醒、醒了醉，回到临皋亭时家僮鼾声如雷，敲门不应。他索性站在江边，"倚杖听江声"，心有所感写下那首《临江仙》："长恨此身非我有，何时忘却营营！夜阑风静縠纹平。小舟从此逝，江海寄余生。"</p>
+    <p class="detail">第二天全城传遍：苏轼昨夜"挂冠服江边，挐舟长啸去矣"！知州徐君猷又惊又怕，急忙带人亲往临皋亭查看——谁知苏轼尚在梦中，鼾声如雷。君猷不禁失声大笑。真正了解苏轼的人便不会发生这样的误会：他始终清醒地意识到自己对家庭的责任。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">人格宣言</div>
+    <h3 style="color:#ca8a04;">沙湖遇雨：一蓑烟雨任平生的旷达宣言</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">三月七日，苏轼前往沙湖相田途中遇雨——同行皆狼狈，唯他毫不介意。竹杖芒鞋，吟啸徐行，不一会云开日出。这场倏然而至的大雨让他写下了《定风波》，成为千古旷达的人格宣言。</p>
+    <p>"莫听穿林打叶声，何妨吟啸且徐行。竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。料峭春风吹酒醒，微冷，山头斜照却相迎。回首向来萧瑟处，归去，也无风雨也无晴。"当风雨扑面时，他自有"泰山崩于前而色不变"的勇气；当斜照相迎时，他也不欢喜忘形——完全超越于外部影响之上，履险如夷，宠辱不惊。</p>
+    <p class="detail">沙湖相田虽未成交，但此行结识了名医庞安常。安常耳聋但颖悟绝人，两人笔谈"书不数字，辄深了人意"。苏轼开玩笑说："余以手为口，君以眼为耳，皆一时异人也。"两人同游清泉寺，苏轼见兰溪水西流，又写下："谁道人生无再少，门前流水尚能西！"</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">千古绝唱</div>
+    <h3 style="color:#4f46e5;">赤壁三咏：大江东去的文学巅峰</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">七月十六日夜，苏轼与客泛舟赤壁之下——清风徐来，水波不兴，饮酒诵诗之间，产生了中国文学史上最卓越的篇章之一——前《赤壁赋》。三个月后十月十五日再游赤壁，又写出后《赤壁赋》与《念奴娇·赤壁怀古》。</p>
+    <p>前《赤壁赋》以主客问答展开哲学思辨：从"寄蜉蝣于天地，渺沧海之一粟"的渺小感叹，到"惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色"的当下审美救赎。后《赤壁赋》则以月夜登山、长啸水涌的奇幻画面，展现了一个更加逍遥自在的苏轼。《念奴娇》更是以"大江东去，浪淘尽，千古风流人物"开篇，气吞山河。</p>
+    <p class="detail">赤壁三咏共同构成了一个完整的哲学体系：前赋以理遣情，从"哀吾生之须臾"到"物与我皆无尽也"；后赋以境写意，从"山高月小、水落石出"到一道孤鹤横江而去、道士梦中笑问"赤壁之游乐乎"；《念奴娇》以史入词，周郎赤壁的壮怀激烈与"人生如梦"的终极觉悟交相辉映。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">心灵升华</div>
+    <h3 style="color:#db2777;">东坡月夜：铿然曳杖声中的澄净喜悦</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼往往在夜深人静时才披着清淡的月色走回临皋亭——一路谛听手杖撞击凹凸不平路面发出的清脆声响，心头洋溢着澄净的喜悦。苦难已经完全转化为审美的体验，怨怒与激愤都已成为过去。</p>
+    <p>"雨洗东坡月色清，市人行尽野人行。莫嫌荦确坡头路，自爱铿然曳杖声。"这首《东坡》短诗浓缩了苏轼此时的心境——那凹凸不平的坡头路，不正是他坎坷的人生之路吗？但他从中听到的却是铿然悦耳的清脆声响。他变得更加光明、温暖、亲切、宽容，充满了闪耀着智慧光彩的成熟的幽默感。</p>
+    <p class="detail">从元丰三年二月抵达到元丰五年，苏轼在黄州已度过近三年。外部环境依然没有丝毫改善，但他的心灵世界已完全不同于往日。正如他在《次韵答元素》中所说："已将地狱等天宫"——完全超越于世俗的穷达观念之上，在任何环境中都能感受到优美、领悟到哲思。超旷放达已经成为他性格的主流。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>黄州第三年，苏轼完成了中国文人史上最惊人的蜕变：从"拣尽寒枝不肯栖"的孤愤到"一蓑烟雨任平生"的旷达，再到"大江东去"的宇宙视野。赤壁三咏不仅是文学的高峰，更是一个哲学体系的建立——前赋以理遣情、后赋以境写意、《念奴娇》以史入词。这年七月和十月的两个月夜，在中国文学的天空中留下了永不熄灭的光芒。正如他自己所说："雨洗东坡月色清"——苦难已经被洗成了月色般澄净的美。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>来源：王水照 / 崔铭《苏轼传》· 人民文学出版社 2019 | 第7章「三咏赤壁成绝唱」· 信息图仅供学习参考</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch008-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第8章「投老江湖终不失」</h1>
+  <h2>元丰七年三月，量移汝州的诏命抵达黄州——四年零两个月的东坡岁月戛然而止。"归去来兮，吾归何处？"离别之际，黄州的山水、父老、鼓角，都化作了最深沉的眷恋</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">1084年</div>
+      <div class="data-sm">量移汝州</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">4年2月</div>
+      <div class="data-sm">黄州岁月</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">49岁</div>
+      <div class="data-sm">辞别东坡</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">2闰</div>
+      <div class="data-sm">历经两度闰年</div>
+    </div>
+</div>
+<div class="overview">
+  <div class="oneliner">核心洞察：量移汝州的离别是黄州四年岁月的终结——苏轼在万般不舍中完成了从"此身非我有"到"投老江湖终不失"的身份确认，虽未终老东坡，此地已成他精神上永恒的故乡</div>
+  <p><span class="scqa-label">核心问题</span>离开生活了四年零两个月的黄州对苏轼意味着什么？他带走了什么，又留下了什么？</p>
+  <p><span class="scqa-label">核心答案</span>离去前一个月异常忙碌：饯行酒宴排满日程、为朋友题字留念、替潘氏兄弟手书《赤壁》二赋。歌妓李琪终于在最后一宴求得苏轼题诗——"恰似西川杜工部，海棠虽好不吟诗"。启程日清晨，东坡邻里齐集雪堂前的告别、老人颤抖着双手敬上的送行酒、江上隔岸传来的黄州鼓角声，让苏轼凄然泪下——"他年一叶泝江来，还吹此曲相迎饯。"</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">命运转折</div>
+    <h3 style="color:#dc2626;">量移诏书：四年等待后的突然离别</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">元丰七年三月中旬，苏轼循例上了《谢量移汝州表》——仕宦生涯终于有了一点点转机。他将东坡、雪堂和乳母的坟墓都托付给潘丙照看，先赴筠州看望苏辙一家。船已租好，离别在即。</p>
+    <p>消息传开后，前来话别的人络绎不绝，饯行酒会一个接着一个，把日程排得很紧。许多朋友请苏轼题字留念，苏轼本来就不惜笔墨，又极重感情，在这离别伤怀的日子里自然一一应承。在黄州的最后一个月，他变得异常忙碌。</p>
+    <p class="detail">潘丙的两个侄儿大观、大临兄弟请求苏轼手书《赤壁》二赋，苏轼则表示更愿意写《归去来辞》，两位年轻人索性一并都要。这样长篇的文字须用蝇头小楷书写，苏轼平时最不耐烦写小楷，这次竟也没有推辞，为此还将预定启程日期推迟了好几天。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">临别赠诗</div>
+    <h3 style="color:#ea580c;">李琪题诗：海棠虽好不吟诗的巧妙用典</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">州府郡僚设宴饯行，歌妓中一位名叫李琪的姑娘天资聪颖、极爱读书，一直仰慕苏轼却羞于开口求诗。这是最后一次机会——酒过三巡，她终于鼓起勇气取下围巾请苏轼惠赐墨宝。</p>
+    <p>苏轼接过洁白的丝巾，端详这位美丽而略带忧愁的少女。他早已注意到李琪的与众不同，这使他想起定惠院东面小山坡上那株高洁的海棠。提笔写道"东坡五载黄州住，何事无言及李琪？"却被邻桌敬酒打断。眼看宴席将散，李琪焦急再拜，苏轼哈哈大笑："几乎忘了出场。"挥笔续完："恰似西川杜工部，海棠虽好不吟诗。"</p>
+    <p class="detail">杜甫在素有"香海棠国"之称的西蜀生活了整整十年，却始终没有一篇提到海棠。苏轼运用这个典故，为自己几年来不曾为李琪题诗做出了巧妙的不成解释的解释，同时又以海棠比李琪——黄州所有歌妓，唯有她得到的褒扬最甚。满座击节称叹。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">深情告别</div>
+    <h3 style="color:#ca8a04;">满庭芳别：进退两难的心灵矛盾</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">四月一日，在朋友与邻居的告别宴上，苏轼写下了那首饱含深情的《满庭芳》。词中回顾了黄州四年两个月、历经两度闰年的漫长岁月——"儿童尽，楚语吴歌"，孩子们都已满口黄州方言。</p>
+    <p>"归去来兮，吾归何处？万里家在岷峨。百年强半，来日苦无多。"年近五十、渐入老境的苏轼真的觉得有些累了——"人生底事，来往如梭！"他多想学陶渊明彻底摆脱仕途羁绊，但儒家的淑世精神深植于心，无论主客观，此刻他都不可能真的抛弃一切。归隐田园永远都只是一个可望而不可即的梦想。</p>
+    <p class="detail">词末他对黄州父老殷殷嘱托："好在堂前细柳，应念我，莫剪柔柯。仍传语，江南父老，时与晒渔蓑。"——请爱护雪堂前我种下的柳树，也请时时替我晒一晒打鱼时穿的蓑衣，我一定会回来的！整首词淋漓尽致地铺写了进退两难的处境和依依惜别的深情。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">多情鼓角</div>
+    <h3 style="color:#4f46e5;">江夜闻鼓：黄州鼓角的多情送别</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">启程日黄昏，苏轼一行渡过长江前往武昌。四周一片静寂，忽然一阵隐隐的鼓角声隔江传来——这是黄州的鼓角声呀！在过去的四年中，它多少次陪伴他夜游，多少次惊醒他醺醺醉意。苏轼停下脚步，回望东坡，凄然泪下。</p>
+    <p>"清风弄水月衔山，幽人夜渡吴王岘。黄州鼓角亦多情，送我南来不辞远。江南又闻出塞曲，半杂江声作悲健。谁言万方声一概，鼍愤龙愁为余变。"鼓角声夹杂在江涛中，听来别有一番凄清悲壮的意味——连鼍（扬子鳄）和龙都在为他悲伤变色。他写下："他年一叶泝江来，还吹此曲相迎饯。"</p>
+    <p class="detail">诗歌酣畅淋漓地表现了苏轼对黄州的无限留恋——"我记江边枯柳树，未死相逢真识面。"然而仕途羁旅，这个美好的愿望终究没能实现。直到元祐四年出知杭州时，他仍在诗中怀念东坡和黄州父老。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">情感归宿</div>
+    <h3 style="color:#db2777;">终老之愿：东坡作为精神原乡的确认</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">启程那天清早，邻里好友不约而同来到雪堂前。一位老人用颤抖的手满满地斟了一杯酒："先生，请喝了这杯送行的酒吧，以后可别忘了这个地方，它也是您的家呀。"苏轼接过酒杯，嗓子好像被哽住了——想说的太多了，怎么能说得清呢？</p>
+    <p>他想起垦荒时"从我于东坡，劳饷同一餐"，筑堤时"四邻相率助举杵，人人知我囊无钱"，种地时"农夫劝我言，莫使苗叶昌"。患难之中，是黄州父老给予他热情的关怀和帮助，他们朴实真淳的情谊，使他时时感受到人间的温情。苏轼仰头将酒一饮而尽，从此又将踏上风波难测的漫漫征途。</p>
+    <p class="detail">四年前抵达黄州时，他是恐惧战栗的犯官；四年后离开时，他已是"一蓑烟雨任平生"的东坡居士。黄州没有成为终老之地，但东坡已经成为他精神上的永恒故乡——那个可以在"铿然曳杖声"中感受澄净喜悦的精神原点。这份确认，是他离开黄州时带走的最珍贵的东西。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>黄州四年零两个月，从"拣尽寒枝不肯栖"的孤愤到"归去来兮吾归何处"的不舍——离开黄州的苏轼已经不再是四年前那个人。他带走了东坡赋予他的人格蜕变和赤壁凝结的文学巅峰，留下了一座雪堂、数株细柳和一件渔蓑。黄州鼓角的多情送别、父老颤抖双手敬上的送行酒、以及"时与晒渔蓑"的殷殷嘱托，共同完成了一次最深情的告别。正如他在《过江夜行》中写道："谁言万方声一概，鼍愤龙愁为余变"——整个黄州的山水都在为他送行，而他也已将此地确认为精神上永恒的故乡。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>来源：王水照 / 崔铭《苏轼传》· 人民文学出版社 2019 | 第8章「投老江湖终不失」· 信息图仅供学习参考</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch009-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第9章「华灯飞盖寓京华」</h1>
+  <h2>元丰八年，旧党复起，六年贬谪终告结束——但苏轼心中已无狂喜，只有"樽酒不空田百亩，归来分得闲中趣"的淡泊。密州父老夹道欢迎、登州海市倏忽即逝，再到京城华丽灯火的召唤</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">1085年</div>
+      <div class="data-sm">神宗去世/旧党复起</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">6年</div>
+      <div class="data-sm">贬谪岁月终结</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">登州5日</div>
+      <div class="data-sm">知州后即召还</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">2道奏章</div>
+      <div class="data-sm">水军状+榷盐状</div>
+    </div>
+</div>
+<div class="overview">
+  <div class="oneliner">核心洞察：从黄州贬所到登州任上再到京城召还，苏轼的仕途突然转暖——但六年闲废后的重返并未带来狂喜，而是"樽酒不空田百亩，归来分得闲中趣"的淡泊与清醒，登州海市的幻灭感进一步强化了他对"真实"与"虚幻"的洞察</div>
+  <p><span class="scqa-label">核心问题</span>重返仕途的苏轼如何看待功名与归隐？他的心境与贬谪前有何不同？</p>
+  <p><span class="scqa-label">核心答案</span>元丰八年神宗去世、高太后摄政，旧党重获起用。苏轼先得量移汝州、复朝奉郎知登州，上任仅五日即被召还京任礼部郎中。赴任途中旧地重游密州——父老乡亲扶老携幼夹道欢迎，当年幸存弃婴已成健壮少年。登州蓬莱阁上望海如镜，海市倏忽即逝令他想起了许多。赴京前他连上两道奏章为民请命，展现了黄州四年锤炼后不变的淑世情怀。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">命运转折</div>
+    <h3 style="color:#dc2626;">仕途转暖：旧党复起与六年贬谪终结</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">"山重水复疑无路，柳暗花明又一村。"六年闲废的贬谪生活已告结束，仕宦之路又变得平坦宽广——但苏轼心中没有太多的激动和喜悦，却有着无限的留恋和怅惘。</p>
+    <p>在《蝶恋花》中他写道："云水萦回溪上路，叠叠青山环绕溪东注。月白沙汀翘宿鹭，更无一点尘来处。"经历了近三十年的仕途风雨和九死一生的乌台诗案，经历了黄州时期的参禅悟道与返璞归真，年少时争强好胜之心与功名利欲之念均已淡然无痕。</p>
+    <p class="detail">元丰八年七月下旬启程前往登州。赴任途中，他第七次渡过淮水。早在元丰二年他就曾感叹："好在长淮水，十年三往来。功名真已矣，归计亦悠哉。"如今更觉倦怠而淡漠——此行不过是去到海滨城市度过衰颓老境的岁月而已。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">故地重游</div>
+    <h3 style="color:#ea580c;">密州父老：十年后夹道欢迎的深情</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">阔别十年后重入密州境内，苏轼不禁激动——"我是胶西旧使君。"但仰望常山，高峻耸立，像个兀傲的老人，丝毫也没有相识相亲的意思，令诗人满腹怅然。然而山水无情人有情。</p>
+    <p>密州的父老乡亲并没有忘记这位造福一方的父母官。所到之处，人们扶老携幼，夹道欢迎，争先恐后地献酒祝寿。他们欣喜地看到，十年过去，苏轼虽已不复盛壮，却依旧精神矍铄。那数千名在大饥荒中幸存的弃婴，如今都已长成了健壮的少年——他们一个个睁大好奇的双眼端详这位救命恩人。</p>
+    <p class="detail">现任知州霍翔在超然台上置酒款待。重上超然台，当年镌刻的《超然台记》等诗文依旧保存完好。触抚旧迹，感慨万千，苏轼殷切嘱咐霍翔利用当地水源发展农田水利。后又登金山妙高台赏月，请歌唱家袁绹演唱《水调歌头》，"明月几时有"的歌声响遏行云，苏轼月下起舞："这便是神仙境界！"</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">为民请命</div>
+    <h3 style="color:#ca8a04;">登州五日：两封奏章的民生关切</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">十月十五日抵达登州时，岸边人山人海。几位年长父老迎上前来："苏大人，您为政爱民，能像马使君一样吗？"——马使君即名臣马默，曾于登州政绩卓著。苏轼郑重接过酒杯："我当勉力而行，不负众望。"</p>
+    <p>上任伊始，苏轼便马不停蹄开展社会调查，敏锐地发现了有关军政与财税的两大弊政。然而正当他准备大展宏图时，却接到朝廷以礼部郎中召还的诏令。登州知州任上仅仅五日！但在还京的途中，他仍一连写了两道奏章：《登州召还议水军状》要求加强登州海防，《乞罢登莱榷盐状》请求取消食盐专卖、减轻百姓负担。</p>
+    <p class="detail">这两道奏章充分体现了苏轼经黄州四年磨砺后不变的淑世精神——即使只有五天任期，他也要为百姓做成实事。这种"五日知州、两封奏章"的为政态度，比任何长篇大论的官场表态都更能说明他"投老江湖终不失"的本色。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">幻灭与真实</div>
+    <h3 style="color:#4f46e5;">蓬莱海市：倏忽即逝的仙山幻影</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">办好政务移交后，苏轼趁回京前有限的几天闲暇饱览登州山水。丹崖山上的蓬莱阁，登阁远眺一望无际——沙门、鼍矶、牵牛、大竹、小竹五个岛屿出没于波涛之间，缥缈迷离，真像是神仙的居所。</p>
+    <p>"登州蓬莱阁上，望海如镜面，与天相际。"不过蓬莱最著名的景观还是海市——"东方云海空复空，群仙出没空明中。荡摇浮世生万象，岂有贝阙藏珠宫。"每当春夏晴和之时，便有五彩云霓化作宫殿楼观、车马冠盖和各色人物，稍纵即逝。苏轼认为这都是幻影，并非海神居所——但海市的虚幻之美却让他感悟了许多。</p>
+    <p class="detail">倏然而来、又倏然而去的海市，让苏轼想起黄州赤壁下"寄蜉蝣于天地，渺沧海之一粟"的感叹，也想起"人生如梦"的终极觉悟。蓬莱仙境和海市蜃楼的虚幻，恰好映照出他此刻对功名利禄的心境——一切浮华皆如海市，唯有"江上之清风"与"山间之明月"才是真实可得的。</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">心境写照</div>
+    <h3 style="color:#db2777;">淡泊归心：华灯飞盖下的清醒与超然</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">"樽酒不空田百亩，归来分得闲中趣"——重返京城的华灯飞盖之下，苏轼心中最惦念的仍是常州买田、归隐江湖。年少时争强好胜之心和功名利欲之念，如今均已淡然无痕。</p>
+    <p>赴登州途中经过润州时恰逢中秋，他与朋友登上金山妙高台赏月，请袁绹演唱《水调歌头》。"明月几时有，把酒问青天"的歌声清越响遏行云。歌罢，苏轼在月下起舞——"这便是神仙境界！"这一刻的他，已经找到了比"华灯飞盖寓京华"更加真实的仙境：那就是艺术与自然交融的当下瞬间。</p>
+    <p class="detail">从元丰二年乌台诗案到元丰八年重返京城，整整六年的贬谪岁月改变了苏轼太多。他不再是那个锋芒毕露的青年才俊，而是一个"已将地狱等天宫"的觉悟者。京城华灯依然灿烂，但苏轼的心已飞向了"江海寄余生"的远方——他知道，真正的归宿不在朝堂而在江湖，真正的功名不在官位而在诗文。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>六年贬谪的终结不是狂喜而是淡泊——这是黄州四年给予苏轼最珍贵的礼物。密州父老夹道欢迎验证了他"为政爱民"的不变初心，登州五日的两道奏章证明了"投老江湖终不失"的淑世本色，蓬莱海市的倏忽即逝则映照出他对功名浮华的彻底看穿。重回京城华灯之下时，苏轼已是一个全新的人：他不再被官场的荣辱所左右，而是在"明月几时有"的歌声和月下起舞中找到真正的仙境。正如他十年前在密州超然台上写下的："凡物皆有可观。苟有可观，皆有可乐"——这才是黄州四年淬炼出的终极智慧。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>来源：王水照 / 崔铭《苏轼传》· 人民文学出版社 2019 | 第9章「华灯飞盖寓京华」· 信息图仅供学习参考</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch010-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第10章「四任知州泽生民」</h1>
+  <h2>"一肚皮都是不合时宜"——朝中不容，苏轼出守四州，却成就了苏堤春晓、东坡肉、安乐坊与万民福祉</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+  <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+    <div class="data-big" style="color:#dc2626;">4州</div>
+    <div class="data-sm">登·杭·颍·扬</div>
+  </div>
+  <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+    <div class="data-big" style="color:#ea580c;">880丈</div>
+    <div class="data-sm">苏堤南北长</div>
+  </div>
+  <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+    <div class="data-big" style="color:#ca8a04;">25万亩</div>
+    <div class="data-sm">清除葑田</div>
+  </div>
+  <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+    <div class="data-big" style="color:#4f46e5;">0人</div>
+    <div class="data-sm">饥荒饿死</div>
+  </div>
+</div>
+
+<div class="overview">
+  <div class="oneliner">一句话：苏轼因"一肚皮不合时宜"在朝中无法立足——与司马光争免役法，嘲笑程颐得罪洛党，被洛朔二党围攻——于是自请外任，先后出守登州、杭州、颍州、扬州四地。远离朝争的他反而大展拳脚：苏堤春晓、东坡肉、安乐坊、停办万花会、宽免积欠，以实干造福万民，成就了地方官的最高境界。</div>
+  <p><span class="scqa-label">核心问题</span>苏轼回到汴京后，为何无法安于朝堂？出守地方后，他又如何将政治困境转化为民生实绩？</p>
+  <p><span class="scqa-label">核心答案</span>苏轼在免役法存废问题上与司马光激烈争论，骂其为"司马牛"；当众嘲笑程颐"鏖糟陂里叔孙通"，引发洛蜀党争。在朝四面受敌后，他自请外任。先后四任知州，在杭州赈灾抗疫、疏湖筑堤建安乐坊；在颍州阻止劳民伤财的八丈沟工程；在扬州停办万花会、为民请免积欠。高太后病逝后出镇定州，整顿军备。他用实干证明：真正的好官，不在朝堂之高，而在百姓之中。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">朝中抗争</div>
+    <h3 style="color:#dc2626;">司马牛与洛蜀党争：在朝四面受敌</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼回朝后抛弃旧见成为免役法维护者，却遭遇司马光的顽固拒绝。他当面理论，退朝后怒呼"司马牛，司马牛"，更因嘲笑程颐"鏖糟陂里叔孙通"引发洛蜀党争，遭到洛朔二党联合围攻。</p>
+    <p>苏轼从登州召还后，发现昔日反对的免役法"按户等征税雇役"确有可取之处，而司马光却固执己见，将所有新法一概罢废。苏轼当廷力争："当年您做谏官时与韩魏公争论，魏公不乐亦奋然不顾。如今当了宰相，难道就不能允许我把话说完？"</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <h4>🔴 免役法之辩</h4>
+        <p>苏轼从地方官经验出发，力主保留免役法"因法以便民"。司马光"忠信有余而才智不足"，一意孤行，被苏辙评为"知免役之害而不知其利"。</p>
+      </div>
+      <div class="dual-card">
+        <h4>🟠 洛蜀党争</h4>
+        <p>司马光去世，程颐坚持"庆吊不同日"古礼，苏轼嘲讽其"鏖糟陂里叔孙通"。朱光庭等洛学弟子断章取义弹劾苏轼"谤讪先朝"，洛蜀朔三党之争全面爆发。</p>
+      </div>
+    </div>
+    <p class="detail">朝云一语道破："学士一肚皮都是不合时宜。"苏轼在《与杨元素书》中自述："昔之君子惟荆是师，今之君子惟温是随。所随不同，其为随一也。"坚持独立人格的他，在派系倾轧中进退维谷。</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">高后托孤</div>
+    <h3 style="color:#ea580c;">金莲花烛之宠：太后的信任与哲宗的冷漠</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">高太后特别召见苏轼，透露他的进用是神宗遗意——先帝每读苏轼文章便停箸夸赞"奇才，奇才"。太后命以御前金莲花烛送苏轼回翰林院，此礼暗示"天将降大任"，但苏轼深知哲宗已对祖母专权心怀不满。</p>
+    <div class="blockquote">"神宗皇帝常在用餐时读奏劄，每当看得停箸不举时，宫人们就会说：'那一定是苏轼的文章。'有时他脱口夸赞：'奇才！奇才！'只是没来得及起用学士，便撒手西去了。"——高太后语</div>
+    <p>太后以"托孤"口吻叮嘱苏轼尽心侍奉哲宗。苏轼深感"朝廷既以国士待我，此身已非己有"，更加勤于公事。但哲宗性情暴躁、好色懒惰，对祖母全包全揽心怀不满，迁怒于近臣。苏轼深知无力回天，一再请求外任。</p>
+    <div class="warn-box">⚠️ 高太后于元祐八年九月三日病逝，哲宗亲政。高太后临终前凄然嘱咐吕大防、范纯仁等大臣"最好及早求退"。苏轼则在太后去世前获准出知定州，但哲宗竟以"本任阙官"为由拒不召见辞行——风暴将至的信号。</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">杭州治绩</div>
+    <h3 style="color:#ca8a04;">苏堤春晓与安乐坊：一座城的重生</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼在杭州完成了三项影响深远的民生工程：以工代赈疏浚西湖、筑苏堤八百八十丈、创中国首所面向民众的官办医院"安乐坊"——饥荒之年无一人饿死，数千人免于瘟疫死难。</p>
+    <p>面临水旱相继、粮价暴涨的危急局面，苏轼一反"报喜不报忧"的官场陋习，连上奏章请求缓交上供米二十万石并赐度牒三百道赈灾。他将救灾款全部用于采购粮食平抑物价，同时组织僧医熬制"圣散子"药剂免费发放。</p>
+    <div class="flow-row">
+      <div class="flow-step" style="background:#fefce8;border:1px solid #fde68a;color:#92400e;">葑田25万亩<br>湖面壅塞过半</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border:1px solid #fde68a;color:#92400e;">以工代赈<br>开掘葑滩</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border:1px solid #fde68a;color:#92400e;">淤泥筑堤<br>880丈·六桥</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border:1px solid #fde68a;color:#92400e;">苏堤春晓<br>三潭印月</div>
+    </div>
+    <div class="info-box">💡 东坡肉的由来：端午佳节百姓抬猪担酒来拜谢，苏轼按黄州摸索的"慢着火，少著水，火候足时它自美"烹饪法精心烹制猪肉，送到工地分发给浚湖民工。从此，杭州多了一道流传千古的名菜：东坡肉。</div>
+    <p class="detail">苏轼还采纳子珪建议改用瓦筒引水取代毛竹管，使"西湖甘水，殆遍一城"。为防止西湖再度壅塞，将沿岸湖面租给民户种植菱角，收取租金用于维护，又在湖上建三座小石塔（后演变为三潭印月）限定种植范围。</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">颍扬务实</div>
+    <h3 style="color:#4f46e5;">画扇断案与停办万花会：为官的智慧与慈悲</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼在颍州和扬州展现了两种不同层面的为官之道：大到阻止耗费巨资的八丈沟水利工程，小到用一幅扇面书画化解一桩债务纠纷；狠到毅然停办延续多年的芍药万花会，柔到彻夜难眠筹划炊饼救济雪中灾民。</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <h4>🔵 画扇还债</h4>
+        <p>制扇商人因久雨扇子滞销无力还债，苏轼取二十把团扇信笔挥洒竹石枯木并题诗，命其"一千钱一把"去卖。扇子被抢购一空，债务应声解决。</p>
+      </div>
+      <div class="dual-card">
+        <h4>🔵 停办万花会</h4>
+        <p>蔡京在扬州首创万花会，每次动用绝品芍药十余万枝，官吏奸商借机盘剥。苏轼毅然停办，说"虽杀风景，免造业也"，百姓奔走相告。</p>
+      </div>
+    </div>
+    <p>在颍州，苏轼亲自组织水利勘测，以五千八百一十一根测竿的实地数据证明八丈沟"有百弊而无一利"，阻止了这项需民工十八万、钱粮三十七万贯石的劳民工程。在扬州，他深入村落访查，发现"丰年不如凶年"——丰年官吏催收历年积欠更可怕，遂上书请求宽免，将催欠吏卒比作"二十余万虎狼散在民间"。</p>
+    <div class="blockquote">"臣闻之孔子曰：'苛政猛于虎。'昔常不信其言，以今观之，殆有甚者。水旱杀人，百倍于虎，而人畏催欠，乃甚于水旱。"——苏轼《论积欠六事状》</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">定州整军</div>
+    <h3 style="color:#db2777;">雪浪石畔的忧思：最后的任职与永恒的乡愁</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">出镇定州是苏轼一生实际任职的终点。面对"边政颓坏，不堪开眼"的局面，他整顿军纪、惩治贪将、修缮军营，并恢复"弓箭社"计划编整三万民兵。但更深重的忧虑已笼罩心头——妻子王闰之病逝、高太后驾崩、哲宗亲政，政治风暴已在酝酿。</p>
+    <p>苏轼抵达定州时，将骄兵惰，前任知州不敢过问。他雷厉风行地惩办贪污军饷者，禁止赌博酗酒，亲自主持检阅，并派工匠逐一检查年久失修的军营。同时整顿"弓箭社"，计划以三万民兵配合二万五千官军防务。但他预感风暴将至，在《雪浪石》诗中寄托思乡之情："此身自幻孰非梦，故国山水聊心存。"</p>
+    <div class="blockquote">"庭下梧桐树，三年三见汝……今年中山去，白首归无期。客去莫叹息，主人亦是客。对床定悠悠，夜雨空萧瑟。"——苏轼《东府雨中别子由》</div>
+    <p class="detail">苏轼离京前与弟弟在东府雨中告别，预感作为东府主人的子由大概也住不久了。果然，元祐九年四月哲宗改元"绍圣"，变法派重新上台，苏辙被贬汝州，苏轼的定州之任也成为他政治生涯的绝响。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>苏轼的四任知州生涯揭示了一条深刻的为官之道：真正的政治成就往往不在权力中心，而在百姓身边。朝堂党争中他四面楚歌，地方任上他却创造了苏堤春晓、安乐坊、东坡肉等流芳千古的民生实绩。他不在其位时（登州仅任五日即上两策），依然心系民瘼；他大权在握时（杭州统领六州），更以科学态度治水赈灾。高太后托孤的光环尚未褪去，定州梧桐树下的离别已成永诀——苏轼用四任知州的实际行动证明：好官的标准不是官位高低，而是为百姓做了多少实事。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>来源：王水照/崔铭《苏轼传》· 人民文学出版社 2019 | 第10章「四任知州泽生民」· 信息图仅供学习参考</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch011-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第11章「白头萧散谪岭海」</h1>
+  <h2>"报道先生春睡美，道人轻打五更钟"——章惇读到这句诗，笑着说"苏子瞻竟然如此快活"，于是把他贬到了天涯海角</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+  <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+    <div class="data-big" style="color:#dc2626;">5次</div>
+    <div class="data-sm">朝廷改谪命</div>
+  </div>
+  <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+    <div class="data-big" style="color:#ea580c;">7年</div>
+    <div class="data-sm">岭海流放岁月</div>
+  </div>
+  <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+    <div class="data-big" style="color:#ca8a04;">2座桥</div>
+    <div class="data-sm">苏轼在惠州督建</div>
+  </div>
+  <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+    <div class="data-big" style="color:#4f46e5;">400首</div>
+    <div class="data-sm">岭海时期诗作</div>
+  </div>
+</div>
+
+<div class="overview">
+  <div class="oneliner">一句话：绍圣年间变法派重新执政，苏轼被贬岭南，朝廷一路五改谪命穷追不舍——从英州知州一降再降至"惠州安置，不得签书公事"。六十二岁高龄白发渡海，贬至儋州（海南）。但他以佛道修养化解苦难：在惠州修桥施药引水，把贬地变乐土；在儋州讲学传道，培养海南首位进士，"日啖芋薯而华屋玉食之念不存胸中"。最终徽宗即位获赦北归，留下了"九死南荒吾不恨，兹游奇绝冠平生"的千古绝唱。</div>
+  <p><span class="scqa-label">核心问题</span>章惇等人为何对苏轼穷追不舍？在瘴疠蛮荒的岭南与海南，一个六十二岁的老人如何生存下来，甚至把"地狱"变成"天堂"？</p>
+  <p><span class="scqa-label">核心答案</span>哲宗改元"绍圣"，章惇拜相后将打击元祐党人作为核心目标。苏轼被"五改谪命"从定州知州贬至宁远军节度副使惠州安置。途经大庾岭时他参透"世间、出世间事不两立"，以"今真败矣"的彻底放下换来精神的解放。在惠州修东新西新两桥、建广州自来水工程、施药济民；贬儋州后又教化海南，培养姜唐佐成为海南首位进士，完成了从贬官到文化使者的蜕变。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">政治迫害</div>
+    <h3 style="color:#dc2626;">五改谪命：从定州到惠州的万里流放</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">绍圣元年闰四月，苏轼被弹劾"语涉讥讪"，诰命一道接一道：落端明殿学士→降左承议郎→取消叙官资格→落左承议郎，责授建昌军司马→贬宁远军节度副使，惠州安置。五改谪命，从知州变成了"不得签书公事"的罪人。</p>
+    <div class="flow-row">
+      <div class="flow-step" style="background:#fef2f2;border:1px solid #fecaca;color:#991b1b;">第1改<br>落两职追一官<br>知英州</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fef2f2;border:1px solid #fecaca;color:#991b1b;">第2改<br>降左承议郎<br>仍知英州</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fef2f2;border:1px solid #fecaca;color:#991b1b;">第3改<br>不得叙复<br>取消升迁资格</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fef2f2;border:1px solid #fecaca;color:#991b1b;">第4改<br>落左承议郎<br>建昌军司马</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fef2f2;border:1px solid #fecaca;color:#991b1b;">第5改<br>宁远军节度副使<br>惠州安置</div>
+    </div>
+    <p>南迁途中，苏轼在定州临城望太行山云开雾霁，振奋地对儿子们说："冈峦北走，云开雾霁，正是吉祥的征兆。我这次南迁一定能够回来。"途经汤阴，捧着一碗粗糙的豌豆大麦粥告诫儿子们："再险恶的环境也应努力加餐饭，时时为民自重，不负百姓养育之恩。"骨肉一再分离——只带小儿子苏过、朝云和两位女佣前行。</p>
+    <div class="blockquote">"此生归路转茫然，无数青山水拍天。犹有小舟来卖饼，喜闻墟落在山前。"——苏轼《慈湖夹阻风》</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">惠州善政</div>
+    <h3 style="color:#ea580c;">罪官建桥引水：无权签署公事，却能造福一方</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">尽管"不得签书公事"，苏轼仍然用尽一切办法为惠州百姓造福：捐献朝服犀带修建东新、西新两桥；写信建议广州知州王古用竹管引蒲涧山泉水入城，建成古代"自来水工程"；自费求购药材施舍百姓；收埋暴骨、推广新式农具秧马——不在其位而谋其政，把方外的慈悲与入世的事业完美结合。</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <h4>🟠 东新桥</h4>
+        <p>采纳道士邓守安方案，以四十艘小船连成二十舫，铁锁石碇随水涨落建浮桥。苏轼捐献朝服犀带，动员弟媳捐出皇宫赏金数千，终使天堑变通途。</p>
+      </div>
+      <div class="dual-card">
+        <h4>🟠 广州自来水</h4>
+        <p>将蒲涧山滴水岩泉水用五管大竹绑在一起引进广州城，以麻缠漆涂防漏，并在每根竹管上钻小孔插竹针以便巡检通塞——科学方法与惠民之心同样出色。</p>
+      </div>
+    </div>
+    <div class="warn-box">⚠️ 苏轼与程正辅（表兄兼姐夫）因姐姐八娘之死绝交四十二年。章惇故意派正辅巡按广州，想借旧怨加害苏轼。但两人在惠州相会，前嫌尽释："世间谁似老兄弟，笃爱不复相疵瑕。"反而使苏轼得以借助正辅的力量推行善政。</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">朝云之逝</div>
+    <h3 style="color:#ca8a04;">六如亭畔：患难知己的天人永隔</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">绍圣三年七月，侍妾朝云病逝惠州，年仅三十四岁。这位十二岁入苏家、跟随苏轼二十三年的女子，是唯一随他南迁的家眷。她临终诵《金刚经》"六如偈"——"一切有为法，如梦幻泡影，如露亦如电"——安然辞世。苏轼将她葬在丰湖栖禅寺松林中，建"六如亭"以纪念。</p>
+    <div class="blockquote">"不似杨枝别乐天，恰如通德伴伶玄。"——苏轼《朝云诗》。白居易老病时爱妾樊素终离他而去，朝云却始终不渝。她了解苏轼那"一肚皮不合时宜"，在精神上与苏轼达到了同一境界。</div>
+    <p>朝云来惠州后毅然承担主妇之责，精打细算安排一家生活，闲暇读书念经习字临帖，与苏轼谈禅论道。她与苏轼共建放生池、行善布施。苏轼以梅花喻朝云："玉骨那愁瘴雾，冰肌自有仙风。"据说朝云每次唱到"枝上柳绵吹又少，天涯何处无芳草"便泪流不止——无常之叹，生命之悲。朝云逝后，苏轼终身不复听此词。</p>
+    <p class="detail">栖禅寺和尚们为朝云临终意志清朗、安详吟诵六如偈而叹为稀有，专为她建亭于墓上。后世曹雪芹在《红楼梦》中将朝云列入"情痴情种"，与贾宝玉同类——她与苏轼已超越了旧时侍妾关系，达到精神的交流与升华。</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">儋州传道</div>
+    <h3 style="color:#4f46e5;">东坡笠屐：从贬官到文化使者的蜕变</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">绍圣四年，苏轼再贬儋州（海南）。六十二岁的他"垂老投荒，无复生还之望"，立遗嘱吩咐后事。但登上儋州后，他用佛道智慧化解了绝望——"天地在积水中，九州在大瀛海中，有生孰不在岛者？"在这"食无肉，病无药，居无室，出无友"的绝域，他教化黎民、培养进士、著作等身。</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <h4>🔵 海南第一位进士</h4>
+        <p>琼州学子姜唐佐慕名来儋州求学半年。苏轼题扇赠诗："沧海何尝断地脉，珠崖从此破天荒。"后来姜唐佐于大观三年高中进士，苏辙替已故兄长续诗："锦衣不日人争看，始信东坡眼力长。"</p>
+      </div>
+      <div class="dual-card">
+        <h4>🔵 东坡笠屐图</h4>
+        <p>一天苏轼访黎子云兄弟归来遇雨，向农妇借斗笠木屐穿戴。百姓见此亲切，孩子们拍手追看。后人据此作《东坡笠屐图》，传为佳话——他已经完全融入了黎民的生活。</p>
+      </div>
+    </div>
+    <div class="info-box">💡 《谪居三适》：苏轼在海南将日常琐事升华为诗意——《旦起理发》《午窗坐睡》《夜卧濯足》，"似乎不谪居就无法体验到这三适"，充满了"捷足先登、先享为快"的潇洒气度。他还完成了《易传》《书传》《论语说》，认为这三部著作"超过了一切成就"。</div>
+    <p class="detail">董必按察岭南，将苏轼从官屋赶出。他在城南桄榔林下买地筑屋，百姓运甓畚土来帮忙，"邦君助畚锸，邻里通有无"。茅屋修成取名"桄榔庵"。哲宗崩逝后徽宗即位，苏轼获赦北归。离别时黎民执手涕泣，他写道："我本海南民，寄生西蜀州。"</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">北归渡海</div>
+    <h3 style="color:#db2777;">九死南荒吾不恨：澄迈驿的最后一望</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">元符三年六月，苏轼渡海北归，作《六月二十日夜渡海》："云散月明谁点缀，天容海色本澄清。九死南荒吾不恨，兹游奇绝冠平生。"七年的沉冤终已昭雪，回首过去没有怨恨——他把苦难的流放视为平生最奇绝的游历。</p>
+    <p>渡海前，苏轼登澄迈通潮阁北望："余生欲老海南村，帝遣巫阳招我魂。杳杳天低鹘没处，青山一发是中原。"他原本已打算老死海南，将儋州当作第二故乡。途中兄弟在藤州相会，路边小店共食粗粝汤饼——苏辙勉强吃几口长叹放下筷子，苏轼将一大碗不辨滋味地囫囵吞下，抬头笑道："你还想慢慢地咀嚼吗？"</p>
+    <div class="blockquote">"参横斗转欲三更，苦雨终风也解晴。云散月明谁点缀，天容海色本澄清。空余鲁叟乘桴意，粗识轩辕奏乐声。九死南荒吾不恨，兹游奇绝冠平生。"——苏轼《六月二十日夜渡海》</div>
+    <p class="detail">在儋州三年间，苏轼完成了和陶诗一百余首、修改《易传》《论语说》、新撰《书传》《志林》，还亲自编写教材教授学生。《琼台记事录》评价："宋苏文忠公之谪儋耳，讲学明道，教化日兴。琼州人文之盛，实自公启之。"</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>苏轼七年的岭海贬谪是中国文化史上最壮丽的精神传奇。政敌们以为贬到瘴疠蛮荒就能摧毁他——五改谪命、没收官船、逐出官屋——但每一次打击都转化成了精神升华的契机。在惠州，无权签署公事的"罪官"用犀带建桥、以书信引水；在儋州，六十二岁的老人戴斗笠穿木屐融入黎民，培养出海南首位进士。他坦言"人间何者非梦幻，南来万里真良图"，把地狱活成了天堂。当"九死南荒吾不恨"的诗句从琼州海峡上空飘过时，所有的政治迫害都变成了他传奇人生中最壮丽的注脚：不是苦难成就了苏轼，而是苏轼以他的精神高度超越了一切苦难。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>来源：王水照/崔铭《苏轼传》· 人民文学出版社 2019 | 第11章「白头萧散谪岭海」· 信息图仅供学习参考</p>
+</div>
+
+</div>
+<div style="text-align:center;padding:48px 0 40px;color:#d8cec0;font-size:20px;letter-spacing:.3em;">◆</div>
+<div class="container">
+
+<div class="lang-switch"><a href="sushi-zhuan-ch012-info-en.html" target="_blank">EN</a></div>
+
+<div class="header">
+  <h1>苏轼传 · 第12章「皇天后土同悲悼」</h1>
+  <h2>"着力即差"——这是苏轼留给世界的最后一句话。一代文宗以最清醒的姿态告别尘世，天下恸哭</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+  <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+    <div class="data-big" style="color:#dc2626;">66岁</div>
+    <div class="data-sm">苏轼享年</div>
+  </div>
+  <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+    <div class="data-big" style="color:#ea580c;">1101年</div>
+    <div class="data-sm">建中靖国元年</div>
+  </div>
+  <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+    <div class="data-big" style="color:#ca8a04;">52岁</div>
+    <div class="data-sm">秦观卒年</div>
+  </div>
+  <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+    <div class="data-big" style="color:#4f46e5;">300间</div>
+    <div class="data-sm">营房建议</div>
+  </div>
+</div>
+
+<div class="overview">
+  <div class="oneliner">一句话：北归途中，苏轼经历了秦观猝逝的悲痛、定居何处的纠结、章惇之子求情的释然，以及自身的病重与死亡。他以"着力即差"的临终偈语辞世——参透生死，不执西方，坦然面对生命的终结。李廌祭文"道大不容，才高为累。皇天后土，鉴平生忠义之心；名山大川，还千古英灵之气"成为对他一生最精准的盖棺之论。</div>
+  <p><span class="scqa-label">核心问题</span>一位经历过大起大落、几起几落的文化巨人，如何面对生命的终点？他的死亡与身后哀荣，如何映照出他的人格高度与时代悲剧？</p>
+  <p><span class="scqa-label">核心答案</span>苏轼的最后一年充满了告别：与秦观在雷州相会旋即永诀；与"殿上虎"刘安世在虔州放下前嫌成为知己；在常州与颍昌之间反复纠结定居之所；在金山寺自题画像写下"问汝平生功业，黄州惠州儋州"。病危之际，他以惊人的清醒拒绝维琳长老"勿忘西方"的提示——"西方不无，但此中着力不得"——在最清醒的状态下湛然而逝，完成了从士大夫到觉悟者的终极蜕变。</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">故人凋零</div>
+    <h3 style="color:#dc2626;">秦观之逝：苏门学士的最后凋零</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">元符三年六月，苏轼渡海后在徐闻与秦观重逢——契阔流离整整七年，两人"绿鬓朱颜，重见两衰翁"。秦观临别自撰挽词相赠，苏轼却丝毫不以为怪。谁知道，秦观北行至藤州伤暑困卧，于八月十二日辞世，年仅五十二岁。苏轼惊闻噩耗"两日为之食不下"，悲叹："当今文人第一流，岂可复得！"</p>
+    <div class="blockquote">"南来飞燕北归鸿，偶相逢，惨愁容。绿鬓朱颜，重见两衰翁。别后悠悠君莫问，无限事，不言中。"——秦观《江城子》</div>
+    <p>秦观是"苏门四学士"中最具才情的一位，苏轼深知他"虽不能大用于世，也必有所论著以晓后人"。这位五十二岁的天才正在思想、学术、文学臻于成熟的黄金岁月，却猝然离世于久困而初露光亮之际。他的死，是残酷的政治迫害和恶劣的自然环境共同造成的结果。苏轼绕道藤州赶往吊唁，却只差半个月未能赶上灵柩——伫立通衢，临风洒泪，无限伤感。</p>
+    <div class="warn-box">⚠️ 秦观的死并非孤例。与苏轼一同贬谪岭南的大批元祐大臣，此时已死去大半。"春循梅新，与死为邻；高窦雷化，说着也怕"的八大险恶军州，是章惇等人精心设计的精神与肉体的双重消灭。</div>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">北归之路</div>
+    <h3 style="color:#ea580c;">大庾岭上重登：问翁曾见南迁几个回</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">建中靖国元年正月，苏轼翻越大庾岭北归。这座山岭对于宋代官员意味着政治生命的消歇——南迁者少有北还的希望。苏轼伫立岭上，诗潮泉涌："暂着南冠不到头，却随北雁与归休。平生不作兔三窟，今古何殊貉一丘。"路边老者认出他来，激动地说："我听说有人千方百计陷害您，今日北归，真是天佑善人！"</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <h4>🟠 虔州行医</h4>
+        <p>滞留虔州等待江涨期间，苏轼身携药囊出入郡城山野，"遇有疾者必为发药，并疏方示之"。所到之处，求墨宝者预先摆好书案笔墨拱手侍立——他随和一笑，纵笔挥染。</p>
+      </div>
+      <div class="dual-card">
+        <h4>🟠 玉版参禅</h4>
+        <p>苏轼哄骗"殿上虎"刘安世去山中参"玉版长老"——到了才发现是挖笋野餐。刘安世恍然大悟被捉弄，两人相视大笑。历经七年流离，曾经的政敌成了知己。苏轼赞刘安世"铁石人也"。</p>
+      </div>
+    </div>
+    <p>与刘安世的相逢别具意义：政治上本非同道、私交也算不得朋友——刘安世"家居未尝有惰容"的严谨与苏轼自由不羁恰恰相反。但七年坎坷之后，刘安世说苏轼"浮华豪习尽去，非昔日子瞻也"——迟到的友谊，在人生暮年开始。</p>
+    <p class="detail">在虔州，苏轼还写信给黄寔表达对章惇的关怀——章惇已被贬雷州，正是当年迫害苏轼最狠的人。苏轼说"海康地虽远，无瘴疠，舍弟居之一年，甚安稳"，请黄寔以此安慰章惇的母亲。恩怨早已一笔勾销。</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">出处抉择</div>
+    <h3 style="color:#ca8a04;">自题金山画像：问汝平生功业，黄州惠州儋州</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">北归途中，苏轼在定居常州还是颍昌之间反复纠结——颍昌可兄弟团聚，但靠近汴京是非之地；常州是魂牵梦萦的第二故乡。五月中旬在金山寺，面对李公麟所画自己的画像，他题下六言绝句："心似已灰之木，身如不系之舟。问汝平生功业，黄州惠州儋州。"</p>
+    <p>这四句是苏轼一生最精悍的自我总结。"心似已灰之木"出自《庄子》，并非心如死灰的消极，而是"人禽两自在"的大自由境界。"黄州惠州儋州"——对于兴邦治国的"功业"而言是自嘲的反话；对于文学业绩和人生思想的成熟而言，却是自豪的总结。这三个贬居之地，恰恰是他走向伟大的关键节点。</p>
+    <div class="info-box">💡 士林公论：郑侠赠诗期望苏轼"衣被华夷、霖雨苍生"；黄庭坚赋诗"翰林若要真学士，唤取儋州秃髯翁"；章惇之子章援也来信称"士大夫日夜望尚书进陪国论"。舟行赴常州时，运河两岸成千上万的百姓追随前行——其情景宛如当年司马光进京为相。</div>
+    <p class="detail">但从程德孺处得知汴京"绍述之议"再起、政局又将翻覆后，苏轼最终选定常州。他写信给弟弟："恨不得老境兄弟相聚，此天也，吾其如天何！"又说"兄万一有稍起之命，便具所苦疾状力辞之，与迨、过闭户治田养性而已"——仕进之志已绝。</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">病逝常州</div>
+    <h3 style="color:#4f46e5;">临终三问："着力即差"</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">六月初三苏轼饮冷过度中夜暴下，瘴毒大作腹泻不止。此后一个多月病情反复，他自诊为"热毒"，但人参、茯苓等温药的服用可能加剧了病情。七月二十八日弥留之际，维琳长老在耳边大声说"端明宜勿忘西方"，苏轼答："西方不无，但此中着力不得。"钱世雄又说"更须着力"，苏轼答："着力即差。"——说完湛然而逝。</p>
+    <div class="flow-row">
+      <div class="flow-step" style="background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;">六月初三<br>饮冷过多<br>中夜暴下</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;">瘴毒大作<br>腹泻不止<br>消化紊乱</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;">七月十四<br>高烧不退<br>牙龈出血</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;">七月十八<br>交代后事<br>"吾生无恶"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;">七月廿八<br>"着力即差"<br>湛然而逝</div>
+    </div>
+    <p>"着力即差"这三个字是苏轼精神世界的终极表达。禅宗讲究不执着——"西方不无"承认净土的存在，但"此中着力不得"则表明他不愿以刻意的念诵来求往生。"着力即差"更将这一态度推向极致：任何有意的追求都是对自然状态的破坏。他以最清醒的姿态面对死亡，对生命意义的透辟理解消融了濒死的痛苦和对死亡的恐惧。</p>
+    <div class="blockquote">"大患缘有身，无身则无疾。平生笑罗什，神咒真浪出。"——苏轼绝笔偈语。鸠摩罗什病危时出西域神咒令弟子诵以免难，不及事而终。苏轼明确表示对迷信虚妄的摒弃。</div>
+    <p class="detail">苏轼生于宋仁宗景祐三年（农历丙子年），至此时已在世二万三千四百六十日。临终前他将《论语说》《书传》《易传》托付给钱济明："相信三十年后，会有知者。"他平静地回顾一生："吾生无恶，死必不坠。"</p>
+  </div>
+</div>
+
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">天下同悲</div>
+    <h3 style="color:#db2777;">道大不容，才高为累：名山大川还千古英灵之气</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苏轼病逝的消息传遍全国，"吴越之民相与哭于市，其君子相与吊于家；讣闻四方，无贤愚皆咨嗟出涕"，形成群众性、自发性的全国吊唁。太学生聚集慧林僧舍，黄庭坚每日悬挂苏轼遗像上香拱拜，张耒白衣素帽祭奠恩师——四方震悼，山河同悲。</p>
+    <div class="blockquote">"道大不容，才高为累。皇天后土，鉴平生忠义之心；名山大川，还千古英灵之气。识与不识，谁不䀌伤！闻所未闻，吾将安放！"——李廌祭文，被公认为对苏轼一生最精准的盖棺之论</div>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <h4>🩷 黄庭坚</h4>
+        <p>荆州大病初愈，将苏轼遗像悬挂正厅，每天早起整肃衣冠上香拱拜。当地士人举行哀悼仪式，他"两手抱一膝起行独步"，挣扎着前往参加。</p>
+      </div>
+      <div class="dual-card">
+        <h4>🩷 汴京太学生</h4>
+        <p>数百名太学生自发聚集在慧林僧舍，举行饭僧仪式，痛悼一代文坛巨星的不幸殒落——官方尚未表态，民间已自发形成了最隆重的悼念。</p>
+      </div>
+    </div>
+    <p>苏轼的离去标志着一个时代的终结。在荆州，大病初愈的黄庭坚挣扎着参加哀悼；在颍州，张耒拿出自己的俸钱在荐福禅寺做佛事；在赣州，僧荣显等"为设斋供佛，哭之尽哀"……上至士大夫，下至平民百姓、方外僧人，无不为这位文化伟人的逝去而悲痛。</p>
+    <p class="detail">苏轼去世前曾将章惇之子章援的求情信一一回复，不仅不念旧恶，还以自身经验建议章惇"可自内养丹，切不可服物"，并将自作的《续养生论》与养生药方随信寄赠。章家一直珍藏着这封信，几十年后还有人从章惇的孙子处看到——恩怨早已化解于无痕。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>苏轼的临终以"着力即差"三字完成了中国士大夫精神史上的一个极限突破——他不求生西方净土，不刻意念诵，不执着于任何宗教形式，以最自然、最清醒的姿态面对死亡。这与他一生"一肚皮不合时宜"的独立人格一脉相承：生死一如，不假外求。李廌祭文"道大不容，才高为累"八字既是对苏轼悲剧命运的精准概括，也是对整个中国古代知识分子命运的深刻揭示。而"皇天后土，鉴平生忠义之心；名山大川，还千古英灵之气"则宣告：政治可以摧毁一个人的身体，却无法抹去一个伟大灵魂的光辉。自发的全国性哀悼——太学生、平民、僧侣、士大夫——证明了苏轼超越党派、超越阶层的永恒魅力：千年之后，苏东坡依然是中国人心目中最可爱的文人。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>来源：王水照/崔铭《苏轼传》· 人民文学出版社 2019 | 第12章「皇天后土同悲悼」· 信息图仅供学习参考</p>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wenhua Kulv · Ch. 4 "Dujiangyan" — 信息图</title>
+<style>
+@font-face { font-family: 'FZXPYZS'; src: url('方正屏显雅宋简体.TTF') format('truetype'); }
+:root { --bg: #f5f1eb; --card-bg: #ffffff; --card-border: #e8e0d5; --text: #555; --dark: #1a1a1a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); font-family: 'PingFang SC','Noto Serif SC','STSong',Georgia,serif; color: var(--text); line-height: 2.0; font-size: 15px; }
+.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
+.lang-switch { text-align: right; margin-bottom: 8px; }
+.lang-switch a { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; text-decoration: none; border: 1px solid #d5cfc5; border-radius: 20px; padding: 4px 16px; transition: background 0.2s; }
+.lang-switch a:hover { background: #e8e0d5; }
+.header { margin-bottom: 24px; }
+.header h1 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--dark); margin-bottom: 8px; }
+.header h2 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: #888; }
+.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c, #ca8a04, #4f46e5, #db2777, #0891b2); border-radius: 2px; margin-bottom: 24px; }
+.overview, .card, .takeaway { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03); }
+.overview p { margin-bottom: 6px; }
+.overview .oneliner { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 12px; }
+.overview .scqa-label { font-size: 12px; color: #888; margin-right: 6px; font-weight: 700; }
+.section { border-left: 4px solid transparent; }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.circle-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; }
+.section-tag { font-size: 12px; font-family: 'FZXPYZS','PingFang SC',serif; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 12px; }
+.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
+.section-body { margin-top: 8px; }
+.bluf { color: var(--dark); font-weight: 600; margin-bottom: 8px; }
+.detail { font-size: 13px; color: #777; line-height: 1.6; }
+.blockquote { border-left: 3px solid #d5cfc5; padding-left: 14px; color: #666; font-style: italic; margin: 12px 0; font-size: 14px; }
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+.dual-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 14px 16px; }
+.dual-card h4 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
+.dual-card p { font-size: 13px; color: #666; line-height: 1.7; }
+.flow-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #9a3412; text-align: center; }
+.flow-arrow { color: #ea580c; font-size: 18px; font-weight: 700; }
+.data-row { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.data-card { flex: 1; min-width: 100px; padding: 16px; border-radius: 10px; text-align: center; }
+.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.data-big { font-size: 28px; font-weight: 700; font-family: 'FZXPYZS',serif; }
+.data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #ca8a04; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; }
+.cmp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 10px; }
+.cmp-card { padding: 16px; border-radius: 10px; text-align: center; }
+.cmp-card.c1 { background: #fef2f2; border: 1px solid #fecaca; }
+.cmp-card.c2 { background: #fff7ed; border: 1px solid #fed7aa; }
+.cmp-card.c3 { background: #fefce8; border: 1px solid #fde68a; }
+.cmp-icon { font-size: 24px; margin-bottom: 4px; }
+.cmp-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+.cmp-note { font-size: 12px; color: #888; line-height: 1.5; }
+.takeaway { display: flex; gap: 16px; align-items: flex-start; }
+.takeaway-icon { font-size: 28px; flex-shrink: 0; }
+.takeaway-label { font-size: 12px; color: #888; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.takeaway p { color: var(--dark); font-weight: 600; font-size: 15px; line-height: 1.8; }
+.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; }
+.footer p { margin-bottom: 2px; }
+@media (max-width:640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 22px; }
+  .header h2 { font-size: 15px; }
+  .takeaway { order: -1; margin-bottom: 20px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .bluf { font-size: 16px; }
+  .dual-grid, .cmp-grid { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .data-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-switch"><a href="wenhua-kulv-ch004-info-zh.html" target="_blank">ZH</a></div>
+
+<div class="header">
+  <h1>Wenhua Kulv · Ch. 4 "Dujiangyan"</h1>
+  <h2>A hydraulic project that has lived two thousand years—its secret is not conquering nature but understanding and following water</h2>
+</div>
+<div class="divider"></div>
+
+<div class="overview">
+  <div class="oneliner">Core insight: Dujiangyan still irrigates the Sichuan plain today—unlike the Great Wall, long since reduced to tourism. Li Bing did not ‘control water’ but ‘understood and followed water,’ transforming a political plan into an ecological one. ‘The Dao of Dao is the Dao of Water’—worshiping water and seeking the Dao are one pursuit. This is Chinese culture’s clearest secret.</div>
+  <p><span class="scqa-label">Question</span>Why does a two-thousand-year-old hydraulic project still govern the livelihoods of millions today?</p>
+  <p><span class="scqa-label">Answer</span>Because Li Bing did not ‘control water’ but ‘understood and followed water’—he transformed a political plan into an ecological one, codifying principles like ‘dredge deep, build dams low’ that served as hydraulic canon for millennia. Even at its most furious, Dujiangyan’s water never splashes in the wrong direction. Behind this lies Daoist philosophy of ‘heaven-human unity.’ Standing on the suspended bridge: to one side, fierce surging rapids; to the other, gentle, benevolent channels. Worshiping water and seeking the Dao are one pursuit.</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">Engineering Marvel</div>
+    <h3 style="color:#dc2626;">A Hydraulic Project That Has Lived Two Thousand Years</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Unlike the Great Wall—now a tourist relic with no practical function—Dujiangyan still irrigates the Sichuan plain today, sheltering the Chinese nation through every crisis. The author asserts: it deserves a place on the front line of humanity’s greatest wonders.</p>
+    <p>While the Great Wall’s function has long since decayed, Dujiangyan transformed ‘the flood-prone Sichuan plain into the Land of Abundance.’ It enabled generations of capable officials, Tang and Song poets’ timeless works, and China’s most stable rear base during the War of Resistance. ‘It seeps and extends inch by inch, its reach no shorter than the Great Wall’s. One might say it built another Great Wall. And checking the records, the famous Great Wall was actually its junior.’ (Yu Qiuyu)</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">Legendary Figure</div>
+    <h3 style="color:#ea580c;">Li Bing: From Political Plan to Ecological Plan</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">An imperial appointment for Qin’s unification campaign became, in Li Bing’s hands, an ecological mission—his task was not governing people but governing water, turning his official post into a laboratory of applied science.</p>
+    <p>Li Bing codified the Three-Character Sutra of water management (‘dredge deep, build dams low’) and Eight-Character True Formula (‘cut angles at bends, straighten the center at straights’), used as hydraulic engineering canon until the 20th century. ‘His knowledge remains drenched in water; many younger texts have long since dried and crumbled.’ (Yu Qiuyu) Han dynasty water officials placed Li Bing’s stone statue in the river to measure levels—unearthed in the 20th century, ‘smiling serenely through the silt, long spade still in hand despite a broken neck.’ A modern woman writer asked officials: ‘In life or death, where should one stand?’</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">Natural Philosophy</div>
+    <h3 style="color:#ca8a04;">Water’s ‘Magnificent Obedience’: Wild Life Yielded to Order</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Watching water at Dujiangyan is more staggering than standing on ocean reefs—here every surge is vibrant, split in two by the dividing dike, roaring to the point of sheer terror yet never splashing a single drop in the wrong direction.</p>
+    <p>Ocean water gathers too deeply to feel tangible; Dujiangyan’s water ‘has endured enough hardship and earned enough glory—like marathon runners clearing every obstacle, channeling their fiercest life into order, into hope, into the public gaze.’ From the suspended bridge, to one side the river surges ‘with absolute, unhesitating ferocity’; to the other, it transforms into ‘glittering channels, benevolent and gentle.’ The author marvels: ‘If humans did everything this cleanly, Earth would be a different place.’ (Yu Qiuyu)</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">Cultural Code</div>
+    <h3 style="color:#4f46e5;">Worship Water at Dujiangyan, Seek the Dao at Qingcheng Mountain</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Dujiangyan’s mastery of natural forces finds its philosophical summary in nearby Qingcheng Mountain—Daoism uses water as its core symbol: water seems soft yet surges powerfully; it stays low yet rises to form clouds, rain, rainbows. ‘The Dao of Dao is the Dao of Water, the Dao of Heaven, the Dao of Life.’</p>
+    <p>Daoism is the only major religion indigenous to China, drawing on Laozi and Zhuangzi, with water as its symbol. ‘It appears that humans control water; in truth, humans have understood water, followed water, obeyed water. Only thus can heaven and humanity unite.’ (Yu Qiuyu) At a Daoist temple on Qingcheng Mountain, the author inscribed: ‘Worship water at Dujiangyan, / Seek the Dao at Qingcheng Mountain.’ He wrote: If worshiping water and seeking the Dao can become one pursuit, then you have grasped a great secret of Chinese culture.</p>
+<div class="blockquote">‘It appears that humans control water; in truth, humans have understood water, followed water, obeyed water. Only thus can heaven and humanity unite, without self and without desire, to live forever.’<br>— Yu Qiuyu, ‘Dujiangyan’</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>Dujiangyan embodies Chinese civilization’s clearest administrative principle—Li Bing transformed a political plan into an ecological one, replacing ‘conquering water’ with ‘understanding and following water.’ Two millennia later, the water still flows by his design. This legacy teaches us that true civilization lies not in monumental construction but in continuously nourishing the daily lives of ordinary people.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Source: Yu Qiuyu, <em>Wenhua Kulv</em> &middot; Changjiang Literature &amp; Art Press, 2014</p>
+  <p>Ch. 4 "Dujiangyan" &middot; Infographic for educational reference</p>
+</div>
+
+</div>
+</body>
+</html>

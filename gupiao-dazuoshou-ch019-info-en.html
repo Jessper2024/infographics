@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reminiscences of a Stock Operator · Ch. 19 · History Repeats, and So Do Trades</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#f5f1eb;color:#1a1a1a;
+  font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+:root{--color:#dc2626;--light:#fef2f2;--border-color:#fecaca}
+
+.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
+
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{
+  display:inline-block;padding:6px 16px;border-radius:8px;
+  font-size:13px;text-decoration:none;letter-spacing:0.03em;
+  font-family:'FZXPYZS','PingFang SC',serif;
+  background:var(--light);color:var(--color);border:1px solid var(--border-color);
+  transition:opacity 0.15s;
+}
+.lang-btn:hover{opacity:0.75}
+
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{
+  flex:1;min-width:120px;
+  background:#fff;border:1px solid #e8e0d5;border-radius:12px;
+  padding:20px 16px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-num{font-size:32px;font-weight:700;color:var(--color);letter-spacing:-0.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+
+.header h1{
+  font-size:36px;font-weight:400;color:#1a1a1a;
+  letter-spacing:0.03em;margin-bottom:8px;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.header h2{
+  font-size:14px;font-weight:400;color:#888;
+  letter-spacing:0.02em;line-height:1.7;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.divider{
+  width:60px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,var(--color),var(--border-color));
+  margin:20px 0 24px;
+}
+
+.card{
+  background:#fff;border:1px solid #e8e0d5;border-radius:14px;
+  padding:28px 32px;margin-bottom:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+}
+.overview{
+  background:var(--light);border:2px solid var(--border-color);
+  border-radius:14px;padding:24px 28px;margin-bottom:24px;
+}
+
+.overview-label{
+  font-size:11px;font-weight:700;color:var(--color);
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+}
+.overview-question{
+  font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px;
+}
+.overview-answer{
+  font-size:15px;color:#555;line-height:2.0;
+}
+
+.section{border-left:4px solid var(--color)}
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
+}
+.circle-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;flex-shrink:0;
+  background:var(--light);color:var(--color);
+}
+.section-tag{
+  font-size:12px;padding:3px 10px;border-radius:8px;
+  font-weight:500;letter-spacing:0.02em;
+  background:var(--light);color:var(--color);
+}
+.section h3{font-size:18px;font-weight:700;color:var(--color)}
+.section-body p{
+  font-size:15px;color:#555;line-height:2.0;margin-bottom:12px;
+}
+
+.quote-block{
+  background:#f8f5ff;border-left:4px solid var(--color);border-radius:0 10px 10px 0;
+  padding:16px 20px;margin-top:14px;position:relative;
+}
+.quote-mark{
+  position:absolute;top:-10px;left:12px;
+  font-size:32px;color:var(--color);font-family:Georgia,serif;line-height:1;
+}
+.quote-text{
+  font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px;
+}
+.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
+
+.flow-row{
+  display:flex;align-items:flex-start;justify-content:center;
+  gap:8px;margin-top:16px;flex-wrap:wrap;
+}
+.flow-step,.flow-step-end{
+  background:var(--light);border:2px solid var(--border-color);border-radius:10px;
+  padding:14px 16px;text-align:center;font-size:13px;
+  color:var(--color);font-weight:700;min-width:90px;
+}
+.flow-step-num{
+  display:block;font-size:11px;font-weight:400;color:var(--color);
+  margin-bottom:4px;letter-spacing:0.04em;
+}
+.flow-step-end{background:#f0fdf4;border-color:#86efac;color:#166534}
+.flow-arrow{font-size:18px;color:var(--color);font-weight:700;padding-top:14px}
+
+.callout{
+  display:flex;gap:10px;align-items:flex-start;
+  border-radius:10px;padding:14px 16px;margin-top:14px;
+}
+.callout.warn{background:#fffbeb;border:1px solid #fde68a}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.callout-text{font-size:13px;color:#555;line-height:1.8}
+.callout-text strong{color:#1a1a1a}
+
+.takeaway{
+  background:#faf8f5;border:2px solid var(--border-color);border-radius:14px;
+  padding:24px 28px;margin-bottom:24px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.takeaway-label{
+  font-size:13px;font-weight:700;color:var(--color);text-transform:uppercase;
+  letter-spacing:0.06em;margin-bottom:6px;
+}
+.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
+
+.footer{
+  text-align:center;font-size:12px;color:#bbb;line-height:1.8;
+  padding-top:16px;border-top:1px solid #e8e0d5;
+}
+
+@media(max-width:640px){
+  body{padding:16px 12px 40px}
+  .container{padding:0}
+  .header h1{font-size:24px}
+  .card,.overview,.section{padding:18px 16px}
+  .section-header{flex-wrap:wrap;gap:8px}
+  .circle-num{width:34px;height:34px;font-size:14px}
+  .section h3{font-size:16px}
+  .flow-row{flex-direction:column;align-items:stretch}
+  .flow-arrow{display:none}
+  .kpi-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="gupiao-dazuoshou-ch019-info-zh.html">中文</a>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">30K</div>
+    <div class="kpi-label">final short position<br>total shares</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">155</div>
+    <div class="kpi-label">entry short price<br>(dollars)</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5</div>
+    <div class="kpi-label">telegraph batches<br>to build position</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">Triple</div>
+    <div class="kpi-label">divergence signals<br>confirmed short</div>
+  </div>
+</div>
+
+<div class="header">
+  <h1>Reminiscences of a Stock Operator · Ch. 19 "History Repeats—and So Do Trades"</h1>
+  <h2>While on a Florida fishing vacation, Livermore keenly detected the fatal error of Tropical Trading insiders pushing the stock against the market trend—decisively shorting 30,000 shares in batches—a perfect illustration of his "history repeats" speculation philosophy.</h2>
+  <div class="divider"></div>
+</div>
+
+<div class="overview">
+  <div class="overview-label">▎S — Situation</div>
+  <div class="overview-answer">Livermore was enjoying a winter fishing vacation in Florida, far from the ticker, occasionally catching up on the market through newspapers delivered twice a week. The overall market was entering a bear phase—exactly the backdrop he had been waiting for to go short.</div>
+  <div class="overview-label" style="margin-top:14px">▎C — Conflict</div>
+  <div class="overview-answer">Tropical Trading insiders, ignoring the broader market's decline, forcibly pushed the stock from $140 to $155. To Livermore, this was like "jumping from the 20th floor without a parachute"—the insiders' counter-trend manipulation formed a triple divergence with the market trend and company fundamentals.</div>
+  <div class="overview-label" style="margin-top:14px">▎Q — Core Question</div>
+  <div class="overview-question">How do you strike with precision from a state of leisure, far from the market, using the law of historical repetition?</div>
+  <div class="overview-label" style="margin-top:10px">▎A — Answer</div>
+  <div class="overview-answer">Identify the fatal mistake of insiders operating against the trend—when insider behavior diverges from both the market trend and company fundamentals, it's the optimal moment to short. Build the position in telegraph batches, test step by step, and let each market feedback confirm and strengthen your conviction—ultimately accumulating 30,000 shares short and closing for a profit.</div>
+</div>
+
+<div class="card section">
+  <div class="section-header">
+    <div class="circle-num">01</div>
+    <div class="section-tag">Premise</div>
+    <h3>History Repeats: The Market's Eternal Bedrock Law</h3>
+  </div>
+  <div class="section-body">
+    <p>On Wall Street, history always repeats. After profiting from covering his short in the Stratton corn corner, Livermore applied the same playbook in stocks. He was convinced: mankind's instinct to seek safety and shun risk never changes; greed and fear will forever govern market behavior.</p>
+    <p>Insider manipulation tactics may vary endlessly—Tropical Trading's Chairman Mulligan was compared to "a relentless hydraulic press, crushing all in its path." But behind every corner lies the same human script: first lure shorts in, then gradually apply pressure to crush them. Livermore's core insight: since insiders always repeat the same mistakes, traders can repeat the same strategies to profit.</p>
+  </div>
+</div>
+
+<div class="card section">
+  <div class="section-header">
+    <div class="circle-num">02</div>
+    <div class="section-tag">Opportunity</div>
+    <h3>Triple Divergence Signal: The Insider's Fatal Error</h3>
+  </div>
+  <div class="section-body">
+    <p>Tropical Trading rose from 140 to 155, moving against the broad market—to Livermore, this was as obvious a short signal as could be. His analytical framework revealed three layers of divergence:</p>
+    <p><strong>First divergence—Broad market vs. individual stock:</strong> The overall market was falling, yet Tropical Trading rose alone. Anomalies rarely carry positive meaning. Counter-trend lifting isn't just a mistake—it's a colossal one.</p>
+    <p><strong>Second divergence—Fundamentals vs. stock price:</strong> The company's own earnings did not support the current stock price. Insiders ramping the price without fundamental backing was like "shooting themselves in the foot."</p>
+    <p><strong>Third divergence—Motive vs. outcome:</strong> The insiders' counter-trend push attracted some public followers, which in turn encouraged them to continue their unwise strategy—but Livermore knew that the endpoint of this cycle would inevitably be a market reckoning.</p>
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text"><strong>Livermore's judgment formula:</strong> Insider counter-trend operation + no market support + no fundamental support = doomed manipulation. When triple divergence converges, the short-win probability is extremely high—this is history repeating, a gift to the speculator.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card section">
+  <div class="section-header">
+    <div class="circle-num">03</div>
+    <div class="section-tag">Tactics</div>
+    <h3>Pyramid-Style Batch Building: From 2,000 to 30,000 Shares</h3>
+  </div>
+  <div class="section-body">
+    <p>Livermore's five-step operation demonstrates a textbook gradual position-building strategy—each step letting market feedback confirm the judgment:</p>
+
+    <div class="flow-row">
+      <div class="flow-step">
+        <span class="flow-step-num">Step 1</span>
+        Sold<br>2,000 shares
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">Step 2</span>
+        Arrived Palm Beach<br>sold 2,000 more
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">Step 3</span>
+        Added<br>2,000 more
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">Step 4</span>
+        Added<br>2,000 more
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step-end">
+        <span class="flow-step-num">Endgame</span>
+        Accumulated<br>30,000 shares
+      </div>
+    </div>
+
+    <p>After four rounds of selling, he had already accumulated 10,000 shares short—Livermore set off back to New York. After in-depth research confirmed the company's fundamentals couldn't support the price, he continued adding until reaching 30,000 shares. He didn't commit his full position at once—instead, he let every round of market feedback confirm his judgment and strengthen his conviction. "As soon as I sold, it fell"—that was more convincing than any research report.</p>
+  </div>
+</div>
+
+<div class="card section">
+  <div class="section-header">
+    <div class="circle-num">04</div>
+    <div class="section-tag">Core Insight</div>
+    <h3>The Trader's True Enemy—and Ally</h3>
+  </div>
+  <div class="section-body">
+    <p>The insiders eventually stopped their foolish ramping, and the market reckoning followed. In this case, Livermore demonstrated the core quality of an advanced speculator: his body was on a fishing vacation, but his mind was running; the moment he spotted an opportunity, he instantly switched from "fishing mode" to "trading mode"—replacing hesitation with action.</p>
+    <p>This chapter's core revelation isn't about specific techniques—it's about a cognitive ability: historical repetition isn't an abstract theory but a concrete trading opportunity. When you see a group repeating past mistakes—whether insiders' counter-trend manipulation or the public's blind chasing—you know the chance for profit has arrived. Your enemy (insider greed) is simultaneously your ally—the pattern of their errors is the source of your profits.</p>
+    <div class="quote-block">
+      <div class="quote-mark">&#8220;</div>
+      <div class="quote-text">After reading the newspaper, I continued fishing, but I couldn't stop thinking about what the Tropical Trading insiders were up to. They were doomed to fail, just as surely as someone jumping from the 20th floor without a parachute is doomed to be smashed to a pulp. I simply couldn't think of anything else, and finally stopped fishing altogether.</div>
+      <div class="quote-author">— Jesse Livermore</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">Key Takeaway · BLUF</div>
+    <p>History always repeats because human nature never changes. Identify the fatal error of counter-trend insiders, confirm the short signal with triple divergence, and build the position pyramid-style in batches—these three elements form Livermore's precision-sniping philosophy while away from the market. The key isn't predicting the future but <strong>recognizing the mistakes of the past that are now repeating</strong>. Insider greed is your enemy, but their folly is your best ally.</p>
+  </div>
+</div>
+
+<div class="footer">
+  Source: Edwin Lefèvre · Reminiscences of a Stock Operator · Chapter 19 · 1923<br>
+  Infographic generated: June 17, 2026 · For educational reference only · Not investment advice
+</div>
+
+</div>
+
+</body>
+</html>

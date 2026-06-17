@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>以交易为生II：卖出的艺术 · 第三章「做好交易记录」</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px 64px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Container & Grid */
+.container {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 32px 60px;
+}
+
+/* Language Switch */
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fefce8; color: #ca8a04; border: 1px solid #fde68a;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+/* KPI Row */
+.kpi-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+.kpi-card {
+  flex: 1; min-width: 120px;
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
+  padding: 20px 16px; text-align: center;
+}
+.kpi-num { font-size: 32px; font-weight: bold; color: #ca8a04; letter-spacing: -0.02em; }
+.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+
+/* Header */
+.header { margin-bottom: 24px; }
+.header h1 {
+  font-size: 36px; font-weight: 400; color: #1a1a1a;
+  letter-spacing: 0.03em; line-height: 1.4;
+}
+.header h2 {
+  font-size: 14px; font-weight: 400; color: #888;
+  letter-spacing: 0.02em; margin-top: 8px; line-height: 1.7;
+}
+.divider {
+  width: 60px; height: 3px; margin-bottom: 28px; border-radius: 2px;
+  background: linear-gradient(90deg, #ca8a04, #eab308);
+}
+
+/* Overview Card */
+.overview {
+  background: #fefce8; border: 2px solid #fde68a; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 24px;
+}
+.overview-label {
+  font-size: 13px; font-weight: 700; color: #a16207;
+  letter-spacing: 0.06em; margin-bottom: 10px;
+}
+.overview h4 { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+.overview p { font-size: 15px; color: #555; line-height: 2.0; }
+
+/* Section Card */
+.card {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+}
+.section { border-left: 4px solid; }
+.section-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.circle-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+.section-tag {
+  font-size: 12px; padding: 3px 10px; border-radius: 20px;
+  font-weight: 500; letter-spacing: 0.02em;
+}
+.section h3 { font-size: 18px; font-weight: 700; }
+.section-body p { font-size: 15px; color: #555; line-height: 2.0; margin-bottom: 12px; }
+
+/* Data Cards (Block 01) */
+.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.data-card {
+  flex: 1; min-width: 100px;
+  border-radius: 12px; padding: 18px 14px; text-align: center;
+}
+.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.data-card.gold .data-big { color: #ca8a04; }
+.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+/* Flow Chart (Block 02) */
+.flow-row {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 8px; margin-top: 16px; flex-wrap: wrap;
+}
+.flow-step {
+  background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px;
+  padding: 14px 16px; text-align: center; font-size: 13px;
+  color: #9a3412; font-weight: 700; min-width: 100px;
+}
+.flow-step-num {
+  display: block; font-size: 11px; font-weight: 400; color: #ea580c;
+  margin-bottom: 4px; letter-spacing: 0.04em;
+}
+.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
+.flow-arrow { font-size: 18px; color: #ea580c; font-weight: 700; padding-top: 14px; }
+
+/* Multi-Column Comparison (Block 03) */
+.cmp-grid { display: grid; gap: 10px; margin-top: 14px; }
+.cmp-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.cmp-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cmp-card {
+  border-radius: 10px; padding: 14px 12px; text-align: center;
+}
+.cmp-card.white-card { background: #fafafa; border: 1px solid #e8e0d5; }
+.cmp-card.yellow-card { background: #fefce8; border: 1px solid #fde68a; }
+.cmp-card.green-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.cmp-card.red-card { background: #fef2f2; border: 1px solid #fecaca; }
+.cmp-card.blue-card { background: #eff6ff; border: 1px solid #bfdbfe; }
+.cmp-card.purple-card { background: #faf5ff; border: 1px solid #e9d5ff; }
+.cmp-card.brown-card { background: #faf6f0; border: 1px solid #e8d5c0; }
+.cmp-dot {
+  display: inline-block; width: 14px; height: 14px; border-radius: 50%;
+  margin-bottom: 6px;
+}
+.cmp-dot.white { background: #e5e5e5; border: 2px solid #ccc; }
+.cmp-dot.yellow { background: #eab308; }
+.cmp-dot.green { background: #22c55e; }
+.cmp-dot.red { background: #ef4444; }
+.cmp-dot.blue { background: #3b82f6; }
+.cmp-dot.purple { background: #a855f7; }
+.cmp-dot.brown { background: #a07050; }
+.cmp-name { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+.cmp-desc { font-size: 11px; color: #888; line-height: 1.5; }
+
+/* Dual Grid (Block 04) */
+.dual-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
+}
+.dual-card {
+  border-radius: 12px; padding: 20px 18px;
+}
+.dual-card.digital { background: #ecfeff; border: 1px solid #a5f3fc; }
+.dual-card.physical { background: #fff7ed; border: 1px solid #fed7aa; }
+.dual-icon { font-size: 28px; margin-bottom: 8px; }
+.dual-label { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; }
+.dual-card ul { list-style: none; padding: 0; }
+.dual-card li { font-size: 13px; color: #555; line-height: 1.9; }
+.dual-card li::before { content: '▸ '; color: #ca8a04; font-weight: 700; }
+.dual-note { font-size: 11px; color: #999; margin-top: 10px; font-style: italic; }
+
+/* Quote Block (Block 04) */
+.quote-block {
+  background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0;
+  padding: 16px 20px; margin-top: 14px; position: relative;
+}
+.quote-mark {
+  position: absolute; top: -10px; left: 12px;
+  font-size: 32px; color: #c084fc; font-family: Georgia, serif; line-height: 1;
+}
+.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
+.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+
+/* Bar Gauges (Block 05) */
+.bar-group { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+.bar-item { display: flex; align-items: center; gap: 12px; }
+.bar-label { font-size: 13px; color: #555; min-width: 80px; flex-shrink: 0; }
+.bar-track { flex: 1; height: 14px; background: #e8e0d5; border-radius: 7px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 7px; min-width: 4px; }
+.bar-fill.gold { background: #ca8a04; }
+.bar-fill.red { background: #dc2626; }
+.bar-fill.orange { background: #ea580c; }
+.bar-fill.indigo { background: #4f46e5; }
+.bar-fill.green { background: #16a34a; }
+.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 40px; text-align: right; }
+
+/* Grade Cards (Block 05) */
+.grade-row { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.grade-card {
+  flex: 1; min-width: 80px; border-radius: 10px;
+  padding: 12px 10px; text-align: center;
+}
+.grade-card.grade-a { background: #f0fdf4; border: 1px solid #86efac; }
+.grade-card.grade-b { background: #ecfeff; border: 1px solid #67e8f9; }
+.grade-card.grade-c { background: #fefce8; border: 1px solid #fde68a; }
+.grade-card.grade-d { background: #fef2f2; border: 1px solid #fecaca; }
+.grade-letter { font-size: 20px; font-weight: 700; }
+.grade-card.grade-a .grade-letter { color: #16a34a; }
+.grade-card.grade-b .grade-letter { color: #0891b2; }
+.grade-card.grade-c .grade-letter { color: #ca8a04; }
+.grade-card.grade-d .grade-letter { color: #dc2626; }
+.grade-range { font-size: 11px; color: #888; margin-top: 2px; }
+.grade-note { font-size: 11px; color: #999; margin-top: 2px; }
+
+/* Formula Card (Block 05) */
+.formula-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.formula-card {
+  flex: 1; min-width: 220px; background: #eff6ff;
+  border: 1px solid #bfdbfe; border-radius: 10px;
+  padding: 16px 18px;
+}
+.formula-name { font-size: 13px; font-weight: 700; color: #1e40af; margin-bottom: 8px; }
+.formula-expr { font-size: 12px; color: #555; line-height: 1.8; font-family: 'SF Mono', 'Menlo', monospace; background: #fff; padding: 8px 10px; border-radius: 6px; border: 1px solid #e0e7ff; }
+
+/* Takeaway */
+.takeaway {
+  background: #fefce8; border: 2px solid #fde68a; border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 24px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.takeaway-label {
+  font-size: 13px; font-weight: 700; color: #a16207; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 6px;
+}
+.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
+
+/* Footer */
+.footer {
+  text-align: center; margin-top: 16px;
+}
+.footer p { font-size: 12px; color: #bbb; line-height: 1.8; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 24px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .cmp-grid.cols-4, .cmp-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .dual-grid { grid-template-columns: 1fr; }
+  .data-row { flex-direction: column; }
+  .kpi-row { flex-direction: column; }
+  .bar-item { flex-wrap: wrap; }
+  .grade-row { flex-direction: column; }
+  .formula-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Language Switch -->
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch003-info-en.html">English</a>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2</div>
+    <div class="kpi-label">套记录系统<br>表格 + 日记</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">7</div>
+    <div class="kpi-label">种颜色标记<br>交易状态</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">50%</div>
+    <div class="kpi-label">入场/出场<br>评分目标</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">30%</div>
+    <div class="kpi-label">通道宽度<br>A级交易门槛</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">1/10</div>
+    <div class="kpi-label">看盘时间<br>用于学习表格</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>以交易为生II：卖出的艺术 · 第三章「做好交易记录」</h1>
+  <h2>无论盈亏，交易者都必须在每次交易后变得更好——否则，所有分析的时间和承担的风险都将毫无意义。</h2>
+</div>
+<div class="divider"></div>
+
+<!-- Overview Card -->
+<div class="overview">
+  <div class="overview-label">概述</div>
+  <h4>单次盈利不能说明问题，持续盈利才是真正的挑战</h4>
+  <p>即便是让猴子往写满股票的黑板上扔飞镖，选出来的股票也可能获得不错收益。交易中真正困难的是建立长期盈利模式——这需要两套记录系统：交易者表格追踪数据，交易日记记录决策与图表，再通过评分体系将每次交易转化为可积累的进步。做好交易记录，是从偶然盈利走向必然盈利的起点。</p>
+</div>
+
+<!-- Block 01: 为何必须做交易记录 -->
+<div class="card section" style="border-left-color: #ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">01</div>
+    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">核心认知</div>
+    <h3 style="color:#ca8a04;">为何必须做交易记录</h3>
+  </div>
+  <div class="section-body">
+    <p>做好交易记录是从经验中学习进步的最好方式，它将一闪而过的经验转变成固化的记忆和教训。资金管理规则和好的交易记录，是在市场中生存和成功的两块基石。再大的盈利，只要一次失控的亏损，之前所有结果都将归零——骄傲自满迟早会让利润回吐。</p>
+    <div class="data-row">
+      <div class="data-card gold">
+        <div class="data-big">基石</div>
+        <div class="data-sm">资金管理 + 交易记录<br>= 生存与成功的基础</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">浪费</div>
+        <div class="data-sm">无记录 = 浪费分析时间<br>精力与风险承担</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">持续</div>
+        <div class="data-sm">持续盈利 &gt; 单次暴利<br>需要长期追踪模式</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 02: 交易者表格 -->
+<div class="card section" style="border-left-color: #ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">数据基础</div>
+    <h3 style="color:#ea580c;">交易者表格：数据追踪系统</h3>
+  </div>
+  <div class="section-body">
+    <p>每次交易后在表格上做一次更新，记录账户金额与交易数据。Elder在公司网站免费提供基础版电子表格。新手只需拿出看盘的1/10时间学习基本表格知识，水平就会有不小的提升。表格用于追踪资产曲线——只有资产不断增长，才能证明交易能力。</p>
+    <div class="flow-row">
+      <div class="flow-step"><span class="flow-step-num">步骤 1</span>每次交易后<br>更新数据</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">步骤 2</span>记录账户<br>金额变化</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">步骤 3</span>制作周资金<br>汇总表格</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end"><span class="flow-step-num">✓ 结果</span>追踪资产<br>曲线走势</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 03: 交易日记 -->
+<div class="card section" style="border-left-color: #4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">03</div>
+    <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">图表系统</div>
+    <h3 style="color:#4f46e5;">交易日记：七色状态标记法</h3>
+  </div>
+  <div class="section-body">
+    <p>用Outlook日历 + Snagit截图构建交易日记。每笔交易以画报形式记录：日线图、周线图，带箭头、线和文字点评。使用七种颜色标记交易状态，月总结时一目了然。犯错可以，但不要重复犯错——日记是将赚钱喜悦和亏钱苦楚都放入可追溯文件的最好方法。</p>
+    <div class="cmp-grid cols-4">
+      <div class="cmp-card white-card">
+        <div class="cmp-dot white"></div>
+        <div class="cmp-name">无色</div>
+        <div class="cmp-desc">已完成交易<br>已平仓并记录</div>
+      </div>
+      <div class="cmp-card yellow-card">
+        <div class="cmp-dot yellow"></div>
+        <div class="cmp-name">黄色</div>
+        <div class="cmp-desc">持仓中<br>需持续关注</div>
+      </div>
+      <div class="cmp-card green-card">
+        <div class="cmp-dot green"></div>
+        <div class="cmp-name">绿色</div>
+        <div class="cmp-desc">盈利出场<br>交易成功</div>
+      </div>
+      <div class="cmp-card red-card">
+        <div class="cmp-dot red"></div>
+        <div class="cmp-name">红色</div>
+        <div class="cmp-desc">亏损出场<br>交易失败</div>
+      </div>
+    </div>
+    <div class="cmp-grid cols-3" style="margin-top: 10px;">
+      <div class="cmp-card blue-card">
+        <div class="cmp-dot blue"></div>
+        <div class="cmp-name">蓝色</div>
+        <div class="cmp-desc">盈利不足<br>未达应有收益</div>
+      </div>
+      <div class="cmp-card purple-card">
+        <div class="cmp-dot purple"></div>
+        <div class="cmp-name">紫色</div>
+        <div class="cmp-desc">计划中<br>尚未执行</div>
+      </div>
+      <div class="cmp-card brown-card">
+        <div class="cmp-dot brown"></div>
+        <div class="cmp-name">棕色</div>
+        <div class="cmp-desc">模拟研究<br>非实盘交易</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 04: 交易计划 -->
+<div class="card section" style="border-left-color: #0891b2;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ecfeff;color:#0891b2;">04</div>
+    <div class="section-tag" style="background:#ecfeff;color:#0891b2;">流程方法</div>
+    <h3 style="color:#0891b2;">交易计划流程与玛格丽特方法</h3>
+  </div>
+  <div class="section-body">
+    <p>在交易前写下交易计划，才能领先于对手。无论选择价值型交易还是动量型交易，有计划就比其他投资者更有优势。除了数字工具，还可以借鉴玛格丽特的低科技方法——将候选股票图表打印挂墙，一眼扫过就能看到准备就绪的交易信号。</p>
+    <div class="dual-grid">
+      <div class="dual-card digital">
+        <div class="dual-icon">💻</div>
+        <div class="dual-label">数字方法：Outlook + Snagit</div>
+        <ul>
+          <li>截周线图 + 日线图，箭头标记</li>
+          <li>粘贴到Outlook日历，紫色标记</li>
+          <li>登录经纪商，OCO止盈止损</li>
+          <li>放入备选列表，图表窗口追踪</li>
+        </ul>
+        <div class="dual-note">执行后从紫色改为黄色</div>
+      </div>
+      <div class="dual-card physical">
+        <div class="dual-icon">🖼️</div>
+        <div class="dual-label">物理方法：玛格丽特挂墙法</div>
+        <ul>
+          <li>打印候选股票走势图</li>
+          <li>用红笔标记交易信号</li>
+          <li>挂在黑板上，走进办公室即可见</li>
+          <li>交易完成或取消后取下更新</li>
+        </ul>
+        <div class="dual-note">确保计划始终是最新的</div>
+      </div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">最好的机会总是姗姗来迟。在决定下单买入或做空前，你需要等待更多确定的信息——就如玩字谜游戏一样，需要更多的字母出现，才能最接近地猜出是哪个词。</div>
+      <div class="quote-author">— Alexander Elder，《以交易为生II》</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 05: 交易评分 -->
+<div class="card section" style="border-left-color: #dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">05</div>
+    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">量化评估</div>
+    <h3 style="color:#dc2626;">交易评分体系：衡量每一次交易</h3>
+  </div>
+  <div class="section-body">
+    <p>如果不去评价交易表现，就像短跑运动员说自己跑得很快但从不用计时器一样。Elder对买入、卖出和总体交易质量分别评分，目标是50%以上——在日内中点之下买入，中点之上卖出。交易评分让你正视交易，持续关注执行质量。</p>
+    <div class="formula-row">
+      <div class="formula-card">
+        <div class="formula-name">📥 入场评分（目标 &gt; 50%）</div>
+        <div class="formula-expr">(当天最高价 − 买入价) ÷ (当天最高价 − 当天最低价) × 100%</div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-name">📤 出场评分（目标 &gt; 50%）</div>
+        <div class="formula-expr">(卖出价 − 当天最低价) ÷ (当天最高价 − 当天最低价) × 100%</div>
+      </div>
+    </div>
+    <div class="bar-group">
+      <div class="bar-item">
+        <div class="bar-label">优秀 &gt; 80%</div>
+        <div class="bar-track"><div class="bar-fill green" style="width:90%"></div></div>
+        <div class="bar-val">90%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">良好 &gt; 50%</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:65%"></div></div>
+        <div class="bar-val">65%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">较差 &lt; 20%</div>
+        <div class="bar-track"><div class="bar-fill red" style="width:15%"></div></div>
+        <div class="bar-val">15%</div>
+      </div>
+    </div>
+    <div class="grade-row">
+      <div class="grade-card grade-a">
+        <div class="grade-letter">A</div>
+        <div class="grade-range">≥ 30%</div>
+        <div class="grade-note">通道宽度占比</div>
+      </div>
+      <div class="grade-card grade-b">
+        <div class="grade-letter">B</div>
+        <div class="grade-range">20% – 30%</div>
+        <div class="grade-note">通道宽度占比</div>
+      </div>
+      <div class="grade-card grade-c">
+        <div class="grade-letter">C</div>
+        <div class="grade-range">10% – 20%</div>
+        <div class="grade-note">通道宽度占比</div>
+      </div>
+      <div class="grade-card grade-d">
+        <div class="grade-letter">D</div>
+        <div class="grade-range">&lt; 0</div>
+        <div class="grade-note">亏损交易</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>记录不是为了回顾过去，而是为了改变未来每一次交易。做好两套记录——表格追踪数据、日记记录决策——再配合入场/出场/交易等级三重评分，就能将每一笔交易转化为进步阶梯。从偶然盈利走向必然盈利，从市场中的游客变成市场中的职业选手。</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>来源：Alexander Elder《以交易为生II：卖出的艺术》第3章「做好交易记录」· 信息图生成于 2026-06-17 · 仅供学习参考</p>
+</div>
+
+</div>
+</body>
+</html>

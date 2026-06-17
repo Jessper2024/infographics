@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>以交易为生II：卖出的艺术 · 第九章「熊市赚钱」</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px 64px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
+
+/* 语言切换 */
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+/* KPI */
+.kpi-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+.kpi-card {
+  flex: 1; min-width: 120px;
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
+  padding: 20px 16px; text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-num { font-size: 32px; font-weight: bold; color: #dc2626; letter-spacing: -0.02em; font-family: 'FZXPYZS', Georgia, serif; }
+.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+
+/* 标题区 */
+.header { text-align: center; margin-bottom: 32px; }
+.header h1 {
+  font-size: 36px; font-weight: 400; color: #1a1a1a;
+  letter-spacing: 0.03em; line-height: 1.4;
+}
+.header h2 {
+  font-size: 14px; font-weight: 400; color: #888;
+  letter-spacing: 0.02em; margin-top: 10px; line-height: 1.6;
+}
+.divider {
+  width: 60px; height: 3px; margin: 20px auto 0;
+  background: linear-gradient(90deg, #dc2626, #ea580c, #f5f1eb);
+  border-radius: 2px;
+}
+
+/* 卡片通用 */
+.card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* 概述卡片 */
+.overview { border-left: 4px solid #dc2626; }
+.overview-label {
+  font-size: 13px; font-weight: 700; color: #dc2626;
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;
+}
+.overview-question { font-size: 17px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.5; }
+.overview p { font-size: 15px; color: #555; line-height: 2.0; }
+
+/* 区块 */
+.section { border-left: 4px solid; }
+.section-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.circle-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+.section-tag {
+  font-size: 12px; padding: 3px 10px; border-radius: 20px;
+  font-weight: 500; letter-spacing: 0.02em;
+}
+.section h3 { font-size: 18px; font-weight: 700; }
+.section-body p { font-size: 15px; color: #555; line-height: 2.0; margin-bottom: 12px; }
+
+/* 流程图 */
+.flow-row {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 8px; margin-top: 16px; flex-wrap: wrap;
+}
+.flow-step, .flow-step.end {
+  background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px;
+  padding: 14px 16px; text-align: center; font-size: 13px;
+  color: #9a3412; font-weight: 700; min-width: 90px;
+}
+.flow-step-num {
+  display: block; font-size: 11px; font-weight: 400; color: #ea580c;
+  margin-bottom: 4px; letter-spacing: 0.04em;
+}
+.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
+.flow-arrow { font-size: 18px; color: #ea580c; font-weight: 700; padding-top: 14px; }
+
+/* 数据卡 */
+.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.data-card {
+  flex: 1; min-width: 100px;
+  border-radius: 12px; padding: 18px 14px; text-align: center;
+}
+.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+.data-card.red .data-big { color: #dc2626; }
+.data-card.orange .data-big { color: #ea580c; }
+.data-card.gold .data-big { color: #ca8a04; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+/* 多列对比卡 */
+.cmp-grid { display: grid; gap: 12px; margin-top: 14px; }
+.cmp-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cmp-card {
+  border-radius: 12px; padding: 20px 16px 16px; text-align: center;
+}
+.cmp-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+.cmp-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.cmp-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.cmp-icon { font-size: 28px; margin-bottom: 8px; }
+.cmp-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+.cmp-features { list-style: none; padding: 0; text-align: left; font-size: 12px; color: #555; line-height: 1.7; }
+.cmp-features li::before { content: '• '; color: #888; }
+.cmp-bar { height: 4px; border-radius: 2px; margin: 10px 0; }
+.cmp-bar.red { background: #fca5a5; }
+.cmp-bar.orange { background: #fdba74; }
+.cmp-bar.gold { background: #fde68a; }
+.cmp-note { font-size: 11px; color: #999; line-height: 1.5; }
+
+/* 二分对比卡 */
+.dual-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
+}
+.dual-card {
+  border-radius: 10px; padding: 16px 18px;
+}
+.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-label { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.dual-card.good .dual-label { color: #166534; }
+.dual-card.bad .dual-label { color: #991b1b; }
+.dual-card p { font-size: 13px; color: #555; line-height: 1.8; }
+
+/* 比例条 */
+.bar-group { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.bar-item { display: flex; align-items: center; gap: 12px; }
+.bar-label { font-size: 13px; color: #555; min-width: 80px; flex-shrink: 0; }
+.bar-track { flex: 1; height: 12px; background: #e8e0d5; border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; min-width: 4px; }
+.bar-fill.red { background: #dc2626; }
+.bar-fill.orange { background: #ea580c; }
+.bar-fill.gold { background: #ca8a04; }
+.bar-fill.indigo { background: #4f46e5; }
+.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 40px; text-align: right; }
+
+/* 引用块 */
+.quote-block {
+  background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0;
+  padding: 16px 20px; margin-top: 14px; position: relative;
+}
+.quote-mark {
+  position: absolute; top: -10px; left: 12px;
+  font-size: 32px; color: #c084fc; font-family: Georgia, serif; line-height: 1;
+}
+.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
+.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+
+/* 警示框 */
+.callout {
+  display: flex; gap: 10px; align-items: flex-start;
+  border-radius: 10px; padding: 14px 16px; margin-top: 14px;
+}
+.callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
+.callout.info { background: #eff6ff; border: 1px solid #bfdbfe; }
+.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.callout-text { font-size: 13px; color: #555; line-height: 1.8; }
+.callout-text strong { color: #1a1a1a; }
+
+/* 核心结论 */
+.takeaway {
+  background: #faf5ff; border: 2px solid #d8b4fe; border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 24px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.takeaway-label {
+  font-size: 13px; font-weight: 700; color: #7c3aed; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 6px;
+}
+.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
+
+/* 页脚 */
+.footer { text-align: center; margin-top: 32px; }
+.footer p { font-size: 12px; color: #bbb; line-height: 1.8; }
+
+/* 响应式 */
+@media (max-width: 640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 24px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .cmp-grid.cols-3 { grid-template-columns: 1fr; }
+  .dual-grid { grid-template-columns: 1fr; }
+  .data-row { flex-direction: column; }
+  .kpi-row { flex-direction: column; }
+  .bar-item { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 语言切换 -->
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch009-info-en.html">English</a>
+</div>
+
+<!-- KPI 关键数字条 -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">−95%</div>
+    <div class="kpi-label">MGM 最大跌幅<br>泡沫破灭样本</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">−98%</div>
+    <div class="kpi-label">UYG 最大跌幅<br>杠杆 ETF 灾难</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">17个月</div>
+    <div class="kpi-label">2007-2009<br>熊市跨度</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5大信号</div>
+    <div class="kpi-label">顶背离 · 假突破 · 死叉<br>底背离 · 猎犬信号</div>
+  </div>
+</div>
+
+<!-- 标题 -->
+<div class="header">
+  <h1>以交易为生II：卖出的艺术<br>第九章「熊市赚钱」</h1>
+  <h2>2003-2007 年牛市持续 4.5 年后步履蹒跚——2007-2009 年熊市毁灭数万亿市值，MGM 跌去 95%、SHLD 跌去 80%<br>读懂技术信号的个人交易者本可通过做空获利，但多数人因不知如何卖出而错失良机</h2>
+  <div class="divider"></div>
+</div>
+
+<!-- 概述卡片 -->
+<div class="card overview">
+  <div class="overview-label">核心问题</div>
+  <div class="overview-question">当牛市终结、价值毁灭来临，个人交易者如何利用技术分析在熊市中不仅生存，更能通过做空获利？</div>
+  <p>亚历山大·埃尔德以 2007-2009 年大熊市为教材，系统展示了「三重滤网系统」的实战应用：周线图定战略方向（识别顶背离、死叉），日线图定战术时机（价值区做空、通道下轨平仓）。从 NH-NL 指标的军官逃跑信号，到 MGM/ISRG/SHLD/BAC/FRE 的完整做空案例，再到巴菲特买 GE 过早的前车之鉴——本章提供了一套完整的熊市交易方法论。核心结论：<strong>波段交易优于全程持有，完美是优秀的敌人，永不停止学习。</strong></p>
+</div>
+
+<!-- 区块 01: 警钟为谁而鸣——识别牛市终点 -->
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">01</div>
+    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">预警信号</div>
+    <h3 style="color:#dc2626;">警钟为谁而鸣——识别牛市终点</h3>
+  </div>
+  <div class="section-body">
+    <p>大熊苏醒前，市场会发出多重预警信号。NH-NL 指标是最佳领先指标——当标普 500 创出新高而 NH-NL 未能跟随，意味着「军官逃跑、士兵还在进攻」，牛市已是强弩之末。情绪指标同样有效：2007 年夏，《金融时报》报道上海酒店服务员和洗碗工都去炒股——这是当代「擦鞋工信号」，1929 年巴鲁克正是因擦鞋工荐股而清仓逃顶。</p>
+    <div class="flow-row">
+      <div class="flow-step"><span class="flow-step-num">信号 1</span>情绪预警<div class="flow-label">擦鞋工信号<br>上海劳工短缺</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">信号 2</span>NH-NL 顶背离<div class="flow-label">军官逃跑<br>士兵还在进攻</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">信号 3</span>MACD 顶背离<div class="flow-label">周线 MACD 柱<br>+ 线 + 强力指标</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end"><span class="flow-step-num">✓</span>确认熊市<div class="flow-label">13周EMA<br>下穿26周EMA</div></div>
+    </div>
+    <p style="margin-top:12px; font-size:13px; color:#888;">情绪指标是基础指标，不可作精准择时；NH-NL和MACD背离才是可执行的交易信号。</p>
+  </div>
+</div>
+
+<!-- 区块 02: 顶背离——做空的最强信号 -->
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">核心信号</div>
+    <h3 style="color:#ea580c;">顶背离——做空的最强信号</h3>
+  </div>
+  <div class="section-body">
+    <p>顶背离是技术分析中最可靠的看跌信号。当价格创出新高，而 MACD 柱、MACD 线或强力指标未能同步创出新高，表明上涨动能衰竭。「三连胜」——三项指标同时背离——是近乎完美的做空信号。向上假突破+顶背离的组合尤为致命：价格短暂突破前高后迅速回落，说明市场拒绝接受更高价格。</p>
+
+    <div class="data-row">
+      <div class="data-card red">
+        <div class="data-big">MACD 柱</div>
+        <div class="data-sm">背离<br>最常见、最基础<br>两个峰之间须跌破零线</div>
+      </div>
+      <div class="data-card orange">
+        <div class="data-big">MACD 线</div>
+        <div class="data-sm">背离<br>更强烈信号<br>不常发生但更可靠</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">强力指标</div>
+        <div class="data-sm">背离<br>三重指标组合<br>「三连胜」= 完美做空</div>
+      </div>
+    </div>
+
+    <div class="dual-grid" style="margin-top:16px;">
+      <div class="dual-card good">
+        <div class="dual-label">✅ MGM 案例教训</div>
+        <p>MGM股价近100美元时，MACD柱+MACD线+强力指标同时顶背离——完美的三连胜。埃尔德却因受同机分析师"基本面好"的言论影响，只买入未做空。股价最终跌至个位数，跌幅 95%。<br><strong>教训：即便最清醒的分析师也会被表象迷惑，图表信号优先于他人观点。</strong></p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 常见错误认知</div>
+        <p>新手喜欢按突破方向交易，期待向上突破持续发生。但职业交易者知道：<strong>大多数突破都是假突破</strong>。当价格突破前高但关键指标出现顶背离时，假突破+背离是最强做空组合。不与大众同向，但与信号同向。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 区块 03: 三重滤网——价值毁灭中的财富密码 -->
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">03</div>
+    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">系统方法</div>
+    <h3 style="color:#ca8a04;">三重滤网——价值毁灭中的财富密码</h3>
+  </div>
+  <div class="section-body">
+    <p>三重滤网系统是埃尔德交易方法论的核心：第一步看周线图制定战略决策（做多还是做空），第二步看日线图制定战术决策（何时入场、何时出场）。熊市中，价值毁灭是常态——价格反弹至 EMA 价值区是做空机会，跌至通道下轨是平仓时机。与机构投资者不同，个人交易者可以做空，这是巨大优势。</p>
+
+    <div class="cmp-grid cols-3">
+      <div class="cmp-card red">
+        <div class="cmp-icon">📉</div>
+        <div class="cmp-name">MGM</div>
+        <ul class="cmp-features">
+          <li>峰值：~$100</li>
+          <li>谷底：个位数</li>
+          <li>最大跌幅 95%</li>
+          <li>三重顶背离</li>
+        </ul>
+        <div class="cmp-bar red"></div>
+        <div class="cmp-note">三连胜信号被忽视的经典案例</div>
+      </div>
+      <div class="cmp-card orange">
+        <div class="cmp-icon">🏬</div>
+        <div class="cmp-name">SHLD</div>
+        <ul class="cmp-features">
+          <li>峰值：~$200</li>
+          <li>谷底：<$40</li>
+          <li>最大跌幅 80%</li>
+          <li>多次做空波段机会</li>
+        </ul>
+        <div class="cmp-bar orange"></div>
+        <div class="cmp-note">通道内波段做空最佳案例</div>
+      </div>
+      <div class="cmp-card gold">
+        <div class="cmp-icon">🏦</div>
+        <div class="cmp-name">BAC</div>
+        <ul class="cmp-features">
+          <li>峰值：$55</li>
+          <li>谷底：<$3</li>
+          <li>最大跌幅 95%</li>
+          <li>中途反弹 100% 后崩跌</li>
+        </ul>
+        <div class="cmp-bar gold"></div>
+        <div class="cmp-note">证明波段交易优于全程持有</div>
+      </div>
+    </div>
+
+    <div class="flow-row" style="margin-top:20px;">
+      <div class="flow-step"><span class="flow-step-num">第1层</span>周线图<div class="flow-label">定战略方向<br>识别顶背离/死叉</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">第2层</span>日线图<div class="flow-label">定战术时机<br>价值区入场</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end"><span class="flow-step-num">✓</span>执行交易<div class="flow-label">通道下轨平仓<br>严格止损</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 区块 04: 下跌通道中的系统化做空 -->
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">04</div>
+    <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">战术工具</div>
+    <h3 style="color:#4f46e5;">下跌通道中的系统化做空</h3>
+  </div>
+  <div class="section-body">
+    <p>当股票进入下跌通道后，两种系统化方法可实现稳定做空盈利。MACD 反转系统：MACD 柱向下穿越零轴即做空，价格跌至通道下轨附近平仓。通道内做空系统：价格反弹至两条 EMA 之间（价值区）做空，止损设于近期高点之上，下轨附近获利了结。SHLD 日线图在 2007-2008 年提供了 4 次清晰的做空信号。</p>
+
+    <div class="bar-group">
+      <div class="bar-item">
+        <div class="bar-label">信号1：MACD柱↓</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:40%"></div></div>
+        <div class="bar-val">短期</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">信号2：MACD柱↓</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:55%"></div></div>
+        <div class="bar-val">中短期</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">信号3：价值区做空</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:85%"></div></div>
+        <div class="bar-val">大幅获利</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">信号4：价值区做空</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:100%"></div></div>
+        <div class="bar-val">最大利润</div>
+      </div>
+    </div>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">✅ 正确做法</div>
+        <p>固定交易头寸，不加仓。抓住通道宽度 30% 即可评为 A 级交易。波段交易——买低卖高或高位做空、低位买平——比持有整个趋势更现实。<br><strong>把自己当做商人，把交易头寸当做商品：快速流转是商业正常运行的标志。</strong></p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 致命错误</div>
+        <p>不断加注——趋势完结时不可避免的损失会重创账户。<br>追求完美——试图抓住绝对顶部和绝对底部。<br>丢弃系统——系统失效时不要抛弃它，等待市场环境改变后它会再次派上用场。<br><strong>完美是优秀的敌人，贪婪是成功的敌人。</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 区块 05: 熊市底部与永恒教训 -->
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fdf2f8;color:#db2777;">05</div>
+    <div class="section-tag" style="background:#fdf2f8;color:#db2777;">教训与反思</div>
+    <h3 style="color:#db2777;">熊市底部与永恒教训</h3>
+  </div>
+  <div class="section-body">
+    <p>熊市不言底，但底背离是最强烈的牛市转换信号。当价格创出新低而 MACD 柱仅小幅下跌时，下跌动能衰竭，反弹在即。然而，「巴斯克威尔猎犬」信号警示我们：底背离也可能失败——FRE 房地美连续两次底背离后继续崩跌至 46 美分，这种背靠背失败极为罕见，但提醒我们永不说「不可能」。</p>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">巴菲特买入 GE 股票的那一周，我的周线组合系统是红色的。如果这位伟人向我寻求意见，我会建议他继续等待。3 周后，GE 周线图由红转蓝，出现强烈底背离信号……2009 年 3 月二次探底完成底背离时，我才开始买入。</div>
+      <div class="quote-author">— 亚历山大·埃尔德，论巴菲特 2008 年买入 GE</div>
+    </div>
+
+    <div class="callout warn" style="margin-top:14px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text"><strong>核心教训：</strong>永不说价格「太低」——FRE 从 $70 跌到 $20 看似便宜，再跌到 $5 时买入的交易者仍承受了 85% 亏损。基本面信息与技术分析相互验证是最好的情况。像所有严谨的交易者一样，保留「明天比今天更聪明」的权利。</div>
+    </div>
+
+    <div class="bar-group" style="margin-top:16px;">
+      <div class="bar-item">
+        <div class="bar-label">牛市不言顶</div>
+        <div class="bar-track"><div class="bar-fill red" style="width:100%"></div></div>
+        <div class="bar-val">∞</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">熊市不言底</div>
+        <div class="bar-track"><div class="bar-fill red" style="width:100%"></div></div>
+        <div class="bar-val">→0</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">波段交易</div>
+        <div class="bar-track"><div class="bar-fill indigo" style="width:60%"></div></div>
+        <div class="bar-val">现实可行</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">长期持有</div>
+        <div class="bar-track"><div class="bar-fill orange" style="width:95%"></div></div>
+        <div class="bar-val">极度困难</div>
+      </div>
+    </div>
+
+    <div class="dual-grid" style="margin-top:16px;">
+      <div class="dual-card good">
+        <div class="dual-label">✅ 生存法则</div>
+        <p>• 周线 EMA 死叉时决不多单持有<br>• 三重滤网：先看周线，后看日线<br>• 止损必设，永不裸奔<br>• 概率思维：接受多次小额亏损<br>• 选择适合自己的时间框架并坚持</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 毁灭之路</div>
+        <p>• 忽视周线信号，只盯日线图<br>• 没有止损或随意移动止损<br>• 下跌途中不断加仓做多<br>• 试图抓住绝对顶部和绝对底部<br>• 因一两次止损而放弃交易系统</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 核心结论 -->
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>2007-2009 年熊市教会我们的不是恐惧，而是纪律。运用三重滤网系统——周线定方向、日线抓时机——在价值区做空、在通道下轨平仓，波段交易优于全程持有。NH-NL 顶背离和情绪指标是最早的警钟，顶背离+假突破是最强做空信号，底背离是熊牛转换的曙光。永远不要因价格"看起来便宜"而抄底，永远不要因一次止损而放弃系统。<strong>和所有严谨的交易者一样，我们要不断学习并保留明天比今天更聪明的权利。</strong></p>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+  <p>来源：亚历山大·埃尔德《以交易为生II：卖出的艺术》第9章「熊市赚钱」<br>生成日期：2026-06-17 · 仅供学习参考，不构成投资建议</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Su Dongpo Biography · Ch. 7 — 信息图</title>
+<style>
+@font-face { font-family: 'FZXPYZS'; src: url('方正屏显雅宋简体.TTF') format('truetype'); }
+:root { --bg: #f5f1eb; --card-bg: #ffffff; --card-border: #e8e0d5; --text: #555; --dark: #1a1a1a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif; color: var(--text); line-height: 2.0; font-size: 15px; }
+.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
+.lang-switch { text-align: right; margin-bottom: 8px; }
+.lang-switch a { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; text-decoration: none; border: 1px solid #d5cfc5; border-radius: 20px; padding: 4px 16px; transition: background 0.2s; }
+.lang-switch a:hover { background: #e8e0d5; }
+.header { margin-bottom: 24px; }
+.header h1 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--dark); margin-bottom: 8px; }
+.header h2 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: #888; }
+.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c, #ca8a04, #4f46e5, #db2777, #0891b2); border-radius: 2px; margin-bottom: 24px; }
+.overview, .card, .takeaway { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03); }
+.overview p { margin-bottom: 6px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.overview .oneliner { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 12px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.overview .scqa-label { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; margin-right: 6px; font-weight: 700; }
+.section { border-left: 4px solid transparent; }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.circle-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
+.section-tag { font-size: 12px; font-family: 'FZXPYZS','PingFang SC',serif; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 12px; }
+.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
+.section-body { margin-top: 8px; }
+.section-body p { font-family: 'FZXPYZS','PingFang SC',serif; }
+.bluf { color: var(--dark); font-weight: 600; margin-bottom: 8px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.detail { font-size: 13px; color: #777; line-height: 1.6; font-family: 'FZXPYZS','PingFang SC',serif; }
+.blockquote { border-left: 3px solid #d5cfc5; padding-left: 14px; color: #666; font-style: italic; margin: 12px 0; font-size: 14px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+.dual-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 14px 16px; }
+.dual-card h4 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
+.dual-card p { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 13px; color: #666; line-height: 1.7; }
+.flow-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #9a3412; text-align: center; font-family: 'FZXPYZS','PingFang SC',serif; }
+.flow-arrow { color: #ea580c; font-size: 18px; font-weight: 700; font-family: 'FZXPYZS','PingFang SC',serif; }
+.data-row { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+.data-card { flex: 1; min-width: 100px; padding: 16px; border-radius: 10px; text-align: center; }
+.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.data-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+.data-big { font-size: 28px; font-weight: 700; font-family: 'FZXPYZS',serif; }
+.data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #ca8a04; } .data-big.i { color: #4f46e5; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.cmp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 10px; }
+.cmp-card { padding: 16px; border-radius: 10px; text-align: center; }
+.cmp-card.c1 { background: #fef2f2; border: 1px solid #fecaca; }
+.cmp-card.c2 { background: #fff7ed; border: 1px solid #fed7aa; }
+.cmp-card.c3 { background: #fefce8; border: 1px solid #fde68a; }
+.cmp-icon { font-size: 24px; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.cmp-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+.cmp-note { font-size: 12px; color: #888; line-height: 1.5; font-family: 'FZXPYZS','PingFang SC',serif; }
+.takeaway { display: flex; gap: 16px; align-items: flex-start; }
+.takeaway-icon { font-size: 28px; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
+.takeaway-label { font-size: 12px; color: #888; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'FZXPYZS','PingFang SC',serif; }
+.takeaway p { color: var(--dark); font-weight: 600; font-size: 15px; line-height: 1.8; font-family: 'FZXPYZS','PingFang SC',serif; }
+.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; }
+.footer p { margin-bottom: 2px; font-family: 'FZXPYZS','PingFang SC',serif; }
+@media (max-width:640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 22px; }
+  .header h2 { font-size: 15px; }
+  .takeaway { order: -1; margin-bottom: 20px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .bluf { font-size: 16px; }
+  .dual-grid, .cmp-grid { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .data-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-switch"><a href="sudongpo-zhuan-ch007-info-zh.html" target="_blank">中文</a></div>
+
+<div class="header">
+  <h1>Su Dongpo Biography · Ch. 7 &ldquo;初仕凤翔&rdquo;</h1>
+  <h2>"What is human life like everywhere? It should be like a swan leaving footprints in the snow" — In his first post at Fengxiang, Su Dongpo prayed for rain with sincere devotion and argued with spirits through eloquence, displaying a blazing vitality</h2>
+</div>
+<div class="divider"></div>
+
+<div class="data-row" style="margin-bottom:24px;">
+    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
+      <div class="data-big" style="color:#dc2626;">1061</div>
+      <div class="data-sm">First Post Year</div>
+    </div>
+    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
+      <div class="data-big" style="color:#ea580c;">3 days</div>
+      <div class="data-sm">Continuous Rain</div>
+    </div>
+    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
+      <div class="data-big" style="color:#ca8a04;">31</div>
+      <div class="data-sm">Flower Varieties Planted</div>
+    </div>
+    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
+      <div class="data-big" style="color:#4f46e5;">10 days</div>
+      <div class="data-sm">Mail Delivery Time</div>
+    </div>
+</div>
+<div class="overview">
+  <div class="oneliner">Core Insight：In his first post at Fengxiang, Su Dongpo displayed a "fiery" spirit amid mundane duties — he prayed successfully for rain with sincere devotion, reasoned with mountain gods and spirits through eloquence, shared joy with the people through his "Joyful Rain Pavilion," while also learning to read people through the wise counsel of his wife Wang Fu</div>
+  <p><span class="scqa-label">Core Question</span>How did Su Dongpo display his extraordinary personality and governance philosophy in his unremarkable first official post?</p>
+  <p><span class="scqa-label">Core Answer</span>At the end of 1061, Su Dongpo was appointed Keeper of the Great Principles and Associate Magistrate of Fengxiang. His first taste of official life was disappointing — far from the capital, tedious paperwork bored him. But when drought threatened, he sprang into action: climbing Mount Taibai to pray for rain, writing a memorial to restore the mountain god's ducal title, and after success, building the "Joyful Rain Pavilion" with a commemorative essay. He even engaged in logical debates with mountain gods and spirits, showing a "fiery" spirit. His wife Wang Fu's counsel — "Friendships formed too quickly will not last" — became lifelong wisdom.</p>
+</div>
+
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#dc2626;">1</div>
+    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">Brothers Parting</div>
+    <h3 style="color:#dc2626;">The First Farewell: Footprints of a Swan in Snow</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Ziyou accompanied Dongpo forty miles to Zhengzhou — Dongpo watched his younger brother riding a thin horse in the snow, the road gradually sinking, his head bobbing up and down, until he finally disappeared from sight. This was the first separation of their lives.</p>
+    <p>Ziyou had been appointed military commander of Shangzhou, but their father's work was in the capital, and one brother had to stay — so Ziyou refused his post. In his first poem to his brother, Dongpo wrote: "Without drinking, why am I dazed as if drunk? My heart has already followed your returning saddle... I know that in life there must be partings, but I fear the years will drift away too swiftly." The poetic theme of "Night Rain, Facing the Bed" later became a token between the Su brothers and the ideal life they planned for their retirement.</p>
+    <p class="detail">Among Dongpo's earliest poems matching Ziyou's rhymes, one already displayed the manner of a great poet. Required to use the rhymes "ni" (mud) and "xi" (west), he wrote: "What is human life like everywhere? It should be like a swan leaving footprints in the snow — footprints left by chance upon the snow, the swan flies on, caring not for east or west." This is one of Dongpo's finest works — the swan symbolizes the human spirit. As Lin Yutang said, the life story recorded in this book is merely the occasional footprints left by a great soul; the true Su Dongpo is a phantom-bird-like spirit.</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ea580c;">2</div>
+    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">Official Reality</div>
+    <h3 style="color:#ea580c;">The Tedium of First Post: Gap Between Ideal and Reality</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Su Dongpo moved out for the first time with his wife and child; his first taste of official life was not as wonderful as he had imagined — far from the capital's excitement, serving as deputy chief in a remote district countersigning documents and adjudicating lawsuits, he found it tedious.</p>
+    <p>Fengxiang was in western Shaanxi, near the Wei River. Shaanxi is the cradle of Chinese culture, the entire Wei River valley filled with historical place names. However, due to repeated conflicts with the powerful neighboring Western Xia kingdom to the south of Gansu, the region suffered from a shortage of manpower and widespread poverty. In his first year, Su Dongpo built a garden cottage for his official residence, with a pond in front, thirty-one varieties of flowers in the garden, and a small pavilion behind.</p>
+    <p class="detail">The associate magistrate's duties were not too heavy. He could travel around, visiting the high mountains to the east and south for a few days. Once he went on official business to investigate cases in nearby areas, hoping to resolve pending cases quickly and release as many prisoners as possible. He was best suited for inspection tours and visited temples in the Taibai Mountains and Black Water Basin, as well as the birthplace of the Zhou dynasty's founding monarch. Sometimes, with nothing to do, he even traveled as far as the Zhongnan Mountains near Xi'an.</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ca8a04;">3</div>
+    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">Wife's Wisdom</div>
+    <h3 style="color:#ca8a04;">Wang Fu's Counsel: The Friendship of Gentlemen Is Mild as Water</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Su Dongpo's wife often stood behind the door curtain listening to her husband's conversations with guests, then warned him to be wary of those who were too effusive — "Friendships formed too quickly will not last." Her words always proved true.</p>
+    <p>Su Dongpo was clear about big matters but careless about small ones; yet life often consists of many small matters — big events are usually few and far between. Dongpo trusted everyone, but his wife was better at judging character. Once, after a guest left, she said to her husband: "Why waste your time talking to this person? He kept watching for what you were going to say so he could flatter you." She wanted him to beware of superficial acquaintances made under his "no bad people in the world" theory.</p>
+    <p class="detail">Lin Yutang believed her wisdom in this area came from the ancient Chinese maxim: "The friendship of gentlemen is mild as water" — without exciting flavors, yet never tiresome. Sincere friendship never displays itself too much. True good friends do not write often, because their complete trust in the friendship makes it unnecessary. Meeting again after years apart, the friendship remains unchanged. Su Dongpo's trouble was that he could not see other people's faults.</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#4f46e5;">4</div>
+    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">Serving the People</div>
+    <h3 style="color:#4f46e5;">Praying for Rain on Mount Taibai: Pleading for the Farmers</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Drought was imminent — it had not rained for a long time, and farmers worried about the harvest. Praying for rain was a local official's duty — Su Dongpo suddenly sprang into action, determined to use all his eloquence to plead with the gods on behalf of the farmers.</p>
+    <p>Su Dongpo climbed Mount Taibai and entered the temple to pray. He pleaded for the farmers, but like a lawyer, tried to make the Dragon King understand that drought was not in the god's interest. In his official prayer, he wrote: "If it does not rain within ten days, it will be a disastrous year; the people will have no food, and bandits will arise. This is not only a worry for the officials in charge, nor is it something the god should sit and watch with indifference." He discovered that the Taibai mountain god's title had been demoted from Duke Shenying to Marquis Jimin, and immediately wrote a memorial requesting restoration of the ducal rank.</p>
+    <p class="detail">Su Dongpo and the prefect bathed, sent a special envoy to inform the mountain god that they had secured a higher rank for him, and brought back a basin of "dragon water" from the mountain pond. On the 19th, he went out of the city to welcome the "dragon water" — thousands of people came from the countryside. On the way, he saw a mass of dark clouds flying low and borrowed a basket from a farmer to catch a handful of clouds, covering it tightly. He prayed to these clouds: "Clouds, return to your mountain, so bureaucrats need not fear." A cold wind arose, dense clouds descended like a herd of wild horses from heaven, and showers filled the countryside. Two days later there was another heavy rain, lasting three days continuously.</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#db2777;">5</div>
+    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">Shared Joy</div>
+    <h3 style="color:#db2777;">Record of the Joyful Rain Pavilion: Sharing the People's Happiness</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">To commemorate the successful rain prayer, Su Dongpo named the pavilion behind his official residence "Joyful Rain Pavilion" and wrote a commemorative essay — this essay became one of the most beloved Su Dongpo prose pieces in school curricula, because of its simple language and how it represented his character: taking the greatest joy in sharing the people's happiness.</p>
+    <p>Joy pervaded everywhere, but the happiest was Su Dongpo himself. He built the pavilion, named it, and wrote the record — transforming a routine official duty into a lasting cultural event. The Joyful Rain Pavilion record not only documented a successful rain prayer but expressed Su Dongpo's philosophy of governance: that the joy between officials and people could be shared, and this was the ideal political relationship.</p>
+    <p class="detail">In July of the following year, drought struck again, and this time the rain prayer had no effect. Disappointed, Su Dongpo went to the Pan Stream to pray to the spirit of Jiang Taigong — a wise old man of the 12th century BCE, who was said to hold his fishing line three feet above the water surface when fishing, "so if a fish jumped three feet out of the water to take the bait, that was the fish's own fault." Wherever Su Dongpo served, he continued to pray for rain when necessary, believing that Heaven was fair and reasonable, and also believing in "doing one's human best and accepting Heaven's decree."</p>
+  </div>
+</div>
+<div class="card section" style="border-left-color:#0891b2;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#0891b2;">6</div>
+    <div class="section-tag" style="color:#0891b2;background:#ecfeff;">Spirit Symbol</div>
+    <h3 style="color:#0891b2;">The Spirit of Fire: A Blaze That Argues with Spirits</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">Lin Yutang said Su Dongpo's spirit represented "fire" — throughout his life he struggled against floods and droughts, and wherever he went he busied himself building water systems. The fire symbol is apt, because his vitality was abundant, and his temperament and life were like a blaze, everywhere bringing life and warmth, and also burning down certain things along the way.</p>
+    <p>Su Dongpo always believed that not only gods but even demons should submit to his logical argumentation. Once, passing through White Flower Mountain, a guard was suddenly possessed by a demon and began stripping off all his clothes. Su Dongpo went to the temple and offered a written prayer, engaging the mountain god in logical debate: "This insignificant man is like a louse — how could he be worth troubling the god's mighty spirit?... Among those under your jurisdiction, there are surely powerful and wealthy ones who openly commit evil — yet the god does not dare display his might against them, but instead vents anger on a single soldier. Is this not unreasonable?"</p>
+    <p class="detail">After finishing his prayer, Su Dongpo walked out of the temple gate, and a cold wind blew in his face. Soon sand and stones flew, and travelers could not see the road. Su Dongpo said to his attendants: "Is the mountain god angrier now? I am not afraid." This spirit of reasoning with spirits and demons is one of Su Dongpo's most unique personality traits — he not only reasoned with humans but also demanded logic and justice from supernatural beings. As Lin Yutang said, he hated things that made no sense, and even demons should recognize whether what they did was reasonable.</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">Key Takeaway</div>
+    <p>Fengxiang was the starting point of Su Dongpo's official career and a comprehensive display of his personality: sincere devotion in serving the people (praying for rain), eloquent reasoning with spirits (debating the mountain god), sharing joy through poetry (Joyful Rain Pavilion), and humility in accepting his wife's counsel (reading people). These four traits — devotion, eloquence, optimism, and humility — would run through the next forty years of his official life. As he wrote in his famous lines: "What is human life like everywhere? It should be like a swan leaving footprints in the snow — footprints left by chance upon the snow, the swan flies on, caring not for east or west."</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Source: Lin Yutang, &ldquo;The Gay Genius: The Life and Times of Su Tungpo&rdquo; · 2015 | Ch. 7 &ldquo;初仕凤翔&rdquo; · For educational reference only</p>
+</div>
+
+</div>
+</body>
+</html>
