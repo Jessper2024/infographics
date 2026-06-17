@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 6 Skewness and Asymmetry</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Typography ── */
+  h1 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; font-size: 14px; color: #888; margin-bottom: 24px;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #f87171);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .body-text {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Splash / Overview card ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Section card base (all coral red) ── */
+  .section {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    margin-bottom: 18px; padding: 28px 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid #dc2626;
+  }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    background: #fef2f2; color: #dc2626;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-body { flex: 1; }
+
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    background: #fef2f2; color: #dc2626;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-title {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    color: #dc2626;
+  }
+
+  .section-desc {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual Grid ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.pos { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.neg { background: #fff5f5; border: 1px solid #fee2e2; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #1a1a1a; margin-bottom: 4px;
+  }
+  .dual-text p {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #777; line-height: 1.6;
+  }
+
+  /* ── Flow steps ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 10px 14px; text-align: center; min-width: 90px; flex: 1;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #b91c1c; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #dc2626; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+
+  /* ── Table ── */
+  .info-table {
+    width: 100%; border-collapse: collapse; margin-top: 10px;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px;
+  }
+  .info-table th {
+    background: #fef2f2; color: #991b1b; padding: 10px 14px;
+    text-align: left; font-weight: bold; border-bottom: 2px solid #fecaca;
+  }
+  .info-table td {
+    padding: 10px 14px; border-bottom: 1px solid #fef2f2; color: #555;
+    line-height: 1.6;
+  }
+  .info-table .highlight-cell { color: #dc2626; font-weight: bold; }
+
+  /* ── Quote box ── */
+  .quote-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
+    padding: 16px 20px; margin-top: 10px;
+  }
+  .quote-line {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #b91c1c; line-height: 1.8; font-style: italic;
+    margin-bottom: 6px;
+  }
+  .quote-line:last-child { margin-bottom: 0; }
+  .quote-attr {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 11px; color: #f87171; margin-top: 8px; text-align: right;
+  }
+
+  /* ── Buzzword pills ── */
+  .buzzword-grid {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    margin-bottom: 12px;
+  }
+  .buzz-pill {
+    display: inline-block; padding: 5px 14px; border-radius: 16px;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #dc2626; background: #fef2f2;
+    border: 1px solid #fecaca;
+  }
+  .buzz-pill.highlight { background: #dc2626; color: #ffffff; border-color: #dc2626; }
+  .buzz-note {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #888; line-height: 1.7; margin-top: 8px;
+  }
+  .buzz-note strong { color: #dc2626; }
+
+  /* ── KPI strip ── */
+  .kpi-strip {
+    display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .kpi-card {
+    flex: 1; min-width: 140px; background: #ffffff;
+    border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 16px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  }
+  .kpi-num {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 28px; color: #dc2626; font-weight: bold; line-height: 1.2;
+  }
+  .kpi-label {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #888; margin-top: 4px; line-height: 1.4;
+  }
+
+  /* ── Takeaway card ── */
+  .takeaway {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 14px;
+    padding: 24px 28px; margin-top: 24px;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 15px; color: #991b1b; line-height: 2.0;
+    font-style: italic;
+  }
+  .takeaway strong { font-style: normal; }
+
+  /* ── Footer ── */
+  .footer {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid #dc2626; padding-top: 20px; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-strip { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch006-info-zh.html">中文 / EN</a>
+</div>
+
+  <h1>Fooled by Randomness · Chapter 6<br>"Skewness and Asymmetry"</h1>
+  <p class="subtitle body-text">High probability doesn't mean high profit — why can't smart people tell frequency from magnitude?</p>
+  <div class="divider"></div>
+
+  <!-- KPI Key Metrics -->
+  <div class="kpi-strip">
+    <div class="kpi-card">
+      <div class="kpi-num">70% vs 1%</div>
+      <div class="kpi-label">Probability of rise vs magnitude</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">30% vs 10%</div>
+      <div class="kpi-label">Probability of drop vs magnitude</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">−$9</div>
+      <div class="kpi-label">Expected loss per 1000 bets</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">√n</div>
+      <div class="kpi-label">n× samples → only √n× knowledge</div>
+    </div>
+  </div>
+
+  <div class="splash body-text">
+    In financial markets, judgments of "bullish" and "bearish" are everywhere. But Taleb shows us: high probability doesn't mean high profit. He publicly declared a 70% chance the market would rise slightly — while heavily shorting it, because the 30% chance of a large drop mattered far more. Probability multiplied by payoff equals expected value, yet most MBAs learned statistics in symmetric environments (coin flips) and can't grasp this asymmetry. Starting from Gould's cancer diagnosis, this chapter reveals how skewness upends our intuitions about risk, prediction, and rare events.
+  </div>
+
+  <!-- 01: Skewness — Gould's Cancer Lesson -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <div class="section-body">
+      <div class="tag">Skewness</div>
+      <div class="section-title">Gould's Cancer Lesson: Median ≠ Mean</div>
+      <div class="section-desc">
+        Writer and scientist Stephen Jay Gould was diagnosed with a fatal stomach cancer and told the median survival time was about 8 months. Upon further research, he discovered: about 50% of patients die before 8 months, but those who survive beyond 8 months live much longer — roughly to the normal life expectancy of 73 years. This is asymmetry — the mean and median are radically different. Gould wrote "The Median Isn't the Message," arguing that medical research's reliance on the median obscures the true probability distribution.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card pos">
+          <div class="dual-icon">📉</div>
+          <div class="dual-text">
+            <h4>Those who die before 8 months</h4>
+            <p>Die early, clustered on the left of the distribution — they drag the mean down but don't shift the median.</p>
+          </div>
+        </div>
+        <div class="dual-card neg">
+          <div class="dual-icon">📈</div>
+          <div class="dual-text">
+            <h4>Those who survive past 8 months</h4>
+            <p>Go on living for decades, like a normal person to age 73 — the long right tail pushes the mean far above the median.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: Probability ≠ Expected Value -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <div class="section-body">
+      <div class="tag">Core Principle</div>
+      <div class="section-title">Probability ≠ Expected Value: Frequency Must Be Multiplied by Magnitude</div>
+      <div class="section-desc">
+        Consider a bet: 999 out of 1000 times you win $1 (Event A); 1 out of 1000 times you lose $10,000 (Event B). As the table shows — the frequency of winning is 99.9%, but magnitude is everything. Event A is far more probable, yet betting on A is a terrible idea. MBAs don't grasp this because their education takes place in symmetric environments (coin flips), where probability and expected value happen to coincide.
+      </div>
+      <table class="info-table">
+        <tr><th>Event</th><th>Probability</th><th>Outcome</th><th>Expected Value</th></tr>
+        <tr><td>A</td><td>999/1000</td><td>+$1</td><td>+$0.999</td></tr>
+        <tr><td>B</td><td>1/1000</td><td>−$10,000</td><td>−$10.00</td></tr>
+        <tr><td class="highlight-cell" colspan="3">Total Expected Value</td><td class="highlight-cell">−$9.001</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 03: The Emptiness of Bull/Bear -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <div class="section-body">
+      <div class="tag">Conceptual Critique</div>
+      <div class="section-title">Bull and Bear Are Empty Labels</div>
+      <div class="section-desc">
+        At a Wall Street weekly meeting, Taleb said "the market has a 70% probability of rising slightly." A colleague asked: "Then why are you heavily short S&P 500 futures?" His reply: "I haven't changed my mind — the probability of rising is high, but if it falls, it may fall a lot. I'm bullish on probability, bearish on outcome." The room was baffled — then a few traders got it. He was never invited back. Bull/bear dichotomies belong to TV commentators who bear no risk.
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">70% chance<br>up 1%</div>
+        <div class="flow-arrow">vs</div>
+        <div class="flow-step">30% chance<br>down 10%</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Expected<br>value negative</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Shorting<br>is rational</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: Rare Events & Crisis Hunters -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <div class="section-body">
+      <div class="tag">Rare Events</div>
+      <div class="section-title">Bet Big on One Side: The Crisis Hunter's Asymmetric Strategy</div>
+      <div class="section-desc">
+        Taleb's trading philosophy is to "make money as infrequently as possible" — lose small often, win huge rarely. Rare events are systematically undervalued in markets because people fixate on narrow historical time series. Legendary investor Jim Rogers said "90% of options lose money, so don't buy options" — ignoring that the remaining 10% might return 50×. The 1987 crash, a rare event, made Taleb a trader. Core strategy: place asymmetric bets and profit from rare events.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card pos">
+          <div class="dual-icon">🎯</div>
+          <div class="dual-text">
+            <h4>Crisis Hunters</h4>
+            <p>Lose small frequently, win huge rarely. Volatility is a friend. The 1987 crash, 1998 ruble crisis — these are their harvest seasons.</p>
+          </div>
+        </div>
+        <div class="dual-card neg">
+          <div class="dual-icon">🐷</div>
+          <div class="dual-text">
+            <h4>High-Yield Pigs</h4>
+            <p>Chase stable high interest rates (Mexican peso, Russian ruble), believing calm waters are forever safe — then blow up all at once.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: Limits of Statistics -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <div class="section-body">
+      <div class="tag">Statistical Traps</div>
+      <div class="section-title">Why Econometrics Is Unreliable</div>
+      <div class="section-desc">
+        Statistics' core insight: n× more samples → only √n× more knowledge. Worse still is the stationarity problem — if the urn has a hole and a mischievous kid secretly swaps balls, no amount of sampling yields reliable inference. Markets are the same: structures change, and past time series may point nowhere. The Lucas Critique: if rational traders discover a pattern, they'll trade it away until it vanishes. Most of econometrics may be "utterly useless."
+      </div>
+      <div class="buzzword-grid">
+        <span class="buzz-pill">n× samples → √n× knowledge</span>
+        <span class="buzz-pill">Stationarity problem</span>
+        <span class="buzz-pill highlight">Lucas Critique</span>
+        <span class="buzz-pill">Induction problem</span>
+        <span class="buzz-pill">Pseudoscience</span>
+        <span class="buzz-pill">Statistical illusion</span>
+      </div>
+      <div class="buzz-note">
+        ⚠️ <strong>Pesaran's circular reasoning:</strong> When asked whether econometrics can predict the future, he replied — "study more and better econometrics." It's like saying: if you doubt astrology, just study more astrology.
+      </div>
+    </div>
+  </div>
+
+  <!-- 06: Killers Beneath Calm Waters -->
+  <div class="section">
+    <div class="section-num">06</div>
+    <div class="section-body">
+      <div class="tag">History Repeats</div>
+      <div class="section-title">The Peso Problem: Killers Always Lurk Beneath Calm Waters</div>
+      <div class="section-desc">
+        Mexican peso stable for years → banks and funds pile in → "unexpectedly" blow up → new unsuspecting entrants rush in again → the story repeats. In 1998, Taleb spent two hours explaining the peso problem to a major hedge fund manager. The reply: "You're absolutely right. We don't touch pesos — we only invest in Russian rubles." A few months later, the ruble collapsed by 97%. Rare events are always unexpected — otherwise they wouldn't be rare.
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">Extended<br>stability</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Capital<br>floods in</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">"Unexpected"<br>blow-up</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">New entrants<br>forget</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Flood in<br>again</div>
+      </div>
+      <div class="quote-box" style="margin-top:14px;">
+        <div class="quote-line">"The nice old neighbor who seems like a good citizen — you only realize he's a deranged killer when you see his photo in the newspaper."</div>
+        <div class="quote-attr">— Taleb on rare events</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Takeaway -->
+  <div class="takeaway">
+    💡 <strong>Core Takeaway:</strong> In an asymmetric world, frequency is irrelevant — magnitude is everything. Probability is for commentators; expected value is what investors care about. Rare events are perpetually undervalued — not because they can't happen, but because people interpret risk through too narrow a time series. History proves again and again: things that never happened before eventually do happen. The broader the perspective, the more lessons we learn.
+  </div>
+
+  <div class="footer">Fooled by Randomness · Chapter 6 Infographic · 2026.06 · By Nassim Nicholas Taleb · For educational reference only</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 5 "Survival of the Least Fit—Can Evolution Be Fooled by Randomness?"</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Typography ── */
+  h1 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; font-size: 14px; color: #888; margin-bottom: 24px;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #db2777, #f472b6);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .body-text {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    background: #fdf2f8; color: #db2777; border: 1px solid #fbcfe8;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Splash / Overview card ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Section card base (all pink) ── */
+  .section {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    margin-bottom: 18px; padding: 28px 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid #db2777;
+  }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    background: #fdf2f8; color: #db2777;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-body { flex: 1; }
+
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    background: #fdf2f8; color: #db2777;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-title {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    color: #db2777;
+  }
+
+  .section-desc {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Component A: Flow Steps ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 10px;
+    padding: 10px 14px; text-align: center; min-width: 90px; flex: 1;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #be185d; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #db2777; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fce7f3; border-color: #f9a8d4; color: #9d174d; }
+
+  /* ── Component B: Data Cards ── */
+  .data-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px;
+  }
+  .data-card {
+    border-radius: 12px; padding: 20px; text-align: center;
+    background: #fdf2f8; border: 1px solid #fbcfe8;
+  }
+  .data-big {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 32px; color: #db2777; font-weight: bold; line-height: 1.2;
+  }
+  .data-sm {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #9d174d; margin-top: 6px; line-height: 1.5;
+  }
+  .data-card.danger { background: #fce7f3; border-color: #f9a8d4; }
+  .data-big.danger { color: #be185d; }
+
+  /* ── Component C: Dual Grid ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.pos { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-card.neg { background: #fce7f3; border: 1px solid #f9a8d4; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #1a1a1a; margin-bottom: 4px;
+  }
+  .dual-text p {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #777; line-height: 1.6;
+  }
+
+  /* ── Component: Trait Pills ── */
+  .trait-list {
+    display: flex; flex-direction: column; gap: 8px; margin-top: 10px;
+  }
+  .trait-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 14px; border-radius: 10px;
+    background: #fdf2f8; border: 1px solid #fbcfe8;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+  .trait-num {
+    flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+    background: #db2777; color: #fff; font-size: 12px; font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .trait-text {
+    font-size: 13px; color: #be185d; line-height: 1.6;
+  }
+
+  /* ── Component: Key Insight Box ── */
+  .insight-box {
+    background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 12px;
+    padding: 18px 22px; margin-top: 10px; text-align: center;
+  }
+  .insight-quote {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 16px; color: #db2777; line-height: 1.8; font-style: italic;
+    margin-bottom: 8px;
+  }
+  .insight-note {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #9d174d; line-height: 1.6;
+  }
+
+  /* ── Component: Quote Box ── */
+  .quote-box {
+    background: #fdf2f8; border: 1px solid #fbcfe8; border-radius: 12px;
+    padding: 16px 20px; margin-top: 10px;
+  }
+  .quote-line {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #be185d; line-height: 1.8; font-style: italic;
+    margin-bottom: 6px;
+  }
+  .quote-line:last-child { margin-bottom: 0; }
+  .quote-attr {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 11px; color: #f472b6; margin-top: 8px; text-align: right;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid #db2777; padding-top: 20px; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch005-info-zh.html">中文 / English</a>
+</div>
+
+  <h1>Fooled by Randomness · Chapter 5<br>"Survival of the Least Fit—Can Evolution Be Fooled by Randomness?"</h1>
+  <p class="subtitle body-text">The rise and fall of two traders, and a question that pierces through Darwinism</p>
+  <div class="divider"></div>
+
+  <div class="splash body-text">
+    Carlos made $80 million trading emerging-market bonds using economic analysis — then lost $300 million in a single summer. John amassed a $16 million fortune riding statistical models — wiped out in days. They are not outliers: at any point in time, the highest-earning trader is often the worst trader. Through two true stories, Taleb reveals an unsettling truth: randomness can fool not only individuals but evolution itself. Survival of the fittest? Perhaps just the luckiest who happened to avoid a rare event.
+  </div>
+
+  <!-- 01: Carlos — Believer in Economics (flow) -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <div class="section-body">
+      <div class="tag">Carlos Case</div>
+      <div class="section-title">Carlos: A golden road paved by economic intuition, crushed overnight by a rare event</div>
+      <div class="section-desc">
+        A Harvard economics master's graduate, Carlos entered emerging-market bond trading in 1992. He believed economic analysis explained everything — buy on dips, add more if fundamentals looked good. Over seven years, he accumulated nearly $80 million in profits. In summer 1998, the Russian debt crisis struck. He kept averaging down, shouting at doubters: "It's just liquidation!" In the end, he lost $300 million in one summer and was escorted out by security.
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">1992–1997<br>Consistent Profits</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">1998.6<br>Market Drops<br>Doubles Down</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">1998.7<br>Keeps Buying<br>"Too Big to Fail"</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">1998.8<br>Russia Defaults<br>Fired</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: John — Statistics Gamble (data cards) -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <div class="section-body">
+      <div class="tag">John Case</div>
+      <div class="section-title">John: A once-in-a-trillion-trillion-year event, arriving in days under leverage</div>
+      <div class="section-desc">
+        John relied on quant whiz Henry's risk models to run global high-yield bond carry trades. With five-to-one leverage, he managed a $50 million portfolio. The model said: this kind of loss should occur once every 100 trillion trillion years. In summer 1998, the high-yield market crashed, and all his hedges failed simultaneously. Within days, $14 million of personal wealth evaporated — and he lost his job.
+      </div>
+      <div class="data-row">
+        <div class="data-card">
+          <div class="data-big">$250M</div>
+          <div class="data-sm">Profits generated for employers over 7 years</div>
+        </div>
+        <div class="data-card danger">
+          <div class="data-big danger">−$600M+</div>
+          <div class="data-sm">Loss inflicted on last employer in days</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: Six Traits (trait list) -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <div class="section-body">
+      <div class="tag">Common Traits</div>
+      <div class="section-title">Traders fooled by randomness share these six fatal traits</div>
+      <div class="section-desc">
+        Carlos and John are not outliers — nearly all the most successful traders during the 1992–1998 bull run exhibited these traits. They lack precise definitions, but you recognize them instantly when you see them.
+      </div>
+      <div class="trait-list">
+        <div class="trait-item">
+          <div class="trait-num">1</div>
+          <div class="trait-text"><strong>Overestimating the precision of their beliefs.</strong> Carlos believed in economics; John believed in statistics. Neither considered that past success might have been coincidence — economics simply happened to work during that period.</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">2</div>
+          <div class="trait-text"><strong>Refusal to cut losses.</strong> As the saying goes, it's harder to get a bad trader to abandon a position than to get them divorced. They will not admit defeat.</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">3</div>
+          <div class="trait-text"><strong>Changing the narrative.</strong> When losing money, they suddenly call themselves "long-term investors." Conflating trading with investing is just an excuse to avoid taking a loss.</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">4</div>
+          <div class="trait-text"><strong>Denying reality.</strong> They refuse to believe the prices on the screen when losing. "It's just liquidation, panic selling" — continuing to ignore the market's message.</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">5</div>
+          <div class="trait-text"><strong>No pre-planned exit strategy.</strong> They buy more after a crash, but not according to any predetermined plan — driven purely by emotion.</div>
+        </div>
+        <div class="trait-item">
+          <div class="trait-num">6</div>
+          <div class="trait-text"><strong>Lack of critical self-examination.</strong> They won't accept their valuation methods might be flawed. Contrast with Soros, who reexamines his analytical framework when facing adverse outcomes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: Cross-Sectional Problem (dual grid + quote) -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <div class="section-body">
+      <div class="tag">Core Paradox</div>
+      <div class="section-title">The Cross-Sectional Problem: the highest earner may be the worst trader</div>
+      <div class="section-desc">
+        How did Carlos and John make so much money despite making every mistake? The answer lies in a simple principle of randomness. They profited not only because they were in the right market, but because their "buy the dip" style happened to match the character of the 1992–1998 historical period. During that era, those with that particular trait dominated — crowding out potentially superior traders.
+      </div>
+      <div class="insight-box">
+        <div class="insight-quote">"At any point in time, the highest-earning trader is often the worst trader."</div>
+        <div class="insight-note">— Taleb · The Cross-Sectional Problem</div>
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card pos">
+          <div class="dual-icon">🔍</div>
+          <div class="dual-text">
+            <h4>Reversing Cause and Effect</h4>
+            <p>We think traders make money because they are good. Perhaps we should reverse it: we think they are good only because they made money. One can profit in financial markets purely through randomness.</p>
+          </div>
+        </div>
+        <div class="dual-card neg">
+          <div class="dual-icon">🎯</div>
+          <div class="dual-text">
+            <h4>The Sample-Path Trap</h4>
+            <p>Carlos and John both benefited from the market cycle. Their success was over-adaptation to a single sample path — one that happened not to encounter a rare event. The longer without one, the more fragile they become.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: Evolution Fooled (quotes + evolution contrast) -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <div class="section-body">
+      <div class="tag">Evolution Myth</div>
+      <div class="section-title">Evolution can be fooled by randomness: adapting to one sample ≠ adapting to all possibilities</div>
+      <div class="section-desc">
+        Darwin has been misapplied. Evolution concerns reproductive fitness, not short-term survival. Gould identified "negative mutations" — inferior traits that can temporarily persist. When regime change occurs, the previously adapted species may be the first to perish. An animal adapts only to the specific time series it has experienced, not the average of all possible environments. The longer a species goes without encountering a rare event, the more vulnerable it becomes to that event.
+      </div>
+      <div class="quote-box">
+        <div class="quote-line">"If we extend time to infinity, by the property of ergodicity, that event will certainly occur — and those species will be destroyed!"</div>
+        <div class="quote-line">"Whatever John and Carlos go on to do, they will remain fools of randomness."</div>
+        <div class="quote-attr">— Taleb · Chapter 5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Fooled by Randomness · Chapter 5 Infographic · Nassim Nicholas Taleb · For educational reference only</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>股票大作手操盘术 · 第6章「百万美元的大错」 — 信息图</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-font-smoothing:antialiased}
+body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;background:#f5f1eb;color:#555;line-height:2.0;min-height:100vh;padding:48px 16px 60px}
+.container{max-width:880px;width:100%;margin:0 auto;padding:0}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-switch a{display:inline-block;font-size:13px;color:#4f46e5;text-decoration:none;padding:6px 16px;border:1px solid #c7d2fe;border-radius:8px;background:#eef2ff;transition:background .2s}
+.lang-btn:hover{opacity:.75}
+.header{margin-bottom:32px}
+.header h1{font-size:32px;font-weight:400;color:#1a1a1a;letter-spacing:.03em;margin-bottom:8px;line-height:1.4}
+.header h2{font-size:18px;font-weight:400;color:#888;letter-spacing:.02em;line-height:1.6}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ca8a04);border-radius:2px;margin-bottom:24px}
+.kpi-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:140px;background:#fff;border:1px solid #e8e0d5;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.kpi-num{font-size:36px;font-weight:700;color:#1a1a1a;line-height:1.2;margin-bottom:6px}
+.kpi-label{font-size:12px;color:#888;line-height:1.6}
+.overview{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03)}
+.overview-label{font-size:13px;font-weight:700;color:#4f46e5;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.overview .scqa-label{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',Georgia,serif}
+.overview .scqa-label.s{background:#fef2f2;color:#dc2626}
+.overview .scqa-label.c{background:#fff7ed;color:#ea580c}
+.overview .scqa-label.q{background:#fefce8;color:#ca8a04}
+.overview .scqa-label.a{background:#eef2ff;color:#4f46e5}
+.overview .scqa-item{margin-bottom:6px;font-size:15px;line-height:2.0;color:#555}
+.card.section{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03)}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.circle-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.section-tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:12px;flex-shrink:0}
+.section h3{font-size:18px;font-weight:700;line-height:1.4}
+.section-body .bluf{color:#1a1a1a;font-weight:600;margin-bottom:8px;font-size:15px;line-height:2.0}
+.section-body p{color:#555;font-size:15px;line-height:2.0;margin-bottom:8px}
+.section-body .detail{font-size:13px;color:#777;line-height:1.8}
+.flow-row{display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:100px;background:#fafaf7;border:1px solid #e8e0d5;border-radius:10px;padding:12px 10px;text-align:center}
+.flow-step .step-num{font-size:11px;font-weight:700;margin-bottom:4px}
+.flow-step .step-text{font-size:13px;color:#555;line-height:1.6}
+.flow-arrow{font-size:18px;color:#bbb;flex-shrink:0}
+.cmp-grid.cols-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.cmp-grid.cols-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+.cmp-card{background:#fafaf7;border:1px solid #e8e0d5;border-radius:10px;padding:14px}
+.cmp-card .cmp-label{font-size:12px;font-weight:700;margin-bottom:6px;color:#1a1a1a}
+.cmp-card .cmp-text{font-size:13px;color:#555;line-height:1.8}
+.quote-block{background:#faf5ff;border-left:4px solid #d8b4fe;border-radius:0 10px 10px 0;padding:14px 18px;margin:12px 0}
+.quote-block p{font-size:14px;color:#6b21a8;font-style:italic;line-height:1.8}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.dual-good{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px}
+.dual-good .dual-label{font-size:12px;font-weight:700;color:#166534;margin-bottom:6px}
+.dual-bad{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px}
+.dual-bad .dual-label{font-size:12px;font-weight:700;color:#991b1b;margin-bottom:6px}
+.dual-grid p{font-size:13px;color:#555;line-height:1.8}
+.warn-box{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px 18px;margin:12px 0}
+.warn-box p{font-size:13px;color:#92400e;line-height:1.8}
+.takeaway{background:linear-gradient(135deg,#fef2f2,#fefce8);border:1px solid #fecaca;border-radius:14px;padding:24px 28px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.takeaway-icon{font-size:28px;flex-shrink:0;line-height:1}
+.takeaway-text{flex:1}
+.takeaway-label{font-size:13px;font-weight:700;color:#dc2626;margin-bottom:6px;letter-spacing:.05em}
+.takeaway p{font-size:15px;color:#1a1a1a;font-weight:600;line-height:2.0}
+.footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5}
+.footer p{font-size:12px;color:#bbb;line-height:1.8}
+@media(max-width:640px){body{padding:16px 12px 40px}.container{padding:0}.header h1{font-size:22px}.header h2{font-size:15px}.takeaway{order:-1;margin-bottom:20px;flex-direction:column}.kpi-num{font-size:28px}.kpi-label{font-size:11px}.card,.overview,.section{padding:18px 16px}.section-header{flex-wrap:wrap;gap:8px}.circle-num{width:34px;height:34px;font-size:14px}.section h3{font-size:16px}.flow-row{flex-direction:column;align-items:stretch}.flow-arrow{display:none}.cmp-grid.cols-3,.cmp-grid.cols-2,.dual-grid{grid-template-columns:1fr}.kpi-row{flex-direction:column}.bluf{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-switch">
+    <a href="livermore-caopan-ch006-info-en.html" target="_blank">EN</a>
+  </div>
+  <div class="header">
+    <h1>股票大作手操盘术 · 第6章「百万美元的大错」</h1>
+    <h2>融合时间与价格的利弗莫尔准则 — 操之过急是投机者最昂贵的错误，耐心等待关键点才是利润的起点</h2>
+    <div class="divider"></div>
+  </div>
+    <div class="kpi-row">
+      <div class="kpi-card"><div class="kpi-num">$20万</div><div class="kpi-label">六周内<br>实际亏损</div></div>
+      <div class="kpi-card"><div class="kpi-num">$100万</div><div class="kpi-label">因过早出局<br>错失利润</div></div>
+      <div class="kpi-card"><div class="kpi-num">5次</div><div class="kpi-label">相同错误<br>六周内重复</div></div>
+      <div class="kpi-card"><div class="kpi-num">500点</div><div class="kpi-label">棉花涨幅<br>完全错过</div></div>
+    </div>
+
+  <div class="overview">
+    <div class="scqa-item"><span class="scqa-label s">S 情境</span>利弗莫尔对棉花形成强烈看涨判断，认为即将出现大行情，并计划在市场突破关键点（每磅12½美分）后分批聚集10万包筹码。</div>
+    <div class="scqa-item"><span class="scqa-label c">C 冲突</span>他在市场尚未准备好的情况下急切入市——六周内五次冲动操作，每次买进2万包推高15点随即回跌原价，累计亏损近20万美元。撤掉报价机两天后，棉花启动500点大涨。</div>
+    <div class="scqa-item"><span class="scqa-label q">Q 问题</span>有了明确判断和周密计划，为什么一个经验丰富的投机者仍会错过有史以来最有把握的机会？</div>
+    <div class="scqa-item"><span class="scqa-label a">A 回答</span>两大根源：缺乏耐心等待关键心理时刻，想提前"多挣一点"；判断失误后纵容动怒情绪，厌恶市场以致完全放弃。学会承认错误、研究记录、倾听潜意识警告，并永远提防内幕消息。</div>
+  </div>
+    <div class="card section" style="border-left:4px solid #dc2626;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#dc2626;">01</div>
+        <div class="section-tag" style="color:#dc2626;background:#fef2f2;">建仓纪律</div>
+        <h3 style="color:#dc2626;">逐步加仓——拉开战线，渐进式买卖法则</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>不要把所有头寸堆在同一个价位。分批建仓——做多时每笔都在更高价位买进，做空时每笔都在更低价位卖出——比任何其他方法都更接近市场正确的一边。</strong></p>
+        <p>太多投机者听凭冲动一次性买入或卖空，将全部头寸堆在同一个价位上。这种做法错误且危险。正确方式是：想买500股，先买100股；市场上涨确认后，再买第二笔100股——后续每笔必然处在比前一笔更高的价位。</p>
+        <div class="flow-row">
+          <div class="flow-step"><div class="step-num" style="color:#dc2626;">第一笔</div><div class="step-text">首仓100股<br>试探性建仓</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="step-num" style="color:#dc2626;">第二笔</div><div class="step-text">市场上涨确认<br>更高价位加仓100股</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="step-num" style="color:#dc2626;">第三笔…</div><div class="step-text">趋势延续<br>继续递增价位加仓</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="step-num" style="color:#dc2626;">全部盈利</div><div class="step-text">所有交易从头到尾<br>账面利润=正确证据</div></div>
+        </div>
+        <p class="detail" style="margin-top:10px;">卖空同理：除非比前一笔更低，否则绝不再卖出下一笔。遵循这一准则，所有交易自始至终都是盈利的——账面利润本身就是证明你正确的有力证据。建立第一笔头寸后，明确决定在万一看错的情况下愿意承担多大风险。</p>
+      </div>
+    </div>
+    <div class="card section" style="border-left:4px solid #ea580c;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#ea580c;">02</div>
+        <div class="section-tag" style="color:#ea580c;background:#fff7ed;">时机＞判断</div>
+        <h3 style="color:#ea580c;">等待关键心理时刻——谨慎选择时机绝对必要</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>即使判断最终被证明正确，过早行动同样致命。必须等到市场到达你认定的关键点——只要坚持在关键点再次入市，真正运动开始时你势必已经在场内。</strong></p>
+        <p>利弗莫尔的交易惯例：第一步，估计股票未来行情的潜力大小；第二步，研究价格记录确定在什么价位入市；事前已经认定它应当到达某个点位——当它果真到达时，正是投入第一笔头寸的时刻。</p>
+        <div class="flow-row">
+          <div class="flow-step"><div class="step-num" style="color:#ea580c;">Step 1</div><div class="step-text">估计行情潜力<br>明确判断方向</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="step-num" style="color:#ea580c;">Step 2</div><div class="step-text">研究价格记录<br>确定关键入场点</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="step-num" style="color:#ea580c;">Step 3</div><div class="step-text">耐心等待<br>市场到达关键点</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="step-num" style="color:#ea580c;">Step 4</div><div class="step-text">投入第一笔<br>设定风险底线</div></div>
+        </div>
+        <div class="quote-block" style="margin-top:12px;">
+          <p>「如果你坚持一贯如此，只要市场到达认定的关键点就坚持再次入市，当真正的市场运动开始时，你就势必已经在场内了。简而言之，你不可能丧失机会。」</p>
+        </div>
+        <p class="detail">也许会有一两次头寸亏损，但坚持这一准则，一旦真正的市场运动启动，你不会错失。核心是：谨慎选择时机绝对必要，操之过急则代价惨重。</p>
+      </div>
+    </div>
+    <div class="card section" style="border-left:4px solid #ca8a04;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#ca8a04;">03</div>
+        <div class="section-tag" style="color:#ca8a04;background:#fefce8;">惨痛教训</div>
+        <h3 style="color:#ca8a04;">百万美元大错——棉花市场代价高昂的六周</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>利弗莫尔亲述他最羞愧的经历：六周内五次冲动操作棉花，亏损近20万美元，更因撤掉报价机而完全错失随后500点的史诗级大涨——总计损失逾120万美元。</strong></p>
+        <p>多年以前，利弗莫尔对棉花强烈看涨，形成明确意见认为将出现大行情。但他没有等到市场自身做好准备，一得出结论当即扑进——第一笔以市价买进2万包，把原本呆滞的市场推升15点后，24小时内回跌至起点，损失约3万美元。</p>
+        <div class="cmp-grid cols-3" style="margin-top:12px;">
+          <div class="cmp-card"><div class="cmp-label" style="color:#dc2626;">❌ 第1-3次</div><div class="cmp-text">每次买进2万包→推高→跌回原点→亏损$2.5-3万不等。受不了等待煎熬，悉数卖出。</div></div>
+          <div class="cmp-card"><div class="cmp-label" style="color:#dc2626;">❌ 第4-5次</div><div class="cmp-text">依然坚信看涨判断→再次重演→再次亏损出场。累计虚掷近$20万，一丁点满意都没尝到。</div></div>
+          <div class="cmp-card"><div class="cmp-label" style="color:#0891b2;">☠ 致命后果</div><div class="cmp-text">撤掉报价机、对棉花完全失去兴趣的两天后→市场启动500点大涨，中途仅一次40点回撤。错过了$100万利润。</div></div>
+        </div>
+        <p class="detail">利弗莫尔写道："写到这里，我备感羞愧，几乎想把自己的脸转过去。"按原计划在市场超越关键点后分批聚集10万包筹码，本可盈利200点——这是他有史以来判断出的最有吸引力、把握最牢靠的交易机会之一。</p>
+      </div>
+    </div>
+    <div class="card section" style="border-left:4px solid #4f46e5;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#4f46e5;">04</div>
+        <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">复盘反思</div>
+        <h3 style="color:#4f46e5;">失败的两大根源——缺乏耐心与情绪失控的双重代价</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>棉花灾难的两大根源：第一，没有耐心等待价格行情的心理时刻，想在关键点之前抢先"多挣一点"；第二，因判断失误纵容自己动怒厌恶市场，让情绪取代了理性。</strong></p>
+        <div class="dual-grid">
+          <div class="dual-bad">
+            <div class="dual-label">❌ 根源一：缺乏耐心</div>
+            <p>事先知道只有棉花成交价到每磅12½美分才真正进入状态——但就是不肯等。市场时机成熟前抢先动手，不仅损失$20万真金白银，还丧失了$100万盈利机会。</p>
+          </div>
+          <div class="dual-bad">
+            <div class="dual-label">❌ 根源二：情绪失控</div>
+            <p>仅仅因为判断失误就纵容自己动怒，对棉花市场深恶痛绝，撤掉报价机泄愤——这样的情绪和稳健的投机守则完全不相适宜。</p>
+          </div>
+        </div>
+        <div class="dual-grid" style="margin-top:12px;">
+          <div class="dual-good">
+            <div class="dual-label">✅ 补救之道</div>
+            <p>犯了错误不要找借口——坦白承认错误，尽可能从中汲取教益。研究行情记录以确定导致错误的原因，然后等待下一次大机会。所关心的是一段时间的总体结果。</p>
+          </div>
+          <div class="dual-good">
+            <div class="dual-label">✅ 止损法则</div>
+            <p>市场会告诉投机者什么时候他是错误的——那时他一定正在赔钱。第一次认识到自己错误的那一刻，正是了结出市之时。接受亏损，尽量保持微笑。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card section" style="border-left:4px solid #db2777;">
+      <div class="section-header">
+        <div class="circle-num" style="background:#db2777;">05</div>
+        <div class="section-tag" style="color:#db2777;background:#fdf2f8;">进阶智慧</div>
+        <h3 style="color:#db2777;">潜意识的危险信号与内幕消息的致命诱惑</h3>
+      </div>
+      <div class="section-body">
+        <p class="bluf"><strong>"甚至在市场告诉你之前就能先知先觉地感觉到自己是错误的"——这是一种来自长期市场历练的潜意识警告。同时，利弗莫尔用一整节警告提防内幕消息："提防内幕消息……一切内幕消息概不例外。"</strong></p>
+        <div class="cmp-grid cols-2">
+          <div class="cmp-card"><div class="cmp-label" style="color:#db2777;">🔮 潜意识危险信号</div><div class="cmp-text">市场收市后心绪不宁→夜间辗转反侧→次日一切看似完美→但内心涌起不安。这是通过长期市场研究和历练发展起来的特殊敏感。利弗莫尔坦言："通过密切注意这种感觉，我在很多场合都受益匪浅。"</div></div>
+          <div class="cmp-card"><div class="cmp-label" style="color:#db2777;">⚠️ 内幕消息陷阱</div><div class="cmp-text">身处公司的朋友"很容易告诉你何时应当买进。但他不可能也不愿意告诉你何时应当卖出——那样做差不多等于背叛他的董事会。"你飘飘然做起纸上富贵美梦时，内幕人士早已在最高价附近悄然出货。</div></div>
+        </div>
+        <div class="warn-box" style="margin-top:12px;">
+          <p>📓 <strong>笔记本第一页写什么？</strong>利弗莫尔建议随身携带小笔记本记录市场信息、思路和灵感。第一页打印上："提防内幕消息……一切内幕消息概不例外。"在投机事业里，成功只属于那些为之尽心尽力的人——天上不会掉馅饼。</p>
+        </div>
+        <div class="quote-block">
+          <p>「即使钱从天上掉下来，也不会有人愣要把它塞进你的口袋。」</p>
+        </div>
+      </div>
+    </div>
+
+  <div class="takeaway">
+    <div class="takeaway-icon">💡</div>
+    <div class="takeaway-text">
+      <div class="takeaway-label">核心结论</div>
+      <p>操之过急是投机者最昂贵的错误。棉花灾难的两大教训永不过时：一是分批建仓、耐心等待关键心理时刻，绝不在市场时机成熟前抢先行动；二是犯错后不要动怒或找借口，而应坦然承认、研究记录、汲取教益。更高级的判断力来自长期市场历练——当你心绪不宁、辗转反侧时，那可能是潜意识在为你发送危险信号。随身带上笔记本，但第一页永远写着：提防一切内幕消息。</p>
+    </div>
+  </div>
+  <div class="footer">
+    <p>来源：《股票大作手操盘术》（杰西·利弗莫尔 著）第6章<br>信息图基于SCQA框架提炼核心内容<br>仅供学习参考，不构成投资建议。</p>
+  </div>
+</div>
+</body>
+</html>

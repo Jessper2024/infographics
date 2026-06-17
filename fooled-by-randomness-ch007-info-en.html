@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 7 "The Problem of Induction"</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Typography ── */
+  h1 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; font-size: 14px; color: #888; margin-bottom: 24px;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #ea580c, #fb923c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .body-text {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Splash / Overview card ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Section card base ── */
+  .section {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    margin-bottom: 18px; padding: 28px 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid #ea580c;
+  }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    background: #fff7ed; color: #ea580c;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-body { flex: 1; }
+
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    background: #fff7ed; color: #ea580c;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-title {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    color: #ea580c;
+  }
+
+  .section-desc {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual Grid ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.pos { background: #fff7ed; border: 1px solid #fed7aa; }
+  .dual-card.neg { background: #fff7ed; border: 1px solid #fed7aa; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #1a1a1a; margin-bottom: 4px;
+  }
+  .dual-text p {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #777; line-height: 1.6;
+  }
+
+  /* ── Flow steps ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 14px; text-align: center; min-width: 90px; flex: 1;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #c2410c; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fff7ed; border-color: #fb923c; color: #9a3412; }
+
+  /* ── Quote box ── */
+  .quote-box {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 12px;
+    padding: 16px 20px; margin-top: 10px;
+  }
+  .quote-line {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #c2410c; line-height: 1.8; font-style: italic;
+    margin-bottom: 6px;
+  }
+  .quote-line:last-child { margin-bottom: 0; }
+  .quote-attr {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 11px; color: #fb923c; margin-top: 8px; text-align: right;
+  }
+
+  /* ── Buzzword pills ── */
+  .buzzword-grid {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    margin-bottom: 12px;
+  }
+  .buzz-pill {
+    display: inline-block; padding: 5px 14px; border-radius: 16px;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #ea580c; background: #fff7ed;
+    border: 1px solid #fed7aa;
+  }
+  .buzz-pill.highlight { background: #ea580c; color: #ffffff; border-color: #ea580c; }
+  .buzz-note {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #888; line-height: 1.7; margin-top: 8px;
+  }
+  .buzz-note strong { color: #ea580c; }
+
+  /* ── Table mini ── */
+  .mini-table {
+    width: 100%; border-collapse: collapse; margin-top: 10px;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px;
+  }
+  .mini-table td {
+    padding: 10px 14px; border-bottom: 1px solid #fed7aa;
+    line-height: 1.6;
+  }
+  .mini-table tr:last-child td { border-bottom: none; }
+  .mini-table td:first-child {
+    font-weight: bold; color: #c2410c; white-space: nowrap;
+    width: 30%;
+  }
+  .mini-table td:last-child { color: #555; }
+
+  /* ── Takeaway card ── */
+  .takeaway {
+    background: #fff7ed; border: 2px solid #ea580c; border-radius: 14px;
+    padding: 22px 28px; margin: 28px 0 18px; text-align: center;
+  }
+  .takeaway-label {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 11px; color: #ea580c; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 6px; font-weight: bold;
+  }
+  .takeaway-text {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 18px; color: #9a3412; line-height: 1.6; font-style: italic;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid #ea580c; padding-top: 20px; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch007-info-zh.html">中文 / English</a>
+</div>
+
+  <h1>Fooled by Randomness · Chapter 7<br>"The Problem of Induction"</h1>
+  <p class="subtitle body-text">How to Survive a Black Swan? — Popper's Falsification and a Trader's Survival Rules</p>
+  <div class="divider"></div>
+
+  <div class="splash body-text">
+    Hume posed the "Black Swan Problem": no amount of white swans can prove that "all swans are white," but a single black swan is enough to disprove it. Popper built his falsificationism on this foundation — scientific theories can only be falsified, never verified. Taleb brings this thinking into financial trading: use data to refute, not confirm, and set stop losses to protect yourself from being destroyed by rare events. The problem of induction matters more in finance than anywhere else — yet it is ignored more there than anywhere else.
+  </div>
+
+  <!-- 01: The Black Swan Problem -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <div class="section-body">
+      <div class="tag">The Induction Problem</div>
+      <div class="section-title">Hume's Warning: Verification Requires Exhaustion, Falsification Requires Only One Counterexample</div>
+      <div class="section-desc">
+        In his <i>Treatise of Human Nature</i>, Hume pointed out: no matter how many white swans we observe, we cannot infer that all swans are white — unless we are fortunate enough to have observed every swan in existence. But spotting a single black swan overturns the entire proposition. This asymmetry between confirmation and refutation is the fundamental flaw of induction. In financial markets, randomness amplifies this asymmetry dramatically.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card pos">
+          <div class="dual-icon">🦢</div>
+          <div class="dual-text">
+            <h4>Verification (Induction)</h4>
+            <p>"I observed 4,000 swans, all were white."<br>→ Cannot conclude "all swans are white"<br>→ Verification requires exhausting all possibilities</p>
+          </div>
+        </div>
+        <div class="dual-card neg">
+          <div class="dual-icon">⚫</div>
+          <div class="dual-text">
+            <h4>Falsification (Deduction)</h4>
+            <p>"I found one black swan."<br>→ Immediately negates "all swans are white"<br>→ Falsification needs only one counterexample</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: Popper's Answer -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <div class="section-body">
+      <div class="tag">Falsificationism</div>
+      <div class="section-title">There Are Only Two Kinds of Theories: Those Known to Be False, and Those Not Yet Proven False</div>
+      <div class="section-desc">
+        According to Popper, no theory can be verified as "correct"; it can only be tentatively accepted. Newtonian physics is science because it allowed us to prove it wrong — Einstein's relativity indeed overturned it. Astrology is not science because it provides no conditions under which it can be refuted. This is the "problem of demarcation" between science and nonsense.
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">Falsified<br>Known to be wrong</div>
+        <div class="flow-arrow">⚖️</div>
+        <div class="flow-step end">Not yet falsified<br>May be overturned</div>
+      </div>
+      <div class="quote-box" style="margin-top:14px;">
+        <div class="quote-line">"These people have bold ideas, but are highly critical of their own ideas; they try to find whether their ideas are right by trying to find whether they are not wrong. They put forward bold conjectures and then try to refute them."</div>
+        <div class="quote-attr">— Karl Popper</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: The Empirical Trap -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <div class="section-body">
+      <div class="tag">The Data Trap</div>
+      <div class="section-title">Niederhoffer Uses Data to Confirm; Taleb Uses Data to Refute</div>
+      <div class="section-desc">
+        Niederhoffer, like a Bacon of finance, devoted himself to observing data and finding anomalies — he was an empiricist. Taleb, by contrast, inherited Popper: he uses history to refute, not confirm. Their fundamental disagreement lies in how they treat data — one seeks patterns to confirm them, the other hunts for counterexamples to negate propositions.
+      </div>
+      <table class="mini-table">
+        <tr><td>"Bush never died in 58 years"</td><td>Induction concludes he is immortal — patently absurd</td></tr>
+        <tr><td>"Accidents happen near home"</td><td>People simply drive more near home; it's not that driving near home is more dangerous</td></tr>
+        <tr><td>"Market never drops 20% in 3 months"</td><td>Absence from past data does not guarantee absence in the future</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 04: Falsification in Trading -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <div class="section-body">
+      <div class="tag">Trading Discipline</div>
+      <div class="section-title">Before Entering a Trade, Determine: What Event Would Prove Me Wrong?</div>
+      <div class="section-desc">
+        Like Popperian scientists, surviving traders must determine in advance: the cost of being wrong is strictly limited, and the probability of error is not derived from historical data. Once proven wrong, they exit the trade — this is called a stop loss. At the predetermined exit point, they act to protect themselves from the impact of Black Swans.
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">Define falsification<br>condition</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Execute<br>the trade</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Condition triggered<br>stop loss</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Shield yourself<br>from Black Swans</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: Pascal's Strategy -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <div class="section-body">
+      <div class="tag">Core Strategy</div>
+      <div class="section-title">Pascal's Wager for Statistics: Take the Best the Past Offers, But Don't Be Harmed by It</div>
+      <div class="section-desc">
+        Taleb borrows Pascal's reasoning: if statistics help with certain things, use them aggressively to place bets; if they pose a threat, never use them to manage risk. He buys out-of-the-money options, betting rare events will occur; Niederhoffer sells them, betting they will not. One enjoys an occasional windfall harvest; the other tries to earn a steady income.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card pos">
+          <div class="dual-icon">📈</div>
+          <div class="dual-text">
+            <h4>Active Betting (Use Statistics)</h4>
+            <p>Use statistics and inductive methods to find opportunities and bet aggressively. Aim to profit from every imaginable rare event.</p>
+          </div>
+        </div>
+        <div class="dual-card neg">
+          <div class="dual-icon">🛡️</div>
+          <div class="dual-text">
+            <h4>Risk Management (Don't Use Statistics)</h4>
+            <p>Never use statistical methods to manage the risks you bear. The condition: no single rare event can harm me.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06: Open Mind -->
+  <div class="section">
+    <div class="section-num">06</div>
+    <div class="section-body">
+      <div class="tag">Philosophical Extension</div>
+      <div class="section-title">An Open Society Allows No Eternal Truth; an Open Mind Is Not Ashamed to Change Opinions</div>
+      <div class="section-desc">
+        Popper's falsificationism is deeply linked to the idea of the open society. In an open society, no truth is eternal — opposing ideas are permitted. Popper shared this vision with Hayek: all utopian ideals are closed, because they block their own capacity for refutation. Soros understood this profoundly: he proclaims his fallibility everywhere, yet wields enormous power — because he knows his own weaknesses while others think too highly of themselves.
+      </div>
+      <div class="buzzword-grid">
+        <span class="buzz-pill highlight">Popper</span>
+        <span class="buzz-pill">Hayek</span>
+        <span class="buzz-pill">Soros</span>
+        <span class="buzz-pill">Open Society</span>
+        <span class="buzz-pill">Critical Open Mind</span>
+        <span class="buzz-pill">Unashamed to Change Views</span>
+      </div>
+      <div class="buzz-note">
+        💡 <strong>Soros is more Popperian than Popper himself.</strong> Popper in private was not open-minded — he was self-centered, couldn't listen, and pursued victory in debate at any cost. Yet Soros, in his professional conduct, perfectly practiced Popper's falsificationism.
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">CORE INSIGHT</div>
+    <div class="takeaway-text">I will take the best the past can give me, without being harmed by it.</div>
+  </div>
+
+  <div class="footer">Fooled by Randomness · Chapter 7 Infographic · 2026.06 · By Nassim Nicholas Taleb · For educational reference only</div>
+
+</div>
+</body>
+</html>

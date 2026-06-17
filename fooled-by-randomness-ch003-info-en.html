@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 3 "Thinking About History Through Mathematics"</title>
+<style>
+@font-face {
+  font-family: 'FZPingXianYaSong';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #2c2416;
+  line-height: 1.8;
+  padding: 48px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 880px;
+  width: 100%;
+}
+
+/* ── Page Title ── */
+.page-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.page-title .overline {
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #ca8a04;
+  margin-bottom: 8px;
+}
+.page-title h1 {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', serif;
+  font-size: 30px;
+  font-weight: normal;
+  color: #1e1608;
+  letter-spacing: 1px;
+}
+
+/* ── Card ── */
+.card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 24px;
+  position: relative;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 14px; bottom: 14px;
+  width: 4px;
+  background: #ca8a04;
+  border-radius: 0 2px 2px 0;
+}
+.card .card-num {
+  position: absolute;
+  right: 28px; top: 24px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #ca8a04;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-title {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', serif;
+  font-size: 22px;
+  font-weight: normal;
+  color: #ca8a04;
+  margin-bottom: 16px;
+  padding-right: 44px;
+}
+.card-subtitle {
+  font-size: 15px;
+  color: #8b7355;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+.card p {
+  font-size: 15.5px;
+  color: #3d3226;
+  margin-bottom: 14px;
+}
+.card p:last-child { margin-bottom: 0; }
+
+/* ── Highlight Block ── */
+.highlight {
+  background: #fefce8;
+  border-left: 3px solid #ca8a04;
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 15.5px;
+  color: #4a3720;
+}
+
+/* ── SCQA Block ── */
+.scqa-block {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 32px 36px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 32px;
+}
+.scqa-item { margin-bottom: 20px; }
+.scqa-item:last-child { margin-bottom: 0; }
+.scqa-label {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', serif;
+  font-size: 16px;
+  font-weight: normal;
+  color: #ca8a04;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+.scqa-item p {
+  font-size: 15.5px;
+  color: #3d3226;
+  line-height: 1.9;
+}
+
+/* ── Section Header ── */
+.section-header {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', serif;
+  font-size: 18px;
+  font-weight: normal;
+  color: #ca8a04;
+  margin: 32px 0 8px;
+  padding-left: 16px;
+  border-left: 3px solid #fde68a;
+}
+.section-header:first-child { margin-top: 0; }
+
+/* ── List ── */
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+.card ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #3d3226;
+}
+.card ul li::before {
+  content: '◆';
+  position: absolute;
+  left: 0; top: 0;
+  color: #ca8a04;
+  font-size: 10px;
+}
+
+/* ── Table ── */
+.inline-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14.5px;
+}
+.inline-table th {
+  background: #fefce8;
+  color: #ca8a04;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 12px;
+  border-bottom: 2px solid #fde68a;
+}
+.inline-table td {
+  text-align: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0e8d8;
+  color: #3d3226;
+}
+.inline-table tr:last-child td { border-bottom: none; }
+
+/* ── Footer ── */
+.footer-quote {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 32px;
+  background: #fefce8;
+  border-radius: 14px;
+  border: 1px solid #fde68a;
+}
+.footer-quote p {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', serif;
+  font-size: 18px;
+  color: #ca8a04;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 640px) {
+  .card { padding: 20px 18px; }
+  .card::before { top: 10px; bottom: 10px; }
+  .card-num { right: 16px; top: 16px; }
+  .scqa-block { padding: 20px 18px; }
+  .page-title h1 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════════ Page Title ═══════════════ -->
+<div class="page-title">
+  <div class="overline">Nassim Nicholas Taleb</div>
+  <h1>Fooled by Randomness · Chapter 3 "Thinking About History Through Mathematics"</h1>
+</div>
+
+<!-- ═══════════════ SCQA Architecture ═══════════════ -->
+<div class="scqa-block">
+  <div class="scqa-item">
+    <div class="scqa-label">📖 Situation</div>
+    <p>The history we experience is just one of countless possible paths. As Taleb puts it: history reveals only a single "sample path" to us — yet we routinely mistake it for the only possible reality.</p>
+  </div>
+  <div class="scqa-item">
+    <div class="scqa-label">⚡ Complication</div>
+    <p>The human brain is not wired to learn from probability and history. We reject the experiences of others, always believing "this time is different." We obsess over noise while ignoring genuine signals. This cognitive flaw has caused countless traders, investors, and decision-makers to "blow up."</p>
+  </div>
+  <div class="scqa-item">
+    <div class="scqa-label">❓ Question</div>
+    <p>How can we use mathematical tools to correct our cognitive biases? How can we pierce through short-term noise to understand history and randomness on longer time scales?</p>
+  </div>
+  <div class="scqa-item">
+    <div class="scqa-label">💡 Answer</div>
+    <p>By wielding Monte Carlo methods to create "virtual histories" — simulating thousands of alternative sample paths in our minds, grasping how the noise-to-signal ratio evolves across time, learning to "sum under history," and thereby liberating ourselves from the emotional torment of randomness.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ Card 01 · Monte Carlo: The Mathematics of History ═══════════════ -->
+<div class="card">
+  <div class="card-num">01</div>
+  <div class="card-title">Monte Carlo: The Mathematics of History</div>
+  <div class="card-subtitle">The core metaphor: using computers to generate billions of "virtual histories"</div>
+  <p>The Monte Carlo method is not about counting cards in a casino — it uses computer programs to simulate random events, generating thousands or millions of "alternative sample paths": every possible version of history. Taleb calls it "the most toy-like thing I have seen in my adult life." It is at once a branch of mathematics and a way of thinking.</p>
+  <p><strong>What is a sample path?</strong> Imagine you walk into a casino with $1,000 and count your money every 15 minutes — the trajectory of your wealth over time is a sample path. In one path, you reach $2,200 by midnight; in another, you have only $20 and can barely hail a cab home. The reality we observe is simply the one path among countless possibilities that happened to materialize.</p>
+  <div class="highlight">
+    <p>"I do not have to solve equations. My Monte Carlo engine allows me to crack the most intractable of equations with minimal effort. It is a way of thinking, not a way of computing. Mathematics is principally a tool to meditate, not to compute."</p>
+  </div>
+  <p>The Monte Carlo method was born at Los Alamos during the development of the atomic bomb and became popular in financial mathematics in the 1980s. Taleb used it to simulate the fates of "idiot bulls," "impulsive bears," and "prudent" traders in the market — with sobering results: when the music stops, almost no one ends up with real profits, except those who buy options as insurance.</p>
+</div>
+
+<!-- ═══════════════ Card 02 · Noise vs. Signal: Time Scale Is Everything ═══════════════ -->
+<div class="card">
+  <div class="card-num">02</div>
+  <div class="card-title">Noise vs. Signal: Time Scale Is Everything</div>
+  <div class="card-subtitle">The dentist story: same strategy, different observation frequency, radically different experience</div>
+  <p>Taleb uses the story of a retired dentist to reveal the magic of time scale. This dentist holds a portfolio with a 15% annual excess return and 10% volatility — a 93% probability of profit in any given year. But what happens if he stares at the screen every minute?</p>
+
+  <table class="inline-table">
+    <thead>
+      <tr>
+        <th>Time Scale</th>
+        <th>Win Probability</th>
+        <th>Noise/Signal Ratio</th>
+        <th>Annual Emotional Ledger</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1 Year</td>
+        <td>93%</td>
+        <td>0.7 : 1</td>
+        <td>19 pleasant surprises, 1 unpleasant</td>
+      </tr>
+      <tr>
+        <td>1 Month</td>
+        <td>67%</td>
+        <td>2.3 : 1</td>
+        <td>8 joyful, 4 painful</td>
+      </tr>
+      <tr>
+        <td>1 Day</td>
+        <td>54%</td>
+        <td>—</td>
+        <td>241 pleasant minutes, 239 unpleasant</td>
+      </tr>
+      <tr>
+        <td>1 Hour</td>
+        <td>—</td>
+        <td>30 : 1</td>
+        <td>Drowned in noise</td>
+      </tr>
+      <tr>
+        <td>1 Second</td>
+        <td>50.02%</td>
+        <td>1,796 : 1</td>
+        <td>Almost pure noise</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="highlight">
+    <p>"Over very short time scales, what we observe is variability, not returns. Our emotions cannot grasp this — if the dentist checks his portfolio only once a year, he will experience 19 pleasant surprises and only 1 unpleasant one over the remaining 20 years of his life."</p>
+  </div>
+  <p>Economic research shows that negative emotions are 2.5 times more intense than positive ones. This is the fundamental reason Taleb cuts off his information intake and avoids real-time quotes — those who pay too close attention to randomness get burned, emotionally exhausted.</p>
+</div>
+
+<!-- ═══════════════ Card 03 · Information Is Toxic ═══════════════ -->
+<div class="card">
+  <div class="card-num">03</div>
+  <div class="card-title">Information Is Toxic</div>
+  <div class="card-subtitle">Why old ideas are more valuable than new information</div>
+  <p>Taleb's aversion to journalists is not mere personal preference — it is mathematical insight: <strong>information is toxic not because it is useless, but because it is harmful.</strong> As observation frequency rises, the noise-to-signal ratio explodes exponentially. Over a year, for every 1 nontrivial signal you observe, you get 0.7 noise events; but over a single second, every 1 nontrivial piece is accompanied by 1,796 bits of noise.</p>
+  <p>This yields a counterintuitive conclusion: <strong>the older the idea, the more beautiful it is.</strong> An idea that has survived centuries of boom-and-bust cycles has had its noise filtered away. "Progress" means that some new information is better than old — but it does not mean new information in general replaces old. Therefore, under uncertainty, the most rational approach is:</p>
+  <ul>
+    <li>Systematically reject new ideas, information, and methods until they survive the test of time</li>
+    <li>Minimize exposure to news media — silence is golden</li>
+    <li>Consume only distilled ideas (e.g., <em>The Economist</em> on Saturdays), not real-time news</li>
+    <li>Pay attention only to old traders and old investors, because they have survived the longest in the market</li>
+  </ul>
+  <div class="highlight">
+    <p>"I do not read newspapers. I do not chat about markets. On the trading floor, I speak to mathematicians and secretaries, not traders. If something truly important happens, it will find its way to my ears."</p>
+  </div>
+</div>
+
+<!-- ═══════════════ Card 04 · Gerontocracy and Ergodicity ═══════════════ -->
+<div class="card">
+  <div class="card-num">04</div>
+  <div class="card-title">Gerontocracy and Ergodicity</div>
+  <div class="card-subtitle">Why those who survive longest hold the deepest wisdom</div>
+  <p>Taleb's Monte Carlo simulations reveal a striking pattern: <strong>it is the oldest who survive.</strong> Age is not a weakness — it is evidence that a person has lived through enough rare events and possesses great resilience.</p>
+  <p>Behind this lies a core concept of probability mathematics — <strong>ergodicity</strong>: under certain conditions, one very long sample path will eventually resemble the average of many shorter paths. A person of genuine skill who is temporarily down on his luck will ultimately rise; a lucky fool who briefly prospers will, over the long run, converge toward someone less fortunate. <strong>Bad trades catch up with you sooner or later.</strong></p>
+  <p>This same pattern appears in the mating market: women tend to prefer older, healthy men over younger, healthy ones — because gray hair is itself a signal of survival capacity. During the Renaissance, Italian life insurers charged the same premiums to twenty-year-olds and fifty-year-olds — they grasped the truth of ergodicity intuitively.</p>
+  <div class="highlight">
+    <p>"Everyone converges toward their long-term properties. Markets are naturally ergodic — over the medium to long term, history is capable of revealing most possible scenarios and burying the bad guys."</p>
+  </div>
+</div>
+
+<!-- ═══════════════ Card 05 · Rejecting History: "This Time Is Different" ═══════════════ -->
+<div class="card">
+  <div class="card-num">05</div>
+  <div class="card-title">Rejecting History: "This Time Is Different"</div>
+  <div class="card-subtitle">The human instinct is fundamentally hostile to experience transfer</div>
+  <p>Taleb observed that, from the 1987 crash to the 2000 Nasdaq bubble, every trader, investor, and institution that blew up shared a strikingly similar refrain: <strong>"This time is different."</strong> They all advanced economically plausible arguments to prove that their market was exceptional — even though every bookstore was stocked with detailed accounts of past crashes.</p>
+  <p>This rejection of history is deeply rooted in human nature. Research by behavioral economics pioneers Kahneman and Tversky shows: we refuse to infer our own risk from other people's statistics, always believing we are the exception — until disaster strikes and we scream, "Why me?" A child only avoids a hot stove after getting burned; adults think they will know when they are living through history — but history never sends advance notice.</p>
+  <div class="highlight">
+    <p>"It is hard to imagine that those who witnessed history firsthand did not know how important the moment was. Yet, however much we respect history, we cannot translate that respect into the handling of the present."</p>
+  </div>
+  <p>Taleb's family background gives him a visceral understanding of historical caprice. Both his grandfather and great-grandfather served as deputy prime ministers, but the family fortune was destroyed during the Lebanese Civil War. This personal history — from immense wealth to destitution — makes him more attuned than most to Solon's warning to King Croesus.</p>
+</div>
+
+<!-- ═══════════════ Card 06 · Two Ways to Learn: Past and Future ═══════════════ -->
+<div class="card">
+  <div class="card-num">06</div>
+  <div class="card-title">Two Ways to Learn: Past and Future</div>
+  <div class="card-subtitle">Monte Carlo grants us a unique lens on history</div>
+  <p>Taleb distills two complementary ways to learn from history:</p>
+  <ul>
+    <li><strong>Learn from the past:</strong> Read the blood-soaked accounts of those who came before. Cultivate reverence for the instinct of those with gray hair. Classical wisdom — such as Solon's warning "call no man happy until he is dead" — has survived millennia of noise filtration and represents the highest-quality information.</li>
+    <li><strong>Learn from the future:</strong> Use Monte Carlo generators to create virtual histories and observe all possible sample paths, thereby "summing under history." Taleb confesses he can no longer read the outcomes that did materialize without reference to the ones that did not.</li>
+  </ul>
+  <p>Both approaches point to a single conclusion: <strong>genuine knowledge requires distillation through time.</strong> Taleb's nightstand is stacked with old, yellowed books — because old ideas improve with age, while new ones tend to be rough and inferior. His operating principle: when uncertain about a novel thing, default to rejecting it until it has survived long enough.</p>
+  <div class="highlight">
+    <p>"An idea that has survived that long, through so many cycles of boom and bust, is clearly fit. The noise has been filtered out — at least some of the noise has disappeared."</p>
+  </div>
+</div>
+
+<!-- ═══════════════ Footer Quote ═══════════════ -->
+<div class="footer-quote">
+  <p>「Silence Is Golden.」</p>
+  <p style="font-size:14px;color:#8b7355;margin-top:8px;font-family:'PingFang SC','Noto Serif SC',serif;">The problem with information is not that it is distracting and generally useless —<br>it is that it is toxic.</p>
+</div>
+
+</div>
+</body>
+</html>

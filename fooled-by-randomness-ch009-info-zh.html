@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>随机漫步的傻瓜 · 第9章 买卖证券比煎蛋容易</title>
+<style>
+@font-face {
+  font-family: 'FZPingXianYaSong';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-display: swap;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #555;
+  line-height: 1.9;
+  padding: 48px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container { max-width: 880px; width: 100%; }
+
+/* Header */
+.header { text-align: center; margin-bottom: 36px; }
+.header h1 {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 36px;
+  font-weight: normal;
+  color: #1a1a1a;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.header .subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 18px;
+}
+.header .divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #dc2626, #ea580c);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* Overview Card */
+.overview-card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 20px;
+  border-left: 4px solid #4f46e5;
+}
+.overview-card h2 {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 20px;
+  font-weight: normal;
+  color: #4f46e5;
+  margin-bottom: 12px;
+}
+.overview-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 2.0;
+}
+
+/* Section Cards */
+.section-card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 20px;
+  border-left: 4px solid #4f46e5;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.section-num {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Georgia, 'Times New Roman', serif;
+  flex-shrink: 0;
+}
+.section-tag {
+  display: inline-block;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.section-card h3 {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 18px;
+  font-weight: normal;
+  color: #4f46e5;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.section-card .desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+
+/* Flow Chart */
+.flow-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 8px;
+  justify-content: center;
+}
+.flow-step {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #3730a3;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 70px;
+  font-weight: 500;
+}
+.flow-step.end {
+  background: #eef2ff;
+  border: 2px solid #4f46e5;
+  color: #4f46e5;
+  font-weight: 700;
+}
+.flow-arrow {
+  color: #4f46e5;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Data Cards Row */
+.data-row {
+  display: flex;
+  gap: 14px;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
+}
+.data-card {
+  flex: 1;
+  min-width: 130px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 16px 14px;
+  text-align: center;
+}
+.data-big {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-bottom: 4px;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.data-sm {
+  font-size: 12px;
+  color: #6366f1;
+  line-height: 1.5;
+}
+
+/* Comparison Grid */
+.cmp-grid {
+  display: flex;
+  gap: 14px;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
+}
+.cmp-card {
+  flex: 1;
+  min-width: 200px;
+  background: #f8f7ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+}
+.cmp-icon { font-size: 28px; margin-bottom: 6px; }
+.cmp-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4f46e5;
+  margin-bottom: 6px;
+}
+.cmp-bar {
+  height: 4px;
+  border-radius: 2px;
+  margin: 10px 0;
+  background: linear-gradient(90deg, #4f46e5, #818cf8);
+}
+.cmp-note {
+  font-size: 12px;
+  color: #6366f1;
+  line-height: 1.6;
+}
+.cmp-detail {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Dual Grid */
+.dual-grid {
+  display: flex;
+  gap: 14px;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
+}
+.dual-card {
+  flex: 1;
+  min-width: 220px;
+  border-radius: 10px;
+  padding: 18px 16px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.dual-card.yes {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+.dual-card.no {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #3730a3;
+}
+
+/* Risk Meter */
+.risk-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+.risk-label {
+  font-size: 13px;
+  color: #4f46e5;
+  font-weight: 500;
+  min-width: 100px;
+}
+.risk-meter {
+  flex: 1;
+  min-width: 180px;
+  height: 10px;
+  background: #eef2ff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.risk-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #818cf8);
+  border-radius: 5px;
+}
+.risk-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+/* Highlight inline */
+.highlight {
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+  margin-top: 36px;
+  line-height: 1.8;
+}
+.footer a { color: #bbb; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .header h1 { font-size: 24px; }
+  .section-card { padding: 20px 18px; }
+  .overview-card { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>随机漫步的傻瓜 · 第9章<br>「买卖证券比煎蛋容易」</h1>
+  <div class="subtitle">纳西姆·尼古拉斯·塔勒布 著 · 绩效记录、存活者偏差与随机性的骗局</div>
+  <div class="divider"></div>
+</div>
+
+<!-- Overview Card -->
+<div class="overview-card">
+  <h2>📖 本章概述</h2>
+  <p>
+    本章揭示了一个深刻的悖论：<span class="highlight">买卖证券看似比煎蛋容易</span>——任何人都能开个账户开始交易，并对某段时期的"盈利记录"引以为傲。但塔勒布通过蒙特·卡罗模拟、存活者偏差和数据挖掘陷阱，证明这些"绩效记录"很可能<span class="highlight">纯属运气</span>。从基金经理到医学研究、从书评推荐到癌症治疗，随机性披着"能力"的外衣，愚弄着每一个不愿深究的人。
+  </p>
+</div>
+
+<!-- Section 01 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">核心悖论</span>
+    </div>
+  </div>
+  <h3>买卖证券 ≠ 煎蛋：两种能力的本质区别</h3>
+  <p class="desc">
+    牙医治好你的牙痛、钢琴家登上卡内基音乐厅、卡诺瓦的大理石雕像栩栩如生——这些领域的成功几乎不可能是运气使然。但在金融市场，一个基金经理向你展示的"辉煌业绩"，<span class="highlight">很可能只是随机波动的产物</span>。马基雅维利认为运气在人生遭遇中至少占50%，而这还是在现代市场创立之前。
+  </p>
+  <div class="dual-grid">
+    <div class="dual-card yes">
+      <strong>🧑‍⚕️ 实体技能领域</strong><br>
+      牙医、钢琴家、雕塑家——需要反复验证才能"侥幸成功"，纯运气概率极低。技能可被观察和复现。
+    </div>
+    <div class="dual-card no">
+      <strong>📈 金融市场领域</strong><br>
+      成千上万人参与交易，随机波动自然产生"明星"。一段盈利记录本身几乎不提供任何有效信息。
+    </div>
+  </div>
+</div>
+
+<!-- Section 02 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">蒙特·卡罗证明</span>
+    </div>
+  </div>
+  <h3>1万名经理人的命运：纯凭运气制造"明星"</h3>
+  <p class="desc">
+    设定1万名投资经理人，每人每年50%概率赚1万、50%概率赔1万。一旦某年亏损即被淘汰。五年后，<span class="highlight">纯粹靠运气，仍有313人保持全胜记录</span>——他们将被业界奉为"明星"，穿名牌西装，获响亮的头衔。
+  </p>
+  <div class="flow-row">
+    <div class="flow-step">第1年<br><strong>10,000人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">第2年<br><strong>5,000人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">第3年<br><strong>2,500人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">第4年<br><strong>1,250人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">第5年<br><strong>625人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step end">🌟 明星<br><strong>313人</strong></div>
+  </div>
+  <p class="desc" style="margin-top:14px;">
+    更惊人的是：即便所有经理人<span class="highlight">期望报酬为负</span>（45%赚钱 / 55%赔钱），5年后仍有184人（不足2%）成为"明星"。市场的波动性反而帮助了坏决策——这就是<span class="highlight">遍历性</span>的反面：短期内随机性能制造英雄，但时间终将消除随机性。
+  </p>
+</div>
+
+<!-- Section 03 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">存活者偏差</span>
+    </div>
+  </div>
+  <h3>被忽略的98%：为什么你只看到赢家</h3>
+  <p class="desc">
+    人们看到的永远是表现最好的经理人，而非全体经理人。存活者偏差的本质是：<span class="highlight">成功者的数量主要取决于当初入行的人数，而非他们的真实能力</span>。如果1997年入行的经理人比1993年多，那么2002年的"优秀经理人"自然就会多于1998年。
+  </p>
+  <div class="data-row">
+    <div class="data-card">
+      <div class="data-big">2%</div>
+      <div class="data-sm">不良经理人中<br>连续5年获利者</div>
+    </div>
+    <div class="data-card">
+      <div class="data-big">98%</div>
+      <div class="data-sm">被遗忘的<br>失败群体</div>
+    </div>
+    <div class="data-card">
+      <div class="data-big">0</div>
+      <div class="data-sm">幸存者长期<br>超额收益</div>
+    </div>
+  </div>
+  <p class="desc" style="margin-top:12px;">
+    塔勒布的判断法则：如果原始群体只有<span class="highlight">10个</span>经理人，他会把一半积蓄交给表现优异者；如果有<span class="highlight">10,000个</span>，则对任何人的操作成果视而不见。不知道曾有多少人尝试且失败，就无法评估任何绩效记录的有效性。
+  </p>
+</div>
+
+<!-- Section 04 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">数据挖掘陷阱</span>
+    </div>
+  </div>
+  <h3>神秘信件、生日悖论与过度拟合</h3>
+  <p class="desc">
+    从骗子用"神秘信件"行骗（给1万人一半看涨一半看跌，每月淘汰说错的一半，最终剩下的人以为遇到了先知），到<span class="highlight">生日悖论</span>（23人中任意两人同一天生日的概率约50%），塔勒布展示了人类的认知如何系统性地误解随机性。
+  </p>
+  <div class="flow-row">
+    <div class="flow-step">📬 寄信<br><strong>10,000人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📬 说中<br><strong>5,000人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📬 又说中<br><strong>2,500人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📬 连续6次<br><strong>≈156人</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step end">🎯 上钩<br><strong>≈200人</strong></div>
+  </div>
+  <p class="desc" style="margin-top:14px;">
+    数据挖掘者在历史价格中反复测试操作法则，就像让猴子敲打字机——<span class="highlight">随机序列总会呈现某种可察觉的形态</span>。塔勒布确信：世界上必有某种证券的价格走势，与蒙古首都乌兰巴托的温度变化百分之百相关。
+  </p>
+</div>
+
+<!-- Section 05 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">现实误判</span>
+    </div>
+  </div>
+  <h3>从书评到癌症：随机性愚弄每一个领域</h3>
+  <p class="desc">
+    存活者偏差无处不在。书封上的推荐语永远只选最好的那句话；<span class="highlight">历史回测软件</span>让交易员彻夜寻找"完美法则"；<span class="highlight">癌症"自发性复原"</span>被归功于维生素或圣水；<span class="highlight">盈余连增三年的公司</span>被分析师"强烈建议买进"——它们可能只是1万家公司中随机存活的那1250家。
+  </p>
+  <div class="cmp-grid">
+    <div class="cmp-card">
+      <div class="cmp-icon">📚</div>
+      <div class="cmp-name">书评偏差</div>
+      <div class="cmp-bar"></div>
+      <div class="cmp-note">人们把"最好的书评"<br>误认为"书评本身"</div>
+      <div class="cmp-detail">书封只摘最佳一句<br>萨特一句话让多斯·帕索斯<br>成为欧洲必读——终归平淡</div>
+    </div>
+    <div class="cmp-card">
+      <div class="cmp-icon">📊</div>
+      <div class="cmp-name">回测幻觉</div>
+      <div class="cmp-bar"></div>
+      <div class="cmp-note">反复测试数千条法则<br>总能"找到"一条完美的</div>
+      <div class="cmp-detail">成千上万交易员彻夜测试<br>如同让猴子敲打字机<br>终究会在某处找到"黄金"</div>
+    </div>
+    <div class="cmp-card">
+      <div class="cmp-icon">🏥</div>
+      <div class="cmp-name">医学谬误</div>
+      <div class="cmp-bar"></div>
+      <div class="cmp-note">自发性复原被归功于<br>"另类疗法"，而非随机</div>
+      <div class="cmp-detail">卢尔德圣水的治愈率<br>反低于自发性复原率<br>鲍林的维生素C亦然</div>
+    </div>
+  </div>
+  <div class="risk-row" style="margin-top:16px;">
+    <div class="risk-label">科学文献发表偏差</div>
+    <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+    <div class="risk-val">"无发现"=不发表</div>
+  </div>
+  <p class="desc" style="margin-top:12px;">
+    正如福尔摩斯在《银色马》中指出：<span class="highlight">奇怪的事是狗并没有吠</span>。"没有发现任何事情"和"没有去发现"被混为一谈，而前者本身可能包含至关重要的信息。
+  </p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  基于纳西姆·尼古拉斯·塔勒布《随机漫步的傻瓜》第9章「买卖证券比煎蛋容易」<br>
+  生成时间：2026年6月17日 · 仅供参考学习
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Postscript "Beware the Black Swan"</title>
+<style>
+@font-face {
+  font-family: '方正屏显雅宋简体';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #2d2d2d;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 28px 64px;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.chapter-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #db2777;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(219,39,119,0.25);
+}
+
+.badge-label {
+  font-size: 15px;
+  color: #db2777;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+}
+
+h1 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+h1 .sub {
+  display: block;
+  font-size: 24px;
+  color: #db2777;
+  margin-top: 4px;
+}
+
+.header-divider {
+  width: 60px;
+  height: 3px;
+  background: #db2777;
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+/* ── Cards ── */
+.card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-left: 4px solid #db2777;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 28px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.card h2 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.04em;
+}
+
+.card h3 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #db2777;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.card p {
+  font-size: 15px;
+  color: #3d3d3d;
+  margin-bottom: 10px;
+}
+
+.card p:last-child { margin-bottom: 0; }
+
+/* ── SCQA Flow ── */
+.scqa-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scqa-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 16px;
+  background: #fdf2f8;
+  border-radius: 10px;
+  border: 1px solid #fbcfe8;
+}
+
+.scqa-tag {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.scqa-tag.s { background: #db2777; }
+.scqa-tag.c { background: #be185d; }
+.scqa-tag.q { background: #9d174d; }
+
+.scqa-text {
+  flex: 1;
+  font-size: 14.5px;
+  color: #3d3d3d;
+  padding-top: 6px;
+  line-height: 1.7;
+}
+
+.scqa-text strong {
+  color: #db2777;
+  font-weight: 700;
+}
+
+/* ── Four-Column Grid ── */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.feature-card {
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.feature-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #db2777;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 auto 12px;
+}
+
+.feature-card h4 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.feature-card p {
+  font-size: 13px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+/* ── Principles List ── */
+.principles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.principle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 18px;
+  background: #fdf2f8;
+  border-radius: 10px;
+  border: 1px solid #fbcfe8;
+}
+
+.principle-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #db2777;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.principle-content h4 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+}
+
+.principle-content p {
+  font-size: 13.5px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+.principle-quote {
+  margin-top: 8px;
+  padding: 8px 14px;
+  border-left: 3px solid #db2777;
+  background: rgba(219,39,119,0.04);
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ── Insight Cards ── */
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.insight-card {
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.insight-card .insight-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.insight-card h4 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+}
+
+.insight-card p {
+  font-size: 13.5px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+/* ── Highlight Box ── */
+.highlight-box {
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.highlight-box p {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #db2777;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+/* ── Story Block ── */
+.story-block {
+  margin-top: 4px;
+  padding: 16px 20px;
+  background: #fdf2f8;
+  border-radius: 10px;
+  border: 1px solid #fbcfe8;
+}
+
+.story-block p {
+  font-size: 14px;
+  color: #3d3d3d;
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+
+.story-block p:last-child { margin-bottom: 0; }
+
+.story-block .highlight {
+  color: #db2777;
+  font-weight: 700;
+}
+
+/* ── Sub-section divider ── */
+.section-divider {
+  width: 40px;
+  height: 2px;
+  background: #fbcfe8;
+  margin: 8px 0 16px;
+  border-radius: 1px;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 12px;
+  color: #b0a89a;
+  letter-spacing: 0.04em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .container { padding: 32px 16px 48px; }
+  h1 { font-size: 28px; }
+  h1 .sub { font-size: 20px; }
+  .card { padding: 20px 18px; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .insight-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header class="header">
+    <div class="badge-row">
+      <div class="chapter-badge">15</div>
+      <span class="badge-label">Postscript</span>
+    </div>
+    <h1>
+      Fooled by Randomness
+      <span class="sub">Beware the Black Swan</span>
+    </h1>
+    <div class="header-divider"></div>
+  </header>
+
+  <!-- ═══════ SCQA：The Fable of Taleb ═══════ -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-icon">📖</div>
+      <h2>The Fable of Taleb</h2>
+    </div>
+
+    <div class="scqa-flow">
+      <div class="scqa-item">
+        <div class="scqa-tag s">S</div>
+        <div class="scqa-text">
+          <strong>Situation</strong>: Taleb defeated cancer against 28% odds. His wealth multiplied; his life and career flourished. He indulged himself — earning a helicopter pilot license, enjoying weekends at his Cotswolds villa.
+        </div>
+      </div>
+      <div class="scqa-item">
+        <div class="scqa-tag c">C</div>
+        <div class="scqa-text">
+          <strong>Complication</strong>: On a windy day, Taleb's helicopter crashed while approaching Battersea Park. He was alone on board. <strong>The Black Swan prevailed after all.</strong> Even the most cautious cannot escape the devious hand of randomness.
+        </div>
+      </div>
+      <div class="scqa-item">
+        <div class="scqa-tag q">Q</div>
+        <div class="scqa-text">
+          <strong>Question</strong>: Why are even probability-savvy traders fooled by randomness? When faced with unpredictable, unbearable extreme events — how should we respond?
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Four Characteristics (MECE) ═══════ -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-icon">🦢</div>
+      <h2>Four Characteristics of Black Swans</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="grid-4">
+      <div class="feature-card">
+        <div class="feature-num">①</div>
+        <h4>Extremely Rare</h4>
+        <p>Too few data points to detect patterns. Infrequency breeds complacency — people stop planning for what never seems to happen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">②</div>
+        <h4>Massive Impact</h4>
+        <p>One Black Swan outweighs countless minor events. Removing the 50 worst trading days from 30 years of S&amp;P 500 data nearly doubles compound returns.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">③</div>
+        <h4>Unpredictable Ex Ante</h4>
+        <p>Endless post-hoc explanations, yet impossible to foresee. Humans fabricate causal narratives to feel in control — stories that comfort but deceive.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">④</div>
+        <h4>Preventable</h4>
+        <p>You cannot predict when it will rain, but you can carry an umbrella. You cannot foresee an earthquake, but you can reinforce your house.</p>
+      </div>
+    </div>
+
+    <div class="story-block" style="margin-top:18px;">
+      <p>📌 <strong>The Turkey Parable:</strong> A turkey fed for 1,000 days concludes "my master treats me well." On day 1,001 — Thanksgiving — the same hand that brought food wrings its neck. We are that turkey — <span class="highlight">focused on historical experience while ignoring risk exposure.</span></p>
+    </div>
+  </section>
+
+  <!-- ═══════ Buffett's Response ═══════ -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-icon">💡</div>
+      <h2>Buffett's Response to Black Swans</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="principles-list">
+      <div class="principle-item">
+        <div class="principle-num">Ⅰ</div>
+        <div class="principle-content">
+          <h4>Noah's Ark Principle</h4>
+          <p>Predicting rain is useless; building an ark is prudent. After 9/11, Buffett admitted: "I did think about it, but sadly, I failed to convert thought into action."</p>
+          <div class="principle-quote">"I violated the Noah principle: predicting rain doesn't count; building arks does."</div>
+        </div>
+      </div>
+
+      <div class="principle-item">
+        <div class="principle-num">Ⅱ</div>
+        <div class="principle-content">
+          <h4>The Twin Insurance Principles</h4>
+          <p><strong>Principle One:</strong> Accept only risks you can properly evaluate — including remote loss scenarios — then price for expected profit.<br>
+          <strong>Principle Two:</strong> Strictly limit exposure so no single event or correlated cluster can threaten solvency. Relentlessly hunt for hidden correlations among seemingly unrelated risks.</p>
+        </div>
+      </div>
+
+      <div class="principle-item">
+        <div class="principle-num">Ⅲ</div>
+        <div class="principle-content">
+          <h4>Right Process Over Good Track Record</h4>
+          <p>When selecting his successor, Buffett looked at <em>how they swing</em> — not just their scorecard. Even stellar investment records may be pure luck. One Black Swan can devour every bit of historical good fortune.</p>
+          <div class="principle-quote">"A长长 string of impressive numbers multiplied by a single zero always equals zero."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Core Insights ═══════ -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-icon">⚡</div>
+      <h2>Core Insights</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-icon">🛡️</div>
+        <h4>Negative Black Swans: Avoid at All Costs</h4>
+        <p>If the cost of failure is too heavy to bear, the probability of success is irrelevant. Better to forgo profit than risk ruin. The skilled warrior stands on unbeatable ground first.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🚀</div>
+        <h4>Positive Black Swans: Seize Rare Asymmetric Bets</h4>
+        <p>When risk is manageable but potential return is enormous — these positive Black Swan opportunities are the true source of outsized gains. This is how Buffett made his fortune.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:16px;">
+      <p>"Better to die from uncertainty than from ignorance."</p>
+      <p style="font-size:14px;font-weight:400;color:#666;margin-top:4px;">— Inspired by Liu Jianwei's analysis · Taleb's Fooled by Randomness</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    Fooled by Randomness Infographic · Postscript "Beware the Black Swan" · Based on Taleb's original work &amp; Liu Jianwei's interpretation
+  </footer>
+
+</div>
+
+</body>
+</html>

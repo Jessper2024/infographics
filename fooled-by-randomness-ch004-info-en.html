@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 4 Randomness and the Scientific Intellectual</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Typography ── */
+  h1 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; font-size: 14px; color: #888; margin-bottom: 24px;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #4f46e5, #818cf8);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .body-text {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Splash / Overview card ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  /* ── Section card base (all indigo) ── */
+  .section {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    margin-bottom: 18px; padding: 28px 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid #4f46e5;
+  }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    background: #eef2ff; color: #4f46e5;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-body { flex: 1; }
+
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    background: #eef2ff; color: #4f46e5;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  }
+
+  .section-title {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    color: #4f46e5;
+  }
+
+  .section-desc {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Component C: Dual Grid (indigo-adapted) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.pos { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.neg { background: #f5f3ff; border: 1px solid #ddd6fe; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 {
+    font-family: '方正屏显雅宋', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 14px; color: #1a1a1a; margin-bottom: 4px;
+  }
+  .dual-text p {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #777; line-height: 1.6;
+  }
+
+  /* ── Component A: Flow steps (indigo-adapted) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 10px;
+    padding: 10px 14px; text-align: center; min-width: 90px; flex: 1;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #4338ca; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #4f46e5; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #e0e7ff; border-color: #a5b4fc; color: #3730a3; }
+
+  /* ── Component: Quote-style text display ── */
+  .quote-box {
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 12px;
+    padding: 16px 20px; margin-top: 10px;
+  }
+  .quote-line {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 13px; color: #4338ca; line-height: 1.8; font-style: italic;
+    margin-bottom: 6px;
+  }
+  .quote-line:last-child { margin-bottom: 0; }
+  .quote-attr {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 11px; color: #818cf8; margin-top: 8px; text-align: right;
+  }
+
+  /* ── Component: Buzzword pills ── */
+  .buzzword-grid {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    margin-bottom: 12px;
+  }
+  .buzz-pill {
+    display: inline-block; padding: 5px 14px; border-radius: 16px;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #4f46e5; background: #eef2ff;
+    border: 1px solid #c7d2fe;
+  }
+  .buzz-pill.highlight { background: #4f46e5; color: #ffffff; border-color: #4f46e5; }
+  .buzz-note {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #888; line-height: 1.7; margin-top: 8px;
+  }
+  .buzz-note strong { color: #4f46e5; }
+
+  /* ── Component: Exquisite corpse flow ── */
+  .ec-flow {
+    display: flex; align-items: center; gap: 8px; margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .ec-step {
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 10px;
+    padding: 8px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 12px; color: #4338ca; line-height: 1.4; font-weight: bold;
+  }
+  .ec-step.role { font-size: 10px; color: #6366f1; font-weight: normal; display: block; }
+  .ec-arrow { font-size: 18px; color: #6366f1; flex-shrink: 0; }
+  .ec-result {
+    background: #e0e7ff; border: 2px dashed #a5b4fc; border-radius: 12px;
+    padding: 12px 16px; margin-top: 12px; text-align: center;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    font-size: 15px; color: #3730a3; font-style: italic; line-height: 1.5;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid #4f46e5; padding-top: 20px; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .ec-flow { flex-direction: column; }
+    .ec-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch004-info-zh.html">English / 中文</a>
+</div>
+
+  <h1>Fooled by Randomness · Chapter 4<br>"Randomness and the Scientific Intellectual"</h1>
+  <p class="subtitle body-text">When nonsense wears a lab coat — why humanists keep falling for randomness</p>
+  <div class="divider"></div>
+
+  <div class="splash body-text">
+    In the 1990s, a group of physicists launched the "Science Wars" in Vienna: they insisted that every statement belongs to one of only two categories — deductive (like 2+2=4) or inductive (empirically verifiable). Everything else is worthless dregs. The deeper question: can humanists tell the difference between genuine scientific thinking and eloquent nonsense dressed in jargon? Taleb answers with Monte Carlo generators, Dada engines, and corporate buzzword scramblers — with results both hilarious and sobering.
+  </div>
+
+  <!-- 01: Science Wars — Dual Grid -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <div class="section-body">
+      <div class="tag">Science Wars</div>
+      <div class="section-title">The Vienna Circle: Beyond Deduction &amp; Induction, All Is Dross</div>
+      <div class="section-desc">
+        The Vienna Circle (Wittgenstein, Popper, Carnap) brought rigor to intellectual life. Their rule: a statement must be either deductively provable from axioms, or empirically verifiable through experience or statistics. Hegelian philosophy — garbage by scientific standards, inferior to music by aesthetic ones. This standard continues to shape philosophy and scientific practice.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card pos">
+          <div class="dual-icon">🔬</div>
+          <div class="dual-text">
+            <h4>Scientific Intellectuals</h4>
+            <p>Can recognize others' original work; express rigorous reasoning in plain prose — as Dawkins' <em>The Selfish Gene</em> reads like it was translated from mathematics, yet contains not a single equation.</p>
+          </div>
+        </div>
+        <div class="dual-card neg">
+          <div class="dual-icon">📚</div>
+          <div class="dual-text">
+            <h4>Humanists</h4>
+            <p>Cannot distinguish scientists from eloquent non-scientists; casually invoke "uncertainty principle," "Gödel's theorem," "relativity" — often out of context or with the opposite meaning. A list of scientific references at the end of a paper is enough to fool them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: Monte Carlo Test — Flow -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <div class="section-body">
+      <div class="tag">Randomness Test</div>
+      <div class="section-title">The Monte Carlo Generator: If a Computer Can Mimic You, You Lack Intelligence</div>
+      <div class="section-desc">
+        A Monte Carlo generator can produce convincing humanities prose. But you can never write a scientific work at random. Words can be randomly assembled, but genuine scientific knowledge cannot be faked. This is the Turing test in reverse — the ultimate way to separate the bloviators from the real thinkers.
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">Monte Carlo<br>Randomly Generates</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Produces<br>Humanities Text</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Readers<br>Are Fooled</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Conclusion: Author<br>Lacks Intelligence</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: Dada Engine — Generated Text Display -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <div class="section-body">
+      <div class="tag">Postmodern Hoax</div>
+      <div class="section-title">The Dada Engine: Grammatically Flawless, Intellectually Vacuous</div>
+      <div class="section-desc">
+        The Dada Engine at Monash University uses recursive grammar to randomly assemble grammatically perfect but utterly meaningless sentences — indistinguishable from Derrida or Paglia. Sokal pulled off the ultimate hoax, publishing pure nonsense in a prestigious journal. Taleb laughed so hard on the plane reading it that fellow passengers stared.
+      </div>
+      <div class="quote-box">
+        <div class="quote-line">"However, the works of Rushdie are not theoretical as the dialectic paradigm of reality would have it, but pre-theoretical. The premise of the new semantic paradigm of narrative ironically suggests that gender identity is significant."</div>
+        <div class="quote-line">"Thus, the premise of the new dialectic paradigm of expression suggests that if reality and consciousness are distinct, consciousness may be used to reinforce hierarchy; otherwise, we can assume that language has intrinsic meaning."</div>
+        <div class="quote-attr">— Dada Engine output · Monash University</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: Corporate Buzzwords — Pill Display -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <div class="section-body">
+      <div class="tag">Corporate Nonsense</div>
+      <div class="section-title">Randomly Generated CEO-Speak: If It Sounds Familiar, Switch Jobs</div>
+      <div class="section-desc">
+        Choose any 5 buzzwords below, add minimal connectors, and you've got grammatically sound CEO rhetoric that sounds profound. Taleb's advice: if the result sounds like something your boss recently said — <strong>seriously consider switching jobs</strong>.
+      </div>
+      <div class="buzzword-grid">
+        <span class="buzz-pill">Customer Focus</span>
+        <span class="buzz-pill">The Road Ahead</span>
+        <span class="buzz-pill">Employees Are Our Assets</span>
+        <span class="buzz-pill">Create Shareholder Value</span>
+        <span class="buzz-pill">Our Vision</span>
+        <span class="buzz-pill">Interactive Solutions</span>
+        <span class="buzz-pill">Position Ourselves</span>
+        <span class="buzz-pill highlight">Short-term Pain</span>
+        <span class="buzz-pill">Long-term Rewards</span>
+        <span class="buzz-pill">Leverage Strengths</span>
+        <span class="buzz-pill">Courage &amp; Determination</span>
+        <span class="buzz-pill">Innovation &amp; Technology</span>
+        <span class="buzz-pill">Happy Employees Are Productive</span>
+        <span class="buzz-pill">Commitment to Excellence</span>
+        <span class="buzz-pill">Strategic Plans</span>
+      </div>
+      <div class="buzz-note">
+        🔄 Sample random combination: <strong>"We focus on customer interests and, through interactive solutions, position ourselves in this market. Short-term pain for long-term gain — courage and determination will prevail."</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: Aesthetic Reconciliation — Exquisite Corpse Flow -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <div class="section-body">
+      <div class="tag">Aesthetic Reconciliation</div>
+      <div class="section-title">Poetry, Religion &amp; Randomness: We Don't Need to Be Rational Everywhere</div>
+      <div class="section-desc">
+        Taleb admits he enjoys being fooled by randomness when it comes to art and poetry. After the war, surrealist poets gathered in cafés to play the "exquisite corpse" — each writing a word without seeing the others', letting chance create startlingly beautiful phrases. Religion's power lies in its aesthetic force, not scientific verification. The place for rationality is the market, not poetry or faith.
+      </div>
+      <div class="ec-flow">
+        <div class="ec-step"><span class="ec-step role">Player 1·Writes</span>Adjective</div>
+        <div class="ec-arrow">→</div>
+        <div class="ec-step"><span class="ec-step role">Player 2·Writes</span>Noun</div>
+        <div class="ec-arrow">→</div>
+        <div class="ec-step"><span class="ec-step role">Player 3·Writes</span>Verb</div>
+        <div class="ec-arrow">→</div>
+        <div class="ec-step"><span class="ec-step role">Player 4·Writes</span>Adjective</div>
+        <div class="ec-arrow">→</div>
+        <div class="ec-step"><span class="ec-step role">Player 5·Writes</span>Noun</div>
+      </div>
+      <div class="ec-result">
+        ✨ "The exquisite corpse shall drink the new wine" — The first published surrealist random poem
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Fooled by Randomness · Chapter 4 Infographic · 2026.06 · Nassim Nicholas Taleb · For educational reference only</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 14 "Mastering Randomness"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 680px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #4f46e5; }
+  .splash .scqa-label { font-weight: bold; color: #4f46e5; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 28px 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid #4f46e5;
+  }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #eef2ff; color: #4f46e5;
+  }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #eef2ff; color: #4f46e5;
+  }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    color: #4f46e5;
+  }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.no { background: #f5f3ff; border: 1px solid #ddd6fe; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #3730a3; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #4f46e5; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #e0e7ff; border-color: #a5b4fc; color: #312e81; }
+
+  /* ── Risk bars ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 135px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 68px; text-align: right; flex-shrink: 0; }
+
+  /* ── Confusion pairs ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #3730a3;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #4f46e5; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #4338ca;
+  }
+
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    background: #eef2ff; border: 1px solid #c7d2fe;
+  }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #3730a3; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #4338ca; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #4f46e5;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #4f46e5; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid #4f46e5; padding-top: 20px; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch014-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Fooled by Randomness · Chapter 14 "Mastering Randomness"</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Situation → Complication → Question → Answer</span>
+  Life is filled with randomness; fortune can turn in an instant — defeat, disease, and betrayal strike without warning.
+  Facing misfortune, most people wail, blame others, and forfeit their last shred of dignity.
+  How should one face randomness with nobility? Stoic philosophy provides an answer two millennia old.
+</p>
+<div class="divider"></div>
+
+<!-- Overview -->
+<div class="splash">
+  This chapter uses Stoic philosophy to explore how one can maintain dignity in the face of randomness. Through Antony's defeat and desertion, Cavafy's poem "The God Abandons Antony," and everyday scenarios — execution day, a cancer diagnosis, business setbacks — Taleb reveals <strong>the book's core proposition: randomness is always the final judge; all we have left is dignity</strong> — meaning behavior that does not bow to external circumstances. This is the book's philosophical epilogue, using an elegant, soft approach to discuss the guiding principles for a virtuous and dignified person confronting randomness.
+</div>
+
+<!-- 01: Philosophical Roots -->
+<div class="section">
+  <div class="section-num">14</div>
+  <div class="section-body">
+    <div class="tag">Philosophical Roots</div>
+    <div class="section-title">Stoics &amp; Epicureans: Two Paths to the Same Mastery</div>
+    <div class="section-desc">The two great opposing schools of ancient Greece — the ascetic Stoics and the pleasure-seeking Epicureans — agreed on one point: one must master one's own fate. When facing randomness, the Stoic doctrine is to choose the method by which one can control one's destiny. Ultimately, one can choose between relinquishing life or surrendering to fate. When confronting uncertainty, we always have this final choice.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🏛️</div>
+        <div class="dual-text">
+          <h4>Stoicism (Asceticism)</h4>
+          <p>Founded by Zeno of Citium, a Phoenician Cypriot. Developed in Roman times into a way of life centered on virtue. Wisdom, integrity, and courage in one person, unafraid of life's tricks. Seneca's Letters from a Stoic reveals its deeply humane side.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🍇</div>
+        <div class="dual-text">
+          <h4>Epicureanism (Hedonism)</h4>
+          <p>Though advocating the pursuit of pleasure, it equally holds that one should master one's fate. The "final choice" in the face of uncontrollable randomness is the shared core belief of both schools. Master yourself, rather than be mastered by fate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Poetic Revelation -->
+<div class="section">
+  <div class="section-num">14</div>
+  <div class="section-body">
+    <div class="tag">Poetic Revelation</div>
+    <div class="section-title">Cavafy's "The God Abandons Antony": Stoic Spirit in a Poem</div>
+    <div class="section-desc">At Jacqueline Kennedy's funeral, her last companion, Maurice Tempelsman, read Cavafy's poem "The God Abandons Antony." The poem describes Antony after his defeat by Octavian — abandoned by all, even his horse gone over to the enemy, and his patron god Bacchus departing. The poet's counsel: do not mourn your misfortune, do not deny everything, do not be deceived by empty hopes. When emotion trembles, simply listen; do not wail and plead like a coward.</div>
+    <div class="flow-row">
+      <div class="flow-step">Antony<br>Defeated</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Deserted by All<br>Horse Joins Enemy</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">God Bacchus<br>Abandons Him</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Poet's Counsel<br>Do Not Mourn</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Stand Tall<br>Depart with Dignity</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Code of Conduct -->
+<div class="section">
+  <div class="section-num">14</div>
+  <div class="section-body">
+    <div class="tag">Code of Conduct</div>
+    <div class="section-title">Elegance Under Duress: Stoic Practice in Daily Life</div>
+    <div class="section-desc">Being a hero does not require dying on the battlefield. We can demonstrate mastery over randomness in actions both large and small. Taleb offers concrete behavioral guidelines — from execution day to business setbacks — all sharing one common thread: the one thing Fortune cannot control is your behavior.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Execution Day</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:92%"></div></div>
+        <div class="risk-val">Wear Your Best Clothes</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Cancer Diagnosis</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div>
+        <div class="risk-val">Do Not Wail</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Losing Money</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:78%"></div></div>
+        <div class="risk-val">Be Nicer to Your Staff</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Betrayal</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:72%"></div></div>
+        <div class="risk-val">No Self-Pity</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Business Slows</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:65%"></div></div>
+        <div class="risk-val">Attitude Unchanged</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Human Truth -->
+<div class="section">
+  <div class="section-num">14</div>
+  <div class="section-body">
+    <div class="tag">Human Truth</div>
+    <div class="section-title">Emotions Are Not Sinful; Behavior Is What Counts</div>
+    <div class="section-desc">Stoicism is not the cold rigidity we imagine. Seneca's Letters from a Stoic has a deeply humane side and is highly readable — Taleb often gives copies to his trader friends. Having emotional reactions is not wrong; it does not forfeit dignity — humans are born with emotions. What is wrong is failing to stand tall like a hero, or at least like a person of dignity. Yet even Cavafy himself, dying of throat cancer, failed to embody his own poem's spirit — he clung to visitors, refusing to let them leave. Between knowing the principle and living it lies the unbridgeable chasm of human nature.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Having emotional reactions</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Not wrong — humans are born with emotions; no loss of dignity</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Wailing, whining, blaming</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Wrong — failing to stand tall like a hero</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Knowing rational principles</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Easy — we all have them before leaving the classroom</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Practicing dignity amid emotion</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Extremely hard — even the poet Cavafy himself could not</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Ultimate Conviction -->
+<div class="section">
+  <div class="section-num">14</div>
+  <div class="section-body">
+    <div class="tag">Ultimate Conviction</div>
+    <div class="section-title">The One Thing Fortune Cannot Control: Your Behavior</div>
+    <div class="section-desc">No matter how complex our choices or how skilled we are at managing luck, randomness is always the final judge. All we have left is dignity — behavior that does not need to look to the surrounding environment for validation. This may not be the most appropriate course of action, but it gives us the best feeling. The epic hero is judged by conduct, not by success or failure.</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🦚</div>
+        <div class="data-name">Grace Under Pressure</div>
+        <div class="data-sm">No matter the circumstances<br>Know "how to survive"<br>Comportment is dignity itself</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🗡️</div>
+        <div class="data-name">Stand Tall</div>
+        <div class="data-sm">Blame no one<br>Even if they are truly at fault<br>Heroism is not measured by outcome</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🛡️</div>
+        <div class="data-name">Attitude Unchanged</div>
+        <div class="data-sm">Business is slow, attitude unchanged<br>Never grovel<br>Fortune uncontrollable; behavior is not</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The next time you face adversity, begin by emphasizing elegance in your personal conduct. Show that no matter the circumstances, you "know how to survive." When losing money, be nicer to your staff. When diagnosed with cancer, do not wail. Even if your spouse runs off with someone else, never indulge in self-pity. The one thing Lady Fortune cannot control is your behavior. Good luck!</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Fooled by Randomness · Chapter 14 Infographic · Nassim Nicholas Taleb · Based on Chapter 14 content · For educational reference only
+</div>
+
+</div>
+</body>
+</html>

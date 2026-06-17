@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Chapter 9 It Is Easier to Buy and Sell Than to Fry an Egg</title>
+<style>
+@font-face {
+  font-family: 'FZPingXianYaSong';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-display: swap;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #555;
+  line-height: 1.9;
+  padding: 48px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container { max-width: 880px; width: 100%; }
+
+/* Header */
+.header { text-align: center; margin-bottom: 36px; }
+.header h1 {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 36px;
+  font-weight: normal;
+  color: #1a1a1a;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.header .subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 18px;
+}
+.header .divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #dc2626, #ea580c);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* Overview Card */
+.overview-card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 20px;
+  border-left: 4px solid #4f46e5;
+}
+.overview-card h2 {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 20px;
+  font-weight: normal;
+  color: #4f46e5;
+  margin-bottom: 12px;
+}
+.overview-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 2.0;
+}
+
+/* Section Cards */
+.section-card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 20px;
+  border-left: 4px solid #4f46e5;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.section-num {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Georgia, 'Times New Roman', serif;
+  flex-shrink: 0;
+}
+.section-tag {
+  display: inline-block;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 12px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.section-card h3 {
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 18px;
+  font-weight: normal;
+  color: #4f46e5;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.section-card .desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+
+/* Flow Chart */
+.flow-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 8px;
+  justify-content: center;
+}
+.flow-step {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #3730a3;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 70px;
+  font-weight: 500;
+}
+.flow-step.end {
+  background: #eef2ff;
+  border: 2px solid #4f46e5;
+  color: #4f46e5;
+  font-weight: 700;
+}
+.flow-arrow {
+  color: #4f46e5;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Data Cards Row */
+.data-row {
+  display: flex;
+  gap: 14px;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
+}
+.data-card {
+  flex: 1;
+  min-width: 130px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 16px 14px;
+  text-align: center;
+}
+.data-big {
+  font-size: 28px;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-bottom: 4px;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.data-sm {
+  font-size: 12px;
+  color: #6366f1;
+  line-height: 1.5;
+}
+
+/* Comparison Grid */
+.cmp-grid {
+  display: flex;
+  gap: 14px;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
+}
+.cmp-card {
+  flex: 1;
+  min-width: 200px;
+  background: #f8f7ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+}
+.cmp-icon { font-size: 28px; margin-bottom: 6px; }
+.cmp-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4f46e5;
+  margin-bottom: 6px;
+}
+.cmp-bar {
+  height: 4px;
+  border-radius: 2px;
+  margin: 10px 0;
+  background: linear-gradient(90deg, #4f46e5, #818cf8);
+}
+.cmp-note {
+  font-size: 12px;
+  color: #6366f1;
+  line-height: 1.6;
+}
+.cmp-detail {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Dual Grid */
+.dual-grid {
+  display: flex;
+  gap: 14px;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
+}
+.dual-card {
+  flex: 1;
+  min-width: 220px;
+  border-radius: 10px;
+  padding: 18px 16px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.dual-card.yes {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+.dual-card.no {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #3730a3;
+}
+
+/* Risk Meter */
+.risk-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+.risk-label {
+  font-size: 13px;
+  color: #4f46e5;
+  font-weight: 500;
+  min-width: 100px;
+}
+.risk-meter {
+  flex: 1;
+  min-width: 180px;
+  height: 10px;
+  background: #eef2ff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.risk-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #818cf8);
+  border-radius: 5px;
+}
+.risk-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+/* Highlight inline */
+.highlight {
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+  margin-top: 36px;
+  line-height: 1.8;
+}
+.footer a { color: #bbb; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .header h1 { font-size: 24px; }
+  .section-card { padding: 20px 18px; }
+  .overview-card { padding: 20px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>Fooled by Randomness · Chapter 9<br>"It Is Easier to Buy and Sell Than to Fry an Egg"</h1>
+  <div class="subtitle">By Nassim Nicholas Taleb · Performance Records, Survivorship Bias &amp; The Deceptions of Randomness</div>
+  <div class="divider"></div>
+</div>
+
+<!-- Overview Card -->
+<div class="overview-card">
+  <h2>📖 Chapter Overview</h2>
+  <p>
+    This chapter reveals a profound paradox: <span class="highlight">buying and selling securities seems easier than frying an egg</span> — anyone can open an account, start trading, and proudly present a "track record." Yet Taleb, through Monte Carlo simulations, survivorship bias, and data-mining traps, demonstrates that these "performance records" are very likely <span class="highlight">pure luck</span>. From fund managers to medical research, from book blurbs to cancer cures, randomness wears the mask of "skill" and fools anyone unwilling to dig deeper.
+  </p>
+</div>
+
+<!-- Section 01 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">Core Paradox</span>
+    </div>
+  </div>
+  <h3>Trading ≠ Egg-Frying: The Fundamental Difference Between Two Kinds of Competence</h3>
+  <p class="desc">
+    A dentist who cures your toothache, a pianist who performs at Carnegie Hall, a Canova marble sculpture of breathtaking precision — in these domains, success is almost impossible to attribute to luck. But in financial markets, when a fund manager shows you a "stellar track record," <span class="highlight">it is very likely the product of random fluctuation</span>. Machiavelli held that luck accounts for at least 50% of life's outcomes — and that was before modern markets even existed.
+  </p>
+  <div class="dual-grid">
+    <div class="dual-card yes">
+      <strong>🧑‍⚕️ Physical-Skill Domains</strong><br>
+      Dentists, pianists, sculptors — repeated verification makes "getting lucky" astronomically improbable. Skill can be observed and reproduced.
+    </div>
+    <div class="dual-card no">
+      <strong>📈 Financial Market Domains</strong><br>
+      Thousands participate; random fluctuation naturally produces "stars." A profit record alone conveys virtually no reliable information.
+    </div>
+  </div>
+</div>
+
+<!-- Section 02 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">Monte Carlo Proof</span>
+    </div>
+  </div>
+  <h3>10,000 Managers: Pure Luck Manufactures "Stars"</h3>
+  <p class="desc">
+    Start with 10,000 investment managers. Each year, each has a 50% chance of earning $10,000 and a 50% chance of losing $10,000. Anyone who loses in a given year is eliminated. After five years, <span class="highlight">purely by luck, 313 managers remain with perfect records</span> — they will be celebrated as "stars," dressed in designer suits, granted illustrious titles.
+  </p>
+  <div class="flow-row">
+    <div class="flow-step">Year 1<br><strong>10,000</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Year 2<br><strong>5,000</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Year 3<br><strong>2,500</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Year 4<br><strong>1,250</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Year 5<br><strong>625</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step end">🌟 Stars<br><strong>313</strong></div>
+  </div>
+  <p class="desc" style="margin-top:14px;">
+    Even more striking: if all managers have <span class="highlight">negative expected returns</span> (45% win / 55% loss), after five years 184 managers (under 2%) still emerge as "stars." Market volatility actually helps bad decisions — this is the dark side of <span class="highlight">ergodicity</span>: in the short run, randomness creates heroes, but time ultimately eliminates randomness.
+  </p>
+</div>
+
+<!-- Section 03 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">Survivorship Bias</span>
+    </div>
+  </div>
+  <h3>The Forgotten 98%: Why You Only See the Winners</h3>
+  <p class="desc">
+    People always see only the best-performing managers, never the full population. The essence of survivorship bias: <span class="highlight">the number of "stars" depends primarily on how many people entered the profession, not on their actual ability</span>. If more managers entered in 1997 than in 1993, then 2002 will naturally have more "top managers" than 1998.
+  </p>
+  <div class="data-row">
+    <div class="data-card">
+      <div class="data-big">2%</div>
+      <div class="data-sm">Incompetent managers<br>with 5-year winning streak</div>
+    </div>
+    <div class="data-card">
+      <div class="data-big">98%</div>
+      <div class="data-sm">Forgotten<br>losers</div>
+    </div>
+    <div class="data-card">
+      <div class="data-big">0</div>
+      <div class="data-sm">Survivors' long-term<br>excess returns</div>
+    </div>
+  </div>
+  <p class="desc" style="margin-top:12px;">
+    Taleb's personal rule: if the original population is only <span class="highlight">10</span> managers, he would entrust half his savings to the top performer. If there are <span class="highlight">10,000</span>, he ignores all track records entirely. Without knowing how many tried and failed, no performance record can be evaluated.
+  </p>
+</div>
+
+<!-- Section 04 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">Data-Mining Traps</span>
+    </div>
+  </div>
+  <h3>Mystery Letters, the Birthday Paradox &amp; Overfitting</h3>
+  <p class="desc">
+    From con artists who send "mystery letters" (mail 10,000 people, half bullish, half bearish; each month discard those disproved — the survivors believe they have met a prophet), to the <span class="highlight">birthday paradox</span> (with 23 people in a room, the chance that any two share a birthday is ~50%), Taleb shows how human cognition systematically misreads randomness.
+  </p>
+  <div class="flow-row">
+    <div class="flow-step">📬 Mail<br><strong>10,000</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📬 Correct<br><strong>5,000</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📬 Correct again<br><strong>2,500</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📬 6x streak<br><strong>~156</strong></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step end">🎯 Hooked<br><strong>~200</strong></div>
+  </div>
+  <p class="desc" style="margin-top:14px;">
+    Data miners test trading rules against historical prices endlessly — like monkeys at typewriters. <span class="highlight">A random series will always exhibit some detectable pattern.</span> Taleb is certain: somewhere in the Western world there is a security whose price movements are 100% correlated with temperature changes in Ulaanbaatar, Mongolia.
+  </p>
+</div>
+
+<!-- Section 05 -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div class="section-info">
+      <span class="section-tag">Real-World Fallout</span>
+    </div>
+  </div>
+  <h3>From Book Blurbs to Cancer: Randomness Fools Every Domain</h3>
+  <p class="desc">
+    Survivorship bias is everywhere. Book covers feature only the best blurb; <span class="highlight">backtesting software</span> keeps traders up all night hunting for the "perfect rule"; <span class="highlight">"spontaneous remission" of cancer</span> is attributed to vitamins or holy water; <span class="highlight">companies with three consecutive years of earnings growth</span> get "strong buy" recommendations from analysts — they may simply be the 1,250 survivors among an initial 10,000.
+  </p>
+  <div class="cmp-grid">
+    <div class="cmp-card">
+      <div class="cmp-icon">📚</div>
+      <div class="cmp-name">Blurb Bias</div>
+      <div class="cmp-bar"></div>
+      <div class="cmp-note">People mistake "the best blurb"<br>for "the review itself"</div>
+      <div class="cmp-detail">Covers cherry-pick one line<br>Sartre's single quote vaulted<br>Dos Passos to fame — then oblivion</div>
+    </div>
+    <div class="cmp-card">
+      <div class="cmp-icon">📊</div>
+      <div class="cmp-name">Backtest Illusion</div>
+      <div class="cmp-bar"></div>
+      <div class="cmp-note">Test thousands of rules —<br>one will always look perfect</div>
+      <div class="cmp-detail">Thousands of traders test overnight<br>Like monkeys at typewriters<br>someone will find "gold" somewhere</div>
+    </div>
+    <div class="cmp-card">
+      <div class="cmp-icon">🏥</div>
+      <div class="cmp-name">Medical Fallacy</div>
+      <div class="cmp-bar"></div>
+      <div class="cmp-note">Spontaneous remission credited to<br>"alternative medicine," not chance</div>
+      <div class="cmp-detail">Lourdes holy-water cure rate<br>was lower than the spontaneous<br>remission rate. So was Pauling's vitamin C.</div>
+    </div>
+  </div>
+  <div class="risk-row" style="margin-top:16px;">
+    <div class="risk-label">Publication Bias</div>
+    <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+    <div class="risk-val">"No finding" = Unpublished</div>
+  </div>
+  <p class="desc" style="margin-top:12px;">
+    As Sherlock Holmes noted in "Silver Blaze": <span class="highlight">the curious incident was that the dog did not bark</span>. "Discovering nothing" and "not discovering" are conflated — yet the former may contain vital information.
+  </p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Based on Nassim Nicholas Taleb's <em>Fooled by Randomness</em>, Chapter 9 "It Is Easier to Buy and Sell Than to Fry an Egg"<br>
+  Generated: June 17, 2026 · For educational reference only
+</div>
+
+</div>
+</body>
+</html>

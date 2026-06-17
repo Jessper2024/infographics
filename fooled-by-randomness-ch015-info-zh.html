@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>随机漫步的傻瓜 · 后记「遇上黑天鹅」</title>
+<style>
+@font-face {
+  font-family: '方正屏显雅宋简体';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f5f1eb;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  color: #2d2d2d;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 28px 64px;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.chapter-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #db2777;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(219,39,119,0.25);
+}
+
+.badge-label {
+  font-size: 15px;
+  color: #db2777;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+}
+
+h1 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+h1 .sub {
+  display: block;
+  font-size: 24px;
+  color: #db2777;
+  margin-top: 4px;
+}
+
+.header-divider {
+  width: 60px;
+  height: 3px;
+  background: #db2777;
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+/* ── Cards ── */
+.card {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-left: 4px solid #db2777;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin-bottom: 28px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.card h2 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.04em;
+}
+
+.card h3 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #db2777;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.card p {
+  font-size: 15px;
+  color: #3d3d3d;
+  margin-bottom: 10px;
+}
+
+.card p:last-child { margin-bottom: 0; }
+
+/* ── SCQA Flow ── */
+.scqa-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scqa-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 16px;
+  background: #fdf2f8;
+  border-radius: 10px;
+  border: 1px solid #fbcfe8;
+}
+
+.scqa-tag {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.scqa-tag.s { background: #db2777; }
+.scqa-tag.c { background: #be185d; }
+.scqa-tag.q { background: #9d174d; }
+
+.scqa-text {
+  flex: 1;
+  font-size: 14.5px;
+  color: #3d3d3d;
+  padding-top: 6px;
+  line-height: 1.7;
+}
+
+.scqa-text strong {
+  color: #db2777;
+  font-weight: 700;
+}
+
+/* ── Four-Column Grid ── */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.feature-card {
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.feature-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #db2777;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 auto 12px;
+}
+
+.feature-card h4 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.feature-card p {
+  font-size: 13px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+/* ── Principles List ── */
+.principles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.principle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 18px;
+  background: #fdf2f8;
+  border-radius: 10px;
+  border: 1px solid #fbcfe8;
+}
+
+.principle-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #db2777;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.principle-content h4 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+}
+
+.principle-content p {
+  font-size: 13.5px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+.principle-quote {
+  margin-top: 8px;
+  padding: 8px 14px;
+  border-left: 3px solid #db2777;
+  background: rgba(219,39,119,0.04);
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ── Insight Cards ── */
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.insight-card {
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.insight-card .insight-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.insight-card h4 {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+}
+
+.insight-card p {
+  font-size: 13.5px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+/* ── Highlight Box ── */
+.highlight-box {
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.highlight-box p {
+  font-family: '方正屏显雅宋简体', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #db2777;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+/* ── Story Block ── */
+.story-block {
+  margin-top: 4px;
+  padding: 16px 20px;
+  background: #fdf2f8;
+  border-radius: 10px;
+  border: 1px solid #fbcfe8;
+}
+
+.story-block p {
+  font-size: 14px;
+  color: #3d3d3d;
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+
+.story-block p:last-child { margin-bottom: 0; }
+
+.story-block .highlight {
+  color: #db2777;
+  font-weight: 700;
+}
+
+/* ── Sub-section divider ── */
+.section-divider {
+  width: 40px;
+  height: 2px;
+  background: #fbcfe8;
+  margin: 8px 0 16px;
+  border-radius: 1px;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 12px;
+  color: #b0a89a;
+  letter-spacing: 0.04em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .container { padding: 32px 16px 48px; }
+  h1 { font-size: 28px; }
+  h1 .sub { font-size: 20px; }
+  .card { padding: 20px 18px; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .insight-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header class="header">
+    <div class="badge-row">
+      <div class="chapter-badge">15</div>
+      <span class="badge-label">后　记</span>
+    </div>
+    <h1>
+      随机漫步的傻瓜
+      <span class="sub">遇上黑天鹅</span>
+    </h1>
+    <div class="header-divider"></div>
+  </header>
+
+  <!-- ═══════ SCQA：塔利波的寓言 ═══════ -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-icon">📖</div>
+      <h2>塔利波的寓言</h2>
+    </div>
+
+    <div class="scqa-flow">
+      <div class="scqa-item">
+        <div class="scqa-tag s">S</div>
+        <div class="scqa-text">
+          <strong>情境</strong>：塔利波战胜了 28% 概率的癌症，财富更上一层楼，生活事业一帆风顺。他开始放纵自己——取得直升机飞行执照，享受周末乡村别墅。
+        </div>
+      </div>
+      <div class="scqa-item">
+        <div class="scqa-tag c">C</div>
+        <div class="scqa-text">
+          <strong>冲突</strong>：一个风大的日子里，塔利波驾驶直升机准备降落时坠毁，机上只有他一人。<strong>黑天鹅终究还是大发神威。</strong>步步小心的人，逃不过命运的翻云覆雨手。
+        </div>
+      </div>
+      <div class="scqa-item">
+        <div class="scqa-tag q">Q</div>
+        <div class="scqa-text">
+          <strong>问题</strong>：即使是精通概率的专业交易员，为何仍被随机性愚弄？面对不可预知、不可承受的极端事件，我们究竟该如何自处？
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 黑天鹅四种特征 (MECE) ═══════ -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-icon">🦢</div>
+      <h2>黑天鹅的四个特征</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="grid-4">
+      <div class="feature-card">
+        <div class="feature-num">①</div>
+        <h4>发生非常罕见</h4>
+        <p>历史数据太少，无法总结规律。长期不发生，使人麻痹大意，甚至根本想不到预防。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">②</div>
+        <h4>影响非常巨大</h4>
+        <p>一件黑天鹅事件的影响，超过万千小事之和。S&amp;P 500 去掉 50 个最差交易日，年化收益翻倍。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">③</div>
+        <h4>事前无法预测</h4>
+        <p>事后有万般解释，事前却无从知晓。人类天性寻求因果，却往往编造虚假的故事自我安慰。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">④</div>
+        <h4>可以事先预防</h4>
+        <p>无法预测何时下雨，但可以备好雨伞出门。无法预知大地震，但可以提高房屋抗震级别。</p>
+      </div>
+    </div>
+
+    <div class="story-block" style="margin-top:18px;">
+      <p>📌 <strong>火鸡寓言：</strong>一只火鸡被养了 1000 天，总结出"主人对我真好"的经验。第 1001 天感恩节，一直伸来喂食的手，却扭断了它的脖子。我们正如那只火鸡——<span class="highlight">只关注历史经验，却忽略了风险暴露。</span></p>
+    </div>
+  </section>
+
+  <!-- ═══════ 巴菲特的应对智慧 ═══════ -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-icon">💡</div>
+      <h2>巴菲特的应对智慧</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="principles-list">
+      <div class="principle-item">
+        <div class="principle-num">Ⅰ</div>
+        <div class="principle-content">
+          <h4>诺亚方舟原则</h4>
+          <p>预测下雨无济于事，建造方舟才能以防万一。巴菲特对"9·11"坦承：「我确实想到了，但让人伤心的是，我并未把想法转化为行动。」</p>
+          <div class="principle-quote">「我违反了诺亚方舟原则：预测下雨无济于事，建造方舟才能以防万一。」</div>
+        </div>
+      </div>
+
+      <div class="principle-item">
+        <div class="principle-num">Ⅱ</div>
+        <div class="principle-content">
+          <h4>保险双原则</h4>
+          <p><strong>原则一：</strong>只接受能够正确评估衡量的风险，谨慎评估包含极小概率损失在内的所有因素。<br>
+          <strong>原则二：</strong>严格限制承接的业务规模，确保单一意外事件不会危及清偿能力。不遗余力寻找看似毫不相关的风险之间的相关性。</p>
+        </div>
+      </div>
+
+      <div class="principle-item">
+        <div class="principle-num">Ⅲ</div>
+        <div class="principle-content">
+          <h4>正确方式胜于良好业绩</h4>
+          <p>巴菲特选择接班人时看重「如何挥杆」，而非只看历史业绩。即便是十分亮眼的投资记录，也很有可能只是运气。一个黑天鹅事件就足以吞没过去所有的运气。</p>
+          <div class="principle-quote">「再长一串让人动心的数额乘上一个零，结果只能是零。」</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 核心启示 ═══════ -->
+  <section class="card">
+    <div class="card-header">
+      <div class="card-icon">⚡</div>
+      <h2>核心启示</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-icon">🛡️</div>
+        <h4>负面黑天鹅：惹不起，躲得起</h4>
+        <p>如果失败的代价过于沉重、难以承受，那么这件事成功的概率有多高根本无关紧要。宁可不赚，不可亏光。善战者立于不败之地。</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">🚀</div>
+        <h4>正面黑天鹅：抓住稀有不对称机会</h4>
+        <p>风险可控、但潜在回报巨大的正面黑天鹅事件，是超额收益的真正来源。巴菲特正是抓住了这样的机会，才赚到大钱。</p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:16px;">
+      <p>「我们可以死于无常，但不能死于无知。」</p>
+      <p style="font-size:14px;font-weight:400;color:#666;margin-top:4px;">—— 刘建位 · 汇添富基金首席投资理财师</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    《随机漫步的傻瓜》信息图 · 后记「遇上黑天鹅」· 基于塔勒布原作与刘建位解析
+  </footer>
+
+</div>
+
+</body>
+</html>

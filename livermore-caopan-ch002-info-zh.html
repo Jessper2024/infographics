@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>股票大作手操盘术 · 第2章「凭规则抉择交易时机，该等则等、该出则出」— 信息图</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-font-smoothing:antialiased}
+body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;background:#f5f1eb;color:#555;line-height:2.0;min-height:100vh;padding:48px 16px 60px}
+.container{max-width:880px;width:100%;margin:0 auto;padding:0}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-switch a{display:inline-block;font-size:13px;color:#ea580c;text-decoration:none;padding:6px 16px;border:1px solid #fed7aa;border-radius:8px;background:#fff7ed;transition:background .2s}
+.lang-switch a:hover{opacity:.75}
+.header{margin-bottom:32px}
+.header h1{font-size:32px;font-weight:400;color:#1a1a1a;letter-spacing:.03em;margin-bottom:8px;line-height:1.4}
+.header h2{font-size:18px;font-weight:400;color:#888;letter-spacing:.02em;line-height:1.6}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#ea580c,#fed7aa);border-radius:2px;margin-bottom:24px}
+.kpi-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:140px;background:#fff;border:1px solid #e8e0d5;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.kpi-num{font-size:36px;font-weight:700;color:#1a1a1a;line-height:1.2;margin-bottom:6px}
+.kpi-label{font-size:12px;color:#888;line-height:1.6}
+.overview{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03)}
+.overview-label{font-size:13px;font-weight:700;color:#ea580c;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.overview .scqa-label{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;margin-right:6px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',Georgia,serif}
+.overview .scqa-label.s{background:#fef2f2;color:#dc2626}
+.overview .scqa-label.c{background:#fff7ed;color:#ea580c}
+.overview .scqa-label.q{background:#fefce8;color:#ca8a04}
+.overview .scqa-label.a{background:#eef2ff;color:#4f46e5}
+.overview .scqa-item{margin-bottom:6px;font-size:15px;line-height:2.0;color:#555}
+.overview .one-liner{margin-bottom:14px;font-size:16px;font-weight:600;color:#1a1a1a;line-height:2.0}
+.card.section{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03)}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.circle-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.section-tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:12px;flex-shrink:0}
+.section h3{font-size:18px;font-weight:700;line-height:1.4}
+.section-body .bluf{color:#1a1a1a;font-weight:600;margin-bottom:8px;font-size:15px;line-height:2.0}
+.section-body p{color:#555;font-size:15px;line-height:2.0;margin-bottom:8px}
+.section-body .detail{font-size:13px;color:#777;line-height:1.8}
+.cmp-grid.cols-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.cmp-grid.cols-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0}
+.cmp-card{background:#fafaf7;border:1px solid #e8e0d5;border-radius:10px;padding:14px}
+.cmp-card .cmp-label{font-size:12px;font-weight:700;margin-bottom:6px;color:#1a1a1a}
+.cmp-card .cmp-text{font-size:13px;color:#555;line-height:1.8}
+.quote-block{background:#faf5ff;border-left:4px solid #d8b4fe;border-radius:0 10px 10px 0;padding:14px 18px;margin:12px 0}
+.quote-block p{font-size:14px;color:#6b21a8;font-style:italic;line-height:1.8}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.dual-good{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px}
+.dual-good .dual-label{font-size:12px;font-weight:700;color:#166534;margin-bottom:6px}
+.dual-bad{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px}
+.dual-bad .dual-label{font-size:12px;font-weight:700;color:#991b1b;margin-bottom:6px}
+.dual-grid p{font-size:13px;color:#555;line-height:1.8}
+.takeaway{background:linear-gradient(135deg,#fff7ed,#fefce8);border:1px solid #fed7aa;border-radius:14px;padding:24px 28px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.takeaway-icon{font-size:28px;flex-shrink:0;line-height:1}
+.takeaway-text{flex:1}
+.takeaway-label{font-size:13px;font-weight:700;color:#ea580c;margin-bottom:6px;letter-spacing:.05em}
+.takeaway p{font-size:15px;color:#1a1a1a;font-weight:600;line-height:2.0}
+.footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5}
+.footer p{font-size:12px;color:#bbb;line-height:1.8}
+@media(max-width:640px){body{padding:16px 12px 40px}.container{padding:0}.header h1{font-size:22px}.header h2{font-size:15px}.takeaway{order:-1;margin-bottom:20px;flex-direction:column}.kpi-num{font-size:28px}.kpi-label{font-size:11px}.card,.overview,.section{padding:18px 16px}.section-header{flex-wrap:wrap;gap:8px}.circle-num{width:34px;height:34px;font-size:14px}.section h3{font-size:16px}.cmp-grid.cols-3,.cmp-grid.cols-2,.dual-grid{grid-template-columns:1fr}.kpi-row{flex-direction:column}.bluf{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-switch">
+    <a href="livermore-caopan-ch002-info-en.html" target="_blank">EN</a>
+  </div>
+
+  <div class="header">
+    <h1>股票大作手操盘术 · 第2章「凭规则抉择交易时机，该等则等、该出则出」</h1>
+    <h2>融合时间和价格的利弗莫尔准则 — 趋势有节奏，信号有真假，规则比感觉更可靠</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="kpi-num">4~5次</div><div class="kpi-label">每年重大<br>交易机会</div></div>
+    <div class="kpi-card"><div class="kpi-num">6点+</div><div class="kpi-label">异常回撤<br>危险信号</div></div>
+    <div class="kpi-card"><div class="kpi-num">3天</div><div class="kpi-label">山区投机家<br>行情延迟</div></div>
+    <div class="kpi-card"><div class="kpi-num">100%</div><div class="kpi-label">首笔头寸应<br>从头盈利</div></div>
+  </div>
+
+  <div class="overview">
+    <p class="one-liner">一句话：趋势有它自己的呼吸节奏——耐心在正常回撤中持股，果断在异常反转向下时离场，每年只抓4~5次大机会。</p>
+    <div class="scqa-item"><span class="scqa-label s">S 情境</span>股票如人，各有品格。当一只股票进入明确的趋势状态后，将自动运行——上涨伴随大成交量，回撤时成交萎缩，这是市场自然的呼吸。</div>
+    <div class="scqa-item"><span class="scqa-label c">C 冲突</span>绝大多数投机者终日忙于交易，对次要波动全神贯注，反而错过主要行情。人性弱点——一厢情愿和犹豫不决——让他们在该离场时下不了决心。</div>
+    <div class="scqa-item"><span class="scqa-label q">Q 问题</span>如何用一套客观规则（而非情绪）来抉择交易时机，知道何时该耐心等待、何时该果断离场？</div>
+    <div class="scqa-item"><span class="scqa-label a">A 回答</span>区分正常回撤与异常回撤；在危险信号出现时像躲避火车一样果断跳出；每年只抓4~5次重大机会；通过持续记录行情、融入时间要素来克服人性弱点。</div>
+  </div>
+
+  <div class="card section" style="border-left:4px solid #dc2626;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#dc2626;">01</div>
+      <div class="section-tag" style="color:#dc2626;background:#fef2f2;">趋势节奏</div>
+      <h3 style="color:#dc2626;">趋势的自然呼吸：正常回撤与成交量规律</h3>
+    </div>
+    <div class="section-body">
+      <p class="bluf"><strong>趋势运行有内在节奏——上涨放量、回撤缩量、再加速突破，如此循环。永远不要害怕正常回撤，但要高度警惕不正常的动作。</strong></p>
+      <p>利弗莫尔以50美元启动的股票为例：第一阶段从50涨到54，正常回撤到52½；第二阶段加速到59~60，日内回撤仅1~1.5点；第三阶段从60直奔68~70，中途几乎不回撤——股票变得"紧俏"；最终才发生5点幅度的较大回撤。整个过程成交量从庞大→中等→萎缩，这是趋势健康的标志。</p>
+      <div class="cmp-grid cols-3">
+        <div class="cmp-card">
+          <div class="cmp-label">🌊 第一阶段</div>
+          <div class="cmp-text">50→54，回撤至52½<br>成交量巨大<br>完全正常</div>
+        </div>
+        <div class="cmp-card">
+          <div class="cmp-label">⚡ 第二阶段</div>
+          <div class="cmp-text">54→60，日内回撤仅1~1.5点<br>成交量中等<br>股票变紧俏</div>
+        </div>
+        <div class="cmp-card">
+          <div class="cmp-label">🔥 第三阶段</div>
+          <div class="cmp-text">60→70，中途几乎不回撤<br>成交量萎缩<br>趋势加速冲刺</div>
+        </div>
+      </div>
+      <p class="detail">同一只股票在明确趋势中，每次正常回撤都应落在同一组趋势线上。从前期高点到下一个高点的差距会逐步放大——这正是时间要素发挥作用的地方。</p>
+    </div>
+  </div>
+
+  <div class="card section" style="border-left:4px solid #ea580c;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#ea580c;">02</div>
+      <div class="section-tag" style="color:#ea580c;background:#fff7ed;">危险信号</div>
+      <h3 style="color:#ea580c;">异常回撤：市场在闪动危险信号</h3>
+    </div>
+    <div class="section-body">
+      <p class="bluf"><strong>在同一天之内，市场先创出新高、随后向下回落6个点甚至更多——这种"之前从未出现过"的异常动作，是市场在向你发出危险信号，绝不可忽视。</strong></p>
+      <p>利弗莫尔描述了一个经典的危险信号场景：股票连续大涨6~10点、交易极度活跃——但就在收盘前一小时，突然出现7~8点的不正常下探。翌日早盘再跌1点后回升、尾盘坚挺。第三天却未能保持上升势头。这，就是迫在眉睫的危险信号。</p>
+
+      <div class="quote-block">
+        <p>"当看到市场向我发出危险信号时，我从不和它执拗。我离开！几天之后，如果各方面看来都没问题，我总是能够再度入市。"</p>
+      </div>
+
+      <div class="dual-grid">
+        <div class="dual-good">
+          <div class="dual-label">✅ 正常回撤</div>
+          <p>趋势过程中自然发生<br>成交量远小于上涨期<br>幅度温和、落在趋势线上<br>不必害怕，耐心持股</p>
+        </div>
+        <div class="dual-bad">
+          <div class="dual-label">⚠️ 异常回撤</div>
+          <p>日内先创新高后暴跌6点+<br>完全出乎意料之外<br>此前从未出现过的变数<br>果断离场，不要犹豫</p>
+        </div>
+      </div>
+
+      <p class="detail">利弗莫尔用"火车"比喻：假如你正沿铁轨走，一列快车以60英里时速冲来——你不会站在不动，而是跳开让火车过去。等它过去了，随时可以再回去。没有准则是100%准确的，但始终注意危险信号，长期来看收益巨大。</p>
+    </div>
+  </div>
+
+  <div class="card section" style="border-left:4px solid #ca8a04;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#ca8a04;">03</div>
+      <div class="section-tag" style="color:#ca8a04;background:#fefce8;">人性弱点</div>
+      <h3 style="color:#ca8a04;">一厢情愿与犹豫不决：投机者最大的敌人是自己</h3>
+    </div>
+    <div class="section-body">
+      <p class="bluf"><strong>一厢情愿的想法必须彻底消除。人性弱点——犹豫不决、赌徒心态——是每位投机者最大的敌人，比任何市场风险都更具破坏力。</strong></p>
+      <p>利弗莫尔描绘了一个典型的心理陷阱：投机者看到危险信号后犹豫不决，市场朝不利方向变动了很多点才说"下一波行情我就平仓"。当下一波上涨果真来临时，他们又觉得市场表现"很对头"，忘了平仓计划——最终这轮上涨只是短暂的向上反扑，市场随即真正下跌，而他们仍在场内。</p>
+      <div class="cmp-grid cols-2">
+        <div class="cmp-card">
+          <div class="cmp-label">📛 典型错误</div>
+          <div class="cmp-text">"下一波行情我就平仓"→ 行情来了又忘记计划 → 被套更深 → 彻底失去主动权</div>
+        </div>
+        <div class="cmp-card">
+          <div class="cmp-label">🎯 正确做法</div>
+          <div class="cmp-text">凭借准则行事 → 准则告诉你何时该走 → 果断平仓 → 挽回损失、解除焦虑</div>
+        </div>
+      </div>
+      <p class="detail">利弗莫尔强调：一只股票在大幅上涨后开始下跌，它当然会从某个价位回升——但你凭什么指望它正好在你希望的时候上冲？更大的可能是它不会上冲。把投机当成严肃事业的人，必须彻底戒除一厢情愿。</p>
+    </div>
+  </div>
+
+  <div class="card section" style="border-left:4px solid #4f46e5;">
+    <div class="section-header">
+      <div class="circle-num" style="background:#4f46e5;">04</div>
+      <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">时间要素</div>
+      <h3 style="color:#4f46e5;">少即是多：袖手旁观也是交易的一部分</h3>
+    </div>
+    <div class="section-body">
+      <p class="bluf"><strong>每年仅有寥寥可数的几次机会——可能只有四五次——才允许下场开立头寸。当空档来临时，你应当置身事外，让市场逐步酝酿下一场大幅运动。</strong></p>
+      <p>利弗莫尔引述了一位住在加州山区的传奇投机家的故事：他远离市场、收到的行情延迟三天，每年只有两三回打电话给经纪人下达指令。当被问及其秘诀时，他回答："真正的行情不会在一天之内就从开始走到结束。我住到远离闹市的山里，就能给这些行情留下它们所需的充分时间。"</p>
+
+      <div class="quote-block">
+        <p>"我把投机当成我的事业。市场总是千头万绪，如果我把自己陷在一团乱麻中，就会一败涂地，因此我对次要的市场变化视而不见。我喜欢躲在一旁，静心思考。"——山区投机家</p>
+      </div>
+
+      <div class="cmp-grid cols-3">
+        <div class="cmp-card">
+          <div class="cmp-label">📝 持续记录</div>
+          <div class="cmp-text">以适当形式记录价格运动，深入研究行情记录</div>
+        </div>
+        <div class="cmp-card">
+          <div class="cmp-label">⏳ 融入时间</div>
+          <div class="cmp-text">谨慎地综合考虑时间要素，等待行情走完全程</div>
+        </div>
+        <div class="cmp-card">
+          <div class="cmp-label">🎯 精准出击</div>
+          <div class="cmp-text">每年只抓4~5次大机会，其余时间袖手旁观</div>
+        </div>
+      </div>
+      <p class="detail">"在你袖手旁观时，其他那些觉得自己必须一天不落地忙于交易的投机者正在为你的下一次冒险活动铺垫基础。你将从他们的错误中获得利益。"第一笔头寸应当从头开始一直处于盈利状态，此后只需保持警戒，观察危险信号即可。</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-icon">💡</div>
+    <div class="takeaway-text">
+      <div class="takeaway-label">核心结论</div>
+      <p>趋势有节奏，信号有真假。耐心等待正常回撤中的持股时机，果断在异常回撤的危险信号出现时离场——如同躲避迎面冲来的火车。每年只抓4~5次重大机会，其余时间袖手旁观、持续记录、融入时间要素。规则比感觉更可靠，纪律比天赋更持久。</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>来源：《股票大作手操盘术》（杰西·利弗莫尔 著）第2章「凭规则抉择交易时机，该等则等、该出则出」<br>日期：修订版<br>仅供学习参考，不构成投资建议。</p>
+  </div>
+</div>
+</body>
+</html>

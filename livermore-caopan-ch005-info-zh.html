@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股票大作手操盘术 · 第5章「关键点」</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ── Reset & Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#f5f1eb;color:#1a1a1a;
+  font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+
+/* ── Container ── */
+.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
+
+/* ── Lang Switch ── */
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{
+  display:inline-block;padding:6px 16px;border-radius:8px;
+  font-size:13px;text-decoration:none;letter-spacing:0.03em;
+  font-family:'FZXPYZS','PingFang SC',serif;
+  background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;
+  transition:opacity 0.15s;
+}
+.lang-btn:hover{opacity:0.75}
+
+/* ── KPI Row ── */
+.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.kpi-card{
+  flex:1;min-width:120px;
+  background:#fff;border:1px solid #e8e0d5;border-radius:12px;
+  padding:20px 16px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
+}
+.kpi-num{font-size:32px;font-weight:700;color:#db2777;letter-spacing:-0.02em}
+.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+
+/* ── Header ── */
+.header h1{
+  font-size:36px;font-weight:400;color:#1a1a1a;
+  letter-spacing:0.03em;margin-bottom:8px;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.header h2{
+  font-size:14px;font-weight:400;color:#888;
+  letter-spacing:0.02em;line-height:1.7;
+  font-family:'FZXPYZS','PingFang SC',serif;
+}
+.divider{
+  width:60px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#4f46e5,#db2777);
+  margin:20px 0 24px;
+}
+
+/* ── Cards ── */
+.card{
+  background:#fff;border:1px solid #e8e0d5;border-radius:14px;
+  padding:28px 32px;margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03);
+}
+.overview{
+  background:#fdf2f8;border:2px solid #fbcfe8;
+  border-radius:14px;padding:24px 28px;margin-bottom:18px;
+}
+
+/* ── Overview ── */
+.overview-label{
+  font-size:11px;font-weight:700;color:#db2777;
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+}
+.overview-question{
+  font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px;
+}
+.overview-answer{
+  font-size:15px;color:#555;line-height:2.0;
+}
+
+/* ── Section Base ── */
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
+}
+.circle-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;flex-shrink:0;
+}
+.section-tag{
+  font-size:12px;padding:3px 10px;border-radius:20px;
+  font-weight:500;letter-spacing:0.02em;
+}
+.section h3{font-size:18px;font-weight:700}
+.section-body p{
+  font-size:15px;color:#555;line-height:2.0;margin-bottom:12px;
+}
+
+/* ── Per-section color classes ── */
+.s01{border-left:4px solid #dc2626}
+.s01 .circle-num{background:#fef2f2;color:#dc2626}
+.s01 .section-tag{background:#fef2f2;color:#dc2626}
+.s01 h3{color:#dc2626}
+
+.s02{border-left:4px solid #ea580c}
+.s02 .circle-num{background:#fff7ed;color:#ea580c}
+.s02 .section-tag{background:#fff7ed;color:#ea580c}
+.s02 h3{color:#ea580c}
+
+.s03{border-left:4px solid #ca8a04}
+.s03 .circle-num{background:#fefce8;color:#ca8a04}
+.s03 .section-tag{background:#fefce8;color:#ca8a04}
+.s03 h3{color:#ca8a04}
+
+.s04{border-left:4px solid #4f46e5}
+.s04 .circle-num{background:#eef2ff;color:#4f46e5}
+.s04 .section-tag{background:#eef2ff;color:#4f46e5}
+.s04 h3{color:#4f46e5}
+
+.s05{border-left:4px solid #db2777}
+.s05 .circle-num{background:#fdf2f8;color:#db2777}
+.s05 .section-tag{background:#fdf2f8;color:#db2777}
+.s05 h3{color:#db2777}
+
+/* ── Quote Block ── */
+.quote-block{
+  background:#faf5ff;border-left:4px solid #c084fc;border-radius:0 10px 10px 0;
+  padding:16px 20px;margin-top:14px;position:relative;
+}
+.quote-mark{
+  position:absolute;top:-10px;left:12px;
+  font-size:32px;color:#c084fc;font-family:Georgia,serif;line-height:1;
+}
+.quote-text{
+  font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px;
+}
+.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
+
+/* ── Dual Grid (二分对比) ── */
+.dual-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;
+}
+.dual-card{border-radius:10px;padding:16px 18px}
+.dual-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-card.bad{background:#fef2f2;border:1px solid #fecaca}
+.dual-label{font-size:13px;font-weight:700;margin-bottom:6px}
+.dual-card.good .dual-label{color:#166534}
+.dual-card.bad .dual-label{color:#991b1b}
+.dual-card p{font-size:13px;color:#555;line-height:1.8}
+
+/* ── Flow Row ── */
+.flow-row{
+  display:flex;align-items:flex-start;justify-content:center;
+  gap:8px;margin-top:16px;flex-wrap:wrap;
+}
+.flow-step,.flow-step.end{
+  background:#fff7ed;border:2px solid #fed7aa;border-radius:10px;
+  padding:14px 16px;text-align:center;font-size:13px;
+  color:#9a3412;font-weight:700;min-width:95px;
+}
+.flow-step-num{
+  display:block;font-size:11px;font-weight:400;color:#ea580c;
+  margin-bottom:4px;letter-spacing:0.04em;
+}
+.flow-step.end{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
+.flow-label{font-size:11px;font-weight:400;color:#888;margin-top:4px}
+.flow-arrow{font-size:18px;color:#ea580c;font-weight:700;padding-top:14px}
+
+/* ── Data Row ── */
+.data-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.data-card{
+  flex:1;min-width:140px;
+  border-radius:12px;padding:20px 16px;text-align:center;
+}
+.data-card.pink{background:#fdf2f8;border:1px solid #fbcfe8}
+.data-card.gold{background:#fefce8;border:1px solid #fde68a}
+.data-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
+.data-big{font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1.3}
+.data-card.pink .data-big{color:#db2777}
+.data-card.gold .data-big{color:#ca8a04}
+.data-card.indigo .data-big{color:#4f46e5}
+.data-sm{font-size:12px;color:#888;margin-top:6px;line-height:1.6}
+.data-note{font-size:12px;color:#555;margin-top:8px;line-height:1.6}
+
+/* ── Callout ── */
+.callout{
+  display:flex;gap:10px;align-items:flex-start;
+  border-radius:10px;padding:14px 16px;margin-top:14px;
+}
+.callout.warn{background:#fffbeb;border:1px solid #fde68a}
+.callout.info{background:#eff6ff;border:1px solid #bfdbfe}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.callout-text{font-size:13px;color:#555;line-height:1.8}
+.callout-text strong{color:#1a1a1a}
+
+/* ── Takeaway ── */
+.takeaway{
+  background:#fdf2f8;border:2px solid #fbcfe8;border-radius:14px;
+  padding:24px 28px;margin-bottom:18px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.takeaway-label{
+  font-size:13px;font-weight:700;color:#db2777;text-transform:uppercase;
+  letter-spacing:0.06em;margin-bottom:6px;
+}
+.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
+
+/* ── Footer ── */
+.footer{
+  text-align:center;font-size:12px;color:#bbb;line-height:1.8;
+  padding-top:16px;border-top:1px solid #e8e0d5;
+}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  body{padding:16px 12px 40px}
+  .container{padding:0}
+  .header h1{font-size:22px}
+  .card,.overview,.section{padding:18px 16px}
+  .section-header{flex-wrap:wrap;gap:8px}
+  .circle-num{width:34px;height:34px;font-size:14px}
+  .section h3{font-size:16px}
+  .flow-row{flex-direction:column;align-items:stretch}
+  .flow-arrow{display:none}
+  .dual-grid{grid-template-columns:1fr}
+  .data-row{flex-direction:column}
+  .kpi-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Lang Switch -->
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="股票大作手操盘术-ch005-info-en.html">English</a>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">50/100</div>
+    <div class="kpi-label">关键整数价位<br>200/300</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3点</div>
+    <div class="kpi-label">突破确认<br>关键法则</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">30年</div>
+    <div class="kpi-label">潜心研究<br>时间价格融合</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5个月</div>
+    <div class="kpi-label">可可600点<br>经典案例</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>股票大作手操盘术 · 第5章「关键点」</h1>
+  <h2>不论何时，只要耐心等待市场到达"关键点"之后才动手，我的交易就总能获利</h2>
+  <div class="divider"></div>
+</div>
+
+<!-- Overview (SCQA) -->
+<div class="overview">
+  <div class="overview-label">▎SCQA 框架</div>
+  <div class="overview-question">如何抓住行情启动的关键心理时机，以最小的风险博取最大的利润？</div>
+  <div class="overview-answer">
+    利弗莫尔用三十余年时间融汇时间要素与价格运动，提炼出"关键点"交易法则：<strong>S</strong>（情境）——市场始终在趋势中运行，每一次重大行情都有其启动的临界价位；<strong>C</strong>（冲突）——绝大多数交易者缺乏耐心，不是过早入场就是错过最佳时机；<strong>Q</strong>（问题）——如何精确捕捉行情启动的心理时刻？<strong>A</strong>（答案）——在关键价位耐心等待，以"3点突破"法则确认方向后建仓，静观行情自行展开，警惕危险信号果断离场。
+  </div>
+</div>
+
+<!-- Block 01: 什么是关键点 -->
+<div class="card s01">
+  <div class="section-header">
+    <div class="circle-num">01</div>
+    <div class="section-tag">核心概念</div>
+    <h3>什么是关键点</h3>
+  </div>
+  <div class="section-body">
+    <p>关键点是市场趋势启动的<strong>关键心理价位</strong>——尤其是当股价触及整数关口（50、100、200、300美元）时，一旦有效突破，几乎总会引发直线式的快速运动。利弗莫尔将其视为"标志着行情启动的关键心理时机"，在关键点动手，就永远不必为亏损焦虑。</p>
+
+    <div class="flow-row">
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 1</span>
+        识别关键价位
+        <div class="flow-label">50/100/200/300</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 2</span>
+        等待价格触及
+        <div class="flow-label">耐心守候</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 3</span>
+        3点突破确认
+        <div class="flow-label">确认方向</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 4</span>
+        逐步积累头寸
+        <div class="flow-label">按信号行动</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">
+        <span class="flow-step-num">RESULT</span>
+        静观其变
+        <div class="flow-label">等待离场信号</div>
+      </div>
+    </div>
+
+    <p>如果股票在穿越关键点之后<strong>没有按照应有的模式运行</strong>——没有出现快速上涨，反而充斥大量供给——就是一个必须密切注意的危险信号。</p>
+  </div>
+</div>
+
+<!-- Block 02: 双面信号 -->
+<div class="card s02">
+  <div class="section-header">
+    <div class="circle-num">02</div>
+    <div class="section-tag">信号识别</div>
+    <h3>双面信号：突破确认与失效</h3>
+  </div>
+  <div class="section-body">
+    <p>利弗莫尔用40美元→45美元→49½美元的具体案例，揭示了关键点附近两种典型的交易信号——市场会给出正面入市信号，也同样会给出负面出市信号，前提是你有足够的耐心等待。</p>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">✅ 未能跌破关键点</div>
+        <p>股价从当前向下回撤的低点开始<strong>上冲3点</strong>——立即买进。市场拒绝跌破关键点，说明空方力竭，新趋势即将揭幕。</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">⚠️ 跌破关键点但不足3点</div>
+        <p>股价虽跌穿40美元但<strong>幅度不到3点</strong>，随后回升至43美元（关键点+3点）——也应该买进。因为跌破无力，上涨趋势反而得到确认。</p>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-icon">🔑</div>
+      <div class="callout-text"><strong>核心法则：</strong>如果市场以明确方式验证新趋势的诞生，股价将持续上涨至下一个关键点49½美元以上——且比这个关键点高出3点或更多。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 03: 经典战役 -->
+<div class="card s03">
+  <div class="section-header">
+    <div class="circle-num">03</div>
+    <div class="section-tag">实战案例</div>
+    <h3>三大经典战役</h3>
+  </div>
+  <div class="section-body">
+    <p>利弗莫尔以亲身经历展示了关键点交易法的威力——以及在危险信号出现时果断退场的纪律。</p>
+
+    <div class="data-row">
+      <div class="data-card pink">
+        <div class="data-big">100→300</div>
+        <div class="data-sm">森蚺公司<br>Anaconda Copper</div>
+        <div class="data-note">突破100、200、300美元三次如法炮制。第三次突破后缺乏活力，充斥大量供给——果断卖出，避开暴跌至225美元。</div>
+      </div>
+      <div class="data-card gold">
+        <div class="data-big">87¾→155</div>
+        <div class="data-sm">伯利恒钢铁<br>Bethlehem Steel</div>
+        <div class="data-note">1915年4月，突破关键点后<strong>5天内</strong>上涨至155美元。在200、300、400美元继续依葫芦画瓢。</div>
+      </div>
+      <div class="data-card indigo">
+        <div class="data-big">600点</div>
+        <div class="data-sm">可可期货<br>Cocoa 1936-1937</div>
+        <div class="data-note">5个月内上涨600点，从6.88飙升至12.86美元。关键点突破揭示供给短缺，提供绝佳操作机会。</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">自从那些日子以来……只要有关键点可资参照，我就很少错过这种大场面。</div>
+      <div class="quote-author">— 杰西·利弗莫尔</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 04: 时间价格融合 -->
+<div class="card s04">
+  <div class="section-header">
+    <div class="circle-num">04</div>
+    <div class="section-tag">记录方法</div>
+    <h3>时间与价格的融合</h3>
+  </div>
+  <div class="section-body">
+    <p>利弗莫尔的行情记录方法是三十余年潜心研究的结晶。起初记录并无助益，一而再、再而三地改进，直到将<strong>时间要素与价格运动融合</strong>——行情记录才开始对他说话。</p>
+
+    <div class="flow-row">
+      <div class="flow-step">
+        <span class="flow-step-num">阶段1</span>
+        亲手记录
+        <div class="flow-label">每笔价格数据</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">阶段2</span>
+        融入时间
+        <div class="flow-label">时间价格融合</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">阶段3</span>
+        形态浮现
+        <div class="flow-label">清晰市场轮廓</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="flow-step-num">阶段4</span>
+        定位关键点
+        <div class="flow-label">揭示操作机会</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">
+        <span class="flow-step-num">结果</span>
+        记录说话
+        <div class="flow-label">预期未来运动</div>
+      </div>
+    </div>
+
+    <p>利弗莫尔强调："我不认为这些行情记录是完美无瑕的，不过，它们对我的帮助无可替代。"<strong>亲手维护记录</strong>的过程本身就是一种训练——你必须亲手选择数据、亲手填入记录本、亲手标记关键点。</p>
+  </div>
+</div>
+
+<!-- Block 05: 交易纪律 -->
+<div class="card s05">
+  <div class="section-header">
+    <div class="circle-num">05</div>
+    <div class="section-tag">交易纪律</div>
+    <h3>交易者的修行</h3>
+  </div>
+  <div class="section-body">
+    <p>耐心与纪律是运用关键点交易法的核心。利弗莫尔坦言："每次当我失去耐心，不是等待关键点到来的时机，而是胡乱交易企图快快获利的时候，就总是赔钱。"</p>
+
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-label">✅ 正确之道</div>
+        <p>耐心等待关键点到来<br>独立发掘机会、自主交易<br>密切注视危险信号<br>亲手记录行情数据<br>依靠自己的判断获利</p>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-label">❌ 错误之道</div>
+        <p>没有耐心、胡乱交易<br>听信内幕消息或他人建议<br>忽视危险信号<br>不研究行情记录<br>依赖他人指导买卖</p>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">💡</div>
+      <div class="callout-text"><strong>利弗莫尔的忠告：</strong>通过内幕消息或他人指导或许也能获利——但你将发现，自己独立赢得的利润更能带来巨大的成就感。如果你独立发掘机会，独立自主地交易，耐心守候、密切注视危险信号，就能进入良性的思维轨道。</div>
+    </div>
+
+    <p>那则轶事尤为有趣：一位女士向利弗莫尔索要建议，他推荐Cerro de Pasco（已突破关键点），该股一周上涨15点。然而当他通知卖出时，女士才坦言自己根本没买——"想先看看我的消息是不是准确"。小道消息的世界就是这样摇摆不定。</p>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-icon">🔑</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p><strong>关键点交易法的精髓：</strong>市场在适当时机会发出正面入市信号，也同样会发出负面出市信号——只要你足够耐心。结合时间要素记录价格，亲手维护行情记录，你就能发现关键点并借助它们建立头寸。当股票在穿越关键点后缺乏后续活力，市场极易掉转方向，应即刻了结头寸。研究关键点的过程就像挖掘金矿——令人难以置信地迷人，而独立自主赢得的利润将带来无与伦比的成就感。</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：杰西·利弗莫尔《股票大作手操盘术》第5章「关键点」<br>
+  信息图生成日期：2026年6月17日 · 仅供参考学习，不构成投资建议
+</div>
+
+</div><!-- /container -->
+
+</body>
+</html>
