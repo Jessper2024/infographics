@@ -3,514 +3,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Trade in Stocks · Chapter 10 "Livermore's Trading Chart Manuscripts and Explanations"</title>
+<title>How to Trade in Stocks · Ch.10 "Livermore's Trading Chart Manuscripts and Explanations"</title>
 <style>
-@font-face {
-  font-family: 'FZXPYZS';
-  src: url('../方正屏显雅宋简体.TTF') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
 
-/* ── Reset & Base ── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:#f5f1eb;color:#1a1a1a;
-  font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
-  line-height:1.6;-webkit-font-smoothing:antialiased;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px 60px;
-}
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
 
-/* ── Container ── */
-.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
 
-/* ── Lang Switch ── */
-.lang-switch{text-align:right;margin-bottom:16px}
-.lang-btn{
-  display:inline-block;padding:6px 16px;border-radius:8px;
-  font-size:13px;text-decoration:none;letter-spacing:0.03em;
-  font-family:'FZXPYZS','PingFang SC',serif;
-  background:#fef2f2;color:#dc2626;border:1px solid #fecaca;
-  transition:opacity 0.15s;
-}
-.lang-btn:hover{opacity:0.75}
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
 
-/* ── KPI Row ── */
-.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
-.kpi-card{
-  flex:1;min-width:120px;
-  background:#fff;border:1px solid #e8e0d5;border-radius:12px;
-  padding:20px 16px;text-align:center;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03);
-}
-.kpi-num{font-size:32px;font-weight:700;color:#db2777;letter-spacing:-0.02em}
-.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
 
-/* ── Header ── */
-.header h1{
-  font-size:36px;font-weight:400;color:#1a1a1a;
-  letter-spacing:0.03em;margin-bottom:8px;
-  font-family:'FZXPYZS','PingFang SC',serif;
-}
-.header h2{
-  font-size:14px;font-weight:400;color:#888;
-  letter-spacing:0.02em;line-height:1.7;
-  font-family:'FZXPYZS','PingFang SC',serif;
-}
-.divider{
-  width:60px;height:3px;border-radius:2px;
-  background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#4f46e5,#db2777);
-  margin:20px 0 24px;
-}
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
 
-/* ── Cards ── */
-.card{
-  background:#fff;border:1px solid #e8e0d5;border-radius:14px;
-  padding:28px 32px;margin-bottom:18px;
-  box-shadow:0 1px 8px rgba(0,0,0,0.03);
-}
-.overview{
-  background:#fdf2f8;border:2px solid #fbcfe8;
-  border-radius:14px;padding:24px 28px;margin-bottom:18px;
-}
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
 
-/* ── Overview ── */
-.overview-label{
-  font-size:11px;font-weight:700;color:#db2777;
-  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
-}
-.overview-question{
-  font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px;
-}
-.overview-answer{
-  font-size:15px;color:#555;line-height:2.0;
-}
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
 
-/* ── Section Base ── */
-.section-header{
-  display:flex;align-items:center;gap:12px;margin-bottom:16px;
-}
-.circle-num{
-  width:42px;height:42px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;font-weight:700;flex-shrink:0;
-}
-.section-tag{
-  font-size:12px;padding:3px 10px;border-radius:20px;
-  font-weight:500;letter-spacing:0.02em;
-}
-.section h3{font-size:18px;font-weight:700}
-.section-body p{
-  font-size:15px;color:#555;line-height:2.0;margin-bottom:12px;
-}
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
 
-/* ── Per-section color classes ── */
-.s01{border-left:4px solid #dc2626}
-.s01 .circle-num{background:#fef2f2;color:#dc2626}
-.s01 .section-tag{background:#fef2f2;color:#dc2626}
-.s01 h3{color:#dc2626}
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
 
-.s02{border-left:4px solid #ea580c}
-.s02 .circle-num{background:#fff7ed;color:#ea580c}
-.s02 .section-tag{background:#fff7ed;color:#ea580c}
-.s02 h3{color:#ea580c}
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
 
-.s03{border-left:4px solid #ca8a04}
-.s03 .circle-num{background:#fefce8;color:#ca8a04}
-.s03 .section-tag{background:#fefce8;color:#ca8a04}
-.s03 h3{color:#ca8a04}
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
 
-.s04{border-left:4px solid #4f46e5}
-.s04 .circle-num{background:#eef2ff;color:#4f46e5}
-.s04 .section-tag{background:#eef2ff;color:#4f46e5}
-.s04 h3{color:#4f46e5}
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
 
-.s05{border-left:4px solid #db2777}
-.s05 .circle-num{background:#fdf2f8;color:#db2777}
-.s05 .section-tag{background:#fdf2f8;color:#db2777}
-.s05 h3{color:#db2777}
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
 
-/* ── Quote Block ── */
-.quote-block{
-  background:#faf5ff;border-left:4px solid #c084fc;border-radius:0 10px 10px 0;
-  padding:16px 20px;margin-top:14px;position:relative;
-}
-.quote-mark{
-  position:absolute;top:-10px;left:12px;
-  font-size:32px;color:#c084fc;font-family:Georgia,serif;line-height:1;
-}
-.quote-text{
-  font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px;
-}
-.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
 
-/* ── Dual Grid ── */
-.dual-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;
-}
-.dual-card{border-radius:10px;padding:16px 18px}
-.dual-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
-.dual-card.bad{background:#fef2f2;border:1px solid #fecaca}
-.dual-label{font-size:13px;font-weight:700;margin-bottom:6px}
-.dual-card.good .dual-label{color:#166534}
-.dual-card.bad .dual-label{color:#991b1b}
-.dual-card p{font-size:13px;color:#555;line-height:1.8}
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
 
-/* ── Flow Row ── */
-.flow-row{
-  display:flex;align-items:flex-start;justify-content:center;
-  gap:8px;margin-top:16px;flex-wrap:wrap;
-}
-.flow-step,.flow-step.end{
-  background:#fff7ed;border:2px solid #fed7aa;border-radius:10px;
-  padding:14px 16px;text-align:center;font-size:13px;
-  color:#9a3412;font-weight:700;min-width:95px;
-}
-.flow-step-num{
-  display:block;font-size:11px;font-weight:400;color:#ea580c;
-  margin-bottom:4px;letter-spacing:0.04em;
-}
-.flow-step.end{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
-.flow-label{font-size:11px;font-weight:400;color:#888;margin-top:4px}
-.flow-arrow{font-size:18px;color:#ea580c;font-weight:700;padding-top:14px}
-
-/* ── Data Row ── */
-.data-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
-.data-card{
-  flex:1;min-width:140px;
-  border-radius:12px;padding:20px 16px;text-align:center;
-}
-.data-card.pink{background:#fdf2f8;border:1px solid #fbcfe8}
-.data-card.gold{background:#fefce8;border:1px solid #fde68a}
-.data-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
-.data-big{font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1.3}
-.data-card.pink .data-big{color:#db2777}
-.data-card.gold .data-big{color:#ca8a04}
-.data-card.indigo .data-big{color:#4f46e5}
-.data-sm{font-size:12px;color:#888;margin-top:6px;line-height:1.6}
-.data-note{font-size:12px;color:#555;margin-top:8px;line-height:1.6}
-
-/* ── Callout ── */
-.callout{
-  display:flex;gap:10px;align-items:flex-start;
-  border-radius:10px;padding:14px 16px;margin-top:14px;
-}
-.callout.warn{background:#fffbeb;border:1px solid #fde68a}
-.callout.info{background:#eff6ff;border:1px solid #bfdbfe}
-.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.callout-text{font-size:13px;color:#555;line-height:1.8}
-.callout-text strong{color:#1a1a1a}
-
-/* ── Six-Column Grid ── */
-.six-col-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;
-}
-.col-card{
-  border-radius:10px;padding:14px 12px;text-align:center;
-  font-size:12px;line-height:1.7;
-}
-.col-card.black-ink{background:#f8f8f8;border:2px solid #333}
-.col-card.black-ink .col-title{color:#1a1a1a}
-.col-card.red-ink{background:#fef2f2;border:2px solid #dc2626}
-.col-card.red-ink .col-title{color:#dc2626}
-.col-card.pencil{background:#fafaf5;border:1px dashed #c5b99a}
-.col-card.pencil .col-title{color:#a0895c}
-.col-title{font-size:13px;font-weight:700;margin-bottom:4px;display:block}
-.col-desc{font-size:11px;color:#888}
-
-/* ── Takeaway ── */
-.takeaway{
-  background:#fdf2f8;border:2px solid #fbcfe8;border-radius:14px;
-  padding:24px 28px;margin-bottom:18px;
-  display:flex;gap:16px;align-items:flex-start;
-}
-.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
-.takeaway-label{
-  font-size:13px;font-weight:700;color:#db2777;text-transform:uppercase;
-  letter-spacing:0.06em;margin-bottom:6px;
-}
-.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
-
-/* ── Footer ── */
-.footer{
-  text-align:center;font-size:12px;color:#bbb;line-height:1.8;
-  padding-top:16px;border-top:1px solid #e8e0d5;
-}
-
-/* ── Responsive ── */
-@media(max-width:640px){
-  body{padding:16px 12px 40px}
-  .container{padding:0}
-  .header h1{font-size:22px}
-  .card,.overview,.section{padding:18px 16px}
-  .section-header{flex-wrap:wrap;gap:8px}
-  .circle-num{width:34px;height:34px;font-size:14px}
-  .section h3{font-size:16px}
-  .flow-row{flex-direction:column;align-items:stretch}
-  .flow-arrow{display:none}
-  .dual-grid{grid-template-columns:1fr}
-  .data-row{flex-direction:column}
-  .six-col-grid{grid-template-columns:repeat(2,1fr)}
-  .kpi-row{flex-direction:column}
-}
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
 .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
 </head>
 <body>
-
 <div class="container">
-
-<!-- Lang Switch -->
-<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← 返回章节目录</a></div>
+<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← Back to Catalog</a></div>
 <div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="livermore-caopan-ch010-info-zh.html">中文版</a>
+  <a class="lang-btn" target="_blank" href="livermore-caopan-ch010-info-zh.html">中文 / English</a>
 </div>
 
-<!-- KPI Row -->
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-num">16</div>
-    <div class="kpi-label">Trading Charts<br>Complete Record</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">6 Cols</div>
-    <div class="kpi-label">Systematic<br>Trend Classification</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">6/12 pts</div>
-    <div class="kpi-label">Single/Composite<br>Reversal Threshold</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">23 Months</div>
-    <div class="kpi-label">Mar 1938 – Feb 1940<br>Full Cycle</div>
-  </div>
+<h1>How to Trade in Stocks · Ch.10 "Livermore's Trading Chart Manuscripts and Explanations"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  The market always moves in trends, with every long-short transition leaving traces in price movements — this chapter presents 16 complete chart manuscripts of U.S. Steel from March 1938 to February 1940.
+  Most traders get lost in intraday noise, waiting for external "good news" before acting.
+  How can systematic recording reduce complex price movements to actionable trading signals? The answer: using a six-column table as the framework, let the market tell you when to act through price behavior itself.
+</p>
+<div class="divider"></div>
+
+<!-- Overview -->
+<div class="splash">
+  This chapter is the live-fire demonstration of the Livermore Market Analysis Method — using 23 months of real U.S. Steel price action, it presents the complete process from a downward trend to an upward trend, through consolidation phases, to a full bull-bear cycle. The 16 manuscripts prove three eternal truths: first, market action itself is always the first and only signal — steel stocks warned 4 months before the news broke; second, price patterns repeat, making it more important to identify pivotal psychological moments than to chase volatility; third, composite prices effectively filter out false signals. Maintain records personally, and let the market speak to you through price behavior.
 </div>
 
-<!-- Header -->
-<div class="header">
-  <h1>How to Trade in Stocks · Chapter 10 "Livermore's Trading Chart Manuscripts and Explanations"</h1>
-  <h2>Market action itself is the only signal — no need to wait for an external "good reason"</h2>
-  <div class="divider"></div>
-</div>
-
-<!-- Overview (SCQA) -->
-<div class="overview">
-  <div class="overview-label">▎SCQA Framework</div>
-  <div class="overview-question">How can traders systematically record and interpret price movements to identify trend changes without relying on any external information?</div>
-  <div class="overview-answer">
-    Livermore spent over thirty years answering this question: <strong>S</strong> (Situation) — The market always operates in trends. Every shift between bull and bear leaves traces in price action. This chapter presents 16 complete chart manuscripts of U.S. Steel from March 1938 to February 1940. <strong>C</strong> (Conflict) — Most traders get lost in daily noise, waiting for external "good news" before acting, not realizing that market action itself is the only signal. <strong>Q</strong> (Question) — How can a systematic recording method reduce complex price movements into actionable trading signals? <strong>A</strong> (Answer) — Build a six-column table (Uptrend / Downtrend / Natural Rally / Natural Reaction / Secondary Rally / Secondary Reaction), use 6 points (single stock) or 12 points (composite price) as reversal thresholds, 3 points for entry confirmation, and distinguish trend phases with black ink, red ink, and pencil — letting the market tell you when to act through price behavior alone.
-  </div>
-</div>
-
-<!-- Block 01: Six-Column System -->
-<div class="card s01">
-  <div class="section-header">
-    <div class="circle-num">01</div>
-    <div class="section-tag">Recording System</div>
-    <h3>The Six-Column Method: Livermore's Trend Dashboard</h3>
-  </div>
+<!-- 01: Six-Column Recording -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
   <div class="section-body">
-    <p><strong>The six-column classification is Livermore's systematic framework for reducing complex price movements into actionable signals.</strong> He decomposed each leading stock's price action into six states — Secondary Rally, Natural Rally, Uptrend, Downtrend, Natural Reaction, Secondary Reaction — forming a complete trend-monitoring system.</p>
-
-    <div class="six-col-grid">
-      <div class="col-card black-ink">
-        <span class="col-title">🖋 Uptrend</span>
-        <span class="col-desc">Black Ink<br>Buy / Hold Signal</span>
+    <div class="tag tag-01">Recording System</div>
+    <div class="section-title t-01">The Six-Column Recording Method — Livermore's Trend Dashboard</div>
+    <div class="section-desc">The six-column classification breaks down each leading stock's price movement into six states: Secondary Rally, Natural Rally, Upward Trend, Downward Trend, Natural Reaction, Secondary Reaction — forming a complete trend monitoring system. Upward and downward trends use ink because they represent clear direction; the remaining four columns use pencil because they are merely adjustment phases.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Upward / Downward Trend</div>
+        <div class="confusion-arrow">Ink</div>
+        <div class="confusion-right">Black ink Buy/Hold · Red ink Sell/Watch — clear trade signals</div>
       </div>
-      <div class="col-card red-ink">
-        <span class="col-title">🔴 Downtrend</span>
-        <span class="col-desc">Red Ink<br>Sell / Stand Aside</span>
+      <div class="confusion-row">
+        <div class="confusion-left">Natural Rally / Reaction</div>
+        <div class="confusion-arrow">Pencil</div>
+        <div class="confusion-right">Adjustment phase — await 6-point turn to confirm direction</div>
       </div>
-      <div class="col-card pencil">
-        <span class="col-title">✏️ Natural Rally</span>
-        <span class="col-desc">Pencil<br>Await Confirmation</span>
-      </div>
-      <div class="col-card pencil">
-        <span class="col-title">✏️ Natural Reaction</span>
-        <span class="col-desc">Pencil<br>Await Confirmation</span>
-      </div>
-      <div class="col-card pencil">
-        <span class="col-title">✏️ Secondary Rally</span>
-        <span class="col-desc">Pencil<br>Await Confirmation</span>
-      </div>
-      <div class="col-card pencil">
-        <span class="col-title">✏️ Secondary Reaction</span>
-        <span class="col-desc">Pencil<br>Await Confirmation</span>
+      <div class="confusion-row">
+        <div class="confusion-left">Secondary Rally / Reaction</div>
+        <div class="confusion-arrow">Pencil</div>
+        <div class="confusion-right">Deeper adjustment — record fluctuation within pivotal points</div>
       </div>
     </div>
-
-    <div class="callout warn">
-      <div class="callout-icon">📐</div>
-      <div class="callout-text"><strong>Reversal &amp; Confirmation Rules:</strong> A single stock uses 6 points as the reversal threshold — if it retraces more than 6 points during an uptrend, it moves to the Natural Reaction column. Composite prices (synthesized from two stocks) use 12 points to filter out false signals. Regardless of direction, a <strong>3-point breakthrough</strong> at the pivotal point is required to confirm the new trend.</div>
-    </div>
-
-    <p>Uptrend and Downtrend are recorded in ink because they represent clear directional trends; the other four columns are in pencil — these are merely adjustment phases that have not yet formed a trend and require further price action to confirm direction.</p>
   </div>
 </div>
 
-<!-- Block 02: Charts 1–5 Trend Reversal -->
-<div class="card s02">
-  <div class="section-header">
-    <div class="circle-num">02</div>
-    <div class="section-tag">Trend Reversal</div>
-    <h3>From Downtrend to Uptrend: A Textbook Reversal (Charts 1–5)</h3>
-  </div>
+<!-- 02: Trend Reversal -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
   <div class="section-body">
-    <p><strong>Charts 1 through 5 record U.S. Steel's complete seven-month journey from downtrend to uptrend — each phase triggered naturally by price action, never by subjective prediction.</strong> Livermore marked downtrend boundaries with double red lines and uptrend breakout points with double black lines, visually presenting the bull-bear watershed.</p>
-
+    <div class="tag tag-02">Trend Transition</div>
+    <div class="section-title t-02">From Downward to Upward — A Textbook Trend Reversal (Charts 1–5)</div>
+    <div class="section-desc">Charts 1–5 record U.S. Steel completing a full transition from a downward to an upward trend over 7 months — each stage triggered naturally by price behavior. Chart 3 is especially critical: during the Natural Reaction phase, the price never breached the prior low — this is a positive signal that sellers have lost momentum.</div>
     <div class="flow-row">
-      <div class="flow-step">
-        <span class="flow-step-num">Chart 1</span>
-        Downtrend
-        <div class="flow-label">Mar 23 – May 6<br>Prices declining</div>
-      </div>
+      <div class="flow-step">Chart 1<br>Downward Trend<br>Mar 23–May 6</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <span class="flow-step-num">Chart 2</span>
-        Natural Rally
-        <div class="flow-label">May 3 – Jun 15<br>Bounce from low</div>
-      </div>
+      <div class="flow-step">Chart 2<br>Natural Rally<br>May 3–Jun 15</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <span class="flow-step-num">Chart 3</span>
-        Natural Reaction
-        <div class="flow-label">Jun 9 – Aug 5<br>Pullback, no new low</div>
-      </div>
+      <div class="flow-step">Chart 3<br>Natural Reaction<br>No new low</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <span class="flow-step-num">Chart 4</span>
-        Secondary Rally
-        <div class="flow-label">Jul 27 – Sep 19<br>Retests pivotal point</div>
-      </div>
+      <div class="flow-step">Chart 4<br>Secondary Rally<br>Retests key point</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step end">
-        <span class="flow-step-num">Chart 5</span>
-        Uptrend
-        <div class="flow-label">Sep 13 – Oct 24<br>3-pt breakout confirmed</div>
-      </div>
+      <div class="flow-step end">Chart 5<br>Upward Trend<br>3-pt breakout confirms</div>
     </div>
-
-    <p>Chart 3 is especially critical — the Natural Reaction <strong>did not breach the prior low</strong>, a positive signal: sellers had lost momentum and buyers were gathering strength. Once the price broke through the pivotal point with 3-point confirmation in Chart 5, Livermore switched from pencil to black ink, officially marking the uptrend as established.</p>
   </div>
 </div>
 
-<!-- Block 03: Charts 6–10 Adjustment Phase -->
-<div class="card s03">
-  <div class="section-header">
-    <div class="circle-num">03</div>
-    <div class="section-tag">Trend Continuation</div>
-    <h3>Adjustments Within a Trend: Distinguishing Normal Pauses from Dangerous Reversals (Charts 6–10)</h3>
-  </div>
+<!-- 03: Mid-Trend Adjustments -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
   <div class="section-body">
-    <p><strong>An uptrend cannot advance in a straight line — through Charts 6–10 (Nov 12, 1938 – May 31, 1939), Livermore shows how to distinguish between "normal resting" and "trend termination" during corrections.</strong> The essence of these charts is not predicting when an adjustment will end, but clarifying which signals are worth acting on.</p>
-
+    <div class="tag tag-03">Mid-Trend</div>
+    <div class="section-title t-03">Distinguishing Normal Pauses from Dangerous Reversals (Charts 6–10)</div>
+    <div class="section-desc">An upward trend cannot advance in a straight line. Charts 6–10 (Nov 12, 1938–May 31, 1939) show how to distinguish between a "normal pause" and "trend termination" during adjustments. The essence is not predicting when the adjustment will end, but knowing exactly what signal is worth acting on.</div>
     <div class="dual-grid">
-      <div class="dual-card good">
-        <div class="dual-label">✅ Natural Reaction (Normal Correction)</div>
-        <p>During an uptrend, price declines more than 6 points and moves to the Natural Reaction column. As long as it doesn't further evolve into a downtrend, this is merely a normal pause on the upward path. Livermore's strategy: <strong>hold position, observe closely</strong>.</p>
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Natural Reaction — Normal Pause</h4>
+          <p>Price drops 6+ points within an uptrend<br>As long as it does not become a downtrend<br>It's just a normal rest on the way up<br>Strategy: Hold, watch closely</p>
+        </div>
       </div>
-      <div class="dual-card bad">
-        <div class="dual-label">⚠️ Secondary Reaction (Deepening Correction)</div>
-        <p>After a Natural Reaction, prices continue downward — the correction deepens and moves to the Secondary Reaction column. Heightened vigilance is required: if this further evolves into a downtrend, the uptrend is over. Livermore's strategy: <strong>watch for breakdown, be ready for either direction</strong>.</p>
+      <div class="dual-card yes">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>Secondary Reaction — Deepening Pullback</h4>
+          <p>After Natural Reaction, continues lower<br>Adjustment deepens to Secondary Reaction<br>If it further evolves into a downtrend<br>Strategy: Watch for breakdown, prepare both ways</p>
+        </div>
       </div>
-    </div>
-
-    <div class="callout info">
-      <div class="callout-icon">🔑</div>
-      <div class="callout-text"><strong>Core discipline during adjustments:</strong> Do not enter on a whim during corrections — unless the signal that the adjustment has ended is unambiguous. Track closely when the trend is clear; observe carefully for signs of adjustment termination and trend continuation or reversal when in a consolidation phase.</div>
     </div>
   </div>
 </div>
 
-<!-- Block 04: Charts 11–16 Complete Cycle -->
-<div class="card s04">
-  <div class="section-header">
-    <div class="circle-num">04</div>
-    <div class="section-tag">Full Cycle</div>
-    <h3>Twists and Turns: A 23-Month Complete Trend Cycle (Charts 11–16)</h3>
-  </div>
+<!-- 04: Full Cycle -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
   <div class="section-body">
-    <p><strong>Charts 11–16 (Jun 16, 1939 – Feb 19, 1940) showcase the most complex bull-bear transitions — Uptrend → Downtrend → Reversal back to Uptrend → Falling into Downtrend again: a complete bull-bear cycle.</strong> This set proves that Livermore's recording system maintains clear directional awareness under any market conditions.</p>
-
+    <div class="tag tag-04">Full Cycle</div>
+    <div class="section-title t-04">A Complete 23-Month Bull-Bear Cycle (Charts 11–16)</div>
+    <div class="section-desc">Charts 11–16 display the most complex long-short transitions — Upward → Downward → Reversal back to Upward → Falling into Downward again, a complete bull-bear cycle. After September 1939, steel stocks conspicuously failed to make new highs alongside the other groups — the market was silently issuing its warning, four months before the news broke.</div>
     <div class="data-row">
-      <div class="data-card pink">
-        <div class="data-big">Up → Down</div>
-        <div class="data-sm">Trend Termination Signal</div>
-        <div class="data-note">The uptrend ends and moves to the Downtrend column — red ink replaces black. After September 1939, steel stocks failed to make new highs in sync with other stock groups — the market was already sending a silent warning.</div>
+      <div class="data-card d1">
+        <div class="data-big">📉</div>
+        <div class="data-name">Upward → Downward</div>
+        <div class="data-sm">Trend termination signal<br>Red ink replaces black<br>Sept 1939 steel stocks<br>Failed to sync with groups</div>
       </div>
-      <div class="data-card gold">
-        <div class="data-big">Down → Reversal</div>
-        <div class="data-sm">False Break or True Turn?</div>
-        <div class="data-note">Price regains the pivotal point, but whether it secures 3-point confirmation is the key. Livermore's system precisely distinguishes between a "bull trap bounce" and a genuine trend reversal here.</div>
+      <div class="data-card d2">
+        <div class="data-big">🔄</div>
+        <div class="data-name">Downward → Reversal</div>
+        <div class="data-sm">Price retakes key point<br>3-pt breakout is the key<br>Precisely distinguishes<br>fake rally from real reversal</div>
       </div>
-      <div class="data-card indigo">
-        <div class="data-big">Back to Down</div>
-        <div class="data-sm">Full Cycle Confirmed</div>
-        <div class="data-note">The reversal fails — the market re-enters a downtrend. The translator overlaid Livermore's records with actual U.S. Steel prices and the Dow Jones Industrial Average — the three align closely, validating the recording method's effectiveness.</div>
+      <div class="data-card d3">
+        <div class="data-big">📉</div>
+        <div class="data-name">Back to Downward</div>
+        <div class="data-sm">Reversal fails<br>Full cycle confirmed<br>Translator verified<br>Three charts highly aligned</div>
       </div>
-    </div>
-
-    <div class="quote-block">
-      <div class="quote-mark">"</div>
-      <div class="quote-text">Translator's Note Figure 5 compares Livermore's records side by side with U.S. Steel price action and the Dow Jones Industrial Average, confirming that Livermore's rules always center on the trend, highlight trend-assessment functions, and ignore minor fluctuations that provide no trend information — this is precisely the essence of his method.</div>
-      <div class="quote-author">— Chapter 10, Translator's Note</div>
     </div>
   </div>
 </div>
 
-<!-- Block 05: Key Trading Lessons -->
-<div class="card s05">
-  <div class="section-header">
-    <div class="circle-num">05</div>
-    <div class="section-tag">Trading Wisdom</div>
-    <h3>Four Core Lessons Revealed by the Manuscripts</h3>
-  </div>
+<!-- 05: Four Key Lessons -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
   <div class="section-body">
-    <p><strong>Livermore's manuscripts are not merely technical records — they are a textbook on market psychology and discipline.</strong> Beyond the six-column table and reversal rules, these 16 charts reveal profound insights about the nature of markets.</p>
-
-    <div class="dual-grid">
-      <div class="dual-card good">
-        <div class="dual-label">✅ What Livermore's System Captures</div>
-        <p>Market action itself is the only signal — steel stocks warned of trouble in September 1939, four months before the reason (UK and Canadian government selling) was publicly revealed<br><br>
-        Price patterns repeat — identifying key psychological moments matters more than chasing daily fluctuations<br><br>
-        Composite prices outperform singles — synthesizing two stocks effectively filters false signals</p>
+    <div class="tag tag-05">Trading Wisdom</div>
+    <div class="section-title t-05">Four Core Lessons Revealed by the Manuscripts</div>
+    <div class="section-desc">The 16 manuscripts are not just technical records — they are a textbook on market psychology and discipline. Beyond the six-column table and reversal rules, these charts reveal profound insights about the nature of markets: market action itself is the only signal, price patterns repeat, composite prices outperform single stocks, and maintaining records personally is training in itself.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Market Action = Only Signal</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">4 months ahead</div>
       </div>
-      <div class="dual-card bad">
-        <div class="dual-label">❌ What Most Traders Get Wrong</div>
-        <p>Waiting for external "good news" to act — while the market had already turned long before the announcement<br><br>
-        Chasing daily fluctuations — unable to see the forest for the trees, missing trend-level opportunities<br><br>
-        Relying on a single ticker — frequently misled by false breakouts and noise</p>
+      <div class="risk-row">
+        <div class="risk-label">Price Patterns Repeat</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div>
+        <div class="risk-val">Key moments matter</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Composite Price Filters Fakes</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:75%"></div></div>
+        <div class="risk-val">Two-stock verify</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Personal Recording = Training</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:82%"></div></div>
+        <div class="risk-val">Market speaks to you</div>
       </div>
     </div>
-
-    <div class="callout info">
-      <div class="callout-icon">💡</div>
-      <div class="callout-text"><strong>Livermore's counsel:</strong> Maintaining the price record by hand is itself a form of training — you must personally select the data, personally fill in the record book, personally mark the pivotal points. In this process, the market speaks to you through your pen. The six-column recording method is not a prediction tool — it is a tool for <strong>listening to the language of the market</strong>.</div>
-    </div>
-
-    <p>In the presence of these 16 manuscripts, any "inside information" or "expert advice" pales into insignificance — because price has already said everything.</p>
   </div>
 </div>
 
-<!-- Takeaway -->
+<!-- Key Takeaway -->
 <div class="takeaway">
-  <div class="takeaway-icon">🔑</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">Key Takeaway</div>
-    <p><strong>The essence of Livermore's six-column recording method:</strong> Reduce price movements to Uptrend (black ink), Downtrend (red ink), and four adjustment states (pencil), with 6 points (single stock) or 12 points (composite) as reversal thresholds and 3 points for breakout confirmation. The 16 chart manuscripts prove three timeless truths: First, market action itself is the only and earliest signal — steel stocks warned of trouble four months before the public news; Second, price patterns repeat — recognizing key psychological moments is more important than chasing fluctuations; Third, composite prices effectively filter false signals. Maintain your own price records by hand, and let the market speak to you through price behavior — this is the most valuable legacy Livermore left to traders.</p>
-  </div>
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The essence of Livermore's six-column recording method: reduce price movements to Upward Trend (black ink), Downward Trend (red ink), and four adjustment states (pencil), with 6 points (single) or 12 points (composite) as the reversal threshold, and 3-point breakout as the confirmation signal. The 16 manuscripts prove three eternal truths: first, market action itself is always the first and only signal; second, price patterns repeat — identifying pivotal psychological moments matters more than chasing volatility; third, composite prices effectively filter out false signals. Maintain records personally, and let the market speak to you through price behavior — this is the most precious legacy Livermore left for traders.</div>
 </div>
 
 <!-- Footer -->
 <div class="footer">
-  Source: Jesse Livermore, <em>How to Trade in Stocks</em>, Chapter 10 "Livermore's Trading Chart Manuscripts and Explanations"<br>
-  Posts &amp; Telecom Press 2012 · Infographic generated June 17, 2026 · For educational purposes only, not investment advice
+  How to Trade in Stocks · Ch.10 Infographic · Jesse Livermore · Based on Chapter 10 · For Educational Purposes
 </div>
 
-</div><!-- /container -->
-
+</div>
 </body>
 </html>

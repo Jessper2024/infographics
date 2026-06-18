@@ -3,498 +3,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The New Sell & Sell Short · Ch.7 Shorting Stocks</title>
+<title>The New Sell &amp; Sell Short · Ch.7 Shorting Stocks</title>
 <style>
-@font-face {
-  font-family: 'FZXPYZS';
-  src: url('../方正屏显雅宋简体.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
 
-body {
-  background: #f5f1eb;
-  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
-  color: #555;
-  line-height: 2.0;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
 
-.container {
-  max-width: 880px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px 32px 60px;
-}
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
 
-/* ====== Language Switch ====== */
-.lang-switch { text-align: right; margin-bottom: 16px; }
-.lang-btn {
-  display: inline-block; padding: 6px 16px; border-radius: 8px;
-  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  background: #ecfeff; color: #0891b2; border: 1px solid #a5f3fc;
-  transition: opacity 0.15s;
-}
-.lang-btn:hover { opacity: 0.75; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
 
-/* ====== KPI Row ====== */
-.kpi-row {
-  display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;
-}
-.kpi-card {
-  flex: 1; min-width: 120px;
-  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
-  padding: 20px 16px; text-align: center;
-}
-.kpi-num { font-size: 32px; font-weight: bold; color: #0891b2; letter-spacing: -0.02em; }
-.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
 
-/* ====== Header ====== */
-.header { margin-bottom: 24px; }
-.header h1 {
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  font-size: 36px; font-weight: 400; color: #1a1a1a;
-  letter-spacing: 0.03em; line-height: 1.3;
-}
-.header h2 {
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  font-size: 14px; font-weight: 400; color: #888;
-  letter-spacing: 0.02em; margin-top: 8px; line-height: 1.6;
-}
-.divider {
-  width: 60px; height: 3px; border-radius: 2px;
-  background: linear-gradient(90deg, #0891b2, transparent);
-  margin: 24px 0 32px;
-}
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
 
-/* ====== Cards ====== */
-.card {
-  background: #ffffff;
-  border: 1px solid #e8e0d5;
-  border-radius: 14px;
-  padding: 28px 32px;
-  margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-}
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
 
-/* ====== Overview ====== */
-.overview { border-left: 4px solid #0891b2; }
-.overview-label {
-  font-size: 13px; font-weight: 700; color: #0891b2;
-  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
-}
-.overview h3 { font-size: 18px; color: #1a1a1a; margin-bottom: 10px; }
-.overview p { margin-bottom: 8px; }
-.overview p:last-child { margin-bottom: 0; }
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
 
-/* ====== Section ====== */
-.section { border-left: 4px solid; }
-.section-header {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
-}
-.circle-num {
-  width: 42px; height: 42px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; font-weight: 700; flex-shrink: 0;
-}
-.section-tag {
-  font-size: 12px; padding: 3px 10px; border-radius: 20px;
-  font-weight: 500; letter-spacing: 0.02em;
-}
-.section h3 {
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  font-size: 18px; font-weight: 700;
-}
-.section-body p { margin-bottom: 12px; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
 
-/* ====== Flow Chart ====== */
-.flow-row {
-  display: flex; align-items: flex-start; justify-content: center;
-  gap: 8px; margin-top: 16px; flex-wrap: wrap;
-}
-.flow-step, .flow-step.end {
-  background: #ecfeff; border: 2px solid #a5f3fc; border-radius: 10px;
-  padding: 14px 16px; text-align: center; font-size: 13px;
-  color: #155e75; font-weight: 700; min-width: 90px;
-}
-.flow-step-num {
-  display: block; font-size: 11px; font-weight: 400; color: #0891b2;
-  margin-bottom: 4px; letter-spacing: 0.04em;
-}
-.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
-.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
-.flow-arrow { font-size: 18px; color: #0891b2; font-weight: 700; padding-top: 14px; }
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
 
-/* ====== Data Cards ====== */
-.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-.data-card {
-  flex: 1; min-width: 100px;
-  border-radius: 12px; padding: 18px 14px; text-align: center;
-}
-.data-card.cyan { background: #ecfeff; border: 1px solid #a5f3fc; }
-.data-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.data-card.amber { background: #fffbeb; border: 1px solid #fde68a; }
-.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
-.data-card.cyan .data-big { color: #0891b2; }
-.data-card.green .data-big { color: #16a34a; }
-.data-card.red .data-big { color: #dc2626; }
-.data-card.amber .data-big { color: #ca8a04; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 160px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
 
-/* ====== Dual Contrast ====== */
-.dual-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
-}
-.dual-card {
-  border-radius: 10px; padding: 16px 18px;
-}
-.dual-card.top { background: #fef2f2; border: 1px solid #fecaca; }
-.dual-card.bottom { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.dual-label { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
-.dual-card.top .dual-label { color: #991b1b; }
-.dual-card.bottom .dual-label { color: #166534; }
-.dual-card p { font-size: 13px; color: #555; line-height: 1.8; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
 
-/* ====== Bar Group ====== */
-.bar-group { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-.bar-item { display: flex; align-items: center; gap: 12px; }
-.bar-label { font-size: 13px; color: #555; min-width: 130px; flex-shrink: 0; }
-.bar-track { flex: 1; height: 12px; background: #e8e0d5; border-radius: 6px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 6px; min-width: 4px; }
-.bar-fill.cyan { background: #0891b2; }
-.bar-fill.red { background: #dc2626; }
-.bar-fill.amber { background: #ca8a04; }
-.bar-fill.green { background: #16a34a; }
-.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 60px; text-align: right; }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
 
-/* ====== Comparison Grid ====== */
-.cmp-grid { display: grid; gap: 12px; margin-top: 14px; }
-.cmp-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-.cmp-card {
-  border-radius: 12px; padding: 20px 16px 16px; text-align: center;
-}
-.cmp-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.cmp-card.cyan { background: #ecfeff; border: 1px solid #a5f3fc; }
-.cmp-icon { font-size: 28px; margin-bottom: 8px; }
-.cmp-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
-.cmp-features { list-style: none; padding: 0; text-align: left; font-size: 12px; color: #555; line-height: 1.7; }
-.cmp-features li::before { content: '• '; color: #888; }
-.cmp-bar { height: 4px; border-radius: 2px; margin: 10px 0; }
-.cmp-bar.red { background: #fca5a5; }
-.cmp-bar.cyan { background: #67e8f9; }
-.cmp-note { font-size: 11px; color: #999; line-height: 1.5; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
 
-/* ====== Callout ====== */
-.callout {
-  display: flex; gap: 10px; align-items: flex-start;
-  border-radius: 10px; padding: 14px 16px; margin-top: 14px;
-}
-.callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
-.callout.info { background: #eff6ff; border: 1px solid #bfdbfe; }
-.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.callout-text { font-size: 13px; color: #555; line-height: 1.8; }
-.callout-text strong { color: #1a1a1a; }
-
-/* ====== Quote Block ====== */
-.quote-block {
-  background: #f0fdfa; border-left: 4px solid #2dd4bf; border-radius: 0 10px 10px 0;
-  padding: 16px 20px; margin-top: 14px; position: relative;
-}
-.quote-mark {
-  position: absolute; top: -10px; left: 12px;
-  font-size: 32px; color: #2dd4bf; font-family: Georgia, serif; line-height: 1;
-}
-.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
-.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
-
-/* ====== Takeaway ====== */
-.takeaway {
-  background: #ecfeff; border: 2px solid #a5f3fc; border-radius: 14px;
-  padding: 24px 28px; margin-bottom: 24px;
-  display: flex; gap: 16px; align-items: flex-start;
-}
-.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
-.takeaway-label {
-  font-size: 13px; font-weight: 700; color: #0891b2; text-transform: uppercase;
-  letter-spacing: 0.06em; margin-bottom: 6px;
-}
-.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
-
-/* ====== Footer ====== */
-.footer {
-  text-align: center; font-size: 12px; color: #bbb; margin-top: 20px;
-  font-family: 'PingFang SC', 'Noto Serif SC', serif;
-}
-.footer p { margin-bottom: 2px; }
-
-/* ====== Responsive ====== */
-@media (max-width: 640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 24px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .cmp-grid.cols-2, .dual-grid { grid-template-columns: 1fr; }
-  .data-row { flex-direction: column; }
-  .kpi-row { flex-direction: column; }
-  .bar-item { flex-wrap: wrap; }
-}
-.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+</style>
 </head>
 <body>
 <div class="container">
-
-<!-- ====== Language Switch ====== -->
-<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← Back to Catalog</a></div>
 <div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="elder-sell-art-ch007-info-zh.html">中文 / EN</a>
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch007-info-zh.html">中文 / English</a>
 </div>
 
-<!-- ====== KPI Row ====== -->
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-num">2×</div>
-    <div class="kpi-label">Declines are<br>twice as fast</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">~3%</div>
-    <div class="kpi-label">Annual market rise<br>persistent headwind</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">&lt;10%</div>
-    <div class="kpi-label">Short interest ratio<br>safety threshold</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">&lt;10d</div>
-    <div class="kpi-label">Days-to-cover<br>avoid stampede</div>
-  </div>
-</div>
-
-<!-- ====== Title ====== -->
-<div class="header">
-  <h1>The New Sell & Sell Short · Ch.7 "Shorting Stocks"</h1>
-  <h2>Stock markets rise over the long term, but declines are twice as fast as advances. Short sellers trade against the prevailing wind, seeking profit in faster moves while performing a public service by capping excesses and cushioning crashes.</h2>
-</div>
+<h1>The New Sell &amp; Sell Short<br>Chapter 7 "Shorting Stocks"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Stock markets rise over the long term, but declines are twice as fast. Short sellers trade against the prevailing wind, seeking profit in faster moves while performing a public service. The question: how do you short safely and profitably in a market that rises over the long term?
+</p>
 <div class="divider"></div>
 
-<!-- ====== Overview Card ====== -->
-<div class="card overview">
-  <div class="overview-label">Overview</div>
-  <h3>How do you short safely and profitably in a market that rises over the long term?</h3>
-  <p>Shorting stocks demands that traders first overcome the "long bias" and internalize a core asymmetry: tops are wide and prolonged (driven by greed), while bottoms are narrow and brief (driven by fear). Elder offers two distinct approaches—shorting at tops (higher difficulty, higher reward) and shorting in downtrends (safer, more systematic)—and emphasizes dual confirmation from fundamentals and technicals, small initial position sizing, and short interest metrics as essential risk-management filters.</p>
-  <p><strong>Core thesis:</strong> Shorting is not fighting the market—it is capturing counter-trend profits within the market's own rhythm: enter and exit quickly, control risk rigorously, confirm every signal twice.</p>
-</div>
-
-<!-- ====== Content Blocks ====== -->
-
-<!-- Block 01: The Shorting Mindset & Market Role -->
-<div class="card section" style="border-left-color: #0891b2;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#ecfeff;color:#0891b2;">01</div>
-    <div class="section-tag" style="background:#ecfeff;color:#0891b2;">Mindset</div>
-    <h3 style="color:#0891b2;">Who Are Short Sellers and What Does the Market Need from Them?</h3>
-  </div>
+<!-- 01: Shorting Mindset -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
   <div class="section-body">
-    <p>Most traders are naturally biased toward going long—they believe profit only comes from rising prices. But Elder argues that trading is simply about betting on the direction of price movement, regardless of which direction. Short sellers not only profit for themselves but perform three public services: increasing supply at highs, buying first during crashes, and ultimately dampening excessive market volatility. Adam Smith's insight applies perfectly: in free markets, people help others by pursuing their own self-interest.</p>
-
+    <div class="tag tag-01">Mindset</div>
+    <div class="section-title t-01">Who Are Short Sellers and What Does the Market Need from Them?</div>
+    <div class="section-desc">Most traders are naturally biased toward going long. But trading is simply about betting on the direction of price movement. Short sellers perform three public services: increasing supply at highs, buying first during crashes, and dampening excessive volatility. Declines are twice as fast — that's the short seller's natural edge.</div>
     <div class="flow-row">
-      <div class="flow-step"><span class="flow-step-num">1</span>Cap Rallies<div class="flow-label">Sell high<br>increase supply</div></div>
+      <div class="flow-step">Cap Rallies<br>Sell high, increase supply</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">2</span>Cushion Crashes<div class="flow-label">Buy first<br>during panic</div></div>
+      <div class="flow-step">Cushion Crashes<br>Buy first during panic</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step end"><span class="flow-step-num">✓</span>Stabilize<div class="flow-label">Reduce volatility<br>benefit the public</div></div>
-    </div>
-
-    <div class="data-row" style="margin-top:18px;">
-      <div class="data-card cyan">
-        <div class="data-big">2×</div>
-        <div class="data-sm">Speed advantage<br>Quicker trade exit</div>
-      </div>
-      <div class="data-card red">
-        <div class="data-big">~3%</div>
-        <div class="data-sm">Long-term headwind<br>Trading against tide</div>
-      </div>
-      <div class="data-card green">
-        <div class="data-big">2007</div>
-        <div class="data-sm">Uptick Rule abolished<br>70-year shackle gone</div>
-      </div>
+      <div class="flow-step end">Stabilize<br>Reduce volatility</div>
     </div>
   </div>
 </div>
 
-<!-- Block 02: Top-Bottom Asymmetry -->
-<div class="card section" style="border-left-color: #ca8a04;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">02</div>
-    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">Market Structure</div>
-    <h3 style="color:#ca8a04;">Why Are Tops Harder to Identify Than Bottoms?</h3>
-  </div>
+<!-- 02: Top-Bottom Asymmetry -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
   <div class="section-body">
-    <p>Market bottoms are driven by fear—longs who can no longer bear the pain sell at any price, making bottoms narrow and brief. Market tops are driven by greed—the pleasure of profit persists, and bulls keep pouring in money, making tops wide, prolonged, and riddled with false breakouts. A sharp FI spike down signals exhaustion (bottom), while a sharp FI spike up often just marks trend continuation, not a top.</p>
-
+    <div class="tag tag-02">Market Structure</div>
+    <div class="section-title t-02">Why Are Tops Harder to Identify Than Bottoms?</div>
+    <div class="section-desc">Market bottoms are driven by fear — longs who can no longer bear the pain sell at any price, making bottoms narrow and brief. Market tops are driven by greed — the pleasure of profit persists, and bulls keep pouring in money, making tops wide, prolonged, and riddled with false breakouts.</div>
     <div class="dual-grid">
-      <div class="dual-card bottom">
-        <div class="dual-label">📉 Market Bottom</div>
-        <p>Driven by <strong>fear</strong>. Narrow and brief. Panic selling washes out weak hands; prices reverse soon after. FI spike down = exhaustion signal.</p>
+      <div class="dual-card yes">
+        <div class="dual-icon">📈</div>
+        <div class="dual-text">
+          <h4>Market Top · Greed-Driven</h4>
+          <p>Wide and prolonged. Frequent false upside breakouts. MACD divergences need repeated confirmation. FI spike up ≠ top signal.</p>
+        </div>
       </div>
-      <div class="dual-card top">
-        <div class="dual-label">📈 Market Top</div>
-        <p>Driven by <strong>greed</strong>. Wide and prolonged. Frequent false upside breakouts. MACD divergences need repeated confirmation. FI spike up ≠ top.</p>
-      </div>
-    </div>
-
-    <div class="bar-group">
-      <div class="bar-item">
-        <div class="bar-label">Bottom Duration</div>
-        <div class="bar-track"><div class="bar-fill green" style="width:25%"></div></div>
-        <div class="bar-val">Short</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">Top Duration</div>
-        <div class="bar-track"><div class="bar-fill amber" style="width:78%"></div></div>
-        <div class="bar-val">Long</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">False Breakout Freq.</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:85%"></div></div>
-        <div class="bar-val">High</div>
+      <div class="dual-card no">
+        <div class="dual-icon">📉</div>
+        <div class="dual-text">
+          <h4>Market Bottom · Fear-Driven</h4>
+          <p>Narrow and brief. Panic selling washes out weak hands; reversal follows quickly. FI spike down = clearer exhaustion signal.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Block 03: Two Shorting Approaches -->
-<div class="card section" style="border-left-color: #dc2626;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">03</div>
-    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">Strategy</div>
-    <h3 style="color:#dc2626;">Shorting at Tops vs. Shorting in Downtrends</h3>
-  </div>
+<!-- 03: Two Shorting Approaches -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
   <div class="section-body">
-    <p>Elder divides short-selling into two modes. Shorting at tops is like "running with the bulls"—fighting the crowd at market peaks; it requires smaller positions, wider stops, and readiness to re-enter. Shorting in established downtrends is safer: enter near value (between the two EMAs) and cover in oversold territory (below the lower channel). The Channel Rating Method targets capturing ≥30% of the channel width for an A-grade trade.</p>
-
-    <div class="cmp-grid cols-2">
-      <div class="cmp-card red">
-        <div class="cmp-icon">🐂</div>
-        <div class="cmp-name">Shorting at Tops</div>
-        <ul class="cmp-features">
-          <li>Enter against the bull trend</li>
-          <li>Small positions; reserve capacity</li>
-          <li>Wider stops to avoid whipsaws</li>
-          <li>Frequent false breakouts</li>
-          <li>Like the Running of the Bulls</li>
-        </ul>
-        <div class="cmp-bar red"></div>
-        <div class="cmp-note">For large accounts & experienced traders</div>
+    <div class="tag tag-03">Strategy</div>
+    <div class="section-title t-03">Shorting at Tops vs. Shorting in Downtrends</div>
+    <div class="section-desc">Elder divides short-selling into two modes. Shorting at tops is like "running with the bulls" — fighting the crowd at market peaks, requiring smaller positions, wider stops, and readiness to re-enter. Shorting in established downtrends is safer: enter near value and cover in oversold territory. ≥30% of channel width earns an A-grade.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Shorting at Tops</div>
+        <div class="confusion-arrow">→ characterized by →</div>
+        <div class="confusion-right">Small positions, wide stops, counter-trend entry, high difficulty/high reward — for large accounts & experienced traders</div>
       </div>
-      <div class="cmp-card cyan">
-        <div class="cmp-icon">📊</div>
-        <div class="cmp-name">Shorting in Downtrends</div>
-        <ul class="cmp-features">
-          <li>Wait for bear trend to establish</li>
-          <li>Short at value; cover at oversold</li>
-          <li>Channels give clear entry/exit</li>
-          <li>Higher success rate, less stress</li>
-          <li>≥30% channel width = A-grade</li>
-        </ul>
-        <div class="cmp-bar cyan"></div>
-        <div class="cmp-note">Suited for most traders</div>
+      <div class="confusion-row">
+        <div class="confusion-left">Shorting in Downtrends</div>
+        <div class="confusion-arrow">→ characterized by →</div>
+        <div class="confusion-right">Wait for trend to establish, short at value zone, cover at oversold — higher success rate, lower stress</div>
       </div>
-    </div>
-
-    <div class="callout warn">
-      <div class="callout-icon">⚠️</div>
-      <div class="callout-text"><strong>Note:</strong> Whichever method you choose, strategic decisions are made on weekly charts; tactical plans on dailies. MACD-Histogram divergence is one of the most important signals. Never punish yourself for occasionally missing a big move.</div>
     </div>
   </div>
 </div>
 
-<!-- Block 04: Fundamental + Technical Dual Confirmation -->
-<div class="card section" style="border-left-color: #4f46e5;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">04</div>
-    <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">Dual Confirmation</div>
-    <h3 style="color:#4f46e5;">How to Find Short Candidates Using Fundamentals + Technicals?</h3>
-  </div>
+<!-- 04: Dual Confirmation -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
   <div class="section-body">
-    <p>Fundamentals act as the "signal generator"; technicals are the "aiming scope"—both must confirm; conflicting signals mean no trade. Two paths to find shorts: community picks (e.g., Spike group) and independent scanning (using TC2007 to scan industries → subsectors → constituents, sorted by price high-to-low, looking for "high and wobbly" stocks). The WTW case perfectly illustrates the formula: deteriorating fundamentals (debt-funded buyback creating negative equity) + technical divergences = a successful short.</p>
-
+    <div class="tag tag-04">Dual Confirmation</div>
+    <div class="section-title t-04">How to Find Short Candidates Using Fundamentals + Technicals?</div>
+    <div class="section-desc">Fundamentals act as the "signal generator"; technicals are the "aiming scope" — both must confirm; conflicting signals mean no trade. Scan industries → subsectors → constituents, sorted by price high-to-low, looking for "high and wobbly" stocks. No matter how compelling the fundamental story, do not trade unless the technical picture confirms.</div>
     <div class="flow-row">
-      <div class="flow-step"><span class="flow-step-num">1</span>Scan Sectors<div class="flow-label">239 sectors<br>find "high & wobbly"</div></div>
+      <div class="flow-step">Scan Sectors<br>Find "high & wobbly"</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">2</span>Subsectors<div class="flow-label">Narrow to weak<br>industry groups</div></div>
+      <div class="flow-step">Subsectors<br>Narrow to weak groups</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">3</span>Sort by Price<div class="flow-label">Most expensive first<br>to find short targets</div></div>
+      <div class="flow-step">Sort by Price<br>Most expensive first</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step end"><span class="flow-step-num">✓</span>Dual Confirm<div class="flow-label">Both technicals +<br>fundamentals align</div></div>
-    </div>
-
-    <div class="callout info" style="margin-top:18px;">
-      <div class="callout-icon">💡</div>
-      <div class="callout-text"><strong>Key principle:</strong> No matter how compelling the fundamental story, do not trade unless the technical picture confirms. A technician can use the same indicators across stocks, futures, indices, and forex—but a fundamental analyst cannot cross domains. Fundamentals require focus; technicals offer universality.</div>
+      <div class="flow-step end">Dual Confirm<br>Technicals + Fundamentals</div>
     </div>
   </div>
 </div>
 
-<!-- Block 05: Risk Management & Short Metrics -->
-<div class="card section" style="border-left-color: #db2777;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fdf2f8;color:#db2777;">05</div>
-    <div class="section-tag" style="background:#fdf2f8;color:#db2777;">Risk Control</div>
-    <h3 style="color:#db2777;">What Risk Metrics Must Short Sellers Monitor?</h3>
-  </div>
+<!-- 05: Risk Control -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
   <div class="section-body">
-    <p>Your first short must be small—position size amplifies emotions. Two essential filters: the Short Interest Ratio (shares short ÷ float; &lt;10% is tolerable, &gt;20% is dangerous) and Days-to-Cover (total short interest ÷ average daily volume; &lt;10 days is safe, &gt;20 days signals stampede risk). Kerry Lovvorn advises: use these as auxiliary tools for entry/exit, not as a standalone trading signal.</p>
-
+    <div class="tag tag-05">Risk Control</div>
+    <div class="section-title t-05">What Risk Metrics Must Short Sellers Monitor?</div>
+    <div class="section-desc">Your first short must be small — position size amplifies emotions. Two essential filters: Short Interest Ratio (&lt;10% tolerable, &gt;20% dangerous) and Days-to-Cover (&lt;10 days safe, &gt;20 days signals stampede risk). Use these as auxiliary tools for entry/exit, not as standalone trading signals.</div>
     <div class="data-row">
-      <div class="data-card green">
+      <div class="data-card d1">
         <div class="data-big">&lt;10%</div>
-        <div class="data-sm">Short Interest<br>Tolerable range</div>
+        <div class="data-name">Short Interest</div>
+        <div class="data-sm">Tolerable range<br>Normal short-selling environment</div>
       </div>
-      <div class="data-card amber">
+      <div class="data-card d2">
         <div class="data-big">10–20%</div>
-        <div class="data-sm">Short Interest<br>Caution zone</div>
+        <div class="data-name">Short Interest</div>
+        <div class="data-sm">Caution zone<br>Crowded short territory</div>
       </div>
-      <div class="data-card red">
+      <div class="data-card d3">
         <div class="data-big">&gt;20%</div>
-        <div class="data-sm">Short Interest<br>Danger zone</div>
+        <div class="data-name">Short Interest</div>
+        <div class="data-sm">Danger zone<br>Severe stampede risk</div>
       </div>
     </div>
-
-    <div class="quote-block">
-      <div class="quote-mark">"</div>
-      <div class="quote-text">If there are two attractive stocks, I am more likely to buy the one with a high short interest ratio—I know those shorts will eventually have to buy back their shares; they are 'natural' buyers. But I will never buy a stock solely because it has a high short interest ratio.</div>
-      <div class="quote-author">— Kerry Lovvorn, Spike Group</div>
-    </div>
   </div>
 </div>
 
-<!-- ====== Key Takeaway ====== -->
+<!-- Key Takeaway -->
 <div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">Key Takeaway</div>
-    <p>Successful short-selling hinges on <strong>acknowledging and exploiting market asymmetry</strong>—declines are twice as fast as advances (that's the edge), while the long-term uptrend is the headwind. Traders should choose the method that fits them (top-shorting or trend-shorting), insist on small initial positions, confirm every entry with dual signals, rigorously monitor short interest metrics, and keep a visual trading journal after every trade to keep evolving. Shorting is not fighting the market—it is finding the profit window that opens when the crowd heads in the opposite direction.</p>
-  </div>
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Successful short-selling hinges on acknowledging and exploiting market asymmetry — declines are twice as fast (that's the edge), while the long-term uptrend is the headwind. Choose the method that fits you (top-shorting or trend-shorting), insist on small initial positions, confirm every entry with dual signals, rigorously monitor short interest metrics, and keep a visual trading journal. Shorting is not fighting the market — it is finding the profit window that opens when the crowd heads in the opposite direction.</div>
 </div>
 
-<!-- ====== Footer ====== -->
+<!-- Footer -->
 <div class="footer">
-  <p>Source: The New Sell & Sell Short by Alexander Elder · Chapter 7 "Shorting Stocks"</p>
-  <p>Generated by infographic-generator · FZXPYZS typeface · #f5f1eb background · 2026-06-17</p>
+  Source: Alexander Elder, <em>The New Sell &amp; Sell Short</em>, Chapter 7 "Shorting Stocks"<br>
+  Infographic Design · June 2026 · For educational reference only; not investment advice
 </div>
 
 </div>

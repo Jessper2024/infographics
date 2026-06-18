@@ -5,545 +5,373 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>随机漫步的傻瓜 · 第10章「生活中的非线性现象」— 信息图</title>
 <style>
-@font-face {
-  font-family: 'FZXPYZS';
-  src: url('../方正屏显雅宋简体.TTF') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
 
-body {
-  background: #f5f1eb;
-  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
-  color: #555;
-  line-height: 2.0;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
 
-.container {
-  max-width: 880px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px 32px 60px;
-}
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
 
-/* ── 标题区 ── */
-.header { text-align: center; padding-bottom: 8px; }
-.header h1 {
-  font-family: 'FZXPYZS', serif;
-  font-size: 36px;
-  font-weight: 400;
-  color: #1a1a1a;
-  letter-spacing: 0.03em;
-  line-height: 1.4;
-  margin-bottom: 8px;
-}
-.header h2 {
-  font-family: 'FZXPYZS', serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #888;
-  letter-spacing: 0.02em;
-  line-height: 1.6;
-}
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
 
-/* ── 分隔线 ── */
-.divider {
-  width: 60px;
-  height: 3px;
-  margin: 24px auto 28px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #db2777, #ec4899);
-}
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
 
-/* ── 色号变量 ── */
-:root {
-  --accent: #db2777;
-  --accent-light: #fdf2f8;
-  --accent-border: #fbcfe8;
-  --accent-deep: #9d174d;
-}
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
 
-/* ── 卡片 ── */
-.card {
-  background: #ffffff;
-  border: 1px solid #e8e0d5;
-  border-radius: 14px;
-  padding: 28px 32px;
-  margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
 
-/* ── 概述卡片 ── */
-.overview-card {
-  border-left: 4px solid var(--accent);
-}
-.overview-card .ov-label {
-  display: inline-block;
-  font-family: 'FZXPYZS', serif;
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--accent);
-  background: var(--accent-light);
-  border: 1px solid var(--accent-border);
-  border-radius: 20px;
-  padding: 3px 14px;
-  margin-bottom: 14px;
-  letter-spacing: 0.04em;
-}
-.overview-card p {
-  font-size: 15px;
-  line-height: 2.0;
-  color: #555;
-}
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
 
-/* ── 内容区块 ── */
-.block { border-left: 4px solid var(--accent); }
-.block-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.block-num {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--accent-light);
-  border: 1px solid var(--accent-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'FZXPYZS', serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--accent);
-  flex-shrink: 0;
-}
-.block-meta { display: flex; flex-direction: column; gap: 4px; }
-.block-tag {
-  display: inline-block;
-  font-family: 'FZXPYZS', serif;
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--accent);
-  background: var(--accent-light);
-  border: 1px solid var(--accent-border);
-  border-radius: 20px;
-  padding: 2px 12px;
-  letter-spacing: 0.04em;
-  align-self: flex-start;
-}
-.block h3 {
-  font-family: 'FZXPYZS', serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1.5;
-}
-.block p {
-  font-size: 15px;
-  line-height: 2.0;
-  color: #555;
-  margin-bottom: 20px;
-}
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
 
-/* ── 双列对比 ── */
-.dual-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 4px;
-}
-.dual-card {
-  border-radius: 12px;
-  padding: 20px;
-  border: 1px solid;
-}
-.dual-card.linear {
-  background: #fdf2f8;
-  border-color: #fbcfe8;
-}
-.dual-card.nonlinear {
-  background: #fff7ed;
-  border-color: #fed7aa;
-}
-.dual-card .dual-icon {
-  font-size: 28px;
-  margin-bottom: 8px;
-}
-.dual-card .dual-name {
-  font-family: 'FZXPYZS', serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 6px;
-}
-.dual-card .dual-desc {
-  font-size: 13px;
-  line-height: 1.8;
-  color: #666;
-}
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
 
-/* ── 三列数据卡 ── */
-.data-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 4px;
-}
-.data-card {
-  border-radius: 12px;
-  padding: 20px 16px;
-  text-align: center;
-  border: 1px solid;
-}
-.data-card.dc1 { background: #fdf2f8; border-color: #fbcfe8; }
-.data-card.dc2 { background: #fce7f3; border-color: #f9a8d4; }
-.data-card.dc3 { background: #fdf2f8; border-color: #fbcfe8; }
-.data-big {
-  font-family: 'FZXPYZS', serif;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: var(--accent);
-}
-.data-sm {
-  font-size: 12px;
-  color: #888;
-  line-height: 1.6;
-}
+  .prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .prob-card {
+    border-radius: 12px; padding: 18px 16px; border: 1px solid; text-align: center;
+  }
+  .prob-card.stable { background: #f0fdf4; border-color: #bbf7d0; }
+  .prob-card.risky { background: #fef2f2; border-color: #fecaca; }
+  .prob-icon { font-size: 28px; margin-bottom: 6px; }
+  .prob-title {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;
+  }
+  .prob-stat { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .prob-card.stable .prob-stat { color: #16a34a; }
+  .prob-card.risky .prob-stat { color: #dc2626; }
+  .prob-desc { font-size: 12px; color: #888; line-height: 1.7; }
 
-/* ── 流程/循环图示 ── */
-.flow-diagram {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: wrap;
-  padding: 16px 0 8px;
-}
-.flow-step {
-  width: 130px;
-  height: 60px;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'FZXPYZS', serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--accent);
-  background: var(--accent-light);
-  border: 1px solid var(--accent-border);
-  text-align: center;
-  line-height: 1.4;
-}
-.flow-arrow {
-  font-size: 20px;
-  color: var(--accent);
-  margin: 0 4px;
-  flex-shrink: 0;
-}
-.flow-result {
-  width: 130px;
-  height: 60px;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'FZXPYZS', serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--accent-deep);
-  background: #fce7f3;
-  border: 2px solid var(--accent);
-  text-align: center;
-  line-height: 1.4;
-  margin-left: 8px;
-}
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
 
-/* ── 关键概念卡片 ── */
-.concept-row {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 4px;
-}
-.concept-card {
-  border-radius: 12px;
-  padding: 20px 24px;
-  border: 1px solid var(--accent-border);
-  background: var(--accent-light);
-}
-.concept-card .concept-icon {
-  font-size: 24px;
-  margin-bottom: 6px;
-}
-.concept-card h4 {
-  font-family: 'FZXPYZS', serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-.concept-card p {
-  font-size: 14px;
-  line-height: 1.9;
-  color: #666;
-  margin: 0;
-}
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
 
-/* ── 核心结论 ── */
-.key-card {
-  background: var(--accent-light);
-  border: 1px solid var(--accent-border);
-  border-radius: 14px;
-  padding: 28px 32px;
-  margin-bottom: 24px;
-  position: relative;
-}
-.key-card .key-badge {
-  display: inline-block;
-  font-family: 'FZXPYZS', serif;
-  font-size: 11px;
-  font-weight: 700;
-  color: #ffffff;
-  background: var(--accent);
-  border-radius: 20px;
-  padding: 4px 16px;
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
-}
-.key-card p {
-  font-family: 'FZXPYZS', serif;
-  font-size: 17px;
-  font-weight: 400;
-  color: var(--accent-deep);
-  line-height: 2.0;
-}
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
 
-/* ── 页脚 ── */
-.footer {
-  text-align: center;
-  font-size: 12px;
-  color: #bbb;
-  line-height: 1.8;
-  padding-top: 8px;
-  border-top: 1px solid #e8e0d5;
-}
-
-@media (max-width: 640px) {
-  .container { padding: 24px 16px 40px; }
-  .card { padding: 20px 18px; }
-  .dual-grid, .data-row { grid-template-columns: 1fr; }
-  .flow-diagram { flex-direction: column; gap: 8px; }
-  .flow-arrow { transform: rotate(90deg); }
-  .header h1 { font-size: 26px; }
-}
-.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
-.lang-switch{text-align:right;margin-bottom:16px}
-.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
-.lang-btn:hover{opacity:.75}
-.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .prob-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}@media(max-width:640px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:1fr}}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← 返回章节目录</a></div>
-<div class="lang-switch"><a class="lang-btn" target="_blank" href="fooled-by-randomness-ch010-info-en.html">EN</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch010-info-en.html">中文 / English</a>
+</div>
 
-  <!-- ═══ 标题区 ═══ -->
-  <div class="header">
-    <h1>随机漫步的傻瓜 · 第10章「生活中的非线性现象」</h1>
-    <h2>最后一粒沙为何能摧毁整座巴别塔？——论赢家通吃世界的残酷数学</h2>
-  </div>
-
-  <div class="divider"></div>
+<h1>随机漫步的傻瓜 · 第10章<br>「生活中的非线性现象」</h1>
+<p class="subtitle">最后一粒沙为何能摧毁整座巴别塔？——论赢家通吃世界的残酷数学</p>
+<div class="divider"></div>
 <div class="chapter-overview">
-  <p>SCQA · 概览 生命并不公平——但更令人惊讶的是，它以非线性的方式呈现不公平。一点点微小的优势可以带来高得惊人的回报，甚至根本毫无优势，仅凭随机性的微小恩惠就能鸿运当头。本章从沙堆效应出发，揭示QWERTY键盘、微软帝国和好莱坞明星背后的共同逻辑：路径依赖与正向反馈使"赢家通吃"成为现代经济中不可回避的残酷法则，而非线性的随机性既是打破僵局的工具，也是两极分化的根源。</p>
+  <p>生命并不公平——但更令人惊讶的是，它以非线性的方式呈现不公平。一点点微小的优势可以带来高得惊人的回报，甚至根本毫无优势，仅凭随机性的微小恩惠就能鸿运当头。本章从沙堆效应出发，揭示QWERTY键盘、微软帝国和好莱坞明星背后的共同逻辑：路径依赖与正向反馈使“赢家通吃”成为现代经济中不可回避的残酷法则，而非线性的随机性既是打破僵局的工具，也是两极分化的根源。</p>
 </div>
 
 
-  <!-- ═══ 概述卡片 ═══ -->
-  <div class="card overview-card">
-    <div class="ov-label">SCQA · 概览</div>
-    <p>
-      生命并不公平——但更令人惊讶的是，它以非线性的方式呈现不公平。一点点微小的优势可以带来高得惊人的回报，甚至根本毫无优势，仅凭随机性的微小恩惠就能鸿运当头。本章从沙堆效应出发，揭示QWERTY键盘、微软帝国和好莱坞明星背后的共同逻辑：路径依赖与正向反馈使"赢家通吃"成为现代经济中不可回避的残酷法则，而非线性的随机性既是打破僵局的工具，也是两极分化的根源。
-    </p>
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">1<span class="kpi-unit">粒沙</span></div>
+    <div class="kpi-label">沙堆效应</div>
+    <div class="kpi-note">线性的微小投入<br>产生非线性巨大后果</div>
   </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">95<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">QWERTY占有率</div>
+    <div class="kpi-note">技术上更差的键盘方案<br>却因路径依赖称王</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">极端偏态<span class="kpi-unit"></span></div>
+    <div class="kpi-label">波利亚过程</div>
+    <div class="kpi-note">成功孕育成功<br>概率随历史变化</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">次</span></div>
+    <div class="kpi-label">随机扰动</div>
+    <div class="kpi-note">布里丹之驴<br>一枚硬币解开僵局</div>
+  </div>
+</div>
 
-  <!-- ═══ 区块 01：非线性本质 ═══ -->
-  <div class="card block">
-    <div class="block-header">
-      <div class="block-num">01</div>
-      <div class="block-meta">
-        <span class="block-tag">核心概念</span>
-        <h3>沙堆效应：当线性力量产生非线性后果</h3>
-      </div>
-    </div>
-    <p>
-      在里约热内卢的科帕卡巴纳海滩上，塔勒布不断向沙堡顶端加沙——一粒又一粒。最终，某一粒沙破坏了整座结构，沙堡轰然坍塌。这就是"沙堆效应"：线性的微小投入产生非线性的巨大后果。传统智慧早已捕捉到这一现象——"一根稻草压垮一头骆驼"。混沌理论则从科学角度解释：起始点的微小差异最终可能导致不成比例的巨大反应，正如帕斯卡所言："要是埃及艳后克丽奥佩特拉的鼻子稍微短些，全球的命运就将改写。"
-    </p>
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">极少<span class="kpi-unit">胜出</span></div>
+    <div class="kpi-label">好莱坞法则</div>
+    <div class="kpi-note">被选中的演员搬进宝艾市<br>绝大多数终身奔波试演间</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">赢家通吃<span class="kpi-unit"></span></div>
+    <div class="kpi-label">两极分化</div>
+    <div class="kpi-note">信息时代品位趋同<br>赢家几乎掌控全部顾客</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">蒙地卡罗<span class="kpi-unit"></span></div>
+    <div class="kpi-label">超越公式</div>
+    <div class="kpi-note">数学失灵时仍能获得结果<br>摆脱劣等数学的陷阱</div>
+  </div>
+</div>
 
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心概念</div>
+    <div class="section-title t-01">沙堆效应：当线性力量产生非线性后果</div>
+    <div class="section-desc">在里约热内卢的科帕卡巴纳海滩上，塔勒布不断向沙堡顶端加沙——一粒又一粒。最终，某一粒沙破坏了整座结构，沙堡轰然坍塌。这就是“沙堆效应”：线性的微小投入产生非线性的巨大后果。传统智慧早已捕捉到这一现象——“一根稻草压垮一头骆驼”。混沌理论则从科学角度解释：起始点的微小差异最终可能导致不成比例的巨大反应。</div>
     <div class="dual-grid">
-      <div class="dual-card linear">
+      <div class="dual-card a">
         <div class="dual-icon">📐</div>
-        <div class="dual-name">线性系统</div>
-        <div class="dual-desc">
-          投入与产出成比例<br>
-          加一粒沙 → 增加一粒沙的高度<br>
-          结果可预测 · 因果清晰<br>
-          传统经济学模型的基础
+        <div class="dual-text">
+          <h4>线性系统</h4>
+          <p>投入与产出成比例 · 加一粒沙→增加一粒沙的高度 · 结果可预测 · 因果清晰 · 传统经济学模型的基础</p>
         </div>
       </div>
-      <div class="dual-card nonlinear">
+      <div class="dual-card b">
         <div class="dual-icon">🌪️</div>
-        <div class="dual-name">非线性系统</div>
-        <div class="dual-desc">
-          投入与产出不成比例<br>
-          一粒沙 → 整座塔坍塌<br>
-          结果不可预测 · 蝴蝶效应<br>
-          真实世界运转的底层逻辑
+        <div class="dual-text">
+          <h4>非线性系统</h4>
+          <p>投入与产出不成比例 · 一粒沙→整座塔坍塌 · 结果不可预测 · 蝴蝶效应 · 真实世界运转的底层逻辑</p>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- ═══ 区块 02：赢家通吃 ═══ -->
-  <div class="card block">
-    <div class="block-header">
-      <div class="block-num">02</div>
-      <div class="block-meta">
-        <span class="block-tag">赢家通吃</span>
-        <h3>路径依赖：最不适任者为何常常胜出？</h3>
+</div>
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">赢家通吃</div>
+    <div class="section-title t-02">路径依赖：最不适任者为何常常胜出？</div>
+    <div class="section-desc">试演等候室里挤满了演员——最终被录用的极少数人，却成为观众眼中整个行业的代表。赢家如何被选出？可能只是某个可笑的细节恰好投合主试者当天的心情。名气像螺旋一样自我放大：因为某一群人认识你，另一群人也跟着认识你。经济学家称之为“路径依赖结果”——QWERTY键盘技术上更差却称王，微软靠网络外部性而非产品优越性取胜。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">QWERTY键盘</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">市场占有率</div>
       </div>
-    </div>
-    <p>
-      试演等候室里挤满了演员——最终被录用的极少数人，却成为观众眼中整个行业的代表。赢家如何被选出？可能只是某个可笑的细节恰好投合主试者当天的心情。名气像螺旋一样自我放大：因为某一群人认识你，另一群人也跟着认识你。演员一旦扶摇直上，原先不认识他们的观众也会跟着欣赏称好。经济学家称之为"路径依赖结果"——强迫发展过程理性化，反而成了多余、不必要、甚至不可能的事。
-    </p>
-
-    <div class="concept-row">
-      <div class="concept-card">
-        <div class="concept-icon">⌨️</div>
-        <h4>QWERTY键盘：技术上更差，市场上称王</h4>
-        <p>打字键盘的字母排列并非最优方案——它反而会减慢打字速度。当初设计这种排列，是为了避免机械打字机色带卡死。计算机化之后，更高效的键盘设计不断出现，但所有人都已习惯QWERTY。这就是路径依赖：先发优势固化为不可撼动的标准，技术优越性败给了历史偶然。</p>
+      <div class="risk-row">
+        <div class="risk-label">更优键盘方案</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:5%"></div></div>
+        <div class="risk-val">无人知晓</div>
       </div>
-      <div class="concept-card">
-        <div class="concept-icon">🪟</div>
-        <h4>微软帝国：网络外部性的胜利</h4>
-        <p>比尔·盖茨才智过人、工作伦理出色，但业内就数他最优秀吗？大部分人选用他的软件，只是因为别人也都在用。这纯粹属于经济学家所说的"网络外部性"——循环效应，而非产品优越性的必然结果。古典经济学模式认为好人终将出头，但现实是：经济优越性取决于概率事件加上正面反馈，而不是看技术优越性。</p>
+      <div class="risk-row">
+        <div class="risk-label">微软网络效应</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">循环增强</div>
       </div>
     </div>
   </div>
-
-  <!-- ═══ 区块 03：波利亚过程 ═══ -->
-  <div class="card block">
-    <div class="block-header">
-      <div class="block-num">03</div>
-      <div class="block-meta">
-        <span class="block-tag">数学模型</span>
-        <h3>波利亚过程：成功何以孕育更多成功？</h3>
-      </div>
-    </div>
-    <p>
-      传统布朗随机漫步中，每一步的概率相互独立——这次转盘赢了，不会提高下次再赢的概率。但圣塔菲研究所经济学家布赖恩·阿瑟提出的波利亚过程打破了独立性假设：在一个装有等量黑球和红球的罐子中，猜对的概率取决于前面猜对的记录。先前猜对，后来继续猜对的概率会提高；反之亦然。仿真结果显示极端的偏态分布——惊人的成功与极多的失败并存。这就是为什么在真实世界中，赢家往往赢得一切，输家几乎一无所获。
-    </p>
-
+</div>
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">数学模型</div>
+    <div class="section-title t-03">波利亚过程：成功何以孕育更多成功？</div>
+    <div class="section-desc">传统布朗随机漫步中，每一步的概率相互独立——这次转盘赢了，不会提高下次再赢的概率。但布赖恩·阿瑟提出的波利亚过程打破了独立性假设：在一个装有等量黑球和红球的罐子中，猜对的概率取决于前面猜对的记录。先前猜对，后来继续猜对的概率会提高；反之亦然。仿真结果显示极端的偏态分布——惊人的成功与极多的失败并存。</div>
     <div class="data-row">
       <div class="data-card dc1">
-        <div class="data-big">布朗漫步</div>
+        <div class="data-big r">布朗漫步</div>
         <div class="data-sm">每一步相互独立<br>概率不变 · 结果波动温和<br>正态分布 · 可预测</div>
       </div>
       <div class="data-card dc2">
-        <div class="data-big">波利亚过程</div>
+        <div class="data-big o">波利亚过程</div>
         <div class="data-sm">成功孕育成功<br>概率随历史变化<br>极端偏态 · 赢家通吃</div>
       </div>
       <div class="data-card dc3">
-        <div class="data-big">蒙地卡罗</div>
+        <div class="data-big g">蒙地卡罗</div>
         <div class="data-sm">超越公式的仿真工具<br>数学失灵时仍可获得结果<br>摆脱劣等数学的陷阱</div>
       </div>
     </div>
-
-    <p style="margin-top:16px; font-size:14px; color:#888;">
-      为什么经济学在这一点上出了差错？一群聪明人急着用数学告诉自己"这是一门科学"，但使用的数学对其所处理的问题限制太多。数学的精确性可能导致人们尚未找到答案时，就误以为已经得到了答案。复杂性理论学家正在填补这一空缺——但如果他们始终未能成功，那只是因为真实世界中，数学毕竟只属次要的助力。
-    </p>
   </div>
-
-  <!-- ═══ 区块 04：随机性的妙用 ═══ -->
-  <div class="card block">
-    <div class="block-header">
-      <div class="block-num">04</div>
-      <div class="block-meta">
-        <span class="block-tag">打破僵局</span>
-        <h3>布里丹之驴：随机性如何破解选择瘫痪？</h3>
-      </div>
-    </div>
-    <p>
-      一只驴子饥渴程度相等，被放在距食物和饮水恰好等距之处——它将死于饥饿和口渴，因为无法决定先吃还是先喝。这就是著名的"布里丹之驴"困境（源自14世纪法国哲学家布里丹）。但只需在画面中加入随机性——轻轻把驴子推向任一方——僵局瞬间解开。塔勒布本人每当计算机在两项备选方案间委决不下时，便会使用这一方法，借"丢硬币"引入随机扰动，让命运女神替他做决定。
-    </p>
-
-    <div class="flow-diagram">
-      <div class="flow-step">🫏<br>两难僵局</div>
+</div>
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">打破僵局</div>
+    <div class="section-title t-04">布里丹之驴：随机性如何破解选择瘫痪？</div>
+    <div class="section-desc">一只驴子饥渴程度相等，被放在距食物和饮水恰好等距之处——它将死于饥饿和口渴，因为无法决定先吃还是先喝。这就是著名的“布里丹之驴”困境（源自14世纪法国哲学家布里丹）。但只需在画面中加入随机性——轻轻把驴子推向任一方——僵局瞬间解开。塔勒布本人每当计算机在两项备选方案间委决不下时，便会使用这一方法，借“丢硬币”引入随机扰动，让命运女神替他做决定。</div>
+    <div class="flow-row">
+      <div class="flow-step">🧏<br>两难僵局</div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">🎲<br>随机扰动</div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">↗️<br>打破对称</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-result">✅ 抉择<br>完成</div>
+      <div class="flow-step end">✅ 抉择<br>完成</div>
     </div>
-
-    <p style="margin-top:16px; font-size:14px; color:#888;">
-      在数学上，这被称为"随机化"方法——解最优化问题时，引入随机扰动来避免局部最优解的陷阱。非线性随机性并非总是敌人；它有时是最优雅的解题工具。值得一提的是，布里丹本人的死法堪称讽刺：他被绑在袋子里丢进塞纳河淹死——这被当时不懂随机化含义的人视为好发谬论的下场，而事实上，布里丹领先了时代数百年。
-    </p>
   </div>
-
-  <!-- ═══ 区块 05：两极分化 ═══ -->
-  <div class="card block">
-    <div class="block-header">
-      <div class="block-num">05</div>
-      <div class="block-meta">
-        <span class="block-tag">深刻反思</span>
-        <h3>要么拥有一切，要么一无所有——非线性世界的两极宿命</h3>
+</div>
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">深刻反思</div>
+    <div class="section-title t-05">要么拥有一切，要么一无所有——非线性世界的两极宿命</div>
+    <div class="section-desc">在信息时代，人们的品位趋于一致，不公平现象更为尖锐：赢家几乎可掌控全部顾客，而绝大多数人只能在星巴克端送拿铁咖啡。一个人不是大获成功、吸引所有资金，就是一毛钱也别想得到。这种两极分化令塔勒布深感不安：太成功容易树敌，太失败则叫人气馁。如果可以选择，两者他都不想要。理解非线性、接受随机性——这才是智者面对非线性世界的方式。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🎭</div>
+        <div class="dual-text">
+          <h4>好莱坞法则</h4>
+          <p>少数被选中的演员搬进宝艾市学习购买奢侈品；绝大多数人终身在试演间奔波。赢家也许有不错的演技——但其他演员也有。</p>
+        </div>
       </div>
-    </div>
-    <p>
-      在信息时代，人们的品位趋于一致，不公平现象更为尖锐：赢家几乎可掌控全部顾客，而绝大多数人只能在星巴克端送拿铁咖啡。一个人不是大获成功、吸引所有资金，就是一毛钱也别想得到。出书也一样——有时每个人都抢着要出版，有时没人肯回你电话。这种两极分化令塔勒布深感不安：太成功容易树敌，太失败则叫人气馁。如果可以选择，两者他都不想要。
-    </p>
-
-    <div class="concept-row">
-      <div class="concept-card">
-        <div class="concept-icon">🎭</div>
-        <h4>好莱坞法则：幸存者偏差的极致</h4>
-        <p>少数被选中的演员搬进宝艾市学习购买奢侈品；绝大多数人终身在试演间奔波。赢家也许有不错的演技——但其他演员也有，否则就不会在等候室等待试演。被选中的理由可能只是名字听起来像主试者前一天喜欢的人。</p>
-      </div>
-      <div class="concept-card">
-        <div class="concept-icon">📊</div>
-        <h4>非线性世界的生存之道</h4>
-        <p>赢家通吃并不意味着不公平应该被消除——它只是世界的真实结构。理解非线性、接受随机性，用蒙地卡罗仿真代替对精确数学的盲信，承认路径依赖的力量，在僵局中善用随机扰动：这才是智者面对非线性世界的方式。</p>
+      <div class="dual-card b">
+        <div class="dual-icon">📊</div>
+        <div class="dual-text">
+          <h4>生存之道</h4>
+          <p>理解非线性、接受随机性，用蒙地卡罗仿真代替对精确数学的盲信，承认路径依赖的力量，在僵局中善用随机扰动。</p>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ═══ 核心结论 ═══ -->
-  <div class="key-card">
-    <div class="key-badge">KEY TAKEAWAY</div>
-    <p>
-      生活以非线性方式呈现不公平——最后一粒沙摧毁整座塔，一枚硬币决定一个人的命运。赢家通吃并非美德的结果，而是路径依赖、正向反馈与随机性共同作用的产物。理解这一点，才能在这个极端偏态的世界中保持清醒：既不为暴富的故事所蛊惑，也不为暂时的失败所击倒。非线性随机性既是诅咒，也是工具——关键在于你能否学会与它共舞。
-    </p>
-  </div>
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">生活以非线性方式呈现不公平——最后一粒沙摧毁整座塔，一枚硬币决定一个人的命运。赢家通吃并非美德的结果，而是路径依赖、正向反馈与随机性共同作用的产物。理解这一点，才能在这个极端偏态的世界中保持清醒：既不为暴富的故事所蛊惑，也不为暂时的失败所击倒。非线性随机性既是诅咒，也是工具——关键在于你能否学会与它共舞。</div>
+</div>
 
-  <!-- ═══ 页脚 ═══ -->
-  <div class="footer">
-    来源：纳西姆·尼古拉斯·塔勒布《随机漫步的傻瓜》（Fooled by Randomness）第10章 · 2026-06-17 · 仅供参考
-  </div>
+<div class="footer">《随机漫步的傻瓜》第10章「生活中的非线性现象」信息图 · 纳西姆·尼古拉斯·塔勒布 著 · 仅供学习参考</div>
 
 </div>
 </body>

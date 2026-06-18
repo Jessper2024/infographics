@@ -3,514 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trading for a Living II: The Art of Selling · Ch.9 "Making Money in Bear Markets"</title>
+<title>Trading for a Living II · Ch.9 Making Money in Bear Markets</title>
 <style>
-@font-face {
-  font-family: 'FZXPYZS';
-  src: url('../方正屏显雅宋简体.TTF') format('truetype');
-}
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: #f5f1eb;
-  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
-  color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  padding: 48px 20px 64px;
-  -webkit-font-smoothing: antialiased;
-    align-items: flex-start;
-    min-height: 100vh;
-}
-.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
 
-/* Language Switch */
-.lang-switch { text-align: right; margin-bottom: 16px; }
-.lang-btn {
-  display: inline-block; padding: 6px 16px; border-radius: 8px;
-  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
-  transition: opacity 0.15s;
-}
-.lang-btn:hover { opacity: 0.75; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
 
-/* KPI */
-.kpi-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
-.kpi-card {
-  flex: 1; min-width: 120px;
-  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
-  padding: 20px 16px; text-align: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-}
-.kpi-num { font-size: 32px; font-weight: bold; color: #dc2626; letter-spacing: -0.02em; font-family: 'FZXPYZS', Georgia, serif; }
-.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
 
-/* Header */
-.header { text-align: center; margin-bottom: 32px; }
-.header h1 {
-  font-size: 36px; font-weight: 400; color: #1a1a1a;
-  letter-spacing: 0.03em; line-height: 1.4;
-}
-.header h2 {
-  font-size: 14px; font-weight: 400; color: #888;
-  letter-spacing: 0.02em; margin-top: 10px; line-height: 1.6;
-}
-.divider {
-  width: 60px; height: 3px; margin: 20px auto 0;
-  background: linear-gradient(90deg, #dc2626, #ea580c, #f5f1eb);
-  border-radius: 2px;
-}
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
 
-/* Cards */
-.card {
-  background: #ffffff;
-  border: 1px solid #e8e0d5;
-  border-radius: 14px;
-  padding: 28px 32px;
-  margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-}
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
 
-/* Overview Card */
-.overview { border-left: 4px solid #dc2626; }
-.overview-label {
-  font-size: 13px; font-weight: 700; color: #dc2626;
-  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;
-}
-.overview-question { font-size: 17px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.5; }
-.overview p { font-size: 15px; color: #555; line-height: 2.0; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
 
-/* Section */
-.section { border-left: 4px solid; }
-.section-header {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
-}
-.circle-num {
-  width: 42px; height: 42px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; font-weight: 700; flex-shrink: 0;
-}
-.section-tag {
-  font-size: 12px; padding: 3px 10px; border-radius: 20px;
-  font-weight: 500; letter-spacing: 0.02em;
-}
-.section h3 { font-size: 18px; font-weight: 700; }
-.section-body p { font-size: 15px; color: #555; line-height: 2.0; margin-bottom: 12px; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
 
-/* Flowchart */
-.flow-row {
-  display: flex; align-items: flex-start; justify-content: center;
-  gap: 8px; margin-top: 16px; flex-wrap: wrap;
-}
-.flow-step, .flow-step.end {
-  background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px;
-  padding: 14px 16px; text-align: center; font-size: 13px;
-  color: #9a3412; font-weight: 700; min-width: 90px;
-}
-.flow-step-num {
-  display: block; font-size: 11px; font-weight: 400; color: #ea580c;
-  margin-bottom: 4px; letter-spacing: 0.04em;
-}
-.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
-.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
-.flow-arrow { font-size: 18px; color: #ea580c; font-weight: 700; padding-top: 14px; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
 
-/* Data Cards */
-.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-.data-card {
-  flex: 1; min-width: 100px;
-  border-radius: 12px; padding: 18px 14px; text-align: center;
-}
-.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
-.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
-.data-card.red .data-big { color: #dc2626; }
-.data-card.orange .data-big { color: #ea580c; }
-.data-card.gold .data-big { color: #ca8a04; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
 
-/* Comparison Grid */
-.cmp-grid { display: grid; gap: 12px; margin-top: 14px; }
-.cmp-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-.cmp-card {
-  border-radius: 12px; padding: 20px 16px 16px; text-align: center;
-}
-.cmp-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.cmp-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
-.cmp-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.cmp-icon { font-size: 28px; margin-bottom: 8px; }
-.cmp-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
-.cmp-features { list-style: none; padding: 0; text-align: left; font-size: 12px; color: #555; line-height: 1.7; }
-.cmp-features li::before { content: '• '; color: #888; }
-.cmp-bar { height: 4px; border-radius: 2px; margin: 10px 0; }
-.cmp-bar.red { background: #fca5a5; }
-.cmp-bar.orange { background: #fdba74; }
-.cmp-bar.gold { background: #fde68a; }
-.cmp-note { font-size: 11px; color: #999; line-height: 1.5; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
 
-/* Dual Comparison */
-.dual-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
-}
-.dual-card {
-  border-radius: 10px; padding: 16px 18px;
-}
-.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
-.dual-label { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
-.dual-card.good .dual-label { color: #166534; }
-.dual-card.bad .dual-label { color: #991b1b; }
-.dual-card p { font-size: 13px; color: #555; line-height: 1.8; }
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
 
-/* Progress Bars */
-.bar-group { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-.bar-item { display: flex; align-items: center; gap: 12px; }
-.bar-label { font-size: 13px; color: #555; min-width: 130px; flex-shrink: 0; }
-.bar-track { flex: 1; height: 12px; background: #e8e0d5; border-radius: 6px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 6px; min-width: 4px; }
-.bar-fill.red { background: #dc2626; }
-.bar-fill.orange { background: #ea580c; }
-.bar-fill.gold { background: #ca8a04; }
-.bar-fill.indigo { background: #4f46e5; }
-.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 40px; text-align: right; }
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 160px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
 
-/* Quote Block */
-.quote-block {
-  background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0;
-  padding: 16px 20px; margin-top: 14px; position: relative;
-}
-.quote-mark {
-  position: absolute; top: -10px; left: 12px;
-  font-size: 32px; color: #c084fc; font-family: Georgia, serif; line-height: 1;
-}
-.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
-.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
 
-/* Callout */
-.callout {
-  display: flex; gap: 10px; align-items: flex-start;
-  border-radius: 10px; padding: 14px 16px; margin-top: 14px;
-}
-.callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
-.callout.info { background: #eff6ff; border: 1px solid #bfdbfe; }
-.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.callout-text { font-size: 13px; color: #555; line-height: 1.8; }
-.callout-text strong { color: #1a1a1a; }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
 
-/* Takeaway */
-.takeaway {
-  background: #faf5ff; border: 2px solid #d8b4fe; border-radius: 14px;
-  padding: 24px 28px; margin-bottom: 24px;
-  display: flex; gap: 16px; align-items: flex-start;
-}
-.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
-.takeaway-label {
-  font-size: 13px; font-weight: 700; color: #7c3aed; text-transform: uppercase;
-  letter-spacing: 0.06em; margin-bottom: 6px;
-}
-.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
 
-/* Footer */
-.footer { text-align: center; margin-top: 32px; }
-.footer p { font-size: 12px; color: #bbb; line-height: 1.8; }
-
-/* Responsive */
-@media (max-width: 640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 24px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .cmp-grid.cols-3 { grid-template-columns: 1fr; }
-  .dual-grid { grid-template-columns: 1fr; }
-  .data-row { flex-direction: column; }
-  .kpi-row { flex-direction: column; }
-  .bar-item { flex-wrap: wrap; }
-}
-.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+</style>
 </head>
 <body>
 <div class="container">
-
-<!-- Language Switch -->
-<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← Back to Catalog</a></div>
 <div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="elder-sell-art-ch009-info-zh.html">中文</a>
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch009-info-zh.html">中文 / English</a>
 </div>
 
-<!-- KPI Row -->
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-num">−95%</div>
-    <div class="kpi-label">MGM Max Decline<br>Bubble Collapse Case</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">−98%</div>
-    <div class="kpi-label">UYG Max Decline<br>Leveraged ETF Disaster</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">17 Mo.</div>
-    <div class="kpi-label">2007–2009<br>Bear Market Span</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">5 Signals</div>
-    <div class="kpi-label">Divergence · False Breakout<br>Death Cross · Bullish Div.<br>Hound Signal</div>
-  </div>
-</div>
+<h1>Trading for a Living II: The Art of Selling<br>Chapter 9 "Making Money in Bear Markets"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  After a 4.5-year bull run (2003–2007), the 2007–2009 bear market destroyed trillions — MGM fell 95%, SHLD fell 80%. Individual traders who read the technical signals could have profited by shorting. When the bull market ends, how can you use technical analysis to not just survive but profit?
+</p>
+<div class="divider"></div>
 
-<!-- Header -->
-<div class="header">
-  <h1>Trading for a Living II: The Art of Selling<br>Chapter 9 "Making Money in Bear Markets"</h1>
-  <h2>After a 4.5-year bull run (2003–2007) grew tired, the 2007–2009 bear market destroyed trillions in value — MGM fell 95%, SHLD fell 80%<br>Individual traders who read the technical signals could have profited by shorting, but most missed the opportunity because they didn't know how to sell</h2>
-  <div class="divider"></div>
-</div>
-
-<!-- Overview -->
-<div class="card overview">
-  <div class="overview-label">The Core Question</div>
-  <div class="overview-question">When the bull market ends and value destruction begins, how can individual traders use technical analysis to not just survive but profit by shorting in a bear market?</div>
-  <p>Alexander Elder uses the 2007–2009 Great Bear Market as his textbook, systematically demonstrating the Triple Screen trading system in action: weekly charts set the strategic direction (identifying divergences and death crosses), daily charts determine tactical timing (shorting in the value zone, covering near the lower channel band). From the NH-NL indicator's "officers fleeing" signal, through complete short-selling case studies of MGM, ISRG, SHLD, BAC, and FRE, to the cautionary tale of Buffett buying GE too early — this chapter delivers a complete bear market trading methodology. <strong>Core conclusion: swing trading beats position holding through the entire trend; perfection is the enemy of excellence; never stop learning.</strong></p>
-</div>
-
-<!-- Block 01: Spotting the Bear's Awakening -->
-<div class="card section" style="border-left-color:#dc2626;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">01</div>
-    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">Warning Signs</div>
-    <h3 style="color:#dc2626;">For Whom the Bell Tolls — Spotting the Bear's Awakening</h3>
-  </div>
+<!-- 01: Spotting the Bear -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
   <div class="section-body">
-    <p>Before the great bear awakens, the market issues multiple warning signals. The NH-NL indicator is the best leading indicator — when the S&P 500 makes new highs but NH-NL fails to follow, it signals "officers are fleeing while soldiers still charge" — the bull is on its last legs. Sentiment indicators are equally potent: in summer 2007, the Financial Times reported that Shanghai hotel maids and dishwashers had all gone into stock trading — a modern "shoeshine boy signal," recalling how Bernard Baruch liquidated his entire portfolio in 1929 after a shoeshine boy gave him a stock tip.</p>
+    <div class="tag tag-01">Warning Signs</div>
+    <div class="section-title t-01">For Whom the Bell Tolls — Spotting the Bear's Awakening</div>
+    <div class="section-desc">Before the great bear awakens, the market issues multiple warnings. The NH-NL indicator is the best leading indicator — when S&P 500 hits new highs but NH-NL fails to follow, "officers are fleeing while soldiers still charge." In summer 2007, Shanghai hotel maids had all gone into stock trading — a modern "shoeshine boy signal." Bernard Baruch liquidated in 1929 after a shoeshine boy gave him a stock tip.</div>
     <div class="flow-row">
-      <div class="flow-step"><span class="flow-step-num">Signal 1</span>Sentiment Alert<div class="flow-label">Shoeshine boy signal<br>Shanghai labor shortage</div></div>
+      <div class="flow-step">Sentiment Alert<br>Shoeshine boy signal</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">Signal 2</span>NH-NL Divergence<div class="flow-label">Officers flee<br>Soldiers still charge</div></div>
+      <div class="flow-step">NH-NL Divergence<br>Officers flee, soldiers charge</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">Signal 3</span>MACD Divergence<div class="flow-label">Weekly MACD histogram<br>+ line + Force Index</div></div>
+      <div class="flow-step">MACD Divergence<br>Weekly multi-indicator confirm</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step end"><span class="flow-step-num">✓</span>Bear Confirmed<div class="flow-label">13-wk EMA crosses<br>below 26-wk EMA</div></div>
+      <div class="flow-step end">Bear Confirmed<br>13-wk EMA crosses 26-wk</div>
     </div>
-    <p style="margin-top:12px; font-size:13px; color:#888;">Sentiment indicators are foundational, not precise timing tools. NH-NL and MACD divergences provide actionable trade signals.</p>
   </div>
 </div>
 
-<!-- Block 02: Divergence — The Ultimate Short Signal -->
-<div class="card section" style="border-left-color:#ea580c;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
-    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">Core Signal</div>
-    <h3 style="color:#ea580c;">Divergence — The Short Seller's Strongest Signal</h3>
-  </div>
+<!-- 02: Divergence -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
   <div class="section-body">
-    <p>Bearish divergence is the most reliable sell signal in technical analysis. When prices make new highs but the MACD histogram, MACD line, or Force Index fails to follow, upward momentum is exhausted. The "Triple Crown" — all three indicators diverging simultaneously — is a near-perfect short signal. The combination of an upward false breakout plus divergence is especially lethal: price briefly breaks above the prior high, only to fall back immediately, signaling the market's refusal to accept higher prices.</p>
-
+    <div class="tag tag-02">Core Signal</div>
+    <div class="section-title t-02">Divergence — The Short Seller's Strongest Signal</div>
+    <div class="section-desc">Bearish divergence is the most reliable sell signal in technical analysis. When prices make new highs but MACD histogram, MACD line, or Force Index fails to follow, upward momentum is exhausted. The "Triple Crown" — all three diverging simultaneously — is a near-perfect short signal. MGM case: at ~$100, Triple Crown appeared; the stock collapsed 95% to single digits.</div>
     <div class="data-row">
-      <div class="data-card red">
+      <div class="data-card d1">
         <div class="data-big">MACD Hist.</div>
-        <div class="data-sm">Divergence<br>Most common & fundamental<br>Must pierce zero line between peaks</div>
+        <div class="data-name">Divergence</div>
+        <div class="data-sm">Most common & fundamental<br>Must pierce zero line between peaks</div>
       </div>
-      <div class="data-card orange">
+      <div class="data-card d2">
         <div class="data-big">MACD Line</div>
-        <div class="data-sm">Divergence<br>Stronger signal<br>Less frequent but more reliable</div>
+        <div class="data-name">Divergence</div>
+        <div class="data-sm">Stronger signal<br>Less frequent but more reliable</div>
       </div>
-      <div class="data-card gold">
+      <div class="data-card d3">
         <div class="data-big">Force Index</div>
-        <div class="data-sm">Divergence<br>Triple combo<br>"Triple Crown" = perfect short</div>
-      </div>
-    </div>
-
-    <div class="dual-grid" style="margin-top:16px;">
-      <div class="dual-card good">
-        <div class="dual-label">✅ The MGM Lesson</div>
-        <p>At ~$100, MGM showed a perfect Triple Crown: MACD histogram, MACD line, and Force Index all diverged simultaneously. Yet Elder, influenced by a fellow passenger's "great fundamentals" pitch, only bought, never shorted. The stock ultimately collapsed 95% to single digits.<br><strong>Lesson: even the most clear-eyed analyst can be mesmerized by appearances. Chart signals override others' opinions.</strong></p>
-      </div>
-      <div class="dual-card bad">
-        <div class="dual-label">❌ Common Misconception</div>
-        <p>Novices love trading breakouts in the direction of the move, hoping they'll keep going. But professionals know: <strong>most breakouts fail.</strong> When price breaks above resistance but key indicators show divergence, the false breakout + divergence combo is the strongest short setup. Don't follow the crowd — follow the signal.</p>
+        <div class="data-name">Divergence</div>
+        <div class="data-sm">Triple combo<br>"Triple Crown" = perfect short</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Block 03: Triple Screen — Profit from Value Destruction -->
-<div class="card section" style="border-left-color:#ca8a04;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">03</div>
-    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">System Method</div>
-    <h3 style="color:#ca8a04;">Triple Screen — Cashing In on Value Destruction</h3>
-  </div>
+<!-- 03: Triple Screen -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
   <div class="section-body">
-    <p>The Triple Screen system is the core of Elder's trading methodology: Screen 1 uses weekly charts for strategic decisions (long or short), Screen 2 uses daily charts for tactical decisions (when to enter, when to exit). In bear markets, value destruction is the norm — price rallies into the EMA value zone present shorting opportunities, while declines to the lower channel band signal time to cover. Unlike institutional investors, individual traders can short freely — a massive advantage.</p>
-
-    <div class="cmp-grid cols-3">
-      <div class="cmp-card red">
-        <div class="cmp-icon">📉</div>
-        <div class="cmp-name">MGM</div>
-        <ul class="cmp-features">
-          <li>Peak: ~$100</li>
-          <li>Trough: single digits</li>
-          <li>Max decline: 95%</li>
-          <li>Triple divergence</li>
-        </ul>
-        <div class="cmp-bar red"></div>
-        <div class="cmp-note">Triple Crown signal — ignored at great cost</div>
+    <div class="tag tag-03">System Method</div>
+    <div class="section-title t-03">Triple Screen — Cashing In on Value Destruction</div>
+    <div class="section-desc">The Triple Screen is the core of Elder's methodology: Screen 1 uses weekly charts for strategic direction, Screen 2 uses daily charts for tactical timing. In bear markets, value destruction is the norm — rallies into the EMA value zone are shorting opportunities, declines to the lower channel band are cover signals. MGM -95%, SHLD -80%, BAC -95% — all prove swing trading beats holding through.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Screen 1 · Weekly Chart</div>
+        <div class="confusion-arrow">→ function →</div>
+        <div class="confusion-right">Strategic direction: spot divergences, death crosses — decide long or short</div>
       </div>
-      <div class="cmp-card orange">
-        <div class="cmp-icon">🏬</div>
-        <div class="cmp-name">SHLD</div>
-        <ul class="cmp-features">
-          <li>Peak: ~$200</li>
-          <li>Trough: <$40</li>
-          <li>Max decline: 80%</li>
-          <li>Multiple short swing trades</li>
-        </ul>
-        <div class="cmp-bar orange"></div>
-        <div class="cmp-note">Best example of channel swing shorting</div>
+      <div class="confusion-row">
+        <div class="confusion-left">Screen 2 · Daily Chart</div>
+        <div class="confusion-arrow">→ function →</div>
+        <div class="confusion-right">Tactical timing: enter in value zone, cover at lower band, strict stop-loss</div>
       </div>
-      <div class="cmp-card gold">
-        <div class="cmp-icon">🏦</div>
-        <div class="cmp-name">BAC</div>
-        <ul class="cmp-features">
-          <li>Peak: $55</li>
-          <li>Trough: <$3</li>
-          <li>Max decline: 95%</li>
-          <li>Mid-trend bounce of 100% then collapse</li>
-        </ul>
-        <div class="cmp-bar gold"></div>
-        <div class="cmp-note">Proof that swing trading beats holding through</div>
-      </div>
-    </div>
-
-    <div class="flow-row" style="margin-top:20px;">
-      <div class="flow-step"><span class="flow-step-num">Screen 1</span>Weekly Chart<div class="flow-label">Strategic direction<br>Spot divergence / death cross</div></div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">Screen 2</span>Daily Chart<div class="flow-label">Tactical timing<br>Enter in value zone</div></div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step end"><span class="flow-step-num">✓</span>Execute<div class="flow-label">Cover at lower band<br>Strict stop-loss</div></div>
     </div>
   </div>
 </div>
 
-<!-- Block 04: Systematic Shorting in Declining Channels -->
-<div class="card section" style="border-left-color:#4f46e5;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">04</div>
-    <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">Tactical Tools</div>
-    <h3 style="color:#4f46e5;">Systematic Shorting in Declining Channels</h3>
-  </div>
+<!-- 04: Systematic Shorting -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
   <div class="section-body">
-    <p>Once a stock enters a declining channel, two systematic approaches produce consistent short-selling profits. The MACD Reversal System: short when the MACD histogram crosses below the zero line, cover near the lower channel band. The In-Channel Shorting System: short when price rallies into the value zone between the two EMAs, place a stop just above the recent high, and take profits near the lower band. SHLD's daily chart provided four clear short signals during 2007–2008.</p>
-
-    <div class="bar-group">
-      <div class="bar-item">
-        <div class="bar-label">Signal 1: MACD Hist. ↓</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:40%"></div></div>
-        <div class="bar-val">Short</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">Signal 2: MACD Hist. ↓</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:55%"></div></div>
-        <div class="bar-val">Medium</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">Signal 3: Value-Zone Short</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:85%"></div></div>
-        <div class="bar-val">Large Profit</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">Signal 4: Value-Zone Short</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:100%"></div></div>
-        <div class="bar-val">Max Profit</div>
-      </div>
-    </div>
-
+    <div class="tag tag-04">Tactical Tools</div>
+    <div class="section-title t-04">Systematic Shorting in Declining Channels</div>
+    <div class="section-desc">Once a stock enters a declining channel, two systematic approaches produce consistent profits. MACD Reversal System: short when histogram crosses below zero, cover near the lower band. In-Channel System: short when price rallies into the value zone, stop above the recent high, take profits near the lower band. SHLD's daily chart gave 4 clear short signals during 2007-2008. Capture 30% of channel width for an A-grade.</div>
     <div class="dual-grid">
-      <div class="dual-card good">
-        <div class="dual-label">✅ Correct Approach</div>
-        <p>Trade with fixed position size. Never add to a position. Capturing 30% of the channel width earns an A-grade trade. Swing trading — buying low and selling high, or shorting high and covering low — is far more realistic than riding the entire trend.<br><strong>Think of yourself as a merchant and your positions as inventory: rapid turnover is the hallmark of a healthy business.</strong></p>
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Correct Approach</h4>
+          <p>Fixed position size, never add. Swing trading — think of yourself as a merchant: rapid turnover is the hallmark of a healthy business. 30% of channel width = A-grade.</p>
+        </div>
       </div>
-      <div class="dual-card bad">
-        <div class="dual-label">❌ Fatal Mistakes</div>
-        <p>Adding to losing positions — the inevitable loss at the trend's end will devastate your account.<br>Chasing perfection — trying to catch the absolute top or bottom.<br>Discarding systems — when a system stops working, shelf it; don't discard it. Market conditions will change.<br><strong>Perfection is the enemy of excellence. Greed is the enemy of success.</strong></p>
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Fatal Mistakes</h4>
+          <p>Adding to positions, chasing perfect tops/bottoms, discarding systems. When a system stops working, shelf it — don't discard it. Perfection is the enemy of good.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Block 05: Bottoms & Eternal Lessons -->
-<div class="card section" style="border-left-color:#db2777;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fdf2f8;color:#db2777;">05</div>
-    <div class="section-tag" style="background:#fdf2f8;color:#db2777;">Lessons & Reflection</div>
-    <h3 style="color:#db2777;">Bear Market Bottoms & Eternal Lessons</h3>
-  </div>
+<!-- 05: Bottoms & Lessons -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
   <div class="section-body">
-    <p>Bear markets have no floor, but bullish divergence is the strongest signal of a bear-to-bull transition. When prices make new lows but the MACD histogram only dips slightly, selling pressure is exhausted — a bounce is imminent. However, the "Hound of the Baskervilles" signal warns us: bullish divergence can also fail. FRE (Freddie Mac) saw two consecutive bullish divergences collapse, eventually plunging to $0.46. Back-to-back Hound signals are virtually unheard of — a reminder to never say "impossible."</p>
-
-    <div class="quote-block">
-      <div class="quote-mark">"</div>
-      <div class="quote-text">The week Buffett bought GE, my weekly composite system was red. Had this great man asked for my advice, I would have suggested he wait. Three weeks later, the GE weekly chart turned from red to blue, flashing a strong bullish divergence signal... I began buying in March 2009 when the secondary test completed the bullish divergence.</div>
-      <div class="quote-author">— Alexander Elder, on Buffett's 2008 GE purchase</div>
-    </div>
-
-    <div class="callout warn" style="margin-top:14px;">
-      <div class="callout-icon">⚠️</div>
-      <div class="callout-text"><strong>Core Lesson:</strong> Never say a price is "too low" — FRE fell from $70 to $20 (looked cheap), then to $5 (traders who bought still lost 85%). Fundamental information combined with technical analysis is the best-case scenario. Like all serious traders, reserve the right to be smarter tomorrow than you are today.</div>
-    </div>
-
-    <div class="bar-group" style="margin-top:16px;">
-      <div class="bar-item">
-        <div class="bar-label">Bull: No Ceiling</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:100%"></div></div>
-        <div class="bar-val">∞</div>
+    <div class="tag tag-05">Lessons & Reflection</div>
+    <div class="section-title t-05">Bear Market Bottoms & Eternal Lessons</div>
+    <div class="section-desc">Bear markets have no floor, but bullish divergence is the strongest signal of a bear-to-bull transition. Yet the "Hound of the Baskervilles" warns: divergence can also fail — FRE (Freddie Mac) saw two consecutive bullish divergences collapse, eventually plunging to $0.46. When Buffett bought GE in 2008, Elder's system was still red. Never say a price is "too low" — traders who bought FRE at $5 still lost 85%.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Bull: No Ceiling</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">Infinite</div>
       </div>
-      <div class="bar-item">
-        <div class="bar-label">Bear: No Floor</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:100%"></div></div>
-        <div class="bar-val">→0</div>
+      <div class="risk-row">
+        <div class="risk-label">Bear: No Floor</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">→ Zero</div>
       </div>
-      <div class="bar-item">
-        <div class="bar-label">Swing Trading</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:60%"></div></div>
-        <div class="bar-val">Achievable</div>
+      <div class="risk-row">
+        <div class="risk-label">Swing Trading</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:60%"></div></div>
+        <div class="risk-val">Achievable</div>
       </div>
-      <div class="bar-item">
-        <div class="bar-label">Full-Trend Hold</div>
-        <div class="bar-track"><div class="bar-fill orange" style="width:95%"></div></div>
-        <div class="bar-val">Extremely Hard</div>
-      </div>
-    </div>
-
-    <div class="dual-grid" style="margin-top:16px;">
-      <div class="dual-card good">
-        <div class="dual-label">✅ Survival Rules</div>
-        <p>• Never hold long when the weekly EMA has a death cross<br>• Triple Screen: analyze weekly first, then daily<br>• Always set a stop-loss — never trade naked<br>• Think probabilistically: accept multiple small losses<br>• Choose a time frame that fits your temperament and stick with it</p>
-      </div>
-      <div class="dual-card bad">
-        <div class="dual-label">❌ Path to Ruin</div>
-        <p>• Ignore weekly signals — stare only at the daily chart<br>• Trade without stops or casually move them wider<br>• Keep adding to long positions as the stock falls<br>• Try to catch the absolute top or bottom<br>• Abandon your trading system after one or two stop-outs</p>
+      <div class="risk-row">
+        <div class="risk-label">Full-Trend Hold</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Extremely Hard</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Takeaway -->
+<!-- Key Takeaway -->
 <div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">Key Takeaway</div>
-    <p>The 2007–2009 bear market taught us not fear, but discipline. Use the Triple Screen system — weekly for direction, daily for timing — short in the value zone, cover at the lower channel band. Swing trading beats holding through the entire trend. NH-NL divergences and sentiment indicators ring the earliest alarm bells. Bearish divergence + false breakouts form the strongest short signal. Bullish divergence is the first light of the bear-to-bull transition. Never buy just because a price "looks cheap." Never abandon your system after a single stop-out. <strong>Like all serious traders, we must keep learning and reserve the right to be smarter tomorrow than we are today.</strong></p>
-  </div>
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The 2007–2009 bear market taught us not fear, but discipline. Use the Triple Screen system — weekly for direction, daily for timing — short in the value zone, cover at the lower channel band. NH-NL divergences and sentiment indicators ring the earliest alarm bells. Divergence + false breakouts form the strongest short signal. Never buy just because a price "looks cheap." Never abandon your system after a single stop-out. Reserve the right to be smarter tomorrow than you are today.</div>
 </div>
 
 <!-- Footer -->
 <div class="footer">
-  <p>Source: Alexander Elder, <em>Trading for a Living II: The Art of Selling</em>, Chapter 9 "Making Money in Bear Markets"<br>Generated: 2026-06-17 · For educational purposes only. Not investment advice.</p>
+  Source: Alexander Elder, <em>Trading for a Living II: The Art of Selling</em>, Chapter 9 "Making Money in Bear Markets"<br>
+  Infographic Design · June 2026 · For educational reference only; not investment advice
 </div>
 
 </div>

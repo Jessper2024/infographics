@@ -3,195 +3,423 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Su Dongpo Biography · Ch. 3 — 信息图</title>
+<title>Su Dongpo Biography · Ch.3 "The Summit of Mount Emei"</title>
 <style>
-@font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); }
-:root { --bg: #f5f1eb; --card-bg: #ffffff; --card-border: #e8e0d5; --text: #555; --dark: #1a1a1a; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif; color: var(--text); line-height: 2.0; font-size: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
-.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
-.lang-switch { text-align: right; margin-bottom: 8px; }
-.lang-switch a { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; text-decoration: none; border: 1px solid #d5cfc5; border-radius: 20px; padding: 4px 16px; transition: background 0.2s; }
-.lang-switch a:hover { background: #e8e0d5; }
-.header { margin-bottom: 24px; }
-.header h1 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--dark); margin-bottom: 8px; }
-.header h2 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: #888; }
-.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c, #ca8a04, #4f46e5, #db2777, #0891b2); border-radius: 2px; margin-bottom: 24px; }
-.overview, .card, .takeaway { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03); }
-.overview p { margin-bottom: 6px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.overview .oneliner { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 12px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.overview .scqa-label { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; margin-right: 6px; font-weight: 700; }
-.section { border-left: 4px solid transparent; }
-.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.circle-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
-.section-tag { font-size: 12px; font-family: 'FZXPYZS','PingFang SC',serif; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 12px; }
-.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
-.section-body { margin-top: 8px; }
-.section-body p { font-family: 'FZXPYZS','PingFang SC',serif; }
-.bluf { color: var(--dark); font-weight: 600; margin-bottom: 8px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.detail { font-size: 13px; color: #777; line-height: 1.6; font-family: 'FZXPYZS','PingFang SC',serif; }
-.blockquote { border-left: 3px solid #d5cfc5; padding-left: 14px; color: #666; font-style: italic; margin: 12px 0; font-size: 14px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-.dual-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 14px 16px; }
-.dual-card h4 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
-.dual-card p { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 13px; color: #666; line-height: 1.7; }
-.flow-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-.flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #9a3412; text-align: center; font-family: 'FZXPYZS','PingFang SC',serif; }
-.flow-arrow { color: #ea580c; font-size: 18px; font-weight: 700; font-family: 'FZXPYZS','PingFang SC',serif; }
-.data-row { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-.data-card { flex: 1; min-width: 100px; padding: 16px; border-radius: 10px; text-align: center; }
-.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
-.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.data-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
-.data-big { font-size: 28px; font-weight: 700; font-family: 'FZXPYZS',serif; }
-.data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #ca8a04; } .data-big.i { color: #4f46e5; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 10px; }
-.cmp-card { padding: 16px; border-radius: 10px; text-align: center; }
-.cmp-card.c1 { background: #fef2f2; border: 1px solid #fecaca; }
-.cmp-card.c2 { background: #fff7ed; border: 1px solid #fed7aa; }
-.cmp-card.c3 { background: #fefce8; border: 1px solid #fde68a; }
-.cmp-icon { font-size: 24px; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-note { font-size: 12px; color: #888; line-height: 1.5; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway { display: flex; gap: 16px; align-items: flex-start; }
-.takeaway-icon { font-size: 28px; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway-label { font-size: 12px; color: #888; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway p { color: var(--dark); font-weight: 600; font-size: 15px; line-height: 1.8; font-family: 'FZXPYZS','PingFang SC',serif; }
-.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; }
-.footer p { margin-bottom: 2px; font-family: 'FZXPYZS','PingFang SC',serif; }
-@media (max-width:640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 22px; }
-  .header h2 { font-size: 15px; }
-  .takeaway { order: -1; margin-bottom: 20px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .bluf { font-size: 16px; }
-  .dual-grid, .cmp-grid { grid-template-columns: 1fr; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .data-row { flex-direction: column; }
-}
-.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+</style>
 </head>
 <body>
 <div class="container">
-
 <div class="back-catalog"><a class="back-catalog-btn" href="sudongpo-zhuan-catalog.html">← 返回章节目录</a></div>
-<div class="lang-switch"><a href="sudongpo-zhuan-ch003-info-zh.html" target="_blank">中文</a></div>
-<a href="sudongpo-zhuan-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;">← 返回详情页</a>
-
-<div class="header">
-  <h1>Su Dongpo Biography · Ch. 3 &ldquo;峨嵋山金顶&rdquo;</h1>
-  <h2>The Three Sus of Meishan — the most famous literary family in Chinese history, born among rice paddies and lotus ponds beneath the shadow of Mount Emei</h2>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch003-info-zh.html">中文 / English</a>
 </div>
+
+<h1>Su Dongpo Biography · Ch.3 "The Summit of Mount Emei"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Core Insight</span>
+  What kind of place and family produced a literary genius like Su Dongpo?
+  The Three Sus of Meishan — the most famous literary family in Chinese history, occupying three of the eight seats among the "Eight Great Masters of Tang and Song."
+  An illiterate grandfather's wisdom, a father's late-blooming dedication, a mother's fine education — four forces converged on that crying, kicking baby boy.
+</p>
 <div class="divider"></div>
 
-<div class="data-row" style="margin-bottom:24px;">
-    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
-      <div class="data-big" style="color:#dc2626;">3 of 8</div>
-      <div class="data-sm">Tang-Song Masters</div>
-    </div>
-    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
-      <div class="data-big" style="color:#ea580c;">63</div>
-      <div class="data-sm">Grandfather's Age at Birth</div>
-    </div>
-    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
-      <div class="data-big" style="color:#ca8a04;">27</div>
-      <div class="data-sm">Father's Age of Study</div>
-    </div>
-    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
-      <div class="data-big" style="color:#4f46e5;">1036</div>
-      <div class="data-sm">Su Dongpo's Birth Year</div>
-    </div>
-</div>
-<div class="overview">
-  <div class="oneliner">Core Insight：The spiritual energy of Meishan's landscape and the unique family culture of the Sus together nurtured Chinese literature's greatest genius — his grandfather contributed wisdom and vitality, his father showed late-blooming dedication, and his mother provided fine education, each watering this seed with different nourishment</div>
-  <p><span class="scqa-label">Core Question</span>What kind of place and family produced a literary genius like Su Dongpo?</p>
-  <p><span class="scqa-label">Core Answer</span>Meishan, Sichuan — a comfortable small town at the foot of Mount Emei and by the Glass River, famous for its lotus flowers. The Su family, known as the "Three Sus," are among the "Eight Great Masters of Tang and Song." Grandfather Su Xu was illiterate yet extraordinarily wise and generous. Father Su Xun only began serious study at age 27 but achieved supreme literary fame. Mother, née Cheng, was well-educated and constantly encouraged her husband. The Sichuan people's argumentative spirit, confidence, and refusal to accept defeat were perfectly embodied in Su Dongpo.</p>
+<!-- Overview -->
+<div class="splash">
+  Meishan lies in western Sichuan, beneath the shadow of Mount Emei and by the Glass River. The Sus, known as the "Three Sus" — father Su Xun and sons Su Shi and Su Zhe — are among the "Eight Great Masters." Grandfather Su Xu was illiterate yet extraordinarily wise and generous; father Su Xun only began serious study at 27 but achieved supreme literary fame; mother, née Cheng, was well-educated and encouraged her husband. The Sichuan people's argumentative spirit, confidence, and refusal to accept defeat were perfectly embodied in Su Dongpo.
 </div>
 
-<div class="card section" style="border-left-color:#dc2626;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#dc2626;">1</div>
-    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">Geography</div>
-    <h3 style="color:#dc2626;">Beneath Mount Emei: Meishan's Geography and Spirit</h3>
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit"> Sus</span></div>
+    <div class="kpi-label">Literary Dynasty</div>
+    <div class="kpi-note">Su Xun·Su Shi·Su Zhe<br>Father and two sons<br>Three of the Eight Masters</div>
   </div>
-  <div class="section-body">
-    <p class="bluf">Meishan lies in western Sichuan, beneath the shadow of Mount Emei and by the Glass River — with a perfect water control and irrigation system that has worked for over a thousand years, making western Sichuan a fertile plain in all four seasons.</p>
-    <p>Traveling up the Yangtze, past Hankou, through the Three Gorges into far western Sichuan, you would see the Great Buddha of Leshan — a 360-foot Buddha carved from the cliff by the riverbank. Forty miles north of Leshan lies the town of Meishan in Meizhou prefecture, home to the most famous literary family in Chinese history — the Sus, known as the "Three Sus": father Su Xun and sons Su Shi (Dongpo) and Su Zhe (Ziyou), all three among the "Eight Great Masters of Tang and Song."</p>
-    <p class="detail">Meishan was not a large city but a very comfortable place to live. The streets were clean, famous for lotus flowers in May and June. Walking along the streets, you would see lotus ponds everywhere, their fragrance filling the air. The Su residence had a tall pear tree, a pond, and vegetable gardens. The small courtyard was planted with various flowers and fruit trees, with a dense bamboo grove beyond the wall.</p>
+  <div class="kpi-card c02">
+    <div class="kpi-value">27</div>
+    <div class="kpi-label">Late Bloomer</div>
+    <div class="kpi-note">Su Xun began serious study<br>only at age twenty-seven<br>yet earned supreme literary fame</div>
   </div>
-</div>
-<div class="card section" style="border-left-color:#ea580c;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#ea580c;">2</div>
-    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">Family Genes</div>
-    <h3 style="color:#ea580c;">The Wisdom of an Illiterate Old Man: Grandfather Su Xu</h3>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4000<span class="kpi-unit"> Piculs</span></div>
+    <div class="kpi-label">Grandfather's Foresight</div>
+    <div class="kpi-note">Illiterate Su Xu traded rice for grain<br>stored 4000 piculs<br>saved the village from famine</div>
   </div>
-  <div class="section-body">
-    <p class="bluf">Grandfather Su Xu could not read, yet possessed extraordinary physical and mental vitality, a broad mind, and strong, decisive integrity — his wisdom lay dormant in his blood and later bloomed into extraordinary flowers and fruits in his grandson Su Dongpo.</p>
-    <p>In his youth, Su Xu was tall and handsome, healthy and strong, fond of drinking, generous and open-hearted. Unlike others who hoarded rice, he exchanged rice for unhusked grain and stored 4,000 measures. When famine came, he opened his granary and distributed grain — first to family and relatives, then to his wife's relatives, then to tenants and village poor. Only then did people understand: grain can be preserved for many years, while milled rice would spoil from damp.</p>
-    <p class="detail">On the day his second son passed the imperial exams, Su Xu was dead drunk with a piece of beef in his hand. He took the official notice, read it aloud to his friends, stuffed the beef, notice, official hat, and robe all into a bundle, had a village boy carry it, and rode into town on a donkey. The townspeople, seeing the drunk old man on the donkey with that strange bundle behind him, burst out laughing. Su Dongpo later said: "Only excellent scholars can appreciate that kind of innocence."</p>
-  </div>
-</div>
-<div class="card section" style="border-left-color:#ca8a04;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#ca8a04;">3</div>
-    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">Father's Example</div>
-    <h3 style="color:#ca8a04;">Late Bloomer: Father Su Xun's Comeback</h3>
-  </div>
-  <div class="section-body">
-    <p class="bluf">Su Xun only began serious study at age 27, yet achieved supreme literary fame — his reputation was not entirely eclipsed by his outstanding sons, a rarity in Chinese literary history.</p>
-    <p>Su Xun was taciturn, highly intelligent, hot-tempered, independent-minded, and eccentric — not an easy person to get along with. He had ample opportunity to learn reading and writing as a child but wasted his youth. Only after his sons were born, seeing his elder brother, brothers-in-law, and others pass exams and serve as officials, did he feel ashamed and begin to apply himself seriously.</p>
-    <p class="detail">Su Xun's weakness was poetic rhyme — examinations required considerable verbal skill and wit, while Su Xun was only interested in concepts. Yet the monumental work he wrote on principles of politics, war, and peace was deeply original. A disciple of Su Dongpo once said: "Su Xun had better natural talent, but Su Dongpo had broader learning." Su Xun taught his sons to study the laws of historical rise and fall, to pursue a simple style, and to oppose the ornate fashion of the day.</p>
-  </div>
-</div>
-<div class="card section" style="border-left-color:#4f46e5;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#4f46e5;">4</div>
-    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">Regional Spirit</div>
-    <h3 style="color:#4f46e5;">The Argumentative Spirit and Confidence of Sichuan People</h3>
-  </div>
-  <div class="section-body">
-    <p class="bluf">Sichuan people are hardy, argumentative, confident, and largely self-governing — Sichuan natives, ancient and modern, love to argue and produce powerful, lengthy essays. Su Dongpo shared this innate eloquence and refusal to accept defeat.</p>
-    <p>In Su Dongpo's era, many officials and successful scholars came from Sichuan, where the general academic standard was higher than in the provinces now assigned to Hebei and Shandong. Chengdu was the cultural center, famous nationwide for fine paper, Shu brocade, and beautiful temples. Scholars' works still adhered to the simple, classical style of early Han, entirely different from the decadent and flowery styles prevalent elsewhere.</p>
-    <p class="detail">Meizhou natives earned a reputation for being "hard to govern." Su Dongpo once explained: people here, unlike those from less cultured regions, would not be easily intimidated by officials. Every gentry household kept a law code and freely discussed legal provisions "without considering it improper." If a local official was fair and honest, at the end of his term people would hang his portrait in their homes and worship it for fifty years.</p>
-  </div>
-</div>
-<div class="card section" style="border-left-color:#db2777;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#db2777;">5</div>
-    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">Cultural Soil</div>
-    <h3 style="color:#db2777;">Home of Printing: Fertile Ground for Knowledge</h3>
-  </div>
-  <div class="section-body">
-    <p class="bluf">Printing was invented in Sichuan a hundred years earlier, sparking a sudden enthusiasm for learning — even before Su Dongpo's birth, this land had already prepared the intellectual ground for a genius to emerge.</p>
-    <p>Even in that era, Sichuan preserved certain ancient customs and culture. Thanks especially to the invention of printing, Sichuan people suddenly developed a passion for learning. By the time of Su Dongpo's birth, Meizhou already had a considerably high cultural standard. Su Dongpo's mother, née Cheng, came from a landed aristocratic family and was well-educated. Su Xun noted in his wife's epitaph that she had constantly encouraged him to advance.</p>
-    <p class="detail">At Su Dongpo's birth, his grandfather was 63 and still alive. His father, 27, was undergoing the greatest spiritual crisis of his life — for seven years he had worshipped daily before a portrait of Zhang Xian, praying for a son, and his wish was finally granted. The family was comfortably off, owning farmland, with at least two maids and a wet nurse hired for Su Dongpo.</p>
+  <div class="kpi-card c04">
+    <div class="kpi-value">360<span class="kpi-unit"> ft</span></div>
+    <div class="kpi-label">Leshan Giant Buddha</div>
+    <div class="kpi-note">Carved from a cliff face<br>near Meishan<br>towering under Mount Emei</div>
   </div>
 </div>
 
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">1036</div>
+    <div class="kpi-label">Birth of a Genius</div>
+    <div class="kpi-note">December 19, Jingyou Year 3<br>Su Dongpo was born in Meishan<br>Grandfather still living at 63</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">63</div>
+    <div class="kpi-label">Grandfather's Age</div>
+    <div class="kpi-note">When Dongpo was born<br>Su Xu was 63—vigorous<br>Wisdom passed through blood</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">7<span class="kpi-unit"> Years</span></div>
+    <div class="kpi-label">Father's Prayer</div>
+    <div class="kpi-note">Su Xun prayed daily<br>before the Zhangxian portrait<br>for seven years for a son</div>
+  </div>
+</div>
+
+<!-- 01: Geography -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Geography</div>
+    <div class="section-title t-01">Beneath Mount Emei: Meishan's Geography and Spirit</div>
+    <div class="section-desc">Meishan was not a large city but a very comfortable place to live — famous for lotus flowers in May and June, with lotus ponds everywhere filling the air with fragrance. A perfect water control system, functioning for over a thousand years, made western Sichuan a fertile plain in all four seasons. The Su residence had a tall pear tree, a pond, vegetable gardens, and a dense bamboo grove.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏔️</div>
+        <div class="dual-text">
+          <h4>Mount Emei's Shelter</h4>
+          <p>The Great Buddha of Leshan — 360 feet carved from the cliff. Meishan lies 40 miles north, nestled between mountain and river.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🌾</div>
+        <div class="dual-text">
+          <h4>Rice Paddies & Lotus Ponds</h4>
+          <p>Perfectly irrigated fertile land. Lotus ponds along streets, bamboo groves, pear trees — a poetic landscape.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Grandfather -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Family Genes</div>
+    <div class="section-title t-02">The Wisdom of an Illiterate Old Man: Grandfather Su Xu</div>
+    <div class="section-desc">Grandfather Su Xu could not read, yet possessed extraordinary vitality and a broad mind. He exchanged rice for unhusked grain and stored 4,000 measures — when famine came, he opened his granary and distributed grain. Only then did people understand his foresight: grain can be preserved for years, while milled rice would spoil. On the day his son passed the exams, he was dead drunk, stuffed beef and the official notice into a bundle, and rode a donkey into town — the townspeople burst out laughing.</div>
+    <div class="flow-row">
+      <div class="flow-step">Illiterate</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Exchanged Rice<br>for Grain (Vision)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Opened Granary<br>During Famine</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Rode Donkey<br>Drunk (Innocence)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Wisdom Lay<br>in His Blood</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Father -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Father's Example</div>
+    <div class="section-title t-03">Late Bloomer: Father Su Xun's Comeback</div>
+    <div class="section-desc">Su Xun only began serious study at 27, yet achieved supreme literary fame — his reputation was not eclipsed by his outstanding sons, a rarity in Chinese literary history. Taciturn, highly intelligent, hot-tempered, he taught his sons to study the laws of historical rise and fall, to pursue a simple style, and to oppose the ornate fashion of the day.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Began studying at 27</div>
+        <div class="confusion-arrow">yet →</div>
+        <div class="confusion-right">Achieved supreme literary fame</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Only interested in concepts</div>
+        <div class="confusion-arrow">yet →</div>
+        <div class="confusion-right">Wrote deeply original political works</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Eccentric and hard to get along with</div>
+        <div class="confusion-arrow">yet →</div>
+        <div class="confusion-right">Tutored the Su brothers brilliantly</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Fame surpassed by his sons</div>
+        <div class="confusion-arrow">yet →</div>
+        <div class="confusion-right">Natural talent even better than Dongpo's</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Regional Spirit -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Regional Spirit</div>
+    <div class="section-title t-04">The Argumentative Spirit and Confidence of Sichuan People</div>
+    <div class="section-desc">Sichuan people are hardy, argumentative, confident, and largely self-governing — Sichuan natives, ancient and modern, love to argue and produce powerful essays. Su Dongpo shared this innate eloquence and refusal to accept defeat. Meizhou natives earned a reputation for being "hard to govern": every gentry household kept a law code and freely discussed legal provisions. If a local official was fair, people would hang his portrait and worship it for fifty years.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Argumentative Spirit</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Fully Expressed</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Confidence & Independence</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">Unyielding</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Cultural Standards</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">Far Above the North</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Cultural Soil -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Cultural Soil</div>
+    <div class="section-title t-05">Home of Printing: Fertile Ground for Knowledge</div>
+    <div class="section-desc">Printing was invented in Sichuan a hundred years earlier, sparking sudden enthusiasm for learning — before Su Dongpo's birth, this land had already prepared the intellectual ground. Mother Cheng came from a landed aristocratic family and was well-educated. Su Xun noted in his wife's epitaph that she had constantly encouraged him. At Dongpo's birth, his grandfather was 63 and still alive; his father was undergoing the greatest spiritual crisis of his life — seven years of daily worship before a portrait of Zhang Xian, praying for a son.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🖨️</div>
+        <div class="data-name">Home of Printing</div>
+        <div class="data-sm">Bi Sheng invented movable type<br>Clay characters hardened<br>Sichuan embraced learning</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">👩‍🏫</div>
+        <div class="data-name">Mother's Education</div>
+        <div class="data-sm">Née Cheng, aristocratic family<br>Excellent educational background<br>Constantly encouraged her husband</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⭐</div>
+        <div class="data-name">Genius Is Born</div>
+        <div class="data-sm">Grandfather 63, still alive<br>Father prayed 7 years for a son<br>1036: wish finally granted</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
 <div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">Key Takeaway</div>
-    <p>Su Dongpo's birth was no accident. Four forces converged on that crying, kicking baby boy on December 19, 1036: the cultural spirit of Sichuan as an independent kingdom, his grandfather's wisdom and vitality, his father's late-blooming dedication, and his mother's fine education. As Lin Yutang put it: the illiterate old man's wisdom lay dormant in his blood, only to bloom into extraordinary flowers and fruits in his grandson.</p>
-  </div>
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Su Dongpo's birth was no accident. Four forces converged on that crying, kicking baby boy on December 19, 1036: the cultural spirit of Sichuan as an independent kingdom, his grandfather's wisdom and vitality, his father's late-blooming dedication, and his mother's fine education. As Lin Yutang put it: the illiterate old man's wisdom lay dormant in his blood, only to bloom into extraordinary flowers and fruits in his grandson.</div>
 </div>
 
+<!-- Footer -->
 <div class="footer">
-  <p>Source: Lin Yutang, &ldquo;The Gay Genius: The Life and Times of Su Tungpo&rdquo; · 2015 | Ch. 3 &ldquo;峨嵋山金顶&rdquo; · For educational reference only</p>
+  The Gay Genius: The Life and Times of Su Tungpo · Ch.3 "The Summit of Mount Emei" Infographic · Lin Yutang · For Educational Purposes
 </div>
 
 </div>

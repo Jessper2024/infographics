@@ -3,528 +3,376 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The New Sell and Sell Short · Ch.3 Keeping Good Trading Records</title>
+<title>The New Sell and Sell Short · Chapter 3 "Keeping Good Trading Records"</title>
 <style>
-@font-face {
-  font-family: 'FZXPYZS';
-  src: url('../方正屏显雅宋简体.TTF') format('truetype');
-}
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: #f5f1eb;
-  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
-  color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  padding: 48px 20px 64px;
-  -webkit-font-smoothing: antialiased;
-    align-items: flex-start;
-    min-height: 100vh;
-}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
 
-/* Container & Grid */
-.container {
-  max-width: 880px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px 32px 60px;
-}
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
 
-/* Language Switch */
-.lang-switch { text-align: right; margin-bottom: 16px; }
-.lang-btn {
-  display: inline-block; padding: 6px 16px; border-radius: 8px;
-  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  background: #fefce8; color: #ca8a04; border: 1px solid #fde68a;
-  transition: opacity 0.15s;
-}
-.lang-btn:hover { opacity: 0.75; }
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
 
-/* KPI Row */
-.kpi-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
-.kpi-card {
-  flex: 1; min-width: 120px;
-  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
-  padding: 20px 16px; text-align: center;
-}
-.kpi-num { font-size: 32px; font-weight: bold; color: #ca8a04; letter-spacing: -0.02em; }
-.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
 
-/* Header */
-.header { margin-bottom: 24px; }
-.header h1 {
-  font-size: 36px; font-weight: 400; color: #1a1a1a;
-  letter-spacing: 0.03em; line-height: 1.4;
-}
-.header h2 {
-  font-size: 14px; font-weight: 400; color: #888;
-  letter-spacing: 0.02em; margin-top: 8px; line-height: 1.7;
-}
-.divider {
-  width: 60px; height: 3px; margin-bottom: 28px; border-radius: 2px;
-  background: linear-gradient(90deg, #ca8a04, #eab308);
-}
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
 
-/* Overview Card */
-.overview {
-  background: #fefce8; border: 2px solid #fde68a; border-radius: 14px;
-  padding: 28px 32px; margin-bottom: 24px;
-}
-.overview-label {
-  font-size: 13px; font-weight: 700; color: #a16207;
-  letter-spacing: 0.06em; margin-bottom: 10px;
-}
-.overview h4 { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
-.overview p { font-size: 15px; color: #555; line-height: 2.0; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
 
-/* Section Card */
-.card {
-  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
-  padding: 28px 32px; margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-}
-.section { border-left: 4px solid; }
-.section-header {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
-}
-.circle-num {
-  width: 42px; height: 42px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; font-weight: 700; flex-shrink: 0;
-}
-.section-tag {
-  font-size: 12px; padding: 3px 10px; border-radius: 20px;
-  font-weight: 500; letter-spacing: 0.02em;
-}
-.section h3 { font-size: 18px; font-weight: 700; }
-.section-body p { font-size: 15px; color: #555; line-height: 2.0; margin-bottom: 12px; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
 
-/* Data Cards (Block 01) */
-.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-.data-card {
-  flex: 1; min-width: 100px;
-  border-radius: 12px; padding: 18px 14px; text-align: center;
-}
-.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.data-card.gold .data-big { color: #ca8a04; }
-.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
 
-/* Flow Chart (Block 02) */
-.flow-row {
-  display: flex; align-items: flex-start; justify-content: center;
-  gap: 8px; margin-top: 16px; flex-wrap: wrap;
-}
-.flow-step {
-  background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px;
-  padding: 14px 16px; text-align: center; font-size: 13px;
-  color: #9a3412; font-weight: 700; min-width: 100px;
-}
-.flow-step-num {
-  display: block; font-size: 11px; font-weight: 400; color: #ea580c;
-  margin-bottom: 4px; letter-spacing: 0.04em;
-}
-.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
-.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
-.flow-arrow { font-size: 18px; color: #ea580c; font-weight: 700; padding-top: 14px; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
 
-/* Multi-Column Comparison (Block 03) */
-.cmp-grid { display: grid; gap: 10px; margin-top: 14px; }
-.cmp-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
-.cmp-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-.cmp-card {
-  border-radius: 10px; padding: 14px 12px; text-align: center;
-}
-.cmp-card.white-card { background: #fafafa; border: 1px solid #e8e0d5; }
-.cmp-card.yellow-card { background: #fefce8; border: 1px solid #fde68a; }
-.cmp-card.green-card { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.cmp-card.red-card { background: #fef2f2; border: 1px solid #fecaca; }
-.cmp-card.blue-card { background: #eff6ff; border: 1px solid #bfdbfe; }
-.cmp-card.purple-card { background: #faf5ff; border: 1px solid #e9d5ff; }
-.cmp-card.brown-card { background: #faf6f0; border: 1px solid #e8d5c0; }
-.cmp-dot {
-  display: inline-block; width: 14px; height: 14px; border-radius: 50%;
-  margin-bottom: 6px;
-}
-.cmp-dot.white { background: #e5e5e5; border: 2px solid #ccc; }
-.cmp-dot.yellow { background: #eab308; }
-.cmp-dot.green { background: #22c55e; }
-.cmp-dot.red { background: #ef4444; }
-.cmp-dot.blue { background: #3b82f6; }
-.cmp-dot.purple { background: #a855f7; }
-.cmp-dot.brown { background: #a07050; }
-.cmp-name { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
-.cmp-desc { font-size: 11px; color: #888; line-height: 1.5; }
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
 
-/* Dual Grid (Block 04) */
-.dual-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
-}
-.dual-card {
-  border-radius: 12px; padding: 20px 18px;
-}
-.dual-card.digital { background: #ecfeff; border: 1px solid #a5f3fc; }
-.dual-card.physical { background: #fff7ed; border: 1px solid #fed7aa; }
-.dual-icon { font-size: 28px; margin-bottom: 8px; }
-.dual-label { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; }
-.dual-card ul { list-style: none; padding: 0; }
-.dual-card li { font-size: 13px; color: #555; line-height: 1.9; }
-.dual-card li::before { content: '▸ '; color: #ca8a04; font-weight: 700; }
-.dual-note { font-size: 11px; color: #999; margin-top: 10px; font-style: italic; }
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
 
-/* Quote Block (Block 04) */
-.quote-block {
-  background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0;
-  padding: 16px 20px; margin-top: 14px; position: relative;
-}
-.quote-mark {
-  position: absolute; top: -10px; left: 12px;
-  font-size: 32px; color: #c084fc; font-family: Georgia, serif; line-height: 1;
-}
-.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
-.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
 
-/* Bar Gauges (Block 05) */
-.bar-group { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
-.bar-item { display: flex; align-items: center; gap: 12px; }
-.bar-label { font-size: 13px; color: #555; min-width: 100px; flex-shrink: 0; }
-.bar-track { flex: 1; height: 14px; background: #e8e0d5; border-radius: 7px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 7px; min-width: 4px; }
-.bar-fill.gold { background: #ca8a04; }
-.bar-fill.red { background: #dc2626; }
-.bar-fill.orange { background: #ea580c; }
-.bar-fill.indigo { background: #4f46e5; }
-.bar-fill.green { background: #16a34a; }
-.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 40px; text-align: right; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
 
-/* Grade Cards (Block 05) */
-.grade-row { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
-.grade-card {
-  flex: 1; min-width: 80px; border-radius: 10px;
-  padding: 12px 10px; text-align: center;
-}
-.grade-card.grade-a { background: #f0fdf4; border: 1px solid #86efac; }
-.grade-card.grade-b { background: #ecfeff; border: 1px solid #67e8f9; }
-.grade-card.grade-c { background: #fefce8; border: 1px solid #fde68a; }
-.grade-card.grade-d { background: #fef2f2; border: 1px solid #fecaca; }
-.grade-letter { font-size: 20px; font-weight: 700; }
-.grade-card.grade-a .grade-letter { color: #16a34a; }
-.grade-card.grade-b .grade-letter { color: #0891b2; }
-.grade-card.grade-c .grade-letter { color: #ca8a04; }
-.grade-card.grade-d .grade-letter { color: #dc2626; }
-.grade-range { font-size: 11px; color: #888; margin-top: 2px; }
-.grade-note { font-size: 11px; color: #999; margin-top: 2px; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
 
-/* Formula Card (Block 05) */
-.formula-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-.formula-card {
-  flex: 1; min-width: 220px; background: #eff6ff;
-  border: 1px solid #bfdbfe; border-radius: 10px;
-  padding: 16px 18px;
-}
-.formula-name { font-size: 13px; font-weight: 700; color: #1e40af; margin-bottom: 8px; }
-.formula-expr { font-size: 12px; color: #555; line-height: 1.8; font-family: 'SF Mono', 'Menlo', monospace; background: #fff; padding: 8px 10px; border-radius: 6px; border: 1px solid #e0e7ff; }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
 
-/* Takeaway */
-.takeaway {
-  background: #fefce8; border: 2px solid #fde68a; border-radius: 14px;
-  padding: 24px 28px; margin-bottom: 24px;
-  display: flex; gap: 16px; align-items: flex-start;
-}
-.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
-.takeaway-label {
-  font-size: 13px; font-weight: 700; color: #a16207; text-transform: uppercase;
-  letter-spacing: 0.06em; margin-bottom: 6px;
-}
-.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
 
-/* Footer */
-.footer {
-  text-align: center; margin-top: 16px;
-}
-.footer p { font-size: 12px; color: #bbb; line-height: 1.8; }
-
-/* Responsive */
-@media (max-width: 640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 24px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .cmp-grid.cols-4, .cmp-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
-  .dual-grid { grid-template-columns: 1fr; }
-  .data-row { flex-direction: column; }
-  .kpi-row { flex-direction: column; }
-  .bar-item { flex-wrap: wrap; }
-  .grade-row { flex-direction: column; }
-  .formula-row { flex-direction: column; }
-}
-.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
 </head>
 <body>
 <div class="container">
-
-<!-- Language Switch -->
-<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← Back to Catalog</a></div>
 <div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="elder-sell-art-ch003-info-zh.html">中文</a>
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch003-info-zh.html">中文 / English</a>
 </div>
 
-<!-- KPI Row -->
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-num">2</div>
-    <div class="kpi-label">Record Systems<br>Spreadsheet + Journal</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">7</div>
-    <div class="kpi-label">Color Codes<br>For Trade Status</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">50%</div>
-    <div class="kpi-label">Entry / Exit<br>Score Target</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">30%</div>
-    <div class="kpi-label">Channel Width<br>For A-Grade Trade</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">1/10</div>
-    <div class="kpi-label">Screen Time<br>To Learn Spreadsheets</div>
-  </div>
-</div>
-
-<!-- Header -->
-<div class="header">
-  <h1>The New Sell and Sell Short · Chapter 3<br>Keeping Good Trading Records</h1>
-  <h2>Win or lose, a trader must become better after every trade — otherwise all the analysis, time, and risk taken are meaningless.</h2>
-</div>
+<h1>The New Sell and Sell Short · Chapter 3<br>"Keeping Good Trading Records"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Even a monkey throwing darts at a board of stock tickers can produce decent returns.
+  But a single win proves nothing — the real challenge is building a long-term profitable pattern, and most traders never systematically record or learn.
+  How to go from accidental wins to inevitable profits? Two record systems, seven-color journaling, and a triple scoring framework.
+</p>
 <div class="divider"></div>
-
-<!-- Overview Card -->
-<div class="overview">
-  <div class="overview-label">OVERVIEW</div>
-  <h4>A single winning trade proves nothing — consistent profitability is the real challenge</h4>
-  <p>If a monkey throws darts at a board listing stocks, the stocks it hits could very well earn good returns. What's truly difficult in trading is building a long-term profitable pattern — this requires two record systems: a trader's spreadsheet to track data, and a trading journal to record decisions and charts, combined with a scoring system that turns every trade into compounding improvement. Good records are where the journey from accidental wins to consistent profits begins.</p>
+<div class="chapter-overview">
+  <p>Keeping good records is the best way to learn from experience — it turns fleeting observations into permanent memories and lessons. Money management rules and good records are the two cornerstones of survival and success in the markets. No matter how large a win, a single uncontrolled loss can wipe out all prior results. Two systems — a spreadsheet tracking data, a journal capturing decisions — combined with a scoring framework, turn each trade into compounding improvement.</p>
 </div>
 
-<!-- Block 01: Why Trading Records Are Essential -->
-<div class="card section" style="border-left-color: #ca8a04;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">01</div>
-    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">Core Insight</div>
-    <h3 style="color:#ca8a04;">Why Trading Records Are Essential</h3>
-  </div>
-  <div class="section-body">
-    <p>Keeping good records is the best way to learn and improve from experience — they turn fleeting observations into permanent memories and lessons. Money management rules and good records are the two cornerstones of survival and success in the markets. No matter how large a win, a single uncontrolled loss can wipe out all prior results — overconfidence will inevitably cause profits to be given back.</p>
-    <div class="data-row">
-      <div class="data-card gold">
-        <div class="data-big">Cornerstone</div>
-        <div class="data-sm">Money Management + Records<br>= Foundation of Success</div>
-      </div>
-      <div class="data-card gold">
-        <div class="data-big">Waste</div>
-        <div class="data-sm">No Records = Wasted<br>Analysis, Time, and Risk</div>
-      </div>
-      <div class="data-card gold">
-        <div class="data-big">Consistency</div>
-        <div class="data-sm">Steady Profits &gt; One Big Win<br>Requires Long-Term Tracking</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Block 02: The Trader's Spreadsheet -->
-<div class="card section" style="border-left-color: #ea580c;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
-    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">Data Foundation</div>
-    <h3 style="color:#ea580c;">The Trader's Spreadsheet: Data Tracking</h3>
-  </div>
+<!-- 01: Why Records -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
   <div class="section-body">
-    <p>Update your spreadsheet after every trade — it takes very little time. Elder offers a free basic spreadsheet on his company website. Beginners need only invest one-tenth of their screen time to learn basic spreadsheet skills, and their performance will improve noticeably. The spreadsheet tracks your equity curve — only steadily growing assets prove trading ability.</p>
-    <div class="flow-row">
-      <div class="flow-step"><span class="flow-step-num">Step 1</span>Update Data<br>After Each Trade</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">Step 2</span>Log Account<br>Value Changes</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">Step 3</span>Create Weekly<br>Summary Table</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step end"><span class="flow-step-num">✓ Result</span>Track Your<br>Equity Curve</div>
-    </div>
-  </div>
-</div>
-
-<!-- Block 03: The Trading Journal -->
-<div class="card section" style="border-left-color: #4f46e5;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">03</div>
-    <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">Visual System</div>
-    <h3 style="color:#4f46e5;">The Trading Journal: Seven-Color Status Codes</h3>
-  </div>
-  <div class="section-body">
-    <p>Build your trading journal using Outlook Calendar + Snagit screenshots. Record each trade in illustrated form: daily and weekly charts with arrows, lines, and written commentary. Use seven colors to mark trade status — at a glance during monthly review, patterns emerge. It's okay to make mistakes, but never repeat them — the journal is the best way to capture both the joy of winning and the pain of losing in retrievable files.</p>
-    <div class="cmp-grid cols-4">
-      <div class="cmp-card white-card">
-        <div class="cmp-dot white"></div>
-        <div class="cmp-name">White</div>
-        <div class="cmp-desc">Completed Trade<br>Closed &amp; Recorded</div>
-      </div>
-      <div class="cmp-card yellow-card">
-        <div class="cmp-dot yellow"></div>
-        <div class="cmp-name">Yellow</div>
-        <div class="cmp-desc">Open Position<br>Needs Monitoring</div>
-      </div>
-      <div class="cmp-card green-card">
-        <div class="cmp-dot green"></div>
-        <div class="cmp-name">Green</div>
-        <div class="cmp-desc">Winning Exit<br>Profitable Trade</div>
-      </div>
-      <div class="cmp-card red-card">
-        <div class="cmp-dot red"></div>
-        <div class="cmp-name">Red</div>
-        <div class="cmp-desc">Losing Exit<br>Unprofitable Trade</div>
-      </div>
-    </div>
-    <div class="cmp-grid cols-3" style="margin-top: 10px;">
-      <div class="cmp-card blue-card">
-        <div class="cmp-dot blue"></div>
-        <div class="cmp-name">Blue</div>
-        <div class="cmp-desc">Underperforming<br>Missed Full Potential</div>
-      </div>
-      <div class="cmp-card purple-card">
-        <div class="cmp-dot purple"></div>
-        <div class="cmp-name">Purple</div>
-        <div class="cmp-desc">Planned Trade<br>Not Yet Executed</div>
-      </div>
-      <div class="cmp-card brown-card">
-        <div class="cmp-dot brown"></div>
-        <div class="cmp-name">Brown</div>
-        <div class="cmp-desc">Research / Paper<br>Trade (Simulation)</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Block 04: Trade Planning -->
-<div class="card section" style="border-left-color: #0891b2;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#ecfeff;color:#0891b2;">04</div>
-    <div class="section-tag" style="background:#ecfeff;color:#0891b2;">Process &amp; Method</div>
-    <h3 style="color:#0891b2;">Trade Planning Workflow &amp; Margaret's Method</h3>
-  </div>
-  <div class="section-body">
-    <p>Write a trading plan before every trade — that's how you stay ahead of the competition. Whether you choose value trading or momentum trading, having a plan gives you an edge over every other market participant. Beyond digital tools, you can also adopt Margaret's low-tech method — print candidate charts and pin them on the wall, where one glance reveals trade-ready signals.</p>
+    <div class="tag tag-01">Core Insight</div>
+    <div class="section-title t-01">Why Records Are Essential: From Luck to Consistency</div>
+    <div class="section-desc">Keeping good records is the best way to turn fleeting experience into permanent memory. Money management and good records are the two cornerstones of survival and success. No records means wasted analysis time and risk. Consistent profits far outweigh one big win — that requires long-term pattern tracking.</div>
     <div class="dual-grid">
-      <div class="dual-card digital">
-        <div class="dual-icon">💻</div>
-        <div class="dual-label">Digital: Outlook + Snagit</div>
-        <ul>
-          <li>Capture weekly &amp; daily charts with arrows</li>
-          <li>Paste into Outlook calendar, mark purple</li>
-          <li>Log into broker, set OCO stop &amp; target</li>
-          <li>Add to watchlist, track in chart window</li>
-        </ul>
-        <div class="dual-note">Switch purple → yellow after execution</div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>Documented Trader</h4>
+          <p>Updates spreadsheet and journal after every trade. Wins and losses become traceable experience. Builds a replicable profit pattern over time.</p>
+        </div>
       </div>
-      <div class="dual-card physical">
-        <div class="dual-icon">🖼️</div>
-        <div class="dual-label">Physical: Margaret's Wall Method</div>
-        <ul>
-          <li>Print candidate stock charts</li>
-          <li>Mark trading signals with red pen</li>
-          <li>Pin on board — visible when you walk in</li>
-          <li>Remove after trade completes or cancels</li>
-        </ul>
-        <div class="dual-note">Always keep plans current and updated</div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎲</div>
+        <div class="dual-text">
+          <h4>Undocumented Trader</h4>
+          <p>Trades on gut feeling with no post-trade review. Wins from luck, losses unexplained. Overconfidence inevitably gives profits back.</p>
+        </div>
       </div>
-    </div>
-    <div class="quote-block">
-      <div class="quote-mark">"</div>
-      <div class="quote-text">The best opportunities are always late in arriving. Before deciding to buy or short, you need to wait for more confirming information — like playing a word puzzle, you need more letters to appear before you can guess the word.</div>
-      <div class="quote-author">— Alexander Elder, <em>The New Sell and Sell Short</em></div>
     </div>
   </div>
 </div>
 
-<!-- Block 05: Trade Scoring -->
-<div class="card section" style="border-left-color: #dc2626;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">05</div>
-    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">Quantitative Review</div>
-    <h3 style="color:#dc2626;">The Trade Scoring System: Measure Every Trade</h3>
-  </div>
+<!-- 02: Spreadsheet -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
   <div class="section-body">
-    <p>Not scoring your trades is like a sprinter claiming to be fast but never using a stopwatch. Elder scores entry quality, exit quality, and overall trade grade separately, targeting above 50% — buy below the day's midpoint, sell above it. Trade scoring forces you to confront your performance honestly and continuously improve execution quality.</p>
-    <div class="formula-row">
-      <div class="formula-card">
-        <div class="formula-name">📥 Entry Score (Target &gt; 50%)</div>
-        <div class="formula-expr">(Day High − Entry Price) ÷ (Day High − Day Low) × 100%</div>
-      </div>
-      <div class="formula-card">
-        <div class="formula-name">📤 Exit Score (Target &gt; 50%)</div>
-        <div class="formula-expr">(Exit Price − Day Low) ÷ (Day High − Day Low) × 100%</div>
-      </div>
+    <div class="tag tag-02">Data Foundation</div>
+    <div class="section-title t-02">The Trader's Spreadsheet: Data Tracking System</div>
+    <div class="section-desc">Update your spreadsheet after every trade — log account values and trade data. Beginners need only one-tenth of screen time to learn basic spreadsheets, and performance will improve. The spreadsheet tracks your equity curve — only steadily growing assets prove trading ability. From weekly to monthly summaries, numbers don't lie.</div>
+    <div class="flow-row">
+      <div class="flow-step">After Each<br>Trade: Update</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Log Account<br>Value Changes</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Create Weekly<br>Summary</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Track Your<br>Equity Curve</div>
     </div>
-    <div class="bar-group">
-      <div class="bar-item">
-        <div class="bar-label">Excellent &gt; 80%</div>
-        <div class="bar-track"><div class="bar-fill green" style="width:90%"></div></div>
-        <div class="bar-val">90%</div>
+  </div>
+</div>
+
+<!-- 03: Journal Colors -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Visual System</div>
+    <div class="section-title t-03">The Trading Journal: Seven-Color Status Codes</div>
+    <div class="section-desc">Build your journal using Outlook Calendar + Snagit. Record each trade with daily and weekly charts, arrows, lines, and commentary. Seven colors mark trade status — monthly review reveals patterns instantly. Mistakes are allowed, but never repeat them. The journal captures both the joy of winning and the pain of losing in retrievable files.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">⚪ White</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Completed trade, closed &amp; recorded</div>
       </div>
-      <div class="bar-item">
-        <div class="bar-label">Good &gt; 50%</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:65%"></div></div>
-        <div class="bar-val">65%</div>
+      <div class="confusion-row">
+        <div class="confusion-left">🟡 Yellow</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Open position, needs monitoring</div>
       </div>
-      <div class="bar-item">
-        <div class="bar-label">Poor &lt; 20%</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:15%"></div></div>
-        <div class="bar-val">15%</div>
+      <div class="confusion-row">
+        <div class="confusion-left">🟢 Green</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Winning exit, profitable trade</div>
       </div>
-    </div>
-    <div class="grade-row">
-      <div class="grade-card grade-a">
-        <div class="grade-letter">A</div>
-        <div class="grade-range">≥ 30%</div>
-        <div class="grade-note">Channel Width</div>
+      <div class="confusion-row">
+        <div class="confusion-left">🔴 Red</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Losing exit, unprofitable trade</div>
       </div>
-      <div class="grade-card grade-b">
-        <div class="grade-letter">B</div>
-        <div class="grade-range">20% – 30%</div>
-        <div class="grade-note">Channel Width</div>
-      </div>
-      <div class="grade-card grade-c">
-        <div class="grade-letter">C</div>
-        <div class="grade-range">10% – 20%</div>
-        <div class="grade-note">Channel Width</div>
-      </div>
-      <div class="grade-card grade-d">
-        <div class="grade-letter">D</div>
-        <div class="grade-range">&lt; 0</div>
-        <div class="grade-note">Losing Trade</div>
+      <div class="confusion-row">
+        <div class="confusion-left">🔵 Blue · 🟣 Purple · 🟤 Brown</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Underperforming / Planned / Research</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Takeaway -->
-<div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">KEY TAKEAWAY</div>
-    <p>Record-keeping isn't about looking backward — it's about changing every future trade. Build two systems — a spreadsheet tracking your data, a journal capturing your decisions — then apply the triple scoring framework for entries, exits, and overall trade grades. This turns every trade into a stepping stone. Go from accidental wins to inevitable profits. Go from a tourist in the markets to a professional.</p>
+<!-- 04: Planning -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Process &amp; Method</div>
+    <div class="section-title t-04">Trade Planning Workflow &amp; Margaret's Wall Method</div>
+    <div class="section-desc">Write a trading plan before every trade — that's how you stay ahead. Digital: screenshot → paste to Outlook → mark purple → log into broker → switch to yellow after execution. Physical: print candidate charts → mark signals with red pen → pin on wall, visible when you walk in. The best opportunities are always late — wait for confirming information before committing.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">💻 Digital Method</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">Outlook+Snagit</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">🖼️ Physical Method</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:75%"></div></div>
+        <div class="risk-val">Print &amp; Pin</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">📋 Core Principle</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Plan Before Act</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">⏳ Best Entries</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">Wait to Confirm</div>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- 05: Scoring -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Quantitative Review</div>
+    <div class="section-title t-05">The Trade Scoring System: Measure Every Trade</div>
+    <div class="section-desc">Not scoring your trades is like a sprinter claiming speed without a stopwatch. Elder scores entry, exit, and overall trade quality separately, targeting above 50% for both entry and exit. Scoring forces honest self-appraisal — buy below the day's midpoint, sell above it. Continuous attention to execution quality is the path to mastery.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📥</div>
+        <div class="data-name">Entry Score</div>
+        <div class="data-sm">(High−Entry)÷Range<br>Target &gt; 50%<br>Buy below midpoint</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📤</div>
+        <div class="data-name">Exit Score</div>
+        <div class="data-sm">(Exit−Low)÷Range<br>Target &gt; 50%<br>Sell above midpoint</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🏆</div>
+        <div class="data-name">Trade Grade</div>
+        <div class="data-sm">A ≥30% / B 20-30%<br>C 10-20% / D Loss<br>Channel efficiency</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Record-keeping isn't about looking backward — it's about changing every future trade. Build two systems — spreadsheet for data, journal for decisions — then apply the triple scoring framework for entries, exits, and overall grades. This turns each trade into a stepping stone. Go from accidental wins to inevitable profits. Go from a tourist in the markets to a professional.</div>
 </div>
 
 <!-- Footer -->
 <div class="footer">
-  <p>Source: Alexander Elder, <em>The New Sell and Sell Short</em>, Chapter 3 "Keeping Good Trading Records" · Infographic generated 2026-06-17 · For educational purposes only</p>
+  Source: Alexander Elder, <em>The New Sell and Sell Short</em>, Chapter 3 "Keeping Good Trading Records" · Infographic · For educational purposes
 </div>
 
 </div>

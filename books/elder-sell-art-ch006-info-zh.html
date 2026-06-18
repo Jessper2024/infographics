@@ -5,528 +5,369 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>以交易为生II：卖出的艺术 · 第六章「因交易噪声卖出」</title>
 <style>
-@font-face {
-  font-family: 'FZXPYZS';
-  src: url('../方正屏显雅宋简体.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
 
-body {
-  background: #f5f1eb;
-  font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
-  color: #555;
-  line-height: 2.0;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
 
-.container {
-  max-width: 880px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px 32px 60px;
-}
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
 
-/* ====== 语言切换 ====== */
-.lang-switch { text-align: right; margin-bottom: 16px; }
-.lang-btn {
-  display: inline-block; padding: 6px 16px; border-radius: 8px;
-  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
-  transition: opacity 0.15s;
-}
-.lang-btn:hover { opacity: 0.75; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
 
-/* ====== KPI Row ====== */
-.kpi-row {
-  display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;
-}
-.kpi-card {
-  flex: 1; min-width: 120px;
-  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
-  padding: 20px 16px; text-align: center;
-}
-.kpi-num { font-size: 32px; font-weight: bold; color: #4f46e5; letter-spacing: -0.02em; }
-.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
 
-/* ====== Header ====== */
-.header { margin-bottom: 24px; }
-.header h1 {
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  font-size: 36px; font-weight: 400; color: #1a1a1a;
-  letter-spacing: 0.03em; line-height: 1.35;
-}
-.header h2 {
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  font-size: 14px; font-weight: 400; color: #888;
-  letter-spacing: 0.02em; margin-top: 10px; line-height: 1.6;
-}
-.header .divider {
-  width: 60px; height: 3px;
-  background: linear-gradient(90deg, #4f46e5, #a5b4fc);
-  border-radius: 2px; margin-top: 18px;
-}
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
 
-/* ====== Card ====== */
-.card {
-  background: #ffffff;
-  border: 1px solid #e8e0d5;
-  border-radius: 14px;
-  padding: 28px 32px;
-  margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-}
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
 
-/* ====== Overview ====== */
-.overview { margin-bottom: 24px; }
-.overview .ov-label {
-  font-size: 13px; font-weight: 700; color: #4f46e5; text-transform: uppercase;
-  letter-spacing: 0.06em; margin-bottom: 8px;
-}
-.overview .ov-question {
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px;
-}
-.overview p { margin-bottom: 8px; }
-.overview .ov-answer {
-  font-weight: 700; color: #4f46e5;
-}
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
 
-/* ====== Section ====== */
-.section { border-left: 4px solid; }
-.section-header {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
-}
-.circle-num {
-  width: 42px; height: 42px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; font-weight: 700; flex-shrink: 0;
-}
-.section-tag {
-  font-size: 12px; padding: 3px 10px; border-radius: 20px;
-  font-weight: 500; letter-spacing: 0.02em;
-}
-.section h3 {
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  font-size: 18px; font-weight: 700; line-height: 1.4;
-}
-.section-body p { margin-bottom: 12px; }
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
 
-/* ====== Flow Row ====== */
-.flow-row {
-  display: flex; align-items: flex-start; justify-content: center;
-  gap: 8px; margin-top: 16px; flex-wrap: wrap;
-}
-.flow-step, .flow-step.end {
-  background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px;
-  padding: 14px 16px; text-align: center; font-size: 13px;
-  color: #9a3412; font-weight: 700; min-width: 90px;
-}
-.flow-step-num {
-  display: block; font-size: 11px; font-weight: 400; color: #ea580c;
-  margin-bottom: 4px; letter-spacing: 0.04em;
-}
-.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
-.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
-.flow-arrow { font-size: 18px; color: #ea580c; font-weight: 700; padding-top: 14px; }
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
 
-/* ====== Bar Group ====== */
-.bar-group { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-.bar-item { display: flex; align-items: center; gap: 12px; }
-.bar-label { font-size: 13px; color: #555; min-width: 90px; flex-shrink: 0; }
-.bar-track { flex: 1; height: 12px; background: #e8e0d5; border-radius: 6px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 6px; min-width: 4px; }
-.bar-fill.red { background: #dc2626; }
-.bar-fill.orange { background: #ea580c; }
-.bar-fill.indigo { background: #4f46e5; }
-.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 40px; text-align: right; }
+  /* ── Risk bars ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
 
-/* ====== Dual Grid ====== */
-.dual-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;
-}
-.dual-card {
-  border-radius: 10px; padding: 16px 18px;
-}
-.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
-.dual-label { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
-.dual-card.good .dual-label { color: #166534; }
-.dual-card.bad .dual-label { color: #991b1b; }
-.dual-card p { font-size: 13px; color: #555; line-height: 1.8; }
+  /* ── Confusion pairs ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
 
-/* ====== Data Row ====== */
-.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-.data-card-item {
-  flex: 1; min-width: 100px;
-  border-radius: 12px; padding: 18px 14px; text-align: center;
-}
-.data-card-item.red { background: #fef2f2; border: 1px solid #fecaca; }
-.data-card-item.gold { background: #fefce8; border: 1px solid #fde68a; }
-.data-card-item.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
-.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
-.data-card-item.red .data-big { color: #dc2626; }
-.data-card-item.gold .data-big { color: #ca8a04; }
-.data-card-item.indigo .data-big { color: #4f46e5; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
 
-/* ====== Quote Block ====== */
-.quote-block {
-  background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0;
-  padding: 16px 20px; margin-top: 14px; position: relative;
-}
-.quote-mark {
-  position: absolute; top: -10px; left: 12px;
-  font-size: 32px; color: #c084fc; font-family: Georgia, serif; line-height: 1;
-}
-.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
-.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
 
-/* ====== Callout ====== */
-.callout {
-  display: flex; gap: 10px; align-items: flex-start;
-  border-radius: 10px; padding: 14px 16px; margin-top: 14px;
-}
-.callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
-.callout.info { background: #eff6ff; border: 1px solid #bfdbfe; }
-.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.callout-text { font-size: 13px; color: #555; line-height: 1.8; }
-.callout-text strong { color: #1a1a1a; }
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
 
-/* ====== Comparison Grid ====== */
-.cmp-grid { display: grid; gap: 12px; margin-top: 14px; }
-.cmp-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-.cmp-card {
-  border-radius: 12px; padding: 20px 16px 16px; text-align: center;
-}
-.cmp-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
-.cmp-card.pink { background: #fdf2f8; border: 1px solid #fbcfe8; }
-.cmp-icon { font-size: 28px; margin-bottom: 8px; }
-.cmp-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
-.cmp-features { list-style: none; padding: 0; text-align: left; font-size: 12px; color: #555; line-height: 1.7; }
-.cmp-features li::before { content: '• '; color: #888; }
-.cmp-bar { height: 4px; border-radius: 2px; margin: 10px 0; }
-.cmp-bar.orange { background: #fdba74; }
-.cmp-bar.pink { background: #f9a8d4; }
-.cmp-note { font-size: 11px; color: #999; line-height: 1.5; }
-
-/* ====== Takeaway ====== */
-.takeaway {
-  background: #faf5ff; border: 2px solid #d8b4fe; border-radius: 14px;
-  padding: 24px 28px; margin-bottom: 24px;
-  display: flex; gap: 16px; align-items: flex-start;
-}
-.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
-.takeaway-label {
-  font-size: 13px; font-weight: 700; color: #7c3aed; text-transform: uppercase;
-  letter-spacing: 0.06em; margin-bottom: 6px;
-}
-.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
-
-/* ====== Footer ====== */
-.footer {
-  text-align: center; padding-top: 16px; border-top: 1px solid #e8e0d5;
-}
-.footer p { font-size: 12px; color: #bbb; line-height: 1.8; }
-
-/* ====== Responsive ====== */
-@media (max-width: 640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 24px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .cmp-grid.cols-2, .dual-grid { grid-template-columns: 1fr; }
-  .data-row { flex-direction: column; }
-  .kpi-row { flex-direction: column; }
-  .bar-item { flex-wrap: wrap; }
-}
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
 .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
 </style>
 </head>
 <body>
 <div class="container">
-
-<!-- 语言切换 -->
 <div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
 <div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="elder-sell-art-ch006-info-en.html">English</a>
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch006-info-en.html">中文 / English</a>
 </div>
 
-<!-- KPI 关键数字条 -->
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-num">5</div>
-    <div class="kpi-label">交易噪声<br>识别维度</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">MACD柱</div>
-    <div class="kpi-label">核心背离<br>判断工具</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">NH-NL</div>
-    <div class="kpi-label">市场领先<br>确认指标</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">决策树</div>
-    <div class="kpi-label">结构化<br>卖出框架</div>
-  </div>
-</div>
-
-<!-- 标题 -->
-<div class="header">
-  <h1>以交易为生II：卖出的艺术 · 第六章「因交易噪声卖出」</h1>
-  <h2>市场不会总按计划走——当噪声出现时，主观交易者如何在止损被触发前主动离场</h2>
-  <div class="divider"></div>
+<h1>以交易为生II：卖出的艺术<br>第六章「因交易噪声卖出」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  系统交易者跟随信号——主观交易者拥有选择权。当市场出现异常"噪声"时，是坚守原计划还是提前离场？答案在于识别五类交易噪声信号，在止损被触发前主动收紧离场、保护利润。
 <div class="chapter-overview">
   <p>当市场出现异常噪声时，是坚守原计划还是提前离场？系统交易者按信号执行，主观交易者则拥有奢侈的选择权——如果不喜欢市场表现，可以提前收紧止损离场。主观交易者通过识别五种交易噪声信号——上涨动力减弱、业绩公告前风险、市场警钟、NH-NL指标背离、结构化决策树——在止损被触发前做出卖出决策，保护利润并重新评估市场。</p>
 </div>
+</p>
+<div class="divider"></div>
 
-</div>
-
-<!-- 概述卡片 -->
-<div class="card overview">
-  <div class="ov-label">核心议题</div>
-  <div class="ov-question">当市场出现异常"噪声"时，是坚守原计划还是提前离场？</div>
-  <p>系统交易者按信号执行，主观交易者则拥有奢侈的选择权——如果不喜欢市场表现，可以提前收紧止损离场。但这需要大量经验积累。</p>
-  <p><span class="ov-answer">核心答案：</span>主观交易者通过识别五种交易噪声信号——上涨动力减弱、业绩公告前风险、市场警钟、NH-NL指标背离、结构化决策树——在止损被触发前做出卖出决策，保护利润并重新评估市场。</p>
-</div>
-
-<!-- ====== Block 01: 上涨动力减弱 ====== -->
-<div class="card section" style="border-left-color:#dc2626;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">01</div>
-    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">动力衰竭</div>
-    <h3 style="color:#dc2626;">上涨动力减弱——MACD顶背离是最早的离场信号</h3>
-  </div>
+<!-- 01: 上涨动力减弱 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
   <div class="section-body">
-    <p>当MACD柱和价格发生顶背离，股票不再朝有利方向运动时，明智的波段交易者会提前离场而非等待价格到达目标位。价格可能到达，也可能不会——落袋为安并在场外重新评估才是更安全的做法。</p>
-
+    <div class="tag tag-01">动力衰竭</div>
+    <div class="section-title t-01">上涨动力减弱——MACD顶背离是最早的离场信号</div>
+    <div class="section-desc">当MACD柱和价格发生顶背离，股票不再朝有利方向运动时，明智的波段交易者会提前离场而非等待价格到达目标位。价格可能到达，也可能不会——落袋为安并在场外重新评估才是更安全的做法。长线交易者可部分获利了结、保留核心头寸，围绕核心仓位做波段交易。</div>
     <div class="flow-row">
-      <div class="flow-step"><span class="flow-step-num">步骤 1</span>识别MACD柱<br>顶背离<div class="flow-label">价创新高·柱不创新高</div></div>
+      <div class="flow-step">识别MACD柱<br>顶背离</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">步骤 2</span>评估交易<br>类型<div class="flow-label">短线 vs 长线</div></div>
+      <div class="flow-step">评估交易<br>类型</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">步骤 3</span>短线：立即<br>全部离场<div class="flow-label">日线背离即信号</div></div>
+      <div class="flow-step">短线：立即<br>全部离场</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step end"><span class="flow-step-num">✓ 结果</span>落袋为安<br>重新评估市场</div>
-    </div>
-
-    <div class="bar-group">
-      <div class="bar-item">
-        <div class="bar-label">MACD柱顶背离</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:95%"></div></div>
-        <div class="bar-val">高</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">强力指标顶背离</div>
-        <div class="bar-track"><div class="bar-fill orange" style="width:88%"></div></div>
-        <div class="bar-val">很高</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">价格高位走平</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:72%"></div></div>
-        <div class="bar-val">中高</div>
-      </div>
-    </div>
-
-    <div class="callout info">
-      <div class="callout-icon">💡</div>
-      <div class="callout-text"><strong>长线变通：</strong>长线交易者不必为日线噪声清仓——可部分获利了结、保留核心头寸，让1美元的价格变动获得超过1美元的收益。围绕核心仓位做波段交易是进阶者的利器。</div>
+      <div class="flow-step end">落袋为安<br>重新评估市场</div>
     </div>
   </div>
 </div>
 
-<!-- ====== Block 02: 业绩公告前卖出 ====== -->
-<div class="card section" style="border-left-color:#ea580c;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
-    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">信息风险</div>
-    <h3 style="color:#ea580c;">业绩公告前卖出——信息泄露与内幕交易的隐形战场</h3>
-  </div>
+<!-- 02: 业绩公告前卖出 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
   <div class="section-body">
-    <p>业绩报告很少给市场带来"惊喜"：专家早已预测，信息经常提前泄露。内幕交易在乡村俱乐部层面远比想象中普遍——只有贪婪愚蠢的才会被抓住。如果你发现公司有泄露先例，公告前就该离场。</p>
-
+    <div class="tag tag-02">信息风险</div>
+    <div class="section-title t-02">业绩公告前卖出——信息泄露与内幕交易的隐形战场</div>
+    <div class="section-desc">业绩报告很少给市场带来"惊喜"：专家早已预测，信息经常提前泄露。内幕交易远比想象中普遍——只有贪婪愚蠢的才会被抓住。如果你发现公司有泄露先例，公告前就该离场。无论你多么相信自己的系统，在业绩公告发布之前了结交易永远站在安全的一边。</div>
     <div class="dual-grid">
-      <div class="dual-card bad">
-        <div class="dual-label">⚠️ 信息提前泄露</div>
-        <p>价格已在公告前反映预期，公告时"利多出尽"或"利空出尽"，持仓面临反向跳空风险。CSCO案例：公告前股价站上上轨高估区，公告后先暴跌。</p>
+      <div class="dual-card yes">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>信息提前泄露</h4>
+          <p>价格已在公告前反映预期，公告时"利多出尽"或"利空出尽"，持仓面临反向跳空风险。CSCO案例：公告前股价站上上轨高估区，公告后先暴跌。</p>
+        </div>
       </div>
-      <div class="dual-card good">
-        <div class="dual-label">🔒 诚实公告</div>
-        <p>公司保密到位时，公告可能引发剧烈波动。RIMM案例：三条利好消息叠加发布，股价跳空暴涨创历史新高，否定了所有顶背离信号。</p>
+      <div class="dual-card no">
+        <div class="dual-icon">🔒</div>
+        <div class="dual-text">
+          <h4>诚实公告</h4>
+          <p>公司保密到位时，公告可能引发剧烈波动。RIMM案例：三条利好消息叠加发布，股价跳空暴涨创历史新高，否定了所有顶背离信号。</p>
+        </div>
       </div>
-    </div>
-
-    <div class="callout warn">
-      <div class="callout-icon">⚠️</div>
-      <div class="callout-text"><strong>安全策略：</strong>无论你多么相信自己的系统，在业绩公告发布之前了结交易永远站在安全的一边。即使公告后股价朝有利方向运动，你损失的也只是一次机会，而非本金。</div>
     </div>
   </div>
 </div>
 
-<!-- ====== Block 03: 市场警钟 ====== -->
-<div class="card section" style="border-left-color:#ca8a04;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">03</div>
-    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">极端情绪</div>
-    <h3 style="color:#ca8a04;">市场警钟——当门外汉开始持续赚钱，顶部就不远了</h3>
-  </div>
+<!-- 03: 市场警钟 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
   <div class="section-body">
-    <p>市场警钟响起的机会极少，但信号清晰：当非专业交易者持续赚钱、社会最底层都开始推荐股票时，市场规律似乎被废除——但这只是泡沫的短暂假象。听到警钟并行动，是从新手到严谨交易者的分水岭。</p>
-
+    <div class="tag tag-03">极端情绪</div>
+    <div class="section-title t-03">市场警钟——当门外汉开始持续赚钱，顶部就不远了</div>
+    <div class="section-desc">市场警钟响起的机会极少，但信号清晰：当非专业交易者持续赚钱、社会最底层都开始推荐股票时，市场规律似乎被废除——但这只是泡沫的短暂假象。听到警钟并行动，是从新手到严谨交易者的分水岭。</div>
     <div class="data-row">
-      <div class="data-card-item red">
+      <div class="data-card d1">
         <div class="data-big">1989</div>
-        <div class="data-sm">日本空乘靠股票赚得比薪水还多，数月后日经指数崩跌，市值蒸发过半</div>
+        <div class="data-name">日本</div>
+        <div class="data-sm">空乘靠股票赚得比薪水还多，数月后日经指数崩跌，市值蒸发过半</div>
       </div>
-      <div class="data-card-item gold">
+      <div class="data-card d2">
         <div class="data-big">1929</div>
+        <div class="data-name">大崩盘</div>
         <div class="data-sm">擦鞋工向巴鲁克推荐股票，他意识到这是危险信号，随即清仓避开了大崩盘</div>
       </div>
-      <div class="data-card-item indigo">
+      <div class="data-card d3">
         <div class="data-big">2007</div>
+        <div class="data-name">纳斯达克</div>
         <div class="data-sm">纳斯达克展台向参观者赠送真美元纸币，不久后标普500开启暴跌模式</div>
       </div>
     </div>
-
-    <div class="quote-block">
-      <div class="quote-mark">"</div>
-      <div class="quote-text">让业余交易者持续赚钱的市场是不存在的。当门外汉和迟来者开始赚很多钱的时候，市场就离顶部很近了。</div>
-      <div class="quote-author">— 亚历山大·埃尔德，《以交易为生II》</div>
-    </div>
   </div>
 </div>
 
-<!-- ====== Block 04: NH-NL指标 ====== -->
-<div class="card section" style="border-left-color:#4f46e5;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">04</div>
-    <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">领先指标</div>
-    <h3 style="color:#4f46e5;">NH-NL指标——最好的股票市场领先指标</h3>
-  </div>
+<!-- 04: NH-NL指标 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
   <div class="section-body">
-    <p>新高（NH）代表多头力量，新低（NL）代表空头力量。NH−NL值为正表示牛市主导，背离则预示反转。当标普500创新高而NH-NL指标下降，就是重要的顶部信号。</p>
-
-    <div class="cmp-grid cols-2">
-      <div class="cmp-card orange">
-        <div class="cmp-icon">📈</div>
-        <div class="cmp-name">趋势确认</div>
-        <ul class="cmp-features">
-          <li>价格与NH-NL同涨同跌</li>
-          <li>牛市/熊市主导延续</li>
-          <li>持仓信号：继续持有</li>
-        </ul>
-        <div class="cmp-bar orange"></div>
-        <div class="cmp-note">市场与指标共振</div>
+    <div class="tag tag-04">领先指标</div>
+    <div class="section-title t-04">NH-NL指标——最好的股票市场领先指标</div>
+    <div class="section-desc">新高（NH）代表多头力量，新低（NL）代表空头力量。NH−NL值为正表示牛市主导，背离则预示反转。当标普500创新高而NH-NL指标下降，就是重要的顶部信号。2007年2月的经典案例：价格创新高，指标却下降——上涨趋势遇到了麻烦。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">周线NH-NL背离</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:96%"></div></div>
+        <div class="risk-val">极强</div>
       </div>
-      <div class="cmp-card pink">
-        <div class="cmp-icon">⚠️</div>
-        <div class="cmp-name">顶背离警告</div>
-        <ul class="cmp-features">
-          <li>价格创新高·指标下降</li>
-          <li>2007年2月经典案例</li>
-          <li>卖出信号：减仓或清仓</li>
-        </ul>
-        <div class="cmp-bar pink"></div>
-        <div class="cmp-note">上涨趋势遇到麻烦</div>
+      <div class="risk-row">
+        <div class="risk-label">日线NH-NL背离</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:78%"></div></div>
+        <div class="risk-val">强</div>
       </div>
-    </div>
-
-    <div class="bar-group">
-      <div class="bar-item">
-        <div class="bar-label">周线NH-NL背离</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:96%"></div></div>
-        <div class="bar-val">极强</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">日线NH-NL背离</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:78%"></div></div>
-        <div class="bar-val">强</div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-label">多指标共振确认</div>
-        <div class="bar-track"><div class="bar-fill indigo" style="width:100%"></div></div>
-        <div class="bar-val">极强</div>
+      <div class="risk-row">
+        <div class="risk-label">多指标共振确认</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">极强</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ====== Block 05: 卖出决策树 ====== -->
-<div class="card section" style="border-left-color:#db2777;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fdf2f8;color:#db2777;">05</div>
-    <div class="section-tag" style="background:#fdf2f8;color:#db2777;">执行框架</div>
-    <h3 style="color:#db2777;">卖出决策树——将噪声转化为结构化交易纪律</h3>
-  </div>
+<!-- 05: 卖出决策树 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
   <div class="section-body">
-    <p>专家决策树写在骨子里——它是一组"如果……那么……"规则，帮助你决定在特定条件下该做什么。卖出决策树从交易类型出发，逐层判断止损位置、噪声类型和应对策略。</p>
-
-    <div class="flow-row">
-      <div class="flow-step"><span class="flow-step-num">起点</span>确定交易<br>类型<div class="flow-label">短线 or 长线？</div></div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">规则 1</span>设置止损<br>位置<div class="flow-label">通道/包络线 or 支撑/阻力</div></div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">规则 2</span>倾听市场<br>噪声<div class="flow-label">日线 or 周线信号</div></div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step end"><span class="flow-step-num">✓ 执行</span>记录决策<br>复盘优化</div>
-    </div>
-
-    <div class="cmp-grid cols-2">
-      <div class="cmp-card orange">
-        <div class="cmp-icon">🐇</div>
-        <div class="cmp-name">短线交易者（猎兔）</div>
-        <ul class="cmp-features">
-          <li>紧止损：通道/包络线附近</li>
-          <li>日线MACD顶背离即离场</li>
-          <li>强力指标背离立即出场</li>
-          <li>关注交易评分A级信号</li>
-        </ul>
-        <div class="cmp-bar orange"></div>
-        <div class="cmp-note">微小疲软=出场信号</div>
+    <div class="tag tag-05">执行框架</div>
+    <div class="section-title t-05">卖出决策树——将噪声转化为结构化交易纪律</div>
+    <div class="section-desc">专家决策树写在骨子里——它是一组"如果……那么……"规则。卖出决策树从交易类型出发，逐层判断止损位置、噪声类型和应对策略。短线交易者紧止损、日线背离即离场；长线交易者宽止损、忽略日线噪声、关注周线信号。围绕核心仓位做波段交易是进阶者的利器。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🐇</div>
+        <div class="data-name">短线交易者</div>
+        <div class="data-sm">紧止损：通道/包络线<br>日线MACD顶背离即离场<br>强力指标背离立即出场<br>关注A级交易评分信号</div>
       </div>
-      <div class="cmp-card pink">
-        <div class="cmp-icon">🐘</div>
-        <div class="cmp-name">长线交易者（猎象）</div>
-        <ul class="cmp-features">
-          <li>宽止损：重要支撑/阻力位</li>
-          <li>忽略日线噪声，关注周线</li>
-          <li>核心头寸+波段操作</li>
-          <li>单次风险控制在1%以内</li>
-        </ul>
-        <div class="cmp-bar pink"></div>
-        <div class="cmp-note">大噪声才值得反应</div>
+      <div class="data-card d2">
+        <div class="data-big">🐘</div>
+        <div class="data-name">长线交易者</div>
+        <div class="data-sm">宽止损：重要支撑/阻力<br>忽略日线噪声，关注周线<br>核心头寸+波段操作<br>单次风险控制在1%以内</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🌲</div>
+        <div class="data-name">决策树法则</div>
+        <div class="data-sm">确定交易类型→设置止损<br>→倾听市场噪声→执行决策<br>→记录并复盘优化<br>完美是优秀的敌人</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- 核心结论 -->
+<!-- Key Takeaway -->
 <div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">核心结论</div>
-    <p>交易噪声是主观交易者最宝贵的预警系统。系统交易者靠信号，主观交易者靠判断——两者并不对立。最优秀的交易者融合二者：像系统一样寻找机会、设置止损，同时像猎手一样倾听市场噪声。当MACD背离、业绩公告临近、市场警钟敲响或NH-NL指标预警时，主动离场不是懦弱，而是纪律。</p>
-  </div>
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">交易噪声是主观交易者最宝贵的预警系统。系统交易者靠信号，主观交易者靠判断——两者并不对立。最优秀的交易者融合二者：像系统一样寻找机会、设置止损，同时像猎手一样倾听市场噪声。当MACD背离、业绩公告临近、市场警钟敲响或NH-NL指标预警时，主动离场不是懦弱，而是纪律。</div>
 </div>
 
-<!-- 页脚 -->
+<!-- Footer -->
 <div class="footer">
-  <p>来源：亚历山大·埃尔德《以交易为生II：卖出的艺术》第六章「因交易噪声卖出」</p>
-  <p>信息图设计 · 2026年6月 · 仅供学习参考，不构成投资建议</p>
+  来源：亚历山大·埃尔德《以交易为生II：卖出的艺术》第六章「因交易噪声卖出」<br>
+  信息图设计 · 2026年6月 · 仅供学习参考，不构成投资建议
 </div>
 
 </div>

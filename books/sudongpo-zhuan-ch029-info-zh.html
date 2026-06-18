@@ -5,276 +5,385 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>苏东坡传 · 第29章「北归」</title>
 <style>
-@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:#f5f1eb;color:#1a1a1a;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;line-height:1.6;-webkit-font-smoothing:antialiased
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px 60px;
-}
-.container{max-width:880px;width:100%;margin:0 auto;padding:40px 32px 60px}
-.lang-switch{text-align:right;margin-bottom:16px}
-.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:0.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity 0.15s}
-.lang-btn:hover{opacity:0.75}
-.kpi-row{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
-.kpi-card{flex:1;min-width:120px;background:#fff;border:1px solid #e8e0d5;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03)}
-.kpi-num{font-size:32px;font-weight:700;color:#ca8a04;letter-spacing:-0.02em}
-.kpi-card:nth-child(2) .kpi-num{color:#ea580c}
-.kpi-card:nth-child(3) .kpi-num{color:#dc2626}
-.kpi-card:nth-child(4) .kpi-num{color:#4f46e5}
-.kpi-label{font-size:12px;color:#888;margin-top:6px;line-height:1.5}
-.header h1{font-size:32px;font-weight:400;color:#1a1a1a;letter-spacing:0.03em;margin-bottom:8px;font-family:'FZXPYZS','PingFang SC',serif}
-.header h2{font-size:18px;font-weight:400;color:#888;letter-spacing:0.02em;line-height:1.7;font-family:'FZXPYZS','PingFang SC',serif}
-.divider{width:60px;height:3px;border-radius:2px;background:linear-gradient(90deg,#ca8a04,#fde68a);margin:20px 0 24px}
-.card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:28px 32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03)}
-.overview{background:#fefce8;border:2px solid #fde68a;border-radius:14px;padding:24px 28px;margin-bottom:24px}
-.overview-label{font-size:11px;font-weight:700;color:#ca8a04;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
-.overview-question{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:8px}
-.overview-answer{font-size:15px;color:#555;line-height:2.0}
-.section{border-left-width:4px;border-left-style:solid}
-.section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.circle-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
-.section-tag{font-size:12px;padding:3px 10px;border-radius:20px;font-weight:500;letter-spacing:0.02em}
-.section h3{font-size:18px;font-weight:700}
-.section-body p{font-size:15px;color:#555;line-height:2.0;margin-bottom:12px}
-.bluf{color:#1a1a1a;font-weight:600;margin-bottom:8px}
-.detail{font-size:13px;color:#777}
-.quote-block{background:#faf5ff;border-left:4px solid #c084fc;border-radius:0 10px 10px 0;padding:16px 20px;margin-top:14px;margin-bottom:12px;position:relative}
-.quote-mark{position:absolute;top:-10px;left:12px;font-size:32px;color:#c084fc;font-family:Georgia,serif;line-height:1}
-.quote-text{font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-top:6px}
-.quote-author{font-size:12px;color:#999;margin-top:8px;text-align:right}
-.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.dual-card{border-radius:10px;padding:16px 18px}
-.dual-card.good{background:#f0fdf4;border:1px solid #bbf7d0}
-.dual-card.bad{background:#fef2f2;border:1px solid #fecaca}
-.dual-label{font-size:13px;font-weight:700;margin-bottom:6px}
-.dual-card.good .dual-label{color:#166534}
-.dual-card.bad .dual-label{color:#991b1b}
-.dual-card p{font-size:13px;color:#555;line-height:1.8}
-.flow-row{display:flex;align-items:flex-start;justify-content:center;gap:8px;margin-top:16px;flex-wrap:wrap}
-.flow-step{background:#fff7ed;border:2px solid #fed7aa;border-radius:10px;padding:14px 12px;text-align:center;font-size:12px;color:#9a3412;font-weight:600;min-width:80px;flex:1;max-width:140px}
-.flow-step-num{display:block;font-size:10px;font-weight:400;color:#ea580c;margin-bottom:4px;letter-spacing:0.03em}
-.flow-step.end{background:#f0fdf4;border-color:#bbf7d0;color:#166534}
-.flow-arrow{font-size:16px;color:#ea580c;font-weight:700;padding-top:14px;flex-shrink:0}
-.callout{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:14px 16px;margin-top:14px}
-.callout.warn{background:#fffbeb;border:1px solid #fde68a}
-.callout.info{background:#eff6ff;border:1px solid #bfdbfe}
-.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.callout-text{font-size:13px;color:#555;line-height:1.8}
-.callout-text strong{color:#1a1a1a}
-.data-row{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
-.data-card{flex:1;min-width:80px;border-radius:12px;padding:16px 12px;text-align:center}
-.data-card.gold{background:#fefce8;border:1px solid #fde68a}
-.data-card.red{background:#fef2f2;border:1px solid #fecaca}
-.data-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
-.data-card.cyan{background:#ecfeff;border:1px solid #a5f3fc}
-.data-big{font-size:26px;font-weight:700;letter-spacing:-0.02em}
-.data-card.gold .data-big{color:#ca8a04}
-.data-card.red .data-big{color:#dc2626}
-.data-card.indigo .data-big{color:#4f46e5}
-.data-card.cyan .data-big{color:#0891b2}
-.data-sm{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
-.cmp-grid{display:grid;gap:12px;margin-top:14px}
-.cmp-grid.cols-2{grid-template-columns:repeat(2,1fr)}
-.cmp-grid.cols-3{grid-template-columns:repeat(3,1fr)}
-.cmp-grid.cols-4{grid-template-columns:repeat(4,1fr)}
-.cmp-card{border-radius:12px;padding:18px 14px 14px;text-align:center}
-.cmp-card.gold{background:#fefce8;border:1px solid #fde68a}
-.cmp-card.red{background:#fef2f2;border:1px solid #fecaca}
-.cmp-card.indigo{background:#eef2ff;border:1px solid #c7d2fe}
-.cmp-card.cyan{background:#ecfeff;border:1px solid #a5f3fc}
-.cmp-card.orange{background:#fff7ed;border:1px solid #fed7aa}
-.cmp-card.pink{background:#fdf2f8;border:1px solid #fbcfe8}
-.cmp-card.green{background:#f0fdf4;border:1px solid #bbf7d0}
-.cmp-icon{font-size:24px;margin-bottom:6px}
-.cmp-name{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:6px}
-.cmp-desc{font-size:12px;color:#555;line-height:1.7}
-.bar-group{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-.bar-item{display:flex;align-items:center;gap:12px}
-.bar-label{font-size:13px;color:#555;min-width:100px;flex-shrink:0}
-.bar-track{flex:1;height:12px;background:#e8e0d5;border-radius:6px;overflow:hidden}
-.bar-fill{height:100%;border-radius:6px;min-width:4px}
-.bar-fill.gold{background:#ca8a04}
-.bar-fill.red{background:#dc2626}
-.bar-fill.indigo{background:#4f46e5}
-.bar-fill.cyan{background:#0891b2}
-.bar-val{font-size:13px;font-weight:700;color:#1a1a1a;min-width:40px;text-align:right}
-.takeaway{background:#faf5ff;border:2px solid #d8b4fe;border-radius:14px;padding:24px 28px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start}
-.takeaway-icon{font-size:24px;flex-shrink:0;margin-top:2px}
-.takeaway-label{font-size:13px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
-.takeaway-text p{font-size:15px;color:#555;line-height:1.9}
-.footer{text-align:center;font-size:12px;color:#bbb;line-height:1.8;padding-top:16px;border-top:1px solid #e8e0d5}
-@media(max-width:640px){
-  body{padding:16px 12px 40px}
-  .container{padding:0}
-  .header h1{font-size:22px}
-  .header h2{font-size:15px}
-  .takeaway{order:-1;margin-bottom:20px}
-  .kpi-num{font-size:28px}
-  .kpi-label{font-size:11px}
-  .card,.overview,.section{padding:18px 16px}
-  .section-header{flex-wrap:wrap;gap:8px}
-  .circle-num{width:34px;height:34px;font-size:14px}
-  .section h3{font-size:16px}
-  .flow-row{flex-direction:column;align-items:stretch}
-  .flow-arrow{display:none}
-  .cmp-grid.cols-3,.cmp-grid.cols-4{grid-template-columns:1fr}
-  .cmp-grid.cols-2,.dual-grid{grid-template-columns:1fr}
-  .data-row{flex-direction:column}
-  .kpi-row{flex-direction:column}
-  .bar-item{flex-wrap:wrap}
-  .bluf{font-size:16px}
-  .flow-step{max-width:none}
-}
-.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block {
+    background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0;
+    padding: 16px 20px; margin-top: 14px; margin-bottom: 4px;
+  }
+  .quote-text {
+    font-size: 14px; color: #555; line-height: 1.9; font-style: italic;
+  }
+  .quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+@media(max-width:640px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
 <div class="container">
-
 <div class="back-catalog"><a class="back-catalog-btn" href="sudongpo-zhuan-catalog.html">← 返回章节目录</a></div>
 <div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch029-info-en.html">English</a>
-</div>
-<a href="sudongpo-zhuan-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;" target="_blank">← 返回详情页</a>
-
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-num">24</div>
-    <div class="kpi-label">哲宗去世<br>徽宗继位大赦</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">1100</div>
-    <div class="kpi-label">元符三年<br>东坡获赦北归</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">7</div>
-    <div class="kpi-label">神宗皇后去世<br>政风再度转向</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">64</div>
-    <div class="kpi-label">东坡北归途中<br>病逝常州</div>
-  </div>
-</div>
-<a href="sudongpo-zhuan-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;">← 返回详情页</a>
-
-<div class="header">
-  <h1>苏东坡传 · 第29章「北归」</h1>
-  <h2>元符三年（1100年）哲宗去世，年仅二十四岁。徽宗继位，新太后摄政，元祐大臣全部获赦。苏东坡终于可以离开海南，但他面临新的选择：是去颍昌与弟弟团聚，还是回常州湖畔的田庄？然而旅途的酷暑和江河的湿气正在悄悄蚕食他的生命——流放归来的诗人，还有多少时间留给这个世界？</h2>
-  <div class="divider"></div>
-<div class="chapter-overview">
-  <p>▎核心问题 苏东坡的北归之路是一场凯旋之旅，也是一场向世界的告别。到处有人欢迎他、陪伴他看山游庙、请他题诗写字。但六月酷暑中他染上痢疾，身体迅速衰竭。他… 苏东坡的北归之路是一场凯旋之旅，也是一场向世界的告别。到处有人欢迎他、陪伴他看山游庙、请他题诗写字。但六月酷暑中他染上痢疾，身体迅速衰竭。他写信给弟弟：「恨天意不让我们聚首，吾其如天何。」七月二十八日，六十四岁的伟大诗人在常州与世长辞——用一生证明了人可以被打败，但不可以被毁灭。</p>
+  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch029-info-en.html">中文 / English</a>
 </div>
 
+<h1>苏东坡传 · 第29章「北归」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  元符三年（1100年），哲宗年仅二十四岁去世，徽宗继位，新太后摄政——元祐大臣全部获赦。
+  苏东坡终于可以离开海南，但旅途酷暑与江河湿气正在蚕食他的生命。
+  流放归来的诗人还有多少时间留给这个世界？一场凯旋之旅为何同时也是最后的告别？
+  苏东坡用生命最后的旅程回答：死亡不可怕，遗憾才可怕。
+</p>
+<div class="divider"></div>
+
+<!-- Overview -->
+<div class="splash chapter-overview">
+  苏东坡的北归是一场凯旋之旅，也是一场向世界的告别。到处有人欢迎他、陪伴他看山游庙、请他题诗写字。但六月酷暑中他染上痢疾，身体迅速衰竭。他最后的遗憾是没有见到弟弟——<strong>「恨天意不让我们聚首，吾其如天何。」</strong>七月二十八日，公元1101年，六十四岁的伟大诗人在常州与世长辞。他没有死在皇帝或章惇手中，而是死于一种微小的阿米巴菌——这似乎反高潮的结局，反使得他的人生更加传奇。苏东坡用一生证明了：人可以被打败，但不可以被毁灭。
 </div>
 
-<div class="overview-question">苏东坡的北归之路是一场凯旋之旅，也是一场向世界的告别。到处有人欢迎他、陪伴他看山游庙、请他题诗写字。但六月酷暑中他染上痢疾，身体迅速衰竭。他…</div>
-  <div class="overview-answer">
-    苏东坡的北归之路是一场凯旋之旅，也是一场向世界的告别。到处有人欢迎他、陪伴他看山游庙、请他题诗写字。但六月酷暑中他染上痢疾，身体迅速衰竭。他写信给弟弟：「恨天意不让我们聚首，吾其如天何。」七月二十八日，六十四岁的伟大诗人在常州与世长辞——用一生证明了人可以被打败，但不可以被毁灭。
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">1100<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">大赦之年</div>
+    <div class="kpi-note">元符三年哲宗去世<br>徽宗继位大赦元祐党人</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">64<span class="kpi-unit">岁</span></div>
+    <div class="kpi-label">终年</div>
+    <div class="kpi-note">比哲宗多活四十年<br>免于徽宗亡国之辱</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">6<span class="kpi-unit">仆</span></div>
+    <div class="kpi-label">旅途损失</div>
+    <div class="kpi-note">北归途中六位仆人<br>染瘟疫接连死去</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">24<span class="kpi-unit">岁</span></div>
+    <div class="kpi-label">哲宗去世</div>
+    <div class="kpi-note">性好女色常常逃学<br>留下死气沉沉的群体</div>
   </div>
 </div>
 
-<div class="card section" style="border-left-color:#4f46e5">
-  <div class="section-header">
-    <div class="circle-num" style="background:#eef2ff;color:#4f46e5">01</div>
-    <div class="section-tag" style="background:#eef2ff;color:#4f46e5">时代巨变</div>
-    <h3 style="color:#4f46e5">哲宗之死与徽宗继位：命运翻转</h3>
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">1<span class="kpi-unit">菌</span></div>
+    <div class="kpi-label">阿米巴菌</div>
+    <div class="kpi-note">杀死诗人的不是流放<br>而是微小的阿米巴菌</div>
   </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">70<span class="kpi-unit">天</span></div>
+    <div class="kpi-label">赣县等船</div>
+    <div class="kpi-note">忙着给城中百姓<br>看病施药</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">30<span class="kpi-unit">口</span></div>
+    <div class="kpi-label">家人童仆</div>
+    <div class="kpi-note">不好意思打扰弟弟<br>决定先定居常州</div>
+  </div>
+</div>
+
+<!-- 01: 时代巨变 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
   <div class="section-body">
-    <p class="bluf"><strong>哲宗年仅二十四岁去世，留下死气沉沉的学者群体。徽宗继位后大赦元祐党人，苏东坡终于获准离开海南。</strong></p>
-    <p class="detail">徽宗日后留下三十一个儿子、几幅好画和一个混乱的邦国——他任用同一批人，延续王安石的国家资本主义。但在短暂的窗口期，新太后庇护元祐党人，流放学者全部获赦。苏东坡收到吴复古带来的赦令消息时，这位老道士又消失了——他一辈子自由飘泊。</p>
-    <div class="cmp-grid cols-3">
-  <div class="cmp-card green">
-    <div class="cmp-icon">☠️</div>
-    <div class="cmp-name">哲宗</div>
-    <div class="cmp-desc">24岁去世<br>性好女色常常逃学</div>
-  </div>
-  <div class="cmp-card gold">
-    <div class="cmp-icon">👑</div>
-    <div class="cmp-name">徽宗</div>
-    <div class="cmp-desc">继位大赦元祐党人<br>日后亡国被俘而死</div>
-  </div>
-  <div class="cmp-card indigo">
-    <div class="cmp-icon">👸</div>
-    <div class="cmp-name">太后</div>
-    <div class="cmp-desc">神宗皇后摄政<br>庇护元祐学者七月</div>
+    <div class="tag tag-01">时代巨变</div>
+    <div class="section-title t-01">哲宗之死与徽宗继位：命运翻转</div>
+    <div class="section-desc">哲宗年仅二十四岁去世，留下死气沉沉的学者群体。徽宗继位后大赦元祐党人，苏东坡终于获准离开海南。徽宗日后留下三十一个儿子、几幅好画和一个混乱的邦国——但在短暂的窗口期，太后庇护元祐党人，流放学者全部获赦。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">☠️</div>
+        <div class="data-name">哲宗</div>
+        <div class="data-sm">24岁去世<br>性好女色常常逃学</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">👑</div>
+        <div class="data-name">徽宗</div>
+        <div class="data-sm">继位大赦元祐党人<br>日后亡国被俘而死</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">👸</div>
+        <div class="data-name">太后</div>
+        <div class="data-sm">神宗皇后摄政<br>庇护元祐学者七月</div>
+      </div>
+    </div>
   </div>
 </div>
-  </div>
-</div>
-<div class="card section" style="border-left-color:#ea580c">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fff7ed;color:#ea580c">02</div>
-    <div class="section-tag" style="background:#fff7ed;color:#ea580c">归途见闻</div>
-    <h3 style="color:#ea580c">凯旋与告别：北归路上的悲欢</h3>
-  </div>
+
+<!-- 02: 归途见闻 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
   <div class="section-body">
-    <p class="bluf"><strong>苏东坡的北归是一场凯旋——到处有人欢迎、请他题诗写字。但他也在途中经历了最密集的告别：六个仆人染瘟疫死去，老友吴复古在他面前合上眼睛。</strong></p>
-    <p class="detail">他到达广州与子孙团聚，写道「仿佛大梦初醒」。在赣县等船七十天，好几个小孩生病，他忙着给城中百姓看病施药。有人开玩笑说以为他死了，苏东坡回答：「不错，我死了，在地府半路上碰到章惇，我又决定折回来。」这是苏东坡式的幽默——面对死亡也不失风度。</p>
+    <div class="tag tag-02">归途见闻</div>
+    <div class="section-title t-02">凯旋与告别：北归路上的悲欢</div>
+    <div class="section-desc">苏东坡的北归是一场凯旋——到处有人欢迎、请他题诗写字。他到达广州与子孙团聚，写道「仿佛大梦初醒」。在赣县等船七十天，忙着给城中百姓看病施药。但他也在途中经历了最密集的告别：六个仆人染瘟疫死去，老友吴复古在他面前合上眼睛。有人开玩笑说以为他死了，苏东坡回答：「不错，我死了，在地府半路上碰到章惇，我又决定折回来。」</div>
     <div class="quote-block">
-  <div class="quote-mark">"</div>
-  <div class="quote-text">不错，我死了，在地府半路上碰到章惇，我又决定折回来。</div>
-  <div class="quote-author">— 苏东坡回应「以为你死了」的玩笑</div>
-</div>
+      <div class="quote-text">「不错，我死了，在地府半路上碰到章惇，我又决定折回来。」</div>
+      <div class="quote-author">— 苏东坡回应「以为你死了」的玩笑</div>
+    </div>
   </div>
 </div>
-<div class="card section" style="border-left-color:#dc2626">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fef2f2;color:#dc2626">03</div>
-    <div class="section-tag" style="background:#fef2f2;color:#dc2626">最后旅程</div>
-    <h3 style="color:#dc2626">阿米巴菌：杀死诗人的不是流放</h3>
-  </div>
+
+<!-- 03: 阿米巴菌 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
   <div class="section-body">
-    <p class="bluf"><strong>苏东坡没有死在皇帝或章惇手里，而是死于一种微小的阿米巴菌——六月酷暑，河岸湿热，他在船上病倒了。</strong></p>
-    <p class="detail">六月三日他可能得了阿米巴性痢疾，自己诊断是「啖冷过度」。他叫人买黄芪来吃——中医认为黄芪可以补血补内脏。大画家米芾多次来看他，送来「麦门冬汤」。「昨夜通旦不交睫，端坐饱蚊子尔。」他在给米芾的最后一封信中写道。六十四岁的身体已经承受不住。</p>
+    <div class="tag tag-03">最后旅程</div>
+    <div class="section-title t-03">阿米巴菌：杀死诗人的不是流放</div>
+    <div class="section-desc">苏东坡没有死在皇帝或章惇手里，而是死于一种微小的阿米巴菌。六月三日他可能得了阿米巴性痢疾，自己诊断是「啖冷过度」。他叫人买黄芪来吃——中医认为黄芪可以补血补内脏。大画家米芾多次来看他，送来「麦门冬汤」。「昨夜通旦不交睫，端坐饱蚊子尔。」——他在给米芾的最后一封信中写道。</div>
     <div class="flow-row">
-  <div class="flow-step"><span class="flow-step-num">6月3日</span>染阿米巴<br>性痢疾</div>
-  <div class="flow-arrow">→</div>
-  <div class="flow-step"><span class="flow-step-num">自诊</span>啖冷过度<br>服黄芪</div>
-  <div class="flow-arrow">→</div>
-  <div class="flow-step"><span class="flow-step-num">好友</span>米芾送<br>麦门冬汤</div>
-  <div class="flow-arrow">→</div>
-  <div class="flow-step end"><span class="flow-step-num">7月28日</span>常州病逝<br>享年64岁</div>
-</div>
+      <div class="flow-step">6月3日<br>染阿米巴痢疾</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">自诊啖冷过度<br>服黄芪</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">米芾送<br>麦门冬汤</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">7月28日<br>常州病逝64岁</div>
+    </div>
   </div>
 </div>
-<div class="card section" style="border-left-color:#ca8a04">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fefce8;color:#ca8a04">04</div>
-    <div class="section-tag" style="background:#fefce8;color:#ca8a04">最后时光</div>
-    <h3 style="color:#ca8a04">恨天意不让聚首：最后的遗言</h3>
-  </div>
+
+<!-- 04: 最后遗憾 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
   <div class="section-body">
-    <p class="bluf"><strong>苏东坡最后的遗憾是没有见到弟弟——「恨天意不让我们聚首，吾其如天何。」他在常州渡过了生命的最后时光。</strong></p>
-    <p class="detail">子由已回到颍昌老农场，写信叫东坡去同住。苏东坡想去，但家中三十个家人子孙童仆不好意思打扰弟弟。他最终决定先定居常州，等安顿好再去相聚。但七月二十八日，公元1101年，他在常州与世长辞。徽宗后来失去皇位被金人俘掳而死——每一个聚敛的皇帝都要付出代价。而苏东坡的名字，永远留在了中国人心中。</p>
+    <div class="tag tag-04">最后遗憾</div>
+    <div class="section-title t-04">恨天意不让聚首：最后的遗言</div>
+    <div class="section-desc">苏东坡最后的遗憾是没有见到弟弟——「恨天意不让我们聚首，吾其如天何。」子由已回到颍昌老农场，写信叫东坡去同住。东坡想去，但家中三十个家人子孙童仆不好意思打扰弟弟。他最终决定先定居常州，等安顿好再去相聚。但七月二十八日，他在常州与世长辞。徽宗后来失去皇位被金人俘掳——每一个聚敛的皇帝都要付出代价。而苏东坡的名字，永远留在了中国人心中。</div>
     <div class="quote-block">
-  <div class="quote-mark">"</div>
-  <div class="quote-text">恨天意不让我们聚首，吾其如天何。</div>
-  <div class="quote-author">— 苏东坡致子由最后一信</div>
-</div>
+      <div class="quote-text">「恨天意不让我们聚首，吾其如天何。」</div>
+      <div class="quote-author">— 苏东坡致子由最后一信</div>
+    </div>
   </div>
 </div>
 
+<!-- 05: 不朽 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">不朽之名</div>
+    <div class="section-title t-05">诗人死了，名字活着：被毁灭与不可毁灭</div>
+    <div class="section-desc">苏东坡死于微小的阿米巴菌——不是政治迫害，不是流放折磨。这似乎反高潮，却揭示了生命最深的真相：最大的敌人从来不是外在苦难，而是有限的生命本身。但苏东坡在六十四年里活出了比大多数帝王更长久的生命——他的名字至今活在每一个中国人心中。人可以被打败，但不可以被毁灭。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">哲宗（24岁去世）</div>
+        <div class="confusion-arrow">→ 被遗忘 →</div>
+        <div class="confusion-right">历史注脚</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">章惇（迫害者）</div>
+        <div class="confusion-arrow">→ 被遗忘 →</div>
+        <div class="confusion-right">反面教材</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">徽宗（亡国之君）</div>
+        <div class="confusion-arrow">→ 被俘而死 →</div>
+        <div class="confusion-right">悲剧皇帝</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left" style="color:#dc2626;">苏东坡（流放者）</div>
+        <div class="confusion-arrow">→ 永恒 →</div>
+        <div class="confusion-right" style="color:#dc2626;font-weight:bold;">活在每个中国人心中</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
 <div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">核心结论</div>
-    <p>苏东坡用一生证明：人可以被打败，但不可以被毁灭。他死于阿米巴菌——一个微小到看不见的敌人——而非政治迫害。这似乎反高潮，却揭示生命最深真相：最大的敌人从来不是外在苦难，而是有限的生命本身。苏东坡在六十四年里活出了比大多数帝王更长久的生命——因为他的名字，至今仍活在每一个中国人心中。</p>
-  </div>
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">苏东坡用一生证明：人可以被打败，但不可以被毁灭。他死于阿米巴菌——一个微小到看不见的敌人——而非政治迫害。这似乎反高潮，却揭示了生命最深真相：最大的敌人从来不是外在苦难，而是有限的生命本身。但苏东坡在六十四年里活出了比大多数帝王更长久的生命——因为他的名字，至今仍活在每一个中国人心中。</div>
+</div>
 
-
+<!-- Footer -->
 <div class="footer">
-  来源：林语堂《苏东坡传》（2015）第29章「北归」<br>
-  信息图生成日期：2026年6月17日 · 仅供参考学习
+  《苏东坡传》第29章信息图 · 林语堂 著 · 基于「北归」内容提炼 · 仅供学习参考
+</div>
 
-
-
-
+</div>
 </body>
 </html>
-</div>
-
-</div>

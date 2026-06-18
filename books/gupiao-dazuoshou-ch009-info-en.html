@@ -3,333 +3,380 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reminiscences of a Stock Operator · Chapter 9</title>
+<title>Reminiscences of a Stock Operator · Chapter 9 "Timing! Timing! Timing!"</title>
 <style>
-@font-face {
-  font-family: 'FZXPYZS';
-  src: url('../方正屏显雅宋简体.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: #f5f1eb;
-  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
-  color: #555; line-height: 2.0; font-size: 15px; -webkit-font-smoothing: antialiased;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
-.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
-.lang-switch { text-align: right; margin-bottom: 16px; }
-.lang-btn {
-  display: inline-block; padding: 6px 16px; border-radius: 8px;
-  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-  background: #ecfeff; color: #0891b2; border: 1px solid #a5f3fc;
-  transition: opacity 0.15s;
-}
-.lang-btn:hover { opacity: 0.75; }
-.kpi-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
-.kpi-card {
-  flex: 1; min-width: 120px; background: #ffffff; border: 1px solid #e8e0d5;
-  border-radius: 12px; padding: 20px 16px; text-align: center;
-}
-.kpi-num { font-size: 32px; font-weight: bold; color: #0891b2; letter-spacing: -0.02em; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.header { margin-bottom: 24px; }
-.header h1 {
-  font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 32px; font-weight: 400;
-  color: #1a1a1a; letter-spacing: 0.03em; line-height: 1.3;
-}
-.header h2 {
-  font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 18px; font-weight: 400;
-  color: #888; letter-spacing: 0.02em; margin-top: 8px; line-height: 1.6;
-}
-.divider { width: 60px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #dc2626, transparent); margin: 24px 0 32px; }
-.card {
-  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
-  padding: 28px 32px; margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-}
-.overview { border-left: 4px solid #dc2626; }
-.overview-label { font-size: 13px; font-weight: 700; color: #dc2626; letter-spacing: 0.06em; margin-bottom: 8px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.overview h3 { font-size: 18px; color: #1a1a1a; margin-bottom: 10px; font-family: 'FZXPYZS', 'PingFang SC', serif; font-weight: 700; }
-.overview p { margin-bottom: 8px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.overview p:last-child { margin-bottom: 0; }
-.overview p strong { color: #1a1a1a; }
-.section { border-left: 4px solid; }
-.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.circle-num {
-  width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center;
-  justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0;
-  font-family: 'FZXPYZS', 'PingFang SC', serif;
-}
-.section-tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; font-weight: 500; letter-spacing: 0.02em; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.section h3 { font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 18px; font-weight: 700; }
-.section-body p { margin-bottom: 12px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.section-body p strong { color: #1a1a1a; }
-.flow-row { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
-.flow-step, .flow-step.end {
-  background: #ecfeff; border: 2px solid #a5f3fc; border-radius: 10px;
-  padding: 14px 16px; text-align: center; font-size: 13px; color: #155e75;
-  font-weight: 700; min-width: 90px; font-family: 'FZXPYZS', 'PingFang SC', serif;
-}
-.flow-step-num { display: block; font-size: 11px; font-weight: 400; color: #0891b2; margin-bottom: 4px; letter-spacing: 0.04em; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
-.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.flow-arrow { font-size: 18px; color: #0891b2; font-weight: 700; padding-top: 14px; }
-.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-.data-card { flex: 1; min-width: 100px; border-radius: 12px; padding: 18px 14px; text-align: center; }
-.data-card.cyan { background: #ecfeff; border: 1px solid #a5f3fc; }
-.data-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.data-card.amber { background: #fffbeb; border: 1px solid #fde68a; }
-.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
-.data-card.pink { background: #fdf2f8; border: 1px solid #fbcfe8; }
-.data-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
-.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.data-card.cyan .data-big { color: #0891b2; }
-.data-card.green .data-big { color: #16a34a; }
-.data-card.red .data-big { color: #dc2626; }
-.data-card.amber .data-big { color: #ca8a04; }
-.data-card.gold .data-big { color: #ca8a04; }
-.data-card.orange .data-big { color: #ea580c; }
-.data-card.pink .data-big { color: #db2777; }
-.data-card.indigo .data-big { color: #4f46e5; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
-.dual-card { border-radius: 10px; padding: 16px 18px; }
-.dual-card.top { background: #fef2f2; border: 1px solid #fecaca; }
-.dual-card.bottom { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.dual-label { font-size: 13px; font-weight: 700; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.dual-card.top .dual-label { color: #991b1b; }
-.dual-card.bottom .dual-label { color: #166534; }
-.dual-card p { font-size: 13px; color: #555; line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.bar-group { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-.bar-item { display: flex; align-items: center; gap: 12px; }
-.bar-label { font-size: 13px; color: #555; min-width: 100px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.bar-track { flex: 1; height: 12px; background: #e8e0d5; border-radius: 6px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 6px; min-width: 4px; }
-.bar-fill.cyan { background: #0891b2; }
-.bar-fill.red { background: #dc2626; }
-.bar-fill.amber { background: #ca8a04; }
-.bar-fill.green { background: #16a34a; }
-.bar-fill.orange { background: #ea580c; }
-.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 40px; text-align: right; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.callout { display: flex; gap: 10px; align-items: flex-start; border-radius: 10px; padding: 14px 16px; margin-top: 14px; }
-.callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
-.callout.info { background: #eff6ff; border: 1px solid #bfdbfe; }
-.callout.success { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.callout-text { font-size: 13px; color: #555; line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.callout-text strong { color: #1a1a1a; }
-.quote-block { background: #f0fdfa; border-left: 4px solid #2dd4bf; border-radius: 0 10px 10px 0; padding: 16px 20px; margin-top: 14px; position: relative; }
-.quote-mark { position: absolute; top: -10px; left: 12px; font-size: 32px; color: #2dd4bf; font-family: Georgia, serif; line-height: 1; }
-.quote-text { font-size: 14px; color: #555; line-height: 1.9; padding-top: 6px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.cmp-grid { display: grid; gap: 12px; margin-top: 14px; }
-.cmp-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-.cmp-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-.cmp-card { border-radius: 12px; padding: 20px 16px 16px; text-align: center; }
-.cmp-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.cmp-card.cyan { background: #ecfeff; border: 1px solid #a5f3fc; }
-.cmp-card.amber { background: #fff7ed; border: 1px solid #fed7aa; }
-.cmp-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
-.cmp-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.cmp-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
-.cmp-card.pink { background: #fdf2f8; border: 1px solid #fbcfe8; }
-.cmp-icon { font-size: 28px; margin-bottom: 8px; }
-.cmp-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.cmp-features { list-style: none; padding: 0; text-align: left; font-size: 12px; color: #555; line-height: 1.7; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.cmp-features li::before { content: '\2022 '; color: #888; }
-.cmp-bar { height: 4px; border-radius: 2px; margin: 10px 0; }
-.cmp-bar.red { background: #fca5a5; }
-.cmp-bar.cyan { background: #67e8f9; }
-.cmp-bar.indigo { background: #a5b4fc; }
-.cmp-bar.amber { background: #fdba74; }
-.cmp-bar.gold { background: #fde68a; }
-.cmp-bar.green { background: #86efac; }
-.cmp-bar.pink { background: #f9a8d4; }
-.cmp-note { font-size: 11px; color: #999; line-height: 1.5; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.takeaway { background: #ecfeff; border: 2px solid #a5f3fc; border-radius: 14px; padding: 24px 28px; margin-bottom: 24px; display: flex; gap: 16px; align-items: flex-start; }
-.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
-.takeaway-label { font-size: 13px; font-weight: 700; color: #0891b2; letter-spacing: 0.06em; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', serif; }
-.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 20px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
-.footer p { margin-bottom: 2px; }
-@media (max-width: 640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 22px; }
-  .header h2 { font-size: 15px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .cmp-grid.cols-2, .cmp-grid.cols-3, .dual-grid { grid-template-columns: 1fr; }
-  .data-row { flex-direction: column; }
-  .kpi-row { flex-direction: column; }
-  .bar-item { flex-wrap: wrap; }
-  .takeaway { flex-direction: column; }
-}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
 
-.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
 </head>
 <body>
 <div class="container">
-
 <div class="back-catalog"><a class="back-catalog-btn" href="gupiao-dazuoshou-catalog.html">← 返回章节目录</a></div>
 <div class="lang-switch">
-  <a class="lang-btn" target="_blank" href="gupiao-dazuoshou-ch009-info-zh.html">中文 / EN</a>
+  <a class="lang-btn" target="_blank" href="gupiao-dazuoshou-ch009-info-zh.html">中文 / English</a>
 </div>
-<a href="gupiao-dazuoshou-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;" target="_blank">← 返回详情页</a>
 
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-num">$250K→0</div>
-    <div class="kpi-label">Too early short<br>profit wiped out</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">60-70 pts</div>
-    <div class="kpi-label">Great Northern<br>total decline</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">$1M+</div>
-    <div class="kpi-label">Correct timing<br>final profit</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-num">3×</div>
-    <div class="kpi-label">Wiped out by<br>rallies</div>
-  </div>
-</div>
-<a href="gupiao-dazuoshou-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;">← 返回详情页</a>
-
-<div class="header">
-  <h1>Reminiscences of a Stock Operator · Chapter 9</h1>
-  <h2>Right on direction but bankrupt from entering too early—Livermore paid dearly during the 1906-1907 bear market, learning that timing is as critical as direction. Neither suffices without the other.</h2>
-</div>
+<h1>Reminiscences of a Stock Operator · Chapter 9<br>"Timing! Timing! Timing!"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Livermore accurately foresaw the bear market as early as 1906 — direction was perfectly right.
+  Yet he was wiped out by rallies three consecutive times, $250K profit vanishing to zero. Right every time, broke every time.
+  Why does being right on direction still lead to bankruptcy? The answer lies in a variable even more critical than direction: timing.
+  Acting ahead of the market is indistinguishable from being wrong — haste makes waste, and patience before the market is a more essential art than the gift of prediction.
+</p>
 <div class="divider"></div>
-
-<div class="card overview">
-  <div class="overview-label">Overview</div>
-  <h3>Why Would You Go Broke Being Right? Timing vs. Direction</h3>
-    <p><strong>Being right on direction is necessary but far from sufficient.</strong> Livermore accurately foresaw the bear market as early as 1906, yet entered too early and was wiped out by rallies three times—always right on direction, always bankrupt. He finally understood: wait until there’s “no risk of the engine backfiring” before committing heavily. The signal came when both Northern Pacific and Great Northern announced stock issues with installment payment plans—meaning money was so tight that bankers doubted shareholders could pay at once. That was the true entry signal.</p>
-    <p><strong>Core thesis:</strong> Timing is as critical as direction. In the face of the market, patiently waiting for the right entry moment is harder—and more important—than accurately predicting market direction.</p>
+<div class="chapter-overview">
+  <p>Why would you go broke being right? Being right on direction is necessary but far from sufficient. Livermore accurately foresaw the bear market as early as 1906, yet entered too early and was wiped out by rallies three times — always right on direction, always bankrupt. He finally understood: wait until there is "no risk of the engine backfiring" before committing heavily. The signal came when both Northern Pacific and Great Northern announced stock issues with installment payment plans — meaning money was so tight that bankers doubted shareholders could pay at once. That was the true entry signal. Core thesis: Timing is as critical as direction. Patiently waiting for the right entry moment is harder — and more important — than accurately predicting market direction.</p>
 </div>
 
-<!-- Block 01 -->
-<div class="card section" style="border-left-color: #dc2626;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">01</div>
-    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">Painful Lesson</div>
-    <h3 style="color:#dc2626;">Three Bankruptcies: Right Three Times, Broke Three Times</h3>
-  </div>
+
+<!-- 01: Painful Lesson -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
   <div class="section-body">
-    <p><strong>Livermore saw the gold mountain but tripped before reaching it.</strong> In 1906, after studying conditions, he concluded the money outlook was dire and went all-in short. The market fell, then rallied—paper profits vanished, losses grew. He got scared, covered, and was lucky to have postcard money left. The second and third attempts were identical: short → decline → rally → loss → cover. He knew the direction was right, but was cleaned out by rallies every time.</p>
-
-    <div class="bar-group">
-      <div class="bar-item">
-        <div class="bar-label">1st Short Attempt</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:80%"></div></div>
-        <div class="bar-val">Profit→Loss</div>
+    <div class="tag tag-01">Painful Lesson</div>
+    <div class="section-title t-01">Three Bankruptcies: Right Three Times, Broke Three Times</div>
+    <div class="section-desc">Livermore saw the gold mountain but tripped before reaching it. In 1906, after studying conditions, he concluded the money outlook was dire and went all-in short. The market fell, then rallied — paper profits vanished, losses grew. He got scared, covered, and was lucky to have postcard money left. The second and third attempts were identical: short → decline → rally → loss → cover. He knew the direction was right, but was cleaned out by rallies every single time. As he put it: "And so — I was right, and I went broke!"</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">1st Short Attempt</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:80%"></div></div>
+        <div class="risk-val">Profit→Loss</div>
       </div>
-      <div class="bar-item">
-        <div class="bar-label">2nd Short Attempt</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:85%"></div></div>
-        <div class="bar-val">Cleaned out</div>
+      <div class="risk-row">
+        <div class="risk-label">2nd Short Attempt</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">Cleaned Out</div>
       </div>
-      <div class="bar-item">
-        <div class="bar-label">3rd Short Attempt</div>
-        <div class="bar-track"><div class="bar-fill red" style="width:90%"></div></div>
-        <div class="bar-val">Bankrupt</div>
+      <div class="risk-row">
+        <div class="risk-label">3rd Short Attempt</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:92%"></div></div>
+        <div class="risk-val">Bankrupt</div>
       </div>
-      <div class="bar-item">
-        <div class="bar-label">4th Short Attempt</div>
-        <div class="bar-track"><div class="bar-fill green" style="width:100%"></div></div>
-        <div class="bar-val">Timing right</div>
+      <div class="risk-row">
+        <div class="risk-label">4th Short Attempt</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">$1M+ Profit</div>
       </div>
-    </div>
-
-    <div class="quote-block">
-      <div class="quote-mark">“</div>
-      <div class="quote-text">And so—I was right, and I went broke!</div>
-      <div class="quote-author">— Jesse Livermore</div>
     </div>
   </div>
 </div>
-<!-- Block 02 -->
-<div class="card section" style="border-left-color: #ea580c;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
-    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">Signal Detection</div>
-    <h3 style="color:#ea580c;">The Real Entry Signal: Installment-Payment Stock Ads</h3>
-  </div>
-  <div class="section-body">
-    <p><strong>One advertisement spoke louder than a thousand words.</strong> Northern Pacific and Great Northern simultaneously announced stock issues with installment payment plans—unprecedented on Wall Street. Preferred stock subscription rights were normally very valuable (market price above issue price), but bankers feared shareholders couldn’t come up with the cash for lump-sum payment. Livermore said: “That advertisement was the bankers’ signed confession. What they feared was exactly what I was hoping for.”</p>
-    <p>Days later, St. Paul Railroad rushed to announce refinancing with a payment date ahead of the other two—money was so tight that three railroads were scrambling for the same pool. This is the value of the panoramic view: the public watches one week’s market; the wise trader sees the whole year’s financial landscape.</p>
 
+<!-- 02: Signal Detection -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Signal Detection</div>
+    <div class="section-title t-02">The Real Entry Signal: Installment-Payment Stock Ads</div>
+    <div class="section-desc">One advertisement spoke louder than a thousand words. Northern Pacific and Great Northern simultaneously announced stock issues with installment payment plans — unprecedented on Wall Street. Preferred stock subscription rights were normally very valuable (market price above issue price), but bankers feared shareholders couldn't come up with the cash for lump-sum payment. Livermore said: "That advertisement was the bankers' signed confession. What they feared was exactly what I was hoping for."</div>
     <div class="flow-row">
-      <div class="flow-step"><span class="flow-step-num">1</span>Issue Signal<div class="flow-label">Great Northern &amp; NP<br>announce stock issues</div></div>
+      <div class="flow-step">Two Railroads<br>Issue Stock</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">2</span>Installments<div class="flow-label">Payment by<br>installments—unheard of</div></div>
+      <div class="flow-step">Installment<br>Payment Allowed</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step"><span class="flow-step-num">3</span>Money Tight<div class="flow-label">Bankers doubt<br>subscribers can pay</div></div>
+      <div class="flow-step">Bankers Doubt<br>Subscribers Can Pay</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step end"><span class="flow-step-num">✓</span>Short Signal<div class="flow-label">Confirmed entry<br>go heavily short</div></div>
+      <div class="flow-step">St. Paul Races<br>for Refinancing</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Money Crunch<br>Short Signal Confirmed</div>
     </div>
   </div>
 </div>
-<!-- Block 03 -->
-<div class="card section" style="border-left-color: #ca8a04;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">03</div>
-    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">System Evolution</div>
-    <h3 style="color:#ca8a04;">Old Partridge’s Wisdom and the Awakening to Broad Market Perspective</h3>
-  </div>
+
+<!-- 03: System Evolution -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
   <div class="section-body">
-    <p><strong>From individual stocks to the whole market, from tape to panorama.</strong> Old Partridge’s mantra—“Well, this is a bull market, you know”—inspired Livermore: big money must and can only come from big moves. He began to understand that big moves are determined by fundamental conditions, not manipulation or conspiracy. Starting from the broad market perspective, one can trade a basket of stocks without worrying about individual position limits.</p>
-
-    <div class="cmp-grid cols-2">
-      <div class="cmp-card red">
-        <div class="cmp-name">Old Model</div>
-        <ul class="cmp-features">
-          <li>Focused on individual stock moves</li>
-          <li>Constrained by short-squeeze risks</li>
-          <li>Relied on tape reading alone</li>
-          <li>Impromptu trading</li>
-          <li>Short-term profit chasing</li>
-        </ul>
+    <div class="tag tag-03">System Evolution</div>
+    <div class="section-title t-03">Old Partridge's Wisdom and the Awakening to Broad Market Perspective</div>
+    <div class="section-desc">Old Partridge's mantra — "Well, this is a bull market, you know" — inspired Livermore: big money must and can only come from big moves. He began to understand that big moves are determined by fundamental conditions, not manipulation or conspiracy. Starting from the broad market perspective, one can trade a basket of stocks without worrying about individual position limits. From individual stocks to the whole, from tape to panorama — a fundamental cognitive leap.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📉</div>
+        <div class="dual-text">
+          <h4>Old Model: Single Stocks</h4>
+          <p>Focused on individual stock moves, constrained by short-squeeze risks, relied on tape reading alone, impromptu trading, short-term profit chasing.</p>
+        </div>
       </div>
-      <div class="cmp-card green">
-        <div class="cmp-name">New Model</div>
-        <ul class="cmp-features">
-          <li>Judged overall market trends</li>
-          <li>Traded diversified stock basket</li>
-          <li>Analyzed fundamental conditions</li>
-          <li>Systematic, forward-looking plan</li>
-          <li>Heavy positions on big moves</li>
-        </ul>
+      <div class="dual-card no">
+        <div class="dual-icon">📊</div>
+        <div class="dual-text">
+          <h4>New Model: Broad Market</h4>
+          <p>Judged overall market trends, traded diversified stock basket, analyzed fundamental conditions, systematic forward-looking plan, heavy positions on big moves.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">Key Takeaway</div>
-    <p>Livermore bought his ultimate insight with three bankruptcies: being right on direction does not equal profit; wrong timing equals total defeat. ‘Haste makes waste’—in the face of the market, rushing to prove you’ve seen the truth is precisely the greatest trap. The correct approach: patiently wait for entry signals (like installment-payment ads serving as the market’s ‘signed confession’), then at the right time, with the right position-building method (pyramiding up), stand with the broad trend.</p>
+<!-- 04: Cost of Wrong Timing -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Risk Warning</div>
+    <div class="section-title t-04">The Cost of Premature Action: Direction ≠ Profit Guarantee</div>
+    <div class="section-desc">Livermore bought a brutal equation with three bankruptcies: Right Direction + Wrong Timing = Bankruptcy. Great Northern fell 60–70 points from his short level, yet his premature entry meant he earned not a cent from it. Timing errors not only wipe out profits but erode confidence — when the truly right moment arrives, you may have no strength left to fight. Livermore's four short attempts formed a clear learning curve: only on the fourth, when the signal was explicit and risk released, did he finally profit over $1 million.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Right Direction</div>
+        <div class="confusion-arrow">✕</div>
+        <div class="confusion-right">Premature Timing → 3 Bankruptcies</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Right Direction</div>
+        <div class="confusion-arrow">✓</div>
+        <div class="confusion-right">Right Timing → $1M+ Profit</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">$250K Capital</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Three Wrong Timings → Zero</div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- 05: Trading Discipline -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Trading Discipline</div>
+    <div class="section-title t-05">Three Ultimate Rules Distilled from Three Bankruptcies</div>
+    <div class="section-desc">Livermore extracted three inviolable rules from his painful lessons, which became the bedrock of his trading career thereafter. These rules are not theoretical derivations — every word was paid for with real money.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⏳</div>
+        <div class="data-name">Rule One</div>
+        <div class="data-sm">Patiently await entry signals<br>Don't enter until there is<br>"no risk of backfiring"</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📡</div>
+        <div class="data-name">Rule Two</div>
+        <div class="data-sm">Read fundamental signals<br>Like installment-payment ads<br>= bankers' signed confession</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🏗️</div>
+        <div class="data-name">Rule Three</div>
+        <div class="data-sm">Build positions step by step<br>At the right time, in the right way<br>Stand with the broad trend</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Livermore bought his ultimate insight with three bankruptcies: being right on direction does not equal profit; wrong timing equals total defeat. "Haste makes waste" — in the face of the market, rushing to prove you've seen the truth is precisely the greatest trap. The correct approach: patiently wait for entry signals (like installment-payment ads serving as the market's "signed confession"), then at the right time, with the right position-building method (pyramiding up), stand with the broad trend. Timing is the speculator's greatest ally — and most dangerous enemy.</div>
+</div>
+
+<!-- Footer -->
 <div class="footer">
-  <p>Source: Reminiscences of a Stock Operator · Edwin Lefèvre · Chapter 9</p>
-  <p>Generated by infographic-generator · FZXPYZS · #f5f1eb · 2026-06-17</p>
+  Reminiscences of a Stock Operator · Chapter 9 Infographic · Edwin Lefèvre · Based on "Timing! Timing! Timing!" · For Educational Purposes
 </div>
 
 </div>

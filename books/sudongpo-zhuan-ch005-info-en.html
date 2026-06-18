@@ -3,207 +3,417 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Su Dongpo Biography · Ch. 5 — 信息图</title>
+<title>Su Dongpo Biography · Ch.5 "The Imperial Examination"</title>
 <style>
-@font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); }
-:root { --bg: #f5f1eb; --card-bg: #ffffff; --card-border: #e8e0d5; --text: #555; --dark: #1a1a1a; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif; color: var(--text); line-height: 2.0; font-size: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
-.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
-.lang-switch { text-align: right; margin-bottom: 8px; }
-.lang-switch a { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; text-decoration: none; border: 1px solid #d5cfc5; border-radius: 20px; padding: 4px 16px; transition: background 0.2s; }
-.lang-switch a:hover { background: #e8e0d5; }
-.header { margin-bottom: 24px; }
-.header h1 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--dark); margin-bottom: 8px; }
-.header h2 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: #888; }
-.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c, #ca8a04, #4f46e5, #db2777, #0891b2); border-radius: 2px; margin-bottom: 24px; }
-.overview, .card, .takeaway { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03); }
-.overview p { margin-bottom: 6px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.overview .oneliner { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 12px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.overview .scqa-label { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; margin-right: 6px; font-weight: 700; }
-.section { border-left: 4px solid transparent; }
-.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.circle-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
-.section-tag { font-size: 12px; font-family: 'FZXPYZS','PingFang SC',serif; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 12px; }
-.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
-.section-body { margin-top: 8px; }
-.section-body p { font-family: 'FZXPYZS','PingFang SC',serif; }
-.bluf { color: var(--dark); font-weight: 600; margin-bottom: 8px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.detail { font-size: 13px; color: #777; line-height: 1.6; font-family: 'FZXPYZS','PingFang SC',serif; }
-.blockquote { border-left: 3px solid #d5cfc5; padding-left: 14px; color: #666; font-style: italic; margin: 12px 0; font-size: 14px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-.dual-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 14px 16px; }
-.dual-card h4 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
-.dual-card p { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 13px; color: #666; line-height: 1.7; }
-.flow-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-.flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 14px; font-size: 13px; color: #9a3412; text-align: center; font-family: 'FZXPYZS','PingFang SC',serif; }
-.flow-arrow { color: #ea580c; font-size: 18px; font-weight: 700; font-family: 'FZXPYZS','PingFang SC',serif; }
-.data-row { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-.data-card { flex: 1; min-width: 100px; padding: 16px; border-radius: 10px; text-align: center; }
-.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
-.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
-.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
-.data-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
-.data-big { font-size: 28px; font-weight: 700; font-family: 'FZXPYZS',serif; }
-.data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #ca8a04; } .data-big.i { color: #4f46e5; }
-.data-sm { font-size: 12px; color: #888; margin-top: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 10px; }
-.cmp-card { padding: 16px; border-radius: 10px; text-align: center; }
-.cmp-card.c1 { background: #fef2f2; border: 1px solid #fecaca; }
-.cmp-card.c2 { background: #fff7ed; border: 1px solid #fed7aa; }
-.cmp-card.c3 { background: #fefce8; border: 1px solid #fde68a; }
-.cmp-icon { font-size: 24px; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
-.cmp-note { font-size: 12px; color: #888; line-height: 1.5; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway { display: flex; gap: 16px; align-items: flex-start; }
-.takeaway-icon { font-size: 28px; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway-label { font-size: 12px; color: #888; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'FZXPYZS','PingFang SC',serif; }
-.takeaway p { color: var(--dark); font-weight: 600; font-size: 15px; line-height: 1.8; font-family: 'FZXPYZS','PingFang SC',serif; }
-.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; }
-.footer p { margin-bottom: 2px; font-family: 'FZXPYZS','PingFang SC',serif; }
-@media (max-width:640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 22px; }
-  .header h2 { font-size: 15px; }
-  .takeaway { order: -1; margin-bottom: 20px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .bluf { font-size: 16px; }
-  .dual-grid, .cmp-grid { grid-template-columns: 1fr; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-  .data-row { flex-direction: column; }
-}
-.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+</style>
 </head>
 <body>
 <div class="container">
-
 <div class="back-catalog"><a class="back-catalog-btn" href="sudongpo-zhuan-catalog.html">← 返回章节目录</a></div>
-<div class="lang-switch"><a href="sudongpo-zhuan-ch005-info-zh.html" target="_blank">中文</a></div>
-<a href="sudongpo-zhuan-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;">← 返回详情页</a>
-
-<div class="header">
-  <h1>Su Dongpo Biography · Ch. 5 &ldquo;应试&rdquo;</h1>
-  <h2>Ouyang Xiu said: "Reading Su Dongpo's letter, my whole body sweats with joy. I should retire and let this young man come to the fore." — At twenty, Su Dongpo passed the imperial exams with an essay containing a "fabricated allusion"</h2>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch005-info-zh.html">中文 / English</a>
 </div>
+
+<h1>Su Dongpo Biography · Ch.5 "The Imperial Examination"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Core Insight</span>
+  Ouyang Xiu said: "Reading Su Dongpo's letter, my whole body sweats with joy. I should retire and let this young man come to the fore."
+  At twenty, Su Dongpo passed the imperial exams with an essay containing a "fabricated allusion" — he invented a dialogue between Emperor Yao and Gao Yao,
+  which the examiners dared not question, and then candidly admitted "I made it up." The confidence and ease of genius, in one moment.
+</p>
 <div class="divider"></div>
 
-<div class="data-row" style="margin-bottom:24px;">
-    <div class="data-card" style="background:#fef2f2;border:1px solid #fecaca;">
-      <div class="data-big" style="color:#dc2626;">1056</div>
-      <div class="data-sm">Year Arrived in Capital</div>
-    </div>
-    <div class="data-card" style="background:#fff7ed;border:1px solid #fed7aa;">
-      <div class="data-big" style="color:#ea580c;">Age 20</div>
-      <div class="data-sm">Became Presented Scholar</div>
-    </div>
-    <div class="data-card" style="background:#fefce8;border:1px solid #fde68a;">
-      <div class="data-big" style="color:#ca8a04;">388</div>
-      <div class="data-sm">Candidates in Cohort</div>
-    </div>
-    <div class="data-card" style="background:#eef2ff;border:1px solid #c7d2fe;">
-      <div class="data-big" style="color:#4f46e5;">2nd</div>
-      <div class="data-sm">Rank (Demoted on Suspicion)</div>
-    </div>
-</div>
-<div class="overview">
-  <div class="oneliner">Core Insight：At twenty, Su Dongpo passed the imperial exams with outstanding literary talent and supreme wit — he fabricated a dialogue between Emperor Yao and Gao Yao in his essay, which the examiners dared not question, and then candidly admitted "I made it up," displaying the unique confidence and ease of genius</div>
-  <p><span class="scqa-label">Core Question</span>How did Su Dongpo distinguish himself in the brutal imperial examination system? How did this exam change his destiny?</p>
-  <p><span class="scqa-label">Core Answer</span>In May 1056, the three Sus arrived in the capital. Of forty-five candidates from Meizhou, thirteen passed — both brothers among them. In the palace examination, Su Dongpo wrote an essay advocating simplicity and leniency in governance. Ouyang Xiu, mistaking it for his friend Zeng Gong's work, moved it from first to second place to avoid suspicion. On April 14, 1057, at age twenty, Su Dongpo was made a Presented Scholar. Ouyang Xiu said: "Reading Su Dongpo's letter, my whole body sweats with joy." He predicted: "In thirty years no one will talk about me."</p>
+<!-- Overview -->
+<div class="splash">
+  In May 1056, the three Sus arrived in the capital. Of forty-five candidates from Meizhou, thirteen passed — both brothers among them. In the palace examination, Su Dongpo wrote an essay advocating simplicity and leniency in governance — his basic political philosophy. Ouyang Xiu, mistaking it for his friend Zeng Gong's work, moved it from first to second place to avoid suspicion. On April 14, 1057, at age twenty, Su Dongpo was made a Presented Scholar. Ouyang Xiu told his son: "In thirty years no one will talk about me."
 </div>
 
-<div class="card section" style="border-left-color:#dc2626;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#dc2626;">1</div>
-    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">Life Events</div>
-    <h3 style="color:#dc2626;">Early Marriage and Journey to the Capital</h3>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">20<span class="kpi-unit">yo</span></div>
+    <div class="kpi-label">Jinshi Age</div>
+    <div class="kpi-note">Jiayou Year 2, April 14<br>Became jinshi at twenty</div>
   </div>
-  <div class="section-body">
-    <p class="bluf">Su Dongpo married Wang Fu at eighteen (she was fifteen), and his brother married at sixteen — early marriage could save young people the time, energy, and emotional turmoil of courtship, without interfering with their proper work.</p>
-    <p>If they went to the capital unmarried and passed the exams, families with unmarried daughters would surely propose — wealthy merchants in the capital with marriageable daughters all waited on exam results, intending to make financial proposals to successful bachelors. From the parents' perspective, they preferred their sons to marry local girls from families they knew. Everything was arranged by parents as usual. The Su brothers happily married.</p>
-    <p class="detail">Lin Yutang commented: the advantage of parental arrangement was simplicity, convenience, saving time, and having a wider range of choices. All matches were made in heaven but implemented on earth; the couple only began building their relationship after leaving the church. In any case, no matter the arrangement, all marriages are gambles, like sailing on a vast ocean.</p>
+  <div class="kpi-card c02">
+    <div class="kpi-value">13<span class="kpi-unit"> passed</span></div>
+    <div class="kpi-label">Meizhou Candidates</div>
+    <div class="kpi-note">Out of 45 examinees<br>Both Su brothers passed</div>
   </div>
-</div>
-<div class="card section" style="border-left-color:#ea580c;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#ea580c;">2</div>
-    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">Capital City</div>
-    <h3 style="color:#ea580c;">The Great Song Capital: Kaifeng's Splendor</h3>
+  <div class="kpi-card c03">
+    <div class="kpi-value"><span class="kpi-unit">No.</span>2</div>
+    <div class="kpi-label">Palace Exam Rank</div>
+    <div class="kpi-note">Ouyang Xiu demoted<br>Should have been first</div>
   </div>
-  <div class="section-body">
-    <p class="bluf">The capital was the heart of the empire, saturated with imperial opulence — outside the city was a hundred-foot-wide moat, its banks lined with elms and weeping willows, four rivers flowing through the city, and the river surfaces covered with exquisitely carved wooden bridges.</p>
-    <p>The Song dynasty had four capitals, with Kaifeng in Henan as the main one (the Eastern Capital), thirteen miles in circumference. The imperial palace stood at the city center, with its southern face beginning from a row of brick walls below the Xuande Tower, adorned with fine dragon-and-phoenix bas-reliefs, above which gleamed roofs of colored glazed tiles. The palaces outside the four sides formed the main streets, named after the four compass points. The streets teemed with pedestrians, official carriages, ox-carts, and sedan chairs.</p>
-    <p class="detail">The Su brothers spent their free time strolling the streets, eating at famous restaurants, and standing in the cold wind admiring the sight of famous ministers' carriages. Four rivers flowed through Kaifeng, the most important being the Bian River, which brought goods and food from the southeast. The water gates on all four rivers were closed at night. Guard posts stood every hundred yards along the main streets.</p>
-  </div>
-</div>
-<div class="card section" style="border-left-color:#ca8a04;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#ca8a04;">3</div>
-    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">Exam System</div>
-    <h3 style="color:#ca8a04;">The Palace Examination: The Most Important Moment in a Scholar's Life</h3>
-  </div>
-  <div class="section-body">
-    <p class="bluf">Candidates had to rise at midnight, arrive at the palace by dawn, bring their own cold provisions, and could not leave until the exam was over — during the exam they were confined in separate cubicles guarded by palace soldiers.</p>
-    <p>Ouyang Xiu was appointed chief examiner by the emperor, with many famous scholars serving as associate examiners. The authorities had a rigorous system to prevent bribery or favoritism: all exam papers were recopied by clerks before being given to examiners, so the handwriting could not be recognized. The copied papers bore no names, which were recorded separately in the archives. Examiners were confined in the palace from late January to early March to grade the papers. Candidates took history or policy essays first, then ancient prose; those who passed then took poetry and policy questions under the emperor's supervision.</p>
-    <p class="detail">Emperor Renzong especially cherished talent and took great interest in these tests. He often sent palace attendants to deliver exam questions, sometimes changing them at the last minute to prevent leaks. The exam period was also the peak season of the marriage market — wealthy merchants with unmarried daughters all awaited the results.</p>
-  </div>
-</div>
-<div class="card section" style="border-left-color:#4f46e5;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#4f46e5;">4</div>
-    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">Patron Recognition</div>
-    <h3 style="color:#4f46e5;">Ouyang Xiu's Ecstatic Praise: A Destiny-Changing Remark</h3>
-  </div>
-  <div class="section-body">
-    <p class="bluf">Ouyang Xiu told a colleague: "Reading Su Dongpo's letter, my whole body sweats with joy. I should retire and let this young man come to the fore." Once these words were spoken, the entire capital heard them.</p>
-    <p>Su Dongpo wrote an essay on the principle of simplicity and leniency in national administration, his basic political philosophy. Ouyang Xiu greatly admired the style and content of the paper and thought it must have been written by his friend Zeng Gong. To avoid suspicion, he moved it from first to second place. But Ouyang Xiu's appreciation transcended this "miscarriage of justice" — he later told his son: "Remember my words: in thirty years no one will talk about me."</p>
-    <p class="detail">When a scholar passed under a particular chief examiner, he owed a debt of gratitude for this recognition, and a lifelong relationship of "honored teacher" and "disciple" was established. A contemporary writer said that scholars did not fear punishment, did not love promotion, and did not fear death — they only feared Ouyang Xiu's opinion. Ouyang Xiu won the scholars' love mainly because he made it his mission to discover and encourage younger talent.</p>
-  </div>
-</div>
-<div class="card section" style="border-left-color:#db2777;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#db2777;">5</div>
-    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">Genius Anecdote</div>
-    <h3 style="color:#db2777;">The Fabricated Allusion: A Genius's Boldness and Wit</h3>
-  </div>
-  <div class="section-body">
-    <p class="bluf">In his exam essay, Su Dongpo fabricated a dialogue between Emperor Yao and Gao Yao — "Gao Yao said: Execute him, thrice. Yao said: Pardon him, thrice." The examiners dared not question it, afraid to admit they had not read these obscure ancient texts. Afterward, Mei Yaochen asked where the story came from, and Su Dongpo candidly admitted: "I made it up."</p>
-    <p>This genius casually cited historical examples in his essay and even fabricated a dialogue — something rarely seen in history. He eloquently argued that rewards should err on the side of generosity, and punishments should be cautious to avoid killing the innocent. The dialogue was apt and supported the authoritative argument that a sage ruler would give someone a chance to demonstrate talent. The examiners read it but dared not question it, afraid to admit they had not read those obscure ancient books.</p>
-    <p class="detail">After the exam, Mei Yaochen asked him: "By the way, in which book is the story of Emperor Yao and Gao Yao recorded? I don't remember reading it anywhere." Su Dongpo admitted: "I made it up." "Really?" said the old examiner. "Well, a sage ruler would certainly have done this, wouldn't he?" Su Dongpo replied. This story perfectly displays Su Dongpo's wit, confidence, and ease — he wasn't cheating; he was using a genius's intuition to grasp the behavioral logic a sage ruler should have.</p>
-  </div>
-</div>
-<div class="card section" style="border-left-color:#0891b2;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#0891b2;">6</div>
-    <div class="section-tag" style="color:#0891b2;background:#ecfeff;">Turning Point</div>
-    <h3 style="color:#0891b2;">Mother's Death and Mourning: Twenty-Seven Months of Happiness</h3>
-  </div>
-  <div class="section-body">
-    <p class="bluf">Just as Dongpo was about to begin his official career, his mother died — Confucian rules required twenty-seven months of mourning. Yet this period of enforced seclusion became the happiest time of young Su Dongpo's life.</p>
-    <p>According to Confucian rules, even the prime minister had to immediately resign and observe mourning upon a mother's death. Dongpo's elder sister had died years earlier; all the men of the house had gone to take the exams, leaving his mother and the two daughters-in-law at home. She died before hearing the good news from the capital. Father and sons rushed home to find the place "like a house people had fled" — everything in disarray, fences collapsed, roof leaking.</p>
-    <p class="detail">After the funeral, Dongpo often visited his wife's family in Qingshen. Green mountains surrounded the place, with streams, deep ponds, and Buddhist temples on the peaks — an atmosphere of mystery, romance, and legend. On summer nights he sat outside the thatched cottage eating melon seeds and fried snacks, picnicking or drinking by the Ruicao Bridge. Su Xun wrote in his elegy for his wife: "I know your heart — not office-seeking, but literary fame you valued." He believed his wife wanted their sons to achieve literary fame, not merely official rank.</p>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit"> fiction</span></div>
+    <div class="kpi-label">Invented Allusion</div>
+    <div class="kpi-note">Yao &amp; Gao Yao dialogue<br>"I made it up," he admitted</div>
   </div>
 </div>
 
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">1056<span class="kpi-unit"> CE</span></div>
+    <div class="kpi-label">Sus Arrive Capital</div>
+    <div class="kpi-note">Jiayou Year 1, May<br>Father and sons together</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">18<span class="kpi-unit">yo</span></div>
+    <div class="kpi-label">Married Wang Fu</div>
+    <div class="kpi-note">She was only fifteen<br>Arranged, no distractions</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">100<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Ouyang's Praise</div>
+    <div class="kpi-note">"Joy to the point of sweating"<br>"In 30 years no one will speak of me"</div>
+  </div>
+</div>
+
+<!-- 01: Life Events -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Life Events</div>
+    <div class="section-title t-01">Early Marriage and Journey to the Capital</div>
+    <div class="section-desc">Su Dongpo married Wang Fu at eighteen (she was fifteen), and his brother married at sixteen — early marriage could save young people the time, energy, and emotional turmoil of courtship. From the parents' perspective, they preferred their sons to marry local girls. Lin Yutang commented: all matches were made in heaven but implemented on earth — in any case, all marriages are gambles, like sailing on a vast ocean.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⏳</div>
+        <div class="dual-text">
+          <h4>Going Unmarried: The Risk</h4>
+          <p>After passing the exams in the capital, families with unmarried daughters would swarm in — wealthy merchants all waited on exam results with financial proposals.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🏡</div>
+        <div class="dual-text">
+          <h4>Parents' Arrangement</h4>
+          <p>Simple, convenient, time-saving. The Su brothers happily married local girls from families they knew, everything arranged by parents — saving endless trouble.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Capital -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Capital City</div>
+    <div class="section-title t-02">The Great Song Capital: Kaifeng's Splendor</div>
+    <div class="section-desc">Kaifeng was the main Song capital, thirteen miles in circumference, with four rivers flowing through the city. The imperial palace stood at the city center, with glazed tile roofs gleaming above. A distinctive feature: no one could walk about bareheaded — even the humblest fortune teller dressed like a scholar. The Su brothers strolled the streets, ate at famous restaurants, and stood in the cold wind admiring the sight of famous ministers' carriages.</div>
+    <div class="flow-row">
+      <div class="flow-step">Four Rivers<br>Through City</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Exquisite Wooden<br>Bridges Everywhere</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Glazed Tile<br>Palace Roofs</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Guard Posts<br>Every 100 Yards</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Water Gates<br>Closed at Night</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Exam System -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Exam System</div>
+    <div class="section-title t-03">The Palace Examination: The Most Important Moment in a Scholar's Life</div>
+    <div class="section-desc">Candidates had to rise at midnight, arrive at the palace by dawn, bring their own cold provisions, and were confined in separate cubicles guarded by palace soldiers. A rigorous anti-bribery system: all papers were recopied by clerks before being given to examiners, without names. Examiners were confined from late January to early March. Emperor Renzong especially cherished talent, often changing exam questions at the last minute to prevent leaks.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Round 1: History / Policy</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Tests knowledge and insight</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Round 2: Ancient Prose</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Tests writing and foundation</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Final Round: Poetry & Policy</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Supervised by the Emperor himself</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Patron -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Patron Recognition</div>
+    <div class="section-title t-04">Ouyang Xiu's Ecstatic Praise: A Destiny-Changing Remark</div>
+    <div class="section-desc">Ouyang Xiu told a colleague: "Reading Su Dongpo's letter, my whole body sweats with joy. I should retire and let this young man come to the fore." Once these words were spoken, the entire capital heard them. Mistaking the paper for his friend Zeng Gong's work, he moved it from first to second place to avoid suspicion. But he later told his son: "In thirty years no one will talk about me." A contemporary saying went: scholars fear neither punishment, nor promotion lost, nor death — only Ouyang Xiu's opinion.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Ouyang Xiu's Admiration</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">Ecstatic</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Dongpo's True Rank</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Should Have Been First</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Ouyang's Prophecy</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">Fully Fulfilled</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Fabricated Allusion -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Genius Anecdote</div>
+    <div class="section-title t-05">The Fabricated Allusion: A Genius's Boldness and Wit</div>
+    <div class="section-desc">In his exam essay, Su Dongpo fabricated a dialogue between Emperor Yao and Gao Yao — "Gao Yao said: Execute him, thrice. Yao said: Pardon him, thrice." The examiners dared not question it, afraid to admit they had not read these obscure ancient texts. Afterward, Mei Yaochen asked him: "In which book is this recorded?" Su Dongpo candidly admitted: "I made it up." "Really?" "Well, a sage ruler would certainly have done this, wouldn't he?" This was not cheating — it was genius intuition, grasping the behavioral logic a sage ruler should have.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">✍️</div>
+        <div class="data-name">Fabricated Dialogue</div>
+        <div class="data-sm">Emperor Yao & Gao Yao<br>"Execute thrice, pardon thrice"<br>Nowhere in historical records</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">😮</div>
+        <div class="data-name">Examiners' Reaction</div>
+        <div class="data-sm">Dared not question it<br>Afraid to admit ignorance<br>Praised it unanimously instead</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">😏</div>
+        <div class="data-name">Candid Admission</div>
+        <div class="data-sm">"I made it up"<br>A sage ruler would do so<br>Genius intuition is truth</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
 <div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">Key Takeaway</div>
-    <p>Becoming a Presented Scholar at twenty, Ouyang Xiu's ecstatic praise, the wit of fabricating an allusion — Su Dongpo's exam journey is legendary. But more importantly: in this most important exam of his life, he established his political philosophy (simplicity and leniency in governance), which became the intellectual foundation for his later opposition to Wang Anshi's reforms. And Ouyang Xiu's prediction came true: ten years after Su Dongpo's death, everyone was talking about him and secretly reading his banned works.</p>
-  </div>
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Becoming a Presented Scholar at twenty, Ouyang Xiu's ecstatic praise, the wit of fabricating an allusion — Su Dongpo's exam journey is legendary. But more importantly: in this most important exam of his life, he established his political philosophy of "simplicity and leniency," which became the intellectual foundation for his later opposition to Wang Anshi's reforms. And Ouyang Xiu's prediction came true: ten years after Su Dongpo's death, everyone was talking about him and secretly reading his banned works.</div>
 </div>
 
+<!-- Footer -->
 <div class="footer">
-  <p>Source: Lin Yutang, &ldquo;The Gay Genius: The Life and Times of Su Tungpo&rdquo; · 2015 | Ch. 5 &ldquo;应试&rdquo; · For educational reference only</p>
+  The Gay Genius: The Life and Times of Su Tungpo · Ch.5 "The Imperial Examination" Infographic · Lin Yutang · For Educational Purposes
 </div>
 
 </div>

@@ -3,191 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>文化苦旅 · 第10章「废井冷眼」— 信息图</title>
+<title>文化苦旅 · 第10章「废井冷眼」 — 信息图</title>
 <style>
-@font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); }
-:root { --bg: #f5f1eb; --card-bg: #ffffff; --card-border: #e8e0d5; --text: #555; --dark: #1a1a1a; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif; color: var(--text); line-height: 2.0; font-size: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
-.container { max-width: 880px; width: 100%; margin: 0 auto; padding: 40px 32px 60px; }
-.lang-switch { text-align: right; margin-bottom: 8px; }
-.lang-switch a { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 12px; color: #888; text-decoration: none; border: 1px solid #d5cfc5; border-radius: 20px; padding: 4px 16px; transition: background 0.2s; }
-.lang-switch a:hover { background: #e8e0d5; }
-.header { margin-bottom: 24px; }
-.header h1 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 32px; font-weight: 400; letter-spacing: 0.03em; color: var(--dark); margin-bottom: 8px; }
-.header h2 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: #888; }
-.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c, #ca8a04, #4f46e5, #db2777, #0891b2); border-radius: 2px; margin-bottom: 24px; }
-.overview, .card, .takeaway { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04),0 1px 2px rgba(0,0,0,0.03); }
-.overview p { margin-bottom: 6px; }
-.overview .oneliner { font-weight: 700; color: var(--dark); font-size: 16px; margin-bottom: 12px; }
-.overview .scqa-label { font-size: 12px; color: #888; margin-right: 6px; font-weight: 700; }
-.section { border-left: 4px solid transparent; }
-.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.circle-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 15px; font-weight: 700; flex-shrink: 0; }
-.section-tag { font-size: 12px; font-family: 'FZXPYZS','PingFang SC',serif; letter-spacing: 0.04em; padding: 2px 10px; border-radius: 12px; }
-.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
-.section-body { margin-top: 8px; }
-.bluf { color: var(--dark); font-weight: 600; margin-bottom: 8px; }
-.detail { font-size: 13px; color: #777; line-height: 1.6; }
-.blockquote { border-left: 3px solid #d5cfc5; padding-left: 14px; color: #666; font-style: italic; margin: 12px 0; font-size: 14px; }
-.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-.dual-card { background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 14px 16px; }
-.dual-card h4 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
-.dual-card p { font-size: 13px; color: #666; line-height: 1.7; }
-.flow-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
-.flow-card { flex: 1; background: #fafaf7; border: 1px solid #e8e0d5; border-radius: 10px; padding: 12px 14px; text-align: center; font-family: 'FZXPYZS','PingFang SC',serif; font-size: 13px; color: var(--dark); min-width: 70px; }
-.flow-arrow { font-size: 18px; color: #ccc; flex-shrink: 0; }
-.takeaway { display: flex; gap: 16px; align-items: flex-start; }
-.takeaway-icon { font-size: 28px; flex-shrink: 0; }
-.takeaway-label { font-size: 12px; color: #888; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
-.takeaway p { color: var(--dark); font-weight: 600; font-size: 15px; line-height: 1.8; }
-.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; }
-.footer p { margin-bottom: 2px; }
-@media (max-width:640px) {
-  body { padding: 16px 12px 40px; }
-  .container { padding: 0; }
-  .header h1 { font-size: 22px; }
-  .header h2 { font-size: 15px; }
-  .takeaway { order: -1; margin-bottom: 20px; }
-  .card, .overview, .section { padding: 18px 16px; }
-  .section-header { flex-wrap: wrap; gap: 8px; }
-  .circle-num { width: 34px; height: 34px; font-size: 14px; }
-  .section h3 { font-size: 16px; }
-  .bluf { font-size: 16px; }
-  .dual-grid { grid-template-columns: 1fr; }
-  .flow-row { flex-direction: column; align-items: stretch; }
-  .flow-arrow { display: none; }
-}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 70px; flex: 1;
+    font-size: 12px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
 .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
 </style>
 </head>
 <body>
 <div class="container">
-
 <div class="back-catalog"><a class="back-catalog-btn" href="wenhua-kulv-catalog.html">← 返回章节目录</a></div>
-<div class="lang-switch"><a href="wenhua-kulv-ch010-info-en.html" target="_blank">EN</a></div>
-<a href="wenhua-kulv-catalog.html" style="display:inline-block;font-size:13px;color:#888;text-decoration:none;margin-bottom:8px;">← 返回详情页</a>
-
-<div class="header">
-  <h1>文化苦旅 · 第10章「废井冷眼」</h1>
-  <h2>一座亚洲名都的千年覆灭史，最终只剩一口废井的漠然注视</h2>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="wenhua-kulv-ch010-info-en.html">EN</a>
 </div>
+
+<h1>文化苦旅 · 第10章「废井冷眼」</h1>
+<p class="subtitle">一座亚洲名都的千年覆灭史，最终只剩一口废井的漠然注视</p>
 <div class="divider"></div>
 <div class="chapter-overview">
-  <p>核心洞察：渤海国从"海东盛国"到被契丹一把火烧尽的悲剧揭示了一个文明规律——高度发达的文明城堡被征服后，征服者既无法控制、无法融入、也无法改造，除了彻底毁灭，别无他途。 问题为什么曾经与长安东西并立的渤海国都城，会在千年之后只剩几方石料和一口废井？ 答案当一个文明秩序远高于征服者时，毁灭就成了唯一的"治理方案"；而那口八宝琉璃井的冷眼，见证了渤海→辽→金→元→清一代又一代的覆灭循环。 1</p>
+  <p>渤海国从"海东盛国"到被契丹一把火烧尽的悲剧，揭示了一个文明规律——高度发达的文明城堡被征服后，征服者既无法控制、无法融入、也无法改造，除了彻底毁灭，别无他途。七个清代流放学者在担柴歇脚时，从几块平整巨石上辨认出渤海国都城的遗迹。"李白醉书"的传说唤醒尘封的学问。而那口八宝琉璃井，井壁由玄武岩石砌成、几乎没有任何损坏——千余年来，它像一只看得太多终于看倦了的冷眼，见证了渤海→辽→金→元→清一代又一代的覆灭循环。</p>
 </div>
 
-
-<p><span class="scqa-label">问题</span>为什么曾经与长安东西并立的渤海国都城，会在千年之后只剩几方石料和一口废井？</p>
-  <p><span class="scqa-label">答案</span>当一个文明秩序远高于征服者时，毁灭就成了唯一的"治理方案"；而那口八宝琉璃井的冷眼，见证了渤海→辽→金→元→清一代又一代的覆灭循环。</p>
-</div>
-
-<!-- Block 1: 珊瑚红 -->
-<div class="card section" style="border-left-color:#dc2626;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#dc2626;">1</div>
-    <div class="section-tag" style="color:#dc2626;background:#fef2f2;">废墟偶遇</div>
-    <h3 style="color:#dc2626;">谁在流放路上发现了一座消失的都城？</h3>
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">7<span class="kpi-unit">位</span></div>
+    <div class="kpi-label">流放学者</div>
+    <div class="kpi-note">科举精英死里逃生<br>荒原上唤醒了渤海国</div>
   </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">30<span class="kpi-unit">+里</span></div>
+    <div class="kpi-label">外城周长</div>
+    <div class="kpi-note">上京龙泉府三重环套<br>与长安东西并立亚洲</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">5<span class="kpi-unit">座</span></div>
+    <div class="kpi-label">跨江大桥</div>
+    <div class="kpi-note">牡丹江上五座桥梁<br>如今数万人仅用一座</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">926<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">契丹灭渤海</div>
+    <div class="kpi-note">文明城堡被征服后<br>"除了毁灭别无他途"</div>
+  </div>
+</div>
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">5<span class="kpi-unit">个朝代</span></div>
+    <div class="kpi-label">兴衰循环</div>
+    <div class="kpi-note">渤海→辽→金→元→清<br>一代又一代覆灭轮回</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">200<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">契丹→金</div>
+    <div class="kpi-note">正好两百年后<br>契丹被金所灭</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1000<span class="kpi-unit">+年</span></div>
+    <div class="kpi-label">千年冷眼</div>
+    <div class="kpi-note">八宝琉璃井壁无损<br>"看得太多终于看倦"</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
   <div class="section-body">
-    <p class="bluf">七个状如乞丐的清代流放学者在担柴歇脚时，从几块平整巨石上辨认出了柱础和宫殿纹路——他们曾是全国知识界最高精英，因科场案死里逃生，却在这荒原上唤醒了尘封多年的学问。</p>
-    <p>这些老人曾是科举考官，被流放宁古塔后沦为烧石灰窑和养马的苦役。四年苦役几乎磨灭了全部文化记忆，但石头上的刻纹让一切都顷刻回来。打破沉默的是四个字："李白醉书。"立即有人接口："渤海国！"</p>
-    <p class="detail">传说渤海国曾用陌生文字给唐朝写信，满朝无人能识，只有醉酒的李白当场翻译并写回信，还要求杨国忠磨墨、高力士脱靴。这虽可能是故事，但渤海国不是故事，那片庞大的废墟不是故事。</p>
+    <div class="tag tag-01">废墟偶遇</div>
+    <div class="section-title t-01">谁在流放路上发现了一座消失的都城？</div>
+    <div class="section-desc">七个状如乞丐的清代流放学者在担柴歇脚时，从几块平整巨石上辨认出了柱础和宫殿纹路——他们曾是全国知识界最高精英，因科场案死里逃生，却在这荒原上唤醒了尘封多年的学问。这些老人曾是科举考官，被流放宁古塔后沦为烧石灰窑和养马的苦役。四年苦役几乎磨灭了全部文化记忆，但石头上的刻纹让一切都顷刻回来。打破沉默的是四个字："李白醉书。"立即有人接口："渤海国！"传说渤海国曾用陌生文字给唐朝写信，满朝无人能识，只有醉酒的李白当场翻译并写回信。</div>
   </div>
 </div>
 
-<!-- Block 2: 琥珀橙 -->
-<div class="card section" style="border-left-color:#ea580c;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#ea580c;">2</div>
-    <div class="section-tag" style="color:#ea580c;background:#fff7ed;">海东盛国</div>
-    <h3 style="color:#ea580c;">渤海国曾是何等辉煌的文明？</h3>
-  </div>
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
   <div class="section-body">
-    <p class="bluf">在公元九世纪大仁秀时代，渤海国"上京龙泉府"与长安城一东一西并立于世，成为整个亚洲的两大文明重镇。</p>
-    <p>上京龙泉府由外城、内城、宫城三重环套组成，外城周长三十余里，全城按长安城格局规划。城西和城北的牡丹江上有五座跨江大桥——如今数万人的现代生活只用一座桥就绰绰有余。它不仅是渤海国诸城之首，更是东北亚贸易枢纽，把长安和日本连成一条经济通道。</p>
+    <div class="tag tag-02">海东盛国</div>
+    <div class="section-title t-02">渤海国曾是何等辉煌的文明？</div>
+    <div class="section-desc">在公元九世纪大仁秀时代，渤海国"上京龙泉府"与长安城一东一西并立于世，成为整个亚洲的两大文明重镇。上京龙泉府由外城、内城、宫城三重环套组成，外城周长三十余里，全城按长安城格局规划。城西和城北的牡丹江上有五座跨江大桥——如今数万人的现代生活只用一座桥就绰绰有余。它不仅是渤海国诸城之首，更是东北亚贸易枢纽，把长安和日本连成一条经济通道。渤海国全面汲取大唐文明，通用汉文，按唐朝体制运行，九世纪被称为"海东盛国"。</div>
     <div class="dual-grid">
-      <div class="dual-card"><h4>🏛️ 渤海国鼎盛</h4><p>全面汲取大唐文明，通用汉文，按唐朝体制运行。九世纪被称为"海东盛国"，人口稠密，商贸繁荣。</p></div>
-      <div class="dual-card"><h4>⚠️ 隐伏危机</h4><p>周围部落仍处游牧状态。反差带来羡慕趋附，却也藏着强烈的嫉妒和仇恨——闪烁的目光越来越密。</p></div>
+      <div class="dual-card a">
+        <div class="dual-icon">🏛️</div>
+        <div class="dual-text">
+          <h4>渤海国鼎盛</h4>
+          <p>全面汲取大唐文明，通用汉文，按唐朝体制运行。人口稠密，商贸繁荣，与长安东西并立。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>隐伏危机</h4>
+          <p>周围部落仍处游牧状态。反差带来羡慕趋附，却也藏着强烈的嫉妒和仇恨——闪烁的目光越来越密。</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Block 3: 琉璃金 -->
-<div class="card section" style="border-left-color:#ca8a04;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#ca8a04;">3</div>
-    <div class="section-tag" style="color:#ca8a04;background:#fefce8;">毁灭逻辑</div>
-    <h3 style="color:#ca8a04;">为什么文明城堡总被彻底摧毁？</h3>
-  </div>
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
   <div class="section-body">
-    <p class="bluf">在人类历史上，一切高度文明的城堡被攻克后，下场总是特别悲惨——因为胜利者发现城里已形成一种远高于自己的文明秩序，攻下来后无法控制、无法融入、无法改造，除了毁灭别无他途。</p>
-    <p>公元926年，渤海国被契丹所灭。入城的契丹人发现，不仅是市民的眼神和脸色冷漠，就连城砖和街石都在反抗。他们在掠取财物后下令腾出都城、举国南迁，然后放一把火把整个城市烧掉。</p>
-    <p class="detail">考古发掘时，砖块、瓦片、石料被烧得粘结在一起，巨大的路石也因火烧而处处断裂。那场大火不知道烧了多久——八宝琉璃井的井水，当时一定也烧沸了，很快又烧干了。</p>
+    <div class="tag tag-03">毁灭逻辑</div>
+    <div class="section-title t-03">为什么文明城堡总被彻底摧毁？</div>
+    <div class="section-desc">在人类历史上，一切高度文明的城堡被攻克后，下场总是特别悲惨——因为胜利者发现城里已形成一种远高于自己的文明秩序，攻下来后无法控制、无法融入、无法改造，除了毁灭别无他途。公元926年，渤海国被契丹所灭。入城的契丹人发现，不仅是市民的眼神和脸色冷漠，就连城砖和街石都在反抗。他们在掠取财物后下令腾出都城、举国南迁，然后放一把火把整个城市烧掉。考古发掘时，砖块、瓦片、石料被烧得粘结在一起，巨大的路石也因火烧而处处断裂。</div>
   </div>
 </div>
 
-<!-- Block 4: 藏青靛 -->
-<div class="card section" style="border-left-color:#4f46e5;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#4f46e5;">4</div>
-    <div class="section-tag" style="color:#4f46e5;background:#eef2ff;">千年冷眼</div>
-    <h3 style="color:#4f46e5;">这口井见证了怎样的兴衰循环？</h3>
-  </div>
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
   <div class="section-body">
-    <p class="bluf">八宝琉璃井的井壁由玄武岩石砌成，几乎没有任何损坏——千余年来，它像一只看得太多终于看倦了的冷眼。</p>
+    <div class="tag tag-04">千年冷眼</div>
+    <div class="section-title t-04">这口井见证了怎样的兴衰循环？</div>
+    <div class="section-desc">八宝琉璃井的井壁由玄武岩石砌成，几乎没有任何损坏——千余年来，它像一只看得太多终于看倦了的冷眼。契丹灭渤海，离契丹被金所灭正好两百年。金朝存世仅一百二十年，又被蒙古所灭。那么多次的灭亡，每一次都少不了熊熊大火，少不了那口烧沸又烧干的古井——而地下总有水源，它们渐渐又有了波光，但冷眼总是冷眼。</div>
     <div class="flow-row">
-      <div class="flow-card" style="border-left:3px solid #dc2626;">渤海国<br>698–926</div>
+      <div class="flow-step">渤海国<br>698–926</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-card" style="border-left:3px solid #ea580c;">辽（契丹）<br>907–1125</div>
+      <div class="flow-step">辽（契丹）<br>907–1125</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-card" style="border-left:3px solid #ca8a04;">金<br>1115–1234</div>
+      <div class="flow-step">金<br>1115–1234</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-card" style="border-left:3px solid #4f46e5;">元（蒙古）<br>1271–1368</div>
+      <div class="flow-step">元（蒙古）<br>1271–1368</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-card" style="border-left:3px solid #db2777;">清<br>1636–1912</div>
+      <div class="flow-step end">清<br>1636–1912</div>
     </div>
-    <p>契丹灭渤海，离契丹被金所灭正好两百年。金朝存世仅一百二十年，又被蒙古所灭。那么多次的灭亡，每一次都少不了熊熊大火，少不了那口烧沸又烧干的古井——而地下总有水源，它们渐渐又有了波光，但冷眼总是冷眼。</p>
   </div>
 </div>
 
-<!-- Block 5: 玫粉 -->
-<div class="card section" style="border-left-color:#db2777;">
-  <div class="section-header">
-    <div class="circle-num" style="background:#db2777;">5</div>
-    <div class="section-tag" style="color:#db2777;background:#fdf2f8;">达观超越</div>
-    <h3 style="color:#db2777;">废墟如何让流放者获得达观？</h3>
-  </div>
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
   <div class="section-body">
-    <p class="bluf">面对一座名城只剩石料废井的景象，科场案的曲直和亲人们的屈死，就只是历史褶皱中的微尘了。</p>
-    <p>那几个老学者担柴的地方，正是一个火山口。面对火山口，时间的尺度更惊人——朝代的更迭以百年计，火山的动静以万年计。火山口也是一口废井，它的冷眼，连地球都不寒而栗。</p>
-    <div class="blockquote">"历史很漠然，在多数情况下不讲曲直，不讲感情。比历史更漠然的是自然。"</div>
-    <p class="detail">余秋雨相信，这些流放者如果在震撼之余看到了废井的冷眼，一定会对自己的遭遇更加达观——这便是废墟给予人的终极启示。</p>
+    <div class="tag tag-05">达观超越</div>
+    <div class="section-title t-05">废墟如何让流放者获得达观？</div>
+    <div class="section-desc">面对一座名城只剩石料废井的景象，科场案的曲直和亲人们的屈死，就只是历史褶皱中的微尘了。那几个老学者担柴的地方，正是一个火山口。面对火山口，时间的尺度更惊人——朝代的更迭以百年计，火山的动静以万年计。火山口也是一口废井，它的冷眼，连地球都不寒而栗。"历史很漠然，在多数情况下不讲曲直，不讲感情。比历史更漠然的是自然。"余秋雨相信，这些流放者如果在震撼之余看到了废井的冷眼，一定会对自己的遭遇更加达观——这便是废墟给予人的终极启示。</div>
   </div>
 </div>
 
 <div class="takeaway">
-  <div class="takeaway-icon">💡</div>
-  <div class="takeaway-text">
-    <div class="takeaway-label">核心结论</div>
-    <p>渤海国废墟上的那口八宝琉璃井，是一只看了千年兴衰的冷眼。它告诉我们：文明可以被创造，也可以被毁灭；历史漠然无情，而人的高贵在于——即便在废墟面前，仍能以达观超越一己的悲欢。</p>
-  </div>
-
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">渤海国废墟上的那口八宝琉璃井，是一只看了千年兴衰的冷眼。它告诉我们：文明可以被创造，也可以被毁灭；历史漠然无情，而人的高贵在于——即便在废墟面前，仍能以达观超越一己的悲欢。</div>
+</div>
 
 <div class="footer">
-  <p>来源：余秋雨《文化苦旅》· 长江文艺出版社 2014</p>
-  <p>第10章「废井冷眼」· 信息图仅供学习参考</p>
+  《文化苦旅》第10章「废井冷眼」信息图 · 余秋雨 著 · 长江文艺出版社 2014 · 仅供学习参考
+</div>
 
-
-
+</div>
 </body>
 </html>
-
-</div>
-
-</div>
