@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>随机漫步的傻瓜 · 前言「幸运的交易员」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch000-info-en.html">中文 / English</a>
+</div>
+
+<h1>随机漫步的傻瓜 · 前言「幸运的交易员」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  人类天生是寻找模式的动物——从云中见到清真寺，从噪声中读出"规律"。
+  但我们把运气误认为技术、将随机当作决定，尤其在金融领域，这种混淆最为致命。
+  为什么聪明的成功人士一再被随机性愚弄？答案藏在概率论的盲区与人类的认知缺陷中。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本书探讨一个根本性的认知错误：分明靠运气，却被误认为凭技术完成；分明是随机现象，却被误认为决定论。这就是"幸运的傻子"——运气好得出奇，却煞有介事地将成功归诸其他原因。这种混淆出现在商业、政坛、科学甚至文学评论中，但在金融业最为明显、后果最为险恶。塔勒布在前言中亮出全书的核心框架——一张"混为一谈表"，并预告了三篇结构：梭伦的警语、概率偏差、以及应对随机性的实用技巧。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">99.9<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">表现归因运气</div>
+    <div class="kpi-note">交易员优异表现<br>几乎全可归因于随机性</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit">对混淆</span></div>
+    <div class="kpi-label">混为一谈表</div>
+    <div class="kpi-note">运气→技术·随机→决定<br>噪声→意义·巧合→因果</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">篇</span></div>
+    <div class="kpi-label">全书框架</div>
+    <div class="kpi-note">梭伦警语→概率偏差<br>→实用技巧 层层递进</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value" style="font-size:30px">金融</div>
+    <div class="kpi-label">混淆度最高</div>
+    <div class="kpi-note">金融业混淆度 95%<br>后果最为险恶的领域</div>
+  </div>
+</div>
+
+<!-- 01: 核心悖论 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心悖论</div>
+    <div class="section-title t-01">幸运的傻子：当运气披上技术的外衣</div>
+    <div class="section-desc">"幸运的傻子"是塔勒布为全书设定的核心意象——一个人的成功几乎完全来自运气，但他本人（以及旁观者）却对此毫无察觉，反而编造出各种"技术""远见""策略"来解释成功。更危险的是，这种现象不仅存在于个人层面，也弥漫在机构、市场与整个社会叙事中。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🎲</div>
+        <div class="dual-text">
+          <h4>现实：纯粹运气</h4>
+          <p>99.9% 的表现差异可归因于随机性的波动。某交易员连续盈利，某创业者"远见卓识"，其实只是掷骰子的幸运儿。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>错觉：高超技术</h4>
+          <p>我们本能地将成功归因于个人能力、独到策略或领导力。"吹牛皮充内行"——编造令人信服但纯属虚构的成功叙事。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 认知根源 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">认知根源</div>
+    <div class="section-title t-02">我们的大脑还停留在非洲大草原</div>
+    <div class="section-desc">基因上，我们和远古祖先几乎没变。原始部落的某个人抓鼻子后下雨了，就煞费苦心地发展出一套"抓鼻子祈雨法"。现代版：你把经济繁荣归功于央行降息，把公司好转归功于新总裁上任。而"天时地利"只是被用来削弱任何你不喜欢的结论。</div>
+    <div class="flow-row">
+      <div class="flow-step">随机事件<br>发生</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">大脑自动<br>寻找模式</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">建立<br>虚假因果</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">形成<br>迷信信念</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">幸运的<br>傻子诞生</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 混为一谈表 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">概念框架</div>
+    <div class="section-title t-03">Table 1 · 混为一谈表：全书的核心论点</div>
+    <div class="section-desc">塔勒布将本书的核心论点浓缩为一张表。左栏是事物的真实属性，右栏是我们错误赋予它的属性。犯错的代价——把右栏误认为左栏——远比反向错误更为高昂。正如俗话所说："坏消息还不如没有消息。"</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">运气</div>
+        <div class="confusion-arrow">→ 被误认为 →</div>
+        <div class="confusion-right">技术 / 个人能力</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">随机现象</div>
+        <div class="confusion-arrow">→ 被误认为 →</div>
+        <div class="confusion-right">决定论 / 必然规律</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">噪声</div>
+        <div class="confusion-arrow">→ 被误认为 →</div>
+        <div class="confusion-right">意义 / 信号</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">偶然成功</div>
+        <div class="confusion-arrow">→ 被误认为 →</div>
+        <div class="confusion-right">因果链条 / 策略有效</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">幸存者偏差</div>
+        <div class="confusion-arrow">→ 被误认为 →</div>
+        <div class="confusion-right">可复制的成功法则</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 金融业放大效应 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">应用场景</div>
+    <div class="section-title t-04">金融业：观察随机性愚弄的最佳实验室</div>
+    <div class="section-desc">人类活动中，商业与金融界产生的混淆最多、后果也最险恶。某位交易员的优异表现，99.9% 可归因于运气——但他会列举各种深入且令人信服的理由。文学教授在偶然字句中寻找深意，财务统计师在随机数据中发现"规律"，但这些领域的犯错成本远低于金融决策。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">金融交易业</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">混淆度最高</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">政坛/宏观经济</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:82%"></div></div>
+        <div class="risk-val">高度混淆</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">文学/艺术评论</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:68%"></div></div>
+        <div class="risk-val">中度混淆</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">科学界</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:55%"></div></div>
+        <div class="risk-val">低度混淆</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 本书结构与使命 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">本书使命</div>
+    <div class="section-title t-05">一把巨剑的两个用途：防御与进攻</div>
+    <div class="section-desc">塔勒布以 19 世纪法国漫画人物普律多姆先生的巨剑为比喻：这把剑既用来保卫共和国，也用来在共和国误入歧途时攻击它。同样，本书既要保卫科学（照亮随机之声），也要抨击那些披着科学家外衣的江湖术士——他们往往是被随机性愚弄最深的人。全书分为三篇，层层递进。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📜</div>
+        <div class="data-name">第一篇</div>
+        <div class="data-sm">省思梭伦的警语<br>探讨发生与未发生的历史<br>稀有事件的深远影响</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🧠</div>
+        <div class="data-name">第二篇</div>
+        <div class="data-sm">充满随机性的事业生涯<br>遭遇并受害的概率偏差<br>至今仍在愚弄我们的陷阱</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🛡️</div>
+        <div class="data-name">第三篇</div>
+        <div class="data-sm">泯灭本性并非易事<br>我们需要实用小技巧<br>前人的谋略大有助益</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">我们系统性地低估了随机性在一切成功叙事中的角色。从交易大厅到总统就职演说，从畅销传记到文学批评——我们所信奉的"因果关系"，往往只是事后编造的合理化叙事。学会区分运气与技术、噪声与信号、随机与决定，是避免沦为"幸运的傻子"的第一步。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《随机漫步的傻瓜》前言信息图 · 纳西姆·尼古拉斯·塔勒布 著 · 基于第 0 章内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苏东坡传 · 第5章「应试」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:"FZXPYZS","PingFang SC","Noto Serif SC",serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="sudongpo-zhuan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch005-info-en.html">中文 / English</a>
+</div>
+
+<h1>苏东坡传 · 第5章「应试」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 核心洞察</span>
+  欧阳修说："读苏东坡的信，我全身喜极流汗。我应当退隐，使这个青年出人头地。"
+  二十岁的苏东坡以一篇"杜撰典故"的奇文高中进士——他在试卷中编造了尧帝与皋陶的对话，
+  考官不敢质疑，事后坦然承认"我杜撰的"。天才的自信与洒脱，莫过于此。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>嘉祐元年（1056年）五月三苏抵京。眉州四十五位考生中十三人考中，两兄弟都在其中。殿试中苏东坡写了一篇论国家行政求简求宽的文章——也是他基本的政治哲学。欧阳修误以为是好友曾巩所作，为避嫌将卷子从第一名改为第二名。嘉祐二年四月十四日，年方二十的苏东坡被点为进士。欧阳修对儿子说："三十年后没有人会谈起我。"</p>
+</div>
+
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">20<span class="kpi-unit">岁</span></div>
+    <div class="kpi-label">中进士年龄</div>
+    <div class="kpi-note">嘉祐二年四月十四<br>年方二十被点为进士</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">13<span class="kpi-unit">人</span></div>
+    <div class="kpi-label">眉州中举</div>
+    <div class="kpi-note">四十五位考生应试<br>苏氏兄弟皆在其中</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">第<span class="kpi-unit">2</span>名</div>
+    <div class="kpi-label">殿试排名</div>
+    <div class="kpi-note">欧阳修避嫌改判<br>本应是第一名</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">则</span></div>
+    <div class="kpi-label">杜撰典故</div>
+    <div class="kpi-note">尧帝与皋陶对话<br>"我杜撰的"坦然承认</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">1056<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">三苏抵京</div>
+    <div class="kpi-note">嘉祐元年五月<br>父子三人同赴京师</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">18<span class="kpi-unit">岁</span></div>
+    <div class="kpi-label">迎娶王弗</div>
+    <div class="kpi-note">年方十五的妻子<br>省却择偶烦扰</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">100<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">欧阳修激赏</div>
+    <div class="kpi-note">"全身喜极流汗"<br>"三十年后无人谈我"</div>
+  </div>
+</div>
+
+<!-- 01: 人生大事 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">人生大事</div>
+    <div class="section-title t-01">早婚与进京：赶考前的准备</div>
+    <div class="section-desc">苏东坡十八岁娶王弗为妻（她年方十五），弟弟十六岁娶了小两岁的新娘——早婚可以省掉年轻人择偶求爱的时间、精力和情绪纷扰。从父母立场来说，他们宁愿儿子娶本乡本土的女孩。林语堂评论道：一切姻缘都是天定，却在地上实行——反正不管怎么安排，一切婚姻都是赌博。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⏳</div>
+        <div class="dual-text">
+          <h4>不先婚的后果</h4>
+          <p>进京通过考试后，一定会被有女儿的人家提亲——京城富商都在等待考试结果，打算向金榜题名的单身汉提出条件。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🏡</div>
+        <div class="dual-text">
+          <h4>父母安排的选择</h4>
+          <p>简单、方便、不浪费时间。苏家兄弟高高兴兴娶了本乡女孩，一切照例由父母安排，省却了无穷的麻烦。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 京都风貌 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">京都风貌</div>
+    <div class="section-title t-02">大宋京师：开封的繁华与庄严</div>
+    <div class="section-desc">宋朝以开封为主京，周长十三哩，四条河流过市区。皇宫位在城中心，由宣德楼下一列石砖墙开始，上面露出亮晶晶的琉璃瓦屋顶。京师有一个特色：谁也不能光着头走来走去，连最卑微的算命先生也打扮得像文人似的。苏家兄弟没事就逛街，到著名的饭馆吃饭，站在冷风里瞻仰名臣座车的风采。</div>
+    <div class="flow-row">
+      <div class="flow-step">四条河<br>流过市区</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">雕花木桥<br>布满水面</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">宣德楼琉璃<br>瓦辉煌夺目</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">大街每百码<br>一个岗哨</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">水门夜闭<br>万籁俱寂</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 科举制度 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">科举制度</div>
+    <div class="section-title t-03">殿试：读书人一生最重大的时刻</div>
+    <div class="section-desc">应考人必须半夜起床，天亮就到皇宫，自备冷饭干粮，被分别关在隔室里由宫中卫士看守。当局有一套严防贿赂的制度：所有试卷由书记重抄一遍，不写姓名另记档案。判官从一月底关到三月初批好试卷呈给皇帝看。仁宗皇帝特别爱才，常在最后一分钟更改题目以防泄露。</div>
+    <div class="confusion-table">
+      <div class="confusion-left">初试：历史或策论</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">判断学识与见解</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">第二回：考古文</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">检验文笔与功底</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">终试：诗赋与策问</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">皇帝亲自监督</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 伯乐知遇 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">伯乐知遇</div>
+    <div class="section-title t-04">欧阳修的激赏：改变命运的评语</div>
+    <div class="section-desc">欧阳修对同事说："读苏东坡的信，我全身喜极流汗。我应当退隐，使这个青年出人头地。"这句话一说，全京师都听到了。他误以为卷子是好友曾巩所写，为避嫌从第一名改为第二名。但后来对儿子说："三十年后没有人会谈起我。"当时有一句名言：文士不怕刑罚、不爱晋升、也不贪生怕死，只怕欧阳修的意见。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">欧阳修赏识度</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">欣喜若狂</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">东坡实际排名</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">本应是第一</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">欧阳修预言</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">全部应验</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 杜撰典故 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">天才轶事</div>
+    <div class="section-title t-05">杜撰典故：天才的大胆与机智</div>
+    <div class="section-desc">苏东坡在试卷中杜撰了一则尧帝与皋陶的对话——"皋陶曰杀之三。尧曰宥之三。"考官读到不敢质疑，怕承认自己没读过这些不出名的古书。考完后梅尧臣问他典故出处，他坦然承认："我杜撰的。""真的？""咦，圣君一定会这样做的，对不对？"这不是作弊，而是用天才的直觉洞察了圣君应有的行为逻辑。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">✍️</div>
+        <div class="data-name">杜撰对话</div>
+        <div class="data-sm">尧帝与皋陶<br>"杀之三，宥之三"<br>史上并无记载</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">😮</div>
+        <div class="data-name">考官反应</div>
+        <div class="data-sm">不敢质疑<br>怕承认没读过古书<br>反而一致称赞</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">😏</div>
+        <div class="data-name">坦然承认</div>
+        <div class="data-sm">"我杜撰的"<br>圣君理应如此<br>天才直觉即真理</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">二十岁中进士，欧阳修的激赏，杜撰典故的机智——苏东坡的科举之路堪称传奇。但更重要的是：他在这场考试中确立了自己"求简求宽"的政治哲学，这成为他日后与王安石变法对抗的思想根基。欧阳修的预言也应验了：苏东坡死后十年，人人都在谈苏东坡，偷读他被禁的作品。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《苏东坡传》第5章「应试」信息图 · 林语堂 著 · 基于第5章内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

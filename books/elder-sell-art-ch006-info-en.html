@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The New Sell &amp; Short, 2nd Ed. · Ch.6 Selling on Trading Noise</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Risk bars ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 160px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch006-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The New Sell &amp; Short, 2nd Ed.<br>Chapter 6 "Selling on Trading Noise"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Systematic traders follow signals — discretionary traders have the luxury of choice. When the market emits unusual noise, should you stick to the plan or exit early? The answer lies in identifying five forms of trading noise and tightening stops before they're triggered.
+</p>
+<div class="divider"></div>
+
+<!-- 01: Weakening Momentum -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Momentum Fade</div>
+    <div class="section-title t-01">Weakening Momentum — MACD Bearish Divergence Is the Earliest Exit Signal</div>
+    <div class="section-desc">When MACD histogram and price form a bearish divergence — the stock no longer moves in your favor — a savvy swing trader exits early rather than waiting for the target. The price may or may not reach the target; taking profits and reassessing from the sidelines is the safer play. Long-term traders may sell part and keep the core position.</div>
+    <div class="flow-row">
+      <div class="flow-step">Spot MACD-H<br>Bearish Divergence</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Assess Trade<br>Type</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Short-Term:<br>Exit Fully</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Bank Profits<br>Reassess Market</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Selling Before Earnings -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Info Risk</div>
+    <div class="section-title t-02">Selling Before Earnings — The Hidden Battlefield of Leaks and Insider Trading</div>
+    <div class="section-desc">Earnings reports rarely "surprise" the market: experts forecast them, and information often leaks in advance. Insider trading is far more widespread than most imagine — only the greedy and stupid get caught. If a company has a history of leaks, exit before the announcement. No matter how confident you are, closing before earnings puts you on the safe side.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>Information Leaked in Advance</h4>
+          <p>Price already reflects expectations before the announcement. "Buy the rumor, sell the fact" dynamics create gap risk. CSCO case: price above the upper channel before earnings, then plunged.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔒</div>
+        <div class="dual-text">
+          <h4>Honest Announcement</h4>
+          <p>When a company keeps secrets well, the announcement can trigger violent moves. RIMM case: three positive surprises simultaneously — shares gapped up to an all-time high.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Market Alarm Bells -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Extreme Sentiment</div>
+    <div class="section-title t-03">Market Alarm Bells — When Outsiders Start Making Consistent Money, the Top Is Near</div>
+    <div class="section-desc">Alarm bells ring rarely, but the signal is unmistakable: when amateurs consistently profit and the least sophisticated start recommending stocks, market laws appear suspended — but that's only the temporary illusion of a bubble. Hearing the bell and acting is what separates novices from disciplined traders.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">1989</div>
+        <div class="data-name">Japan</div>
+        <div class="data-sm">A steward earned more from stocks than salary; months later the Nikkei crashed, losing half its value</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">1929</div>
+        <div class="data-name">Great Crash</div>
+        <div class="data-sm">A shoeshine boy tipped Baruch a stock; he recognized the danger signal and liquidated, avoiding the crash</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">2007</div>
+        <div class="data-name">NASDAQ</div>
+        <div class="data-sm">NASDAQ booth handed out real dollar bills to visitors; shortly after, the S&P 500 began its steep descent</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: NH-NL Index -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Leading Indicator</div>
+    <div class="section-title t-04">NH-NL Index — The Best Leading Indicator for the Stock Market</div>
+    <div class="section-desc">New Highs (NH) represent bullish power; New Lows (NL) represent bearish power. A positive NH−NL value signals bull dominance; divergence warns of reversal. When the S&P 500 hits new highs but NH-NL declines, a major top signal has formed. Classic case: February 2007 — prices at new highs, NH-NL declining.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Weekly NH-NL Divergence</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:96%"></div></div>
+        <div class="risk-val">Very Strong</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Daily NH-NL Divergence</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:78%"></div></div>
+        <div class="risk-val">Strong</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Multi-Indicator Resonance</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">Maximum</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Sell Decision Tree -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Execution Framework</div>
+    <div class="section-title t-05">The Sell Decision Tree — Turning Noise into Structured Trading Discipline</div>
+    <div class="section-desc">An expert's decision tree lives in their bones — it's a set of "if… then…" rules for what to do under specific conditions. The sell decision tree starts with trade type and works through stop placement, noise sensitivity, and response strategy. Short-term traders use tight stops; long-term traders ignore daily noise and focus on weekly signals.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🐇</div>
+        <div class="data-name">Short-Term Trader</div>
+        <div class="data-sm">Tight stop: near channel/envelope<br>Exit on daily MACD divergence<br>Immediate exit on Force Index divergence<br>Watch for A-grade trade scores</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🐘</div>
+        <div class="data-name">Long-Term Trader</div>
+        <div class="data-sm">Wide stop: key support/resistance<br>Ignore daily noise, focus on weekly<br>Core position + swing trades<br>Risk per trade capped at 1%</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🌲</div>
+        <div class="data-name">Decision Tree Rule</div>
+        <div class="data-sm">Determine type → Set stop<br>→ Listen to noise → Execute<br>→ Record & improve<br>Perfection is the enemy of good</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Trading noise is the discretionary trader's most valuable early-warning system. Systematic traders rely on signals; discretionary traders rely on judgment — the two are not opposites. The best traders fuse both: hunt for opportunities and set stops like a system, while listening to market noise like a hunter. When MACD diverges, earnings loom, alarm bells ring, or NH-NL warns — exiting early is not cowardice, it is discipline.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Source: Alexander Elder, <em>The New Sell &amp; Short, 2nd Ed.</em>, Chapter 6 "Selling on Trading Noise"<br>
+  Infographic Design · June 2026 · For educational reference only; not investment advice
+</div>
+
+</div>
+</body>
+</html>

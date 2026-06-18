@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苏东坡传 · 第2章「苏轼」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="sudongpo-zhuan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch002-info-en.html">中文 / English</a>
+</div>
+
+<h1>苏东坡传 · 第2章「苏轼」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 核心洞察</span>
+  要认识一个死去千年的人其实并不难——活人还有太多"可能性"和隐私，而死人的一生已经完结。
+  苏东坡近百万字的作品、八百封私人信件、大量同时代人的笔记，使他比任何中国作家都更"可认识"。
+  研究他的一生，也就等于研究北宋因党争而陨落的过程。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>苏东坡伟大的人格完整蚀刻在他的生活和作品中。认识他不在于和他同一年代，而是共鸣了解的问题。苏东坡生于1036年、死于1101年——北宋灭亡前二十五年。他在最好的皇帝手下成长，服侍过用意良好的皇帝，最后在十八岁的昏君登基后不断蒙羞受难。研究苏东坡的一生，就是研究国家因党争而陨落的悲剧。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">1036<span class="kpi-unit">-1101</span></div>
+    <div class="kpi-label">生卒年</div>
+    <div class="kpi-note">生于仁宗时期<br>死于徽宗登基前<br>北宋灭亡前25年</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">百万<span class="kpi-unit">字</span></div>
+    <div class="kpi-label">传世作品</div>
+    <div class="kpi-note">近百万字作品<br>八百封私人信件<br>六百则亲笔题跋</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">309<span class="kpi-unit">人</span></div>
+    <div class="kpi-label">党人碑</div>
+    <div class="kpi-note">元祐党人碑列309人<br>以苏东坡为首<br>圣旨子孙永不为官</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">代皇帝</span></div>
+    <div class="kpi-label">时代变迁</div>
+    <div class="kpi-note">仁宗最贤→神宗意善<br>徽宗十八岁昏君<br>国运随好人凋零</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">常识 vs 逻辑</div>
+    <div class="kpi-label">核心对抗</div>
+    <div class="kpi-note">苏东坡以常识<br>对抗王安石的逻辑<br>神圣目标最危险</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">25<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">亡国倒计时</div>
+    <div class="kpi-note">苏东坡去世后<br>仅25年北宋灭亡<br>党争耗尽了元气</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">⚡</div>
+    <div class="kpi-label">历史讽刺</div>
+    <div class="kpi-note">雷电击碎党人碑<br>羞辱反成荣耀<br>后代以名列碑为荣</div>
+  </div>
+</div>
+
+
+<!-- 01: 认识论 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">认识论</div>
+    <div class="section-title t-01">为什么死人比活人更容易了解？</div>
+    <div class="section-desc">活人的一生还没有过完，谁也不知道他碰到危机会做出什么事来。酒鬼会改过，圣人会堕落。而死人的人生已经完结，我们可以检视一幕幕已经终了的情节。林语堂说：我们对同市居民所知有限，有时候反倒觉得死人比活人更容易了解。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🤷</div>
+        <div class="dual-text">
+          <h4>活人的困境</h4>
+          <p>太多"可能性"待展开。有隐私需要保护。谁也不知道危机关头会做什么——圣人可能堕落，酒鬼可能改过。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>死人的完整</h4>
+          <p>人生已经完结，所有情节可供检视。我们只认识自己真正了解的人，而且只对自己真正喜欢的人才能充分了解。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 历史记录 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">历史记录</div>
+    <div class="section-title t-02">完整得惊人的生命记录</div>
+    <div class="section-desc">苏东坡有近百万字的作品、八百封信、六百则亲笔小记和题跋流传到今天。同时代人把他尊为最敬爱学者，写下了无数随笔。宋代学者都擅于写日记——苏东坡时代的政治斗争炽热，使保存的资料（包括对话）特别丰富。</div>
+    <div class="flow-row">
+      <div class="flow-step">史籍记载</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">1700首诗词</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">800封书信</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">600则题跋</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">完整生命</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 时代命运 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">时代命运</div>
+    <div class="section-title t-03">苏东坡一生的必然性</div>
+    <div class="section-desc">林语堂用占星家的比喻来理解苏东坡的命运——研究他的一生，就能明瞭他为什么一定要做所做的一切。苏东坡年轻时有一大群卓越学者围在皇帝朝中，北宋末期却一个也不剩。从王安石第一次迫害到小昏君第二次施虐，好人大部分已经去世。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">仁宗时期（最好皇帝）</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">群贤毕至，学者如云</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">神宗时期（用意良好）</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">王安石变法，排斥异己</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">王安石第一次迫害</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">尚有二十位名学者愿受苦</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">徽宗时期（十八岁昏君）</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">好人殆尽，国运陨落</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 政治对抗 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">政治对抗</div>
+    <div class="section-title t-04">常识对逻辑：苏东坡与王安石</div>
+    <div class="section-desc">诗人苏东坡以常识对抗经济学者王安石的逻辑——神圣的目标向来是最危险的。一旦目标神圣化，实行的手段必然日渐卑鄙。苏东坡亲眼看见"社会改革"造成的可怕结果：农民不得不逃出家园，不是因饥荒，而是丰年怕回村交不出政府强迫借的贷款。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">苏东坡（常识）</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">大道至简</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">王安石（逻辑）</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">逻辑极致</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">最终结果</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:30%"></div></div>
+        <div class="risk-val">国运崩塌</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 元祐党人碑 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">历史讽刺</div>
+    <div class="section-title t-05">元祐党人碑：羞辱变荣耀</div>
+    <div class="section-desc">元祐党人碑列有309个黑名单人物，以苏东坡为首——圣旨规定这些人及其子弟永远不能在朝为官。但一百多年间，黑名单人物的子女反而以先人名列石碑而自夸自豪。雷电击碎石碑，徽宗大惊毁碑，首相却愤慨说："碑可毁，这些人的名字却永远难忘！"</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">309</div>
+        <div class="data-name">黑名单人数</div>
+        <div class="data-sm">以苏东坡为首<br>圣旨子孙永不为官<br>意图永远羞辱</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚡</div>
+        <div class="data-name">雷电击碑</div>
+        <div class="data-sm">1106年陨星出现<br>文德殿石碑被劈<br>徽宗连夜毁碑</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🏆</div>
+        <div class="data-name">羞辱成荣耀</div>
+        <div class="data-sm">后代以名列碑为荣<br>历史讽刺至极<br>石碑反成名留青史</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">苏东坡的一生就是北宋因党争而陨落的缩影：他以常识对抗王安石的逻辑，付出了流放的代价，却维护了自己的灵魂。元祐党人碑本想让他永远受辱，结果他的后代反而以名列此碑为荣——历史的讽刺莫过于此。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《苏东坡传》第2章「苏轼」信息图 · 林语堂 著 · 基于第2章内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>以交易为生II：卖出的艺术 · 第八章「做空非权益类产品」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch008-info-en.html">中文 / English</a>
+</div>
+
+<h1>以交易为生II：卖出的艺术<br>第八章「做空非权益类产品」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  期货、期权、外汇——三个市场，三类对手，三种做空逻辑。自由不等于安全：期货慢涨快跌，期权买家注定亏损，外汇零售市场是平台与客户对赌的利益陷阱。成功的做空者必须理解每个市场的独特性。
+<div class="chapter-overview">
+  <p>做空在期货、期权和外汇市场上完全自由，不存在股票市场的报升规则或内幕交易限制。然而自由不等于安全——期货市场遵循"慢涨快跌"的残酷节奏，期权市场买家如同赌徒注定亏损，外汇零售市场更是平台与客户对赌的利益陷阱。核心发现：期货做空要利用周期性急跌，期权要永远站在卖方，外汇要选择透明平台并利用趋势的持续性。三个市场，三种做空逻辑，但纪律和风险控制是共同的底线。</p>
+</div>
+</p>
+<div class="divider"></div>
+
+<!-- 01: 期货慢涨快跌 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心规律</div>
+    <div class="section-title t-01">期货慢涨快跌：持有成本驱动的价格节奏</div>
+    <div class="section-desc">期货价格因储存、资金和保险等持有成本持续推升，形成缓慢上涨趋势；但基本面价值并未同步增长，价格结构必须被周期性急跌所打断。可可期货上涨持续数周甚至数月，而只需一周就跌回原点。黄金用3个月涨了85美元，却用3天暴跌吞掉64%的涨幅。</div>
+    <div class="flow-row">
+      <div class="flow-step">持有成本积累<br>储存·资金·保险</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">价格缓慢上涨<br>新手误以为安全</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">利空触发<br>飓风·政策·假突破</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">快速崩塌<br>做空获利窗口</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 天花板与地板 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">定价锚点</div>
+    <div class="section-title t-02">天花板与地板：期货做空的定价之锚</div>
+    <div class="section-desc">与股票不同，期货有天然的定价边界。做空前必须判断价格距离天花板和地板哪个更近。商品价格上限由替代品成本决定，底线是生产成本。当价格接近天花板时做空，当价格跌破地板时平空。假突破+顶背离+MACD丢失右肩是最强做空组合。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📈</div>
+        <div class="dual-text">
+          <h4>天花板 · 替代品成本</h4>
+          <p>商品价格上限由替代品成本决定。价格可能短暂突破天花板，但不会停留——这正是精明交易者的做空时机。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📉</div>
+        <div class="dual-text">
+          <h4>地板 · 生产成本</h4>
+          <p>商品价格底线是生产成本。当价格跌破生产成本，生产者减产、供应下降、价格回升。例外是穷国以贬值本币廉价出口，但不会持久。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 期权买卖 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">零和博弈</div>
+    <div class="section-title t-03">期权买卖：赢家与输家的分界线</div>
+    <div class="section-desc">期权市场上，赢家与输家的分界线不在技术水平，而在买入者与卖出者之间。赢家永远是卖出者，输家恰好相反。期权是消耗性资产——即使看对方向，只要时间耗尽，期权也将一文不值。期权就是在交易希望——买入希望或卖出希望，专家卖出希望。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">买入方 · 赌徒</div>
+        <div class="confusion-arrow">→ 特征是 →</div>
+        <div class="confusion-right">买入希望，期待一夜暴富；看对方向仍可能亏损（时间衰减）；90%+长期亏损</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">卖出方 · 庄家</div>
+        <div class="confusion-arrow">→ 特征是 →</div>
+        <div class="confusion-right">卖出希望，立即收取现金；时间流逝对卖方有利；期权到期归零=最大利润；需充足资本</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 存量与裸卖出 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">实战策略</div>
+    <div class="section-title t-04">存量卖出与裸卖出：两种做空期权的路径</div>
+    <div class="section-desc">卖出期权有两条路径：存量卖出以自有股票为担保赚取期权费，裸卖出以账户资本为担保凭空创造期权。前者稳健增收，适合大型股票组合；后者利润最大但需要10万-25万美元资本和冷酷纪律。裸卖出最糟情况是以行权价买入股票——对专家而言完全可接受。</div>
+    <div class="flow-row">
+      <div class="flow-step">存量卖出<br>以股票为担保</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">收取期权费<br>时间衰减获利</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">裸卖出<br>凭空创造期权</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">利润最大化<br>需要冷酷纪律</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 外汇 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">风险警示</div>
+    <div class="section-title t-05">外汇：投机商号陷阱与趋势交易之道</div>
+    <div class="section-desc">外汇市场是全球趋势特征最明显的市场——货币趋势可持续数年。但零售外汇商号存在严重利益冲突：它们充当客户对手盘，客户赚钱即商号亏钱，且提供疯狂的400:1保证金使资金管理失效。外汇期货是更透明的替代选择。所有外汇交易都是价差交易：买入一种货币即自动做空另一种。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">400:1</div>
+        <div class="data-name">投机商号</div>
+        <div class="data-sm">疯狂保证金比例<br>资金管理完全失效</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">5%</div>
+        <div class="data-name">期货市场</div>
+        <div class="data-sm">合理保证金要求<br>电子化交易更透明</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">24h</div>
+        <div class="data-name">全天交易</div>
+        <div class="data-sm">趋势持续数年<br>回调提供双向机会</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">做空非权益类产品的核心不在技术，而在理解每个市场的博弈结构：期货做空要利用慢涨快跌的定价节奏，期权做空要永远站在时间一边（卖方），外汇做空要避开与客户对赌的投机商号。三个市场的共同底线是：充足资本、冷酷纪律、截短亏损让利润奔跑。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：亚历山大·埃尔德《以交易为生II：卖出的艺术》第八章「做空非权益类产品」<br>
+  信息图设计 · 2026年6月 · 仅供学习参考，不构成投资建议
+</div>
+
+</div>
+</body>
+</html>

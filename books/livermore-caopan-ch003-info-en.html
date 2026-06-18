@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livermore's Trading Method · Ch.3 "Follow the Leaders"</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 36px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.5px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .splash strong { color: #dc2626; }
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; } .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; } .section-05 { border-left-color: #db2777; }
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; } .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; } .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; } .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; } .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .confusion-table { margin-top: 10px; }
+  .confusion-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 10px 16px; }
+  .confusion-left { flex: 1; text-align: right; font-size: 13px; color: #92400e; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .confusion-arrow { flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold; }
+  .confusion-right { flex: 1; font-size: 13px; color: #713f12; }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 20px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; } .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; } .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  @media (max-width: 640px) { .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; } .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; } .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; } .section-05 { border-top-color: #db2777; } .dual-grid, .data-row { grid-template-columns: 1fr; } .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); } .confusion-row { flex-direction: column; align-items: stretch; } .confusion-left { text-align: center; } .container { padding: 0 8px; } h1 { font-size: 26px; } .risk-row { flex-wrap: wrap; } .risk-label { width: 100%; } .risk-val { width: auto; } }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch"><a class="lang-btn" target="_blank" href="livermore-caopan-ch003-info-zh.html">English / 中文</a></div>
+
+<h1>Livermore's Trading Method · Ch.3 "Follow the Leaders"</h1>
+<p class="subtitle"><span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>Market prices are always moving up and down, and behind every major movement lies an irresistible driving force. The wise speculator rides the tide. After a string of successes, the market releases a seductive haze — the most common mistake is spreading too thin across many stocks. How to avoid blindly expanding positions and concentrate on true profit opportunities? Answer: focus on the most prominent leaders of the day, analyze only a few stock groups, and wait patiently for follow-through signals.</p>
+<div class="divider"></div>
+<div class="chapter-overview"><p>This chapter distills a lesson Livermore bought at great cost. During the wild bull market of the late 1920s, he accumulated massive paper profits shorting copper and auto stocks — but because he prematurely shorted utilities, the losses from the latter exceeded the profits from the former. Ultimately, when utilities and other groups did top out, Anaconda had already declined 50 points from its peak, and auto stocks had fallen by a similar percentage. His directional call was perfectly correct — but his timing was fatally early. This experience crystallized his core principle: follow the leaders, concentrate on a few key stock groups, and wait patiently for clear follow-through signals before acting.</p></div>
+
+<div class="section section-01"><div class="section-num num-01">01</div><div class="section-body"><div class="tag tag-01">Fatal Error</div><div class="section-title t-01">Spreading Too Thin: The Biggest Trap After a Winning Streak</div><div class="section-desc">Whenever a speculator has a run of success, the market releases a seductive haze that breeds complacency and inflated ambition — spreading too thin across too many stocks is the classic symptom. Handling a few stocks at once is manageable, but handling many simultaneously is overwhelming.</div><div class="dual-grid"><div class="dual-card no"><div class="dual-icon">✅</div><div class="dual-text"><h4>The Right Way</h4><p>After spotting a reversal in one stock group, wait patiently until other groups also signal that their decline or advance has ended. Act only when the time is right.</p></div></div><div class="dual-card yes"><div class="dual-icon">❌</div><div class="dual-text"><h4>The Wrong Way</h4><p>After seeing one or two groups turn, immediately adopt a uniformly bearish or bullish stance and rush to play everything. Impatience replaces common sense and judgment.</p></div></div></div></div></div>
+
+<div class="section section-02"><div class="section-num num-02">02</div><div class="section-body"><div class="tag tag-02">Costly Lesson</div><div class="section-title t-02">Big Copper & Auto Profits vs. Big Utilities Losses: A Textbook Cautionary Tale</div><div class="section-desc">Livermore accumulated massive profits shorting copper and auto stocks, but because he prematurely shorted utilities, the losses from the latter exceeded the profits from the former. When utilities finally did top out, Anaconda had already fallen 50 points from its peak. His directional call was perfect — but his timing was fatally early.</div><div class="flow-row"><div class="flow-step">Identified copper<br>rally was over</div><div class="flow-arrow">→</div><div class="flow-step">Prematurely decided<br>it's safe to short all</div><div class="flow-arrow">→</div><div class="flow-step">Shorted utilities<br>— huge losses ate profits</div><div class="flow-arrow">→</div><div class="flow-step end">Lesson: Wait for clear<br>follow-through signals</div></div></div></div>
+
+<div class="section section-03"><div class="section-num num-03">03</div><div class="section-body"><div class="tag tag-03">Core Principle</div><div class="section-title t-03">Follow the Leaders: Concentrate Firepower on the Most Prominent Stocks</div><div class="section-desc">"Concentrate your attention on the stocks that are the most prominent in that day's trading. If you cannot make money out of the leading active issues, you are not going to make money out of the stock market as a whole." Just as women's fashions change over time, the market continually discards past leaders — railroads, sugar, and tobacco were once leaders; then steel took over; later automobiles moved to the fore. Today four groups dominate: steels, automobiles, aircraft, and mail-order.</div><div class="confusion-table"><div class="confusion-row"><div class="confusion-left">Old-Era Leaders</div><div class="confusion-arrow">→ replaced by →</div><div class="confusion-right">Railroads, American Sugar, Tobacco</div></div><div class="confusion-row"><div class="confusion-left">Mid-Era Leaders</div><div class="confusion-arrow">→ replaced by →</div><div class="confusion-right">Steel stocks (then took center stage)</div></div><div class="confusion-divider">▼ Livermore's Era Leaders ▼</div><div class="confusion-row"><div class="confusion-left">Four Core Groups</div><div class="confusion-arrow">→ focus on →</div><div class="confusion-right">Steels, Automobiles, Aircraft, Mail-Order</div></div></div></div></div>
+
+<div class="section section-04"><div class="section-num num-04">04</div><div class="section-body"><div class="tag tag-04">New Era</div><div class="section-title t-04">The Modern Speculator's Survival Code: Patience, Judgment & Right-Sized Positions</div><div class="section-desc">Today's market conditions no longer permit the large-scale manipulation of old — this brings safer opportunities for the wise, diligent speculator, but demands more prudent position sizing. In the old days, a speculator could take 5,000 or 10,000 shares without affecting the price; today's narrower markets mean a wrong initial position could cause severe losses upon liquidation.</div><div class="risk-bars"><div class="risk-row"><div class="risk-label">Concentrate Study</div><div class="risk-meter"><div class="risk-fill" style="width:92%"></div></div><div class="risk-val">Limited Groups</div></div><div class="risk-row"><div class="risk-label">Focus on Leaders</div><div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div><div class="risk-val">Deep Analysis</div></div><div class="risk-row"><div class="risk-label">Wait Patiently</div><div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div><div class="risk-val">Right Moment</div></div><div class="risk-row"><div class="risk-label">Look First</div><div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div><div class="risk-val">Then Leap</div></div></div></div></div>
+
+<div class="section section-05"><div class="section-num num-05">05</div><div class="section-body"><div class="tag tag-05">Stay Flexible</div><div class="section-title t-05">Keep Your Mind Flexible — Today's Leaders Are Not Tomorrow's Leaders</div><div class="section-desc">Livermore emphasized: while following the leaders, you must keep your mind flexible. Attempting to follow too many stocks at once is definitely unsafe — you will become overworked and confused. Analyze only a relatively small number of groups. You will find it far easier to obtain the true picture of the market this way than by slicing it into many small pieces.</div><div class="data-row"><div class="data-card d1"><div class="data-big">≤5</div><div class="data-name">Safe Tracking Limit</div><div class="data-sm">Do not track more than 5 stocks at once, or you'll be overwhelmed and confused</div></div><div class="data-card d2"><div class="data-big">4 Groups</div><div class="data-name">Core Stock Groups</div><div class="data-sm">Steels, autos, aircraft, mail-order — analyze two correctly and the rest follow</div></div><div class="data-card d3"><div class="data-big">🔄</div><div class="data-name">Dynamic Adjustment</div><div class="data-sm">Today's leaders are not tomorrow's leaders — the market constantly discards old champions</div></div></div></div></div>
+
+<div class="takeaway"><div class="takeaway-label">🔑 Key Takeaway</div><div class="takeaway-text">Follow the leaders — don't spread yourself too thin. Concentrate on the most prominent stocks of the day within a few key groups. Wait patiently for clear follow-through signals before acting. Keep your mind flexible — today's leaders are not tomorrow's leaders. This is the only sound path to safe profits in the new era.</div></div>
+
+<div class="footer">Livermore's Trading Method · Chapter 3 Infographic · Jesse Livermore · Based on Chapter 3 · For Educational Purposes</div>
+</div></body></html>

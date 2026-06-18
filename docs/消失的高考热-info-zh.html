@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消失的高考热 — 信息图</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: '方正屏显雅宋', 'Noto Serif SC', 'Songti SC', serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 900px; width: 100%; }
+  h1 { font-size: 36px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 2px; }
+  .subtitle { text-align: center; font-size: 14px; color: #888; margin-bottom: 24px; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 22px 28px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 8px rgba(0,0,0,0.03); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .s-01 { border-left-color: #dc2626; } .s-02 { border-left-color: #ea580c; }
+  .s-03 { border-left-color: #ca8a04; } .s-04 { border-left-color: #4f46e5; }
+  .s-05 { border-left-color: #db2777; }
+
+  .num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; }
+  .n-01 { background: #fef2f2; color: #dc2626; } .n-02 { background: #fff7ed; color: #ea580c; }
+  .n-03 { background: #fefce8; color: #ca8a04; } .n-04 { background: #eef2ff; color: #4f46e5; }
+  .n-05 { background: #fdf2f8; color: #db2777; }
+
+  .body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; }
+  .tg-01 { background: #fef2f2; color: #dc2626; } .tg-02 { background: #fff7ed; color: #ea580c; }
+  .tg-03 { background: #fefce8; color: #ca8a04; } .tg-04 { background: #eef2ff; color: #4f46e5; }
+  .tg-05 { background: #fdf2f8; color: #db2777; }
+
+  .title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; }
+  .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  /* Data cards */
+  .data-row { display: flex; gap: 12px; margin-top: 6px; }
+  .data-card { flex: 1; border-radius: 10px; padding: 14px 12px; text-align: center; }
+  .data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+  .data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+  .data-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .data-big { font-size: 28px; font-weight: bold; }
+  .data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #16a34a; }
+  .data-sm { font-size: 12px; color: #777; margin-top: 4px; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 82px; flex: 1; font-size: 12px; color: #854d0e; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 18px; color: #ca8a04; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Dual */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Risk */
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 85px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 10px; background: #fdf2f8; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #db2777; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #db2777; width: 70px; text-align: right; flex-shrink: 0; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: flex-start; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .s-01 { border-top-color: #dc2626; } .s-02 { border-top-color: #ea580c; }
+    .s-03 { border-top-color: #ca8a04; } .s-04 { border-top-color: #4f46e5; }
+    .s-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; flex-direction: column; }
+    .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; } h1 { font-size: 26px; }
+  }
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="消失的高考热-info-en.html">中文 / English</a>
+</div>
+
+
+  <h1>消失的高考热</h1>
+  <p class="subtitle">当学历不再改变命运，集体幻觉自然破灭 · 2026 年 6 月</p>
+  <div class="divider"></div>
+
+  <div class="splash">
+    高考曾经是中国互联网每年 6 月的固定狂欢。但今年——热度没了。微博热搜不再被高考屠榜，朋友圈鲜有旗袍照片。不是人们不关心教育，而是学历的回报率已经跌到让人不再激动的程度。家长和学生都在用脚投票：这不再是一场值得全情投入的集体仪式。
+  </div>
+
+  <!-- 01: 热度骤降 + 数据卡 -->
+  <div class="section s-01">
+    <div class="num n-01">01</div>
+    <div class="body">
+      <div class="tag tg-01">热度骤降</div>
+      <div class="title t-01">高考热搜消失了——集体理性在抬头</div>
+      <div class="desc">微博热搜不再被高考屠榜。朋友圈鲜有"旗开得胜"的妈妈穿旗袍照片。社交媒体算法也懒得推。整个社会的情绪像退潮一样安静——因为大家已经隐约感觉到，高考对命运的改写力正在快速衰减。气氛烘托不起来，恰恰是所有人都开始算账了。</div>
+      <div class="data-row">
+        <div class="data-card red">
+          <div class="data-big r">0</div>
+          <div class="data-sm">2026年高考微博热搜数</div>
+        </div>
+        <div class="data-card green">
+          <div class="data-big g">常年</div>
+          <div class="data-sm">往年高考屠榜天数</div>
+        </div>
+        <div class="data-card orange">
+          <div class="data-big o">退潮</div>
+          <div class="data-sm">朋友圈旗袍照数量</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: 学历贬值 + 数据卡 -->
+  <div class="section s-02">
+    <div class="num n-02">02</div>
+    <div class="body">
+      <div class="tag tg-02">学历贬值</div>
+      <div class="title t-02">80% 非 985 流向销售——毕业证已成纪念卡</div>
+      <div class="desc">非 985/211 的毕业生，八成最终流向销售岗位，月薪两三千起步。录取率年年攀升，但录取率的上升伴随的是学历含金量的坍塌。一张普通本科毕业证已不再是中产入场券——它更像一张"你读过大学"的纪念卡。名企招聘早已明码标价卡学历。</div>
+      <div class="data-row">
+        <div class="data-card red">
+          <div class="data-big r">80%</div>
+          <div class="data-sm">非985毕业生流向销售</div>
+        </div>
+        <div class="data-card orange">
+          <div class="data-big o">¥3K</div>
+          <div class="data-sm">普通本科起薪</div>
+        </div>
+        <div class="data-card red">
+          <div class="data-big r">↑↑</div>
+          <div class="data-sm">录取率升=含金量降</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: 保研军备 + Flow -->
+  <div class="section s-03">
+    <div class="num n-03">03</div>
+    <div class="body">
+      <div class="tag tg-03">保研军备</div>
+      <div class="title t-03">录取通知还没到，四年内卷攻略已经摆在你面前</div>
+      <div class="desc">机构从高考录取结果一出就开始打电话，帮大一新生规划四年后的保研名额。GPA 怎么维持、竞赛怎么打、论文怎么发、导师怎么联系——大学还没开学，一套完整的"内卷攻略"已经摆在你面前。高考从来不是终点，它只是新一轮更残酷竞争的起点。</div>
+      <div class="flow-row">
+        <div class="flow-step">高考录取<br>结果出炉</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">机构电话<br>轰炸规划</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">大一刷GPA<br>打竞赛</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">大二发论文<br>跟导师</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">四年后<br>保研/考研<br>再厮杀</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: 潜规则鸿沟 + 二分对比 -->
+  <div class="section s-04">
+    <div class="num n-04">04</div>
+    <div class="body">
+      <div class="tag tg-04">潜规则鸿沟</div>
+      <div class="title t-04">有人铺路，有人裸奔——两种人生的起跑线不在同一条街上</div>
+      <div class="desc">北京顶级中学圈子里，"科学早恋"——找一个家里有资源的同学谈恋爱——被当成严肃的人生优化策略。而小镇做题家刷了四年题，毕业时发现别人一个电话就搞定了他梦寐以求的岗位。</div>
+      <div class="dual-grid">
+        <div class="dual-card good">
+          <div class="dual-icon">🏙️</div>
+          <div class="dual-text">
+            <h4>北京娃：资源铺路</h4>
+            <p>家庭关系进央企/国企<br>中学圈子互对资源<br>"科学早恋"不是玩笑</p>
+          </div>
+        </div>
+        <div class="dual-card bad">
+          <div class="dual-icon">📚</div>
+          <div class="dual-text">
+            <h4>小镇做题家：赤手空拳</h4>
+            <p>刷了四年题无人脉<br>毕业求职全靠海投<br>一个电话 = 你四年努力</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: 拼爹终局 + Risk -->
+  <div class="section s-05">
+    <div class="num n-05">05</div>
+    <div class="body">
+      <div class="tag tg-05">拼爹终局</div>
+      <div class="title t-05">表面考孩子 12 年，骨子里考家长 20 年的积累</div>
+      <div class="desc">金融、医疗、能源等真正的好岗位，光有名校学历根本不够——你还需要家庭人脉把门推开。这个游戏的终极规则不是分数，是家族资源的厚度。</div>
+      <div class="risk-row">
+        <div class="risk-label">学历权重</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:40%"></div></div>
+        <div class="risk-val">逐年下降</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">家庭资源权重</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div>
+        <div class="risk-val">决定性因素</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">学历回报率</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:35%"></div></div>
+        <div class="risk-val">快速贬值中</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">高考信息图 · 2026.06 · 观点源自：BJ的大土豆 · 不构成任何建议</div>
+
+</div>
+</body>
+</html>

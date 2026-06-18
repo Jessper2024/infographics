@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福格行为模型 · 第2章「动机」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="福格行为模型-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="福格行为模型-ch002-info-en.html">中文 / English</a>
+</div>
+
+<h1>福格行为模型 · 第2章「找到实现愿望的黄金行为」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">行为设计的步骤❶❷❸ · 明确愿望→探索选项→匹配行为</span>
+  你最想实现的愿望是什么？但为什么迟迟没有行动？
+  问题不在你不够努力，而在于你还没有找到那个"黄金行为"。
+  本章教你用发散思维、焦点地图和三标准筛选，找到真正属于自己的黄金行为。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是行为设计的前三步：明确愿望、探索行为选项、为自己匹配具体行为。福格博士以桑德拉和阿德里安装修后院的故事开场——他们动机满满地规划梦想花园，却在真正动手时寸步难行。原因在于他们把所有希望都压在动机上，而没有系统地找到"对的"行为。本章揭示了动机的5大陷阱（复杂、易变、冲突、冲动、不可靠），并提供了一套可操作的方法：通过行为集群（Brainstorming）列出所有可能行为，再用焦点地图（四象限法）和黄金行为三标准（有效、想做、能做）筛选出最适合你的那个行为。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">明确愿望→探索行为→匹配行为</div>
+    <div class="kpi-note">行为设计的前三步流程</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">标准</span></div>
+    <div class="kpi-label">有效·想做·能做</div>
+    <div class="kpi-note">黄金行为的筛选铁三角</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit">象限</span></div>
+    <div class="kpi-label">焦点地图筛选法</div>
+    <div class="kpi-note">高/低影响 × 能/不能做</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">5<span class="kpi-unit">大陷阱</span></div>
+    <div class="kpi-label">动机的5个致命缺陷</div>
+    <div class="kpi-note">复杂·易变·冲突·冲动·不可靠</div>
+  </div>
+</div>
+
+<!-- 01: 明确愿望 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">行为设计步骤❶</div>
+    <div class="section-title t-01">明确愿望：先明确你想要什么，而不是想停止什么</div>
+    <div class="section-desc"><strong>大多数人一开始就错了——他们聚焦于"不想做什么"，而不是"想要什么"。</strong>桑德拉和阿德里安的愿望是"拥有一个可以和朋友共度时光、看着孩子们玩耍的漂亮后院"，而不是"不要再让后院乱下去"。愿望要具体、有画面感：不是"我要更健康"而是"我要每天走8000步"。越是清晰、具体的愿望，越容易找到通往它的行为路径。记住：愿望是你想要的结果，而不是行为本身。</div>
+    <div class="flow-row">
+      <div class="flow-step">❌ 模糊愿望<br>"我要更健康"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">✅ 具体愿望<br>"每天走8000步"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🎯 清晰目标<br>可衡量·可实现</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 行为集群 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">行为设计步骤❷</div>
+    <div class="section-title t-02">行为集群：列出实现愿望的所有可能行为，越多越好</div>
+    <div class="section-desc"><strong>这是发散思维的阶段——不评判、不筛选、不自我审查。</strong>假设你的愿望是"减少工作压力"，那所有可能的行为包括：每天冥想10分钟、换工作、和老板谈谈、下午3点去散步、减少咖啡因摄入、提前30分钟睡觉……把这些行为写在一张纸上或便利贴上，哪怕看起来荒谬也不删除。数量越多，找到黄金行为的概率越大。这一步的关键是"广度优先"——先把可能性铺开，再在后面逐步收窄。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">💡</div>
+        <div class="data-name">发散思维</div>
+        <div class="data-sm">不评判、不筛选，想到就写，越多越好</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📋</div>
+        <div class="data-name">列出所有</div>
+        <div class="data-sm">一张纸上写满所有可能的行为选项</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🌊</div>
+        <div class="data-name">广度优先</div>
+        <div class="data-sm">先铺开可能性，后面几步再逐步收窄</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 黄金行为三标准 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">行为设计步骤❸</div>
+    <div class="section-title t-03">黄金行为三标准：有效 × 想做 × 能做</div>
+    <div class="section-desc"><strong>不是每个行为都能成为你的黄金行为——它必须同时满足三个条件。</strong>①有效性——这个行为真的能帮你实现愿望吗？得用数据和逻辑验证，不能仅凭直觉。②动机——你想做这个行为吗？不喜欢的行为即便有效也无法持久。③能力——你现在就能做到吗？如果靠意志力勉强才能做到，那就不是对的行为。三个标准同时满足的行为，才是你的"黄金行为"——它既有效，又让你乐意做，还容易做到。</div>
+    <div class="flow-row">
+      <div class="flow-step">有效性<br>能实现愿望吗？</div>
+      <div class="flow-arrow">×</div>
+      <div class="flow-step">动机<br>我想做吗？</div>
+      <div class="flow-arrow">×</div>
+      <div class="flow-step">能力<br>我能做到吗？</div>
+      <div class="flow-arrow">=</div>
+      <div class="flow-step end">黄金行为<br>三标准全满足</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 焦点地图 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">筛选工具</div>
+    <div class="section-title t-04">焦点地图：用四象限法找到你的黄金行为</div>
+    <div class="section-desc"><strong>将行为集群中的所有选项放入一个2×2矩阵：纵轴为影响力（对愿望的贡献高低），横轴为可行性（你能做到吗）。</strong>右上角（高影响+能做）= 黄金行为——优先执行，这是你的主攻方向。左上角（高影响+不能做）= 待提升能力——先提升能力或找替代行为。右下角（低影响+能做）= 备选方案。左下角（低影响+不能做）= 直接放弃。焦点地图让你从"凭感觉选行为"升级为"用框架做决策"。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⭐</div>
+        <div class="data-name">黄金行为</div>
+        <div class="data-sm">高影响+能做 → 优先执行</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📈</div>
+        <div class="data-name">待提升能力</div>
+        <div class="data-sm">高影响+不能做 → 先突破瓶颈</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📦</div>
+        <div class="data-name">备选/放弃</div>
+        <div class="data-sm">低影响+能做→备用；低影响+不能做→放弃</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 行为匹配误区 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">常见错误</div>
+    <div class="section-title t-05">行为匹配三大误区：别凭猜测选行为</div>
+    <div class="section-desc"><strong>人们在选择习惯时最容易犯的三个错误。</strong>误区一：凭猜测而非数据——"我觉得跑步能减肥"但从未验证过。要用小实验和数据来判断行为的有效性。误区二：追求完美行为——等找到"最好的"方案才开始，结果永远不开始。够好就行，先行动起来再迭代。误区三：照搬别人的成功——别人每天5点起床成功了，不代表这对你有用。黄金行为是高度个人化的，你的行为必须适合你的生活、你的节奏、你的偏好。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>❌ 三种典型错误</h4>
+          <p>凭猜测选行为（不验证）· 追求完美方案（不行动）· 照搬别人经验（不适配自己）</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>✅ 正确做法</h4>
+          <p>用小实验验证有效性 · 选"够好"的行为先启动 · 只选适合自己节奏和偏好的行为</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">动机不可靠——它冲动、善变、会冲突。真正的改变不靠"更强大的意志力"，而靠找到一个对的黄金行为。方法很简单：先明确你的具体愿望（不是抽象愿望），用发散思维列出所有可能的行为，再用焦点地图和黄金行为三标准（有效+想做+能做）筛选出最适合你的那一个。不要追求完美，不要照搬别人——你的黄金行为必须属于你自己。</div>
+</div>
+
+<div class="footer">
+  《福格行为模型》第2章信息图 · 基于第2章内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

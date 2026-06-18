@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>以交易为生II：卖出的艺术 · 第一章「买入」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch001-info-en.html">中文 / English</a>
+</div>
+
+<h1>以交易为生II：卖出的艺术 · 第一章「买入」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  金融市场庞大繁杂，无人能通晓一切——如同现代医生必须专业化，交易者也须在方法、风格、决策方式上做出审慎选择。
+  但绝大多数交易者盲目模仿他人，从未自问这些选择是否与自己的脾性契合。
+  交易者如何在不同维度上建立稳固的交易基础？答案在于四个关键维度的审慎决策——分析方法、交易风格、决策方式，以及精简深入的工具箱。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>做交易既需要信心，也需要谦虚。市场太过庞杂，一个人无法掌控所有。就像现代医生不可能同时是外科专家、精神病学专家和儿科专家——几个世纪前的"全科名医"在当代已不存在。交易者必须在特定领域成为专家，对其他领域保持谦虚。成功的交易有三大基本要素：方法、心态和资金管理，三者缺一不可。</p>
+</div>
+
+
+<!-- 01: 专业化是必修课 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">认知框架</div>
+    <div class="section-title t-01">专业化是交易者的必修课</div>
+    <div class="section-desc">交易需要信心与谦虚的平衡。市场太过庞杂，一个人无法掌控所有。如同现代医学已无"全科名医"，交易者也必须在特定领域深耕。专业化并非限制，而是生存之道——将精力聚焦于少数精通的市场和工具，远比泛而不深更有优势。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏥</div>
+        <div class="dual-text">
+          <h4>类比：现代医生</h4>
+          <p>没人会期望同一位医生既是外科专家又是儿科专家。专家深耕一域，全科什么都沾却什么都不精。交易也是同理。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📊</div>
+        <div class="dual-text">
+          <h4>应用：专业交易者</h4>
+          <p>了解自己的脾性、喜好与交易风格，在少数领域成为专家。对其他市场保持谦虚——知道自己不擅长什么，与知道自己擅长什么同等重要。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 技术分析 vs 基本面分析 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">分析方法</div>
+    <div class="section-title t-02">技术分析 vs 基本面分析：第一个关键选择</div>
+    <div class="section-desc">交易者的第一个关键选择：价格走势已经反映一切，还是需要探究内在价值？技术分析研究走势图判断多空胜负；基本面分析研究公司价值与供需平衡。严谨的交易者往往将两者结合——基本面向交易者看图表确认时机，技术交易者关注基本面避免反向操作。</div>
+    <div class="flow-row">
+      <div class="flow-step">📊<br>技术分析</div>
+      <div class="flow-arrow">⇄</div>
+      <div class="flow-step">📈<br>基本面分析</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">💡<br>互补交汇点</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅<br>严谨交易者<br>两者皆用</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 趋势 vs 反趋势 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">交易风格</div>
+    <div class="section-title t-03">趋势交易 vs 反趋势交易：三种交易者类型</div>
+    <div class="section-desc">每个走势图都由趋势性运动和横盘整理构成。理查德·威斯曼将交易者分为三类，各有其博弈空间与挑战。趋势交易如骑野马，反趋势交易利用震荡，日内交易则是完全不同的战场。不存在哪一种更好——只有哪一种更适合你。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">趋势跟踪型</div>
+        <div class="confusion-arrow">→ 特点 →</div>
+        <div class="confusion-right">顺大势而为，需要强大耐心，潜在回报最大——但趋势在回溯时清晰，实战中如骑一匹总想将你摔下的野马</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">均值回归型</div>
+        <div class="confusion-arrow">→ 特点 →</div>
+        <div class="confusion-right">利用市场震荡特性，持续时间较短，回报相对较少——管住手、耐心等待时机是关键</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">日内交易型</div>
+        <div class="confusion-arrow">→ 特点 →</div>
+        <div class="confusion-right">当日进出，反应速度至上，高频决策压力巨大——每一类都有不同的挑战和机会</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 主观 vs 系统 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">决策方式</div>
+    <div class="section-title t-04">主观交易 vs 系统交易：顺应脾性选择</div>
+    <div class="section-desc">主观交易者渐进式分析涨跌要素后做决定——刺激而积极参与。系统交易者研究历史数据，设计优化系统让机器产生信号。选择哪一种，不需分析成本与收益比——顺应脾性即可，就像选择在哪里生活、和谁结婚。但高手之间界限模糊：顶尖系统交易者如主观交易者般调配资源；精明主观交易者也有一套机械规则。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">🧠 主观交易</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:70%"></div></div>
+        <div class="risk-val">渐进决策</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">🤖 系统交易</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:80%"></div></div>
+        <div class="risk-val">规则执行</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">⚠️ 新手陷阱</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:55%"></div></div>
+        <div class="risk-val">鲁莽/曲线拟合</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">🏆 顶尖高手</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">界限模糊</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 五颗子弹规则 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">工具箱</div>
+    <div class="section-title t-05">五颗子弹规则：工欲善其事</div>
+    <div class="section-desc">一根K线只有五个数据——开、高、低、收、量。因此埃尔德制定"五颗子弹"规则：任意走势图上不超过五个指标。他只用四个：移动平均线、交易通道、MACD和强力指标。他怀疑经典形态（头肩顶、三角形）太过主观，更信赖计算过的指标——信号清晰，无法多重解释。成功的交易有三大基石：方法、心态和资金管理。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📊</div>
+        <div class="data-name">方法</div>
+        <div class="data-sm">指标与交易系统<br>五颗子弹规则<br>精简而深入</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🧠</div>
+        <div class="data-name">心态</div>
+        <div class="data-sm">交易心理与纪律<br>了解自己的脾性<br>逆境中坚定信心</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">💰</div>
+        <div class="data-name">资金管理</div>
+        <div class="data-sm">风险控制与头寸<br>2% + 6% 双规则<br>三者缺一不可</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">交易者的所有选择——分析方法、交易风格、决策方式、工具箱——没有绝对的对错之分。唯一的评判标准是：它是否与你的脾性完美契合。只有自己辛苦研究创造出的交易工具，才能在逆境市场中坚定信心。专业化、了解自己、精简工具，三者合成一笔好的交易。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：亚历山大·埃尔德《以交易为生II：卖出的艺术》第一章「买入」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

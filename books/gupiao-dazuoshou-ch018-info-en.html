@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reminiscences of a Stock Operator · Ch. 18 "History Repeats—and So Do Trades"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="gupiao-dazuoshou-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="gupiao-dazuoshou-ch018-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Reminiscences of a Stock Operator · Ch. 18<br>"History Repeats—and So Do Trades"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Everything sent to his mill was grist — all market signals were automatically processed by experience, ultimately forming a "feel for the tape."
+  Through two great campaigns — liquidating U.S. Steel at the top and reversing his cotton position — Livermore proves:
+  the market has no mysterious "sixth sense," only battle-hardened professional instinct built on four pillars: observation, experience, memory, and mathematics.
+</p>
+<div class="divider"></div>
+
+<!-- Overview -->
+<div class="splash">
+  This chapter reveals the core secret of speculative success: professional instinct comes from continuous study + accumulated experience + historical memory → instant judgment when market signals appear → decisive action. Livermore clarifies his success was not "inspiration from a black cat" but the synthesis of countless small warning signals — just like a doctor's diagnosis, which outsiders call intuition but is actually a battle-hardened professional reflex. Through the law of group behavior, the cotton reversal campaign, and reading the wheat tape, Livermore presents the complete operating system of a professional trader's mind.
+</div>
+
+<!-- 01: Core Clarification -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Clarification</div>
+    <div class="section-title t-01">Not Intuition — The Subconscious at Work</div>
+    <div class="section-desc">Livermore's friends credited a perfect top liquidation of 72,000 U.S. Steel shares to "inspiration from a black cat." Livermore clarified: he noticed many small warning signals — none individually clear enough, but together forming his "feel." He liquidated Utah Copper at the same time, causing a 5-point drop — proving his judgment to hold only the initial position was equally wise. He was not fooled by paper-profit illusions but followed the answers the market itself provided.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🎩</div>
+        <div class="dual-text">
+          <h4>What Outsiders Think</h4>
+          <p>Inspiration, sixth sense, mystical intuition, black-cat revelations — outsiders believe trading masters rely on some ineffable gift to make perfect calls.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">⚙️</div>
+        <div class="dual-text">
+          <h4>Livermore's Reality</h4>
+          <p>Observation builds experience, experience forms memory, memory combined with mathematics produces judgment, judgment drives decisive action — a replicable professional operating system.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Group Behavior Law -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Core Principle</div>
+    <div class="section-title t-02">The Law of Group Behavior: Follow the Leader, Beware the Laggard</div>
+    <div class="section-desc">When buying a stock that refuses to follow its group leader, exercise extreme caution — insiders not buying their own stock must have reasons you don't know. Livermore demonstrates with Chester Auto and Guyana Gold: the tape warned long before the news of "drilling into barren rock" was disclosed. "If you're walking along a railroad track and see an express train barreling toward you at 60 miles an hour, do you keep walking? Buddy, I step aside."</div>
+    <div class="flow-row">
+      <div class="flow-step">Spot Sector<br>Laggard</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Tape Issues<br>Warning Signals</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Confirm Insiders<br>Are Selling</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Short Decisively<br>No Illusions</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Market Reckoning<br>Vindicates Call</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Cotton Reversal -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Real Trade</div>
+    <div class="section-title t-03">Cotton Turnaround: From Million-Dollar Loss to Two-Day Reversal</div>
+    <div class="section-desc">After losing $1 million in cotton, Livermore finally admitted defeat and closed his position. The next day he observed that after declining, cotton did not bounce back as it had for weeks — the line of least resistance had shifted from up to down. "You never know if you're right until you bet." He shorted 10,000 bales as a test: the price dropped 50 points. Confirmed, he jumped from the lunch table and added more. By Washington he had sold 40,000 more bales — the market offered no support whatsoever.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Yesterday: Long Position</div>
+        <div class="confusion-arrow">→ reversal signal →</div>
+        <div class="confusion-right">Today: Short Decisively</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Past Weeks: Dips Always Bounce</div>
+        <div class="confusion-arrow">→ pattern broken →</div>
+        <div class="confusion-right">Line of Least Resistance Shifted</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Paper Loss: –$1 Million</div>
+        <div class="confusion-arrow">→ reversed in 2 days →</div>
+        <div class="confusion-right">Profit Covered All Losses</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Average Trader: Walks Away</div>
+        <div class="confusion-arrow">→ pro response →</div>
+        <div class="confusion-right">Reverses and Adds to Position</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Four Pillars -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Professionalism</div>
+    <div class="section-title t-04">Professional Instinct Like Medicine: Four Pillars</div>
+    <div class="section-desc">Training a stock trader is much like training a doctor — both require years of theoretical study and a lifetime of practice. A trader relies on four pillars: observation, experience, memory, and mathematics. He can transfer knowledge (specific facts on index cards) but cannot transfer experience. Someone may know what to do, but if they don't act fast enough, they'll still lose — "decisive action" is the final link. Example: winter wheat delayed by strikes + spring wheat harvest ahead → two crops converging → price must fall → sell immediately.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Observation</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:96%"></div></div>
+        <div class="risk-val">Foundation</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Experience</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">Non-Transferable</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Memory</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:82%"></div></div>
+        <div class="risk-val">Historical Patterns</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Mathematics</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:78%"></div></div>
+        <div class="risk-val">Logical Reasoning</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Tape Philosophy -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Ultimate Truth</div>
+    <div class="section-title t-05">The Tape Is the Best Inside Information</div>
+    <div class="section-desc">Livermore tracked the wheat market: sold 250,000 bushels as a test, price dropped only ¼ cent — signal unclear. Sold another 250,000 bushels, price fell 1¼ cents, buy orders came in tiny fragments — the market had no real buying. So he decisively sold 2 million bushels. Days later, the market "forced" him to sell another 2 million bushels. Eventually, wheat plunged 6 cents. The tape never lies; it only speaks to those who know how to read it.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔍</div>
+        <div class="data-name">Test the Market</div>
+        <div class="data-sm">Probe with small positions<br>How the market absorbs your orders<br>is the best inside information</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📐</div>
+        <div class="data-name">Read the Signals</div>
+        <div class="data-sm">Fragmented buy orders = no real demand<br>No market support = least resistance<br>points downward</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚡</div>
+        <div class="data-name">Act Decisively</div>
+        <div class="data-sm">From judgment to execution<br>not a second wasted<br>"You never know till you bet"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The market has no mysterious "sixth sense" — only battle-hardened professional instinct. Observation accumulates experience, experience forms memory, memory combined with mathematics produces judgment, and judgment drives decisive action. When all this is absorbed into your blood, what outsiders call "intuition" is simply the automatic response of professional mastery. The tape is always the best inside information — it never lies, but only those who know how to read it can hear its language.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Reminiscences of a Stock Operator · Ch. 18 Infographic · Edwin Lefèvre · Based on Chapter 18 · For Educational Purposes
+</div>
+
+</div>
+</body>
+</html>

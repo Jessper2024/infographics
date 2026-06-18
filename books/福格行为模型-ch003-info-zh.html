@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福格行为模型 · 第3章「能力」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="福格行为模型-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="福格行为模型-ch003-info-en.html">中文 / English</a>
+</div>
+
+<h1>福格行为模型 · 第3章「让行为简单到随时顺便都能做」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">行为设计的步骤❹ · 从微习惯开始</span>
+  Instagram为何击败Facebook和Flickr？答案只有一个字：简单。
+  人类天性选择简单路径——这不是因为懒，是进化赋予的节能本能。
+  让好行为变简单，比强化动机有效100倍。本章教你从"微习惯"开始。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是行为设计第四步：从微习惯开始。福格博士用Instagram击败功能更强大的竞争对手（Facebook、Flickr、Hipstamatic）的案例说明：简单比功能强大更致命。Instagram只需点击3次就能上传照片——他们把"能力"设计到了极致。本章揭示了"简单>动机"的核心原理，详解能力链五维度（时间、金钱、体力、脑力、日程），提供了让行为变简单的三种方式（提升技能、获取工具、缩小行为），并重点阐述微习惯策略——把目标行为缩小到你不可能失败的程度。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">次点击</span></div>
+    <div class="kpi-label">Instagram上传照片所需</div>
+    <div class="kpi-note">当时竞争对手远更复杂</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1000<span class="kpi-unit">亿$+</span></div>
+    <div class="kpi-label">Instagram当前估值</div>
+    <div class="kpi-note">2012年被Facebook以10亿收购</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">种方式</span></div>
+    <div class="kpi-label">让行为变简单的路径</div>
+    <div class="kpi-note">提升技能·获取工具·缩小行为</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">5<span class="kpi-unit">项能力维度</span></div>
+    <div class="kpi-label">时间·金钱·体力·脑力·日程</div>
+    <div class="kpi-note">找到最弱环节，逐一突破</div>
+  </div>
+</div>
+
+<!-- 01: 简单是王 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心原理</div>
+    <div class="section-title t-01">简单是王：人类天性选择简单，简单 > 动机</div>
+    <div class="section-desc"><strong>为什么Instagram能击败资金和技术都更雄厚的Facebook和Flickr？</strong>因为它够简单——只需3次点击就能上传照片。迈克·克里格和凯文·赛斯特伦从失败产品Burbn中学到：用户喜欢分享照片，但界面太复杂。他们砍掉所有多余功能，只保留拍照、滤镜、分享。这不是"偷工减料"，而是深刻理解人类行为：让行为变简单比强化动机有效100倍。你不是懒——是进化让你选择最省力的路径。好行为设计就是顺应人性，而非对抗人性。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📱</div>
+        <div class="dual-text">
+          <h4>Burbn（失败产品）</h4>
+          <p>功能太多：打卡+分享+社交，用户不知如何使用，行为太复杂。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📷</div>
+        <div class="dual-text">
+          <h4>Instagram（千亿美元产品）</h4>
+          <p>3步完成：拍照→滤镜→分享。极致简单，行为设计完美。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 实现容易的3种方式 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">三大路径</div>
+    <div class="section-title t-02">实现容易的3种方式：提升技能 → 获取工具 → 缩小行为</div>
+    <div class="section-desc"><strong>让行为变简单有三条路径，从长期到即时。</strong>①提升技能（长期策略）——比如学会正确的跑步姿势，降低受伤概率。②获取工具和资源（中期策略）——买一台好用的榨汁机让"每天喝果汁"变简单。③让行为变微小（即时生效）——这是最强大也最被忽视的策略。入门步骤最有效：从做2个俯卧撑开始，而非每天健身1小时。缩小行为不是"降低标准"，而是降低启动门槛——启动后，你常常会自动做更多。</div>
+    <div class="flow-row">
+      <div class="flow-step">长期<br>提升技能</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">中期<br>获取工具</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">即时<br>缩小行为</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 设计微习惯 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">微习惯策略</div>
+    <div class="section-title t-03">微习惯：小到不可能失败的行为单元</div>
+    <div class="section-desc"><strong>萨里卡的故事说明了微习惯的力量。</strong>她患有躁郁症，情绪和精力波动剧烈——传统的大习惯（每天做饭、规律运动）统统无法坚持。当她改用微习惯策略后，一切变了：每天起床后到走廊浇花，仅此而已。这个微小的行为成了她的"情绪标尺"——如果连浇花都做不到，说明状态不好需要关注。微习惯不是"每天冥想30分钟"，而是"每天深呼吸3次"；不是"每天健身1小时"，而是"每天做2个俯卧撑"。微小到你不可能失败——这才是可持续改变的秘密。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>传统大习惯（注定失败）</h4>
+          <p>"每天健身1小时""每天冥想30分钟"——动机强时可行，动机弱时全面崩溃。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>微习惯（不可能失败）</h4>
+          <p>"每天做2个俯卧撑""每天深呼吸3次"——即使最低落的日子也能完成。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 能力链五维度 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">能力诊断</div>
+    <div class="section-title t-04">能力链五维度：诊断你的行为卡在了哪一环</div>
+    <div class="section-desc"><strong>每个行为都可以拆解为五个能力维度——找到最弱的那一环，就是突破口。</strong>时间——你有空吗？金钱——负担得起吗？体力——精力够吗？脑力——认知负荷重吗？日程——它能否融入你的日常安排？萨里卡的能力链分析：时间和脑力在情绪低落时最弱，所以她选择了最简单的行为（浇花）来突破。你的困境也一样——不是"我就是不行"，而是某一环太紧了。找出它，松开它。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⏰</div>
+        <div class="data-name">时间</div>
+        <div class="data-sm">减少所需时间，或把行为嵌入已有时间块</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">💰</div>
+        <div class="data-name">金钱</div>
+        <div class="data-sm">降低金钱成本，或找到免费的替代方案</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚡</div>
+        <div class="data-name">体力·脑力·日程</div>
+        <div class="data-sm">体力：降低强度。脑力：减少步骤。日程：找固定锚点</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 只要足够简单 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">思维转变</div>
+    <div class="section-title t-05">只要足够简单，你就不需要意志力</div>
+    <div class="section-desc"><strong>人类天性决定了我们无法长期坚持做令自己痛苦的事情。</strong>很多人在改变时抱有"不做大事就干脆放弃"的心态，把改变等同于痛苦和咬牙坚持。这是一个巨大的误区。简单的行为 = 可持续的行为。改变不是靠意志力打败自己，而是把行为设计得简单到随时都能做。萨里卡的生活从"失控"到"可控"，不是因为她的意志力突然变强了，而是因为她找到了足够简单的行为——浇花。这只需要30秒，但它是所有改变的起跑线。</div>
+    <div class="flow-row">
+      <div class="flow-step">旧思维<br>咬牙坚持</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">痛苦·自责</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">放弃</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">新思维<br>设计简单</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">简单 > 动机。人类天性选择最省力的路径——这不是缺陷，是进化优势。Instagram用一个3步流程击败了所有功能强大的竞争对手，不是因为功能多，而是因为够简单。同样，改变自己的行为也不需要"更强的意志力"——你只需要把目标行为缩小到不可能失败的程度。从每天2个俯卧撑开始，从每天深呼吸3次开始。微小的起步会带来巨大的复利——因为启动是最难的一步，一旦启动，惯性会带你走得更远。</div>
+</div>
+
+<div class="footer">
+  《福格行为模型》第3章信息图 · 基于第3章内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

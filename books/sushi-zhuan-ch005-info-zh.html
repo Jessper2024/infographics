@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苏轼传 · 第5章「柏台霜气夜凄凄」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="sushi-zhuan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sushi-zhuan-ch005-info-en.html">中文 / English</a>
+</div>
+
+<h1>苏轼传 · 第五章「柏台霜气夜凄凄」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  赴湖州途中，苏轼在故人凋零、江山依旧的沧桑中完成了"不必仕，不必不仕"的哲学升华，
+  却不知一场致命的政治风暴——乌台诗案——正在京城悄然酝酿。
+  一位在山水与哲理中寻求心灵超越的诗人，为何在抵达湖州后不到三个月便被投入御史台监狱？
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>元丰二年（1079）四月，苏轼第三次沿汴河赴任。在扬州平山堂追怀已故恩师欧阳修，写下"休言万事转头空，未转头时皆梦"；在舟中夜起的禅境中感受"心灵与自然冥合无间的快乐"。他总结出"不必仕，不必不仕"的理想人生境界。然而，京城政坛已变天：王珪、蔡确联手李定、舒亶，正以苏轼诗文为"罪证"，罗织一场致命的文字狱。</p>
+</div>
+
+<!-- 01: 故人凋零 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">故人凋零</div>
+    <div class="section-title t-01">三过平山堂：未转头时皆梦</div>
+    <div class="section-desc">第三次沿汴河赴任途中，苏轼来到扬州平山堂——三十年前恩师欧阳修修建的名胜。堂前欧公手植的柳树犹在，壁上龙蛇飞动的墨迹如新，而故人已逝——"三过平山堂下，半生弹指声中。十年不见老仙翁，壁上龙蛇飞动"。苏轼化用白居易"百年随手过，万事转头空"的成句，翻进一层：不要说在掉转头的一瞬间世事终必成空，其实此时此刻所存在的一切，又何尝不像梦一般虚幻？</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🎋</div>
+        <div class="dual-text">
+          <h4>平山堂</h4>
+          <p>欧阳修知扬州时所建，"平山栏槛倚晴空，山色有无中"——当年群贤毕至，谈笑风生。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🕯️</div>
+        <div class="dual-text">
+          <h4>故人凋零</h4>
+          <p>欧阳修、刁约、张先、陈舜俞相继凋零——"人亡琴废，帐空鹤唳"，半生弹指而过。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 舟中禅境 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">舟中禅境</div>
+    <div class="section-title t-02">夜深人物不相管：心灵与自然冥合的狂喜</div>
+    <div class="section-desc">行舟水上，苏轼辗转难眠。夜深人静，万物沉睡——"没有争斗，没有喧哗，也没有机关巧算"——他体验到了心灵与自然冥合无间的快乐："夜深人物不相管，我独形影相嬉娱。"微风萧萧吹菰蒲，开门看雨月满湖，江潮暗涨如寒虫低咽，月在柳梢如蜘蛛垂挂丝端——时间似已停滞，瞬间已成永恒。</div>
+    <div class="flow-row">
+      <div class="flow-step">深夜<br>万物沉睡</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">心灵与<br>自然冥合</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">形影<br>嬉娱独乐</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">瞬间<br>即是永恒</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">清境过眼<br>能须臾</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 哲学升华 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">哲学升华</div>
+    <div class="section-title t-03">不必仕，不必不仕：理想人生的平衡之道</div>
+    <div class="section-desc">在《灵壁张氏园亭记》中，苏轼对几年的思考进行了总结："古之君子，不必仕，不必不仕"——一切都需任运自然，在可否之间求得平衡，既要保持个体精神的独立，又不推卸应尽的社会责任。"开门而出仕，则跬步市朝之上；闭门而归隐，则俯仰山林之下。"出仕与归隐并非非此即彼，而是可以在不同时空中灵活切换，以"养生治性，行义求志"。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">出仕</div>
+        <div class="confusion-arrow">⇄ 灵活切换 ⇄</div>
+        <div class="confusion-right">跬步市朝之上，践行社会责任</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">归隐</div>
+        <div class="confusion-arrow">⇄ 任运自然 ⇄</div>
+        <div class="confusion-right">俯仰山林之下，保持精神独立</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">平衡</div>
+        <div class="confusion-arrow">⇄ 无适不可 ⇄</div>
+        <div class="confusion-right">养生治性，行义求志——二十年宦海淬炼的智慧</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 湖州赴任 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">湖州赴任</div>
+    <div class="section-title t-04">暴风雨前的宁静：顾我无足恋，恋此山水清</div>
+    <div class="section-desc">元丰二年四月二十日，苏轼抵达湖州任所。"湖州风俗阜安，山水清远"——他兴致勃勃地乘软轿绕城漫游，为"环城三十里，处处皆佳绝"的山水所沉醉。就像在杭州、密州、徐州一样，他想"上以广朝廷之仁，下以慰父老之望"。然而，他并不知道，京城中一场"突如其来的严重的政治打击"即将彻底破灭他的所有美好愿望。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">苏轼的憧憬</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">满腔热情</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">政敌的阴谋</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">暗流汹涌</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">风暴逼近</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">迫在眉睫</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 政敌罗网 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">暗流涌动</div>
+    <div class="section-title t-05">政敌罗网：一帮小人如何将苏轼变成"眼中钉"</div>
+    <div class="section-desc">元丰政局的焦点已不再是变法问题，而纯粹是官场倾轧。宰相王珪号称"三旨相公"——请圣旨、得圣旨、传圣旨——毫无政见却极擅政客手腕。他与参知政事蔡确联手，与李定等人"结成攻守同盟"。李定等以拥护新法骤得高位，眼见变法派无铁腕人物执掌政权，便"终日惴惴不安"，深恐神宗起用反变法人士——而苏轼，这个"眼中钉，肉中刺"，成了他们最佳的打击目标。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🏛️</div>
+        <div class="data-name">王珪</div>
+        <div class="data-sm">"三旨相公"<br>请圣旨→得圣旨→传圣旨<br>固权拉拢御史</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚔️</div>
+        <div class="data-name">李定·舒亶</div>
+        <div class="data-sm">御史台罗网<br>以诗文为"罪证"<br>罗织文字狱</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🎯</div>
+        <div class="data-name">打击目标</div>
+        <div class="data-sm">苏轼——眼中钉肉中刺<br>才华本身就是<br>最大的威胁</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">第五章是苏轼命运的分水岭：上半部他在山水与故人中完成了"不必仕，不必不仕"的哲学升华，达到了入世与出世之间最圆融的平衡境界；下半部却揭示了京城政坛的暗黑现实——王珪、李定等一帮小人正以诗文为武器编织罗网。苏轼在哲学上已做好准备面对人生的任何风浪，但他还不知道，即将到来的"乌台诗案"将是对他全部智慧与勇气的终极考验。柏台的霜气，已经悄然逼近。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《苏轼传》第5章信息图 · 王水照 / 崔铭 著 · 人民文学出版社 2019 · 基于第五章内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

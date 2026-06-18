@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>随机漫步的傻瓜 · 第13章「概率与怀疑论」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .prob-card {
+    border-radius: 12px; padding: 18px 16px; border: 1px solid; text-align: center;
+  }
+  .prob-card.stable { background: #f0fdf4; border-color: #bbf7d0; }
+  .prob-card.risky { background: #fef2f2; border-color: #fecaca; }
+  .prob-icon { font-size: 28px; margin-bottom: 6px; }
+  .prob-title {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;
+  }
+  .prob-stat { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .prob-card.stable .prob-stat { color: #16a34a; }
+  .prob-card.risky .prob-stat { color: #dc2626; }
+  .prob-desc { font-size: 12px; color: #888; line-height: 1.7; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .prob-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }@media(max-width:640px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:1fr}}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch013-info-en.html">中文 / English</a>
+</div>
+
+<h1>随机漫步的傻瓜 · 第13章「概率与怀疑论」</h1>
+<p class="subtitle">没有任何事情是肯定的，一切结论只有不同程度的概率——从古希腊雄辩家到索罗斯的认知革命</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>概率论在博弈数学中找到了安身之所，但它的根源远早于此——它最初是古希腊雄辩家手中一种主观信念的测度。现代金融学界试图用数学"科学地"测度市场风险，却不知道大自然的牌局根本没有写明规则。本章探讨一个核心问题：我们是否有勇气拥抱怀疑论——承认不确定性，随时推翻自己曾经最坚定的观点？答案是：科学家比科学更危险。真正的理性不在于算得准，而在于不为过去的自己辩护。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">155<span class="kpi-unit"> BC</span></div>
+    <div class="kpi-label">卡涅阿德斯罗马演说</div>
+    <div class="kpi-note">同一天说服同一批听众<br>相信两种完全相反的论点</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">6<span class="kpi-unit">世纪</span></div>
+    <div class="kpi-label">概率思想起源</div>
+    <div class="kpi-note">公元前6世纪希腊西西里<br>科拉克斯引入"最大可能"</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">2<span class="kpi-unit">种人</span></div>
+    <div class="kpi-label">路径依赖分水岭</div>
+    <div class="kpi-note">普鲁斯特的德诺波侯爵<br>vs 索罗斯的每日白纸</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">$20K<span class="kpi-unit">→$40K</span></div>
+    <div class="kpi-label">绘画测试</div>
+    <div class="kpi-note">2万买入市值4万<br>你现在会按市价买进吗？</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">1998<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">LTCM崩溃</div>
+    <div class="kpi-note">诺奖得主主理的基金<br>几乎拖垮全球金融体系</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">0<span class="kpi-unit">确定性</span></div>
+    <div class="kpi-label">怀疑论遗产</div>
+    <div class="kpi-note">知识没有任何确定性<br>概率是信念的测度</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">∞<span class="kpi-unit"></span></div>
+    <div class="kpi-label">观点翻转自由</div>
+    <div class="kpi-note">索罗斯几天内完全翻转仓位<br>"我很容易犯错"</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">古典怀疑论</div>
+    <div class="section-title t-01">卡涅阿德斯的罗马演说：同一地点，两种真理</div>
+    <div class="section-desc">公元前155年，希腊怀疑论者卡涅阿德斯抵达罗马，在参议院上演了一场影响后世两千年的辩证表演。他在同一个地点，用了两天时间，说服同一批听众相信两种完全相反的论点。第一天以无懈可击的逻辑论证"行使正义乃在于吾人原动力的顶端"；第二天用同样具有说服力的方式，论证"公理正义应该列于人类处事动机的底层"——知识没有任何确定性。老迈的监察官卡多大怒，说服参议院将三位使者驱逐出罗马——他容不下这种思想上的"不确定性"。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🏛️</div>
+        <div class="dual-text">
+          <h4>第一天 · 正义至上</h4>
+          <p>以无懈可击的逻辑和铿锵有力的言辞，论证公理正义是最高动机。罗马听众大为动容。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🔄</div>
+        <div class="dual-text">
+          <h4>第二天 · 全部推翻</h4>
+          <p>用同样有说服力的论证驳倒自己——公理正义应列于动机底层。知识没有任何确定性可言。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">历史溯源</div>
+    <div class="section-title t-02">"最大可能"的诞生：概率最初是辩论工具</div>
+    <div class="section-desc">已知最早的概率思想出现在公元前6世纪希腊的西西里岛。修辞学家科拉克斯首次将"最大可能"概念引入法律辩论——在缺乏进一步信息和实体证据时，依据已知最可能的情况做出判断。概率最初是一种辩论与判断的工具，而非冰冷的数学计算。它天然关乎"我们相信什么"——这与塔勒布在第三章的定义完全一致：概率不是谈运气，而是指我们相信有另类的结果、原因或动机存在。</div>
+    <div class="flow-row">
+      <div class="flow-step">科拉克斯<br>西西里岛 · 公元前6世纪<br>"最大可能"概念</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">高尔吉亚<br>科拉克斯弟子<br>将方法发扬光大</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">雅典传播<br>广为流传<br>概率思想确立</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">思想解放</div>
+    <div class="section-title t-03">自相矛盾的权利：普鲁斯特 vs 索罗斯</div>
+    <div class="section-desc">1968年法国学潮，巴黎学生在墙上写下振聋发聩的涂鸦"我们要求自相矛盾的权利！"——多年来的智识重担压得人喘不过气来。然而我们的文化，将改变观点视为背信弃义。普鲁斯特笔下的德诺波侯爵因公开说出自相矛盾的话而被痛斥；而索罗斯看坏市场做空之后，几天内完全翻转——不但回补空头还建立大多头寸，大赚一票，毫无难堪。他的行为完全不受过去束缚，每一天都是一张白纸。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">📖</div>
+        <div class="data-sm">普鲁斯特式<br>前后不一视为耻辱</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">🎯</div>
+        <div class="data-sm">索罗斯式<br>弹指间推翻前见</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">🔄</div>
+        <div class="data-sm">非路径依赖<br>每天一张白纸</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">行为陷阱</div>
+    <div class="section-title t-04">路径依赖的信念：你留着那幅画吗？</div>
+    <div class="section-desc">进化让我们在基因上就会持守已经投注了不少时间的观念——对待观念就像对待自己的孩子。但塔勒布提出了一个简单的测试暴露这种路径依赖：你有一幅画，2万美元买入，现在市值4万美元。如果手头没有这幅画，你会按目前的市价买进吗？如果不会——你死守自己的现状，留着只是感情上的投资。许多人死守观念直到踏进坟墓。政治家不因新证据退党，学者不说有损以前成就的话——而索罗斯这类人可能是基因缺陷的产物，却因此成为理性的决策者。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>会买进 → 非路径依赖</h4>
+          <p>按当前真实价值做决策，不受历史成本束缚。每一天都是一张白纸。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>不会买进 → 路径依赖</h4>
+          <p>不肯按市价买入，说明市价已高于真实价值，留着只是感情上的投资。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">警醒反思</div>
+    <div class="section-title t-05">科学伟大，科学家危险：LTCM与"测度"的幻觉</div>
+    <div class="section-desc">诺贝尔经济学奖得主默顿和斯科尔斯认为可以用科学方法"测度"市场风险。1998年，他们主理的长期资本管理公司（LTCM）几乎拖垮全球金融体系。危机后他们矢口否认自己不了解市场，不承认方法有误，反而指责市场中的"秃鹰"加快他们垮台。而索罗斯到处告诉肯耐心听他说的人："我很容易犯错。"科学的进化从不靠科学家认错，而是一代代旧人退场、新人上任。市场也是如此。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">LTCM科学家</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">矢口否认</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">索罗斯风格</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:5%"></div></div>
+        <div class="risk-val">我很容易犯错</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">科学进化方式</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">一场葬礼接一场</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">概率是信念的测度，不是计算的工具。拥抱怀疑论，承认不确定性，不为过去的自己辩护——不被路径依赖束缚的人，才能在随机性中生存并获利。科学进化依靠的不是科学家认错，而是一代代旧人退场。市场也是如此。正如塔勒布所言："人们常把科学和科学家混淆。科学很伟大，但个别科学家很危险。他们是凡人，也会被凡人的偏差给污染，或许有过之而无不及。"</div>
+</div>
+
+<div class="footer">
+  《随机漫步的傻瓜》第13章「概率与怀疑论」信息图 · 纳西姆·尼古拉斯·塔勒布 著 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>以交易为生II：卖出的艺术 · 第五章「止损」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch005-info-en.html">中文 / English</a>
+</div>
+
+<h1>以交易为生II：卖出的艺术 · 第五章「止损」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  每笔交易都必须设定止损——这是交易完整性的底线。没有止损的交易系统，就像赛车不系安全带。
+  绝大多数交易者要么受"所有者效应"影响不愿止损，要么把止损设在最明显的前期低点之下——那里恰好是职业交易者狩猎的地方。
+  在哪里设止损？如何执行？何时移动？答案贯穿铁三角量化、尼克止损法、硬止损原则与追踪止损策略。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>止损把交易者和现实连接起来——你必须回答一个根本问题：潜在的利润是否值得去冒险。没有止损的交易无异于赌博。不止损持有错误头寸不但损失金钱，还会占用注意力、阻碍展开其他更好的交易。如同牙疼会占用比预想多得多的注意力一样，亏损头寸也会束缚交易者的行动。止损是我们仅有的最好的工具——它不是完美的，但没有它，你一无所有。</p>
+</div>
+
+
+<!-- 01: Iron Triangle -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">基础框架</div>
+    <div class="section-title t-01">止损的本质与铁三角法则</div>
+    <div class="section-desc">止损将交易者与现实连接。入场前必须完成铁三角计算：每股风险值（入场价−止损价）→ 单次最大亏损（账户×2%）→ 最大股数。损益比低于2:1的交易不做。你交易的不是股票，而是资金——你买卖的是风险。核心规则：知道入场价的同时就必须知道止损价。</div>
+    <div class="flow-row">
+      <div class="flow-step">计算每股<br>风险值</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">2%账户<br>亏损上限</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">确定最大<br>可购股数</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Market vs Limit -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">执行方式</div>
+    <div class="section-title t-02">市价止损 vs 限价止损</div>
+    <div class="section-desc">所有指令分为市价和限价两类。市价保证执行但不保证价格；限价保证价格但不保证执行。Elder的做法：入场和止盈时使用限价指令（"市场要么以我的价成交，要么走独木桥"），但止损时必须使用MIT市价指令——绝不在逃命时讨价还价。为了省滑点的小钱使用限价止损，可能遭受跳空大跌的致命损失。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>市价止损 MIT</h4>
+          <p>保证第一时间出局，接受滑点成本。当问题来临时不要讨价还价——第一时间出局。保护性止损必须使用市价指令。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>止损用限价指令</h4>
+          <p>为省滑点的小钱，可能遭受大损失。快速下跌时限价单不会成交，价格可能跳空跌到远低于止损的位置。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Hard vs Soft -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">纪律层级</div>
+    <div class="section-title t-03">硬止损 vs 软止损</div>
+    <div class="section-desc">硬止损是下到市场中的止损指令，由经纪人执行；软止损是牢记在心的止损价格，达到后手动下单。Elder直言："对大多数新手来说，软止损相当于没有止损。"硬止损消除犹豫和情绪干扰——新手必须使用。软止损仅限盈利超过一年的专家，且需要铁一般的实时盯盘纪律。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">🔒 硬止损</div>
+        <div class="confusion-arrow">→ 特点 →</div>
+        <div class="confusion-right">下达市场的止损指令，不需实时看盘，消除犹豫和情绪干扰——新手必须使用，自动执行无借口空间</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">🧠 软止损</div>
+        <div class="confusion-arrow">→ 特点 →</div>
+        <div class="confusion-right">牢记止损价手动下单，需实时盯盘和铁纪律——仅盈利≥1年的专家可尝试，"专家表演，请勿模仿"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Placement -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">价位选择</div>
+    <div class="section-title t-04">止损位的艺术：别做职业交易者的猎物</div>
+    <div class="section-desc">把止损设在前期低点之下一个Tick——这是最糟糕的做法。那里是市场最拥挤的止损区，职业交易者就等着打掉这些止损后低价抢筹。采用尼克止损法：找出产生最低价的K线，取相邻两根K线的最低价中较低的那个，止损设在该价格之下一点。这种紧随性止损告诉市场：要么来打我止损（反正不大），要么给我涨。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">尼克止损法</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">推荐</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">波段交易</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:25%"></div></div>
+        <div class="risk-val">窄止损</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">长线交易</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:75%"></div></div>
+        <div class="risk-val">宽止损</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">前低下一Tick</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:5%"></div></div>
+        <div class="risk-val">最差</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Trailing Stops -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">趋势放大</div>
+    <div class="section-title t-05">追踪止损：让利润奔跑的单行道</div>
+    <div class="section-desc">止损是一条单行道——只能收紧，绝不能放松。做多时只能向上移止损，做空时只能向下移。如果股价下跌你还把止损往下移，就是在纵容错误。到达盈利目标且无不利信号时，可切换为追踪止损：抛物线SAR、安全区止损、波幅减少法——三种工具让市场自己决定何时让你离场。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📐</div>
+        <div class="data-name">抛物线 SAR</div>
+        <div class="data-sm">威尔德1976年发明<br>加速因子0.02→0.2<br>趋势行情表现优异</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🛡️</div>
+        <div class="data-name">安全区止损</div>
+        <div class="data-sm">22日EMA判定趋势<br>噪声均值×2~3倍数<br>仅限强趋势使用</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📉</div>
+        <div class="data-name">波幅减少法</div>
+        <div class="data-sm">2.7σ→1.7σ通道<br>收盘价跌入即离场<br>约2/3交易中使用</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">止损是交易系统不可分割的一部分——入场前必须完成铁三角计算。止损位切忌设在市场最拥挤的明显位置，采用尼克止损法可大幅降低被洗风险。执行层面，止损必须用市价指令，新手必须用硬止损。趋势行情中，止损是只能收紧的单行道——善用追踪止损策略让利润充分奔跑，让市场自己告诉你何时该走。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：亚历山大·埃尔德《以交易为生II：卖出的艺术》第五章「止损」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

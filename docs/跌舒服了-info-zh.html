@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跌舒服了：一场全球踩踏的解剖</title>
+<style>
+@font-face {
+  font-family: 'FZYanSong';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5f1eb;
+  font-family: 'FZYanSong', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', serif;
+  color: #1a1a1a;
+  line-height: 1.9;
+  padding: 40px 20px 60px;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── 顶部 ── */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: normal;
+  color: #1a1a1a;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  margin: 24px auto 32px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #dc2626, #ea580c);
+}
+
+/* ── 概述卡片 ── */
+.overview {
+  background: #ffffff;
+  border: 1px solid #e8e0d5;
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 18px;
+  color: #555;
+  font-size: 14px;
+  line-height: 2.0;
+}
+
+/* ── 内容卡片 ── */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px 28px 24px 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 2px;
+}
+
+.card.red::before    { background: #dc2626; }
+.card.orange::before  { background: #ea580c; }
+.card.gold::before    { background: #ca8a04; }
+.card.indigo::before  { background: #4f46e5; }
+.card.pink::before    { background: #db2777; }
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.circle-num {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.card.red    .circle-num { background: #fef2f2; color: #dc2626; }
+.card.orange .circle-num { background: #fff7ed; color: #ea580c; }
+.card.gold   .circle-num { background: #fefce8; color: #ca8a04; }
+.card.indigo .circle-num { background: #eef2ff; color: #4f46e5; }
+.card.pink   .circle-num { background: #fdf2f8; color: #db2777; }
+
+.tag {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+.card.red    .tag { background: #fef2f2; color: #dc2626; }
+.card.orange .tag { background: #fff7ed; color: #ea580c; }
+.card.gold   .tag { background: #fefce8; color: #ca8a04; }
+.card.indigo .tag { background: #eef2ff; color: #4f46e5; }
+.card.pink   .tag { background: #fdf2f8; color: #db2777; }
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.card.red    .card-title { color: #dc2626; }
+.card.orange .card-title { color: #ea580c; }
+.card.gold   .card-title { color: #ca8a04; }
+.card.indigo .card-title { color: #4f46e5; }
+.card.pink   .card-title { color: #db2777; }
+
+.card-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+/* ── 可视化组件 ── */
+
+/* A. 数据三格卡 */
+.data-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+.data-card {
+  flex: 1;
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+}
+.data-card.red    { background: #fef2f2; border: 1px solid #fecaca; }
+.data-card.green  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.data-big {
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.data-big.r { color: #dc2626; }
+.data-big.g { color: #16a34a; }
+.data-big.o { color: #ea580c; }
+.data-sm {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.4;
+}
+
+/* B. 风险仪表条 */
+.risk-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.risk-label {
+  width: 100px;
+  font-size: 13px;
+  color: #555;
+  flex-shrink: 0;
+  text-align: right;
+}
+.risk-meter {
+  flex: 1;
+  height: 10px;
+  background: #f3f4f6;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.risk-fill {
+  height: 100%;
+  border-radius: 5px;
+}
+.risk-fill.r { background: linear-gradient(90deg, #fca5a5, #dc2626); }
+.risk-fill.o { background: linear-gradient(90deg, #fdba74, #ea580c); }
+.risk-fill.g { background: linear-gradient(90deg, #fde047, #ca8a04); }
+.risk-val {
+  width: 56px;
+  font-size: 14px;
+  color: #dc2626;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+/* C. 五步流程图 */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  margin-top: 4px;
+  justify-content: center;
+}
+.flow-step {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #9a3412;
+  text-align: center;
+  white-space: nowrap;
+}
+.flow-step.end {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+.flow-arrow {
+  color: #ea580c;
+  font-size: 16px;
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+/* D. 二分对比卡 */
+.dual-grid {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+.dual-card {
+  flex: 1;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.dual-card.good {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+.dual-card.bad {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+.dual-icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.dual-title {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.dual-card.good .dual-title { color: #166534; }
+.dual-card.bad  .dual-title { color: #991b1b; }
+.dual-card.good .dual-body { color: #555; }
+.dual-card.bad  .dual-body { color: #555; }
+
+/* ── 页脚 ── */
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: #bbb;
+  margin-top: 32px;
+  line-height: 1.8;
+}
+.footer a { color: #bbb; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .title { font-size: 26px; }
+  .flow-row { gap: 4px; }
+  .flow-step { font-size: 10px; padding: 6px 8px; }
+  .flow-arrow { margin: 0 2px; font-size: 14px; }
+  .data-row, .dual-grid { flex-direction: column; }
+  .risk-label { width: 72px; font-size: 11px; }
+}
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="跌舒服了-info-en.html">中文 / English</a>
+</div>
+
+
+<!-- 顶部 -->
+<div class="header">
+  <h1 class="title">跌舒服了：一场全球踩踏的解剖</h1>
+  <p class="subtitle">从诺曼底气象台到A股交易台——预测者的压力、市场的连锁崩塌与冰面下的隐忧</p>
+</div>
+<div class="divider"></div>
+
+<!-- 概述 -->
+<div class="overview">
+  2026年6月8日，全球资本市场遭遇一场由美元加息预期引爆的集体暴跌。从东亚开盘即溃，到AI行情一日归零，再到有色板块被地缘锁链绞杀——每一环都指向同一个核心命题：<strong>当预测的代价高到无法承受，你还能不能给出那个Yes or No？</strong> 作者借诺曼底登陆的气象赌局，剖开了市场预测者承受的结构性压力，并在暴跌的废墟中看见了更深层的隐忧。
+</div>
+
+<!-- 卡片 1：导火索 -->
+<div class="card red">
+  <div class="card-head">
+    <div class="circle-num">01</div>
+    <span class="tag">导火索</span>
+  </div>
+  <div class="card-title">加息预期骤升，东亚开盘即溃</div>
+  <p class="card-desc">
+    美元加息预期急剧升温，AI炒作热情退潮，流动性全面收紧。早盘8点，比A股先开盘的东亚市场毫无抵抗——韩国、日本、台湾接连跳水，直接为全天定下暴跌基调。
+  </p>
+  <div class="data-row">
+    <div class="data-card red">
+      <div class="data-big r">-8%</div>
+      <div class="data-sm">韩国 KOSPI<br>开盘崩跌</div>
+    </div>
+    <div class="data-card red">
+      <div class="data-big r">-6%</div>
+      <div class="data-sm">台湾加权<br>开盘重挫</div>
+    </div>
+    <div class="data-card orange">
+      <div class="data-big o">-3%</div>
+      <div class="data-sm">日本日经<br>开盘走低</div>
+    </div>
+  </div>
+</div>
+
+<!-- 卡片 2：AI归零 -->
+<div class="card orange">
+  <div class="card-head">
+    <div class="circle-num">02</div>
+    <span class="tag">AI归零</span>
+  </div>
+  <div class="card-title">两个月涨幅一日抹平，从哪里来，回哪里去</div>
+  <p class="card-desc">
+    科创50日内暴击4.3%，一步到位补上5月6日的缺口。五一节后因存储行业业绩爆发点燃的整个AI行情，至此全部跌回原点。抄底资金上午涌入幻想翻红，午后被流出压垮，最终以阴线收盘。
+  </p>
+  <div style="margin-top:8px;">
+    <div class="risk-row">
+      <span class="risk-label">科创50单日跌幅</span>
+      <div class="risk-meter"><div class="risk-fill r" style="width:86%"></div></div>
+      <span class="risk-val">-4.3%</span>
+    </div>
+    <div class="risk-row">
+      <span class="risk-label">AI行情回撤幅度</span>
+      <div class="risk-meter"><div class="risk-fill r" style="width:100%"></div></div>
+      <span class="risk-val">100%</span>
+    </div>
+    <div class="risk-row">
+      <span class="risk-label">国证有色单日跌幅</span>
+      <div class="risk-meter"><div class="risk-fill r" style="width:100%"></div></div>
+      <span class="risk-val">-5.7%</span>
+    </div>
+  </div>
+</div>
+
+<!-- 卡片 3：地缘锁链 -->
+<div class="card gold">
+  <div class="card-head">
+    <div class="circle-num">03</div>
+    <span class="tag">地缘锁链</span>
+  </div>
+  <div class="card-title">霍尔木兹海峡掐住了全球通胀的喉咙</div>
+  <p class="card-desc">
+    本轮暴跌的真正引擎不在交易台，在霍尔木兹海峡。3月美国对伊朗动手→海峡被封锁→全球油价居高不下→通胀无法回落→美元被迫从降息切回加息→有色行情彻底崩盘。今天国证有色-5.7%，比特朗普时代的AI泡沫破得更惨。而美伊协议"很接近了，每一天都可能签"——签不签，都是赌。
+  </p>
+  <div class="flow-row">
+    <div class="flow-step">3月<br>伊朗冲突</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">霍尔木兹<br>被封锁</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">油价高企<br>通胀顽固</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">美元加息<br>预期骤升</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step end">有色崩盘<br>-5.7%</div>
+  </div>
+</div>
+
+<!-- 卡片 4：预测者赌局 -->
+<div class="card indigo">
+  <div class="card-head">
+    <div class="circle-num">04</div>
+    <span class="tag">预测者赌局</span>
+  </div>
+  <div class="card-title">从诺曼底天气到A股涨跌，押上的不止是判断力</div>
+  <p class="card-desc">
+    电影《诺曼底72小时》中，气象专家必须顶着几万条人命的重量，给艾森豪威尔一个Yes or No的结论。这和预测股市如出一辙：数据推演到最后，还是要赌。作者本人因公开发表市场观点，曾被叫去监管部门问话、查手机。权责严重不对等——对了没有收益，错了面临举报和审查。
+  </p>
+  <div class="dual-grid">
+    <div class="dual-card good">
+      <div class="dual-icon">✅</div>
+      <div class="dual-title">预测正确</div>
+      <div class="dual-body">诺曼底：战役成功，历史改写<br>市场：读者赚钱，零收益归己</div>
+    </div>
+    <div class="dual-card bad">
+      <div class="dual-icon">❌</div>
+      <div class="dual-title">预测错误</div>
+      <div class="dual-body">诺曼底：几万人丧生<br>市场：被举报、被约谈、被查手机</div>
+    </div>
+  </div>
+</div>
+
+<!-- 卡片 5：冰面之下 -->
+<div class="card pink">
+  <div class="card-head">
+    <div class="circle-num">05</div>
+    <span class="tag">冰面之下</span>
+  </div>
+  <div class="card-title">美股今夜反弹是止痛药，3.2亿灵活就业才是慢性病</div>
+  <p class="card-desc">
+    今晚纳斯达克+1.3%，美光+9%，AI板块把周五跌的一半涨了回来——但能不能撑到明早，没人知道。真正让人不安的数据不在盘面上：中国灵活就业人口已达3.2亿，占总就业44%，其中社保参保率不足30%。这个"就业蓄水池"越大，社会保障体系的地基就越脆弱。
+  </p>
+  <div class="dual-grid">
+    <div class="dual-card good">
+      <div class="dual-icon">📈</div>
+      <div class="dual-title">短期止痛</div>
+      <div class="dual-body">纳指 +1.3%<br>美光 +9% 迈威尔 +8%<br>AI板块一夜回血一半<br><span style="color:#888;font-size:12px;">但跟跌不跟涨，能撑到明早？</span></div>
+    </div>
+    <div class="dual-card bad">
+      <div class="dual-icon">⚠️</div>
+      <div class="dual-title">长期隐忧</div>
+      <div class="dual-body">3.2亿灵活就业者<br>占就业人口 44%<br>社保参保率 &lt;30%<br><span style="color:#888;font-size:12px;">蓄水池越大，地基越脆</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+  来源：猫笔刀 · 微信公众号 &nbsp;|&nbsp; 2026年6月8日<br>
+  信息图由 AI 生成，仅供内容梳理参考，不构成投资建议
+</div>
+
+</div>
+</body>
+</html>

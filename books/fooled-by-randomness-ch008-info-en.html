@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Ch.8 "Too Many 'Next Millionaires'"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 14px; text-align: center;
+    border: 1px solid transparent;
+  }
+  .data-card.green { background: #f0fdf4; border-color: #bbf7d0; }
+  .data-card.blue  { background: #eef2ff; border-color: #c7d2fe; }
+  .data-card.amber { background: #fffbeb; border-color: #fde68a; }
+  .data-card.red   { background: #fef2f2; border-color: #fecaca; }
+  .data-big { font-size: 26px; font-weight: bold; margin-bottom: 4px; }
+  .data-big.g { color: #166534; }
+  .data-big.b { color: #4f46e5; }
+  .data-big.a { color: #b45309; }
+  .data-big.r { color: #dc2626; }
+  .data-name { font-size: 15px; font-weight: bold; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-name.g { color: #166534; } .data-name.b { color: #4f46e5; } .data-name.a { color: #b45309; } .data-name.r { color: #dc2626; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.55; }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px; font-size: 13px; line-height: 1.8;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.bad  { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Risk bars ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 100px; text-align: right; flex-shrink: 0; }
+
+  /* ── Highlight box ── */
+  .hl-box {
+    background: #fefce8; border: 1px solid #fde68a;
+    border-radius: 12px; padding: 16px 20px;
+    margin-top: 14px; font-size: 13px; color: #92400e; line-height: 1.9;
+  }
+  .hl-box strong { color: #ca8a04; }
+
+  /* ── Rule list ── */
+  .rule-list { margin-top: 12px; }
+  .rule-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid #fce7f3;
+  }
+  .rule-item:last-child { border-bottom: none; }
+  .rule-icon {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: #fdf2f8; color: #db2777; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; flex-shrink: 0; font-weight: bold;
+  }
+  .rule-text { font-size: 14px; color: #555; line-height: 1.75; }
+  .rule-text strong { color: #be185d; }
+
+  /* ── Quote ── */
+  .quote {
+    background: #fefce8; border-left: 4px solid #ca8a04;
+    border-radius: 0 12px 12px 0; padding: 16px 20px;
+    margin-top: 14px; font-size: 14px; color: #92400e;
+    line-height: 1.9; font-style: italic;
+  }
+  .quote-author { margin-top: 8px; font-size: 12px; color: #b45309; font-style: normal; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }@media(max-width:640px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:1fr}}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch008-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Fooled by Randomness · Ch.8 "Too Many 'Next Millionaires'"</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Situation → Complication → Question → Answer</span>
+  The best-performing are the most visible—losers don't show up.
+  Survivorship bias is a double trap: a statistical sample defect, compounded by our cognitive bias toward "believing only what we see."
+  Why do we keep falling for the "next millionaire" delusion? From Park Avenue's reference-group illusion to bestseller induction fallacies and fund managers' "dead bodies"—the answer lies in the deepest recesses of human nature.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Core proposition: "The best-performing are the most visible. Why? Because the losers do not show up." Through three escalating case studies, this chapter reveals how survivorship bias distorts our judgment of wealth, success, and investing ability: from the "poorest" rich couple on Park Avenue, to the double methodological flaw in bestseller <em>The Millionaire Next Door</em>, to the fund management industry's "dead bodies." Taleb demonstrates that the reality we experience is merely one of countless possible random histories—yet we mistake it for the most representative one.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">99.5<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Above All Americans</div>
+    <div class="kpi-note">Mark earns $500K/year<br>but is "poorest" on Park Avenue</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">×20<span class="kpi-unit">x</span></div>
+    <div class="kpi-label">Greatest Bull Market Gain</div>
+    <div class="kpi-note">$1 in stocks in 1982<br>grew ~20x by the book's writing</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">55<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Excluded Losers</div>
+    <div class="kpi-note">Managers who exited the industry<br>entirely absent from the sample</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">x</span></div>
+    <div class="kpi-label">Survivorship Bias Dimensions</div>
+    <div class="kpi-note">Reference illusion · Induction fallacy<br>· Sample deficit triple trap</div>
+  </div>
+</div>
+
+
+<!-- 01: Reference Group Illusion -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Social Comparison</div>
+    <div class="section-title t-01">Reference Group Illusion: Park Avenue's "Poorest Residents"</div>
+    <div class="section-desc">Mark—Harvard undergrad + Yale Law, \$500K/year—lives on Park Avenue. His wife Janet is nearly having a breakdown: snubbed by other mothers at school pickup, noticing bigger diamonds in the elevator. They live in the building's smallest apartment. The problem? Janet's comparison sample contains only winners—losers never make it to Park Avenue. She cannot emotionally gauge her husband's success against a fair sample.</div>
+    <div class="data-row">
+      <div class="data-card green">
+        <div class="data-big g">99.5%</div>
+        <div class="data-name g">Above All</div>
+        <div class="data-sm">Americans</div>
+      </div>
+      <div class="data-card blue">
+        <div class="data-big b">90%</div>
+        <div class="data-name b">Above Harvard</div>
+        <div class="data-sm">Classmates</div>
+      </div>
+      <div class="data-card amber">
+        <div class="data-big a">60%</div>
+        <div class="data-name a">Above Yale Law</div>
+        <div class="data-sm">Classmates</div>
+      </div>
+      <div class="data-card red">
+        <div class="data-big r">Bottom</div>
+        <div class="data-name r">Park Avenue</div>
+        <div class="data-sm">Same-Building Neighbors</div>
+      </div>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:#999;">Taleb's solution: move to a blue-collar neighborhood and exploit the reverse distortion—there they are no longer "the poorest." Reversing the reference frame is more effective than fighting human nature.</p>
+  </div>
+</div>
+
+<!-- 02: Survivorship Bias #1 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Survivorship Bias</div>
+    <div class="section-title t-02">First Bias: <em>The Millionaire Next Door</em> Only Sees Winners</div>
+    <div class="section-desc">The bestseller <em>The Millionaire Next Door</em> claims that "people who don't look rich are most likely to be wealthy." The authors surveyed a group of rich people and found they live frugally and defer consumption—calling them "prodigious accumulators of wealth." But the conclusion rests on a fatally flawed sample.</div>
+    <div class="dual-grid">
+      <div class="dual-card good">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Sample the Book Sees</h4>
+          <p>Sampling among currently wealthy people. They accumulated successfully and live frugally—superficial evidence looks solid.</p>
+        </div>
+      </div>
+      <div class="dual-card bad">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Sample the Book Misses</h4>
+          <p>Those equally frugal who "accumulated the wrong things": the grandfather who bought Lebanese lira bonds, the Milken junk bond investor, the great-grandfather holding Czarist Russian bonds—frugal their entire lives but went bust. They are not in the sample of rich people.</p>
+        </div>
+      </div>
+    </div>
+    <div class="hl-box" style="margin-top:16px;">
+      <strong>⚡ The Critical Bias:</strong> The authors are like someone sampling lucky monkeys at typewriters and only seeing the ones that typed Shakespeare. The fix—halving the average wealth of millionaires to also account for the losers—would yield a dramatically different conclusion.
+    </div>
+  </div>
+</div>
+
+<!-- 03: Era Trap -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Era Trap</div>
+    <div class="section-title t-03">Second Bias: The Greatest Bull Market Magic Trick</div>
+    <div class="section-desc">The second bias is even more severe—the problem of induction. <em>The Millionaire Next Door</em> was written during the most spectacular bull market in history: \$1 invested in stocks in 1982 had grown roughly 20x. Nearly everyone could profit from asset price inflation. Accepting the book's thesis amounts to accepting that "current asset returns will persist forever"—which is exactly what investors believed right before the 1929 crash.</div>
+    <div class="flow-row">
+      <div class="flow-step" style="background:#fefce8;border-color:#fde68a;color:#92400e;">📅 If written<br>in 1982</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border-color:#fde68a;color:#92400e;">📉 Stock values<br>eroded by inflation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border-color:#fde68a;color:#92400e;">💰"Accumulators"<br>not necessarily rich</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border-color:#fde68a;color:#92400e;">📖 Conclusion<br>radically different</div>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:#555;"><strong>Alternative history paths—if "accumulators" bought these instead:</strong></p>
+    <div class="flow-row" style="margin-top:8px;">
+      <div class="flow-step" style="background:#fefce8;border-color:#fde68a;color:#92400e;">🇱🇧 Lebanese<br>Lira Bonds</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border-color:#fde68a;color:#92400e;">💀 Milken<br>Junk Bonds</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border-color:#fde68a;color:#92400e;">🇷🇺 Czarist<br>Russian Bonds</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fefce8;border-color:#fde68a;color:#92400e;">🇦🇷 1930s<br>Argentine Real Estate</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">💸 Frugal life<br>Total loss</div>
+    </div>
+    <div class="hl-box" style="margin-top:16px;">
+      <strong>🎯 Taleb's Conclusion:</strong> Had the book been written in 1982 or 1935, its content would be entirely different. The bull market we experienced is just one of history's many possible paths—yet we treat it as "normal" for inducing rules of success.
+    </div>
+  </div>
+</div>
+
+<!-- 04: Fund Manager Survivorship -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Fund Illusion</div>
+    <div class="section-title t-04">Fund Management's "Dead Bodies"</div>
+    <div class="section-desc">A certain "guru," assisted by colleagues, published a "Robin Hood" strategy study: withdraw money from winning managers and reinvest with the worst-performing ones—the paper returns far exceeded sticking with winners. The fatal flaw: the sample only included managers who "were managing during the simulation period AND are still managing today." Poor performers who later turned around naturally stay in the sample; but those who performed consistently poorly and were forced out of the industry are entirely excluded.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">🔍 Guru's Sample</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:45%"></div></div>
+        <div class="risk-val">Only 45% Complete</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">🚫 Excluded Losers</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:55%"></div></div>
+        <div class="risk-val">55% Excluded</div>
+      </div>
+    </div>
+    <div class="dual-grid" style="margin-top:14px;">
+      <div class="dual-card bad">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Wrong Method</h4>
+          <p>Only count still-surviving managers, yielding the absurd conclusion that "betting on losers beats winners"</p>
+        </div>
+      </div>
+      <div class="dual-card good">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Correct Simulation</h4>
+          <p>Take the set of managers running money 5 years ago, track them all to today—including those who exited—then compute true returns</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Visibility Problem -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Cognitive Antidote</div>
+    <div class="section-title t-05">Why We Keep Falling for It: Visibility Overwhelms Everything</div>
+    <div class="section-desc">This chapter's core insight isn't just about statistical methodology—it's about the <strong>deepest limits of human nature</strong>.</div>
+    <div class="rule-list">
+      <div class="rule-item">
+        <div class="rule-icon">❶</div>
+        <div class="rule-text">
+          <strong>Rational Antidotes Have Limited Power</strong><br>
+          Taleb admits that having Janet read <em>Fooled by Randomness</em> would provide at most an hour of relief. Human nature is not easily made more rational, nor indifferent to low social status—at least given our current DNA programming.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">❷</div>
+        <div class="rule-text">
+          <strong>Change the Environment, Not the Cognition</strong><br>
+          Rather than force yourself to view problems through a statistical lens, change the reference frame—move to a blue-collar neighborhood. Exploiting reverse distortion is more effective than fighting nature.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">❸</div>
+        <div class="rule-text">
+          <strong>We Are Trained to "Use Available Information"</strong><br>
+          People have been making survivorship bias errors forever—professionals are no exception, sometimes even worse. Why? Because we are trained to make good use of the information in front of us and ignore what we don't see.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">❹</div>
+        <div class="rule-text">
+          <strong>Experienced Reality ≠ All Possible Realities</strong><br>
+          The reality we experience is just one of countless possible random histories, yet we mistake it for the most representative, forgetting the alternatives. The fundamental principle of survivorship bias: "The best-performing are the most visible. Why? Because the losers do not show up."
+        </div>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:16px;">
+      "People have been making the survivorship bias mistake forever—professionals are no exception, sometimes even more so. How could that be? Because we are trained to make good use of the information that is lying in front of our eyes, ignoring the information that we do not see."
+      <div class="quote-author">— Nassim Taleb, <em>Fooled by Randomness</em>, Chapter 8</div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Survivorship bias is a double trap: statistically, we only see the samples that survived; cognitively, we are trained to "use available information" while ignoring missing data. The three case studies—Park Avenue's reference-group illusion, the bestseller's induction fallacy, and fund managers' sample deficit—jointly prove that the reality we experience is merely one of countless possible random histories. The solution is not to become more rational, but to actively reconstruct the reference frame: changing the environment beats fighting nature.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <em>Fooled by Randomness</em> Ch.8 Infographic · Nassim Nicholas Taleb · Based on Chapter 8 content · For educational reference only
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>以交易为生II：卖出的艺术 · 第二章「交易心态和风险管理」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch002-info-en.html">中文 / English</a>
+</div>
+
+<h1>以交易为生II：卖出的艺术 · 第二章「交易心态和风险管理」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  交易者拥有计算机、软件和数据，但技术工具不足以确保成功。
+  情绪波动直接破坏决策——缺乏资金管理纪律必然导致爆仓。
+  如何搭建安全的交易系统？答案在于两大支柱：五项心理纪律 + 2% &amp; 6% 双规则。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>心态是真正的交易工具——你的情绪、期望和恐惧会直接决定交易结果。资金管理是安全网——如果把交易比作走钢丝，风险控制就是下方的网，掉下来时救你的命。本章揭示成功交易的两大基石：约束自我的五项心理纪律，以及量化风险的 2% 单笔上限与 6% 月度熔断。两项规则结合使用，你的交易将非常安全——赚钱时欢欣鼓舞，亏钱时也能保持平静。</p>
+</div>
+
+
+<!-- 01: 心态是核心工具 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心认知</div>
+    <div class="section-title t-01">交易心态是你的核心工具</div>
+    <div class="section-desc">你的情绪、期望和恐惧，会直接决定交易结果。过度的情绪波动让你一败涂地——决策必须清晰且没有偏见。Elder 反复强调：能否处理好个人情绪是交易成功的关键。纪律交易者将情绪视为信号而非命令，而情绪交易者在恐惧与贪婪之间往复循环。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>纪律交易者</h4>
+          <p>依照系统执行计划，决策清晰无偏见。情绪是信号而非命令——每一次交易都在积累可复制的经验。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>情绪交易者</h4>
+          <p>恐惧时不敢进场，贪婪时过度加仓。随意模仿他人，压力下抛弃纪律，在自我打击中往复循环。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 五项心理纪律 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">行动框架</div>
+    <div class="section-title t-02">成功交易者的五项心理纪律</div>
+    <div class="section-desc">当压力来临时，人们往往随意或模仿他人交易——这是失败的根源。Elder 给出五项纪律，每一步都建立在前一步之上。从独处执行到善待自己，从情绪止损到享受过程，最终以持续记录封顶——行动比做梦更重要。</div>
+    <div class="flow-row">
+      <div class="flow-step">独处执行<br>交易中保持沉默</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">善待自己<br>守规则时庆祝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">情绪止损<br>不适时立即停止</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">享受过程<br>专注游戏本身</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">记录为王<br>持续记录者成功</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 五大预警信号 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">风险预警</div>
+    <div class="section-title t-03">注定失败者的五大预警信号</div>
+    <div class="section-desc">市场会产生无尽诱惑，而某些交易者几乎没有获胜希望。Elder 明确指出五类行为模式——如果你有其中任何一项，在改掉之前不要交易。成瘾行为、糟糕情绪中交易、依赖他人意见、自我惩罚循环、重仓情绪化——它们每一条都在削减你的交易优势。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">成瘾行为</div>
+        <div class="confusion-arrow">→ 后果 →</div>
+        <div class="confusion-right">酗酒者和吸毒者长期来看几乎没有希望——在改掉毛病前不要交易</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">糟糕情绪中交易</div>
+        <div class="confusion-arrow">→ 后果 →</div>
+        <div class="confusion-right">牙疼或与配偶冲突会削减你本已狭窄的优势——暂停交易</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">依赖他人意见</div>
+        <div class="confusion-arrow">→ 后果 →</div>
+        <div class="confusion-right">随意模仿他人交易，而非制订并坚定执行自己的交易计划</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">自我惩罚循环</div>
+        <div class="confusion-arrow">→ 后果 →</div>
+        <div class="confusion-right">不断破坏规则、打击自己，在失败中恶性循环</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">重仓情绪化</div>
+        <div class="confusion-arrow">→ 后果 →</div>
+        <div class="confusion-right">重仓时变得呆板紧张，依据情绪而非系统做决策</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 2% 规则 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">资金管理</div>
+    <div class="section-title t-04">2% 规则：单笔风险铁三角</div>
+    <div class="section-desc">如果把交易比作走钢丝，风险控制就是安全网。2%规则像鲨鱼——单次致命但可防范：任何单次交易中，资产总风险不超过账户的 2%。计算路径为：入场价与止损价的差 → 账户的2% → 最大股数。鲨鱼袭击不仅损失金钱，更会摧毁交易信心。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">每股风险</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:67%"></div></div>
+        <div class="risk-val">$2.00</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">单笔最大亏损</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:67%"></div></div>
+        <div class="risk-val">$2,000</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">最大股数</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">1,000 股</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">信心安全区</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">轻松持有</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 6% 规则 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">熔断机制</div>
+    <div class="section-title t-05">6% 规则：月度损失熔断</div>
+    <div class="section-desc">食人鱼比鲨鱼更危险——它们成群游动，一口一口吃掉你的账户。多数人在亏损时继续加码试图翻盘，但正确做法是停止交易、休息一段时间。6%规则强制把资产单月最大亏损控制在 6% 以内。损失了 1/3 的资产就必须有 50% 的增值才能回本——保护资本胜过追逐利润。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🦈</div>
+        <div class="data-name">鲨鱼防范</div>
+        <div class="data-sm">2% 单笔上限<br>一次致命一击<br>可预期可预防</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🐟</div>
+        <div class="data-name">食人鱼防范</div>
+        <div class="data-sm">6% 月度熔断<br>成群慢性失血<br>触线即停止交易</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚖️</div>
+        <div class="data-name">安全公式</div>
+        <div class="data-sm">纪律 × 资金管理<br>= 可持续盈利<br>亏1/3需+50%回本</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">交易成功 = 纪律心态 × 资金管理。心态是真正的交易工具，2% 规则防范鲨鱼式单次重创，6% 规则抵御食人鱼式慢性失血。每次交易前问自己：6% 规则是否允许我交易？本月已经亏了多少？还有多少可以损失？两项规则结合使用，你就有了一个牢不可破的安全系统。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：亚历山大·埃尔德《以交易为生II：卖出的艺术》第二章「交易心态和风险管理」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Su Dongpo · Ch27「Zhaoyun」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .quote-block {
+    background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0;
+    padding: 16px 20px; margin-top: 14px; margin-bottom: 4px;
+  }
+  .quote-text {
+    font-size: 14px; color: #555; line-height: 1.9; font-style: italic;
+  }
+  .quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}@media(max-width:640px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:1fr}}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="sudongpo-zhuan-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="sudongpo-zhuan-ch027-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Su Dongpo · Ch27「Zhaoyun」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Zhaoyun was thirty-one when she arrived in Huizhou; Su Dongpo was fifty-seven. She had followed him since Hangzhou, never wavering even after their infant son died.
+  Intelligent, cheerful, vivacious, spiritually gifted — she was the woman who understood Su Dongpo best.
+  What is love that transcends age and fate? When a young woman chooses to accompany an aging poet into the twilight of his life, what does that choice mean?
+  Su Dongpo's answer: Zhaoyun was more than a lover — she was the "Goddess of Vimalakirti," a spiritual companion who had transcended all distinctions.
+</p>
+<div class="divider"></div>
+
+<div class="splash">
+  A Buddhist sutra tells of a goddess who scattered flowers over the bodhisattvas; the flowers clung to only one. She explained: those upon whom flowers do not cling have eliminated all distinctions — just as fear cannot enter a heart unless one is first afraid. Su Dongpo compared Zhaoyun to this <strong>goddess whose scattered flowers never cling</strong> — she had transcended worldly distinctions and could understand her husband's inner world with religious insight. Unlike Bai Juyi's concubine Xiaoman who left her aging master, Zhaoyun was like Tongde who accompanied Lingxuan for life. She set aside her dancing robes to read sutras, practice alchemy, and build a release pond with Dongpo. After Su Dongpo's death, the White Crane Residence was renamed "Zhaoyun Hall" — preserving her name for posterity.
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">31<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Zhaoyun's Age</div>
+    <div class="kpi-note">Arrived in Huizhou<br>at thirty-one</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">57<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Dongpo's Age</div>
+    <div class="kpi-note">Fifty-seven, white-haired<br>Vimalakirti's realm of emptiness</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">26<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Age Gap</div>
+    <div class="kpi-note">Zhaoyun was<br>twenty-six years younger</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">4<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Stages</div>
+    <div class="kpi-note">Hangzhou→Huangzhou→Loss→Huizhou<br>From concubine to Vimalakirti</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">3<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Three Paths</div>
+    <div class="kpi-note">Buddhism·Daoism·Confucianism<br>Sutras·Alchemy·Rectitude</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">18<span class="kpi-unit">mo</span></div>
+    <div class="kpi-label">Celibacy</div>
+    <div class="kpi-note">Dongpo's celibacy<br>for eighteen months</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Zhaoyun Hall</div>
+    <div class="kpi-note">White Crane Residence became<br>Zhaoyun Hall for posterity</div>
+  </div>
+</div>
+
+<!-- 01: Goddess of Vimalakirti -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Love Legend</div>
+    <div class="section-title t-01">The Goddess of Vimalakirti: Zhaoyun's Spiritual Insight</div>
+    <div class="section-desc">Su Dongpo compared Zhaoyun to the goddess whose scattered flowers never cling — she had eliminated all distinctions and could understand her husband with transcendent wisdom. Unlike Bai Juyi's concubine Xiaoman who abandoned her aging master, Zhaoyun was like Tongde, a lifelong companion. She set aside her dancing robes to study sutras and practice alchemy, elevating worldly love to spiritual communion.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">💔</div>
+        <div class="dual-text">
+          <h4>Worldly Love</h4>
+          <p>Bai Juyi's concubine Xiaoman left her aging master. Love that depends on youth and circumstance fades with time — each takes what they need and parts.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🪷</div>
+        <div class="dual-text">
+          <h4>Spiritual Love</h4>
+          <p>Zhaoyun, like Tongde, stayed for life. More than a concubine — a spiritual companion who studied sutras, practiced alchemy, and elevated love to a union of souls.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Poetic Testimony -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Poetic Testimony</div>
+    <div class="section-title t-02">"I'll Find a Good Poem to Write upon Your Sash"</div>
+    <div class="section-desc">Within two weeks of arriving in Huizhou, Su Dongpo wrote the lyric "Grieving Beauty · For Zhaoyun." The first stanza compares himself to Vimalakirti — scattered flowers cause no hindrance in his ten-foot room. The second praises Zhaoyun: "Vermilion lips, hair bun aglow." He looks forward to Dragon Boat Festival to write a poem on her sash. The interweaving of romance and religion is exceptionally rare in classical Chinese poetry.</div>
+    <div class="quote-block">
+      <div class="quote-text">White hair and aging face are precisely Vimalakirti's realm of emptiness — what hindrance are scattered flowers in a ten-foot room? Vermilion lips, hair bun aglow... Through a thousand lives, ten thousand lives, it's only this good heart... On Dragon Boat Festival, I'll string orchids for a sash, find a good poem to write upon your skirt-band.</div>
+      <div class="quote-author">— Su Dongpo, "Grieving Beauty · For Zhaoyun"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Shared Path -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Spiritual Practice</div>
+    <div class="section-title t-03">The Release Pond and Celibacy: A Shared Path</div>
+    <div class="section-desc">Zhaoyun formally studied Buddhism under the nun Yichong, while Su Dongpo began a year and a half of celibacy. Together they built a pond for releasing captive fish. Dongpo wrote that "abstinence is difficult at first, like a vegetarian giving up meat," recommending gradual steps. Their practice was never compartmentalized — Buddhist compassion, Daoist vitality, Confucian rectitude — all woven into daily life.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🪷</div>
+        <div class="data-name">Buddhism</div>
+        <div class="data-sm">Zhaoyun studied under Yichong<br>Built the release pond together</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚗️</div>
+        <div class="data-name">Daoism</div>
+        <div class="data-sm">Dongpo: alchemy & vitality<br>Celibacy for 18 months</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📚</div>
+        <div class="data-name">Confucianism</div>
+        <div class="data-sm">The Study of No Depravity<br>Simple living as foundation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Zhaoyun Hall -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Eternal Memory</div>
+    <div class="section-title t-04">Zhaoyun Hall: A Memorial Built by Love</div>
+    <div class="section-desc">After Su Dongpo's death, the White Crane Residence was renamed "Zhaoyun Hall" — the house bearing her name through the ages. She was twenty-six years his junior. Qin Guan wrote that she was "beautiful as a spring garden, eyes like morning sunlight." Dongpo said of his son Su Guo: "transcendent — only such a father could produce such a son." Zhaoyun was no less: only such a woman could match such a man. Their lives proved that true love is not possession, but making each other better.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Concubine Status</div>
+        <div class="confusion-arrow">→ elevated to →</div>
+        <div class="confusion-right">Spiritual Companion</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">White Crane Residence</div>
+        <div class="confusion-arrow">→ became →</div>
+        <div class="confusion-right">Zhaoyun Hall</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Worldly Romance</div>
+        <div class="confusion-arrow">→ transcended to →</div>
+        <div class="confusion-right">Religious Communion</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Four Stages -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Relationship Arc</div>
+    <div class="section-title t-05">From Hangzhou to Huizhou: Four Stages of Companionship</div>
+    <div class="section-desc">Zhaoyun's relationship with Su Dongpo evolved through four stages: from singing-girl concubine in Hangzhou, to companion through hardship in Huangzhou, to even greater devotion after losing their child, and finally to spiritual companion in Huizhou — the Goddess of Vimalakirti. This arc mirrors the evolution of Dongpo's inner world in his later years — from human love to religious transcendence.</div>
+    <div class="flow-row">
+      <div class="flow-step">Hangzhou<br>Singing Girl</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Huangzhou<br>Hardship Companion</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">After Loss<br>Deeper Devotion</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Huizhou<br>Vimalakirti Goddess</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Zhaoyun's story teaches us that true love makes the other person better. In the White Crane Residence in Huizhou, a fifty-seven-year-old poet and a thirty-one-year-old woman elevated worldly romance into a shared spiritual path through sutras, alchemy, and a release pond. Su Dongpo called Zhaoyun the "Goddess of Vimalakirti" — not for her beauty, but for her transcendent insight beyond worldly distinctions. This may be love's highest form.</div>
+</div>
+
+<div class="footer">
+  Su Dongpo: The Biography · Ch27 Infographic · Lin Yutang · Based on 「Zhaoyun」 · For Educational Purposes
+</div>
+
+</div>
+</body>
+</html>

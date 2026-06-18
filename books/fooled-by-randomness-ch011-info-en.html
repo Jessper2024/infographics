@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fooled by Randomness · Ch.11 "We Are Probability Blind" — Infographic</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .prob-card {
+    border-radius: 12px; padding: 18px 16px; border: 1px solid; text-align: center;
+  }
+  .prob-card.stable { background: #f0fdf4; border-color: #bbf7d0; }
+  .prob-card.risky { background: #fef2f2; border-color: #fecaca; }
+  .prob-icon { font-size: 28px; margin-bottom: 6px; }
+  .prob-title {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;
+  }
+  .prob-stat { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .prob-card.stable .prob-stat { color: #16a34a; }
+  .prob-card.risky .prob-stat { color: #dc2626; }
+  .prob-desc { font-size: 12px; color: #888; line-height: 1.7; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .prob-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}@media(max-width:640px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4,.kpi-row.cols-3{grid-template-columns:1fr}}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="fooled-by-randomness-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="fooled-by-randomness-ch011-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Fooled by Randomness · Ch.11 "We Are Probability Blind"</h1>
+<p class="subtitle">Evolution, Cognitive Bias & the Deception of Randomness — Why human intuition systematically clashes with probability</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter exposes a fundamental flaw in human cognition: our intuition systematically conflicts with the laws of probability. From Taleb's own cancer diagnosis—where a 72% survival rate felt worlds apart from a 28% death rate—to the O.J. Simpson trial's collective misuse of conditional probability, to doctors botching a 95%-accurate test: probability blindness pervades medicine, law, investing, and daily life. The root cause: our brains evolved on the African savanna 130,000 years ago and were never designed to understand probability.</p>
+</div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">72<span class="kpi-unit">%</span> vs 28<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">One-State Mind</div>
+    <div class="kpi-note">Survival vs. mortality<br>mathematically identical frames</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">50<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Conditional Probability Trap</div>
+    <div class="kpi-note">50% of murdered wives were abused<br>P(abused|killed) ≠ P(killed|abused)</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">130K<span class="kpi-unit"> yrs</span></div>
+    <div class="kpi-label">Evolutionary Lag</div>
+    <div class="kpi-note">Genes forged on the savanna<br>probability space has exploded</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">≈2<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Doctor Probability Blindness</div>
+    <div class="kpi-note">95%-accurate test<br>only ~2% truly sick (base rate 1‰)</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">CNBC<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Explaining Noise</div>
+    <div class="kpi-note">1.03-point moves earn solemn commentary<br>journalists make a living explaining noise</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">$1<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Option Expected Value</div>
+    <div class="kpi-note">90% worthless + 10% earns $10<br>most likely outcome ≠ expected value</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">+9<span class="kpi-unit"> yrs</span></div>
+    <div class="kpi-label">Conditional Life Expectancy</div>
+    <div class="kpi-note">At 73, conditional LE adds 9 years<br>even CNBC pundits don't get this</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">COGNITIVE BLINDSPOT</div>
+    <div class="section-title t-01">The One-State Mind: Our Brains Cannot Imagine Probability Distributions</div>
+    <div class="section-desc">You're choosing between a vacation in Paris or the Caribbean at 50% each. But your brain can only hold one scenario—standing at the Musée d'Orsay or lying on a beach. You cannot imagine "feet in Caribbean water, head in Parisian rain." Likewise, betting $1,000 at 50/50: your mind sees either empty pockets or $2,000—never the expected value of $1,000.</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🧠</div>
+        <div class="dual-text">
+          <h4>One-State Thinking</h4>
+          <p>At any given moment, we can only imagine one state. If we decide by imagination alone, one scenario dominates the entire mental picture, driving irrational action.</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">📐</div>
+        <div class="dual-text">
+          <h4>Probabilistic Thinking</h4>
+          <p>Rational choice requires linear combinations: 50%×$0 + 50%×$2,000 = expected $1,000. This needs math, not intuition.</p>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:12px; font-size:13px; color:#888;">At age 35, Taleb was diagnosed with cancer. The 5-year survival rate was 72%. The 28% chance of death conjured funeral images; the 72% survival made him plan skiing. Never once did he think of himself as "72% alive and 28% dead."</p>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">72%</div>
+        <div class="data-sm">Survival<br>→ Plan ski trip</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">28%</div>
+        <div class="data-sm">Mortality<br>→ Funeral details</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">=</div>
+        <div class="data-sm">Mathematically<br>identical</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">JUSTICE GONE WRONG</div>
+    <div class="section-title t-02">What the O.J. Simpson Trial Exposed: The Legal System Can't Compute Conditional Probability</div>
+    <div class="section-desc">The Simpson trial was a masterclass in probability blindness. Defense lawyers argued "at least 4 people in LA share Simpson's DNA"—ignoring joint probability. Multiply blood-type probability, his being the victim's husband, and other evidence, the odds stack dramatically against him. Worse: a Harvard-educated lawyer claimed "only 10% of wife-beaters kill their wives"—failing to grasp the right question: of murdered wives, 50% were previously beaten by their husbands.</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Unconditional Probability</h4>
+          <p>"Only 10% of wife-abusers kill"—conditioned on abuse, not murder. The logical direction is entirely wrong.</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Conditional Probability</h4>
+          <p>P(kills | abuses) ≠ P(abused | killed). Correct: 50% of murdered wives were previously abused. The conditioning event changes everything.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">EVOLUTIONARY ROOTS</div>
+    <div class="section-title t-03">Why Are Humans Naturally Probability-Blind? The Answer Lies on the Savanna</div>
+    <div class="section-desc">Humans became a distinct species roughly 130,000 years ago, spending most of that time on the African savanna. Even in the Fertile Crescent 3,000 years ago, you knew few people in a lifetime, information traveled slowly, and the probability space was exceedingly narrow. Our core problem: we left our natural habitat far faster than our genes could evolve. Worse—our genes haven't changed at all. Evolutionary psychology explains: we weren't designed to understand things—we were designed to survive and reproduce.</div>
+    <div class="flow-row">
+      <div class="flow-step">🧬 130,000 YA<br>African Savanna<br>Distinct Species</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🏛️ 3,000 YA<br>Fertile Crescent<br>Limited Information</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">📊 Present<br>Information Age<br>Probability Rules</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">EXPERT FAILURES</div>
+    <div class="section-title t-04">Doctors, Traders, Journalists—Even Experts Are Probability-Blind</div>
+    <div class="section-desc">Three fields expose probability blindness most starkly: Doctors facing a 95%-accurate test mostly answer "95% chance the patient has the disease"—correct answer: ~2% (base rate 1‰; ~50 false positives among 999 healthy). Options traders confuse expected value with the most likely scenario. Journalists twist "no evidence of an effect" into "evidence of no effect." Even CNBC pundits fail to understand conditional life expectancy.</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">≈2%</div>
+        <div class="data-sm">Doctor Error<br>95% accurate → only 2% truly sick</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">$1</div>
+        <div class="data-sm">Option Expected Value<br>90% worthless + 10% earns $10</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">+9 yrs</div>
+        <div class="data-sm">Conditional LE at 73<br>vs. unconditional 5 years</div>
+      </div>
+    </div>
+    <div class="risk-bars" style="margin-top:14px;">
+      <div class="risk-row">
+        <div class="risk-label">Unconditional LE</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:62%"></div></div>
+        <div class="risk-val">73 yrs (at birth)</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Conditional LE at 73</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:70%"></div></div>
+        <div class="risk-val">+9 yrs ≈ 82</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Conditional LE at 82</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:75%"></div></div>
+        <div class="risk-val">+5 yrs ≈ 87</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">SIGNAL vs. NOISE</div>
+    <div class="section-title t-05">Noise or Signal? We Are Not Naturally Equipped to Filter the World</div>
+    <div class="section-desc">The nonlinear nature of probability is our weakest intuitive grasp. A 2% move is not twice as significant as 1%—it is four times as significant. Yet when the Dow moves 1.03 points (less than 0.01%), CNBC solemnly "explains" it. Journalists earn their living explaining noise—an honest person sees nothing to explain, but journalists are paid to explain. Taleb's strategy: on his Bloomberg terminal, he only watches large percentage moves, treating price ticks as noise unless they exceed normal daily volatility.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Noise Zone</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:20%"></div></div>
+        <div class="risk-val">Small Moves</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Ambiguous Zone</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:50%"></div></div>
+        <div class="risk-val">Moderate Moves</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Signal Zone</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Large Moves</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 KEY TAKEAWAY</div>
+  <div class="takeaway-text">We are born probability-blind—not because we are stupid, but because evolution did not equip us with brains designed to understand probability. Our genes were forged in primitive environments with narrow probability spaces, yet modern society demands precise probabilistic reasoning at every turn. Kahneman and Tversky's research proved: deeply embedded cognitive biases systematically distort our understanding of randomness. The only way forward is to acknowledge our limitations—as Taleb says: "What sets me apart is that I know I am weak in this regard. My nature constantly tries to trick me into self-defeat, so I must remain ever vigilant." Understanding probability blindness is the first step toward not being fooled by randomness.</div>
+</div>
+
+<div class="footer">
+  Fooled by Randomness · Ch.11 "We Are Probability Blind" · Nassim Nicholas Taleb · For educational use only
+</div>
+
+</div>
+</body>
+</html>

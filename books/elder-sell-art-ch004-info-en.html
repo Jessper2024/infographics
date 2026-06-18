@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading for a Living II: The Art of Selling · Chapter 4 "Taking Profits"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch004-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Trading for a Living II: The Art of Selling · Chapter 4<br>"Taking Profits"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Before every trade, a trader must answer three questions: where to take profits, where to place stops, and what's the risk/reward ratio. Professionals constantly ask; gamblers never do.
+  Amateurs avoid setting profit targets, believing they cap upside — greed drives them to hold too long until profits evaporate.
+  How to systematically set and execute profit targets across market phases? Three tools match three phases, united by "enough" (zhī zú) — contentment.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Have a target, have a method, know "enough." Profit-taking is not about predicting tops — it is about executing a plan. Three technical tools match three phases: MAs for bear-to-bull transitions, channels for established trends, support/resistance for long-term positioning. "Enough" runs through them all: decide what makes you happy, set your target, execute without regret. Every trade has two goals: profit, and becoming a better trader — the second you can always achieve.</p>
+</div>
+
+
+<!-- 01: MA Profit-Taking -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Technical Tool</div>
+    <div class="section-title t-01">Moving Average Profit-Taking: Value Regression</div>
+    <div class="section-desc">When a market transitions from bear to bull, prices typically trade below moving averages. Buy below the weekly value zone (between two EMAs), set profit targets near that value zone or the slow EMA. The Triple Screen: weekly for strategy, daily for tactics. MAs represent consensus on long-term value — price regressing to value drives the first phase of a bull market.</div>
+    <div class="flow-row">
+      <div class="flow-step">Weekly Direction<br>MACD Bullish Div.</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Daily Entry<br>Below Value Zone</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Exit at Value<br>Near EMA Range</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Channel Profit-Taking -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Technical Tool</div>
+    <div class="section-title t-02">Channel Profit-Taking: Selling Overbought Zones</div>
+    <div class="section-desc">Once the bull trend is established, prices stay above MAs, making them poor exit targets. Switch to channels (envelopes): buy at the value zone, sell above the upper band. Channels auto-adjust with volatility — targets rise as swings widen. This "riding the invisible rail" pattern repeats mid-trend. But Elder warns: it may feel like an ATM, but the market is never that simple.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📉</div>
+        <div class="dual-text">
+          <h4>MA Method</h4>
+          <p>Bear→Bull transition phase. Used when price is below MAs, target: value zone between EMAs. Example: EXTR, Gold futures.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📈</div>
+        <div class="dual-text">
+          <h4>Channel Method</h4>
+          <p>Established uptrend phase. Used when price stays above MAs, target: upper band overbought. Example: CEGE, INFY.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Support & Resistance -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Technical Tool</div>
+    <div class="section-title t-03">Support & Resistance: Long-Term Targeting</div>
+    <div class="section-desc">Deer hunters need bigger guns. Long-term trades require larger targets via support and resistance zones. S/R is built on two emotions: pain and regret. Buyers who suffered drawdowns wait painfully for breakeven; those who missed shorting regret it. Elder emphasizes: S/R is not glass — it's more like a wire fence both bulls and bears can lean against.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">IBM $73 → $100</div>
+        <div class="confusion-arrow">→ return →</div>
+        <div class="confusion-right">+37%, using S/R to anchor long-term targets</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">EUR/USD 0.85 → 1.35</div>
+        <div class="confusion-arrow">→ return →</div>
+        <div class="confusion-right">+59%, weeks or months of doing nothing</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">STTSY $6 → $16</div>
+        <div class="confusion-arrow">→ return →</div>
+        <div class="confusion-right">+167%, held 2 years, +$27K — "learned more than I earned"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Contentment -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Mental Discipline</div>
+    <div class="section-title t-04">Contentment: Greed Is Profit's Worst Enemy</div>
+    <div class="section-desc">The most important word in trading — and in life — is "enough" (zhī zú). Greedy traders want more after a win, furious at missing the exact bottom or top. Elder: you must decide how much will make you happy, and set targets accordingly. Those who demand too much become slaves to greed; those who decide what is enough gain freedom. Those willing to accept smaller profits often earn more in the long run.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Set Profit Target</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">Discipline</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Weakens Before Target</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:60%"></div></div>
+        <div class="risk-val">Accept Less</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Market Gives More</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">No Regret</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">The Contented</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Gain Freedom</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Trade Review -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Case Review</div>
+    <div class="section-title t-05">Trade Review: Continuous Evolution Through Your Journal</div>
+    <div class="section-desc">Elder highlights three core journal functions: grade every trade on entry, exit, and total, keeping averages above 50%; monthly reviews with hindsight but without regret — regret poisons your mindset; track P&amp;L by idea source to know whose advice to follow. Learn continuously from experience, and every day you become a better trader than the day before.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">A+</div>
+        <div class="data-name">EXTR</div>
+        <div class="data-sm">18¢ / 43¢ channel<br>Entry 56%, Exit 70%<br>42% channel efficiency</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">A</div>
+        <div class="data-name">CEGE</div>
+        <div class="data-sm">Total 36% efficiency<br>Exited early, still A-grade<br>A win is a win</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">Priceless</div>
+        <div class="data-name">STTSY</div>
+        <div class="data-sm">Held 2 years, +$27K<br>Target was $16 but sold early<br>"Learned more than I earned"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Profit-taking is not about predicting tops — it is about executing a plan. Three tools match three phases: MAs for transitions, channels for trends, S/R for the long haul. "Enough" (zhī zú) runs through them all: decide what makes you happy, set your target, execute without regret. Every trade has two goals: profit, and becoming a better trader. The second you can always achieve.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Source: Alexander Elder, <em>Trading for a Living II: The Art of Selling</em>, Chapter 4 "Taking Profits" · Infographic · For educational purposes
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livermore's Trading Method · Ch.2 "Deciding Timing by Rules"</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 36px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.5px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .splash strong { color: #dc2626; }
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; } .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; } .section-05 { border-left-color: #db2777; }
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; } .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; } .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; } .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; } .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .confusion-table { margin-top: 10px; }
+  .confusion-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 10px 16px; }
+  .confusion-left { flex: 1; text-align: right; font-size: 13px; color: #92400e; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .confusion-arrow { flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold; }
+  .confusion-right { flex: 1; font-size: 13px; color: #713f12; }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 20px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; } .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; } .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  @media (max-width: 640px) { .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; } .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; } .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; } .section-05 { border-top-color: #db2777; } .dual-grid, .data-row { grid-template-columns: 1fr; } .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); } .confusion-row { flex-direction: column; align-items: stretch; } .confusion-left { text-align: center; } .container { padding: 0 8px; } h1 { font-size: 26px; } .risk-row { flex-wrap: wrap; } .risk-label { width: 100%; } .risk-val { width: auto; } }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="livermore-caopan-ch002-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Livermore's Trading Method · Ch.2 "Deciding Timing by Rules"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Trends have their own breathing rhythm — rising on volume, retracing on lighter volume, then accelerating.
+  Most speculators trade every day, fixating on minor fluctuations while missing major moves.
+  How to decide timing with objective rules rather than emotions — knowing when to wait and when to exit?
+  Answer: distinguish normal vs. abnormal retracements; exit at danger signals as you would jump off the tracks before an oncoming train; seize only 4–5 major opportunities per year.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter contains Livermore's deepest insights on "timing." He reveals a truth overlooked by countless traders: trends have an intrinsic rhythm — rising on volume, retracing on lighter volume, then accelerating to new highs. The most fatal mistake is not panic-selling during retracements, but hesitating after seeing danger signals. Livermore uses the train analogy: if an express barrels toward you at 60 mph, you jump off — you don't stand there. Once it passes, you can step back anytime. He also recounts the story of a legendary speculator living in the California mountains, who traded only two or three times a year using quotes delayed by three days — yet was far more successful than those who traded every day.</p>
+</div>
+
+
+<!-- 01: Trend Rhythm -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Trend Rhythm</div>
+    <div class="section-title t-01">The Natural Breathing of Trends: Normal Retracements & Volume</div>
+    <div class="section-desc">Trends have an intrinsic rhythm — rising on volume, retracing on lighter volume, then accelerating to new highs. Livermore illustrated with a stock starting at $50: Phase 1 rises to $54, normal retracement to $52½; Phase 2 accelerates to $59–60, intraday pullbacks of only 1–1.5 points; Phase 3 leaps to $68–70 with barely any retracement — the stock becomes "scarce." Volume shrinks from enormous → moderate → thin — the hallmark of a healthy trend.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🌊</div>
+        <div class="dual-text"><h4>✅ Normal Retracement: Trend's Breath</h4><p>Rising on volume, retracing on lighter volume, moderate in scope, falling along trend lines. No need to fear — stay patient. Each retracement low should fall on the same trend line.</p></div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">⚡</div>
+        <div class="dual-text"><h4>⚠️ Abnormal Retracement: Danger Signal</h4><p>New high then 6+ pt intraday reversal, completely unexpected, never seen before in this move. Exit decisively — don't hesitate.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Danger Signal -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Danger Signal</div>
+    <div class="section-title t-02">Abnormal Retracements: The Market Is Flashing Red — Jump Like a Train Is Coming</div>
+    <div class="section-desc">Livermore described the classic danger-signal scene: the stock surges 6–10 points on extreme activity, but in the final hour, an abnormal 7–8 point break appears. The next morning it slips another point, then rallies to a firm close. But on the third day, it fails to hold its gains. His advice: "When I see a danger signal handed to me by the market, I don't argue with it. I get out!"</div>
+    <div class="flow-row">
+      <div class="flow-step">Surges<br>6–10 pts</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Abnormal intraday<br>break 7–8 pts</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Next day recovery<br>but can't hold</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⚠ Get Out Now<br>Like Jumping Off the Tracks</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Human Weakness -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Human Weakness</div>
+    <div class="section-title t-03">Wishful Thinking & Hesitation: Your Worst Enemy Is Yourself</div>
+    <div class="section-desc">Livermore painted the classic psychological trap: the speculator sees a danger signal but hesitates. The market moves against him. He tells himself, "I'll sell on the next rally." When the rally finally comes, he forgets his plan because "the market looks right again." That rally is only a brief upward flicker — the market then truly declines, and he's still in, because he hesitated.</div>
+    <div class="confusion-table">
+      <div class="confusion-row"><div class="confusion-left">After seeing danger signal</div><div class="confusion-arrow">→ wrong reaction →</div><div class="confusion-right">Hesitate: "I'll sell on the next rally"</div></div>
+      <div class="confusion-row"><div class="confusion-left">When rally comes</div><div class="confusion-arrow">→ wrong reaction →</div><div class="confusion-right">"Market looks right again," forget exit plan</div></div>
+      <div class="confusion-divider">▼ The Right Approach ▼</div>
+      <div class="confusion-row"><div class="confusion-left">Follow a rule</div><div class="confusion-arrow">→ correct action →</div><div class="confusion-right">The rule tells you when → exit decisively → save money, relieve anxiety</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Time Element -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Time Element</div>
+    <div class="section-title t-04">Less Is More: Sitting on Your Hands Is Part of Trading</div>
+    <div class="section-desc">There are only a few opportunities each year — perhaps four or five — when you may permit yourself to take a position. Livermore recounted the legendary speculator in the California mountains who received quotes three days late and only phoned his broker two or three times a year. His secret: "A real movement does not end in one day. By living far from the city, I give these movements the time they need."</div>
+    <div class="risk-bars">
+      <div class="risk-row"><div class="risk-label">Keep Records</div><div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div><div class="risk-val">Foundation</div></div>
+      <div class="risk-row"><div class="risk-label">Factor In Time</div><div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div><div class="risk-val">Core Skill</div></div>
+      <div class="risk-row"><div class="risk-label">Patient Waiting</div><div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div><div class="risk-val">Key Trait</div></div>
+      <div class="risk-row"><div class="risk-label">Precise Strike</div><div class="risk-meter"><div class="risk-fill" style="width:82%"></div></div><div class="risk-val">4–5x / year</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Integrated Rules -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Integrated Rules</div>
+    <div class="section-title t-05">The Bystander's Dividend: Profiting from Others' Mistakes</div>
+    <div class="section-desc">Livermore reveals a harsh truth: while you stand aside, those other speculators who feel they must trade every single day are laying the foundation for your next venture. You will profit from their mistakes. The first position should be profitable from the very start. After that, all you need to do is stay alert for danger signals.</div>
+    <div class="data-row">
+      <div class="data-card d1"><div class="data-big">📝</div><div class="data-name">Systematic Records</div><div class="data-sm">Record price movements systematically; study them deeply to discover the trend's inner rhythm</div></div>
+      <div class="data-card d2"><div class="data-big">⏳</div><div class="data-name">Integrate Time</div><div class="data-sm">Carefully incorporate the time element; let trends run their full course before judging</div></div>
+      <div class="data-card d3"><div class="data-big">🎯</div><div class="data-name">Strike Precisely</div><div class="data-sm">Seize only 4–5 major opportunities per year; stand aside and let the market brew the next move</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Trends have rhythm, and signals can be true or false. Hold patiently through normal retracements; exit decisively at abnormal danger signals — like jumping off the tracks before an oncoming train. Seize only 4–5 major opportunities per year. The rest of the time, stand aside, keep records, and let the time element work for you. Rules are more reliable than feelings. Discipline outlasts talent.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Livermore's Trading Method · Chapter 2 Infographic · Jesse Livermore · Based on Chapter 2 · For Educational Purposes
+</div>
+
+</div>
+</body>
+</html>

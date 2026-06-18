@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Great Compound Interest · Ch.1 "National Compound Interest"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="伟大的复利-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="伟大的复利-ch001-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Great Compound Interest · Ch.1 "National Compound Interest"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · Situation → Complication → Question → Answer</span>
+  Over 40 years of reform and opening, countless Chinese enterprises have captured era-defining opportunities to achieve compound growth.
+  Yet markets change every year—past success formulas are not replicable, and opportunity windows are narrowing.
+  How can enterprises stay ahead in a perpetually changing market? Answer: use systematic methods to sense market shifts, practice continuous innovation, and root growth in the nation's compound interest.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter serves as the book's programmatic preface. The author puts forward a core proposition: the vast majority of successful Chinese enterprises today essentially captured one or several opportunities during China's 40+ years of reform and opening, thereby forming compound interest and continuing to innovate. Markets change every year—enterprises must have a systematic approach to sensing change and practicing innovation. All enterprises ultimately grow rooted in the nation—this is "national compound interest." This chapter deconstructs this macro judgment into concrete enterprise-level logic: the transmission of compound interest from macro to micro, opportunity capture amid industrial rotation, and strategic choices during paradigm shifts.</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">40<span class="kpi-unit">+ yrs</span></div>
+    <div class="kpi-label">Reform & Opening Duration</div>
+    <div class="kpi-note">Time base for compounding</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">GDP<span class="kpi-unit" style="display:block;font-size:16px;">¥0.37T→¥114T</span></div>
+    <div class="kpi-label">1978–2021 Growth Multiple</div>
+    <div class="kpi-note">~310× increase</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">143<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Fortune Global 500 (China, 2021)</div>
+    <div class="kpi-note">Only 3 in 1995</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">64.7<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Urbanization Rate (2021)</div>
+    <div class="kpi-note">17.9% in 1978</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Macro Foundation</div>
+    <div class="section-title t-01">National Compound Interest: The Growth Engine Beneath Chinese Enterprises</div>
+    <div class="section-desc"><strong>The vast majority of successful Chinese enterprises today essentially captured one or several of the opportunities arising from over 40 years of reform and opening.</strong> Reform and opening unleashed the triple dividends of industrialization, urbanization, and globalization—forming a 40-year compound interest curve for Chinese enterprises. GDP grew from under ¥0.4 trillion to over ¥114 trillion. Each expansion of the base provided a larger platform for the next round of growth. This is not simple linear accumulation but classic compounding: each industrial upgrade unfolds atop the infrastructure, industrial workforce, and market depth accumulated in the previous round.</div>
+    <div class="flow-row">
+      <div class="flow-step">1978<br>Reform Begins</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">1980s–90s<br>Light Industry Rise</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">2001<br>WTO Accession</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">2010s<br>Urbanization & Consumption</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">2020s<br>Quality Growth & Tech</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Opportunity Cycles</div>
+    <div class="section-title t-02">Industrial Rotation: Different Protagonists for Each Window</div>
+    <div class="section-desc"><strong>Markets change every year—different periods bring fundamentally different industrial opportunity windows.</strong> The 1980s featured light manufacturing in textiles and home appliances; the 1990s saw the launch of infrastructure and real estate; the 2000s brought export-led growth and the dawn of the internet; the 2010s witnessed mobile internet and consumer brand explosions. At each stage, large enterprises emerged from nothing to become giants. But no enterprise can use the answers of one era to address the questions of all eras. Those that transcend cycles—Huawei, Midea, Anta—all master the ability to sense market changes and sustain innovation.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>❌ Eliminated Enterprises</h4>
+          <p>Those clinging to the success formulas of the previous cycle, ignoring shifts in market demand, replaced by new players during paradigm shifts.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🏆</div>
+        <div class="dual-text">
+          <h4>✅ Cycle-Transcending Enterprises</h4>
+          <p>Those that keenly sense industrial rotation signals, proactively adjust strategic direction, and use systematic methods to understand markets and sustain innovation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Systematic Method</div>
+    <div class="section-title t-03">Sense → Decide → Innovate: A Systematic Approach</div>
+    <div class="section-desc"><strong>Enterprises must have a systematic method to understand market changes and then practice innovation.</strong> The author emphasizes that this cannot be solved by "luck" or "boldness" alone. A systematic method means: first, establish a regular market intelligence mechanism—don't wait until the market has already shifted to react; second, rapidly convert frontline signals into internal decisions—compress the time gap from sensing to action; third, transform innovation from an occasional event into organizational capability—make innovation repeatable and predictable. Only then can an enterprise stay at the forefront of a perpetually changing market.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">①</div>
+        <div class="data-name">Market Sensing</div>
+        <div class="data-sm">Establish regular market intelligence to capture signals before change arrives</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">②</div>
+        <div class="data-name">Rapid Response</div>
+        <div class="data-sm">Compress frontline signals into internal decisions—shorten the sensing-to-action gap</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">③</div>
+        <div class="data-name">Continuous Innovation</div>
+        <div class="data-sm">Make innovation an organizational capability—repeatable and predictable</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Transmission Chain</div>
+    <div class="section-title t-04">From Macro to Micro: The Compound Interest Transmission Chain</div>
+    <div class="section-desc"><strong>National compound interest is not a suspended macro concept; it is transmitted downward through specific industrial links to every enterprise.</strong> At the national level, compound interest manifests in improved infrastructure, deeper industrial chains, higher educational attainment, and more mature capital markets. At the industry level: accumulated economies of scale, unified technical standards, and improved supply chain efficiency. At the enterprise level: accumulated organizational capabilities, brand equity, and deepened customer relationships. These three levels form a positive feedback loop: each national advance creates better conditions for compounding at the next level.</div>
+    <div class="flow-row">
+      <div class="flow-step">National<br>Infrastructure·Talent·Chains</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Industry<br>Scale·Standards·Efficiency</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Enterprise<br>Capability·Brand·Clients</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Paradigm Shift</div>
+    <div class="section-title t-05">When the Old Paradigm Ends: Staying Ahead in a New Era</div>
+    <div class="section-desc"><strong>The high-growth paradigm of the past 40 years is reaching its endpoint, but national compound interest is not ending—it is merely shifting gears.</strong> From scale expansion to quality growth, from demographic dividend to engineer dividend, from investment-driven to consumption-and-technology dual engines. This means the way of "capturing opportunities" must also be renewed: it is no longer about rushing into incremental markets but finding structural opportunities in stock; no longer about expanding channels and advertising but competing on product excellence, digitalization, and user experience. All enterprises ultimately grow rooted in the nation—this logic has never changed; what has changed is the method of "rooting."</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📉</div>
+        <div class="dual-text">
+          <h4>Old Paradigm (Ending)</h4>
+          <p>Extensive expansion·Investment-driven·Incremental capture·Scale above all·Boldness as advantage</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📈</div>
+        <div class="dual-text">
+          <h4>New Paradigm (Unfolding)</h4>
+          <p>Precision operations·Innovation-driven·Structural optimization·Quality above all·Professionalism as king</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The success code of Chinese enterprises is not luck but systematically identifying and capturing the industrial opportunity windows across 40 years of national development, sustaining innovation on the compounding trajectory. Markets always change; the only way to transcend cycles is through systematic methods: sensing shifts, responding rapidly, innovating continuously. National compound interest is the underlying engine, but paradigm shifts demand that entrepreneurs upgrade from "boldness" to "professionalism"—this is the departure point for every chapter that follows.</div>
+</div>
+
+<div class="footer">
+  The Great Compound Interest · Ch.1 Infographic · Based on Ch.1 content · For educational reference only
+</div>
+</div>
+</body>
+</html>

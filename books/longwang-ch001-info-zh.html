@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龙王之怒 · 第一章「长江」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Risk bars ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Quote block ── */
+  .quote-block {
+    background: #f8f6f3; border-left: 4px solid #dc2626; border-radius: 0 10px 10px 0;
+    padding: 14px 18px; margin-top: 12px; position: relative;
+  }
+  .quote-mark {
+    position: absolute; top: -8px; left: 10px;
+    font-size: 28px; color: #dc2626; font-family: Georgia, serif; line-height: 1;
+  }
+  .quote-text { font-size: 13px; color: #555; line-height: 1.8; font-style: italic; padding-top: 4px; }
+  .quote-author { font-size: 11px; color: #999; margin-top: 6px; text-align: right; }
+
+  /* ── Callout ── */
+  .callout {
+    display: flex; gap: 10px; align-items: flex-start;
+    border-radius: 10px; padding: 12px 16px; margin-top: 12px;
+  }
+  .callout.info { background: #eff6ff; border: 1px solid #bfdbfe; }
+  .callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
+  .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .callout-text { font-size: 12px; color: #555; line-height: 1.7; }
+  .callout-text strong { color: #1a1a1a; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="longwang-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="longwang-ch001-info-en.html">EN</a>
+</div>
+
+<h1>龙王之怒 · 第一章「长江」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">洪水是如何从自然现象演变成人类灾难的？</span>
+  6,380公里——亚洲第一大河、世界第三。但洪水从来不是纯粹的自然灾害。
+  从适应洪水到向水宣战，湖北地区经历了一场深刻转型：水稻驯化、堤坝建设、湿地开垦和森林砍伐共同构建了一套"致灾机制"。
+  到1931年，灾难的每一个要素都在雨水降临之前早已就位。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>1931年长江洪水并非"天灾"——它是数千年人类活动累积的结果。45百万年前喜马拉雅隆起塑造了湖北的地质凹陷；1.15万年前长江三分的湿地生态孕育了"东方亚马逊"；稻作驯化将人类与洪水的关系从"共生"推向"对抗"；而堤坝和围垦创造出一个致命悖论：人们生活在河面以下，一旦溃堤，灾难远胜自然之力。洪水是"上帝的行为"，但洪水损失主要是人类行为的结果。</p>
+</div>
+
+
+<!-- 01: 自然洪水 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">自然节律</div>
+    <div class="section-title t-01">天然洪水：长江的原始脉搏</div>
+    <div class="section-desc">4,500万年前，印度板块与欧亚板块碰撞，喜马拉雅山脉隆起。从新高地流出的水冲刷出长江流域。湖北本质上是一个向东收窄的地质凹陷——水容易汇集却难以排出。夹在东亚季风与南亚季风之间（"锤与砧"），该地区每年经历三次洪峰：春汛雪融、夏季暴雨、秋雨连绵。但正如生态学家塞斯·瑞斯所言："规律性的洪峰远非纯粹破坏——它们是'重要维持机制'，为河流和洪泛平原带来生命。"</div>
+    <div class="flow-row">
+      <div class="flow-step">春汛<br>雪融洪峰</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">夏季<br>季风暴雨</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">秋雨<br>连绵涨水</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">三次洪峰<br>年复一年</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">规律性的洪水脉冲远非纯粹破坏——它们是一种"重要维持机制"，为河流和洪泛平原带来生命。</div>
+      <div class="quote-author">—— 塞斯·瑞斯，生态学家，"洪水脉冲概念"提出者</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 水稻驯化 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">农业革命</div>
+    <div class="section-title t-02">从共生到征服：水稻的双刃剑</div>
+    <div class="section-desc">1.15万年前，湖北是"东方亚马逊"——大熊猫、大象、犀牛和鳄鱼的家园，云梦泽覆盖了大部分土地。水稻驯化（公元前7500–6000年）改变了一切：人类将野生稻非同步的种子释放培育为同步成熟——在提高产量的同时，也将整个收成暴露于单次洪水的毁灭之下。早期湿地文化种植在消退的洪泛平原上、涨水时撤离、辅以渔猎；定居农业则陷入"定居陷阱"——无法撤退，同步成熟的水稻被一次性摧毁，水田还滋生了疟疾和血吸虫病。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🌿</div>
+        <div class="dual-text">
+          <h4>早期湿地文化</h4>
+          <p>在消退的洪泛平原上种植 · 涨水时撤离 · 捕鱼、采集补充 · 与河流共生</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>定居农耕代价</h4>
+          <p>"定居陷阱"——无处可退 · 同步成熟水稻毁于一次洪水 · 水田滋生疟疾和血吸虫病</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 工程风险 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">水利工程</div>
+    <div class="section-title t-03">堤坝的虚假安全：技术锁定的致命悖论</div>
+    <div class="section-desc">从公元4世纪开始，人们在长江北岸修筑荆江大堤。堤坝和垸田使农田保持干燥——但创造了一个致命悖论：社区生活在河面以下，当堤坝溃决，洪水远比自然所能产生的任何东西更具毁灭性。马克·埃尔文将此称为"技术锁定"：一旦修建堤坝，后代就被迫承担无尽的高昂维护，无论回报多么递减。明清两代的水利周期至少重复了两次：国家投资堤坝→农业繁荣→过度围垦湿地→系统崩溃→灾难性洪水→人口锐减→国家重新投资……</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">河床上升</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">严重</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">维护负担</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">沉重</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">溃堤冲击力</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">灾难性</div>
+      </div>
+    </div>
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text"><strong>明清"水利周期"：</strong>国家投资堤坝→农业繁荣→过度围垦→系统崩溃→洪水毁灭一切→人口崩溃→国家重新投资……这个循环在第二个千年至少重复了两次。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 湿地智慧 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">湿地文化</div>
+    <div class="section-title t-04">与水共存：被遗忘的湿地智慧</div>
+    <div class="section-desc">虽然水利农业成为主导，但湖北从未完全丧失其湿地文化。陆游12世纪的浮田、Évariste Huc 1840年代的漂浮村庄、G.R.G. Worcester 20世纪统计的25,000艘居住帆船——这些"与水共存"的方式证明，适应而非征服，是在湿地环境中长期繁荣的可行策略。从竹筏覆土的漂浮农田到鸬鹚捕鱼，再到可随时撤离的"鸭蛋"小屋——这些不是落后的技术，而是经过数千年验证的生存智慧。</div>
+    <div class="flow-row">
+      <div class="flow-step">漂浮农田<br>竹筏覆土</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">鸬鹚捕鱼<br>鸟人共生</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">船上生活<br>25,000艘住家船</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">鸭蛋小屋<br>廉价·可迁移</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 致灾机制形成 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">致灾机制</div>
+    <div class="section-title t-05">当所有要素就位：1931年之前的灾难配方</div>
+    <div class="section-desc">到20世纪初，致灾机制的每个要素都已就位：自然洪水脉冲依然规律性到来；水稻种植人口高度依赖单一作物且无法撤退；堤坝系统使人们生活在河面以下的虚假安全感中；湿地文化被边缘化为"落后"；森林砍伐加剧了水土流失和径流速度。1931年的降雨并非异常——异常的是，一个社会将自己推入了与自然全面对抗的绝境。"洪水是'上帝的行为'，但洪水损失主要是人类的行为。"</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🌊</div>
+        <div class="data-name">自然条件</div>
+        <div class="data-sm">三次年度洪峰<br>地质凹陷·排水缓慢<br>季风锤砧效应</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🌾</div>
+        <div class="data-name">人类改造</div>
+        <div class="data-sm">水稻驯化·同步成熟<br>堤坝系统·技术锁定<br>湿地围垦·森林砍伐</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">💥</div>
+        <div class="data-name">灾难配方</div>
+        <div class="data-sm">所有要素在1931年前<br>已完全就位<br>雨水只是最后的触发</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">洪水从来不是纯粹的自然灾害。从水稻驯化到堤坝建设，从湿地围垦到森林砍伐，每一代人的"进步"都在累积致灾的风险。到1931年，湖北地区已经从一个与水共生的湿地社会，演变为一个与水为敌的水利帝国——而这场战争的代价，在那一年的暴雨中集中爆发。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《龙王之怒：1931年长江水灾》第一章信息图 · 陈学仁 著 · 剑桥大学出版社 2018 · 上海光启书局 2023 中译版 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

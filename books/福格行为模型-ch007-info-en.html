@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiny Habits · Chapter 7「A Systematic Approach to Behavior Change: Untangle One Knot at a Time」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.d3 { background: #fefce8; border-color: #fde68a; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="福格行为模型-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="福格行为模型-ch007-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Tiny Habits · Chapter 7「A Systematic Approach to Behavior Change: Untangle One Knot at a Time」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · Situation → Conflict → Question → Answer</span>
+  So many behaviors we want to change — lose weight, sleep early, read, exercise… But pushing multiple changes at once usually means none of them stick.
+  It's not about ability — it's about limited attention bandwidth. How do you systematically change behavior? The answer: untangle one knot at a time — follow the 7-step process, spiral forward, remove obstacles, and drive change with systems, not willpower.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter presents a systematic approach to behavior change: focus on one behavior change at a time, and only move to the next after succeeding. Fogg reveals a truth most people overlook — trying to change multiple behaviors simultaneously is destined to fail. It's not an ability issue; it's a hard constraint of attention bandwidth. He provides a complete 7-step behavior change process: Clarify the Aspiration → Explore Behavior Options → Match with Golden Behaviors → Start Tiny → Find a Good Prompt → Celebrate Successes → Troubleshoot and Repeat. More importantly, this chapter teaches us to diagnose failure using B=MAP rather than labeling ourselves — "I'm not lazy; the design is flawed."</p>
+</div>
+
+<!-- KPI cards -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">1<span class="kpi-unit"> knot</span></div>
+    <div class="kpi-label">One Knot at a Time</div>
+    <div class="kpi-note">No parallel changes; attention bandwidth is limited</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">7<span class="kpi-unit"> steps</span></div>
+    <div class="kpi-label">Complete Change Process</div>
+    <div class="kpi-note">Aspiration → Options → Match → Tiny → Prompt → Celebrate → Troubleshoot</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">B=MAP<span class="kpi-unit" style="display:block;font-size:13px;">Diagnosis</span></div>
+    <div class="kpi-label">Failure Diagnosis Tool</div>
+    <div class="kpi-note">Motivation · Ability · Prompt analysis</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">Spiral<span class="kpi-unit" style="display:block;font-size:13px;">Forward</span></div>
+    <div class="kpi-label">Change Is Not Linear</div>
+    <div class="kpi-note">After a break, return to tiny habits and restart</div>
+  </div>
+</div>
+
+<!-- 01: One Knot at a Time -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Focus Principle</div>
+    <div class="section-title t-01">Untangle One Knot at a Time: Multi-tasking = Total Collapse</div>
+    <div class="section-desc"><strong>Changing multiple behaviors simultaneously = destined to fail. Focus on one behavior change at a time; only move to the next after succeeding.</strong> It's not an ability issue — it's an attention bandwidth problem. Human attention is a scarce resource, and managing multiple behavior changes means none receives sufficient "attention budget." When you focus all your attention on one behavior, you can fine-tune prompts, adjust difficulty, celebrate earnestly, and troubleshoot obstacles — these precise operations are impossible when your attention is scattered. After successfully changing one behavior, you gain not just the habit itself, but accumulated confidence and method — that confidence automatically fuels your next change.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">💥</div>
+        <div class="dual-text">
+          <h4>Multi-tasking Changes</h4>
+          <p>Push wake-early + exercise + reading + writing at once → each half-abandoned → "I can't stick with anything" → total abandonment.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>One at a Time</h4>
+          <p>Nail waking early first → celebrate success → confidence flows to the next → then nail exercise → chain of success. Each one is a complete victory.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Behavior Change Process -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Systematic Process</div>
+    <div class="section-title t-02">The 7-Step Behavior Change Process: A Complete Roadmap from Aspiration to Habit</div>
+    <div class="section-desc"><strong>Fogg provides a 7-step systematic process from aspiration to habit, with each step essential.</strong> ① Clarify the Aspiration — what do you want to achieve? Not "I want to lose weight," but "I want to lose 5 kg by year-end." ② Explore Behavior Options — list all possible behaviors that could help your aspiration (at least 10-15). ③ Match with Golden Behaviors — filter for the one behavior that is both high-impact and highly doable. ④ Start Tiny — shrink that Golden Behavior until it's impossible to fail. ⑤ Find a Good Prompt — use an anchor or external prompt to trigger the behavior. ⑥ Celebrate Successes — celebrate immediately after each completion. ⑦ Troubleshoot and Repeat — when problems arise, diagnose with B=MAP, adjust, and continue. This is not a one-time process but a continuous cycle.</div>
+    <div class="flow-row">
+      <div class="flow-step">①<br>Clarify Aspiration</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">②<br>Explore Options</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③<br>Match Golden Behavior</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">④<br>Start Tiny</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⑤<br>Find Prompt</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⑥<br>Celebrate</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⑦<br>Troubleshoot & Repeat</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Keep Going -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Resilience Mindset</div>
+    <div class="section-title t-03">The Key Is to Keep Going: Change Spirals Forward, Not Rises in a Straight Line</div>
+    <div class="section-desc"><strong>Change doesn't rise in a straight line — it spirals forward.</strong> You may break for a day, a week, or even longer — that's okay. When your habit breaks, don't blame yourself, don't give up. Simply return to the tiny habit and restart. Perfectionism is the greatest enemy of change: negating the entire journey because of one break is like using one mistake to destroy all your previous successes. Fogg's method gives you a "never fail" safety net — you can always return to the most basic tiny habit and rebuild your sense of success. Break → Return to tiny habit → Celebrate again → Move forward. This cycle itself is part of change. The key is not to avoid mistakes, but to always choose to continue.</div>
+    <div class="flow-row">
+      <div class="flow-step">Executing<br>Going Well</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Break<br>It's Okay</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Return to Tiny<br>Restart</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Celebrate<br>Rebuild Momentum</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Spiral<br>Forward</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Butterfly Effect -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Butterfly Effect</div>
+    <div class="section-title t-04">Seeing Disruption from a Small Change: The Butterfly Effect of One Tiny Habit</div>
+    <div class="section-desc"><strong>The success of one tiny habit radiates into other areas of life.</strong> This isn't wishful thinking — it's a real chain reaction. For example: you build the habit of waking up 15 minutes earlier → you have more energy in the morning → you work more efficiently during the day → you can leave work earlier → more family time in the evening → family relationships improve → you feel better → you're more willing to wake up early the next day. This positive chain shows how changing one tiny behavioral node can trigger unexpectedly positive waves throughout your entire life system. The butterfly effect is real: you don't need to change everything — you just need to find the one tiny habit with the most leverage.</div>
+    <div class="flow-row">
+      <div class="flow-step">Wake 15 min<br>Earlier</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">More Energy<br>Calm Morning</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Efficient Work<br>Finish Early</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Leave Early<br>Family Time</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Better Relationships<br>Positive Loop</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Troubleshoot Obstacles -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Diagnostic Tool</div>
+    <div class="section-title t-05">Troubleshoot Obstacles: Diagnose with B=MAP, Don't Label Yourself</div>
+    <div class="section-desc"><strong>Analyze failure: Is motivation insufficient? Is ability too hard? Is the prompt missing? Use B=MAP to diagnose every sticking point.</strong> When your behavior change hits an obstacle, don't label yourself — "I'm just lazy," "I have no self-discipline" — these labels do nothing but create shame. The right approach is to return to the Fogg Behavior Model formula B=MAP: whether a Behavior (B) occurs depends on Motivation (M), Ability (A), and Prompt (P) being simultaneously present. Did your tiny habit break because motivation suddenly dropped? Or did the behavior become too hard? Or was the prompt (anchor) disrupted? Find the specific cause, adjust the corresponding element, and keep going. The behavior designer's mindset: "It's not that I'm deficient — the system needs optimization."</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">M</div>
+        <div class="data-name">Motivation Low?</div>
+        <div class="data-sm">Return to your aspiration, reconnect with "why," or lower difficulty to boost motivation</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">A</div>
+        <div class="data-name">Ability Insufficient?</div>
+        <div class="data-sm">Behavior is too hard — shrink it further: from "do 5 minutes" to "do 1 minute"</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">P</div>
+        <div class="data-name">Prompt Missing?</div>
+        <div class="data-sm">Anchor failed — try a different prompt or trigger method</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Behavior change doesn't require you to become a superhero — just follow a system: untangle one knot at a time. Use the 7-step process to go from aspiration to habit. When you hit a sticking point, diagnose calmly with B=MAP instead of attacking yourself. When you break, return to the tiny habit and start again. Change spirals forward; perfectionism is the greatest enemy. Most importantly — start with one tiny change and you'll discover the butterfly effect is real. Your life begins to drift irreversibly in a better direction.</div>
+</div>
+
+<div class="footer">
+  Tiny Habits Chapter 7 Infographic · Based on Chapter 7 content · For learning reference only
+</div>
+</div>
+</body>
+</html>

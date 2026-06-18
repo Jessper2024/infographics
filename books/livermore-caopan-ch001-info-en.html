@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livermore's Trading Method · Ch.1 "Speculation Is a Challenge"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="livermore-caopan-ch001-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Livermore's Trading Method · Ch.1 "Speculation Is a Challenge"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Speculation is the most magical business on earth — but not for the foolish, the lazy, or the get-rich-quick adventurer.
+  Most treat speculation as gambling, seeking quick profits without sweat or study.
+  How to elevate speculation from gambling to a consistently profitable serious business? Answer: keep your own records, wait for market confirmation, master hope and fear, fuse time and price into a framework.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Backed by 40 years of trading experience, Livermore draws a hard line from the very first page: speculation is a serious business, never gambling. This chapter sets the tone for the entire book — you must keep your own records, think with your own brain, and reach your own conclusions. Your success will be in direct proportion to the honesty and sincerity of your own efforts. Livermore also identifies the speculator's number one enemy — the emotional inversion of hope and fear — and for the first time introduces the core analytical framework of fusing time and price, along with five iron trading rules bought with real money.</p>
+</div>
+
+
+<!-- 01: Mindset -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Mindset Prerequisite</div>
+    <div class="section-title t-01">Speculation Is a Serious Business, Never Gambling</div>
+    <div class="section-desc">Livermore opens with a hard line: if you have a speculative temperament, treat speculation as a serious business. Be diligent, and never lower yourself to the level of the outsider. Outsiders dismiss speculation as mere gambling — and they have paid dearly for this delusion. Your success will be in direct proportion to the honesty and sincerity of your own efforts.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🚫</div>
+        <div class="dual-text">
+          <h4>❌ Should Not Speculate</h4>
+          <p>The foolish, the lazy-minded, the psychologically unfit, the get-rich-quick gambler — those who rush in end up penniless.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>✅ Suited For This</h4>
+          <p>Those with speculative instinct willing to study and treat it as serious business. Core: keep your own records, think independently, build and follow your own rules.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Entry Discipline -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Entry Discipline</div>
+    <div class="section-title t-02">Wait for Market Confirmation — Act Only at the Pivotal Moment</div>
+    <div class="section-desc">Speculation is anticipating future market movements — but you must wait until the market itself validates your opinion before signing off on your judgment. Even if your judgment is ultimately correct, acting too early can still cause losses. For a stock at $25 expected to reach $50, Livermore waits until it makes a new high (e.g. $30). Only then has the market confirmed your thesis through its own behavior.</div>
+    <div class="flow-row">
+      <div class="flow-step">Form a well-founded<br>definite opinion</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Observe patiently<br>— don't rush in</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Stock makes a new high<br>or shows strong movement</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Pivotal psychological moment<br>— commit first trade</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Psychology -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Psychology Warfare</div>
+    <div class="section-title t-03">Taming Hope and Fear: Your Worst Enemy Is Within</div>
+    <div class="section-desc">The speculator's greatest enemy resides within: being fearful when you should be hopeful, and hopeful when you should be fearful. Speculation is like poker — everyone is tempted to "play every hand," and this common human weakness is the number one cause of ruin. The successful speculator must act as his own insurance broker, vigilantly guarding his capital account.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Up 2 points</div>
+        <div class="confusion-arrow">→ wrong reaction →</div>
+        <div class="confusion-right">Fear of losing the gain → sell immediately (cutting profits short)</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Down 2 points</div>
+        <div class="confusion-arrow">→ wrong reaction →</div>
+        <div class="confusion-right">Hope it's "just a temporary reaction" (letting losses run)</div>
+      </div>
+      <div class="confusion-divider">▼ The Right Approach ▼</div>
+      <div class="confusion-row">
+        <div class="confusion-left">When winning</div>
+        <div class="confusion-arrow">→ correct action →</div>
+        <div class="confusion-right">Hold firm and let profits ride the trend — "profits take care of themselves"</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">When losing</div>
+        <div class="confusion-arrow">→ correct action →</div>
+        <div class="confusion-right">Cut decisively before a small loss becomes a big hole — "losses never do"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Analytical Framework -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Analytical Framework</div>
+    <div class="section-title t-04">Fusing Time and Price: Your Records Are Your Compass</div>
+    <div class="section-desc">The core of Livermore's trading system: only after incorporating the time element can your records predict major market movements with reliable accuracy. Over 40 years, he spent countless nights reflecting and mornings testing new ideas. He emphasizes: fill in the figures yourself — "in doing the work yourself, you will be amazed at how many ideas come to you."</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Time Element</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:92%"></div></div>
+        <div class="risk-val">Core Weight</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Price Element</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div>
+        <div class="risk-val">Core Weight</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Personal Records</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Indispensable</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Independent Thought</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">Critical</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Iron Rules -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Iron Trading Rules</div>
+    <div class="section-title t-05">Five Commandments You Must Never Violate</div>
+    <div class="section-desc">Livermore explicitly lists several iron rules that must be "burned into your mind" — lessons bought with real money over 40 years. These rules appear simple, but consistently executing them in every trade is what separates winners from losers.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">①</div>
+        <div class="data-name">Never Sell Because<br>a Stock Looks High</div>
+        <div class="data-sm">A stock can rise from $50 to $150 with good earnings and sound management</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">②</div>
+        <div class="data-name">Never Buy Because<br>a Stock Has Fallen</div>
+        <div class="data-sm">Deep declines usually have solid reasons; it may still be at an extreme high</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">③</div>
+        <div class="data-name">Never Buy on Reactions<br>Never Sell on Rallies</div>
+        <div class="data-sm">Buy only on new highs in uptrends; sell short only on new lows in downtrends</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Speculation is not gambling — it is a serious business requiring independent judgment, patient waiting, and strict discipline. Success comes not from predicting the market, but from: keeping your own records, waiting for market confirmation before acting, letting profits run while cutting losses decisively, fusing time and price into a decision framework, and obeying the iron rules — never sell because a stock looks high, never buy because it has fallen sharply, and never average down.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Livermore's Trading Method · Chapter 1 Infographic · Jesse Livermore · Based on Chapter 1 · For Educational Purposes
+</div>
+
+</div>
+</body>
+</html>

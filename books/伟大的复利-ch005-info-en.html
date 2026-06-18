@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Great Compounding · Ch5「The Compounding of Investment」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="伟大的复利-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="伟大的复利-ch005-info-zh.html">English / 中文</a>
+</div>
+
+<h1>The Great Compounding · Ch5「The Compounding of Investment」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Vast numbers of retail investors treat the stock market as a casino, relying on tips for investment, only to leave with losses. A select few achieve wealth leaps through cyclical compounding.
+  Why do such different fates unfold in the same market? The answer: build your own closed-loop investment system, understand the power of cycles, and let compounding work for you.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter opens with the "tip trap" that ensnares retail investors, revealing the grim reality of money earned by luck and lost by tips. Through vivid stories of entrepreneurs who "bet it all," it examines the roles of temperament and luck in compounding. Drawing from the author's deep investment reflections during the unique conditions of 2022, it distills five core investment principles. Finally, it introduces Kondratiev wave theory to help readers understand how to position themselves amid the ebb and flow of cycles—moving from tip-driven to system-driven, and from a gambler's mindset to compounding thinking, marks the essential path to maturity for every ordinary investor.</p>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">&lt;10<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Retail investors who profited in 2020 bull</div>
+    <div class="kpi-note">After the bubble burst</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">$60K<span class="kpi-unit">+</span></div>
+    <div class="kpi-label">Bitcoin broke through $60,000</div>
+    <div class="kpi-note">15-min 20% crashes became normal</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">7<span class="kpi-unit"> Domains</span></div>
+    <div class="kpi-label">National New Infrastructure areas</div>
+    <div class="kpi-note">5G · UHV · Intercity Rail · EV Charging · Big Data · AI · Industrial IoT</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">~2<span class="kpi-unit">×</span></div>
+    <div class="kpi-label">Major uptrends to catch in a lifetime</div>
+    <div class="kpi-note">Kondratiev waves shape wealth destiny</div>
+  </div>
+</div>
+
+<!-- 01: The Tip Trap -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Tip Trap</div>
+    <div class="section-title t-01">Money Earned by Luck, Lost by Chasing Tips</div>
+    <div class="section-desc"><strong>The single greatest source of retail investor losses: treating "tips" as everything while never asking the critical questions.</strong> During the 2020 stock market frenzy, only 30% of retail investors were profitable; after the bubble burst, fewer than 10% remained. People blindly worship tips but never ask: how many hands has this tip passed through? Is it already priced into the market? When should you exit? Where is the margin of safety? Technical, fundamental, and macro schools all have their merits—but what truly matters is building your own closed-loop investment system. Many successful business owners treat the stock market as a casino—"throw a few million in, if I lose it, no big deal"—and this very attitude destroys them. Graham taught us that markets do not reflect real value in real time; you need a framework. Value investing, in part, earns "compensation for enduring the torment." When Tencent split its shares to offer a 100-yuan entry point, most still thought it was expensive—because they didn't understand the moat of social networks. The hardest thing in the world is not discovery, but persistence and perseverance.</div>
+    <div class="flow-row">
+      <div class="flow-step">Retail investors<br>worship "tips = everything"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Never question<br>margin of safety · exit timing</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Treat market as casino<br>"if I lose, no big deal"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Result: losses<br>&lt;10% profitable</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: The Temperament Gamble -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Temperament Gamble</div>
+    <div class="section-title t-02">Those Who Bet It All Make the Best Stories</div>
+    <div class="section-desc"><strong>Identical era, same opportunities—different temperament leads to radically different outcomes.</strong> The decade following China's 2001 WTO accession was the golden window. Xiaolin and Laowang co-founded a container logistics business with 40 trucks. Xiaolin was conservative, scaling back after 2005; Laowang went all-in and was crushed by the 2008 financial crisis. The conservative one—Xiaolin—won. Another pair: Xiao Xu joined eBay (EachNet) in 2005 at 400K/year, a decent career but never caught the biggest wave; Xiao Ke joined Tencent and ended up with over 100 million from stocks and Shenzhen property. One million Xiao Kes joined one million small companies—only one became Tencent. Tiny differences at the starting point, amplified by the compounding of time, produce vastly different life trajectories. A top-3 cold chain company in China started as vegetable vendors in the 90s who realized "freight costs more than the produce" and pivoted to logistics—cognition shapes choice, and choice shapes destiny.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚡</div>
+        <div class="dual-text">
+          <h4>Laowang · All-In (Lost)</h4>
+          <p>Expanded from 40 trucks into a logistics empire, bet everything on high growth, wiped out by the 2008 financial crisis.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🛡️</div>
+        <div class="dual-text">
+          <h4>Xiaolin · Conservative (Won)</h4>
+          <p>Also started with 40 trucks, sensed risk in 2005 and proactively scaled down, survived the crisis to become the ultimate winner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Era Awareness -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Era Awareness</div>
+    <div class="section-title t-03">Personal Investment Reflections, 2022</div>
+    <div class="section-desc"><strong>The investment world underwent a fundamental transformation during the COVID era—liquidity dominates everything, old and new forces violently alternate.</strong> The Harvard virus report made the author feel how small humanity truly is—trends have broken free from any predictable boundary. NIO went from near-bankruptcy to a dramatic reversal; the investor who bought at $1 and sold at 3× felt worse than those who never bought at all. On the A-share battlefield, CATL and Tianqi Lithium saw prices go vertical—liquidity became the single most important short-term indicator. Bitcoin breached $60K; 15-minute 20% crashes vaporizing $20 billion became routine. A new generation of fund managers and retail investors entered simultaneously, while old strategies died rapidly. In the primary market, VCs scrambled madly for a seat at the table—the fear of missing out far exceeded the fear of losing. In such a turbulent era, individual investors must return to fundamental logic: understand the era's dominant theme, respect liquidity, manage emotions, and refuse to be harvested by extreme market volatility.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⚡</div>
+        <div class="data-name">Liquidity Reigns</div>
+        <div class="data-sm">The most critical short-term indicator; A-share leaders surge vertically—capital consensus is direction</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔄</div>
+        <div class="data-name">New Replaces Old</div>
+        <div class="data-sm">A new generation of fund managers and retail investors enter together; old strategies accelerate toward extinction</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🎰</div>
+        <div class="data-name">Table Anxiety</div>
+        <div class="data-sm">Primary market VCs scramble for a seat at the table; fear of missing out far exceeds fear of losing</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Investment Principles -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Investment Mindset</div>
+    <div class="section-title t-04">Five Core Principles: A Survival Guide for Ordinary Investors</div>
+    <div class="section-desc"><strong>The author distills five inviolable principles from years of investment practice, applicable to every ordinary investor.</strong> First, never do things where winning has limited upside but losing means total ruin—asymmetric risk must be avoided. Second, stay clear of liquidity traps—illiquid assets are always discounted. Third, rationally use emotional trading to gain a premium rather than being emotionally harvested—be the hunter, not the prey. Fourth, when higher-level people share investment logic, don't try to prove you're smarter—listen first, digest later. Fifth, your main career is your life's primary uptrend—building compounding effects in your professional domain is far more reliable than gambling in the secondary market. For ordinary Chinese people, the ultimate "Great Compounding" formula is: hold shares in China's best companies long-term (not short-term speculation), connect with insightful people, choose a non-automatable career with compounding effects, and become an expert.</div>
+    <div class="flow-row">
+      <div class="flow-step">① Never bet<br>on total ruin</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">② Avoid<br>liquidity traps</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③ Exploit<br>emotion, don't be harvested</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">④ Respect<br>higher-level thinkers</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⑤ Your career<br>is your main uptrend</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Cycle Positioning -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Cycle Positioning</div>
+    <div class="section-title t-05">Fortune Depends on Kondratiev Waves: Find Your Place in the Cycle</div>
+    <div class="section-desc"><strong>"Fortune in life depends on Kondratiev waves"—Zhou Jintao's famous words are the underlying code of the entire investment world.</strong> Each Kondratiev wave has created a generation of immense wealth: Britain through steam and railways, the US and Europe through steel, electricity, and automobiles; now we stand at the tail of the current wave. The seven New Infrastructure domains—5G, UHV, intercity high-speed rail, EV charging stations, big data centers, AI, and industrial internet—form the foundation of the next wave. At the tail of a cycle, the optimal strategy is to stay "half a step behind the frontier thinkers"—two steps ahead is fatal; half a step ahead is just right. Real cases of adaptation: drone sky shows replacing fireworks, legal auction housing agents emerging as a new profession, modular prefab homes (one-week delivery, villa quality for under one million), restaurant equipment recycling companies profiting from COVID closures. In every cycle, find your entry point from subtle supply-demand dynamics—in our lifetime, we may only have two chances to catch the main uptrend. The trend toward extreme value-for-money will intensify as a new era of rational consumption arrives. The author himself abandoned an automotive engineering degree after calculating that the industry would reach saturation by his peak years—and pivoted to new media and branding.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⏳</div>
+        <div class="dual-text">
+          <h4>Old Cycle (Ending)</h4>
+          <p>Traditional infrastructure · Real-estate driven · Scale expansion · Demographic dividend · High-leverage growth</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🚀</div>
+        <div class="dual-text">
+          <h4>New Cycle (Emerging)</h4>
+          <p>7 New Infrastructure domains · Tech-driven · Extreme value-for-money · Engineer dividend · Rational consumption era</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The essence of investing is not "beating the market" but "beating yourself." Upgrading from tip-driven to system-driven, and evolving from a gambler's mindset to compounding thinking—this is the essential growth path for every investor. For ordinary people, the ultimate formula for "Great Compounding" is not betting on a single ten-bagger stock but: holding shares in China's best companies long-term, connecting with insightful people, building compounding effects in a career that cannot be automated, and becoming an expert. In our lifetime, we may only have two chances to catch the main uptrend—when opportunity knocks, will you be ready?</div>
+</div>
+
+<div class="footer">
+  The Great Compounding · Ch5 Infographic · Based on Chapter 5 content · For educational reference only
+</div>
+</div>
+</body>
+</html>

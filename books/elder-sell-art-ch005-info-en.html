@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The New Sell & Sell Short · Chapter 5 "Stop Losses"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 96px; text-align: right; flex-shrink: 0; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="elder-sell-art-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="elder-sell-art-ch005-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The New Sell &amp; Sell Short · Chapter 5<br>"Stop Losses"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Every trade must have a stop loss — this is the baseline of trading integrity. A system without stops is like racing without a seatbelt.
+  Most traders either refuse to stop out due to the "endowment effect," or place stops at the most obvious level below prior lows — exactly where professional traders hunt.
+  Where to set the stop? How to execute? When to move? Answers span the Iron Triangle, Nick's Stop, hard-stop principles, and trailing strategies.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>A stop loss connects the trader to reality — you must answer a fundamental question: is the potential profit worth the risk? Trading without a stop is gambling. Holding a losing position not only costs money but consumes attention, preventing you from taking better trades. Like a toothache that steals more focus than expected, a losing position shackles the trader. Stops are the best tool we have — they're not perfect, but without them, you have nothing.</p>
+</div>
+
+
+<!-- 01: Iron Triangle -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Foundation</div>
+    <div class="section-title t-01">The Essence of Stop Losses &amp; the Iron Triangle</div>
+    <div class="section-desc">A stop connects the trader to reality. Before entering, complete the Iron Triangle: per-share risk (entry − stop) → max loss per trade (account × 2%) → max shares. Never take a trade with less than 2:1 reward/risk. You trade money, not stocks — you trade risk. The core rule: know your entry price and your stop price at the same time.</div>
+    <div class="flow-row">
+      <div class="flow-step">Calculate<br>Per-Share Risk</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">2% Account<br>Loss Cap</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Determine<br>Max Shares</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Market vs Limit -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Execution</div>
+    <div class="section-title t-02">Market Orders vs. Limit Orders for Stops</div>
+    <div class="section-desc">All orders fall into two categories: market (guarantees fill, not price) and limit (guarantees price, not fill). Elder's approach: use limit orders for entries and targets ("trade at my price or walk the plank"), but always use MIT market orders for protective stops — never negotiate when running for the exit. Saving a few dollars on slippage with a limit stop can lead to catastrophic gap losses.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Market Stop (MIT)</h4>
+          <p>Guarantees immediate exit, accepting slippage. When trouble arrives, don't haggle — get out. Protective stops must use market orders.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>Limit Order as Stop</h4>
+          <p>Saving pennies on slippage may cost major losses. In fast declines, limit orders won't fill — price can gap far below your stop.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Hard vs Soft -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Discipline</div>
+    <div class="section-title t-03">Hard Stops vs. Soft Stops</div>
+    <div class="section-desc">A hard stop is an order placed in the market, executed by your broker. A soft stop is a price you keep in mind and manually act on. Elder is blunt: "For most beginners, a soft stop is equivalent to having no stop at all." Hard stops eliminate hesitation — mandatory for beginners. Soft stops are only for traders profitable over one year, demanding iron discipline and real-time monitoring.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">🔒 Hard Stop</div>
+        <div class="confusion-arrow">→ traits →</div>
+        <div class="confusion-right">Order placed in market, no screen-watching, eliminates hesitation — mandatory for beginners, automatic execution with no excuse space</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">🧠 Soft Stop</div>
+        <div class="confusion-arrow">→ traits →</div>
+        <div class="confusion-right">Mental stop, manual exit, requires real-time monitoring and iron discipline — only for ≥1-year profitable traders: "Professional stunt — do not imitate"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Placement -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Placement</div>
+    <div class="section-title t-04">The Art of Stop Placement: Don't Be the Pros' Prey</div>
+    <div class="section-desc">Setting a stop one tick below the prior low is the worst approach — that's the market's most crowded stop zone. Pros wait to trigger those stops and scoop discounted shares. Nick's Stop Method: find the bar with the lowest low, take the two adjacent bars, and place your stop just below the lower of their lows. This tight-trailing stop says: hit my stop if you must (it's small), or give me my gains.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Nick's Stop</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Recommended</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Swing Trading</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:25%"></div></div>
+        <div class="risk-val">Tight Stop</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Long-Term</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:75%"></div></div>
+        <div class="risk-val">Wide Stop</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">1 Tick Below Low</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:5%"></div></div>
+        <div class="risk-val">Worst</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Trailing Stops -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Trend Amplifier</div>
+    <div class="section-title t-05">Trailing Stops: The One-Way Street to Bigger Profits</div>
+    <div class="section-desc">A stop is a one-way street — you can only tighten it, never loosen. When long, move stops only up; when short, only down. If price falls and you lower your stop, you are indulging your mistake. After reaching targets with no bearish signals, switch to a trailing stop: Parabolic SAR, SafeZone, or Volatility Reduction — three tools that let the market decide when to take you out.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📐</div>
+        <div class="data-name">Parabolic SAR</div>
+        <div class="data-sm">Wilder, 1976<br>AF: 0.02 → 0.20<br>Excellent in trends</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🛡️</div>
+        <div class="data-name">SafeZone</div>
+        <div class="data-sm">22-day EMA for trend<br>Avg noise × 2–3<br>Strong trends only</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📉</div>
+        <div class="data-name">Volatility Cut</div>
+        <div class="data-sm">2.7σ → 1.7σ channel<br>Exit on close inside<br>Used in ~2/3 of trades</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">A stop loss is an inseparable part of any trading system — complete the Iron Triangle before entering. Never place stops at the market's most crowded obvious levels — use Nick's Stop to dramatically reduce shake-out risk. For execution: market orders for stops, hard stops for beginners. In trends, the stop is a one-way street — master trailing strategies to let profits run, and let the market tell you when it's time to leave.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Source: Alexander Elder, <em>The New Sell &amp; Sell Short</em>, Chapter 5 "Stop Losses" · Infographic · For educational purposes
+</div>
+
+</div>
+</body>
+</html>

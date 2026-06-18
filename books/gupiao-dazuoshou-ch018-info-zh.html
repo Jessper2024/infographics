@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股票大作手回忆录 · 第18章「市场历史重演，交易也重演」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="gupiao-dazuoshou-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="gupiao-dazuoshou-ch018-info-en.html">中文 / English</a>
+</div>
+
+<h1>股票大作手回忆录 · 第18章「市场历史重演，交易也重演」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  凡送到他家磨坊的都是谷子——所有市场信号经过经验的自动加工，最终形成"盘感"。
+  利弗莫尔用美国钢铁顶部清仓和棉花反转两大战役证明：市场不存在神秘的"第六感"，
+  只存在观察、经验、记忆和数学这四大支柱支撑的千锤百炼之职业本能。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章揭示投机成功的核心秘密：职业本能来自持续研究＋经验积累＋历史记忆，当市场信号出现时瞬间判断，当机立断。利弗莫尔澄清他的成功并非来自"黑猫的启示"，而是无数细小警告信号的综合——正如医生诊断，外行以为是直觉，实则是千锤百炼的职业反应。同时通过群体行为法则、棉花反转战役、小麦纸带阅读等案例，完整呈现了一位职业交易者的思维操作系统。</p>
+</div>
+
+
+<!-- 01: 核心澄清 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">认知澄清</div>
+    <div class="section-title t-01">不是直觉，是潜意识在工作</div>
+    <div class="section-desc">利弗莫尔的朋友将他在顶部完美清仓72000股美国钢铁归功于"黑猫的启示"。利弗莫尔澄清：真相是他看到许多细小警告信号——没有哪一个单独清晰到足以提供确定原因，但所有信号综合起来形成了"盘感"。同时清仓犹他铜业时价格下挫5点——证明不加仓的判断同样明智。他没有被账面利润的幻觉迷惑，而是遵循市场本身给出的答案。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🎩</div>
+        <div class="dual-text">
+          <h4>外行眼中的误解</h4>
+          <p>灵感、第六感、神秘直觉、黑猫的启示——外人以为交易大师靠某种不可言说的天赋做出完美判断。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">⚙️</div>
+        <div class="dual-text">
+          <h4>利弗莫尔的真相</h4>
+          <p>观察积累经验，经验形成记忆，记忆结合数学产生判断，判断推动当机立断——这是可复制的职业操作系统。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 群体行为法则 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">核心法则</div>
+    <div class="section-title t-02">群体行为法则：跟随领头羊，警惕落伍者</div>
+    <div class="section-desc">买入拒绝追随群体领头羊的股票，务必慎之又慎——内部人不愿买进自己的股票，必定有你不了解的原因。利弗莫尔用切斯特汽车和圭亚那黄金两个案例论证：纸带在新闻披露"钻到贫瘠岩石"之前很久就发出了警告。"如果沿着铁轨走路，看见一列火车正以60英里的时速迎面疾驰而来，还继续在铁轨上走吗？伙计，我闪到一边。"</div>
+    <div class="flow-row">
+      <div class="flow-step">发现板块<br>落伍股</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">纸带发出<br>警告信号</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">确认内部人<br>正在卖出</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">果断做空<br>不抱幻想</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">市场清算<br>验证判断</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 棉花反转 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">实战反转</div>
+    <div class="section-title t-03">棉花翻盘：从亏损百万到两天翻盘</div>
+    <div class="section-desc">利弗莫尔在棉花上亏损100万美元后认赔平仓。次日他观察到棉花下跌后没有像过去数周那样立刻反弹——这意味着最小阻力路线已从上升变为下降。"不下注不知道对错"——他立即卖出1万包测试，价格下跌50点。确认后从午餐桌边跳起来再加仓，到华盛顿后又卖出4万包，市场毫无支撑。昨天促使平仓的理由如果今天不再成立，就要立即反向行动。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">昨天：多头持仓</div>
+        <div class="confusion-arrow">→ 反转信号出现 →</div>
+        <div class="confusion-right">今天：果断做空</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">过去数周：下跌必反弹</div>
+        <div class="confusion-arrow">→ 规律被打破 →</div>
+        <div class="confusion-right">最小阻力路线已变</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">账面亏损：-100万美元</div>
+        <div class="confusion-arrow">→ 两天内逆转 →</div>
+        <div class="confusion-right">利润覆盖全部亏损</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">普通交易者：认赔离场</div>
+        <div class="confusion-arrow">→ 职业反应 →</div>
+        <div class="confusion-right">反向加仓追击</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 职业素养四支柱 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">职业素养</div>
+    <div class="section-title t-04">行医般的职业本能：四大支柱支撑</div>
+    <div class="section-desc">训练一名股票交易者和训练一名医生差不多——都需要经年累月的理论学习与终身实践。交易者仰仗四大支柱：观察、经验、记忆和数学。他可以转移知识（卡片索引上的具体事实），但转移不了经验。某人或许知道该怎么做，但如果行动不够快，仍然会赔钱——"当机立断"是职业本能的最后一环。利弗莫尔举例：冬小麦因罢工延误运输、春小麦提前收割将同时涌入市场→两季小麦叠加→价格必跌→立刻卖出。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">观察（Observation）</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:96%"></div></div>
+        <div class="risk-val">基石</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">经验（Experience）</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">不可转移</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">记忆（Memory）</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:82%"></div></div>
+        <div class="risk-val">历史模式</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">数学（Mathematics）</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:78%"></div></div>
+        <div class="risk-val">逻辑推理</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 纸带哲学 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">终极真相</div>
+    <div class="section-title t-05">纸带是最好的内幕消息</div>
+    <div class="section-desc">利弗莫尔追踪小麦市场：卖出25万蒲式耳测试，价格仅下跌1/4美分——信号不够明确。再卖25万蒲式耳，价格下跌1.25美分，且买单零打碎敲——说明市场没有真实买盘。于是他果断卖出200万蒲式耳。几天后市场"强迫"他再卖200万蒲式耳，最终小麦暴跌6美分。纸带从不撒谎，它只对懂得阅读的人说话。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔍</div>
+        <div class="data-name">测试市场</div>
+        <div class="data-sm">用小仓位试探<br>市场承接你的方式<br>就是最好的内幕消息</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📐</div>
+        <div class="data-name">解读信号</div>
+        <div class="data-sm">买单零打碎敲=无真实买盘<br>市场毫无支撑=阻力最小<br>路线就在下方</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚡</div>
+        <div class="data-name">当机立断</div>
+        <div class="data-sm">从形成判断到卖出<br>不浪费一秒时间<br>"不下注不知道对错"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">市场不存在神秘的"第六感"，只存在千锤百炼的职业本能。观察积累经验，经验形成记忆，记忆结合数学产生判断，判断推动当机立断。当这一切融入血液，外人眼中的"直觉"不过是专业素养的自动反应。纸带永远是最好的内幕消息——它从不撒谎，但只有懂得阅读的人才能听懂它的语言。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《股票大作手回忆录》第18章信息图 · 埃德温·勒菲弗 著 · 丁圣元译 · 基于第18章内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

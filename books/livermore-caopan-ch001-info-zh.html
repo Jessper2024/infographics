@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>利弗莫尔操盘术 · 第1章「投机，是一项挑战」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison (section 01) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Confusion pairs (section 03) ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  /* ── Risk bars (section 04) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards (section 05) ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="livermore-caopan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="livermore-caopan-ch001-info-en.html">中文 / English</a>
+</div>
+
+<h1>利弗莫尔操盘术 · 第1章「投机，是一项挑战」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  投机是天下最具魔力的行业，但愚蠢、懒惰、心理不健全或企图一夜暴富的人不能从事。
+  多数人将投机视为赌博，只想"快快挣钱"却不愿付出汗水与研究。
+  如何将投机从赌博升华为可持续盈利的严肃商业？答案：亲力亲为做行情记录、等市场证实判断后才行动、管理希望与恐惧、融合时间与价格建立准则。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>利弗莫尔以40年投机生涯为背书，开篇即划下红线：投机是一门严肃生意，绝非赌博。本章奠定全书基调——你必须自己坚持做行情记录、自己动脑思考、自己得出结论。成功的果实与你在亲自努力中表现出来的诚心直接成正比。利弗莫尔同时揭示了投机者的头号敌人——希望与恐惧的情绪错位，并第一次提出了融合时间与价格的核心分析框架，以及五条用真金白银换来的交易铁律。</p>
+</div>
+
+
+<!-- 01: 心智前提 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">心智前提</div>
+    <div class="section-title t-01">投机是一门严肃生意，绝非赌博</div>
+    <div class="section-desc">利弗莫尔开篇便划下红线：如果天性具有投机倾向，就应当将其视为严肃生意，诚心敬业，绝不自贬身价向门外汉看齐。门外汉想也不想便将投机看成单纯的赌博——但他们已经为此付出了惨重代价。你的成功果实与你在亲自努力过程中表现出来的诚心直接成正比。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🚫</div>
+        <div class="dual-text">
+          <h4>❌ 不能干的人</h4>
+          <p>愚蠢的人、懒得动脑子的人、心理不健全的人、企图一夜暴富的冒险家——这些人贸然卷入，终将一贫如洗。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>✅ 适合的人</h4>
+          <p>有投机倾向、愿付出汗水研究、将投机视为严肃生意的人。核心要求：亲力亲为做记录、独立动脑思考、建立并遵守自己的准则。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 入场纪律 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">入场纪律</div>
+    <div class="section-title t-02">等待市场证实，在关键心理时刻才出手</div>
+    <div class="section-desc">投机就是预期即将到来的市场运动——但必须等到市场本身验证了你的观点之后，才能在自己的判断上签字画押。即使你的判断最终被证明正确，过早行动同样会导致亏损。利弗莫尔对一只从25美元预期涨到50美元的股票，会耐心等到它创出新高（比如30美元）时才买入——此时市场已经用行动证实了你的判断。</div>
+    <div class="flow-row">
+      <div class="flow-step">形成明确判断<br>基于充分理由</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">耐心观察等待<br>不急于一头扎进去</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">市场创新高<br>或出现强烈运动</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">关键心理时刻<br>果断投入第一笔</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 心理博弈 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">心理博弈</div>
+    <div class="section-title t-03">驯服希望与恐惧：投机者的头号敌人来自内心</div>
+    <div class="section-desc">投机者的头号敌人来自内心：本该害怕的时候却满怀希望，本有希望的时候却惊恐不安。投机酷似扑克——每个人都被"每一手牌都想赢"的人性弱点诱惑，而这正是溃败之源。成功的投机者必须充当自己的保险经纪人，小心守护资本账户，决不允许亏损大到威胁未来操作。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">盈利2个点时</div>
+        <div class="confusion-arrow">→ 错误反应 →</div>
+        <div class="confusion-right">恐惧回吐，赶紧平仓落袋为安（截断利润）</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">亏损2个点时</div>
+        <div class="confusion-arrow">→ 错误反应 →</div>
+        <div class="confusion-right">满怀希望，认为是"暂时回调"（让亏损奔跑）</div>
+      </div>
+      <div class="confusion-divider">▼ 正确的应对方式 ▼</div>
+      <div class="confusion-row">
+        <div class="confusion-left">盈利时</div>
+        <div class="confusion-arrow">→ 正确做法 →</div>
+        <div class="confusion-right">坚定持有，让利润跟随趋势扩大——"利润能自己照顾自己"</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">亏损时</div>
+        <div class="confusion-arrow">→ 正确做法 →</div>
+        <div class="confusion-right">果断止损，避免小亏变大窟窿——"亏损永不自动了结"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 分析框架 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">分析框架</div>
+    <div class="section-title t-04">融合时间与价格：行情记录是判断的指南针</div>
+    <div class="section-desc">利弗莫尔交易体系的核心：将时间要素纳入通盘考虑后，行情记录才能以可靠精度预测未来重大市场运动。40年中他不断在深夜反省、清晨检验新点子，逐渐开发出成熟的新式行情记录方法。他特别强调：必须亲手填写数字——"在亲力亲为的过程中，灵感会如泉涌"。</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">时间要素</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:92%"></div></div>
+        <div class="risk-val">核心权重</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">价格要素</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div>
+        <div class="risk-val">核心权重</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">亲手记录</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">不可或缺</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">独立判断</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">至关重要</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 交易铁律 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">交易铁律</div>
+    <div class="section-title t-05">五大不可违背的操盘准则</div>
+    <div class="section-desc">利弗莫尔在本章中明确列出了数条必须"深深烙印在脑子里"的铁律——这是他在40年投机生涯中用真金白银换来的。这些规则看似简单，但能够在每一笔交易中始终如一地执行，才是区分赢家与输家的分水岭。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">①</div>
+        <div class="data-name">不因价高卖出</div>
+        <div class="data-sm">一只股票从50美元可能继续涨到150美元，只要盈利良好、管理优秀</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">②</div>
+        <div class="data-name">不因深跌买入</div>
+        <div class="data-sm">深跌往往有扎实理由，当前可能仍在极端高位</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">③</div>
+        <div class="data-name">回撤不做多<br>反扑不做空</div>
+        <div class="data-sm">只在上升趋势创新高时买进，在下降趋势创新低时卖空</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">投机不是赌博，而是一门需要独立判断、耐心等待、严格纪律的严肃生意。成功的关键不在于预测市场，而在于：亲手做行情记录，等待市场证实你的判断后才行动，让利润奔跑同时果断止损，将时间与价格融合为判断框架，并严守"不因价高卖出、不因深跌买入、不摊平亏损"的铁律。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《利弗莫尔操盘术》第1章信息图 · 杰西·利弗莫尔 著 · 基于第1章内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

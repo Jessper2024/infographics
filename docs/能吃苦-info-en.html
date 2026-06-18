@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endure Hardship, Get More Hardship</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  display: flex; justify-content: center; align-items: flex-start;
+  min-height: 100vh; padding: 40px 20px 60px;
+}
+.container { max-width: 880px; width: 100%; }
+
+/* Language Switch */
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+/* Back Catalog */
+.back-catalog { text-align: left; margin-bottom: 16px; }
+.back-catalog a {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+  transition: opacity 0.15s;
+}
+.back-catalog a:hover { opacity: 0.75; }
+
+/* Header */
+h1 { font-size: 32px; color: #1a1a1a; font-weight: 400; text-align: center; line-height: 1.4; letter-spacing: 0.04em; }
+h2 { font-size: 14px; color: #888; text-align: center; margin-top: 10px; font-weight: 400; }
+.divider { width: 60px; height: 3px; margin: 22px auto 28px; border-radius: 2px;
+  background: linear-gradient(90deg, #dc2626, #ea580c); }
+
+/* Overview */
+.overview {
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 32px; line-height: 2.0; color: #555; font-size: 15px;
+}
+
+/* KPI Row */
+.kpi-row {
+  display: grid; gap: 14px; margin-bottom: 32px;
+}
+.kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.kpi-row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.kpi-card {
+  background: #fff; border-radius: 14px; padding: 20px 16px; text-align: center;
+  border: 1px solid #e8e0d5; box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.kpi-card.c01 { border-top: 3px solid #dc2626; }
+.kpi-card.c02 { border-top: 3px solid #ea580c; }
+.kpi-card.c03 { border-top: 3px solid #ca8a04; }
+.kpi-card.c04 { border-top: 3px solid #4f46e5; }
+.kpi-card.c05 { border-top: 3px solid #db2777; }
+.kpi-value {
+  font-size: 38px; font-weight: 700; line-height: 1.2;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.c01 .kpi-value { color: #dc2626; }
+.c02 .kpi-value { color: #ea580c; }
+.c03 .kpi-value { color: #ca8a04; }
+.c04 .kpi-value { color: #4f46e5; }
+.c05 .kpi-value { color: #db2777; }
+.kpi-unit { font-size: 14px; color: #999; margin-left: 2px; }
+.kpi-label { font-size: 13px; color: #555; margin-top: 6px; font-weight: 700; }
+.kpi-note { font-size: 11px; color: #bbb; margin-top: 4px; }
+
+/* Section */
+.section {
+  display: flex; gap: 20px; padding: 28px 28px 24px 32px;
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+  margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  border-left: 4px solid transparent; align-items: flex-start;
+}
+.section-01 { border-left-color: #db2777; }
+.section-02 { border-left-color: #4f46e5; }
+.section-03 { border-left-color: #dc2626; }
+.section-04 { border-left-color: #ea580c; }
+.section-05 { border-left-color: #ca8a04; }
+.section-num {
+  width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-size: 18px; font-weight: bold; flex-shrink: 0;
+}
+.num-01 { background: #fdf2f8; color: #db2777; }
+.num-02 { background: #eef2ff; color: #4f46e5; }
+.num-03 { background: #fef2f2; color: #dc2626; }
+.num-04 { background: #fff7ed; color: #ea580c; }
+.num-05 { background: #fefce8; color: #ca8a04; }
+.section-body { flex: 1; min-width: 0; }
+.tag {
+  display: inline-block; font-size: 12px; padding: 3px 12px; border-radius: 10px;
+  font-weight: bold; margin-bottom: 8px;
+}
+.tag-01 { background: #fdf2f8; color: #db2777; }
+.tag-02 { background: #eef2ff; color: #4f46e5; }
+.tag-03 { background: #fef2f2; color: #dc2626; }
+.tag-04 { background: #fff7ed; color: #ea580c; }
+.tag-05 { background: #fefce8; color: #ca8a04; }
+.section-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.t-01 { color: #db2777; }
+.t-02 { color: #4f46e5; }
+.t-03 { color: #dc2626; }
+.t-04 { color: #ea580c; }
+.t-05 { color: #ca8a04; }
+.section-desc { font-size: 15px; color: #555; line-height: 1.9; }
+
+/* Data Row */
+.data-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.data-card {
+  flex: 1; min-width: 100px; border-radius: 10px; padding: 14px; text-align: center;
+}
+.data-card.pink { background: #fdf2f8; border: 1px solid #fbcfe8; }
+.data-card.blue { background: #eef2ff; border: 1px solid #c7d2fe; }
+.data-big { font-size: 22px; font-weight: bold; }
+.data-big.p { color: #db2777; }
+.data-big.b { color: #4f46e5; }
+.data-big.r { color: #dc2626; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; }
+
+/* Flow */
+.flow-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 16px; }
+.flow-step {
+  background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412;
+  border-radius: 8px; padding: 8px 14px; font-size: 13px; text-align: center;
+}
+.flow-arrow { color: #ea580c; font-size: 16px; font-weight: bold; }
+
+/* Dual */
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.dual-card { border-radius: 10px; padding: 16px; font-size: 13px; line-height: 1.6; }
+.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+/* Quote */
+.quote-box {
+  background: #fefce8; border-left: 3px solid #ca8a04; border-radius: 0 10px 10px 0;
+  padding: 16px 20px; font-size: 14px; color: #444; line-height: 1.8; font-style: italic;
+  margin-top: 16px;
+}
+
+/* Takeaway */
+.takeaway {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 24px 32px; margin-bottom: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  border-left: 4px solid #dc2626;
+}
+.takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+.takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+/* Footer */
+.footer {
+  text-align: center; color: #bbb; font-size: 13px; margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid #e8e0d5;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+  .section-01 { border-top-color: #db2777; }
+  .section-02 { border-top-color: #4f46e5; }
+  .section-03 { border-top-color: #dc2626; }
+  .section-04 { border-top-color: #ea580c; }
+  .section-05 { border-top-color: #ca8a04; }
+  .dual-grid, .data-row { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+  h1 { font-size: 26px; }
+  .kpi-row.cols-4, .kpi-row.cols-3, .kpi-row.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .kpi-value { font-size: 34px; }
+}
+@media (max-width: 400px) {
+  .kpi-row.cols-4, .kpi-row.cols-3, .kpi-row.cols-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog">
+  <a href="目录.html" target="_blank">← Catalog</a>
+</div>
+
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="能吃苦-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Endure Hardship, Get More Hardship</h1>
+<h2>Mao Bidao · June 17, 2026 · WeChat Official Account</h2>
+<div class="divider"></div>
+
+<div class="overview">
+In 2026, China's A-share market is dominated by a single tech sector. The STAR 50 Index has surged 36% year-to-date, yet the market median has <i>fallen</i> 1.27%—nearly 70% of stocks are in the red. Retail investors, clinging to the belief in mean reversion, hold onto laggards and find themselves crushed by the Matthew Effect. <b>Those who endure hardship are getting even more hardship.</b> This essay travels from the football pitch to the stock market, from Zidane's four sons to Musk's trillion-dollar fortune, revealing a brutal truth: effort and endurance do not always yield reward—sometimes they simply keep you pointed in the wrong direction for longer.
+</div>
+
+<!-- KPI Row 1 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit"> sons</span></div>
+    <div class="kpi-label">Zidane's children</div>
+    <div class="kpi-note">0 made top-tier football</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">+36<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">STAR 50 YTD</div>
+    <div class="kpi-note">2026 tech rally</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value" style="color:#ca8a04;">−1.27<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Market median</div>
+    <div class="kpi-note">70% stocks in red</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">80<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Trail index returns</div>
+    <div class="kpi-note">vs 3 major benchmarks</div>
+  </div>
+</div>
+
+<!-- KPI Row 2 -->
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">70<span class="kpi-unit">%+</span></div>
+    <div class="kpi-label">Stocks unprofitable</div>
+    <div class="kpi-note">Over 15-year horizon</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">10-15<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Drive all index gains</div>
+    <div class="kpi-note">10x to 100x returns</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">$1.4<span class="kpi-unit">T</span></div>
+    <div class="kpi-label">Musk's paper wealth</div>
+    <div class="kpi-note">≈ South Korea's GDP</div>
+  </div>
+</div>
+
+<!-- Section 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Talent Is Random</div>
+    <div class="section-title t-01">Superstar genes + elite academy ≠ guaranteed success</div>
+    <div class="section-desc">
+      <b>Talent is random—effort and resources do not determine who inherits it.</b> Zinedine Zidane has four sons, all placed into Real Madrid's academy through their father's connections. The results: the eldest retired at 29, never making it professionally; the second plays goalkeeper in Spain's second division; the third is equally unremarkable in the second division; the youngest, now in his twenties, still languishes in the reserves. The best genetics in world football plus the best youth system produced a ceiling of a second-division goalkeeper.
+    </div>
+    <div class="data-row">
+      <div class="data-card pink">
+        <div class="data-big p">4</div>
+        <div class="data-sm">Zidane's sons</div>
+      </div>
+      <div class="data-card pink">
+        <div class="data-big p">Real Madrid</div>
+        <div class="data-sm">Academy trained</div>
+      </div>
+      <div class="data-card blue">
+        <div class="data-big b">LaLiga2</div>
+        <div class="data-sm">Highest achievement</div>
+      </div>
+      <div class="data-card pink">
+        <div class="data-big p">0</div>
+        <div class="data-sm">Top-5 league apps</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Matthew Effect</div>
+    <div class="section-title t-02">70% of stocks generate no real returns over 15 years</div>
+    <div class="section-desc">
+      <b>The 80/20 rule in A-shares is far more extreme than most investors realize.</b> Mao Bidao's large-sample analysis shows that over 70% of listed companies fail to beat bank deposit rates over a 15-year horizon. Only 10–15% of stocks actually drive index gains, rising 10x, 50x, even 100x. Structural divergence is not an anomaly—it is the <i>norm</i>. As he puts it: "If even a socialist state cannot eliminate wealth inequality, how could a capital-driven stock market possibly rise and fall in unison?"
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card good">
+        ✅ <b>10–15% of stocks</b><br>
+        Drive all index returns<br>
+        10x to 100x gains<br>
+        STAR 50 up 36% YTD
+      </div>
+      <div class="dual-card bad">
+        ❌ <b>70%+ of stocks</b><br>
+        Trail bank deposit rates<br>
+        No real returns in 15 years<br>
+        70% red in 2026
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Mean Reversion Trap</div>
+    <div class="section-title t-03">Selling winners and holding losers = cutting yourself off from the 10–15%</div>
+    <div class="section-desc">
+      <b>The single most destructive retail behavior is selling winners to fund losers.</b> Most investors operate with an implicit mean-reversion logic: what goes up must come down, what goes down must come up. They sell profitable positions and double down on losers—systematically offloading the very 10–15% of stocks capable of multibagger returns while pouring capital into the 70% that destroy value over time. This is not bad luck. It is behavior that structurally repels success.
+    </div>
+    <div class="flow-row">
+      <div class="flow-step">Buy</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Some up · Some down</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fef2f2;border-color:#fecaca;color:#991b1b;">Sell winners</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-step" style="background:#fef2f2;border-color:#fecaca;color:#991b1b;">Hold losers</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fef2f2;border-color:#fecaca;color:#991b1b;">Cut off from winners</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Character Is Destiny</div>
+    <div class="section-title t-04">80% trail the index—yet refuse to simply buy the ETF</div>
+    <div class="section-desc">
+      <b>In a structurally polarized market, being on the wrong side is more lethal than lack of effort.</b> In 2026, the STAR 50 is up 36%, the ChiNext 30%, and the CSI 500 15.5%. Eighty percent of retail investors trail all three. Yet most of them refuse to just buy an index ETF—they insist their bad habits can be overcome through more trading. They are on the wrong side of the trend, fighting the market's direction, yet too proud to index. <b>This is not a technical problem. It is a character problem.</b>
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card good">
+        ✅ <b>The rational choice</b><br>
+        Accept you cannot beat the index<br>
+        Buy ETFs for beta exposure<br>
+        Redirect energy to life and career
+      </div>
+      <div class="dual-card bad">
+        ❌ <b>The stubborn delusion</b><br>
+        Trade frantically while losing<br>
+        The harder you try, the more you lose<br>
+        Endure more hardship in cold stocks
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Asymmetric World</div>
+    <div class="section-title t-05">An overnight celebrity goalkeeper and a trillion-dollar centibillionaire</div>
+    <div class="section-desc">
+      <b>The scale of success depends not on effort but on where you stand.</b> Cape Verde's goalkeeper Vozinha became an overnight sensation at 40 during the World Cup, amassing 11.6 million Instagram followers—more than Jay Chou. His country derives half its GDP from tourism, and his influence alone can reshape its destiny. Meanwhile, Elon Musk's paper wealth has hit $1.4 trillion—exceeding South Korea's entire annual GDP—driven by SpaceX's stock surge. Success in this world is never evenly distributed. <b>Those who endure hardship get more hardship. Those standing in the right place don't need to.</b>
+    </div>
+    <div class="quote-box">
+      "If your child didn't inherit the talent, they didn't inherit it. You'd be better off making peace with that than tormenting them trying."
+    </div>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">
+    Enduring hardship leads to more hardship—because <i>where</i> you endure matters more than <i>how much</i> you endure. The Matthew Effect in A-shares means the longer you hold onto losing stocks, the more you miss the 10–15% that actually drive the market. Random talent, concentrated capital, and winner-take-all dynamics are the bedrock rules of this world. Accepting that you cannot beat the index—buying ETFs, aligning with the trend, and knowing when to take profit—is the first step toward breaking the cycle of suffering.
+  </div>
+</div>
+
+<div class="footer">
+  Source: Mao Bidao · WeChat Official Account · June 17, 2026 · mp.weixin.qq.com<br>
+  <span style="font-size:11px; color:#ccc;">Exported from Notion as PDF. Infographic distills key ideas only; read the original for the full piece.</span>
+</div>
+
+</div>
+</body>
+</html>
