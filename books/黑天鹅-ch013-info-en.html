@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Black Swan · Ch.13 "What If You Cannot Predict?"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="黑天鹅-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="黑天鹅-ch013-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Black Swan · Ch.13 "What If You Cannot Predict?"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Black Swan → Gray Swan: Admitting Unpredictability Is Itself Wisdom</span>
+  The world is accelerating toward Extremistan. The Gaussian bell curve is a contagious delusion.
+  The crux of a Black Swan: it must not only be rare or wild, but unexpected—beyond our understanding of possibility.
+  When you can conceptualize rare events, you move from "sucker" to "non-sucker."
+  This chapter serves as the roadmap for Part Three: extremistan dynamics, the bell-curve fraud, and fractal randomness.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter is the navigational preface to Part Three. Taleb poses the final four deep questions about Black Swans: First, how the world is increasingly moving toward Extremistan and away from the dominion of Mediocristan—a view more subtle than appearances suggest. Second, the Gaussian bell curve as a contagious and severe delusion requiring deeper dissection. Third, the introduction of Mandelbrotian fractal randomness—many rare events can be modeled as "Gray Swans," reducing their surprise effect. Fourth, the views of philosophers who study pseudo-uncertainty. This chapter sets the agenda for the three that follow: Ch.14 (Mediocristan↔Extremistan), Ch.15 (The Bell Curve Fraud), and Ch.16 (The Aesthetics of Randomness). Core insight: acknowledging that you cannot predict is the beginning of cognitive upgrade.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">Questions</span></div>
+    <div class="kpi-label">Extremistan · Bell fraud · Fractal · Pseudo-uncertainty</div>
+    <div class="kpi-note">Core agenda of Part Three</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit">Types</span></div>
+    <div class="kpi-label">Mediocristan vs. Extremistan</div>
+    <div class="kpi-note">As different as air and water</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">Swans</span></div>
+    <div class="kpi-label">White · Gray · Black Swan</div>
+    <div class="kpi-note">Predictable → Modelable → Unknown unknowns</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit">Kinds</span></div>
+    <div class="kpi-label">Sucker vs. Non-Sucker</div>
+    <div class="kpi-note">Divided by awareness of rare events</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">CORE TREND</div>
+    <div class="section-title t-01">The World Moves Increasingly Toward Extremistan, Further from Mediocristan's Rule</div>
+    <div class="section-desc"><strong>The world is not uniformly extremifying—its dynamics are far more subtle than surface appearances suggest.</strong> Globalization weaves local risks into a global vulnerability network. The internet creates winner-take-all super-concentration. Financial mergers produce a homogenized ecology where "if one fails, all fail." The spread of Extremistan is not mere "intensification" but a structural transformation: mild randomness is being replaced by wild randomness.</div>
+    <div class="flow-row">
+      <div class="flow-step">Mediocristan<br>Mild Randomness</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Globalization<br>Networking</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Financial Concentration<br>Winner-Take-All</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Extremistan<br>Wild Randomness</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">CONTAGIOUS DELUSION</div>
+    <div class="section-title t-02">The Gaussian Bell Curve: A Contagious and Severe Intellectual Delusion</div>
+    <div class="section-desc"><strong>The bell curve is not an ordinary error—it is a cognitive virus spreading through intellectual communities.</strong> Taleb positions it as warranting "deeper discussion": its danger lies not in being wrong per se, but in being deified and applied everywhere. From central banks to risk management, from social science to financial modeling, people use the bell curve to smooth over the jumps and ruptures of the real world. The contagious nature: the more people use it, the more "correct" it appears—a self-reinforcing narrative fallacy.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>Fatal Assumptions</h4>
+          <p>Events are independent, memoryless, jumpless—ignoring the cumulative impact of tail events. You see only grass, never trees.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>Taleb's Diagnostic Approach</h4>
+          <p>Don't ask "which models produce non-bell-curve randomness"—study the bell curve deeply to know where it applies and where it doesn't.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">NEW PARADIGM</div>
+    <div class="section-title t-03">Mandelbrotian Fractal Randomness: Another Way of Seeing the World</div>
+    <div class="section-desc"><strong>Fractal randomness does not require events to be independent—it permits "rich-get-richer" dynamics and cumulative advantage.</strong> Unlike the Gaussian model, the fractal model acknowledges: today's success increases tomorrow's probability of success; extreme events are not "errors" but structural features. Mountains are jagged at every scale; wealth is unequal at every level—this is "scale invariance." Taleb positions fractal randomness as the book's core alternative: not a perfect prediction tool, but one that lets us see the large events the bell curve hides.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔗</div>
+        <div class="data-name">Memory Effect</div>
+        <div class="data-sm">Events are not independent; history influences the future—preferential attachment and cumulative advantage</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📏</div>
+        <div class="data-name">Scale Invariance</div>
+        <div class="data-sm">Inequality among millionaires equals inequality among billionaires—it does not smooth out with scale</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🌊</div>
+        <div class="data-name">Permits Jumps</div>
+        <div class="data-sm">No upper bound; extreme events are intrinsic features of the system, not "outliers"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">COGNITIVE UPGRADE</div>
+    <div class="section-title t-04">From Black Swan to Gray Swan: A Strategy to Reduce Surprise Impact</div>
+    <div class="section-desc"><strong>A Black Swan event must be not only rare or wild, but unexpected—beyond our understanding of possibility.</strong> Taleb introduces a crucial distinction: many rare events, though difficult to calculate precisely, can still be generally conceptualized—these are "Gray Swans." Gray Swans are modelable extreme events; Black Swans are unknown unknowns. When you can statistically conceive of a disaster's possibility, it ceases to be a full Black Swan. The boundary of cognition is the boundary of safety.</div>
+    <div class="flow-row">
+      <div class="flow-step">Black Swan<br>Fully Unknown</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Fractal Models<br>Expand Cognition</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Gray Swan<br>Modelable</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">PRACTICAL WISDOM</div>
+    <div class="section-title t-05">One Who Has a Notion of Rare Event Probabilities Belongs to the Non-Sucker Category</div>
+    <div class="section-desc"><strong>Taleb draws a clear dividing line: Sucker vs. Non-Sucker—the sole criterion is whether you have a concept of rare event likelihoods.</strong> This is not about IQ or knowledge volume. A person aware of Black Swans, even without advanced math, is a non-sucker; someone fluent in Gaussian statistics but applying it everywhere is a sucker. Non-suckers know: the world is full of incalculable surprises, but we can build alertness toward them. This alertness is not pessimistic but pragmatic—it lets you stand when others are crushed by the unexpected.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🤡</div>
+        <div class="dual-text">
+          <h4>The Sucker</h4>
+          <p>Believes in the bell curve, measures all risk with standard deviation, says extreme events are "impossible," gets repeatedly blindsided and never learns.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🦉</div>
+        <div class="dual-text">
+          <h4>The Non-Sucker</h4>
+          <p>Acknowledges unpredictability, stays alert to rare events, knows that "knowing what you don't know" matters more than what you know, builds anti-fragility amid chaos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 KEY TAKEAWAY</div>
+  <div class="takeaway-text">Admitting you cannot predict is not surrender—it is genuine cognitive upgrade. The world is sliding from Mediocristan to Extremistan. The Gaussian bell curve is a contagious delusion, while Mandelbrot's fractal randomness reveals the extreme events we've been blind to. The key distinction: Black Swans are unknown unknowns; Gray Swans are modelable extreme events—your goal is not to eliminate Black Swans but to downgrade as many as possible to Gray. In this cognitive game, the winners are not those who "know more" but those who "know what they don't know."</div>
+</div>
+
+<div class="footer">
+  The Black Swan Chapter 13 Infographic · Based on Nassim Nicholas Taleb's original work · For study reference only
+</div>
+</div>
+</body>
+</html>
