@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福格行为模型 · 第6章「高频率小成功，让小改变自然生长」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.d3 { background: #fefce8; border-color: #fde68a; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="福格行为模型-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="福格行为模型-ch006-info-en.html">中文 / English</a>
+</div>
+
+<h1>福格行为模型 · 第6章「高频率小成功，让小改变自然生长」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  很多人想改变自己，列出十几项雄心勃勃的计划——早睡、运动、阅读、写作……雄心勃勃的计划往往一周后就全面崩溃。
+  怎样才能让改变真正持续发生？答案：高频率小成功——从最微小、最容易的开始，让每一次成功体验自然推动下一轮改变，像植物一样自然生长。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章揭示了习惯养成的生长逻辑：大改变不是意志力的胜利，而是小成功的复利积累。每一个微行为完成后的庆祝，都是在你的"成长账户"里存入一笔本金，复利效应会接管一切。福格教我们从最想改变的地方开始——不是为了证明自己，而是因为成功体验是持续改变的唯一燃料。本章还介绍了三项"习惯忍者技巧"：行为加工、情景设计和循序渐进，并阐明了一个反直觉的真理：快就是慢，慢就是快，急于求成只会破坏你的习惯花园。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">1<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">只需从1个微习惯开始</div>
+    <div class="kpi-note">不是10个，只需1个</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">项</span></div>
+    <div class="kpi-label">习惯忍者技巧</div>
+    <div class="kpi-note">行为加工·情景设计·循序渐进</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">复利<span class="kpi-unit" style="display:block;font-size:13px;">效应</span></div>
+    <div class="kpi-label">小成功积累的底层逻辑</div>
+    <div class="kpi-note">每次庆祝=往账户存一笔本金</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">习惯生长节奏</div>
+    <div class="kpi-note">微习惯→巩固→扩大→再巩固</div>
+  </div>
+</div>
+
+<!-- 01: 小成功积累 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">复利思维</div>
+    <div class="section-title t-01">小成功积累：大改变是复利效应，不是意志力的胜利</div>
+    <div class="section-desc"><strong>大改变不是意志力的胜利，是小成功的积累。</strong>每个微行为完成后的庆祝，都是给成长账户存了一笔本金。就像金钱的复利一样，这些小成功会在时间的加持下产生惊人的累积效果。你今天做的那个俯卧撑，和一年前做的那个俯卧撑，在账户里共同产生着复利。关键不是单次行为的大小，而是持续积累带来的势能——一旦复利效应启动，它会接管一切。你不需要再"逼"自己改变，系统会自动推着你往前走。</div>
+    <div class="flow-row">
+      <div class="flow-step">第1天<br>1个俯卧撑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">第1周<br>每天坚持·庆祝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">第1个月<br>自然增加到5个</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">第1年<br>运动已成身份</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 从想改变处开始 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">动力策略</div>
+    <div class="section-title t-02">从想改变处开始：动力来自成功体验，不是意志力</div>
+    <div class="section-desc"><strong>不要从最难的改，从你最想改的地方开始。</strong>改变的动力不是来自自律，而是来自一次又一次的成功体验。当你完成一个微习惯并庆祝时，你体验到了"我能做到"的感觉——这种感觉就像燃料，会驱动你想要更多。一次小成功→想要更多→持续改变，这是人类行为的自然链条。反之，从最难处开始，你大概率会在第一次失败后就失去所有动力。选择你最渴望改变的方向，但用最小最小的步伐迈出第一步。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏔️</div>
+        <div class="dual-text">
+          <h4>从最难处开始</h4>
+          <p>每天跑步5公里→第一天跑不动→"我果然不行"→放弃。失败体验摧毁动力。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🌱</div>
+        <div class="dual-text">
+          <h4>从最想改变处开始</h4>
+          <p>每天穿上跑鞋→庆祝"我做到了"→"我还能再走两步"→自然扩大。成功体验驱动更多。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 习惯忍者技巧 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">工具箱</div>
+    <div class="section-title t-03">习惯忍者技巧：三项高级策略让改变更顺滑</div>
+    <div class="section-desc"><strong>福格提供了三项"习惯忍者"级别的技巧，帮你在不依赖意志力的情况下让好习惯更容易养成。</strong>①行为加工——在现有行为上叠加微习惯。例如"每次冲马桶后做两个深蹲"。利用已有的行为作为锚点，不需要重新创造提示。②情景设计——改变环境让好行为更容易、坏行为更难。例如想少吃零食就把零食放在高处或不要买回家。③循序渐进——永远从微小开始，不跳级。感觉"太容易了"才是对的信号，不是"再加码"的理由。这三项技巧组合使用，可以让改变变得像顺水推舟一样自然。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">①</div>
+        <div class="data-name">行为加工</div>
+        <div class="data-sm">在现有行为上叠加微习惯，利用已有锚点</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">②</div>
+        <div class="data-name">情景设计</div>
+        <div class="data-sm">改变环境让好行为更容易、坏行为更难</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">③</div>
+        <div class="data-name">循序渐进</div>
+        <div class="data-sm">永远从微小开始，感觉太容易才是对的</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 让改变自然生长 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">生长哲学</div>
+    <div class="section-title t-04">让改变自然生长：1个微习惯的成功会蔓延到所有领域</div>
+    <div class="section-desc"><strong>不要规划"我要养成10个习惯"，只养1个微习惯。</strong>成功后会自然蔓延到其他领域——这就是习惯的"溢出效应"。当你在一个微小行为上体验到持续成功的快感，你会本能地想把这种感觉复制到生活的其他角落。比如你养成了"每天整理床铺"的微习惯并庆祝了30天，你会发现自己开始想要整理书桌、衣柜、甚至工作流程。改变像植物，不能拔苗助长——你给它合适的土壤（微习惯）、阳光（庆祝）、水分（一致性），它自己就会长。</div>
+    <div class="flow-row">
+      <div class="flow-step">1个微习惯<br>成功扎根</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">自信感<br>蔓延到其他领域</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">第2个微习惯<br>自发启动</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">改变<br>已成生活方式</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 掌握改变的节奏 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">节奏智慧</div>
+    <div class="section-title t-05">掌握改变的节奏：快就是慢，慢就是快</div>
+    <div class="section-desc"><strong>微习惯→巩固（庆祝）→微微扩大→再巩固。这是改变的黄金节奏。</strong>每一个阶段都不能跳过。巩固的意思是：在这个级别上做到完全不需要思考、完全不需要意志力、做起来就像呼吸一样自然。只有到那时，才微微扩大一点。如果急于求成，在小习惯还没巩固时就加码——比如刚开始每天一个俯卧撑，第三天就加到20个——你等于是把一棵刚发芽的幼苗连根拔起。福格的警句：急于求成=破坏习惯花园。让习惯用自然的节奏生长，它会给你超出预期的回报。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚡</div>
+        <div class="dual-text">
+          <h4>急于求成的陷阱</h4>
+          <p>微习惯未巩固就加码→行为变难→动机崩塌→"我果然坚持不了"→全面放弃。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🐢</div>
+        <div class="dual-text">
+          <h4>慢就是快的智慧</h4>
+          <p>微习惯扎根→庆祝强化→自然生长→无需意志力→习惯变成身份。看似慢，实则最稳最快。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">大改变从来不是意志力的胜利，而是小成功在时间复利下的必然结果。每次完成一个微习惯并庆祝，你就往成长的账户里存了一笔本金。不要急着扩大，不要规划10个习惯同时推进，让1个微习惯先扎根。用行为加工、情景设计和循序渐进三项忍者技巧，把改变变得毫不费力。记住：急于求成是习惯花园的头号杀手——慢就是快，让改变像植物一样自然生长。</div>
+</div>
+
+<div class="footer">
+  《福格行为模型》第6章信息图 · 基于第6章内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

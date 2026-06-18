@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiny Habits · Chapter 3「Ability」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="福格行为模型-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="福格行为模型-ch003-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Tiny Habits · Ch.3「Make the Behavior So Simple You Can Do It Anytime」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Behavior Design Step ❹ · Start Tiny</span>
+  Why did Instagram defeat Facebook and Flickr? One word: simplicity.
+  Humans are wired to choose the easiest path — it's not laziness, it's an evolutionary energy-saving instinct.
+  Making good behaviors easy is 100× more effective than boosting motivation. This chapter teaches you to start with Tiny Habits.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter covers Behavior Design Step 4: Start Tiny. Dr. Fogg uses Instagram's victory over better-funded competitors (Facebook, Flickr, Hipstamatic) to illustrate how simplicity kills complexity. Instagram required just 3 taps to upload a photo — they designed ability to the extreme. The chapter reveals the "Simplicity > Motivation" principle, details the Ability Chain's five dimensions (Time, Money, Physical Effort, Mental Effort, Routine), offers three ways to make behavior easier (improve skills, acquire tools, shrink the behavior), and emphasizes the Tiny Habits strategy — shrinking target behaviors until you literally cannot fail.</div>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit"> Taps</span></div>
+    <div class="kpi-label">To upload a photo on Instagram</div>
+    <div class="kpi-note">Competitors were far more complex</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">$100B<span class="kpi-unit">+</span></div>
+    <div class="kpi-label">Instagram's current valuation</div>
+    <div class="kpi-note">Acquired by Facebook for $1B in 2012</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit"> Ways</span></div>
+    <div class="kpi-label">Paths to make behavior easier</div>
+    <div class="kpi-note">Improve skills·Get tools·Shrink behavior</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">5<span class="kpi-unit"> Ability Factors</span></div>
+    <div class="kpi-label">Time·Money·Physical·Mental·Routine</div>
+    <div class="kpi-note">Find the weakest link and break through</div>
+  </div>
+</div>
+
+<!-- 01: Simplicity Wins -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Core Principle</div>
+    <div class="section-title t-01">Simplicity Wins: Humans Are Wired to Choose Easy — Simplicity &gt; Motivation</div>
+    <div class="section-desc"><strong>Why did Instagram defeat Facebook and Flickr despite their superior funding and technology?</strong> Because it was dead simple — just 3 taps to upload a photo. Mike Krieger and Kevin Systrom learned from their failed product Burbn that users loved sharing photos but the interface was too complex. They stripped every unnecessary feature, keeping only: snap, filter, share. This wasn't corner-cutting — it was deep understanding of human behavior: making a behavior simple is 100× more effective than strengthening motivation. You're not lazy — evolution wired you to choose the path of least resistance. Good behavior design aligns with human nature instead of fighting it.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📱</div>
+        <div class="dual-text">
+          <h4>Burbn (Failed Product)</h4>
+          <p>Too many features: check-in + sharing + social. Users didn't know where to start.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📷</div>
+        <div class="dual-text">
+          <h4>Instagram ($100B+ Product)</h4>
+          <p>3 steps: Snap → Filter → Share. Ultimate simplicity. Perfect behavior design.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Three Ways to Make It Easy -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Three Paths</div>
+    <div class="section-title t-02">Three Ways to Make Behavior Easy: Improve Skills → Get Tools → Shrink Behavior</div>
+    <div class="section-desc"><strong>Three paths to making behavior easier, from long-term to instant.</strong> ① Improve skills (long-term strategy) — learn proper running form to reduce injury risk. ② Acquire tools and resources (mid-term) — buy a good juicer to make "drink juice daily" easy. ③ Shrink the behavior (instant results) — the most powerful and most overlooked strategy. The Starter Step is most effective: begin with 2 push-ups, not a 1-hour gym session. Shrinking behavior isn't "lowering standards" — it's lowering the activation threshold. Once you start, you often naturally do more.</div>
+    <div class="flow-row">
+      <div class="flow-step">Long-term<br>Improve Skills</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Mid-term<br>Get Tools</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Instant<br>Shrink Behavior</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Tiny Habits -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Tiny Habits Strategy</div>
+    <div class="section-title t-03">Tiny Habits: Behavioral Units So Small You Can't Possibly Fail</div>
+    <div class="section-desc"><strong>Sarika's story illustrates the power of tiny habits.</strong> She lives with bipolar disorder — her mood and energy fluctuate wildly. Traditional big habits (cook daily, exercise regularly) all collapsed. When she switched to Tiny Habits, everything changed: water the plants on the porch every morning — that's it. This tiny action became her "emotional barometer" — if even watering plants felt impossible, she knew her state needed attention. Tiny Habits aren't "meditate 30 minutes daily" but "take 3 deep breaths daily"; not "work out for an hour" but "do 2 push-ups." So tiny you can't fail — that's the secret to sustainable change.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Traditional Big Habits (Doomed)</h4>
+          <p>"Exercise 1 hour daily" / "Meditate 30 min daily" — doable at motivation peaks, collapse at lows.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Tiny Habits (Can't Fail)</h4>
+          <p>"Do 2 push-ups" / "Take 3 deep breaths" — doable even on your lowest days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Ability Chain Five Dimensions -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Ability Diagnosis</div>
+    <div class="section-title t-04">The Ability Chain: Diagnose Which Link Is Stuck</div>
+    <div class="section-desc"><strong>Every behavior can be broken into five ability dimensions — the weakest link is your breakthrough point.</strong> Time — Do you have it? Money — Is it affordable? Physical Effort — Enough energy? Mental Effort — Manageable cognitive load? Routine — Does it fit your daily flow? Sarika's ability chain analysis: Time and Mental Effort were weakest during low-mood periods, so she chose the simplest possible behavior (watering plants) as her entry point. Your struggle is the same — you're not "incapable"; one specific link is just too tight. Find it. Loosen it.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⏰</div>
+        <div class="data-name">Time</div>
+        <div class="data-sm">Reduce time required, or embed into existing time blocks.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">💰</div>
+        <div class="data-name">Money</div>
+        <div class="data-sm">Lower cost, or find free alternatives.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚡</div>
+        <div class="data-name">Physical·Mental·Routine</div>
+        <div class="data-sm">Physical: lower intensity. Mental: fewer steps. Routine: find a fixed anchor.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Simple Enough -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Mindset Shift</div>
+    <div class="section-title t-05">If It's Simple Enough, You Don't Need Willpower</div>
+    <div class="section-desc"><strong>Human nature dictates we can't sustain painful things long-term.</strong> Many people approach change with a "go big or go home" mentality, equating change with suffering and grit. This is a massive misconception. Simple behaviors = sustainable behaviors. Change isn't about beating yourself with willpower — it's about designing behaviors so simple you can do them anytime. Sarika's life went from "out of control" to "manageable" not because her willpower suddenly strengthened, but because she found a simple enough behavior — watering plants. It takes 30 seconds, but it's the starting line for all change.</div>
+    <div class="flow-row">
+      <div class="flow-step">Old Mindset<br>Grit &amp; Suffering</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Pain · Self-blame</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Quit</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">New Mindset<br>Design for Ease</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Simplicity > Motivation. Humans are wired to choose the path of least resistance — this isn't a flaw, it's an evolutionary advantage. Instagram defeated every feature-rich competitor with a 3-step flow, not because it had more features, but because it was simpler. Similarly, changing your own behavior doesn't require "more willpower" — you just need to shrink the target behavior until you can't possibly fail. Start with 2 push-ups a day. Start with 3 deep breaths. Tiny starts create massive compounding — because starting is the hardest step. Once you start, momentum carries you further.</div>
+</div>
+
+<div class="footer">
+  Tiny Habits · Ch.3 Infographic · Based on Chapter 3 content · For educational reference only
+</div>
+</div>
+</body>
+</html>
