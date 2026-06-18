@@ -7,8 +7,8 @@
 <style>
 @font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;background:#f5f1eb;color:#555;line-height:2.0;font-size:15px;-webkit-font-smoothing:antialiased;min-height:100vh}
-.book-wrapper{max-width:1200px;margin:0 auto;display:flex;gap:32px;padding:48px 16px 60px;align-items:flex-start;min-height:100vh}
+body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;background:#f5f1eb;color:#555;line-height:2.0;font-size:15px;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;justify-content:center;align-items:flex-start}
+.book-wrapper{max-width:1260px;width:100%;display:flex;gap:32px;padding:48px 20px 60px;align-items:flex-start;min-height:100vh}
 .sidebar{width:240px;flex-shrink:0;position:sticky;top:48px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);max-height:calc(100vh - 96px);overflow-y:auto}
 .sidebar h3{font-size:16px;color:#1a1a1a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8e0d5;font-family:'FZXPYZS',serif;font-weight:normal}
 .sidebar-nav{display:flex;flex-direction:column;gap:2px}
@@ -16,16 +16,179 @@ body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
 .sidebar-nav a:hover{color:#dc2626}
 .sidebar-nav a:last-child{border-bottom:none}
 .main-content{flex:1;min-width:0;max-width:880px}
-.book-header{text-align:center;margin-bottom:48px}
+.book-header{text-align:center;margin-bottom:32px}
 .book-header h1{font-family:'FZXPYZS',serif;font-size:28px;color:#1a1a1a;margin-bottom:8px;font-weight:normal;letter-spacing:.03em}
-.book-header .meta{font-size:14px;color:#888}
-.chapter-title{font-family:'FZXPYZS','PingFang SC',serif;font-size:22px;color:#1a1a1a;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5;letter-spacing:.02em;font-weight:normal}
-.chapter-divider{max-width:880px;margin:40px auto;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px;user-select:none}
-.book-footer{max-width:880px;margin:48px auto 0;text-align:center;padding-top:24px;border-top:1px solid #e8e0d5;color:#bbb;font-size:14px;line-height:1.8}
+.chapter-title{font-family:'FZXPYZS','PingFang SC',serif;font-size:22px;color:#1a1a1a;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5;letter-spacing:.02em;font-weight:normal}
+.chapter-divider{max-width:880px;margin:32px auto 48px;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px;user-select:none}
+.book-footer{text-align:center;padding-top:24px;border-top:1px solid #e8e0d5;color:#bbb;font-size:14px;line-height:1.8;margin-top:48px}
 .book-footer a{color:#888;text-decoration:none}
-.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
-.chapter-overview p{margin:0}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+.lang-btn:hover{opacity:.75}
+.back-catalog{text-align:left;margin-bottom:4px}
+.back-catalog a{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+.back-catalog a:hover{opacity:.75}
 @media(max-width:768px){.sidebar{display:none}.book-wrapper{display:block;padding:24px 12px 40px}.main-content{max-width:100%}}
+@font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -45,6 +208,8 @@ body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
   </aside>
 
   <main class="main-content">
+    <div class="back-catalog"><a href="../目录.html">← 返回总目录</a></div>
+    <div class="lang-switch"><a class="lang-btn" target="_blank" href="福格行为模型-catalog.html">章节目录</a></div>
     <div class="book-header">
       <h1>福格行为模型</h1>
     </div>
@@ -53,40 +218,1201 @@ body{font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
     <div class="chapter-overview">
   <p>本章是全书的奠基章节。福格博士提出革命性的B=MAP公式：行为（Behavior）= 动机（Motivation）+ 能力（Ability）+ 提示（Prompt）。当这3个要素同时出现时，行为才会发生；任缺其一，行为就不会发生。这个模型普适于所有行为——从用牙线洁牙到跑马拉松，从捐款到健身。理解了B=MAP，你就再也不会把行为失败归咎于性格缺陷或意志力不足，而是可以从动机、能力、提示三个维度系统性地分析和设计行为。</p>
 </div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">要素</span></div>
+    <div class="kpi-label">动机 + 能力 + 提示</div>
+    <div class="kpi-note">三者同时出现=100%行为发生</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">类提示</span></div>
+    <div class="kpi-label">人物 / 情境 / 行动提示</div>
+    <div class="kpi-note">行动提示（锚点）最可靠</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">5<span class="kpi-unit">项能力</span></div>
+    <div class="kpi-label">时间·金钱·体力·脑力·日程</div>
+    <div class="kpi-note">任一断裂，行为就停滞</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2010<span class="kpi-unit"></span></div>
+    <div class="kpi-label">红十字会短信捐款案例</div>
+    <div class="kpi-note">24h募集300万+美元，MAP完美设计</div>
+  </div>
+</div>
+
+<!-- 01: B=MAP公式 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心公式</div>
+    <div class="section-title t-01">B=MAP：当动机、能力、提示同时出现时，行为就会发生</div>
+    <div class="section-desc"><strong>行为就像是不同款式的自行车——虽然外观不同，核心机制却一样。</strong>福格博士在健身房踩椭圆机时向红十字会捐款的亲身案例完美诠释了B=MAP：动机（想帮助地震灾民）+能力（短信捐款很简单）+提示（收到募捐短信）=行为（完成捐款）。如果换一种方式——打电话索要信用卡、或发邮件被当作垃圾邮件——任一要素缺失，行为都不会发生。这就是B=MAP的普适性：从网购到健身，所有行为都受同一机制驱动。</div>
+    <div class="flow-row">
+      <div class="flow-step">动机(M)<br>想做某事的欲望</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-step">能力(A)<br>执行行为的容易度</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-step">提示(P)<br>提醒行为的信号</div>
+      <div class="flow-arrow">=</div>
+      <div class="flow-step end">行为(B)<br>实际发生</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 动机波浪 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">动机陷阱</div>
+    <div class="section-title t-02">动机波浪：动机冲上顶峰后会迅速回落</div>
+    <div class="section-desc"><strong>动机就像一位酒肉朋友——你可以和它一起玩乐，却不能指望它会去机场接你。</strong>人们在动机高峰时设定过高目标（比如新年第一天制定10项计划），却在动机低谷时全部放弃。凯蒂的案例：她凌晨4:30起床打算运动，却被手机上的红色未读标识吸走注意力——刷Facebook刷到忘记运动。她有强烈的运动动机，但动机被数字旋涡淹没。关键教训：不要依赖动机，要设计系统。动机不可靠，但行为设计可靠。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📉</div>
+        <div class="dual-text">
+          <h4>❌ 动机高峰时犯的错</h4>
+          <p>冲动制定过高目标（一天10件事），在动机回落时自责放弃，陷入"动力→失败→自责"的恶性循环。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>✅ 正确做法</h4>
+          <p>承认动机不可靠，把精力放在设计能力和提示上。动机让你开始，系统让你坚持。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 能力链 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">能力诊断</div>
+    <div class="section-title t-03">能力链五维度：任何一环断裂，行为就停止</div>
+    <div class="section-desc"><strong>能力不是单一的"我能做"，而是5个维度的综合链条。</strong>①时间——你有空做吗？②金钱——你负担得起吗？③体力——你有足够体力吗？④脑力——你的认知负荷够吗？⑤日程——它能融入你的日常安排吗？五环之中，最薄弱的那个环节决定了行为能否发生。提升能力不是让自己"更努力"，而是找到能力链上最紧的缺口，把它松开——让行为变简单。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⏰</div>
+        <div class="data-name">时间</div>
+        <div class="data-sm">有足够的时间完成吗？减少所需时间</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">💰</div>
+        <div class="data-name">金钱</div>
+        <div class="data-sm">花费在可承受范围吗？降低成本门槛</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚡</div>
+        <div class="data-name">体力·脑力·日程</div>
+        <div class="data-sm">体力够吗？脑力负荷重吗？能否融入日程？</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 提示是催化剂 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">提示系统</div>
+    <div class="section-title t-04">没有提示，再强的动机和能力也无用</div>
+    <div class="section-desc"><strong>提示是行为的"起爆器"——它决定行为在哪个具体时刻发生。</strong>提示分为三类：①人物提示（靠记忆/闹钟）——不可靠，人会忘；②情境提示（便利贴/APP推送）——中等可靠，但容易被忽略；③行动提示（锚点）——最可靠，把新行为挂在已有习惯上。行动提示比任何鸡汤和意志力训练都有效：你不需要"记住"去做，而是设计一个让你"必然遇见"的提示。</div>
+    <div class="flow-row">
+      <div class="flow-step">人物提示<br>记忆·闹钟</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">情境提示<br>便利贴·推送</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">行动提示<br>锚点·已有习惯</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 行为设计视角 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">思维转变</div>
+    <div class="section-title t-05">停止自责！不是你的错，是设计不对</div>
+    <div class="section-desc"><strong>凯蒂的两个习惯揭示了真相：整理办公桌（自动发生）和刷手机（控制不住）——两者的底层机制完全相同。</strong>她不是懒，也不是意志力差。整理办公桌恰好满足了B=MAP的三个要素，所以自动变成了习惯；刷手机被强大的数字产品设计绑架了提示和动机。当你用B=MAP框架分析每一个"失败"的行为时，你会找到缺失的那个要素——动机不够？让行为更有吸引力。能力不足？让行为更简单。提示不到位？设计一个无法忽视的信号。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">😞</div>
+        <div class="dual-text">
+          <h4>旧思维：自责模式</h4>
+          <p>"我太懒了""我缺意志力""我就是不行"——把失败归咎于性格缺陷，陷入自我否定循环。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🔧</div>
+        <div class="dual-text">
+          <h4>新思维：设计模式</h4>
+          <p>"这个行为的B=MAP缺哪个要素？"——把失败当作设计信息，系统性地优化M、A或P。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">行为的发生只有一个公式：B=MAP。所有行为——从清理办公桌到狂刷手机——都由动机、能力和提示这三个要素驱动。你不需要更强的意志力，你需要的只是更好的行为设计：当行为没发生时，不要骂自己，去检查是M、A还是P出了问题。这本书的全部方法都建立在这个简单的公式之上——它是改变一切行为的底层操作系统。</div>
+</div>
     <div class="chapter-divider">· · ·</div>
     <div id="ch002" class="chapter-title">第2章 · 找到实现愿望的黄金行为</div>
     <div class="chapter-overview">
   <p>本章是行为设计的前三步：明确愿望、探索行为选项、为自己匹配具体行为。福格博士以桑德拉和阿德里安装修后院的故事开场——他们动机满满地规划梦想花园，却在真正动手时寸步难行。原因在于他们把所有希望都压在动机上，而没有系统地找到"对的"行为。本章揭示了动机的5大陷阱（复杂、易变、冲突、冲动、不可靠），并提供了一套可操作的方法：通过行为集群（Brainstorming）列出所有可能行为，再用焦点地图（四象限法）和黄金行为三标准（有效、想做、能做）筛选出最适合你的那个行为。</p>
+</div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">明确愿望→探索行为→匹配行为</div>
+    <div class="kpi-note">行为设计的前三步流程</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">标准</span></div>
+    <div class="kpi-label">有效·想做·能做</div>
+    <div class="kpi-note">黄金行为的筛选铁三角</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit">象限</span></div>
+    <div class="kpi-label">焦点地图筛选法</div>
+    <div class="kpi-note">高/低影响 × 能/不能做</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">5<span class="kpi-unit">大陷阱</span></div>
+    <div class="kpi-label">动机的5个致命缺陷</div>
+    <div class="kpi-note">复杂·易变·冲突·冲动·不可靠</div>
+  </div>
+</div>
+
+<!-- 01: 明确愿望 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">行为设计步骤❶</div>
+    <div class="section-title t-01">明确愿望：先明确你想要什么，而不是想停止什么</div>
+    <div class="section-desc"><strong>大多数人一开始就错了——他们聚焦于"不想做什么"，而不是"想要什么"。</strong>桑德拉和阿德里安的愿望是"拥有一个可以和朋友共度时光、看着孩子们玩耍的漂亮后院"，而不是"不要再让后院乱下去"。愿望要具体、有画面感：不是"我要更健康"而是"我要每天走8000步"。越是清晰、具体的愿望，越容易找到通往它的行为路径。记住：愿望是你想要的结果，而不是行为本身。</div>
+    <div class="flow-row">
+      <div class="flow-step">❌ 模糊愿望<br>"我要更健康"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">✅ 具体愿望<br>"每天走8000步"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🎯 清晰目标<br>可衡量·可实现</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 行为集群 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">行为设计步骤❷</div>
+    <div class="section-title t-02">行为集群：列出实现愿望的所有可能行为，越多越好</div>
+    <div class="section-desc"><strong>这是发散思维的阶段——不评判、不筛选、不自我审查。</strong>假设你的愿望是"减少工作压力"，那所有可能的行为包括：每天冥想10分钟、换工作、和老板谈谈、下午3点去散步、减少咖啡因摄入、提前30分钟睡觉……把这些行为写在一张纸上或便利贴上，哪怕看起来荒谬也不删除。数量越多，找到黄金行为的概率越大。这一步的关键是"广度优先"——先把可能性铺开，再在后面逐步收窄。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">💡</div>
+        <div class="data-name">发散思维</div>
+        <div class="data-sm">不评判、不筛选，想到就写，越多越好</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📋</div>
+        <div class="data-name">列出所有</div>
+        <div class="data-sm">一张纸上写满所有可能的行为选项</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🌊</div>
+        <div class="data-name">广度优先</div>
+        <div class="data-sm">先铺开可能性，后面几步再逐步收窄</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 黄金行为三标准 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">行为设计步骤❸</div>
+    <div class="section-title t-03">黄金行为三标准：有效 × 想做 × 能做</div>
+    <div class="section-desc"><strong>不是每个行为都能成为你的黄金行为——它必须同时满足三个条件。</strong>①有效性——这个行为真的能帮你实现愿望吗？得用数据和逻辑验证，不能仅凭直觉。②动机——你想做这个行为吗？不喜欢的行为即便有效也无法持久。③能力——你现在就能做到吗？如果靠意志力勉强才能做到，那就不是对的行为。三个标准同时满足的行为，才是你的"黄金行为"——它既有效，又让你乐意做，还容易做到。</div>
+    <div class="flow-row">
+      <div class="flow-step">有效性<br>能实现愿望吗？</div>
+      <div class="flow-arrow">×</div>
+      <div class="flow-step">动机<br>我想做吗？</div>
+      <div class="flow-arrow">×</div>
+      <div class="flow-step">能力<br>我能做到吗？</div>
+      <div class="flow-arrow">=</div>
+      <div class="flow-step end">黄金行为<br>三标准全满足</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 焦点地图 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">筛选工具</div>
+    <div class="section-title t-04">焦点地图：用四象限法找到你的黄金行为</div>
+    <div class="section-desc"><strong>将行为集群中的所有选项放入一个2×2矩阵：纵轴为影响力（对愿望的贡献高低），横轴为可行性（你能做到吗）。</strong>右上角（高影响+能做）= 黄金行为——优先执行，这是你的主攻方向。左上角（高影响+不能做）= 待提升能力——先提升能力或找替代行为。右下角（低影响+能做）= 备选方案。左下角（低影响+不能做）= 直接放弃。焦点地图让你从"凭感觉选行为"升级为"用框架做决策"。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⭐</div>
+        <div class="data-name">黄金行为</div>
+        <div class="data-sm">高影响+能做 → 优先执行</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📈</div>
+        <div class="data-name">待提升能力</div>
+        <div class="data-sm">高影响+不能做 → 先突破瓶颈</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📦</div>
+        <div class="data-name">备选/放弃</div>
+        <div class="data-sm">低影响+能做→备用；低影响+不能做→放弃</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 行为匹配误区 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">常见错误</div>
+    <div class="section-title t-05">行为匹配三大误区：别凭猜测选行为</div>
+    <div class="section-desc"><strong>人们在选择习惯时最容易犯的三个错误。</strong>误区一：凭猜测而非数据——"我觉得跑步能减肥"但从未验证过。要用小实验和数据来判断行为的有效性。误区二：追求完美行为——等找到"最好的"方案才开始，结果永远不开始。够好就行，先行动起来再迭代。误区三：照搬别人的成功——别人每天5点起床成功了，不代表这对你有用。黄金行为是高度个人化的，你的行为必须适合你的生活、你的节奏、你的偏好。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>❌ 三种典型错误</h4>
+          <p>凭猜测选行为（不验证）· 追求完美方案（不行动）· 照搬别人经验（不适配自己）</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>✅ 正确做法</h4>
+          <p>用小实验验证有效性 · 选"够好"的行为先启动 · 只选适合自己节奏和偏好的行为</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">动机不可靠——它冲动、善变、会冲突。真正的改变不靠"更强大的意志力"，而靠找到一个对的黄金行为。方法很简单：先明确你的具体愿望（不是抽象愿望），用发散思维列出所有可能的行为，再用焦点地图和黄金行为三标准（有效+想做+能做）筛选出最适合你的那一个。不要追求完美，不要照搬别人——你的黄金行为必须属于你自己。</div>
 </div>
     <div class="chapter-divider">· · ·</div>
     <div id="ch003" class="chapter-title">第3章 · 让行为简单到随时顺便都能做</div>
     <div class="chapter-overview">
   <p>本章是行为设计第四步：从微习惯开始。福格博士用Instagram击败功能更强大的竞争对手（Facebook、Flickr、Hipstamatic）的案例说明：简单比功能强大更致命。Instagram只需点击3次就能上传照片——他们把"能力"设计到了极致。本章揭示了"简单>动机"的核心原理，详解能力链五维度（时间、金钱、体力、脑力、日程），提供了让行为变简单的三种方式（提升技能、获取工具、缩小行为），并重点阐述微习惯策略——把目标行为缩小到你不可能失败的程度。</p>
 </div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">次点击</span></div>
+    <div class="kpi-label">Instagram上传照片所需</div>
+    <div class="kpi-note">当时竞争对手远更复杂</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1000<span class="kpi-unit">亿$+</span></div>
+    <div class="kpi-label">Instagram当前估值</div>
+    <div class="kpi-note">2012年被Facebook以10亿收购</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">种方式</span></div>
+    <div class="kpi-label">让行为变简单的路径</div>
+    <div class="kpi-note">提升技能·获取工具·缩小行为</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">5<span class="kpi-unit">项能力维度</span></div>
+    <div class="kpi-label">时间·金钱·体力·脑力·日程</div>
+    <div class="kpi-note">找到最弱环节，逐一突破</div>
+  </div>
+</div>
+
+<!-- 01: 简单是王 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心原理</div>
+    <div class="section-title t-01">简单是王：人类天性选择简单，简单 > 动机</div>
+    <div class="section-desc"><strong>为什么Instagram能击败资金和技术都更雄厚的Facebook和Flickr？</strong>因为它够简单——只需3次点击就能上传照片。迈克·克里格和凯文·赛斯特伦从失败产品Burbn中学到：用户喜欢分享照片，但界面太复杂。他们砍掉所有多余功能，只保留拍照、滤镜、分享。这不是"偷工减料"，而是深刻理解人类行为：让行为变简单比强化动机有效100倍。你不是懒——是进化让你选择最省力的路径。好行为设计就是顺应人性，而非对抗人性。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📱</div>
+        <div class="dual-text">
+          <h4>Burbn（失败产品）</h4>
+          <p>功能太多：打卡+分享+社交，用户不知如何使用，行为太复杂。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📷</div>
+        <div class="dual-text">
+          <h4>Instagram（千亿美元产品）</h4>
+          <p>3步完成：拍照→滤镜→分享。极致简单，行为设计完美。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 实现容易的3种方式 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">三大路径</div>
+    <div class="section-title t-02">实现容易的3种方式：提升技能 → 获取工具 → 缩小行为</div>
+    <div class="section-desc"><strong>让行为变简单有三条路径，从长期到即时。</strong>①提升技能（长期策略）——比如学会正确的跑步姿势，降低受伤概率。②获取工具和资源（中期策略）——买一台好用的榨汁机让"每天喝果汁"变简单。③让行为变微小（即时生效）——这是最强大也最被忽视的策略。入门步骤最有效：从做2个俯卧撑开始，而非每天健身1小时。缩小行为不是"降低标准"，而是降低启动门槛——启动后，你常常会自动做更多。</div>
+    <div class="flow-row">
+      <div class="flow-step">长期<br>提升技能</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">中期<br>获取工具</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">即时<br>缩小行为</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 设计微习惯 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">微习惯策略</div>
+    <div class="section-title t-03">微习惯：小到不可能失败的行为单元</div>
+    <div class="section-desc"><strong>萨里卡的故事说明了微习惯的力量。</strong>她患有躁郁症，情绪和精力波动剧烈——传统的大习惯（每天做饭、规律运动）统统无法坚持。当她改用微习惯策略后，一切变了：每天起床后到走廊浇花，仅此而已。这个微小的行为成了她的"情绪标尺"——如果连浇花都做不到，说明状态不好需要关注。微习惯不是"每天冥想30分钟"，而是"每天深呼吸3次"；不是"每天健身1小时"，而是"每天做2个俯卧撑"。微小到你不可能失败——这才是可持续改变的秘密。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>传统大习惯（注定失败）</h4>
+          <p>"每天健身1小时""每天冥想30分钟"——动机强时可行，动机弱时全面崩溃。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>微习惯（不可能失败）</h4>
+          <p>"每天做2个俯卧撑""每天深呼吸3次"——即使最低落的日子也能完成。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 能力链五维度 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">能力诊断</div>
+    <div class="section-title t-04">能力链五维度：诊断你的行为卡在了哪一环</div>
+    <div class="section-desc"><strong>每个行为都可以拆解为五个能力维度——找到最弱的那一环，就是突破口。</strong>时间——你有空吗？金钱——负担得起吗？体力——精力够吗？脑力——认知负荷重吗？日程——它能否融入你的日常安排？萨里卡的能力链分析：时间和脑力在情绪低落时最弱，所以她选择了最简单的行为（浇花）来突破。你的困境也一样——不是"我就是不行"，而是某一环太紧了。找出它，松开它。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⏰</div>
+        <div class="data-name">时间</div>
+        <div class="data-sm">减少所需时间，或把行为嵌入已有时间块</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">💰</div>
+        <div class="data-name">金钱</div>
+        <div class="data-sm">降低金钱成本，或找到免费的替代方案</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚡</div>
+        <div class="data-name">体力·脑力·日程</div>
+        <div class="data-sm">体力：降低强度。脑力：减少步骤。日程：找固定锚点</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 只要足够简单 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">思维转变</div>
+    <div class="section-title t-05">只要足够简单，你就不需要意志力</div>
+    <div class="section-desc"><strong>人类天性决定了我们无法长期坚持做令自己痛苦的事情。</strong>很多人在改变时抱有"不做大事就干脆放弃"的心态，把改变等同于痛苦和咬牙坚持。这是一个巨大的误区。简单的行为 = 可持续的行为。改变不是靠意志力打败自己，而是把行为设计得简单到随时都能做。萨里卡的生活从"失控"到"可控"，不是因为她的意志力突然变强了，而是因为她找到了足够简单的行为——浇花。这只需要30秒，但它是所有改变的起跑线。</div>
+    <div class="flow-row">
+      <div class="flow-step">旧思维<br>咬牙坚持</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">痛苦·自责</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">放弃</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">新思维<br>设计简单</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">简单 > 动机。人类天性选择最省力的路径——这不是缺陷，是进化优势。Instagram用一个3步流程击败了所有功能强大的竞争对手，不是因为功能多，而是因为够简单。同样，改变自己的行为也不需要"更强的意志力"——你只需要把目标行为缩小到不可能失败的程度。从每天2个俯卧撑开始，从每天深呼吸3次开始。微小的起步会带来巨大的复利——因为启动是最难的一步，一旦启动，惯性会带你走得更远。</div>
+</div>
     <div class="chapter-divider">· · ·</div>
     <div id="ch004" class="chapter-title">第4章 · 善用锚点时刻让行为立刻发生</div>
     <div class="chapter-overview">
   <p>本章是行为设计第五步：找到"对"的提示。福格博士揭示了提示的三种类型（人物提示、情境提示、行动提示），并指出行动提示（锚点）是最可靠的方式——把新行为挂在已有习惯上。埃米的案例完美诠释了锚点力量：她在每天送女儿到幼儿园、女儿关上车门的那一刻，触发写便利贴的习惯。这个看似微小的设计，让她从事业停滞中走了出来。本章还介绍了珍珠习惯（Pearl Habits）——把困扰转化为提示，以及设计锚点的三个标准和具体公式。</p>
+</div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">类提示</span></div>
+    <div class="kpi-label">人物·情境·行动提示</div>
+    <div class="kpi-note">行动提示（锚点）最可靠</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">标准</span></div>
+    <div class="kpi-label">锚点挑选铁三角</div>
+    <div class="kpi-note">必然·位置匹配·频率匹配</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">7<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">埃米的困境持续时间</div>
+    <div class="kpi-note">一个锚点行为改变了她的人生</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">✨</div>
+    <div class="kpi-label">珍珠习惯</div>
+    <div class="kpi-note">把困扰变成正向触发器</div>
+  </div>
+</div>
+
+<!-- 01: 提示三类型 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">三种提示</div>
+    <div class="section-title t-01">提示三类型：人物提示、情境提示、行动提示</div>
+    <div class="section-desc"><strong>提示是行为发生的决定性要素——没有提示，行为就永远不会发生。</strong>①人物提示：靠自己的记忆或别人提醒——最不可靠，因为人总会忘。②情境提示：便利贴、APP通知、闹钟——中等可靠，但容易产生"通知疲劳"而被忽略。③行动提示：把新行为锚定在已有习惯上——最可靠，因为它利用了日常生活中已经自动发生的行为作为触发器。不要依赖记忆或便利贴，要让你的生活本身成为提示系统。</div>
+    <div class="flow-row">
+      <div class="flow-step">人物提示<br>记忆·闹钟</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">情境提示<br>便利贴·推送</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">行动提示<br>锚点←最可靠</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 锚点三标准 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">锚点选择</div>
+    <div class="section-title t-02">锚点三标准：要成为好的锚点，必须满足三个条件</div>
+    <div class="section-desc"><strong>不是所有习惯都能当锚点——好的锚点必须通过三重检验。</strong>标准一：它必须是每天必然发生的事——刷牙、喝水、到公司、吃完饭、躺上床。标准二：锚点必须与新行为在物理位置上匹配——"刷完牙"适合触发"做深蹲"（都在卫生间），但不适合触发"打开电脑写日记"。标准三：锚点的频率必须与新行为匹配——每天必然发生的事适合每天做的行为；如果新行为是一周两次，就找一周两次的锚点。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📌</div>
+        <div class="data-name">必然发生</div>
+        <div class="data-sm">锚点是每天都必然自动发生的事（刷牙/喝水/到家）</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📍</div>
+        <div class="data-name">位置匹配</div>
+        <div class="data-sm">锚点与新行为所处物理位置必须一致</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔄</div>
+        <div class="data-name">频率匹配</div>
+        <div class="data-sm">锚点发生频率必须与新行为的频率一致</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 锚点公式 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">锚点公式</div>
+    <div class="section-title t-03">锚点公式："在我【已有习惯】之后，我会【新微行为】"</div>
+    <div class="section-desc"><strong>这是福格行为模型中最实用的操作公式。</strong>埃米的案例：她每天送女儿到幼儿园——女儿关上车门的那一刻，就是她的锚点。她立刻停车，在便利贴上写下当天最重要的一件事。格式严格遵循："在我女儿关上车门之后，我会停车写下今天最重要的事。"——精准、具体、不可模糊。这个习惯让她从7年的事业停滞中走了出来。成功的锚点公式必须是："在我【特定事件】之后，我会【微小的新行为】"——不可模糊，不可含糊。</div>
+    <div class="flow-row">
+      <div class="flow-step">🚗 送女儿到幼儿园</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔔 女儿关上车门</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">✍️ 停车写便利贴</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">👏 拍手说"搞定！"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 珍珠习惯 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">珍珠习惯</div>
+    <div class="section-title t-04">珍珠习惯：把困扰转化为正向行为的触发器</div>
+    <div class="section-desc"><strong>珍珠习惯（Pearl Habits）是福格行为模型中最美的概念。</strong>珍珠是怎么形成的？一粒沙子（刺激物）进入贝壳，贝壳用珍珠质层层包裹它，最终形成珍珠。同理，生活中那些让你焦虑、烦躁、不安的事情（沙子），都可以被转化为正向行为的触发器。每当焦虑来临时→做3次深呼吸。每当被同事打断时→微笑并感谢对方。负面情绪不再是敌人，而是你的提示系统——每一次不舒服都是一次练习正向行为的机会。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🦪</div>
+        <div class="dual-text">
+          <h4>沙子（刺激物）</h4>
+          <p>焦虑来袭 · 被他人打断 · 自我怀疑 · 烦躁不安 · 压力感 · 拖延冲动</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">💎</div>
+        <div class="dual-text">
+          <h4>珍珠（转化后的行为）</h4>
+          <p>深呼吸3次 · 微笑并感谢 · 写下感恩 · 站起来拉伸 · 喝一杯水 · 做1个俯卧撑</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 设计对提示的3步骤 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">三步法</div>
+    <div class="section-title t-05">设计对提示的3步骤：锚点清单→匹配行为→反复演练</div>
+    <div class="section-desc"><strong>提示不能交给运气——你必须主动设计。</strong>第一步：列出你每天必然发生的事作为"锚点清单"——起床、上厕所、刷牙、喝水、到公司、吃午饭、下班回家、躺上床……写得越细致越好。第二步：把你要培养的新微行为，逐一匹配到最合适的锚点上——位置匹配、频率匹配、逻辑自然。第三步：反复演练锚点公式，直到它变成自动反应。埃米练了一星期后，写便利贴就变成了无需思考的自动行为。对的位置+对的频率+对的演练=自动习惯。</div>
+    <div class="flow-row">
+      <div class="flow-step">Step 1<br>列锚点清单</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Step 2<br>匹配新行为</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Step 3<br>反复演练→自动化</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">提示是行为的起爆器。生活中数百个提示每天都在驱动你的行为，而你极少意识到它们。你不必靠意志力去"记得"做某件事——你只需要把一个新微行为锚定在一个你每天都会做的旧习惯上。公式很简单："在我【已有习惯】之后，我会【新微行为】"。更进一步，用珍珠习惯将每一次焦虑、每一次烦躁变成正向行为的触发器——沙子终将变成珍珠。提示设计好了，行为自然发生。</div>
 </div>
     <div class="chapter-divider">· · ·</div>
     <div id="ch005" class="chapter-title">第5章 · 创造积极情绪，将行为固化为习惯</div>
     <div class="chapter-overview">
   <p>本章揭示了福格行为模型中最具颠覆性的洞见：习惯的形成不在于重复次数，而在于积极情绪。大脑天生会重复那些让你感觉美好的行为——这就是"情绪创造习惯"的核心机制。福格系统性地介绍了"庆祝"这一被长期忽视的关键步骤：为什么庆祝比重复更重要，如何在行为完成后立刻给自己发送一个"成功信号"，以及如何用"庆祝闪电战"快速固化一个新习惯。本章还特别回应了自我批评为什么永远无法帮你建立好习惯。</p>
 </div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">0<span class="kpi-unit">秒延迟</span></div>
+    <div class="kpi-label">庆祝黄金窗口</div>
+    <div class="kpi-note">行为后立即庆祝效果最强</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">条</span></div>
+    <div class="kpi-label">庆祝核心原则</div>
+    <div class="kpi-note">及时、简单、真诚</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">100<span class="kpi-unit">倍</span></div>
+    <div class="kpi-label">庆祝 vs 自责效果差</div>
+    <div class="kpi-note">"我做到了"比"我还不够好"有效百倍</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">闪电战<span class="kpi-unit" style="display:block;font-size:13px;">1天集中</span></div>
+    <div class="kpi-label">庆祝闪电战</div>
+    <div class="kpi-note">一天内加速习惯固化</div>
+  </div>
+</div>
+
+<!-- 01: 情绪固化习惯 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心机制</div>
+    <div class="section-title t-01">情绪固化习惯：积极情绪才是习惯的真正锁扣</div>
+    <div class="section-desc"><strong>习惯来自让你感觉美好的情绪，而非重复次数。</strong>这是福格行为模型中最反直觉的发现：大脑会自动重复那些释放多巴胺、带来愉悦感的行为。不是重复形成了习惯，而是重复过程中伴随的积极情绪锁定了习惯。当一个行为完成后你感到成功和喜悦，大脑就会释放多巴胺，为这个行为回路"打上标签"——下次更容易启动。这就是为什么光靠意志力重复做一件事往往坚持不下去：如果伴随的是痛苦和抗拒，大脑不会把它标记为"值得保留"的回路。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🧠</div>
+        <div class="data-name">大脑机制</div>
+        <div class="data-sm">多巴胺标记"这个行为值得重复"</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔁</div>
+        <div class="data-name">传统误区</div>
+        <div class="data-sm">以为21天/66天自动形成习惯</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">✨</div>
+        <div class="data-name">正确方法</div>
+        <div class="data-sm">用积极情绪锁定每次行为</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 庆祝的力量 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">情绪锚定</div>
+    <div class="section-title t-02">庆祝的力量：给大脑发送"记住这个"的信号</div>
+    <div class="section-desc"><strong>每次完成微行为后立刻庆祝——这是福格方法中最核心也最容易被忽视的一步。</strong>说"太棒了！"、攥拳、哼一小段歌、跳一下——任何能让你真正感到成功的方式都可以。庆祝不是可有可无的锦上添花，而是习惯形成的必要步骤。它的神经科学原理是：在行为完成后的极短时间内（数秒内），用积极情绪激活大脑的奖励系统，告诉基底神经节"这个行为很重要，记住它"。没有庆祝的习惯养成，就像种下种子却从不浇水。</div>
+    <div class="flow-row">
+      <div class="flow-step">微行为<br>执行完成</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">立刻庆祝<br>激活多巴胺</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">大脑标记<br>"值得重复"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">习惯<br>自动固化</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 庆祝原则 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">实践法则</div>
+    <div class="section-title t-03">庆祝三原则：及时、简单、真诚</div>
+    <div class="section-desc"><strong>有效的庆祝不需要复杂仪式，但必须遵守三条核心原则。</strong>①及时——行为完成后立刻庆祝，延迟会让大脑无法将情绪与行为准确关联；②简单——一个攥拳、一句"耶"、一个微笑即可，不需要奖励自己一顿大餐（那叫奖励，不是庆祝）；③真诚——你真的需要感到成功，假装庆祝没有效果。关键区别在于：庆祝是在行为完成的瞬间创造积极情绪，而奖励是在行为之后的外部激励。奖励会削弱内在动机，庆祝则会强化它。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏆</div>
+        <div class="dual-text">
+          <h4>奖励（外部激励）</h4>
+          <p>行为后的物质回报。可能削弱内在动机，且一旦取消奖励行为就会消退。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎉</div>
+        <div class="dual-text">
+          <h4>庆祝（情绪锚定）</h4>
+          <p>行为完成瞬间的内在积极情绪。直接编码进大脑，形成持久的内在驱动力。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 庆祝闪电战 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">加速技巧</div>
+    <div class="section-title t-04">庆祝闪电战：一天内集中庆祝，加速习惯固化</div>
+    <div class="section-desc"><strong>如果你想快速让一个行为变成习惯，就用"庆祝闪电战"。</strong>方法是：在一天之内尽可能多次地执行你的微行为，每次完成后都立刻庆祝。比如你想养成"每天做一个俯卧撑"的微习惯，可以在一天内的不同时段做10次（每次都只做一个），每次完成后攥拳说"太棒了！"。让大脑在这一天内反复浸泡在成功感和积极情绪中。庆祝越多，习惯固化越快。这不是作弊，而是充分利用大脑的学习机制——密集的正向反馈会让神经回路更快地加强。</div>
+    <div class="flow-row">
+      <div class="flow-step">上午<br>执行+庆祝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">中午<br>执行+庆祝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">下午<br>执行+庆祝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">晚上<br>执行+庆祝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">一天后<br>习惯扎根</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 停止自我批评 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">心态转换</div>
+    <div class="section-title t-05">停止自我批评：你不是意志力差，你只是没庆祝</div>
+    <div class="section-desc"><strong>习惯失败不是因为意志力差，而是因为没有庆祝。</strong>绝大多数人失败后会归咎于自己："我就是不够自律""我太懒了""我没有毅力"。这些自我批评不仅不解决问题，还会制造羞耻感，进一步降低你尝试的动力。福格的革命性观点是：改变=做微行为+立刻庆祝。对自己说"我做到了"比"我还不够好"有效100倍。如果你一直在自我批评中挣扎，不是因为你有缺陷，而是因为你用错了方法——你缺的不是意志力，而是一个在你耳边说"干得漂亮"的声音（哪怕那个声音是你自己的）。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">😞</div>
+        <div class="dual-text">
+          <h4>自我批评循环</h4>
+          <p>失败→"我不够好"→羞耻感→动力下降→更易失败→更多自责。永无止境的恶性循环。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🥳</div>
+        <div class="dual-text">
+          <h4>庆祝正循环</h4>
+          <p>微行为→"我做到了！"→成功感→动力上升→更愿意行动→更多庆祝。自动加速的良性循环。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">习惯不是靠重复次数机械地积累出来的，而是靠积极情绪"锁定"的。庆祝是福格行为模型中最被低估但最强大的工具——它是连接"行为"和"习惯"之间的那个缺失环节。每次完成微行为后立刻真诚地庆祝，你就给大脑发送了一个明确的信号：这个行为让我感觉很好，记住它。忘掉"21天法则"，忘掉自责和内疚，从今天开始庆祝每一个微小的成功。</div>
+</div>
     <div class="chapter-divider">· · ·</div>
     <div id="ch006" class="chapter-title">第6章 · 高频率小成功，让小改变自然生长</div>
     <div class="chapter-overview">
   <p>本章揭示了习惯养成的生长逻辑：大改变不是意志力的胜利，而是小成功的复利积累。每一个微行为完成后的庆祝，都是在你的"成长账户"里存入一笔本金，复利效应会接管一切。福格教我们从最想改变的地方开始——不是为了证明自己，而是因为成功体验是持续改变的唯一燃料。本章还介绍了三项"习惯忍者技巧"：行为加工、情景设计和循序渐进，并阐明了一个反直觉的真理：快就是慢，慢就是快，急于求成只会破坏你的习惯花园。</p>
+</div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">1<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">只需从1个微习惯开始</div>
+    <div class="kpi-note">不是10个，只需1个</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">项</span></div>
+    <div class="kpi-label">习惯忍者技巧</div>
+    <div class="kpi-note">行为加工·情景设计·循序渐进</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">复利<span class="kpi-unit" style="display:block;font-size:13px;">效应</span></div>
+    <div class="kpi-label">小成功积累的底层逻辑</div>
+    <div class="kpi-note">每次庆祝=往账户存一笔本金</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">习惯生长节奏</div>
+    <div class="kpi-note">微习惯→巩固→扩大→再巩固</div>
+  </div>
+</div>
+
+<!-- 01: 小成功积累 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">复利思维</div>
+    <div class="section-title t-01">小成功积累：大改变是复利效应，不是意志力的胜利</div>
+    <div class="section-desc"><strong>大改变不是意志力的胜利，是小成功的积累。</strong>每个微行为完成后的庆祝，都是给成长账户存了一笔本金。就像金钱的复利一样，这些小成功会在时间的加持下产生惊人的累积效果。你今天做的那个俯卧撑，和一年前做的那个俯卧撑，在账户里共同产生着复利。关键不是单次行为的大小，而是持续积累带来的势能——一旦复利效应启动，它会接管一切。你不需要再"逼"自己改变，系统会自动推着你往前走。</div>
+    <div class="flow-row">
+      <div class="flow-step">第1天<br>1个俯卧撑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">第1周<br>每天坚持·庆祝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">第1个月<br>自然增加到5个</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">第1年<br>运动已成身份</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 从想改变处开始 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">动力策略</div>
+    <div class="section-title t-02">从想改变处开始：动力来自成功体验，不是意志力</div>
+    <div class="section-desc"><strong>不要从最难的改，从你最想改的地方开始。</strong>改变的动力不是来自自律，而是来自一次又一次的成功体验。当你完成一个微习惯并庆祝时，你体验到了"我能做到"的感觉——这种感觉就像燃料，会驱动你想要更多。一次小成功→想要更多→持续改变，这是人类行为的自然链条。反之，从最难处开始，你大概率会在第一次失败后就失去所有动力。选择你最渴望改变的方向，但用最小最小的步伐迈出第一步。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏔️</div>
+        <div class="dual-text">
+          <h4>从最难处开始</h4>
+          <p>每天跑步5公里→第一天跑不动→"我果然不行"→放弃。失败体验摧毁动力。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🌱</div>
+        <div class="dual-text">
+          <h4>从最想改变处开始</h4>
+          <p>每天穿上跑鞋→庆祝"我做到了"→"我还能再走两步"→自然扩大。成功体验驱动更多。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 习惯忍者技巧 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">工具箱</div>
+    <div class="section-title t-03">习惯忍者技巧：三项高级策略让改变更顺滑</div>
+    <div class="section-desc"><strong>福格提供了三项"习惯忍者"级别的技巧，帮你在不依赖意志力的情况下让好习惯更容易养成。</strong>①行为加工——在现有行为上叠加微习惯。例如"每次冲马桶后做两个深蹲"。利用已有的行为作为锚点，不需要重新创造提示。②情景设计——改变环境让好行为更容易、坏行为更难。例如想少吃零食就把零食放在高处或不要买回家。③循序渐进——永远从微小开始，不跳级。感觉"太容易了"才是对的信号，不是"再加码"的理由。这三项技巧组合使用，可以让改变变得像顺水推舟一样自然。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">①</div>
+        <div class="data-name">行为加工</div>
+        <div class="data-sm">在现有行为上叠加微习惯，利用已有锚点</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">②</div>
+        <div class="data-name">情景设计</div>
+        <div class="data-sm">改变环境让好行为更容易、坏行为更难</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">③</div>
+        <div class="data-name">循序渐进</div>
+        <div class="data-sm">永远从微小开始，感觉太容易才是对的</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 让改变自然生长 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">生长哲学</div>
+    <div class="section-title t-04">让改变自然生长：1个微习惯的成功会蔓延到所有领域</div>
+    <div class="section-desc"><strong>不要规划"我要养成10个习惯"，只养1个微习惯。</strong>成功后会自然蔓延到其他领域——这就是习惯的"溢出效应"。当你在一个微小行为上体验到持续成功的快感，你会本能地想把这种感觉复制到生活的其他角落。比如你养成了"每天整理床铺"的微习惯并庆祝了30天，你会发现自己开始想要整理书桌、衣柜、甚至工作流程。改变像植物，不能拔苗助长——你给它合适的土壤（微习惯）、阳光（庆祝）、水分（一致性），它自己就会长。</div>
+    <div class="flow-row">
+      <div class="flow-step">1个微习惯<br>成功扎根</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">自信感<br>蔓延到其他领域</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">第2个微习惯<br>自发启动</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">改变<br>已成生活方式</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 掌握改变的节奏 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">节奏智慧</div>
+    <div class="section-title t-05">掌握改变的节奏：快就是慢，慢就是快</div>
+    <div class="section-desc"><strong>微习惯→巩固（庆祝）→微微扩大→再巩固。这是改变的黄金节奏。</strong>每一个阶段都不能跳过。巩固的意思是：在这个级别上做到完全不需要思考、完全不需要意志力、做起来就像呼吸一样自然。只有到那时，才微微扩大一点。如果急于求成，在小习惯还没巩固时就加码——比如刚开始每天一个俯卧撑，第三天就加到20个——你等于是把一棵刚发芽的幼苗连根拔起。福格的警句：急于求成=破坏习惯花园。让习惯用自然的节奏生长，它会给你超出预期的回报。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚡</div>
+        <div class="dual-text">
+          <h4>急于求成的陷阱</h4>
+          <p>微习惯未巩固就加码→行为变难→动机崩塌→"我果然坚持不了"→全面放弃。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🐢</div>
+        <div class="dual-text">
+          <h4>慢就是快的智慧</h4>
+          <p>微习惯扎根→庆祝强化→自然生长→无需意志力→习惯变成身份。看似慢，实则最稳最快。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">大改变从来不是意志力的胜利，而是小成功在时间复利下的必然结果。每次完成一个微习惯并庆祝，你就往成长的账户里存了一笔本金。不要急着扩大，不要规划10个习惯同时推进，让1个微习惯先扎根。用行为加工、情景设计和循序渐进三项忍者技巧，把改变变得毫不费力。记住：急于求成是习惯花园的头号杀手——慢就是快，让改变像植物一样自然生长。</div>
 </div>
     <div class="chapter-divider">· · ·</div>
     <div id="ch007" class="chapter-title">第7章 · 行为改变系统方案，一次只解一个结</div>
     <div class="chapter-overview">
   <p>本章提出了行为改变的系统方案：一次只聚焦一个行为改变，成功后再进入下一个。福格揭示了一个被大多数人忽视的事实——同时改变多个行为注定失败，这不是能力问题，而是注意力带宽的硬约束。他给出了完整的7步行为改变流程：明确愿望→探索选项→匹配黄金行为→从微习惯开始→找到对的提示→庆祝成功→排除障碍并重复。更重要的是，本章教会我们用B=MAP诊断失败原因，而不是给自己贴标签——"我不是懒，是设计出了问题"。</p>
 </div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">1<span class="kpi-unit">次</span></div>
+    <div class="kpi-label">一次只解一个结</div>
+    <div class="kpi-note">不并行，注意力带宽有限</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">7<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">行为改变完整流程</div>
+    <div class="kpi-note">愿望→选项→匹配→微习惯→提示→庆祝→排除障碍</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">B=MAP<span class="kpi-unit" style="display:block;font-size:13px;">诊断公式</span></div>
+    <div class="kpi-label">失败诊断三要素</div>
+    <div class="kpi-note">动机·能力·提示 三维分析</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">螺旋<span class="kpi-unit" style="display:block;font-size:13px;">前进</span></div>
+    <div class="kpi-label">改变不是直线上升</div>
+    <div class="kpi-note">中断后回到微习惯重新开始</div>
+  </div>
+</div>
+
+<!-- 01: 一次解一个结 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">聚焦原则</div>
+    <div class="section-title t-01">一次解一个结：多线并行=全线崩溃</div>
+    <div class="section-desc"><strong>同时改变多个行为=注定失败。一次只聚焦一个行为改变，成功后再进入下一个。</strong>这不是能力问题，而是注意力带宽问题。人类大脑的注意力是一种稀缺资源，同时管理多个行为改变会让每个都得不到足够的"注意力预算"。当你把全部注意力聚焦在一个行为上时，你可以微调提示、调整难度、认真庆祝、排除障碍——这些精细操作在分散注意时根本做不到。成功改变一个行为后，你不仅收获了习惯本身，还积累了信心和方法——这份信心会自动注入下一个改变。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">💥</div>
+        <div class="dual-text">
+          <h4>多线并行</h4>
+          <p>同时推进早起+运动+阅读+写作→每个都半途而废→"我什么都坚持不了"→全面放弃。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>一次一个</h4>
+          <p>先搞定早起→庆祝成功→信心注入下一个→再搞定运动→连锁成功。每次都是完整的胜利。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 行为改变流程 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">系统流程</div>
+    <div class="section-title t-02">7步行为改变流程：从愿望到习惯的完整路线图</div>
+    <div class="section-desc"><strong>福格提供了从愿望到习惯的7步系统流程，每一步都不可或缺。</strong>①明确愿望——你想实现什么？不是"我要减肥"，而是"我想到年底减重5公斤"。②探索行为选项——列出所有可能帮到你愿望的行为（至少10-15个）。③匹配黄金行为——筛选出高影响+高可行的那个行为。④从微习惯开始——把黄金行为缩小到不可能失败的程度。⑤找到对的提示——用锚点或外部提示触发行为。⑥庆祝成功——每次完成后立刻庆祝。⑦排除障碍并重复——遇到问题用B=MAP诊断，调整后继续。这不是一次性的流程，而是持续循环。</div>
+    <div class="flow-row">
+      <div class="flow-step">①<br>明确愿望</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">②<br>探索选项</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③<br>匹配黄金行为</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">④<br>微习惯开始</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⑤<br>找对提示</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⑥<br>庆祝成功</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⑦<br>排除障碍·重复</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 关键是不断继续 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">韧性思维</div>
+    <div class="section-title t-03">关键是不断继续：改变是螺旋前进，不是直线上升</div>
+    <div class="section-desc"><strong>改变不是直线上升，是螺旋前进。</strong>你可能会中断一天、一周甚至更久——这没关系。当你的习惯中断了，不要自责，不要放弃，直接回到微习惯重新开始。完美主义是改变的最大敌人：因为一次中断就否定全局，等于是用一个错误毁灭之前的全部成功。福格的方法给了你一个"永不失败"的安全网——你可以随时回到最初级的微习惯，重新积累成功感。中断→回到微习惯→重新庆祝→再次前进，这个循环本身就是改变的一部分。关键不是不犯错，而是永远选择继续。</div>
+    <div class="flow-row">
+      <div class="flow-step">执行中<br>一切顺利</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">中断了<br>没关系</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">回到微习惯<br>重新开始</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">庆祝重启<br>恢复动量</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">螺旋<br>向前推进</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 从小改变看到颠覆 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">蝴蝶效应</div>
+    <div class="section-title t-04">从小改变看到颠覆：一个微习惯的蝴蝶效应</div>
+    <div class="section-desc"><strong>一个微习惯的成功会辐射到生活的其他方面。</strong>这不是鸡汤，而是真实的连锁反应。比如：你养成了早起15分钟的微习惯→早上更有精力→白天更高效工作→能更早下班→晚上有更多家庭时间→家庭关系改善→心情更好→第二天更愿意早起。这个正向链条会让你发现，改变一个微小的行为节点，可能会在整个生活系统中产生意想不到的积极波动。蝴蝶效应真实存在：你不需要改变一切，你只需要找到那个最有杠杆效应的微习惯。</div>
+    <div class="flow-row">
+      <div class="flow-step">早起<br>15分钟</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">更有精力<br>早间从容</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">高效工作<br>提前完成</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">早下班<br>家庭时间</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">关系改善<br>正向循环</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 排除行为障碍 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">诊断工具</div>
+    <div class="section-title t-05">排除行为障碍：用B=MAP诊断，不要给自己贴标签</div>
+    <div class="section-desc"><strong>分析失败：是动机不够？能力太難？提示缺失？用B=MAP诊断每一个卡点。</strong>当你的行为改变遇到障碍时，不要给自己贴标签——"我就是懒""我没有自律"——这些标签除了制造羞耻感外毫无用处。正确的做法是回到福格行为模型公式 B=MAP：行为(B)发生与否，取决于动机(M)、能力(A)、提示(P)三者同时满足。你的微习惯中断了，是动机突然降低了？还是行为变得太难了？还是提示（锚点）被破坏了？找到具体原因，调整对应要素，继续前进。行为设计师的思维是：不是我差劲，是系统需要优化。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">M</div>
+        <div class="data-name">动机不足？</div>
+        <div class="data-sm">回到愿望、重新连接"为什么"，或降低行为难度提升动机</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">A</div>
+        <div class="data-name">能力不够？</div>
+        <div class="data-sm">行为太难了，继续缩小——把"做5分钟"变成"做1分钟"</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">P</div>
+        <div class="data-name">提示缺失？</div>
+        <div class="data-sm">锚点失效了，换一个新的提示——尝试不同的触发方式</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">行为改变不需要你变成一个超人，只需要你遵循一个系统：一次只解一个结。用7步流程从愿望走到习惯，遇到卡点时用B=MAP冷静诊断而不是自我攻击，中断了就回到微习惯重新开始。改变是螺旋前进的，完美主义是最大的敌人。最重要的是——从一个微小的改变开始，你会发现蝴蝶效应真的存在，生活开始向更好的方向不可逆转地漂移。</div>
+</div>
     <div class="chapter-divider">· · ·</div>
     <div id="ch008" class="chapter-title">第8章 · 群体行为设计——帮助其他人感受成功</div>
     <div class="chapter-overview">
   <p>本章将福格行为模型从个人延伸到群体——如何帮助他人改变行为。福格定义了群体行为设计的两种角色：主导者（主动设计方案）和促进者（引导他人通过微习惯成长）。核心理念是：不要替他人回答B=MAP的问题，而是引导他们自己找到答案。本章提供了职场、家庭、社群三个真实场景的实践方案，并阐明了一个终极真理：所有人类行为——减肥、学习、育儿、管理——都遵循B=MAP。不是意志力问题，是设计问题。掌握了行为设计，就掌握了改变的能力。</p>
+</div>
+
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">2<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">群体设计角色</div>
+    <div class="kpi-note">主导者 vs 促进者</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">B=MAP引导法</div>
+    <div class="kpi-note">愿望→行为→简化→锚点→庆祝</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">大</span></div>
+    <div class="kpi-label">实践场景</div>
+    <div class="kpi-note">职场·家庭·社群全覆盖</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">100<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">B=MAP适用性</div>
+    <div class="kpi-note">所有人类行为都遵循这个公式</div>
+  </div>
+</div>
+
+<!-- 01: 两种身份 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">角色定位</div>
+    <div class="section-title t-01">两种身份：主导者与促进者——你选择哪种角色？</div>
+    <div class="section-desc"><strong>群体行为设计有两种角色：①主导者（Design the Change）主动设计行为方案并带领实施；②促进者（Facilitate the Change）帮助他人通过微习惯自己成长。</strong>主导者适合需要系统化推动的场景——比如公司管理者想要建立团队复盘习惯。促进者适合需要赋能而非指令的场景——比如帮助孩子养成刷牙习惯或帮朋友建立运动习惯。两种角色的共同点是都基于B=MAP公式，区别在于主导者更直接地设计方案，而促进者更多通过提问引导他人自己找到答案。福格强调：大多数情况下，促进者角色更可持续。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🎨</div>
+        <div class="dual-text">
+          <h4>主导者 · Design the Change</h4>
+          <p>主动设计行为方案，设定锚点、微习惯和庆祝方式。适合团队管理、组织变革等需要系统化推动的场景。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>促进者 · Facilitate the Change</h4>
+          <p>通过提问引导他人自己找到B=MAP的答案。适合育儿、教育、辅导等需要赋能而非指令的场景。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 用B=MAP帮他人 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">引导方法</div>
+    <div class="section-title t-02">用B=MAP帮他人：引导而非替他们回答</div>
+    <div class="section-desc"><strong>帮别人改变=帮他们找到：他们的愿望是什么？什么行为最匹配？怎么能变简单？什么做锚点？如何庆祝？</strong>关键原则：不要替他们回答，要引导。直接告诉别人"你应该这样做"会触发心理抗拒，而通过提问引导他们自己发现答案，则会产生内在承诺和所有权。例如，不要对孩子说"你每天必须刷牙"，而是问"你想什么时候刷牙？"引导他自己选择锚点。不要对同事说"你应该每周复盘"，而是问"如果你每周只花3分钟回顾，你会写什么？"让微行为低到不可能产生抗拒。</div>
+    <div class="flow-row">
+      <div class="flow-step">提问<br>你的愿望是什么？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">引导<br>什么行为最容易开始？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">设计<br>怎么变得更简单？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">共创<br>什么提示最好？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">庆祝<br>一起感受成功</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 场景实践 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">实战应用</div>
+    <div class="section-title t-03">三大场景实践：职场·家庭·社群全覆盖</div>
+    <div class="section-desc"><strong>福格为三个最典型场景提供了可立即上手的群体行为设计模板。</strong>①职场：用锚点+微习惯帮团队建立复盘习惯——例如"每周五下班前写3条本周收获"。不是要求写长篇报告，而是从3条要点开始，写完后一起庆祝。②家庭：用庆祝培养孩子刷牙习惯——把刷牙变成一个"之后就能庆祝"的正向体验。③社群：用小成功激发群体动力——在微信群或学习小组中，鼓励每个人分享自己的微习惯和庆祝瞬间，群体的小成功会互相感染，形成正向网络效应。每个场景的核心都是：设计微行为，然后庆祝。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">💼</div>
+        <div class="data-name">职场</div>
+        <div class="data-sm">每周五下班前写3条收获→团队复盘微习惯→持续积累组织能力</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🏠</div>
+        <div class="data-name">家庭</div>
+        <div class="data-sm">刷牙后立刻击掌庆祝→正向情绪锚定→孩子主动要刷牙</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">👥</div>
+        <div class="data-name">社群</div>
+        <div class="data-sm">分享微习惯+庆祝瞬间→小成功互相感染→群体正向动力网络</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 行为设计应对一切 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">终极法则</div>
+    <div class="section-title t-04">行为设计应对一切：所有人类行为都遵循B=MAP</div>
+    <div class="section-desc"><strong>减肥、学习、育儿、管理——所有人类行为都遵循B=MAP。</strong>不是意志力问题，是设计问题。一个孩子不写作业，不是因为他"懒"或"笨"，而是行为设计出了问题：可能是动机不足（不知道为什么写），能力不够（作业太难），或者提示缺失（没有明确的"开始写作业"的信号）。一个员工不主动复盘，不是因为"没有责任心"，而是复盘这个行为没有被设计得足够简单和可庆祝。掌握了行为设计，你就掌握了一种几乎可以改变任何行为的能力——包括自己的和别人的。</div>
+    <div class="flow-row">
+      <div class="flow-step">减肥<br>B=MAP</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">学习<br>B=MAP</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">育儿<br>B=MAP</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">管理<br>B=MAP</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">一切改变<br>都=设计问题</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 让别人感受成功 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">核心使命</div>
+    <div class="section-title t-05">让别人感受成功：最好的帮助是帮别人体验"我能做到"</div>
+    <div class="section-desc"><strong>最好的帮助是帮别人体验"我能做到"。</strong>不是跟他们讲道理，不是告诉他们"你应该怎样"，而是帮他们设计一个容易到不可能失败的微行为，然后帮他们庆祝。当一个人体验到"我能做到"的瞬间，他内在的身份认知就变了——从"我做不到"变成了"我是一个能做到的人"。这种身份转变比任何道理和说教都有力量。福格说：掌握了行为设计，你就不仅仅是改变自己，你可以成为改变他人生活的力量。而这一切的起点，就是帮一个人完成一个微小的行为，然后真誠地对他说："你做到了！"</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📢</div>
+        <div class="dual-text">
+          <h4>说教模式（无效）</h4>
+          <p>"你应该多运动""你太懒了""你看看别人"。引发抗拒、羞耻和疏远——永远无法带来真正的改变。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🤝</div>
+        <div class="dual-text">
+          <h4>设计模式（有效）</h4>
+          <p>"如果你每天只做一个俯卧撑呢？来，试试看——做完我跟你击掌！"微行为+庆祝=身份转变。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">群体行为设计不是操纵他人，而是为他人创造成功体验。无论你选择主导者还是促进者角色，核心都是B=MAP——帮他们找到动机、降低难度、设置提示，然后一起庆祝。职场、家庭、社群，所有场景都适用同一个公式。记住：最好的帮助不是说教，而是帮一个人体验"我能做到"的那一刻。当你掌握了行为设计，你就拥有了一种可以改变世界的力量——从一个微行为、一次庆祝开始。</div>
 </div>
 
     <footer class="book-footer">
