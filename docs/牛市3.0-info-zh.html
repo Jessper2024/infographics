@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>牛市3.0：魔咒也不灵了 — 信息图</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: '方正屏显雅宋', 'Noto Serif SC', 'Songti SC', serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 900px; width: 100%; }
+  h1 { font-size: 36px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 2px; }
+  .subtitle { text-align: center; font-size: 14px; color: #888; margin-bottom: 24px; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 22px 28px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 8px rgba(0,0,0,0.03); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .s-01 { border-left-color: #dc2626; } .s-02 { border-left-color: #ea580c; }
+  .s-03 { border-left-color: #ca8a04; } .s-04 { border-left-color: #4f46e5; }
+  .s-05 { border-left-color: #db2777; }
+
+  .num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; }
+  .n-01 { background: #fef2f2; color: #dc2626; } .n-02 { background: #fff7ed; color: #ea580c; }
+  .n-03 { background: #fefce8; color: #ca8a04; } .n-04 { background: #eef2ff; color: #4f46e5; }
+  .n-05 { background: #fdf2f8; color: #db2777; }
+
+  .body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; }
+  .tg-01 { background: #fef2f2; color: #dc2626; } .tg-02 { background: #fff7ed; color: #ea580c; }
+  .tg-03 { background: #fefce8; color: #ca8a04; } .tg-04 { background: #eef2ff; color: #4f46e5; }
+  .tg-05 { background: #fdf2f8; color: #db2777; }
+
+  .title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; }
+  .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  /* Data highlight */
+  .data-row { display: flex; gap: 12px; margin-top: 6px; }
+  .data-card { flex: 1; border-radius: 10px; padding: 14px 12px; text-align: center; }
+  .data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+  .data-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .data-big { font-size: 28px; font-weight: bold; }
+  .data-big.r { color: #dc2626; } .data-big.g { color: #16a34a; }
+  .data-sm { font-size: 12px; color: #777; margin-top: 4px; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 14px; text-align: center; min-width: 92px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .flow-step.win { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+
+  /* Dual */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Risk */
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 80px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 70px; text-align: right; flex-shrink: 0; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: flex-start; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .s-01 { border-top-color: #dc2626; } .s-02 { border-top-color: #ea580c; }
+    .s-03 { border-top-color: #ca8a04; } .s-04 { border-top-color: #4f46e5; }
+    .s-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; flex-direction: column; }
+    .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; } h1 { font-size: 26px; }
+  }
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="牛市3.0-info-en.html">中文 / English</a>
+</div>
+
+
+  <h1>牛市 3.0：魔咒也不灵了</h1>
+  <p class="subtitle">当 60% 的股票在跌、指数却在涨——A 股正在狠狠惩罚守旧派</p>
+  <div class="divider"></div>
+
+  <div class="splash">
+    2026 年 A 股中位数 -5.75%，六成个股下跌，但各大指数全线飘红。以前从来没有牛市是这样的——超过一半股票下跌。中继续创超越茅台、工业富联超越茅台，"茅台魔咒"拦不住了。沪深 300 含 AI 比例已近 30%，指数正在快速换血。而散户还在用旧时代的经验刻舟求剑。
+  </div>
+
+  <!-- 01: 指数牛个股熊 + 数据卡 -->
+  <div class="section s-01">
+    <div class="num n-01">01</div>
+    <div class="body">
+      <div class="tag tg-01">指数牛个股熊</div>
+      <div class="title t-01">60% 的股票在跌，各大指数却全红——这不是你熟悉的牛市</div>
+      <div class="desc">同花顺 90 个行业仅 25% 上涨，5518 只在交易个股仅 31% 上涨，但沪深 300、中证 500 等指数全红。A 股中位数 -5.75%，涨跌比 4:6。历史上从未出现过这样的"牛市"——指数繁荣与个股惨淡并存。</div>
+      <div class="data-row">
+        <div class="data-card red">
+          <div class="data-big r">-5.75%</div>
+          <div class="data-sm">2026年A股中位数</div>
+        </div>
+        <div class="data-card green">
+          <div class="data-big g">~30%</div>
+          <div class="data-sm">沪深300含AI比例</div>
+        </div>
+        <div class="data-card red">
+          <div class="data-big r">60%</div>
+          <div class="data-sm">下跌个股占比</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: 汰弱留强 + Flow -->
+  <div class="section s-02">
+    <div class="num n-02">02</div>
+    <div class="body">
+      <div class="tag tg-02">汰弱留强</div>
+      <div class="title t-02">指数的底层逻辑：自动淘汰弱者，不断加仓强者</div>
+      <div class="desc">中证 500 全口径含 AI 比例 33-35%，这就是指数大幅跑赢市场中位数的原因。指数编制的核心规则是"汰弱留强"——而散户的交易习惯恰恰是"汰强留弱"。这一进一出的反差，是大多数人常年亏钱、跑不赢大盘的根本原因。</div>
+      <div class="flow-row">
+        <div class="flow-step">指数定期<br>调整成分股</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step win">剔除市值<br>缩水的弱者</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step win">纳入市值<br>增长的强者</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step win">强者权重<br>越来越大</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">指数跑赢<br>绝大多数个股</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: 茅台魔咒 + Flow -->
+  <div class="section s-03">
+    <div class="num n-03">03</div>
+    <div class="body">
+      <div class="tag tg-03">茅台魔咒终结</div>
+      <div class="title t-03">旧股王被踩着头往上走，旧时代的秩序崩塌了</div>
+      <div class="desc">中继续创股价超越茅台，工业富联市值超越茅台。以前是零星几个篡位的反贼，现在是成千上万的黄巢要进长安。沪深 300 十大权重中，新兴科技已占半壁江山——指数在时代推动下快速换血。</div>
+      <div class="flow-row">
+        <div class="flow-step">旧时代<br>消费股王</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">AI时代<br>科技崛起</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">中继续创<br>超越茅台</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">工业富联<br>超越茅台</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">"魔咒"<br>全面失效</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: 中欧贸易摩擦 + Risk -->
+  <div class="section s-04">
+    <div class="num n-04">04</div>
+    <div class="body">
+      <div class="tag tg-04">外部暗雷</div>
+      <div class="title t-04">欧盟别无选择，中欧贸易摩擦是下半年最大变量</div>
+      <div class="desc">彭博社：欧盟准备与中国展开贸易博弈。OECD 报告指中国多个产业 60% 份额增长依赖政府补贴。去年欧盟对华逆差 3610 亿欧元。光伏、锂电、电动车、风电、造船——这些板块的未来面临巨大不确定性。</div>
+      <div class="risk-row">
+        <div class="risk-label">电动车</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">出口暴增 19%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">光伏</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">全球市占 80%+</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">锂电</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">补贴争议核心</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: 散户出路 + Dual -->
+  <div class="section s-05">
+    <div class="num n-05">05</div>
+    <div class="body">
+      <div class="tag tg-05">散户出路</div>
+      <div class="title t-05">改不了汰强留弱的人性？买 ETF 就是解药</div>
+      <div class="desc">大多数散户的交易习惯是"汰强留弱"——涨一点就卖，亏了就死扛。而指数恰恰相反。如果你意识到自己性格有硬伤、改不过来，最简单的办法就是买指数 ETF，会立竿见影解决问题。</div>
+      <div class="dual-grid">
+        <div class="dual-card bad">
+          <div class="dual-icon">❌</div>
+          <div class="dual-text">
+            <h4>散户习惯：汰强留弱</h4>
+            <p>赚一点就跑 → 错失主升浪<br>亏了就死扛 → 越套越深<br>满手垃圾股 → 永不翻身</p>
+          </div>
+        </div>
+        <div class="dual-card good">
+          <div class="dual-icon">✅</div>
+          <div class="dual-text">
+            <h4>指数逻辑：汰弱留强</h4>
+            <p>弱者自动剔除 → 不拖后腿<br>强者权重增加 → 复利放大<br>买 ETF = 让指数替你选股</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">牛市 3.0 信息图 · 2026.06 · 观点源自猫笔刀 · 中继/富联/茅台数据截至 2026.06.03 · 不构成投资建议</div>
+
+</div>
+</body>
+</html>

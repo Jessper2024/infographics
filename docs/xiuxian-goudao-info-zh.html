@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>修仙苟道交易法则 — 信息图</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+}
+:root {
+  --bg: #f5f1eb;
+  --dark: #1a1a1a;
+  --text: #555;
+  --muted: #888;
+}
+body {
+  background: var(--bg);
+  font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+  color: var(--text);
+  line-height: 2.0;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 64px;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 880px;
+  width: 100%;
+}
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-switch a {
+  font-family: 'FZXPYZS','PingFang SC',serif;
+  font-size: 12px;
+  color: #888;
+  text-decoration: none;
+  border: 1px solid #d5cfc5;
+  border-radius: 20px;
+  padding: 4px 16px;
+  transition: background 0.2s;
+}
+.lang-switch a:hover { background: #e8e0d5; }
+.kpi-row {
+  display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;
+}
+.kpi-card {
+  flex: 1; min-width: 120px;
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 12px;
+  padding: 20px 16px; text-align: center;
+}
+.kpi-num { font-family: 'FZXPYZS',serif; font-size: 28px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; }
+.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+.header h1 {
+  font-family: 'FZXPYZS','PingFang SC',serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--dark);
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+}
+.header h2 {
+  font-family: 'FZXPYZS','PingFang SC',serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #888;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+.divider {
+  width: 60px; height: 3px; margin: 24px 0 28px;
+  border-radius: 2px; background: linear-gradient(90deg, #dc2626, #ea580c);
+}
+.overview {
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+}
+.overview .ov-tag { font-family: 'FZXPYZS',serif; font-size: 12px; color: #dc2626; background: #fef2f2; border: 1px solid #fecaca; display: inline-block; padding: 2px 10px; border-radius: 12px; margin-bottom: 10px; }
+.overview h3 { font-family: 'FZXPYZS',serif; font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; }
+.overview p { margin-bottom: 8px; line-height: 1.9; }
+.card {
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.section { border-left: 4px solid; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.circle-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'FZXPYZS',serif;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+.section-tag {
+  font-family: 'FZXPYZS','PingFang SC',serif;
+  font-size: 12px; padding: 2px 10px; border-radius: 12px;
+  letter-spacing: 0.04em;
+}
+.section h3 { font-family: 'FZXPYZS','PingFang SC',serif; font-size: 18px; font-weight: 700; }
+.section-body p.bluf { color: #1a1a1a; font-weight: 600; margin-bottom: 8px; }
+.section-body p { margin-bottom: 8px; }
+.section-body p.detail { font-size: 13px; color: #777; }
+
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.dual-card { border-radius: 10px; padding: 16px 18px; }
+.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-label { font-family: 'FZXPYZS',serif; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.dual-card.good .dual-label { color: #166534; }
+.dual-card.bad .dual-label { color: #991b1b; }
+.dual-card p { font-size: 13px; color: #555; line-height: 1.8; }
+
+.flow-row { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.flow-step { background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px; padding: 14px 16px; text-align: center; font-size: 13px; color: #9a3412; font-weight: 700; min-width: 80px; }
+.flow-arrow { font-size: 18px; color: #ea580c; font-weight: 700; padding-top: 14px; }
+.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+
+.takeaway {
+  background: #faf5ff; border: 2px solid #d8b4fe; border-radius: 14px;
+  padding: 24px 28px; margin-bottom: 24px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.takeaway-label {
+  font-family: 'FZXPYZS',serif;
+  font-size: 13px; font-weight: 700; color: #7c3aed;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;
+}
+.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
+
+.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; }
+
+@media (max-width: 640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; }
+  .header h1 { font-size: 24px; }
+  .header h2 { font-size: 16px; }
+  .takeaway { order: -1; margin-bottom: 20px; }
+  .kpi-num { font-size: 24px; }
+  .card, .overview, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3 { font-size: 16px; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .dual-grid { grid-template-columns: 1fr; }
+  .kpi-row { flex-direction: column; }
+  .bluf { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-switch">
+  <a target="_blank" href="xiuxian-goudao-info-en.html">English</a>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-num">存活</div><div class="kpi-label">修真与交易<br>的第一法则</div></div>
+  <div class="kpi-card"><div class="kpi-num">99%</div><div class="kpi-label">苟圣出手<br>的最低胜率要求</div></div>
+  <div class="kpi-card"><div class="kpi-num">天劫</div><div class="kpi-label">黑天鹅事件<br>是交易者的劫数</div></div>
+  <div class="kpi-card"><div class="kpi-num">时间</div><div class="kpi-label">苟到最后<br>对手都死了</div></div>
+</div>
+
+<div class="header">
+  <h1>修仙苟道交易法则</h1>
+  <h2>市场是修真界，存活是唯一的道。飞升的从来不是天骄，而是苟圣。</h2>
+</div>
+<div class="divider"></div>
+
+<div class="overview">
+  <div class="ov-tag">SCQA 框架</div>
+  <h3>惊才绝艳者成踏脚石，深谙"苟道"者证道飞升</h3>
+  <p><strong>S · 情境：</strong>修仙小说中，证道飞升的往往不是出场时惊才绝艳的绝世天骄，而是那些深谙"苟道"、大隐于市的资质平庸之辈。交易市场同样如此——叫嚣梭哈逆天改命的修士，和没有根基强行突破的散修无异。</p>
+  <p><strong>C · 冲突：</strong>交易者本能地追逐每一次波动、参与每一场博弈，就像修真界散修为了几块下品灵石打得头破血流。频繁进场就是在不断和市场沾染因果。一次意气之争，就可能引来高阶修士的追杀——一笔无意义的交易，就可能让你爆仓出局。</p>
+  <p><strong>Q · 问题：</strong>交易者如何像"苟圣"一样在市场这部修真小说中活到最后？</p>
+</div>
+
+<!-- 01 -->
+<div class="card section" style="border-left-color: #dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">01</div>
+    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">存活</div>
+    <h3 style="color:#dc2626;">本金就是修为，爆仓就是身死道消</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">修真界最重要的是命，市场中最重要的是本金。只要人还在，境界还在，总有东山再起的机会。</p>
+    <p>高调的"天骄型"交易者把每一次交易当作扬名立万的机会，重仓出击、无视风险。他们和修真小说中那些一出场就逆天的绝世天才一样——要么成了主角的踏脚石，要么被老怪物一掌拍死。</p>
+    <p class="detail">修为可以重修，本金却需要时间去积累。一次爆仓，不仅是资金的归零，更是心态的崩塌。保住本金，就是保住你在市场中继续战斗的资格。</p>
+    <div class="dual-grid">
+      <div class="dual-card good"><div class="dual-label">✅ 苟圣做法</div><p>资金管理纪律严明，单笔风险控制在 2% 以内。宁可错过一百个机会，也不贸然出手一次。寿元漫长，有的是时间等。</p></div>
+      <div class="dual-card bad"><div class="dual-label">❌ 天骄做法</div><p>重仓梭哈，追求一战成名。每一次交易都押上全部身家，就像散修强行突破境界——侥幸成功是运气，失败是必然。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="card section" style="border-left-color: #ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">避因果</div>
+    <h3 style="color:#ea580c;">不沾因果：避开垃圾时间的低级混战</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">凡胜率没有达到九成九的世俗争端，苟圣一律绕道而行。日内短线和震荡市就是修真界的"下品灵石混战"——赢了没肉，输了要命。</p>
+    <p>修真界里，散修为了几块下品灵石打得头破血流，高阶修士对此嗤之以鼻。同理，在震荡市场中频繁做日内短线，赚的是辛苦钱，赔的却是时间和本金。每一次无意义的进出，都在增加你被市场"击杀"的概率。</p>
+    <p class="detail">真正的苟圣只在大周期、大趋势的确定性机会中出手。他们可以等三年、五年、十年，就像修真者闭关苦修等待天道气运降临。牛市来临前，手里有本金的人才有资格分一杯羹。</p>
+    <div class="flow-row">
+      <div class="flow-step">震荡市<br><small style="font-weight:400;">垃圾时间</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">观望<br><small style="font-weight:400;">不动如山</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">天道气运<br><small style="font-weight:400;">牛市降临</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">出击<br><small style="font-weight:400;">九成九胜率</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="card section" style="border-left-color: #ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">03</div>
+    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">防御</div>
+    <h3 style="color:#ca8a04;">布防御大阵：止损单和仓位管理就是你的避雷法宝</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">没有哪个清醒的修仙者会光着膀子硬抗天劫。面对市场的极端洗盘和黑天鹅事件，硬抗浮亏就是用肉身去接九重天雷。</p>
+    <p>修仙者渡劫前会提前几年甚至几十年布下重重防御大阵，备足避雷法宝和疗伤丹药。交易者的"防御大阵"就是硬性止损单、合理的仓位管理、以及永远不把鸡蛋放在一个篮子里的分散策略。</p>
+    <p class="detail">防御不是懦弱，而是对市场最基本的敬畏。那些嘲笑"止损就是认输"的交易者，和那些嘲笑"布阵太麻烦"的散修一样——他们的结局在行为开始的那一刻就已经注定了。</p>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="card section" style="border-left-color: #4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">04</div>
+    <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">熬死对手</div>
+    <h3 style="color:#4f46e5;">靠时间洪流熬死所有敌人</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">苟圣最大的优势不是资质，而是寿元。靠着漫长的寿命把敌人都熬死，继承对方的道统——交易者最大的优势不是技术，而是活得够久。</p>
+    <p>市场每天都在淘汰那些激进者、梭哈者、不服输者。你没有必要成为市场中最聪明的那个人，你只需要比大多数人活得更长。复利的威力需要时间才能显现，而时间只属于那些活下来的人。</p>
+    <p class="detail">十年后回头看，当年和你一起入市的"天才"早已爆仓离场，而你这个"资质平庸"的苟道中人，却靠着漫长的"寿元"和稳扎稳打的积累，悄悄站到了金字塔的上层。</p>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="card section" style="border-left-color: #db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fdf2f8;color:#db2777;">05</div>
+    <div class="section-tag" style="background:#fdf2f8;color:#db2777;">渡劫</div>
+    <h3 style="color:#db2777;">天劫降临时：预案比意志力可靠一万倍</h3>
+  </div>
+  <div class="section-body">
+    <p class="bluf">试图靠意志力去硬抗浮亏，就如同用肉身去接九重天雷，纯属找死。黑天鹅事件是交易者必然遭遇的天劫——重点不在于会不会来，而在于你准备好了没有。</p>
+    <p>修仙者为渡劫准备了几十年，交易者也应该为黑天鹅准备一辈子。你的防御体系包括：永远不要满仓、永远设置止损、永远为最坏的情况留出余地。当别人在天雷中灰飞烟灭时，你靠着提前布下的大阵安然度过。</p>
+    <p class="detail">天劫之后是飞升。每一次市场暴跌、每一次极端洗盘，活下来的交易者都会变得更强。废墟之上，你的境界会比之前高出整整一个大境界——因为你不仅活下来了，还吸收了那些"陨落修士"留下的教训和筹码。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>交易的终极道法不是逆天改命，而是深谙"苟道"。保住本金（修为），避开垃圾时间（因果），布好防御大阵（止损和仓位），用时间熬死对手（复利），提前准备渡劫（黑天鹅预案）。飞升的从来不是出场最惊艳的那个人，而是活到最后的那个人。</p>
+  </div>
+</div>
+
+<div class="footer">来源：微博@猫老师脚气害我口腔溃疡 · 2026 · 方正屏显雅宋 · #f5f1eb</div>
+
+</div>
+</body>
+</html>

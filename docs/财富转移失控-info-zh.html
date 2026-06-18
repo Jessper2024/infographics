@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财富转移开始失控 — 信息图</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: '方正屏显雅宋', 'Noto Serif SC', 'Songti SC', serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 900px; width: 100%; }
+  h1 { font-size: 36px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 2px; }
+  .subtitle { text-align: center; font-size: 14px; color: #888; margin-bottom: 24px; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 22px 28px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 8px rgba(0,0,0,0.03); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .s-01 { border-left-color: #dc2626; } .s-02 { border-left-color: #ea580c; }
+  .s-03 { border-left-color: #ca8a04; } .s-04 { border-left-color: #4f46e5; }
+  .s-05 { border-left-color: #db2777; }
+
+  .num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; }
+  .n-01 { background: #fef2f2; color: #dc2626; } .n-02 { background: #fff7ed; color: #ea580c; }
+  .n-03 { background: #fefce8; color: #ca8a04; } .n-04 { background: #eef2ff; color: #4f46e5; }
+  .n-05 { background: #fdf2f8; color: #db2777; }
+
+  .body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; }
+  .tg-01 { background: #fef2f2; color: #dc2626; } .tg-02 { background: #fff7ed; color: #ea580c; }
+  .tg-03 { background: #fefce8; color: #ca8a04; } .tg-04 { background: #eef2ff; color: #4f46e5; }
+  .tg-05 { background: #fdf2f8; color: #db2777; }
+
+  .title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; }
+  .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+
+  .desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 14px; text-align: center; min-width: 92px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Dual */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Risk */
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 80px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 10px; background: #fdf2f8; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #db2777; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #db2777; width: 60px; text-align: right; flex-shrink: 0; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: flex-start; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .s-01 { border-top-color: #dc2626; } .s-02 { border-top-color: #ea580c; }
+    .s-03 { border-top-color: #ca8a04; } .s-04 { border-top-color: #4f46e5; }
+    .s-05 { border-top-color: #db2777; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="财富转移失控-info-en.html">中文 / English</a>
+</div>
+
+
+  <h1>财富转移开始失控<br>中产的返贫收割，比你想的离谱</h1>
+  <p class="subtitle">阶层跨越的底层逻辑，从来不是努力，而是站对财富转移的方向</p>
+  <div class="divider"></div>
+
+  <div class="splash">
+    很多人以为寒窗苦读是为了学知识、提升人力资本。诺贝尔经济学奖得主斯宾塞告诉你：你从小学到大学学的知识 90% 以上终生无用。高考的真正功能不是传授知识，而是向资本市场发送一个极其昂贵的"信号"——而这张文凭信号，决定了你会被财富转移的洪流冲向哪个方向。
+  </div>
+
+  <!-- 01: 信号骗局 -->
+  <div class="section s-01">
+    <div class="num n-01">01</div>
+    <div class="body">
+      <div class="tag tg-01">信号骗局</div>
+      <div class="title t-01">高考不教知识，只发信号</div>
+      <div class="desc">斯宾塞"市场信号"理论揭示：面试官无法判断你真才实学还是包装表演，文凭是唯一高成本、难造假的区分工具。那些刷到凌晨的几何证明题，未来永远不会用到——它们的唯一功能，是向资本证明你"能吃苦、守规矩、高执行力"。高考的本质不是教育选拔，是社会分层外包。</div>
+    </div>
+  </div>
+
+  <!-- 02: 阶层卡点 + Flow -->
+  <div class="section s-02">
+    <div class="num n-02">02</div>
+    <div class="body">
+      <div class="tag tg-02">阶层卡点</div>
+      <div class="title t-02">每个成熟产业都被"卡位"锁死</div>
+      <div class="desc">一个富豪家族买断城市热门商圈所有商铺——此后每一笔线下交易都被抽租，新人永远买不起铺面。每一个卡位的背后，都是一道阶层壁垒。你想靠工资突破？马奇诺防线不是用来被攻破的。</div>
+      <div class="flow-row">
+        <div class="flow-step">成熟产业<br>利润稳定</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">既有利益者<br>设置卡位</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">每笔交易<br>被抽成</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">新人入场<br>成本极高</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">劳动无法<br>突破壁垒</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: 财富转移 + Flow -->
+  <div class="section s-03">
+    <div class="num n-03">03</div>
+    <div class="body">
+      <div class="tag tg-03">财富转移</div>
+      <div class="title t-03">财富不被创造，只从旧地主转到新平台</div>
+      <div class="desc">电商没有"创造"消费——它只是把线下交易分流到线上。商铺地主的租金收入减半，这部分钱变成了平台的流量收入，进而支撑股市估值，变现为电商从业者的股权财富。每一个电商亿万富翁的钱，都来自线下地主的租金缩水。</div>
+      <div class="flow-row">
+        <div class="flow-step">新技术<br>诞生</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">绕过<br>旧卡点</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">旧地主<br>收入锐减</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">财富转移<br>新平台</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">新贵<br>诞生</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: 雇佣军 + Dual -->
+  <div class="section s-04">
+    <div class="num n-04">04</div>
+    <div class="body">
+      <div class="tag tg-04">雇佣军定位</div>
+      <div class="title t-04">985 文凭不是勋章，是征兵令</div>
+      <div class="desc">新技术出现后，资本方需要"兵"去攻城略地——能 996、守规矩、高执行力、智商在线。这套筛选标准恰好与高考完美吻合。你不是在"展现价值"，你是在"接受雇佣"。</div>
+      <div class="dual-grid">
+        <div class="dual-card yes">
+          <div class="dual-icon">🎓</div>
+          <div class="dual-text">
+            <h4>你以为的 985 文凭</h4>
+            <p>寒窗苦读的勋章<br>知识能力的证明<br>阶层跃升的通行证</p>
+          </div>
+        </div>
+        <div class="dual-card no">
+          <div class="dual-icon">🎯</div>
+          <div class="dual-text">
+            <h4>资本眼里的 985 文凭</h4>
+            <p>高成本筛选的信号<br>优质雇佣军的标识<br>可以 996 的担保</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: 失控收割 + Risk -->
+  <div class="section s-05">
+    <div class="num n-05">05</div>
+    <div class="body">
+      <div class="tag tg-05">失控收割</div>
+      <div class="title t-05">当中产成了标靶，每一份积蓄都在被瞄准</div>
+      <div class="desc">当财富转移的机制被资本彻底掌控，中产的学历、房产、积蓄不再是安全垫，而是等待被收割的标的。返贫不是意外——它是系统性的。</div>
+      <div class="risk-row">
+        <div class="risk-label">房产收割</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:92%"></div></div>
+        <div class="risk-val">高杠杆→断供</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">教育内卷</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div>
+        <div class="risk-val">百万投入→零回报</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">金融镰刀</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">理财→暴雷→清零</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">财富转移信息图 · 2026.06 · 核心观点援引自：重远投资观 · 斯宾塞信号理论 · 不构成投资建议</div>
+
+</div>
+</body>
+</html>

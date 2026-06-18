@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vanishing Gaokao Fever — Infographic</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: '方正屏显雅宋', 'Noto Serif SC', 'Songti SC', serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 900px; width: 100%; }
+  h1 { font-size: 36px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; }
+  .subtitle { text-align: center; font-size: 14px; color: #888; margin-bottom: 24px; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 22px 28px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 8px rgba(0,0,0,0.03); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .s-01 { border-left-color: #dc2626; } .s-02 { border-left-color: #ea580c; }
+  .s-03 { border-left-color: #ca8a04; } .s-04 { border-left-color: #4f46e5; }
+  .s-05 { border-left-color: #db2777; }
+
+  .num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; }
+  .n-01 { background: #fef2f2; color: #dc2626; } .n-02 { background: #fff7ed; color: #ea580c; }
+  .n-03 { background: #fefce8; color: #ca8a04; } .n-04 { background: #eef2ff; color: #4f46e5; }
+  .n-05 { background: #fdf2f8; color: #db2777; }
+
+  .body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
+  .tg-01 { background: #fef2f2; color: #dc2626; } .tg-02 { background: #fff7ed; color: #ea580c; }
+  .tg-03 { background: #fefce8; color: #ca8a04; } .tg-04 { background: #eef2ff; color: #4f46e5; }
+  .tg-05 { background: #fdf2f8; color: #db2777; }
+
+  .title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; }
+  .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  /* Data */
+  .data-row { display: flex; gap: 12px; margin-top: 6px; }
+  .data-card { flex: 1; border-radius: 10px; padding: 14px 12px; text-align: center; }
+  .data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+  .data-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+  .data-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .data-big { font-size: 28px; font-weight: bold; }
+  .data-big.r { color: #dc2626; } .data-big.o { color: #ea580c; } .data-big.g { color: #16a34a; }
+  .data-sm { font-size: 12px; color: #777; margin-top: 4px; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 82px; flex: 1; font-size: 12px; color: #854d0e; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 18px; color: #ca8a04; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Dual */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Risk */
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 95px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 10px; background: #fdf2f8; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #db2777; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #db2777; width: 80px; text-align: right; flex-shrink: 0; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: flex-start; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .s-01 { border-top-color: #dc2626; } .s-02 { border-top-color: #ea580c; }
+    .s-03 { border-top-color: #ca8a04; } .s-04 { border-top-color: #4f46e5; }
+    .s-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; flex-direction: column; }
+    .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; } h1 { font-size: 26px; }
+  }
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="消失的高考热-info-zh.html">English / 中文</a>
+</div>
+
+
+  <h1>The Vanishing Gaokao Fever</h1>
+  <p class="subtitle">When a degree no longer changes your destiny, the collective illusion dissolves · June 2026</p>
+  <div class="divider"></div>
+
+  <div class="splash">
+    For years, the Gaokao — China's college entrance exam — was an internet carnival every June. Not this year. Weibo's trending page went silent. No mothers in qipao dresses flooding social feeds. It's not that people stopped caring about education. It's that the return on a degree has fallen so low that no one can muster excitement anymore. Parents and students alike are voting with their feet: this is no longer a ritual worth buying into.
+  </div>
+
+  <!-- 01: Buzz Collapse + Data -->
+  <div class="section s-01">
+    <div class="num n-01">01</div>
+    <div class="body">
+      <div class="tag tg-01">The Vanishing Buzz</div>
+      <div class="title t-01">Gaokao Trending Topics Disappeared — Collective Rationality Kicked In</div>
+      <div class="desc">Gaokao no longer dominates Weibo's trending list. No qipao moms flooding WeChat Moments. Social media algorithms barely push it. The national mood is eerily quiet — because people are beginning to sense that the exam's power to rewrite destiny is rapidly fading. The silence is not apathy. It's arithmetic.</div>
+      <div class="data-row">
+        <div class="data-card red">
+          <div class="data-big r">0</div>
+          <div class="data-sm">Gaokao trending topics, 2026</div>
+        </div>
+        <div class="data-card green">
+          <div class="data-big g">Years</div>
+          <div class="data-sm">Previous years: days of trending</div>
+        </div>
+        <div class="data-card orange">
+          <div class="data-big o">Gone</div>
+          <div class="data-sm">Qipao mom photos this year</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: Degree Devaluation + Data -->
+  <div class="section s-02">
+    <div class="num n-02">02</div>
+    <div class="body">
+      <div class="tag tg-02">Degree Devaluation</div>
+      <div class="title t-02">80% of Non-Elite Grads End Up in Sales — the Diploma Is Now a Participation Trophy</div>
+      <div class="desc">Eight out of ten graduates from non-elite universities end up in sales roles, starting at ¥2,000–3,000 per month. Admission rates have climbed relentlessly — and so has the degree's evaporation of value. A bachelor's degree is no longer a ticket to the middle class. It's a souvenir that says "I went to college." Elite employers now filter by school name before they even read your resume.</div>
+      <div class="data-row">
+        <div class="data-card red">
+          <div class="data-big r">80%</div>
+          <div class="data-sm">Non-elite grads funneled to sales</div>
+        </div>
+        <div class="data-card orange">
+          <div class="data-big o">¥3K</div>
+          <div class="data-sm">Starting salary for average grads</div>
+        </div>
+        <div class="data-card red">
+          <div class="data-big r">↑ vs ↓</div>
+          <div class="data-sm">Admission rates up, value down</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: Grad School Arms Race + Flow -->
+  <div class="section s-03">
+    <div class="num n-03">03</div>
+    <div class="body">
+      <div class="tag tg-03">Arms Race</div>
+      <div class="title t-03">The Acceptance Letter Hasn't Arrived — but a Four-Year Grind Roadmap Already Has</div>
+      <div class="desc">Consulting agencies start calling the moment admission results drop, mapping out a freshman's path to a coveted grad school slot four years away: which GPA to maintain, which competitions to win, which papers to publish, which professors to network. College hasn't even started, and a complete "hustle blueprint" is already on the table. The Gaokao was never the finish line — it was just the starting pistol for an even more brutal race.</div>
+      <div class="flow-row">
+        <div class="flow-step">Admission<br>results out</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Agencies call<br>with plans</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Freshman year:<br>GPA + contests</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Sophomore year:<br>papers + professors</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Year 4:<br>grad school<br>bloodbath</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: The Network Gap + Dual -->
+  <div class="section s-04">
+    <div class="num n-04">04</div>
+    <div class="body">
+      <div class="tag tg-04">The Network Gap</div>
+      <div class="title t-04">Some Get a Red Carpet, Others Get a Desert — Two Lives, Two Starting Lines</div>
+      <div class="desc">In Beijing's elite high school circles, "strategic teenage dating" — deliberately pairing with a classmate whose family has resources — is treated as a serious life optimization strategy, not a joke. Meanwhile, small-town grinders spend four years solving problem sets, only to find that someone else's parent made one phone call and landed the job they dreamed of.</div>
+      <div class="dual-grid">
+        <div class="dual-card good">
+          <div class="dual-icon">🏙️</div>
+          <div class="dual-text">
+            <h4>Beijing Kids: Network-Powered</h4>
+            <p>Family ties → state-owned firms / agencies<br>High school circles cross-match resources<br>"Strategic dating" is not satire</p>
+          </div>
+        </div>
+        <div class="dual-card bad">
+          <div class="dual-icon">📚</div>
+          <div class="dual-text">
+            <h4>Small-Town Grinders: Bare-Handed</h4>
+            <p>Four years of problem sets, zero connections<br>Job hunt = mass-applying online<br>One phone call = their four years of work</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: The Real Final Exam + Risk -->
+  <div class="section s-05">
+    <div class="num n-05">05</div>
+    <div class="body">
+      <div class="tag tg-05">The Real Final Exam</div>
+      <div class="title t-05">On the Surface, It Tests 12 Years of the Student — Underneath, It Tests 20 Years of the Parents</div>
+      <div class="desc">In finance, healthcare, energy — the genuinely good jobs — an elite diploma is not enough. You need family connections to open the door. The ultimate rule of this game was never about test scores. It was always about the depth of family resources.</div>
+      <div class="risk-row">
+        <div class="risk-label">Degree Weight</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:40%"></div></div>
+        <div class="risk-val">Declining yearly</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Family Resources</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:88%"></div></div>
+        <div class="risk-val">Decisive factor</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Degree ROI</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:35%"></div></div>
+        <div class="risk-val">Rapidly eroding</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Gaokao Infographic · 2026.06 · Insights from: BJ的大土豆 · Not investment or life advice</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七条交易者永远跨不过的人性鸿沟</title>
+<style>
+@font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', Georgia, serif;
+  background: #f5f1eb; color: #555; line-height: 1.9;
+  padding: 48px 0 64px; display: flex; flex-direction: column; align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 880px; width: 100%; padding: 0 32px; }
+
+/* Lang */
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+/* KPI */
+.kpi-row { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+.kpi-card {
+  flex: 1; min-width: 120px; background: #ffffff; border: 1px solid #e8e0d5;
+  border-radius: 12px; padding: 20px 16px; text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.kpi-num { font-size: 32px; font-weight: 700; color: #dc2626; letter-spacing: -0.02em; }
+.kpi-label { font-size: 12px; color: #888; margin-top: 6px; line-height: 1.5; }
+
+/* Header */
+.header { text-align: center; margin-bottom: 32px; }
+.header h1 { font-size: 36px; font-weight: 400; color: #1a1a1a; margin-bottom: 8px; letter-spacing: 0.03em; }
+.header .subtitle { font-size: 14px; color: #888; letter-spacing: 0.02em; }
+.divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 24px auto; border-radius: 2px; }
+
+/* Card */
+.overview, .card {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+}
+.overview { line-height: 2.0; font-size: 15px; }
+.overview p { margin-bottom: 8px; }
+
+/* Section */
+.section { border-left: 4px solid; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.circle-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+.section-tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; font-weight: 500; letter-spacing: 0.02em; }
+.section h3 { font-size: 18px; font-weight: 700; }
+.section-body { font-size: 15px; line-height: 2.0; }
+.section-body p { margin-bottom: 12px; }
+
+/* Flow chart */
+.flow-row { display: flex; align-items: flex-start; justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.flow-step, .flow-step.warn, .flow-step.end {
+  background: #fff7ed; border: 2px solid #fed7aa; border-radius: 10px;
+  padding: 14px 16px; text-align: center; font-size: 13px; color: #9a3412; font-weight: 700; min-width: 90px;
+}
+.flow-step-num { display: block; font-size: 11px; font-weight: 400; color: #ea580c; margin-bottom: 4px; letter-spacing: 0.04em; }
+.flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.flow-step.warn { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+.flow-label { font-size: 11px; font-weight: 400; color: #888; margin-top: 4px; }
+.flow-arrow { font-size: 18px; color: #ea580c; font-weight: 700; padding-top: 14px; }
+
+/* Dual comparison */
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.dual-card { border-radius: 10px; padding: 16px 18px; }
+.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-label { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.dual-card.good .dual-label { color: #166534; }
+.dual-card.bad .dual-label { color: #991b1b; }
+.dual-card p { font-size: 13px; color: #555; line-height: 1.8; }
+
+/* Quote */
+.quote-block { background: #faf5ff; border-left: 4px solid #c084fc; border-radius: 0 10px 10px 0; padding: 16px 20px; margin-top: 14px; position: relative; }
+.quote-mark { position: absolute; top: -10px; left: 12px; font-size: 32px; color: #c084fc; font-family: Georgia, serif; line-height: 1; }
+.quote-text { font-size: 14px; color: #555; line-height: 1.9; font-style: italic; padding-top: 6px; }
+.quote-author { font-size: 12px; color: #999; margin-top: 8px; text-align: right; }
+
+/* Data cards */
+.data-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.data-card { flex: 1; min-width: 100px; border-radius: 12px; padding: 18px 14px; text-align: center; }
+.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+.data-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.data-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+.data-card.pink { background: #fdf2f8; border: 1px solid #fbcfe8; }
+.data-big { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+.data-card.red .data-big { color: #dc2626; }
+.data-card.green .data-big { color: #16a34a; }
+.data-card.gold .data-big { color: #ca8a04; }
+.data-card.pink .data-big { color: #db2777; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+/* 3-col comparison */
+.cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.cmp-card { border-radius: 12px; padding: 20px 16px 16px; text-align: center; }
+.cmp-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.cmp-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.cmp-card.blue { background: #eef2ff; border: 1px solid #c7d2fe; }
+.cmp-icon { font-size: 28px; margin-bottom: 8px; }
+.cmp-name { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+.cmp-features { list-style: none; padding: 0; text-align: left; font-size: 12px; color: #555; line-height: 1.7; }
+.cmp-features li::before { content: '• '; color: #888; }
+.cmp-bar { height: 4px; border-radius: 2px; margin: 10px 0; }
+.cmp-bar.green { background: #86efac; }
+.cmp-bar.orange { background: #fdba74; }
+.cmp-bar.blue { background: #a5b4fc; }
+.cmp-note { font-size: 11px; color: #999; line-height: 1.5; margin-top: 6px; }
+
+/* Bar */
+.bar-group { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.bar-item { display: flex; align-items: center; gap: 12px; }
+.bar-label { font-size: 13px; color: #555; min-width: 80px; flex-shrink: 0; }
+.bar-track { flex: 1; height: 12px; background: #e8e0d5; border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; min-width: 4px; }
+.bar-fill.red { background: #dc2626; }
+.bar-fill.orange { background: #ea580c; }
+.bar-fill.gold { background: #ca8a04; }
+.bar-fill.indigo { background: #4f46e5; }
+.bar-fill.pink { background: #db2777; }
+.bar-fill.cyan { background: #0891b2; }
+.bar-val { font-size: 13px; font-weight: 700; color: #1a1a1a; min-width: 50px; text-align: right; }
+
+/* Callout */
+.callout { display: flex; gap: 10px; align-items: flex-start; border-radius: 10px; padding: 14px 16px; margin-top: 14px; }
+.callout.warn { background: #fffbeb; border: 1px solid #fde68a; }
+.callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.callout-text { font-size: 13px; color: #555; line-height: 1.8; }
+.callout-text strong { color: #1a1a1a; }
+
+/* Takeaway */
+.takeaway { background: #faf5ff; border: 2px solid #d8b4fe; border-radius: 14px; padding: 24px 28px; margin-bottom: 24px; display: flex; gap: 16px; align-items: flex-start; }
+.takeaway-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.takeaway-label { font-size: 13px; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.takeaway-text p { font-size: 15px; color: #555; line-height: 1.9; }
+
+/* Footer */
+.footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 32px; letter-spacing: 0.03em; line-height: 1.8; }
+
+@media (max-width: 640px) {
+  body { padding: 16px 12px 40px; }
+  .container { padding: 0; max-width: 100%; }
+  .header h1 { font-size: 24px; }
+  .overview, .card, .section { padding: 18px 16px; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+  .circle-num { width: 34px; height: 34px; font-size: 14px; }
+  .section h3, .cmp-name { font-size: 16px; }
+  .flow-row { flex-direction: column; align-items: stretch; }
+  .flow-arrow { display: none; }
+  .cmp-grid, .dual-grid { grid-template-columns: 1fr; }
+  .data-row, .kpi-row { flex-direction: column; }
+  .bar-item { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="trader-human-gaps-info-en.html">中文 / English</a>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">7</div>
+    <div class="kpi-label">人性鸿沟<br>无人能完全绕过</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">0</div>
+    <div class="kpi-label">状态为零时<br>能力全部归零</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2:1</div>
+    <div class="kpi-label">最低盈亏比<br>走一半优先回本</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3</div>
+    <div class="kpi-label">核心规则<br>仓位·底仓·回本</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <h1>七条交易者永远跨不过的人性鸿沟</h1>
+  <div class="subtitle">杰克院长（张聚贤）×《交易员说》深度访谈 · 2024</div>
+</div>
+<div class="divider"></div>
+
+<!-- Overview -->
+<div class="overview">
+  <p><strong>每个交易者都知道"该做什么"——设止损、控仓位、不扛单。但在真金白银面前，知道和做到之间横亘着七条人性鸿沟。</strong></p>
+  <p>它们的共同根源只有一个：<strong>不确定性</strong>。你不知道明天会涨还是会跌，于是恐惧让你卖飞，贪婪让你重仓，侥幸让你取消止损。杰克院长借助《易经》"反者道之动"原理和交易实战经验指出：<strong>想赚钱，就不要研究赚钱——要去研究亏钱，然后制定规则消灭每一个亏损的根源。</strong></p>
+</div>
+
+<!-- Block 01: 七座大山 -->
+<div class="card section" style="border-left-color:#dc2626;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fef2f2;color:#dc2626;">01</div>
+    <div class="section-tag" style="background:#fef2f2;color:#dc2626;">核心概念</div>
+    <h3 style="color:#dc2626;">七座大山：不确定性的七种面孔</h3>
+  </div>
+  <div class="section-body">
+    <p>散户翻不过去的七座大山——<strong>踏空、卖飞、A杀、重仓、死扛、磨损、情绪化</strong>——所有交易失败者必中至少一条。它们来自同一个起点：<strong>你不知道明天涨还是跌</strong>，于是恐惧和侥幸交替主导你的每一次操作。</p>
+    <div class="flow-row">
+      <div class="flow-step warn"><span class="flow-step-num">根源</span>不确定性</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">恐惧</span>卖飞·踏空<div class="flow-label">赚钱就跑</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step-num">贪婪</span>重仓·死扛<div class="flow-label">反向幻想</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end"><span class="flow-step-num">结果</span>盈亏倒挂<div class="flow-label">爆仓</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:14px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text"><strong>最危险的坑：</strong>人生最大的坑，就是不知道自己在坑里。散户往往知道自己有这些问题，却从未想过把每个问题的反面变成规则。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 02: 知行鸿沟 -->
+<div class="card section" style="border-left-color:#ea580c;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fff7ed;color:#ea580c;">02</div>
+    <div class="section-tag" style="background:#fff7ed;color:#ea580c;">行为机制</div>
+    <h3 style="color:#ea580c;">知行鸿沟：状态决定一切</h3>
+  </div>
+  <div class="section-body">
+    <p>从认知到行为之间有一条巨大的鸿沟。明明知道要设止损，快打止损时却忍不住想取消或挪动。杰克院长提出核心公式：</p>
+    <div class="data-row">
+      <div class="data-card red"><div class="data-big">能力</div><div class="data-sm">你掌握的<br>交易技术</div></div>
+      <div class="data-card gold"><div class="data-big">×</div><div class="data-sm">乘法关系<br>不为零才有效</div></div>
+      <div class="data-card green"><div class="data-big">状态</div><div class="data-sm">你的情绪<br>与心理状态</div></div>
+      <div class="data-card gold"><div class="data-big">=</div><div class="data-sm">最终<br>交易结果</div></div>
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card good"><div class="dual-label">✅ 高状态</div><p>冷静执行规则，止损触发后平静离场寻找下一笔机会。能力 × 正状态 = 正向结果。</p></div>
+      <div class="dual-card bad"><div class="dual-label">❌ 零/负状态</div><p>浮盈转浮亏瞬间被情绪劫持，精力的全部重心从"做好交易"转移到"摆脱被套窘境"。能力再高，结果为零。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 03: 止损哲学 -->
+<div class="card section" style="border-left-color:#ca8a04;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fefce8;color:#ca8a04;">03</div>
+    <div class="section-tag" style="background:#fefce8;color:#ca8a04;">认知重构</div>
+    <h3 style="color:#ca8a04;">止损即自由：盈亏同源的认知革命</h3>
+  </div>
+  <div class="section-body">
+    <p>绝大多数交易者把亏损视为敌人。但杰克院长指出：<strong>止损是好事</strong>——止损了就可以跟这笔行情说再见，去找下一个好机会了。体系里绝对没有扛单这一说。</p>
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">一旦认可盈亏同源，多亦何哀，空亦何苦，都无所谓。你只要按照规则去做，错了就让它错，错了也帮你省钱了；对了，就让趋势延续下去。你不能说这次我不止损，我扛着，这一把亏没了你连后面的机会都没有了。</div>
+      <div class="quote-author">— 杰克院长（张聚贤）</div>
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card good"><div class="dual-label">✅ 止损者的路径</div><p>止损→离场→复盘→找下一笔→大数法则下第三次就赢了。亏损是一次性的、有限的。</p></div>
+      <div class="dual-card bad"><div class="dual-label">❌ 扛单者的结局</div><p>扛三个月→爆仓→亏掉所有本金→失去后续全部机会。盈亏比1:10倒挂，一次亏损吃掉十次盈利。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 04: 反者道之动 -->
+<div class="card section" style="border-left-color:#4f46e5;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#eef2ff;color:#4f46e5;">04</div>
+    <div class="section-tag" style="background:#eef2ff;color:#4f46e5;">方法论</div>
+    <h3 style="color:#4f46e5;">反者道之动：研究亏钱，而非赚钱</h3>
+  </div>
+  <div class="section-body">
+    <p>《易经》讲"反者道之动"——事物总是向相反状态演变。<strong>想赚钱，就别研究赚钱，去研究亏钱。</strong>把亏损的原因想明白，为每一条制定规则，赚钱自然发生。</p>
+    <div class="bar-group">
+      <div class="bar-item"><div class="bar-label">踏空</div><div class="bar-track"><div class="bar-fill red" style="width:70%"></div></div><div class="bar-val">→ 有信号必上</div></div>
+      <div class="bar-item"><div class="bar-label">卖飞</div><div class="bar-track"><div class="bar-fill orange" style="width:75%"></div></div><div class="bar-val">→ 留趋势底仓</div></div>
+      <div class="bar-item"><div class="bar-label">重仓</div><div class="bar-track"><div class="bar-fill red" style="width:85%"></div></div><div class="bar-val">→ 仓位定量</div></div>
+      <div class="bar-item"><div class="bar-label">死扛</div><div class="bar-track"><div class="bar-fill red" style="width:90%"></div></div><div class="bar-val">→ 止损自动执行</div></div>
+      <div class="bar-item"><div class="bar-label">情绪化</div><div class="bar-track"><div class="bar-fill orange" style="width:80%"></div></div><div class="bar-val">→ 觉察复盘</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:14px;">
+      <div class="callout-icon">💡</div>
+      <div class="callout-text"><strong>利弗莫尔的原则：</strong>市场从来不会给那些想要赚钱的人送皮大衣。起心动念一歪，财不入急门。不要想着"我要赚一笔买皮大衣"——先把每一笔单子做好。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 05: 觉察 -->
+<div class="card section" style="border-left-color:#db2777;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#fdf2f8;color:#db2777;">05</div>
+    <div class="section-tag" style="background:#fdf2f8;color:#db2777;">修行法门</div>
+    <h3 style="color:#db2777;">觉察：站在自己之外看自己</h3>
+  </div>
+  <div class="section-body">
+    <p>王阳明说："静一定，动一定。"在真实操作中修炼，而非在模拟中幻想。杰克院长提供了具体方法——<strong>觉察</strong>：不要一门心思盯K线，要站在自己之外看自己。</p>
+    <div class="quote-block">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">复盘一下今天做了哪些单子，哪个时间点上，当那根大阴线来的时候，你心里紧张了，把止损撤了，反手还要再做个空。你再去复盘这些动作对吗？如果你从来不复盘，不去审视自己，你永远会困在这里面。</div>
+      <div class="quote-author">— 杰克院长</div>
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card good"><div class="dual-label">✅ 觉察者</div><p>收盘后用第三人称复盘："当大阴线出现时，他在想什么？他为什么撤止损？"像观察别人一样观察自己的每一个动作。</p></div>
+      <div class="dual-card bad"><div class="dual-label">❌ 不觉察者</div><p>亏损后关掉软件、转移注意力、自我安慰"下次注意"。从未回头审视那一刻自己到底做了什么。永远困在原地。</p></div>
+    </div>
+    <p style="margin-top:12px;font-size:14px;color:#888;"><strong>李小龙的洞见：</strong>分散的念头导致分散的能量。水滴石穿——能量必须像钻头一样聚焦一点，才能击穿石头。把能量聚焦于自我成长，而非赚钱。</p>
+  </div>
+</div>
+
+<!-- Block 06: 规则三核心 -->
+<div class="card section" style="border-left-color:#0891b2;">
+  <div class="section-header">
+    <div class="circle-num" style="background:#ecfeff;color:#0891b2;">06</div>
+    <div class="section-tag" style="background:#ecfeff;color:#0891b2;">实战体系</div>
+    <h3 style="color:#0891b2;">交易规则三核心：仓位→底仓→无风险持仓</h3>
+  </div>
+  <div class="section-body">
+    <p>一套合格的交易规则，必须具备三个核心板块。三者构成从"防御"到"持有"到"零风险"的完整链条。</p>
+    <div class="cmp-grid">
+      <div class="cmp-card green">
+        <div class="cmp-icon">⚖️</div>
+        <div class="cmp-name">仓位定量</div>
+        <div class="cmp-bar green"></div>
+        <ul class="cmp-features"><li>每单固定风险金额</li><li>重中之重，防一次清零</li><li>无仓位管理一切白费</li></ul>
+        <div class="cmp-note">防御层：确保你不会死</div>
+      </div>
+      <div class="cmp-card orange">
+        <div class="cmp-icon">🌊</div>
+        <div class="cmp-name">留趋势底仓</div>
+        <div class="cmp-bar orange"></div>
+        <ul class="cmp-features"><li>趋势单必须留底仓</li><li>打破赚小钱跑路模式</li><li>黄金3000→5000全程持有</li></ul>
+        <div class="cmp-note">持有层：让利润奔跑</div>
+      </div>
+      <div class="cmp-card blue">
+        <div class="cmp-icon">🛡️</div>
+        <div class="cmp-name">无风险持仓</div>
+        <div class="cmp-bar blue"></div>
+        <ul class="cmp-features"><li>盈亏比2:1走一半</li><li>收回成本=零风险</li><li>剩余仓位纯利润奔跑</li></ul>
+        <div class="cmp-note">自由层：再无心理负担</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-icon">💡</div>
+  <div class="takeaway-text">
+    <div class="takeaway-label">核心结论</div>
+    <p>跨越人性鸿沟，不在天赋，在规则与觉察。做到七条问题的反面——锚定仓位、坚决止损、复盘每笔交易、从"想赚钱"转向"热爱交易本身"——你就已经成了。不是"学会"交易，是"成为"交易者。</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：杰克院长（张聚贤）×《交易员说》面对面深度访谈 · 2024<br>
+  核心思想：华尔街 Supply & Demand 体系 + 《易经》"反者道之动" + 王阳明心学"知行合一"
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QDII 溢价 — 场内 vs 场外</title>
+<style>
+  @font-face {
+    font-family: '方正屏显雅宋';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: '方正屏显雅宋', 'Noto Serif SC', 'Songti SC', serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 900px; width: 100%; }
+
+  h1 {
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 2px;
+  }
+  .subtitle { text-align: center; font-size: 14px; color: #888; margin-bottom: 24px; }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+  }
+
+  /* Section base */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  /* ── Flow diagram (section 02) ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 14px; text-align: center; min-width: 90px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── 3-column comparison (section 03) ── */
+  .cmp-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .cmp-card {
+    border-radius: 12px; padding: 16px 14px; text-align: center;
+    border: 1px solid #e8e0d5;
+  }
+  .cmp-card.otc { background: #f0fdf4; border-color: #bbf7d0; }
+  .cmp-card.etf { background: #fff7ed; border-color: #fed7aa; }
+  .cmp-card.lof { background: #eef2ff; border-color: #c7d2fe; }
+  .cmp-icon { font-size: 28px; margin-bottom: 6px; }
+  .cmp-name { font-size: 14px; font-weight: bold; color: #1a1a1a; margin-bottom: 4px; }
+  .cmp-price { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .cmp-bar { height: 6px; border-radius: 3px; margin-bottom: 6px; }
+  .cmp-bar.green { background: #22c55e; }
+  .cmp-bar.orange { background: #f97316; }
+  .cmp-bar.blue { background: #6366f1; }
+  .cmp-note { font-size: 11px; color: #777; line-height: 1.5; }
+
+  /* ── Side-by-side (section 04) ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Risk meter (section 05) ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 90px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 10px; background: #fdf2f8; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #db2777; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #db2777; width: 48px; text-align: right; flex-shrink: 0; }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .cmp-grid, .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="QDII溢价-info-en.html">中文 / English</a>
+</div>
+
+
+  <h1>QDII 溢价：场内 vs 场外</h1>
+  <p class="subtitle">为什么你买 QDII 花了比净值更多的钱？2026 年最新</p>
+  <div class="divider"></div>
+
+  <div class="splash">
+    溢价只存在于场内。场外按净值申购（永远不溢价），但 QDII 外汇额度用完了就关门。门一关，所有人都冲进场内抢二手份额，价格被推高——这就是溢价。截至 2026年5月底，近 50% 美股 QDII 已暂停或限制申购。
+  </div>
+
+  <!-- 01: 核心概念 -->
+  <div class="section section-01">
+    <div class="section-num num-01">01</div>
+    <div class="section-body">
+      <div class="tag tag-01">核心概念</div>
+      <div class="section-title t-01">溢价是什么？场内外定价机制不同</div>
+      <div class="section-desc">场外申购按净值成交，不存在溢价。场内 ETF 由买卖撮合定价——当申购通道关闭，所有人只能在二级市场抢份额，价格被推高到净值之上。</div>
+    </div>
+  </div>
+
+  <!-- 02: 形成机制 — 含五步流程 -->
+  <div class="section section-02">
+    <div class="section-num num-02">02</div>
+    <div class="section-body">
+      <div class="tag tag-02">形成机制</div>
+      <div class="section-title t-02">溢价怎么来的？五步拆解</div>
+      <div class="section-desc">套利者想压回价格，但场外申购本就关门——套利路径被切断，溢价持续。</div>
+      <div class="flow-row">
+        <div class="flow-step">你想买<br>海外资产</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">场外额度<br>耗尽关门</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">冲进场内<br>抢二手份额</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">买家 ≫ 卖家<br>价格飙升</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">溢价产生<br>市价 ＞ 净值</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: 三大渠道对比 — 含三列图卡 -->
+  <div class="section section-03">
+    <div class="section-num num-03">03</div>
+    <div class="section-body">
+      <div class="tag tag-03">三大渠道</div>
+      <div class="section-title t-03">场外、场内、LOF：谁溢价、谁安全？</div>
+      <div class="cmp-grid">
+        <div class="cmp-card otc">
+          <div class="cmp-icon">🏦</div>
+          <div class="cmp-name">场外申购</div>
+          <div class="cmp-price">按净值成交</div>
+          <div class="cmp-bar green"></div>
+          <div class="cmp-note">溢价：<b style="color:#16a34a">永不存在</b><br>风险：额度用完即关门</div>
+        </div>
+        <div class="cmp-card etf">
+          <div class="cmp-icon">📈</div>
+          <div class="cmp-name">场内 ETF</div>
+          <div class="cmp-price">供需撮合定价</div>
+          <div class="cmp-bar orange"></div>
+          <div class="cmp-note">溢价：<b style="color:#c2410c">常态 5-15%</b><br>风险：高溢价接盘 = 亏损</div>
+        </div>
+        <div class="cmp-card lof">
+          <div class="cmp-icon">🔁</div>
+          <div class="cmp-name">LOF 双栖</div>
+          <div class="cmp-price">可转托管套利</div>
+          <div class="cmp-bar blue"></div>
+          <div class="cmp-note">溢价：<b style="color:#4338ca">可反向套利</b><br>风险：T+2 溢价可能消失</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: 转托管 — 含二分对比 -->
+  <div class="section section-04">
+    <div class="section-num num-04">04</div>
+    <div class="section-body">
+      <div class="tag tag-04">转托管套利</div>
+      <div class="section-title t-04">场外份额能转场内吗？只有 LOF 可以</div>
+      <div class="section-desc">场外申购 → 转托管到券商 → 场内溢价卖出。但不是所有基金都能走这条路。</div>
+      <div class="dual-grid">
+        <div class="dual-card yes">
+          <div class="dual-icon">✅</div>
+          <div class="dual-text">
+            <h4>LOF 基金：可以转</h4>
+            <p>场外申购→T+2转托管→份额到场内→按溢价卖出。注意承受 T+2 期间溢价回撤风险。</p>
+          </div>
+        </div>
+        <div class="dual-card no">
+          <div class="dual-icon">❌</div>
+          <div class="dual-text">
+            <h4>ETF 联接 / 普通 QDII：不能转</h4>
+            <p>支付宝买的大多数 QDII 无场内代码，永远只能按净值赎回，吃不到溢价。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: 风险 — 含风险仪表 -->
+  <div class="section section-05">
+    <div class="section-num num-05">05</div>
+    <div class="section-body">
+      <div class="tag tag-05">风险警示</div>
+      <div class="section-title t-05">溢价只有一个方向：回落</div>
+      <div class="section-desc">溢价不是"该资产被看好"的信号——它是交易通道拥堵的信号。一旦额度放开或情绪降温，溢价可能一天归零。</div>
+      <div class="risk-bars">
+        <div class="risk-row">
+          <div class="risk-label">溢价归零风险</div>
+          <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+          <div class="risk-val">极高</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-label">确定性亏损</div>
+          <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+          <div class="risk-val">¥1.10→¥1.00</div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-label">监管关注度</div>
+          <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+          <div class="risk-val">重点监控</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">QDII 溢价信息图 · 2026.06 · 数据来源：Wind / 基金公司公告 / 财联社 · 不构成投资建议</div>
+
+</div>
+</body>
+</html>

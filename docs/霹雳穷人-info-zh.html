@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>霹雳穷人 — 币圈结构性踏空全景</title>
+<style>
+@font-face {
+  font-family: 'FZPingXianYaSong';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZPingXianYaSong', 'PingFang SC', 'Hiragino Sans GB', serif;
+  display: flex; justify-content: center;
+  padding: 48px 20px 60px;
+}
+.container { max-width: 760px; width: 100%; }
+
+/* Header */
+.header { text-align: center; margin-bottom: 36px; }
+.title { font-size: 36px; color: #1a1a1a; font-weight: normal; line-height: 1.4; }
+.subtitle { font-size: 14px; color: #888; margin-top: 10px; }
+.divider { width: 60px; height: 3px; margin: 22px auto 0; border-radius: 2px;
+  background: linear-gradient(90deg, #dc2626, #ea580c); }
+
+/* Overview */
+.overview { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 32px; line-height: 2.0; color: #555; font-size: 15px; }
+
+/* Cards */
+.card { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 28px 28px 24px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.03); position: relative; }
+.card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; border-radius: 14px 0 0 14px; }
+
+/* Card colors */
+.card.c01::before { background: #dc2626; }
+.card.c02::before { background: #ea580c; }
+.card.c03::before { background: #ca8a04; }
+.card.c04::before { background: #4f46e5; }
+.card.c05::before { background: #db2777; }
+.card.c06::before { background: #0891b2; }
+
+/* Card header row */
+.card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.circle { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; font-size: 18px; font-weight: bold; flex-shrink: 0; }
+.c01 .circle { background: #fef2f2; color: #dc2626; }
+.c02 .circle { background: #fff7ed; color: #ea580c; }
+.c03 .circle { background: #fefce8; color: #ca8a04; }
+.c04 .circle { background: #eef2ff; color: #4f46e5; }
+.c05 .circle { background: #fdf2f8; color: #db2777; }
+.c06 .circle { background: #ecfeff; color: #0891b2; }
+
+.tag { font-size: 12px; padding: 3px 12px; border-radius: 10px; font-weight: bold; }
+.c01 .tag { background: #fef2f2; color: #dc2626; }
+.c02 .tag { background: #fff7ed; color: #ea580c; }
+.c03 .tag { background: #fefce8; color: #ca8a04; }
+.c04 .tag { background: #eef2ff; color: #4f46e5; }
+.c05 .tag { background: #fdf2f8; color: #db2777; }
+.c06 .tag { background: #ecfeff; color: #0891b2; }
+
+.card-title { font-size: 18px; font-weight: bold; margin-bottom: 12px; }
+.c01 .card-title { color: #dc2626; }
+.c02 .card-title { color: #ea580c; }
+.c03 .card-title { color: #ca8a04; }
+.c04 .card-title { color: #4f46e5; }
+.c05 .card-title { color: #db2777; }
+.c06 .card-title { color: #0891b2; }
+
+.card-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 18px; }
+
+/* Visual Components */
+
+/* Data cards */
+.data-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.data-card { flex: 1; min-width: 100px; border-radius: 10px; padding: 16px; text-align: center; }
+.data-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+.data-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.data-card.blue { background: #eef2ff; border: 1px solid #c7d2fe; }
+.data-big { font-size: 22px; font-weight: bold; }
+.data-big.r { color: #dc2626; }
+.data-big.g { color: #16a34a; }
+.data-big.b { color: #4f46e5; }
+.data-sm { font-size: 12px; color: #888; margin-top: 4px; }
+
+/* Flow */
+.flow-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.flow-step { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412;
+  border-radius: 8px; padding: 8px 14px; font-size: 13px; text-align: center; }
+.flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+.flow-step.win { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.flow-arrow { color: #ea580c; font-size: 16px; font-weight: bold; }
+
+/* Dual */
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dual-card { border-radius: 10px; padding: 16px; font-size: 13px; line-height: 1.6; }
+.dual-card.good { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.dual-card.bad { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+/* Three col comparison */
+.cmp-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.cmp-card { border-radius: 10px; padding: 14px 10px; text-align: center; font-size: 13px; line-height: 1.5; }
+.cmp-card.green { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.cmp-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.cmp-card.blue { background: #eef2ff; border: 1px solid #c7d2fe; }
+.cmp-icon { font-size: 22px; margin-bottom: 6px; }
+.cmp-name { font-weight: bold; color: #1a1a1a; margin-bottom: 4px; }
+.cmp-price { font-size: 12px; color: #888; }
+.cmp-bar { height: 4px; border-radius: 2px; margin: 8px 0; }
+.cmp-bar.green { background: #16a34a; }
+.cmp-bar.orange { background: #ea580c; }
+.cmp-bar.blue { background: #4f46e5; }
+.cmp-note { font-size: 11px; color: #999; }
+
+/* Risk meters */
+.risk-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.risk-label { font-size: 13px; color: #555; min-width: 80px; }
+.risk-meter { flex: 1; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+.risk-fill { height: 100%; border-radius: 4px; }
+.risk-fill.r { background: #dc2626; }
+.risk-fill.o { background: #ea580c; }
+.risk-fill.y { background: #ca8a04; }
+.risk-val { font-size: 13px; color: #888; min-width: 60px; text-align: right; }
+
+/* Quote */
+.quote-box { background: #f8f6f2; border-left: 3px solid #0891b2; border-radius: 0 10px 10px 0;
+  padding: 16px 20px; font-size: 14px; color: #444; line-height: 1.8; font-style: italic; }
+
+/* Footer */
+.footer { text-align: center; color: #bbb; font-size: 13px; margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid #e8e0d5; }
+
+@media (max-width: 600px) {
+  .dual-grid, .cmp-grid { grid-template-columns: 1fr; }
+  .data-row { flex-direction: column; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="霹雳穷人-info-en.html">中文 / English</a>
+</div>
+
+
+<div class="header">
+  <h1 class="title">霹雳穷人：币圈结构性踏空全景</h1>
+  <p class="subtitle">当全球资产集体新高，加密持有者为何成了唯一的缺席者</p>
+  <div class="divider"></div>
+</div>
+
+<div class="overview">
+2026 年上半年，韩国 KOSPI 指数翻倍突破 8000 点，美股持续新高，黄金高位运行——全球流动性如洪水般涌入各类资产。唯独加密市场被系统性绕开，BTC 既无避险功能也无增长弹性。一个韩国词汇「霹雳穷人」重新流行：什么都没做错，却眼睁睁看着所有人比自己更有钱。币圈人从踏空到迁徙，从坚守到怀疑，正在经历一场深层的身份重构。
+</div>
+
+<!-- Card 01 -->
+<div class="card c01">
+  <div class="card-head">
+    <div class="circle">01</div>
+    <div class="tag">霹雳穷人</div>
+  </div>
+  <div class="card-title">什么都没做错，却被一道雷劈成了穷人</div>
+  <div class="card-desc">
+    韩国人造了一个词「벼락거지」——直译「霹雳穷人」。2020 年房价暴涨时首次流行：没买房的人收入一分没少，跟暴涨的房价一比，等于凭空变穷。如今它在韩国股市卷土重来：KOSPI 半年从 4000 点冲到 8000 点以上，三星和 SK 海力士两只 AI 芯片股把整个国家抬上了天。首尔论坛上到处是自嘲：坐我对面那位靠半导体赚出十年工资，我啥也没干，就成了霹雳穷人。
+  </div>
+  <div class="data-row">
+    <div class="data-card green">
+      <div class="data-big g">+100%</div>
+      <div class="data-sm">韩国 KOSPI<br>4000 → 8000+</div>
+    </div>
+    <div class="data-card green">
+      <div class="data-big g">AI 芯片</div>
+      <div class="data-sm">三星 + SK 海力士<br>拉动整个大盘</div>
+    </div>
+    <div class="data-card red">
+      <div class="data-big r">BTC</div>
+      <div class="data-sm">去年10月大跌后<br>一蹶不振</div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 02 -->
+<div class="card c02">
+  <div class="card-head">
+    <div class="circle">02</div>
+    <div class="tag">结构性踏空</div>
+  </div>
+  <div class="card-title">钱没有消失，它只是绕着加密走</div>
+  <div class="card-desc">
+    踏空分两种。熊市集体踏空——大家一起亏，没有参照物，错过像躲过一劫。今年是另一种：结构性踏空。全球流动性像开足马力的抽水机，把钱送进黄金、美股、韩国半导体——唯独绕开加密。所有人都找到了出路，只有你站在原地看钱从门口流过。这比熊市诛心得多。
+  </div>
+  <div class="cmp-grid">
+    <div class="cmp-card green">
+      <div class="cmp-icon">🥇</div>
+      <div class="cmp-name">黄金</div>
+      <div class="cmp-price">避险资金涌入</div>
+      <div class="cmp-bar green"></div>
+      <div class="cmp-note">传统避险资产持续新高</div>
+    </div>
+    <div class="cmp-card orange">
+      <div class="cmp-icon">📈</div>
+      <div class="cmp-name">美股</div>
+      <div class="cmp-price">AI 驱动牛市</div>
+      <div class="cmp-bar orange"></div>
+      <div class="cmp-note">科技股引领全球资金流入</div>
+    </div>
+    <div class="cmp-card blue">
+      <div class="cmp-icon">💎</div>
+      <div class="cmp-name">加密</div>
+      <div class="cmp-price">流动性绕行</div>
+      <div class="cmp-bar blue"></div>
+      <div class="cmp-note">被系统性跳过，量价齐萎</div>
+    </div>
+  </div>
+</div>
+
+<!-- Card 03 -->
+<div class="card c03">
+  <div class="card-head">
+    <div class="circle">03</div>
+    <div class="tag">两头落空</div>
+  </div>
+  <div class="card-title">涨的时候不带它，跌的时候不落下它</div>
+  <div class="card-desc">
+    买 BTC 的人图两样：避险和弹性。今年一样没兑现。要避险？它没有黄金的命，全球恐慌时黄金涨 BTC 跌。要弹性？科技股一路新高它跟不上。市场一恐慌，它倒是第一个跟着风险资产被抛。涨时不带它，跌时不落下它——两头都没占着。
+  </div>
+  <div class="dual-grid">
+    <div class="dual-card good">
+      ✅ <b>当初买它的理由</b><br>
+      数字黄金，避险资产<br>
+      高弹性，牛市发动机<br>
+      四年周期，减半必涨
+    </div>
+    <div class="dual-card bad">
+      ❌ <b>今年实际表现</b><br>
+      恐慌时跟风险资产一起跌<br>
+      科技股新高它原地踏步<br>
+      ETF 改变了整个博弈规则
+    </div>
+  </div>
+</div>
+
+<!-- Card 04 -->
+<div class="card c04">
+  <div class="card-head">
+    <div class="circle">04</div>
+    <div class="tag">顺势迁徙</div>
+  </div>
+  <div class="card-title">手艺没浪费，只是标的换了</div>
+  <div class="card-desc">
+    币圈人不躺平，他们把炒币练就的本事原样搬了过去。KOL 从聊山寨翻倍转向英伟达财报和特斯拉支撑位；散户把炒币脚本改成美股监控工具，盯盘、报警、自动下单一条龙。交易所顺势推出链上美股交易产品——用户要的是创新高的资产，那就把创新高的资产请进来，留住人。整个行业都在做同一件事：想方设法蹭上那波自己没赶上的行情。
+  </div>
+  <div class="flow-row">
+    <div class="flow-step">炒币 KOL</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">转向美股分析<br>英伟达 / 特斯拉</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">交易所<br>推出美股交易</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step win">技能迁移<br>标的重置</div>
+  </div>
+</div>
+
+<!-- Card 05 -->
+<div class="card c05">
+  <div class="card-head">
+    <div class="circle">05</div>
+    <div class="tag">追涨陷阱</div>
+  </div>
+  <div class="card-title">别让踏空逼你跳上最后一班车</div>
+  <div class="card-desc">
+    「等」不是零成本——持 U 也在亏。人民币从 7.3 一路升破 6.8，你原地踏步，脚下的地还在下沉。但冲进去追涨更危险：赚的是涨潮的钱不是眼光，潮水总会退。当年在山寨币、NFT 上一次次证明过——抓住涨容易，成功止盈难。换个市场，这些弱点不会自动消失。
+  </div>
+  <div class="risk-row">
+    <div class="risk-label">人民币升值</div>
+    <div class="risk-meter"><div class="risk-fill r" style="width:72%"></div></div>
+    <div class="risk-val">7.3 → 6.8</div>
+  </div>
+  <div class="risk-row">
+    <div class="risk-label">追高踏空风险</div>
+    <div class="risk-meter"><div class="risk-fill o" style="width:85%"></div></div>
+    <div class="risk-val">极高</div>
+  </div>
+  <div class="risk-row">
+    <div class="risk-label">止盈纪律缺失</div>
+    <div class="risk-meter"><div class="risk-fill y" style="width:90%"></div></div>
+    <div class="risk-val">历史反复验证</div>
+  </div>
+</div>
+
+<!-- Card 06 -->
+<div class="card c06">
+  <div class="card-head">
+    <div class="circle">06</div>
+    <div class="tag">止盈离场</div>
+  </div>
+  <div class="card-title">真正的雷不是没赶上的那班，是忘了哪站该下车</div>
+  <div class="card-desc">
+    加密这一轮确实不行了，不能拿「以后会回来」安慰自己。ETF 把 BTC 变成机构资产负债表上的仓位，链上钱忙着买美股，连交易所都改行卖股票——加密已经不是记忆里那个一夜十倍的加密。但承认加密走弱，不等于股市那边就是安全屋。别人在最高水位逼你跳进一个同样玩不转的池子，这才是真正的凶险。踏空可能是伪命题，止盈下牌桌才是终极要义。
+  </div>
+  <div class="quote-box">
+    「如果你拿着别人的资产负债表丈量自己，逼你在最高的水位上跳进一个你同样玩不转的池子——这比踏空危险得多。」
+  </div>
+</div>
+
+<div class="footer">
+  来源：深潮 TechFlow · 2026/06/01 · 作者 David<br>
+  mp.weixin.qq.com — 深潮 TechFlow 致力于提供有价值的信息，有态度的思考
+</div>
+
+</div>
+</body>
+</html>
