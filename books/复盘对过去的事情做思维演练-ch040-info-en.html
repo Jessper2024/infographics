@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fupan · Examine the Premises of Thinking</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch040-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Fupan · Examine the Premises of Thinking</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Core Insight</span>
+  Every action relies on implicit assumptions as its foundation — the starting point of thinking. If the foundation is wrong, no matter how elegant the logic or flawless the execution, the result will be a journey south when you intended north. "Doing the right thing" matters more than "doing things right." Premise review requires examining motivation (both public interest and alignment with essence) and your understanding of the thing's true nature.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>If "what's the current situation" reviews execution results, and "how was the decision originally made" reviews execution logic, then "examining premises of thinking" reviews the very foundation of execution. Premise review asks two core questions: is the motivation pure (not just fair to others but aligned with the thing's inherent nature) and is our understanding of the thing's essence correct? TCL's M&A of Thomson was driven by ambition to be world #1 — not to better serve consumers — violating the "justice" of enterprise. In 2012, internet companies making phones "not for user needs but to embed their own services" led to disastrous outcomes. Conversely, McDonald's as real estate, Walmart as logistics, iMac/iPod as fashion — redefining essence opens new frontiers. This chapter also provides a practical fupan checklist framework.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">2<span class="kpi-unit">Questions</span></div>
+    <div class="kpi-label">Premise Review</div>
+    <div class="kpi-note">① Is motivation pure?<br>(public-interest + natural-justice)<br>② Is essence understanding correct?</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit">Cases</span></div>
+    <div class="kpi-label">Cost of Impure Motive</div>
+    <div class="kpi-note">TCL-Thomson: ambition over service<br>→ forced liquidation<br>Tech-phone wave: embed self-service<br>→ disastrous outcomes</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit">Examples</span></div>
+    <div class="kpi-label">Essence Redefined</div>
+    <div class="kpi-note">McDonald's = real estate·Walmart = logistics<br>HC360 = information platform<br>iPod = fashion → new frontiers</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">20+<span class="kpi-unit">Items</span></div>
+    <div class="kpi-label">Fupan Checklist</div>
+    <div class="kpi-note">Progress → target gap → unplanned<br>results → consensus → evidence<br>→ execution → right/wrong → motive<br>→ essence → key success factor</div>
+  </div>
+</div>
+
+<!-- 01: Foundation argument -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Foundation</div>
+    <div class="section-title t-01">Why Premise Review Is the Deepest Layer of Fupan</div>
+    <div class="section-desc"><strong>All thinking and action rest on implicit assumptions.</strong> If the premise shifts, everything downstream must change. Western medicine sees symptoms as local faults → suppress with drugs. The author of Your Body's User Manual sees symptoms as the body fighting disease → strengthen the resisting organ. Same symptom, different premises, entirely opposite treatments. This is the modern version of "heading south while intending north" — "doing the right thing" matters more than "doing things right."</div>
+    <div class="flow-row">
+      <div class="flow-step">Premise<br>(Implicit Assumptions)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Logic<br>Built On It</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Plan<br>Formed</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Wrong Premise<br>= Total Failure</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Motivation review -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Motivation</div>
+    <div class="section-title t-02">Pure Motivation: Not Just "Fair to Others" but "True to Essence"</div>
+    <div class="section-desc"><strong>"Gongyi" (public interest) means fairness to others. "Zhengyi" (alignment with essence) means conforming to the thing's inherent nature.</strong> Befriending foreigners at hotels to secure marriage visas may be defensible by public interest — but it violates zhengyi, the true purpose of cross-cultural friendship. TCL's Thomson M&A was driven by "become world #1 in TVs" not "provide better products to consumers" — impure motive distorted every tactic, ending in liquidation. Kai-Fu Lee on 2012's tech-phone wave: "not driven by user needs but embedding their own services" — impure intent led naturally to failure.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>Impure Motivation</h4>
+          <p>Power struggles·office politics·chasing #1 status·embedding self-service over satisfying user needs</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Pure Motivation</h4>
+          <p>Public-minded·aligns with the thing's inherent nature·the better you serve, the better you thrive</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Essence redefinition -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Essence Cognition</div>
+    <div class="section-title t-03">Redefining Essence Opens Entirely New Frontiers</div>
+    <div class="section-desc"><strong>Motivation examines the starting point of the doer; essence understanding tests cognitive ability.</strong> McDonald's appears to be food service but makes money from real estate. Walmart is retail but its core is logistics. Books are knowledge carriers, but Guo Fansheng saw them as information carriers → HC360 network platform. MP3 was a commodity, but Jobs made iPod a fashion item → Apple's second high-growth wave. In fupan, re-examining essence opens new spaces.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🏠</div>
+        <div class="data-name">McDonald's</div>
+        <div class="data-sm">Surface: food business<br>Essence: real estate profit<br>Different cognition<br>→ different business model</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📱</div>
+        <div class="data-name">iPod</div>
+        <div class="data-sm">Market view: commodity MP3<br>Jobs' view: fashion item<br>→ Apple's second growth wave</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔍</div>
+        <div class="data-name">HC360</div>
+        <div class="data-sm">Market view: books = knowledge<br>Guo's view: books = information<br>→ new network sales platform</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Checklist -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Checklist Tool</div>
+    <div class="section-title t-04">The Fupan Checklist: A Practical Framework to Avoid Omissions</div>
+    <div class="section-desc"><strong>A checklist is a powerful fupan tool.</strong> Building the list itself is a review and reflection process on key points. It creates milestones in discussion and helps manage time. Core framework: current progress → target comparison → unplanned outcomes → consensus check → evidence changes → execution process → right/wrong analysis → new approaches → motive check → essence understanding → key success factor → root cause of failure. Centered on the three core dimensions, adaptable to actual needs.</div>
+    <div class="flow-row">
+      <div class="flow-step">Current<br>Progress</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Target<br>Gap</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Evidence<br>Check</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Execution<br>Process</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Motive<br>& Essence</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Reviewing others -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Review Others</div>
+    <div class="section-title t-05">How to Fupan Others: Insert Yourself — Learn from Others' Experience</div>
+    <div class="section-desc"><strong>Reviewing others differs from reviewing yourself: you don't know their targets, only observe their actions.</strong> Checklist for others: what results did they achieve → what actions did they take → which actions aligned with principles → which were wasted effort → what logic drove them → was their logic premise sound → would I have done differently → could I have done better → where can we break through their predicament. The key is inserting yourself into the analysis — gain their experience while formulating your own solution.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">👀</div>
+        <div class="dual-text">
+          <h4>Passive Observation (Ineffective)</h4>
+          <p>Just watch others' wins/losses·don't insert self·don't deduce alternatives·don't learn real skills</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>Active Self-Insertion (Effective)</h4>
+          <p>What would I have done·why did they do that·could I have done better·extract principles for future use</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Core Takeaway</div>
+  <div class="takeaway-text">The premises of thinking are the foundation of all execution. Fupan must reach the premise level: is motivation pure — both "gongyi" (public-minded fairness) and "zhengyi" (aligned with the thing's inherent nature)? Is our understanding of essence correct — can we redefine it like McDonald's, Walmart, or iPod did? If the premise is wrong, even the most elegant logic leads south when the goal is north. Only after premise review, combined with a full checklist covering motive, evidence, execution, and essence, can fupan be truly complete.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《Fupan》Ch.40 · Examine the Premises of Thinking · Key Insights · For Learning Only
+</div>
+
+</div>
+</body>
+</html>
