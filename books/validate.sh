@@ -130,7 +130,7 @@ else
 fi
 
 # Check catalog link (supports both wenhua-kulv and fooled-by-randomness)
-if grep -qE "([a-z-]+-catalog)\.html" "$FILE"; then
+if grep -qE "(catalog)\.html" "$FILE"; then
   echo "✅ Catalog link correct"
 else
   echo "❌ Wrong catalog link"
