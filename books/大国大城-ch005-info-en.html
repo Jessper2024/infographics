@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China in Big Country, Big City · Ch.5「Global Economic Spatial Agglomeration」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 34px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8;
+  }
+  .chapter-overview p { margin: 0; }
+  .section {
+    background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; } .section-06 { border-left-color: #0891b2; }
+  .section-07 { border-left-color: #059669; } .section-08 { border-left-color: #7c3aed; }
+  .section-09 { border-left-color: #d97706; } .section-10 { border-left-color: #1d4ed8; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; } .num-06 { background: #ecfeff; color: #0891b2; }
+  .num-07 { background: #ecfdf5; color: #059669; } .num-08 { background: #f5f3ff; color: #7c3aed; }
+  .num-09 { background: #fffbeb; color: #d97706; } .num-10 { background: #eff6ff; color: #1d4ed8; }
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; } .tag-06 { background: #ecfeff; color: #0891b2; }
+  .tag-07 { background: #ecfdf5; color: #059669; } .tag-08 { background: #f5f3ff; color: #7c3aed; }
+  .tag-09 { background: #fffbeb; color: #d97706; } .tag-10 { background: #eff6ff; color: #1d4ed8; }
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; }
+  .t-04 { color: #4f46e5; } .t-05 { color: #db2777; } .t-06 { color: #0891b2; }
+  .t-07 { color: #059669; } .t-08 { color: #7c3aed; } .t-09 { color: #d97706; }
+  .t-10 { color: #1d4ed8; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #f9a8d4; }
+  .kpi-value { font-size: 34px; font-weight: bold; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+  .grid-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .grid-card { border-radius: 12px; padding: 16px; text-align: center; border: 1px solid; }
+  .grid-card.g1 { background: #fef2f2; border-color: #fecaca; }
+  .grid-card.g2 { background: #fff7ed; border-color: #fed7aa; }
+  .grid-card.g3 { background: #fefce8; border-color: #fde68a; }
+  .grid-card.g4 { background: #eef2ff; border-color: #c7d2fe; }
+  .grid-card.g5 { background: #fdf2f8; border-color: #f9a8d4; }
+  .grid-icon { font-size: 28px; margin-bottom: 6px; }
+  .grid-name { font-size: 14px; font-weight: bold; color: #1a1a1a; margin-bottom: 4px; }
+  .grid-desc { font-size: 12px; color: #777; line-height: 1.6; }
+  .stat-bar { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+  .stat-label { width: 160px; font-size: 13px; color: #555; text-align: right; flex-shrink: 0; }
+  .stat-track { flex: 1; height: 20px; background: #f1e6d9; border-radius: 10px; overflow: hidden; }
+  .stat-fill { height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 11px; color: #fff; font-weight: bold; }
+  .stat-fill.s1 { background: #dc2626; width: 94%; }
+  .stat-fill.s3 { background: #ca8a04; width: 50%; }
+  .stat-fill.s4 { background: #4f46e5; width: 6%; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; } .section-06 { border-top-color: #0891b2; }
+    .section-07 { border-top-color: #059669; } .section-08 { border-top-color: #7c3aed; }
+    .section-09 { border-top-color: #d97706; } .section-10 { border-top-color: #1d4ed8; }
+    .grid-3col, .grid-2col { grid-template-columns: 1fr; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大国大城-ch005-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Great Country, Big City · Ch.5「Global Economic Spatial Agglomeration」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Spatial Agglomeration · Economic Geography · Migration · Urbanization Laws</span>
+  In every country—big or small, rich or poor—economic activity is overwhelmingly concentrated in a few regions. This is not an accident, but an economic law. 50% of global economic activity occurs on just 1.5% of the world's land. From the US GDP cone map to Japan's Tokyo metro, from France's "Eiffel Tower" to China's Hu Huanyong Line—all nations experience spatial agglomeration. Understanding this law is the starting point for understanding all problems of urbanization in a large country.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter uses satellite images and economic geography maps to visually demonstrate the spatial agglomeration of the global economy. The Earth at night reveals that economically active regions are concentrated in a small fraction of the world's land area. The US GDP distribution map shows that the orange-highlighted area, though small, accounts for half of the US economy. Japan, the UK, and France all show extreme concentration—France's economy resembles the Eiffel Tower. Developing countries like India show similar patterns. Australia, despite its vast empty interior, concentrates its economy in coastal cities. Germany's relative dispersion is a historical anomaly. China's Hu Huanyong Line divides the country, and east of this line, the degree of concentration is actually not high by international standards. Population flows in Norway confirm that worldwide, people are moving to big cities without exception.</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01"><div class="kpi-value">50<span class="kpi-unit">%</span></div><div class="kpi-label">Global economy on</div><div class="kpi-note">just 1.5% of land area</div></div>
+  <div class="kpi-card c02"><div class="kpi-value">36<span class="kpi-unit">%</span></div><div class="kpi-label">Tokyo metro share of Japan GDP</div><div class="kpi-note">Area = Shanghai + Suzhou</div></div>
+  <div class="kpi-card c03"><div class="kpi-value">43<span class="kpi-unit">%</span></div><div class="kpi-label">US GDP concentrated in</div><div class="kpi-note">narrow eastern corridor</div></div>
+  <div class="kpi-card c04"><div class="kpi-value">61<span class="kpi-unit">M</span></div><div class="kpi-label">Left-behind children in China</div><div class="kpi-note">2010 census data</div></div>
+  <div class="kpi-card c05"><div class="kpi-value">168<span class="kpi-unit">M</span></div><div class="kpi-label">Cross-province migrant workers</div><div class="kpi-note">Inter-regional labor mobility</div></div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">View from Space</div>
+    <div class="section-title t-01">Earth at Night: The Truth Told by Lights</div>
+    <div class="section-desc">On August 11, 2002, NASA's satellite captured the Earth at night (Fig.1), revealing a simple fact: <strong>global economic activity is highly concentrated in a few regions—a phenomenon called "spatial agglomeration."</strong> Between countries, light intensity reflects economic development—the contrast between South Korea and North Korea is the starkest. Within a country, light intensity reflects population and economic concentration—the US East Coast megalopolis and the narrow West Coast corridor are the brightest. Europe's brightest areas cluster around its major cities. This map is the starting point for understanding economic geography.</div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">US Example</div>
+    <div class="section-title t-02">US GDP Distribution: Half the Economy in the Orange Zone</div>
+    <div class="section-desc">Figure 6 shows the US GDP distribution map—the orange-shaded area, though small in size, accounts for half of the US economy. More importantly, on a per capita GDP basis, the US has achieved "balanced development." This demonstrates that <strong>"balanced development" is not about resource uniformity, but about per capita income convergence.</strong> Figure 7 uses cone height to represent GDP output per unit area—the cones rise sharply within a small area, revealing extraordinary concentration. Despite massive spatial agglomeration, the US maintains regional balance in per capita terms.</div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Developed Nations</div>
+    <div class="section-title t-03">Japan · UK · France: The "Cone Effect" of Developed Economies</div>
+    <div class="section-desc">Figure 8 shows the economic geography of Japan, the UK, and France: <strong>Developed countries' economies are highly concentrated in a few metropolitan areas.</strong> Japan's three major metropolitan areas hold over 50% of the national population. Tokyo's 36 million people represent one-third of Japan's population in an area the size of Shanghai plus Suzhou. The UK's economy concentrates in London and the Southeast. France's economy is an "Eiffel Tower"—Paris absolutely dominates, with a single towering peak while the rest of the country remains flat. This is not the result of policy design but of spontaneous market forces.</div>
+    <div class="grid-3col">
+      <div class="grid-card g1"><div class="grid-icon">🗼</div><div class="grid-name">France</div><div class="grid-desc">Economy like the Eiffel Tower—Paris dominates, rest flat</div></div>
+      <div class="grid-card g2"><div class="grid-icon">🏯</div><div class="grid-name">Japan</div><div class="grid-desc">3 metro areas >50% GDP, Tokyo 1/3 of population</div></div>
+      <div class="grid-card g3"><div class="grid-icon">🏛️</div><div class="grid-name">UK</div><div class="grid-desc">London and Southeast concentrate most economic activity</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Developing Countries</div>
+    <div class="section-title t-04">India and Others: Spatial Agglomeration is Not Just for the Rich</div>
+    <div class="section-desc">Figure 9 shows the economic geography of India and other developing countries: <strong>Developing countries also exhibit extreme spatial agglomeration.</strong> India's economy is concentrated in a handful of cities—Mumbai, Delhi, Kolkata, Bangalore—and their surroundings. This proves that spatial agglomeration is not a luxury of developed countries, but a universal law of economic development itself. Even in the early stages of economic takeoff, activity concentrates in a few advantaged areas. Latecomer nations cannot escape this fundamental economic law.</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Unique Case</div>
+    <div class="section-title t-05">Australia: Vast Land ≠ Dispersed Economy</div>
+    <div class="section-desc">Figure 10 shows Australia's economic geography: <strong>Despite being a vast and sparsely populated continent (3 people/km²), Australia's economy is still concentrated in a few coastal cities.</strong> Sydney, Melbourne, Brisbane, and Perth together generate the vast majority of the nation's economic output. This case powerfully refutes the "sparse population therefore should disperse development" argument—even on a vast landmass, economic and population agglomeration remains the unchanged rule. Geographic conditions (especially coastal advantage) have a persistent, decisive impact on development.</div>
+  </div>
+</div>
+
+<div class="section section-06">
+  <div class="section-num num-06">06</div>
+  <div class="section-body">
+    <div class="tag tag-06">Historical Anomaly</div>
+    <div class="section-title t-06">Germany: Relative Dispersion as a Historical Scar</div>
+    <div class="section-desc">Figure 11 shows Germany's economic geography: <strong>Germany's relative dispersion is not evidence of successful "dispersal policy."</strong> Setting aside the decades of East/West German division, Germany's unified history spans barely a hundred years. Long-term political fragmentation prevented the emergence of a super-dominant capital like London or Paris. Instead, Germany developed multiple centers—Berlin, Munich, Hamburg, Frankfurt. Germany's dispersion is not natural economic integration, but the result of political-historical path dependency. Citing Germany as evidence for dispersal policies requires great caution in China's context.</div>
+  </div>
+</div>
+
+<div class="section section-07">
+  <div class="section-num num-07">07</div>
+  <div class="section-body">
+    <div class="tag tag-07">China's View</div>
+    <div class="section-title t-07">The Hu Huanyong Line: China's Spatial Reality</div>
+    <div class="section-desc">Figure 12 shows China's economic geography: <strong>West of the Hu Huanyong Line (Aihui-Tengchong Line), natural conditions are poor and unsuitable for large-scale development.</strong> But even looking only at the eastern half, China's economic concentration is not high—compared to the US, Japan, and France, China's eastern region is far less concentrated. This means China's urbanization is far from over, and there is still enormous room for population to flow to advantaged regions (especially the eastern coastal urban belt). Any administrative attempt to reverse this trend risks enormous efficiency costs.</div>
+    <div class="stat-bar"><span class="stat-label">West of Hu Huanyong Line</span><div class="stat-track"><div class="stat-fill s4">~6% population</div></div></div>
+    <div class="stat-bar"><span class="stat-label">East of Hu Huanyong Line</span><div class="stat-track"><div class="stat-fill s1">~94% population</div></div></div>
+    <div class="stat-bar"><span class="stat-label">Agglomeration east vs US/Japan</span><div class="stat-track"><div class="stat-fill s3">Below</div></div></div>
+  </div>
+</div>
+
+<div class="section section-08">
+  <div class="section-num num-08">08</div>
+  <div class="section-body">
+    <div class="tag tag-08">Population Flow</div>
+    <div class="section-title t-08">Global Trend: People Moving to Big Cities is Unstoppable</div>
+    <div class="section-desc">Figure 13 shows Norway's population flow map (2005–2009): <strong>Worldwide, people are moving to large cities—even in a small country like Norway.</strong> Meanwhile, China's rural areas face severe hollowing and aging (Fig.14-18, Chengkan, southern Anhui). However, villages with tourism and cultural value are being redeveloped and reborn—people flow out, money flows in. The market economy guides resources to where they yield the highest returns, even actively preserving cultural heritage. This is a natural process that should not be reversed by administrative force.</div>
+  </div>
+</div>
+
+<div class="section section-09">
+  <div class="section-num num-09">09</div>
+  <div class="section-body">
+    <div class="tag tag-09">Social Cost</div>
+    <div class="section-title t-09">Migration vs Left-Behind: Two Sides of Urbanization</div>
+    <div class="section-desc">Figure 19 shows a grassroots project "Sunflower"—providing after-school support for migrant workers' children. 2010 census data reveals: <strong>China has about 61 million left-behind children in rural areas, plus over 30 million "migrant children" living with parents in cities.</strong> Migrant children cannot access equal public services in destination cities, while left-behind children face the combined hardship of parental absence and educational deprivation. This reveals a massive institutional barrier—the Hukou (household registration) system splits families apart, turning urbanization into "semi-urbanization": labor moves to cities, but families do not.</div>
+  </div>
+</div>
+
+<div class="section section-10">
+  <div class="section-num num-10">10</div>
+  <div class="section-body">
+    <div class="tag tag-10">Shanghai Paradox</div>
+    <div class="section-title t-10">The Megacity Paradox: Population Growing, City Center Shrinking</div>
+    <div class="section-desc">Figures 20 and 21 show Shanghai's population density and subway commuting maps: <strong>Between 2000–2010, while Shanghai's total population grew rapidly, the city center population actually declined sharply.</strong> Population concentration in big cities is not a uniform inflow—it involves suburbanization and the separation of jobs and homes. Shanghai residents commuting long distances between center and suburbs by subway is the inevitable result of population dispersal and work-housing separation. This phenomenon is universal across global megacities: people first concentrate in cities, then within cities they spread from center to suburbs, forming metropolitan areas—but this is the second stage of urbanization, not an argument against inflow.</div>
+    <div class="grid-2col">
+      <div class="grid-card g4"><div class="grid-icon">🏙️</div><div class="grid-name">City Center ↓</div><div class="grid-desc">Shanghai's center population declined 2000-2010</div></div>
+      <div class="grid-card g5"><div class="grid-icon">🚇</div><div class="grid-name">Commuting ↑</div><div class="grid-desc">Subway became lifeline between suburbs and center</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Core Conclusion</div>
+  <div class="takeaway-text">Global economic activity is overwhelmingly concentrated in a few regions—this is not a policy failure or market malfunction, but a fundamental law of economic development. From the Earth at night to the GDP cone maps of every country, the World Bank confirms that over half of economic activity occurs on just 1.5% of land. The US economy is "a platform with peaks," France is an "Eiffel Tower," Japan concentrates in three metro areas. China's problem is not over-agglomeration but under-agglomeration—the degree of economic concentration east of the Hu Huanyong Line is far below that of the US, Japan, and other developed countries. Population concentration in big cities is universal across the world, without exception. Understanding this spatial agglomeration law is the prerequisite for understanding China's urbanization path.</div>
+</div>
+
+<div class="footer">
+  Infographic for "Great Country, Big City" Ch.5 · Based on Lu Ming's "Great Country, Big City: Unity, Development and Balance in Contemporary China" · World Bank WDR 2009 data reference · For study reference only
+</div>
+</div>
+</body>
+</html>

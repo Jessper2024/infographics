@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大国大城 · 第5章「大城市不死」</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 36px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.5px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .chapter-overview { background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555; line-height: 1.8; }
+  .chapter-overview p { margin: 0; }
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; } .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; } .section-05 { border-left-color: #db2777; } .section-06 { border-left-color: #0891b2; } .section-07 { border-left-color: #059669; } .section-08 { border-left-color: #7c3aed; } .section-09 { border-left-color: #d97706; } .section-10 { border-left-color: #1d4ed8; }
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; } .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; } .num-05 { background: #fdf2f8; color: #db2777; } .num-06 { background: #ecfeff; color: #0891b2; } .num-07 { background: #ecfdf5; color: #059669; } .num-08 { background: #f5f3ff; color: #7c3aed; } .num-09 { background: #fffbeb; color: #d97706; } .num-10 { background: #eff6ff; color: #1d4ed8; }
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; } .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; } .tag-05 { background: #fdf2f8; color: #db2777; } .tag-06 { background: #ecfeff; color: #0891b2; } .tag-07 { background: #ecfdf5; color: #059669; } .tag-08 { background: #f5f3ff; color: #7c3aed; } .tag-09 { background: #fffbeb; color: #d97706; } .tag-10 { background: #eff6ff; color: #1d4ed8; }
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; } .t-06 { color: #0891b2; } .t-07 { color: #059669; } .t-08 { color: #7c3aed; } .t-09 { color: #d97706; } .t-10 { color: #1d4ed8; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-value { font-size: 34px; font-weight: bold; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+  .grid-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .grid-card { border-radius: 12px; padding: 16px; text-align: center; border: 1px solid; }
+  .grid-card.g1 { background: #fef2f2; border-color: #fecaca; }
+  .grid-card.g2 { background: #fff7ed; border-color: #fed7aa; }
+  .grid-card.g3 { background: #fefce8; border-color: #fde68a; }
+  .grid-card.g4 { background: #eef2ff; border-color: #c7d2fe; }
+  .grid-card.g5 { background: #fdf2f8; border-color: #f9a8d4; }
+  .grid-card.g6 { background: #ecfeff; border-color: #a5f3fc; }
+  .grid-card.g7 { background: #ecfdf5; border-color: #6ee7b7; }
+  .grid-card.g8 { background: #f5f3ff; border-color: #c4b5fd; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.d1 { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.d2 { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.d3 { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d4 { background: #fffbeb; border: 1px solid #fde68a; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; } .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; } .section-05 { border-top-color: #db2777; } .section-06 { border-top-color: #0891b2; } .section-07 { border-top-color: #059669; } .section-08 { border-top-color: #7c3aed; } .section-09 { border-top-color: #d97706; } .section-10 { border-top-color: #1d4ed8; }
+    .dual-grid, .grid-3col, .grid-2col { grid-template-columns: 1fr; } .container { padding: 0 8px; } h1 { font-size: 26px; } .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); } .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) { .kpi-row.cols-4 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大国大城-ch013-info-en.html">中文 / English</a>
+</div>
+
+<h1>大国大城 · 第5章「大城市不死」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">规模经济 · 人口密度 · 工资 · 包容性就业 · 技能互补</span>
+  几乎所有反对大城市发展的论述都严重低估了城市扩张的好处，而那些好处往往并不直接可见。大城市的活力在根本上来源于人性——大多数人，在大多数情况下，还是害怕孤独的。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是全书的第5章（书第五章）。核心论点：大城市不会"死"，规模经济效应、人力资本外部性和技能互补性使大城市在现代化经济中不可替代。作者从"80后"朋友小陈博士夫妇选择留在北京的个人案例入手，阐明大城市发展的两个关键逻辑：人力资本积累和专业化就业匹配。本章先论大城市的生机源自人性——喜欢多样性和交往。再以实证数据证明，城市规模扩张能创造包容性就业，尤其有利于低技能者（城市人口每增加100万人，个人就业概率提高0.66个百分点）。进而比较"生活在城市"和"活在城市"两种发展模式——窄马路高密度vs宽马路低密度，用上海浦西田子坊和浦东联洋社区的对比说明密度对服务业发展的重要性。最后批判"以业控人"的思维方式，揭示高技能者与低技能者的互补关系：一个高科技岗位带动5个其他行业的就业。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01"><div class="kpi-value">+0.66<span class="kpi-unit">pp</span></div><div class="kpi-label">城市人口+100万的就业提升</div><div class="kpi-note">个人就业概率提高0.66pp</div></div>
+  <div class="kpi-card c02"><div class="kpi-value">+8.6<span class="kpi-unit">pp</span></div><div class="kpi-label">低技能者受益最大</div><div class="kpi-note">大学生+100万→低技能就业+8.6pp</div></div>
+  <div class="kpi-card c03"><div class="kpi-value">48.2<span class="kpi-unit">%</span></div><div class="kpi-label">第三产业占GDP比重</div><div class="kpi-note">比同等发展阶段国家低~10pp</div></div>
+  <div class="kpi-card c04"><div class="kpi-value">1:5</div><div class="kpi-label">高科技岗位带动效应</div><div class="kpi-note">1个高科技岗→5个服务业岗</div></div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">城市生机</div>
+    <div class="section-title t-01">大城市的生机：人性、交往与多样性</div>
+    <div class="section-desc">世界上有两种人：一种向往陶渊明"采菊东篱下"的离群索居，另一种喜欢热闹和多样性。绝大多数人属于后者。现代经济中，知识密集型产业比重越来越高——<strong>越来越多的人需要通过和别人的交往来传播知识、获取知识。</strong> 从前再喜欢热闹的农民也必须在农村和土地为伴；现在再内向的白领也必须在最低限度上与人交流。人的另一天性是喜欢多样性——只有大城市才能提供丰富多彩的消费服务。在大城市，生产者可以针对某一细分市场提供服务，因为每一种特殊偏好的消费者在庞大的城市里都足够多。<strong>高房价和"城市病"就是消费者为获得大城市多样性生活所支付的"入场券"。</strong> 如今，"消费型城市"越来越重要，一个城市的生活品质正在成为人口迁移的主要吸引力。</div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">信息技术</div>
+    <div class="section-title t-02">线上交流不会取代线下——互补而非互替</div>
+    <div class="section-desc">有人担心信息技术会降低人们集聚在城市的必要性。但事实恰恰相反：<strong>线上和线下的交流是"互补"而非"互替"。</strong> 微信朋友圈里都是见过面的朋友；刚开始在线上交流的人，接下来会面对面讨论。信息技术只是节省了与某个特定朋友见面的次数，却可能催生了与更多人交流的需要。人越有钱越会购买"体验"——吃饭穿衣的需求会饱和，但音乐会、戏剧、画展、咖啡馆的"体验"消费是不断提高的。<strong>如果线上可以取代线下，就不会有那么多人愿意花很多钱、拖着疲惫的身躯到商学院课堂去上课，而不是在网上看教授的视频。</strong> 日本全国人口在下降，但东京的人口仍在上升。信息科技没有——至少在可预见的将来不会——强大到取代面对面交流的需求。</div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">人力资本</div>
+    <div class="section-title t-03">人力资本外部性：低技能者受益更大</div>
+    <div class="section-desc"><strong>"人力资本外部性"</strong>——一个人的教育水平提高了，不仅自己收入提高，在与他人交往中还能促进知识传播，使别人的收入也提高。作者与哈佛大学格莱泽教授的研究用中国数据证实：一个城市的人均受教育年限增加一年，这个城市的劳动力平均工资可以获得21%的提高。更重要的是，<strong>低技能者所获得的人力资本外部性更大。</strong> 因为高技能者之间相互竞争会抵消一部分外部性的收益，而低技能者与高技能者有互补性。金融区需要保洁工，工程师需要操作工，高收入者需要餐馆服务员和家政——<strong>这就是劳动分工带来的技能互补。</strong> 大城市的政府不能认为自己不需要低技能劳动者了——恰恰相反，消费型服务业的从业人员大量是教育水平不高的人，而他们的工作又是不能被机器替代的。</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">就业创造</div>
+    <div class="section-title t-04">包容性的就业创造：实证证据</div>
+    <div class="section-desc">作者与高虹、佐藤宏使用CHIPS 2002年城市居民数据的研究：<strong>城市人口每增加100万人，个人就业概率平均提高0.66个百分点。</strong> 大学毕业生每增加100万人，就业概率提高4.3-6.6个百分点。更重要的是，就业增加效应对<strong>较低技能者</strong>更大：对受教育年数≤9年的劳动者，大学生增加100万→就业概率提高8.58个百分点；对9-12年者→3.57pp；对>12年者→仅2.12pp。<strong>为什么低技能者获益更多？</strong> 在户籍制度下，各地落户政策偏向高学历者，导致高技能者在城市供给过多、竞争加剧、就业难。而高技能者集聚带来了对大量低技能劳动力的互补性需求——需求多、供给受制度限制，低技能者反而更容易找工作。</div>
+    <div class="grid-3col">
+      <div class="grid-card g1"><div class="grid-icon">📚</div><div class="grid-name">≤9年教育</div><div class="grid-desc">就业概率+8.58pp<br>（大学生+100万）</div></div>
+      <div class="grid-card g2"><div class="grid-icon">📖</div><div class="grid-name">9-12年教育</div><div class="grid-desc">就业概率+3.57pp<br>（大学生+100万）</div></div>
+      <div class="grid-card g4"><div class="grid-icon">🎓</div><div class="grid-name">>12年教育</div><div class="grid-desc">就业概率+2.12pp<br>（大学生+100万）</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">消费城市</div>
+    <div class="section-title t-05">消费型城市：服务业发展的关键</div>
+    <div class="section-desc">中国正在进入后工业化阶段，城市（特别是大城市）的重要性更强了。越是发达的国家，服务业在GDP中占比越高，城市化率越高，人口越向大城市集聚。<strong>原因在于人口密度有利于服务业发展。</strong> 与农业和工业相比，服务业的产品具有不可运输性，需要面对面完成。消费型服务业跟着人和钱走：人口密集的地方，固定投入（便利店、餐馆）更容易被分摊；劳动生产率越高的城市，富人越多，对消费型服务的需求越强。一个现代城市越发展高技术产业和生产型服务业，其带动的消费型服务业需求越多。中国第三产业占GDP比重从2001年的40.5%增长到2014年的48.2%，但<strong>比同等发展阶段的国家低了约10个百分点。</strong> 低密度的城市发展模式是制约服务业发展的重要原因之一。</div>
+  </div>
+</div>
+
+<div class="section section-06">
+  <div class="section-num num-06">06</div>
+  <div class="section-body">
+    <div class="tag tag-06">城市模式</div>
+    <div class="section-title t-06">"活在城市"vs"生活在城市"：窄马路vs宽马路</div>
+    <div class="section-desc">通过对比上海浦西田子坊（窄马路、高密度）和浦东联洋社区（宽马路、低密度），作者揭示了两种城市发展模式的本质差异。田子坊每平方公里交叉路口多，沿街商业丰富，服务业密度高，居民靠步行和地铁出行，水果更新鲜更便宜。联洋社区宽马路、低密度，服务业配套不足，居民高度依赖开车出行，水果不太新鲜更贵。<strong>城市研究新词："宜于行走性"（walkability）。</strong> 窄马路适合人行走，沿街人口密度更高，服务业"进门人口"多，可以支撑商铺投资的固定成本。欧洲城市（巴黎、巴塞罗那、东京银座）每平方公里交叉路口逾百甚至200个，而上海浦东、北京城北仅十几个。<strong>城市规划不是路越宽越好——高密度、多小路反而减少通勤需求，引导服务业多样性和生活便利性。</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card d1"><div class="dual-icon">🏘️</div><div class="dual-text"><h4>窄马路 · 高密度<br>"生活在城市"</h4><p>步行/地铁出行，服务业丰富，消费价格低</p></div></div>
+      <div class="dual-card d2"><div class="dual-icon">🏗️</div><div class="dual-text"><h4>宽马路 · 低密度<br>"活在城市"</h4><p>依赖开车，服务业不足，"睡城"，出行成本高</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-07">
+  <div class="section-num num-07">07</div>
+  <div class="section-body">
+    <div class="tag tag-07">产业控人</div>
+    <div class="section-title t-07">"以业控人"是南辕北辙</div>
+    <div class="section-desc">有些城市出于直觉，认为应该"以业控人"——淘汰低端产业、限制低技能者落户。但这违背了经济规律。那些来到城市的外来劳动力，绝大多数是因为<strong>城市对他们有需求</strong>才来的——他们的失业率远低于本地居民。产业升级了就不需要低端劳动力了？这是一个巨大的认识误区。<strong>一个城市的活力恰恰在于它的低端服务业。</strong> 高技能者和低技能者在城市中是"互补"的，有三个原因：<strong>劳动分工</strong>（每个生产单位都需要高低技能配套）、<strong>人力资本外部性</strong>（大学生也会对低技能者产生知识外溢）、<strong>消费外部性</strong>（高技能者产生大量生活服务需求）。更大的城市不是低技能者更少——<strong>恰恰因为高技能者带动了对低技能者的需求，更大的城市中体力型服务业的比重更高。</strong></div>
+  </div>
+</div>
+
+<div class="section section-08">
+  <div class="section-num num-08">08</div>
+  <div class="section-body">
+    <div class="tag tag-08">技能互补</div>
+    <div class="section-title t-08">高科技带动效应：一个岗位带动五个</div>
+    <div class="section-desc">美国的研究发现：<strong>城市中一个高科技产业的就业可以带动5个其他行业的就业岗位</strong>——2个相对高端（医生、律师）+ 3个消费型服务业（售货员、餐馆服务员）。制造业的带动力较弱，但一个制造业岗位仍然能带动1.6个本地服务业岗位。高低技能劳动力的比例大致为1:1。在中国，作者发现同样的规律：更大城市中从事体力型服务业的劳动者比重更高。然而，中国各个城市都给予大学以上文化程度者户籍优先权，导致高技能者在城市"供给过多"——大学生做银行柜面工作的"低层次就业"现象出现。而对低技能者的限制导致服务价格上涨（上海住家保姆月薪已超香港菲佣），<strong>高技能者的劳动生产率和生活质量反而因此下降。</strong> 一个定位为国际大都市的城市，要吸引全球人才，靠的是服务和生活环境，而不是人才公寓之类的硬件。</div>
+    <div class="grid-2col">
+      <div class="grid-card g1"><div class="grid-icon">🔬</div><div class="grid-name">1个高科技岗位</div><div class="grid-desc">带动5个其他服务业岗位<br>2个高端+3个消费型</div></div>
+      <div class="grid-card g2"><div class="grid-icon">🏭</div><div class="grid-name">1个制造业岗位</div><div class="grid-desc">带动1.6个本地服务业岗位</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-09">
+  <div class="section-num num-09">09</div>
+  <div class="section-body">
+    <div class="tag tag-09">挑选后果</div>
+    <div class="section-title t-09">挑选劳动力技能的后果</div>
+    <div class="section-desc">如果城市政府通过户籍制度"挑选"高技能者，排斥低技能者，后果严重。对低技能劳动者数量的限制将减少体力型服务业的劳动供给，导致此类服务价格上涨。<strong>高技能人才收入高，必须大量消费服务</strong>——如果一个城市的服务价格太贵，它在全球人才竞争中的吸引力就会下降。<strong>同一个国家内部的城市之间，不应照搬一个国家对外国移民的政策。</strong> 在吸引高技能人才的同时限制低技能者进入，不仅妨碍公民的自由迁徙和居住权，而且城市会出现低技能劳动力短缺、工资上涨的怪现象。上海住家保姆月薪已超过香港菲佣——这是制度扭曲的鲜明信号。<strong>城市应该做的：通过技术和管理缓解"城市病"（增加基础设施和公共服务供给），而不是通过加重对外来人口的公共服务歧视来增加他们的生活成本。</strong></div>
+  </div>
+</div>
+
+<div class="section section-10">
+  <div class="section-num num-10">10</div>
+  <div class="section-body">
+    <div class="tag tag-10">政策方向</div>
+    <div class="section-title t-10">尊重市场：控制人口规模的正确方式</div>
+    <div class="section-desc">党的十八届三中全会报告先说"让市场成为配置资源的决定性因素，更好地发挥政府作用"，之后才说"要严格控制特大城市的人口规模"。<strong>这个次序是有含义的</strong>——任何控制人口规模的措施，必须尊重市场配置资源的基本规律，而不是逆转。控制人口的政策最多只能作为短期的应急措施（因为基础设施和公共服务不能一夜之间建成），而且只能适度缓解人口增长的速度，不可能让特大城市人口负增长。<strong>更不应该通过加重对外来人口的公共服务歧视来增加他们的生活成本。</strong> 从长期看，正确的政策只能：适应人口增长趋势，不断增加基础设施和公共服务供给，在不妨碍城市发展的情况下缓解拥堵和污染。而在经济增长缺乏动力的背景下，<strong>恰恰是这些缓解城市病的投资，才是拉动增长的有回报的投资。</strong></div>
+    <div class="quote-card" style="background:#fefce8;border:1px solid #fde68a;border-radius:12px;padding:18px 22px;margin-top:10px;text-align:center;">
+      <div class="quote-text" style="font-size:16px;color:#92400e;line-height:1.8;font-style:italic;">"大城市的活力在根本上来源于人性。大多数人，在大多数情况下，还是害怕孤独的。"</div>
+      <div class="quote-author" style="font-size:12px;color:#a16207;margin-top:6px;">——陆铭</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">大城市不死。规模经济效应（分享、匹配、学习）和人力资本外部性使大城市在知识经济时代不可替代。实证研究表明，城市扩张能创造包容性就业，尤其有利于低技能劳动者——这正是因为高技能者和低技能者在生产和消费中具有天然互补性。一个高科技岗位能带动5个其他服务业岗位。"以业控人"和"挑选劳动力技能"的政策违反经济规律，会导致服务业价格上升、人才吸引力下降、城市活力受损。正确的城市发展模式是高密度、窄马路、适宜行走的"生活型城市"，而非低密度、宽马路的"活着型城市"。控制人口规模最多只能是短期应急措施——长期正确的政策是通过技术和管理降低"城市病"成本，同时不断增加基础设施和公共服务供给。大城市的活力，在根本上来源于人性。</div>
+</div>
+
+<div class="footer">
+  《大国大城》第5章信息图 · 基于陆铭《大国大城：当代中国的统一、发展与平衡》内容提炼 · 数据来源：CHIPS调查、国家统计局 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

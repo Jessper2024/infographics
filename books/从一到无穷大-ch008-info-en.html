@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Two Three … Infinity · Ch.8「Ch.1 Large Numbers」— Infographic</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01, .section-06 { border-left-color: #dc2626; }
+  .section-02, .section-07 { border-left-color: #ea580c; }
+  .section-03, .section-08 { border-left-color: #ca8a04; }
+  .section-04, .section-09 { border-left-color: #4f46e5; }
+  .section-05, .section-10 { border-left-color: #db2777; }
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .num-01, .num-06 { background: #fef2f2; color: #dc2626; }
+  .num-02, .num-07 { background: #fff7ed; color: #ea580c; }
+  .num-03, .num-08 { background: #fefce8; color: #ca8a04; }
+  .num-04, .num-09 { background: #eef2ff; color: #4f46e5; }
+  .num-05, .num-10 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .tag-01, .tag-06 { background: #fef2f2; color: #dc2626; }
+  .tag-02, .tag-07 { background: #fff7ed; color: #ea580c; }
+  .tag-03, .tag-08 { background: #fefce8; color: #ca8a04; }
+  .tag-04, .tag-09 { background: #eef2ff; color: #4f46e5; }
+  .tag-05, .tag-10 { background: #fdf2f8; color: #db2777; }
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .t-01,.t-06 { color: #dc2626; } .t-02,.t-07 { color: #ea580c; }
+  .t-03,.t-08 { color: #ca8a04; } .t-04,.t-09 { color: #4f46e5; }
+  .t-05,.t-10 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}
+  .kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+  .kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}
+  .kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}
+  .kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}
+  .kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}
+  .kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}
+  .kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}
+  .kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}
+  .kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}
+  .kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+  .kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 14px; text-align: center; border: 1px solid; }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+  .timeline-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .timeline-card { border-radius: 12px; padding: 14px 10px; text-align: center; border: 1px solid; font-size: 12px; line-height: 1.6; }
+  .timeline-card.tc1 { background: #fef2f2; border-color: #fecaca; }
+  .timeline-card.tc2 { background: #fff7ed; border-color: #fed7aa; }
+  .timeline-card.tc3 { background: #fefce8; border-color: #fde68a; }
+  .timeline-card.tc4 { background: #eef2ff; border-color: #c7d2fe; }
+  .timeline-year { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-year.r { color: #dc2626; }
+  .timeline-year.o { color: #ea580c; }
+  .timeline-year.g { color: #ca8a04; }
+  .timeline-year.b { color: #4f46e5; }
+  .grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .equation-box { background: #f8f6f3; border: 1px solid #e8e0d5; border-radius: 12px; padding: 18px 22px; margin-top: 10px; font-size: 15px; color: #333; line-height: 1.8; text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+  .risk-row + .risk-row { margin-top: 10px; }
+  .risk-label { font-size: 13px; color: #555; min-width: 100px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 16px; background: #fdf2f8; border-radius: 8px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 8px; background: #db2777; }
+  .risk-val { font-size: 13px; color: #555; min-width: 50px; text-align: right; }
+  .list-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .list-item { background: #faf8f5; border: 1px solid #e8e0d5; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #555; line-height: 1.7; }
+  .list-item strong { color: #333; }
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01,.section-06 { border-top-color: #dc2626; } .section-02,.section-07 { border-top-color: #ea580c; }
+    .section-03,.section-08 { border-top-color: #ca8a04; } .section-04,.section-09 { border-top-color: #4f46e5; }
+    .section-05,.section-10 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .grid-3-col, .timeline-row, .list-2col { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}
+    .kpi-value{font-size:34px}
+  }
+  @media(max-width:400px){ .kpi-row,.kpi-row.cols-4{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="从一到无穷大-catalog.html">← Back to Chapters</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch008-info-zh.html">English / 中文</a>
+</div>
+
+<h1>One Two Three … Infinity · Ch.8「Ch.1 Large Numbers」</h1>
+<p class="subtitle">From the Hottentot's "3" to Cantor's Aleph Numbers — A Journey into the Marvelous World of Big Numbers</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>The opening chapter takes readers on a marvelous journey through the world of numbers. It begins with Hottentot tribes who cannot count past 3, then teaches scientific notation with the total number of atoms in the universe (3×10⁷⁴). The story continues through Archimedes' "Sand Reckoner," the Indian king's chessboard debt, the Tower of Brahma, and the automatic printing press, finally reaching Cantor's kingdom of infinite numbers — where the number of odd integers "equals" all integers, where a line has "more" points than integers, and "the part equals the whole" becomes natural law. It is the most fascinating opening to any science book.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3</div>
+    <div class="kpi-label">Hottentot Max</div>
+    <div class="kpi-note">African Hottentot tribes<br>Cannot count beyond 3</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3×10⁷⁴</div>
+    <div class="kpi-label">Atoms in the Universe</div>
+    <div class="kpi-note">3 followed by 74 zeros<br>≈ total number of atoms</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">18.4×10¹⁸</div>
+    <div class="kpi-label">Chessboard Grains</div>
+    <div class="kpi-note">18,446,744,073,709,551,615<br>= 2000 years of global wheat</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">ℵ₀,ℵ₁,ℵ₂</div>
+    <div class="kpi-label">Cantor's Alephs</div>
+    <div class="kpi-note">Integers ℵ₀·Points ℵ₁·Curves ℵ₂</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Counting Origins</div>
+    <div class="section-title t-01">From the Hottentot's "3" to Scientific Notation</div>
+    <div class="section-desc">In some Hottentot tribes of Africa, no words exist for numbers beyond 3. Ask a native how many sons he has — if more than 3, he replies "many." Today we can write any number simply by adding zeros: the total number of atoms in the universe is 3×10⁷⁴ (3 followed by 74 zeros). This decimal place-value system, invented by an unknown Indian mathematician less than 2000 years ago, is one of modern science's most essential foundations.</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🏹</div>
+        <div class="dual-text">
+          <h4>Ancient Counting</h4>
+          <p>Hottentots → 3 max. Egyptians wrote 8732 with repeated symbols. Romans writing "one million" needed 1000 M's — hours of work.</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🔢</div>
+        <div class="dual-text">
+          <h4>Modern Notation</h4>
+          <p>Indian decimal place-value system: 3×10⁷⁴ concisely expresses astronomical numbers. Arabic numerals transformed mathematics and science.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Archimedes</div>
+    <div class="section-title t-02">Archimedes' Sand Reckoner: Ancient Big Number Adventure</div>
+    <div class="section-desc">In the 3rd century BC, Archimedes wrote "The Sand Reckoner," claiming he could write a number exceeding "all the sand grains needed to fill the universe." Using the largest Greek unit "myriad" (10,000), he invented successive orders of magnitude — a system akin to modern scientific notation. He estimated the universe's radius at about 1 billion miles (to Saturn) and concluded the number of sand grains would not exceed "10 million units of the 8th order" — about 10⁶³. By modern reckoning, filling the visible universe would require 10¹⁰⁰ grains.</div>
+    <div class="equation-box">
+      <strong>Archimedes' Cosmic Sand Calculation:</strong><br>
+      Universe radius (Aristarchus) = 10,000,000,000 stadia ≈ 1 billion miles<br>
+      Conclusion: "not more than 10 million units of the 8th order" = 10⁶³<br>
+      Modern calculation (visible universe radius 50B ly) = needs 10¹⁰⁰ grains
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Chessboard Legend</div>
+    <div class="section-title t-03">The Indian King's Debt: Wheat on a Chessboard</div>
+    <div class="section-desc">Grand Vizier Sissa Ben Dahir, inventor of chess, asked the king for: 1 grain on the first square, 2 on the second, 4 on the third — doubling each square for 64 squares. The king readily agreed. By the 64th square, the total came to 18,446,744,073,709,551,615 grains — about 40 trillion bushels, equivalent to 2000 years of global wheat production. The story says the king chose to "cut off the vizier's head" instead of paying. This geometric series (S=2⁶⁴-1) reveals a profound truth: exponential growth defies human intuition.</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">1</div>
+        <div class="data-sm">First square<br>Doubling begins</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">~1 billion</div>
+        <div class="data-sm">After 31 squares<br>Exceeds 1 billion</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">18.4×10¹⁸</div>
+        <div class="data-sm">Total at 64 squares<br>2000 years' wheat</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Tower of Brahma</div>
+    <div class="section-title t-04">The Tower of Brahma: Doomsday in 580 Billion Years</div>
+    <div class="section-desc">In Hindu mythology, Lord Brahma placed 64 golden disks on one of three diamond needles. Monks must transfer all disks to another needle — one at a time, never placing a larger disk on a smaller one. When all 64 disks are moved, the tower, temple, and all beings will turn to dust. The required moves equal the chessboard grains: 2⁶⁴-1 steps. If monks work non-stop at one move per second, it takes about 580 billion years. Modern cosmology says the sun's nuclear fuel will last only 10-15 billion years — far less than this mythical prophecy!</div>
+    <div class="timeline-row">
+      <div class="timeline-card tc1">
+        <div class="timeline-year r">1</div>
+        <div>First disk<br>Just 1 move</div>
+      </div>
+      <div class="timeline-card tc2">
+        <div class="timeline-year o">127</div>
+        <div>7 disks<br>127 moves·~1 hour</div>
+      </div>
+      <div class="timeline-card tc3">
+        <div class="timeline-year g">18.4×10¹⁸</div>
+        <div>64 disks total<br>= chessboard grains</div>
+      </div>
+      <div class="timeline-card tc4">
+        <div class="timeline-year b">580B yrs</div>
+        <div>Time at 1 move/sec<br>≫ Universe's actual age</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Printing Press</div>
+    <div class="section-title t-05">The Automatic Printer: Writing Shakespeare's Unfinished Sentences</div>
+    <div class="section-desc">Imagine a printer producing every possible 65-character line using 50 symbols (26 letters + 10 digits + 14 punctuation). Total combinations: 50⁶⁵ ≈ 10¹¹⁰ lines. Within this "junk" we'd find every line Shakespeare ever wrote (including drafts he threw away), poetry from the 30th century, future scientific discoveries, and traffic statistics from year 2344. But even if every atom in the universe were a printer running since the Big Bang at 10¹⁵ lines per second, we'd have printed only 1/3000 of the total!</div>
+    <div class="equation-box">
+      <strong>Automatic Printer Calculation:</strong><br>
+      50 symbols × 65 positions per line → Total = 50⁶⁵ ≈ 10¹¹⁰<br>
+      All atoms as printers (3×10⁷⁴) × 3B years × 10¹⁵ lines/sec<br>
+      → Printed 3×10¹⁰⁶ lines = only 1/3000 of total
+    </div>
+  </div>
+</div>
+
+<div class="section section-06">
+  <div class="section-num num-06">06</div>
+  <div class="section-body">
+    <div class="tag tag-06">Comparing Infinities</div>
+    <div class="section-title t-06">Cantor's Revolution: Comparing Sizes of Infinity</div>
+    <div class="section-desc">Georg Cantor — father of "arithmetic of the infinite" — proposed a method: one-to-one correspondence. If all elements of two infinite sets can be paired, their sizes are equal. This simple method yields stunning results: the number of odd integers equals the number of even integers, which also equals the number of ALL integers! In the infinite realm, "the part equals the whole." The number of all fractions also equals all integers — just list them ordered by the sum of numerator and denominator.</div>
+    <div class="list-2col">
+      <div class="list-item"><strong>✅ Odds = Evens</strong><br>1→2, 3→4, 5→6, …<br>One-to-one·Counts equal</div>
+      <div class="list-item"><strong>✅ Ints = Evens</strong><br>1→2, 2→4, 3→6, …<br>One-to-one·Part=Whole</div>
+      <div class="list-item"><strong>✅ Fractions = Ints</strong><br>Sum-of-num-denum order<br>One-to-one·Counts equal</div>
+      <div class="list-item"><strong>❌ Reals ≠ Ints</strong><br>Cantor's diagonal proof<br>Reals "more"·Uncountable</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-07">
+  <div class="section-num num-07">07</div>
+  <div class="section-body">
+    <div class="tag tag-07">Hilbert's Hotel</div>
+    <div class="section-title t-07">Hilbert's Infinite Hotel: The Most Intuitive Infinity Paradox</div>
+    <div class="section-desc">David Hilbert's hotel story illustrates infinity's peculiar properties. Imagine a hotel with infinitely many rooms, all full. A new guest arrives — the manager moves guest from room 1 to 2, 2 to 3, 3 to 4, and so on — room 1 is now free! If infinitely many new guests arrive — the manager moves 1→2, 2→4, 3→6… then all odd-numbered rooms become free, easily accommodating the infinite crowd. This story vividly demonstrates how infinity behaves differently from ordinary arithmetic.</div>
+    <div class="flow-row">
+      <div class="flow-step">🏨<br>Infinite Hotel<br>All rooms full</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">1️⃣<br>1 new guest<br>Shift method</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🆕<br>∞ new guests<br>n→2n shift</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🏁<br>All checked in<br>All odds vacant</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-08">
+  <div class="section-num num-08">08</div>
+  <div class="section-body">
+    <div class="tag tag-08">Diagonal Proof</div>
+    <div class="section-title t-08">Cantor's Diagonal Argument: Reals Are "More" Than Integers</div>
+    <div class="section-desc">No one-to-one correspondence exists between points on a line segment and all integers. Cantor's proof is one of mathematics' most elegant reductio ad absurdum arguments: assume such a table exists. Construct a new decimal — first digit differs from the 1st number's 1st digit, second differs from the 2nd's 2nd, and so on. This new number cannot be on the original table — it differs from every entry at its diagonal position. Therefore, the number of points on a line (ℵ₁, the continuum) is strictly greater than the number of integers (ℵ₀).</div>
+    <div class="equation-box">
+      <strong>Cantor's Diagonal Proof:</strong><br>
+      Assume: all reals {0.a₁a₂a₃…} = all integers {1,2,3,…}<br>
+      Construct: b₁≠a₁₁, b₂≠a₂₂, b₃≠a₃₃, …<br>
+      New number 0.b₁b₂b₃… not in original table<br>
+      → Contradiction → Reals more numerous·Uncountable<br>
+      ∴ Points on a segment > all integers
+    </div>
+  </div>
+</div>
+
+<div class="section section-09">
+  <div class="section-num num-09">09</div>
+  <div class="section-body">
+    <div class="tag tag-09">Spatial Dimensions</div>
+    <div class="section-title t-09">Mind-Blowing: Line = Square = Cube in Number of Points</div>
+    <div class="section-desc">Even more astonishing: regardless of length, area, or volume — all contain exactly the same number of points. Proof: split the infinite decimal representing a point on a line into odd-position and even-position digits, then use these two numbers to locate a point in a square — establishing one-to-one correspondence. The same method splits into three parts for a cube. Despite our intuition that a "surface" has more points than a "line," in the arithmetic of the infinite, one-dimensional, two-dimensional, and three-dimensional spaces have exactly the same number of points.</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">1-inch Line</div>
+        <div class="data-sm">ℵ₁ points<br>0.abcdef…</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">Square</div>
+        <div class="data-sm">ℵ₁ points<br>0.ace… + 0.bdf…</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">Cube</div>
+        <div class="data-sm">ℵ₁ points<br>Triple-split decimals</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-10">
+  <div class="section-num num-10">10</div>
+  <div class="section-body">
+    <div class="tag tag-10">Levels of Infinity</div>
+    <div class="section-title t-10">Aleph Numbers: The Hierarchy of Infinity</div>
+    <div class="section-desc">Cantor used the Hebrew letter ℵ (aleph) to denote infinite numbers, with subscripts indicating rank. ℵ₀ represents all integers and fractions. ℵ₁ represents all geometric points (the continuum). ℵ₂ represents all curve shapes — more numerous than points. But to this day, no one has imagined an infinity requiring ℵ₃. These three aleph numbers suffice for every infinity we can conceive — a striking parallel to our old friends the Hottentots: they could only count to 3, and we need only 3 levels of infinity!</div>
+    <div class="timeline-row">
+      <div class="timeline-card tc1">
+        <div class="timeline-year r">ℵ₀</div>
+        <div>Integers and fractions<br>Countable infinity<br>E.g., 1,2,3,4,…</div>
+      </div>
+      <div class="timeline-card tc2">
+        <div class="timeline-year o">ℵ₁</div>
+        <div>Geometric points<br>Continuum<br>E.g., points on a line</div>
+      </div>
+      <div class="timeline-card tc3">
+        <div class="timeline-year g">ℵ₂</div>
+        <div>Curve shapes<br>"More" than points<br>All possible curves</div>
+      </div>
+      <div class="timeline-card tc4">
+        <div class="timeline-year b">ℵ₃？</div>
+        <div>No one has yet<br>found use for ℵ₃<br>Three levels enough</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Core Takeaways</div>
+  <div class="takeaway-text">Chapter 1 opens the book with a wondrous numerical journey. From the Hottentot's inability to count past 4, through Archimedes counting the sand, the bankrupt king's chessboard, and the 580-billion-year doomsday prophecy — Gamow uses these captivating stories to show us: the world of numbers is far vaster than our intuition suggests. And Cantor's theory of infinite numbers forms the chapter's climax — revealing a counterintuitive truth: infinity comes in different sizes, and in the infinite realm, "the part equals the whole" is not a paradox but the norm. From the finite "1" to the infinite "ℵ" — this is the perfect opening to the book's grand theme.</div>
+</div>
+
+<div class="footer">
+  "One Two Three … Infinity" Ch.8 — Chapter 1: Large Numbers · George Gamow · For Learning Reference Only
+</div>
+
+</div>
+</body>
+</html>

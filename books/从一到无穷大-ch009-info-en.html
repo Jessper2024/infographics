@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Two Three … Infinity · Ch.9 "Natural and Artificial Numbers" — Infographic</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .equation-box {
+    background: #f8f6f3; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 22px; margin-top: 10px; font-size: 15px; color: #333;
+    line-height: 1.8; text-align: center;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .timeline-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .timeline-card {
+    border-radius: 12px; padding: 14px 10px; text-align: center;
+    border: 1px solid; font-size: 12px; line-height: 1.6;
+  }
+  .timeline-card.tc1 { background: #fef2f2; border-color: #fecaca; }
+  .timeline-card.tc2 { background: #fff7ed; border-color: #fed7aa; }
+  .timeline-card.tc3 { background: #fefce8; border-color: #fde68a; }
+  .timeline-card.tc4 { background: #eef2ff; border-color: #c7d2fe; }
+  .timeline-year { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-year.r { color: #dc2626; }
+  .timeline-year.o { color: #ea580c; }
+  .timeline-year.g { color: #ca8a04; }
+  .timeline-year.b { color: #4f46e5; }
+
+  .grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .prime-card {
+    border-radius: 12px; padding: 16px 12px; text-align: center;
+    border: 1px solid #e8e0d5; background: #faf8f5;
+  }
+  .prime-range { font-size: 14px; font-weight: bold; color: #333; margin-bottom: 6px; }
+  .prime-count { font-size: 26px; font-weight: 700; }
+  .prime-count.pc1 { color: #dc2626; }
+  .prime-count.pc2 { color: #ea580c; }
+  .prime-count.pc3 { color: #4f46e5; }
+  .prime-ratio { font-size: 12px; color: #888; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .grid-3-col, .timeline-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}
+    .kpi-value{font-size:34px}
+  }
+  @media(max-width:400px){
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}
+  }
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}
+  .kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+  .kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}
+  .kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}
+  .kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}
+  .kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}
+  .kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}
+  .kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}
+  .kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}
+  .kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}
+  .kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+  .kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="从一到无穷大-catalog.html">← Back to Chapter List</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch009-info-zh.html">中文 / English</a>
+</div>
+
+<h1>One Two Three … Infinity · Ch.9 "Natural and Artificial Numbers"</h1>
+<p class="subtitle">Number theory: the purest crown of mathematics, from the infinite mystery of primes to the geometric wonder of imaginary numbers</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Mathematics is hailed as the queen of sciences, and number theory is her purest crown jewel. This chapter explores two seemingly opposite directions: "natural numbers" — primes are infinite, yet no formula can generate them all; and "artificial numbers" — imaginary numbers, once dismissed as non-existent, found elegant geometric interpretation. Euclid's proof of prime infinity by contradiction, Goldbach's conjecture, Fermat's Last Theorem, and the treasure-hunt problem solved by imaginary numbers together weave a splendid tapestry of number theory.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">∞</div>
+    <div class="kpi-label">Number of Primes</div>
+    <div class="kpi-note">Euclid's proof by contradiction<br>Infinite primes, no largest prime</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">26<span class="kpi-unit"> / 100</span></div>
+    <div class="kpi-label">Primes under 100</div>
+    <div class="kpi-note">26 primes among first 100 integers<br>Eratosthenes' sieve method</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">~ln<span class="kpi-unit"> n</span></div>
+    <div class="kpi-label">Prime Density</div>
+    <div class="kpi-note">Proportion of primes from 1 to n<br>≈ 1 / ln(n), closer as n grows</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">i²<span class="kpi-unit"> = -1</span></div>
+    <div class="kpi-label">Imaginary Unit</div>
+    <div class="kpi-note">Multiply by i = rotate 90° CCW<br>Geometric interpretation by Wessel & Argand</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">1742</div>
+    <div class="kpi-label">Goldbach's Conjecture</div>
+    <div class="kpi-note">Every even integer = sum of 2 primes<br>Neither proven nor disproven</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">n &lt; 269</div>
+    <div class="kpi-label">Fermat's Last Theorem</div>
+    <div class="kpi-note">xⁿ+yⁿ=zⁿ proven impossible<br>for n&lt;269; n≥269 unproven</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">300k → 4</div>
+    <div class="kpi-label">Goldbach Progress</div>
+    <div class="kpi-note">Schnirelmann: every even integer =<br>sum of at most 300,000 primes</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Mathematical Thought</div>
+    <div class="section-title t-01">The Purest Mathematics: Number Theory</div>
+    <div class="section-desc">Mathematicians wish to keep mathematics pure. Yet every branch of pure mathematics eventually finds use in explaining the physical universe — including abstract group theory, non-commutative algebra, and non-Euclidean geometry. Number theory, however, is considered the purest of all, with no practical application other than mental training. Ironically, most number theory theorems were first "discovered empirically," much like physical laws — mathematicians observed patterns in numbers before proving them rigorously.</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">👑</div>
+        <div class="dual-text">
+          <h4>Mathematics: Queen of Sciences</h4>
+          <p>Hilbert: "Pure and applied mathematics have nothing in common" — yet all pure branches eventually explain the physical universe</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🔢</div>
+        <div class="dual-text">
+          <h4>Number Theory: From Experience to Proof</h4>
+          <p>Most theorems began as empirical discoveries, like physical laws. Only later did mathematicians provide rigorous proofs. Both pure and experimental.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Classic Proof</div>
+    <div class="section-title t-02">Euclid's Reductio ad Absurdum: The Infinite Prime Proof</div>
+    <div class="section-desc">A prime is a number that cannot be expressed as a product of two or more smaller numbers. Euclid first proved that the number of primes is infinite. His method, called "proof by contradiction" (reductio ad absurdum), is a favorite among mathematicians. Assume primes are finite, with N as the largest. Compute the product of all known primes plus 1: (1×2×3×5×7×11×13×…×N)+1. This number is either prime itself or divisible by a prime larger than N — both contradicting the assumption that N is the largest prime.</div>
+    <div class="equation-box">
+      <strong>Euclid's Proof by Contradiction:</strong><br>
+      Assume largest prime = N → Compute (1×2×3×5×7×11×…×N) + 1<br>
+      → Not divisible by any prime ≤ N → Either prime or divisible by a larger prime<br>
+      → Contradiction → ∴ Primes are infinite &#x2713;
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Distribution Law</div>
+    <div class="section-title t-03">Prime Distribution: Rarer but Never Ending</div>
+    <div class="section-desc">As numbers grow, the proportion of primes decreases but never reaches zero. The law of prime distribution is one of the greatest discoveries in all of mathematics: the proportion of primes from 1 to n is approximately 1/ln(n), and the larger n gets, the closer the approximation. This law was first proposed empirically and only rigorously proven in the late 19th century by Hadamard and de la Vallée-Poussin.</div>
+    <div class="grid-3-col">
+      <div class="prime-card">
+        <div class="prime-range">1 ~ 100</div>
+        <div class="prime-count pc1">26</div>
+        <div class="prime-ratio">Ratio 26% | ln(100) ≈ 4.6</div>
+      </div>
+      <div class="prime-card">
+        <div class="prime-range">1 ~ 1,000</div>
+        <div class="prime-count pc2">168</div>
+        <div class="prime-ratio">Ratio 16.8% | ln(1000) ≈ 6.9</div>
+      </div>
+      <div class="prime-card">
+        <div class="prime-range">1 ~ 1,000,000,000</div>
+        <div class="prime-count pc3">50,847,478</div>
+        <div class="prime-ratio">Ratio ~5% | ln(10⁹) ≈ 20.7</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Unsolved Mysteries</div>
+    <div class="section-title t-04">Two Great Puzzles: Goldbach & Fermat</div>
+    <div class="section-desc">Goldbach's Conjecture (1742): Every even number can be written as the sum of two primes. 12=7+5, 24=17+7, 32=29+3 — easy to check, but neither proven nor disproven. Schnirelmann (1931) proved "every even number = sum of at most 300,000 primes," later reduced to "4 primes" by Vinogradoff. But the final step from 4 to 2 remains elusive. Fermat's Last Theorem: xⁿ+yⁿ=zⁿ has no integer solutions for n>2. Fermat claimed a "marvelous proof," but for three centuries no one could reproduce it.</div>
+    <div class="timeline-row">
+      <div class="timeline-card tc1">
+        <div class="timeline-year r">1742</div>
+        <div>Goldbach's Conjecture<br>Any even = 2 primes<br>❓ Unproven</div>
+      </div>
+      <div class="timeline-card tc2">
+        <div class="timeline-year o">1640</div>
+        <div>Fermat's Prime Formula<br>2²ⁿ+1 → disproven by Euler<br>(n=5 gives composite)</div>
+      </div>
+      <div class="timeline-card tc3">
+        <div class="timeline-year g">1770</div>
+        <div>Euler popularizes i<br>i = √-1<br>Despite calling it "imaginary"</div>
+      </div>
+      <div class="timeline-card tc4">
+        <div class="timeline-year b">1799</div>
+        <div>Wessel & Argand<br>Geometric meaning of i<br>i = rotate 90°</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Imaginary Wonder</div>
+    <div class="section-title t-05">The Mysterious √-1: From "Non-Existent" to Pirate Treasure Maps</div>
+    <div class="section-desc">Cardano in the 16th century first dared to write the square root of negative numbers into a formula, knowing it was "meaningless." Two centuries later, Wessel and Argand gave a simple geometric interpretation: the complex number 3+4i corresponds to a point (3 horizontal, 4 vertical), and multiplying by i rotates it 90° counterclockwise. Application: a pirate treasure problem — the gallows had disappeared, but knowing only the oak and pine tree positions, complex numbers locate the treasure exactly at +i, with the unknown gallows position magically canceling out.</div>
+    <div class="flow-row">
+      <div class="flow-step">❓<br>Cardano 1545</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📐<br>i × real = rotate 90°</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🏝️<br>Treasure hunt</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">💎<br>Treasure always at +i</div>
+    </div>
+    <div class="equation-box">
+      <strong>Geometric meaning of i:</strong><br>
+      Real number × i → Rotate 90° counterclockwise<br>
+      (3+4i) × i = -4+3i (90° rotation on complex plane)<br>
+      Treasure formula: T = [i(Γ+1)-1 + i(1-Γ)+1] / 2 = +i (Γ = unknown gallows position, cancels out)
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Insight</div>
+  <div class="takeaway-text">The world of natural numbers is full of surprises: primes are infinite yet no generating formula exists; their distribution follows a law as elegant as a cosmic code. Artificial numbers (imaginary numbers) evolved from "non-existent" to the foundation of four-dimensional geometry, proving that the most abstract mathematical concepts often give rise to the most powerful tools for understanding the universe.</div>
+</div>
+
+<div class="footer">
+  One Two Three … Infinity Ch.9 "Natural and Artificial Numbers" Infographic · George Gamow · For learning reference only
+</div>
+
+</div>
+</body>
+</html>

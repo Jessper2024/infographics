@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从一到无穷大 · 第15章「下降的阶梯」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-value { font-size: 32px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid; }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.d3 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big { font-size: 18px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; line-height: 1.4; }
+  .data-sm { font-size: 12px; color: #777; line-height: 1.6; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch015-info-en.html">English / 中文</a>
+</div>
+
+<h1>从一到无穷大 · 第15章「下降的阶梯」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">第六章 · 深入微观世界的阶梯之梯</span>
+  从德谟克利特的原子哲学到现代量子力学，人类沿着一条下降的阶梯不断深入物质的内部结构。古希腊人认为世界由土、水、气、火四元素构成；炼金术士幻想将铁变金；而今我们知道92种自然元素，每种都由核子与电子精密组装而成。油膜实验、分子束、X光摄影——每一个实验都在说同一句话：原子和分子真真切切地存在着。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章讲述人类从宏观世界一步步下降到原子内部结构的认知阶梯。从古希腊四元素论到德谟克利特的原子假说，从油膜实验测分子大小到斯特恩分子束测分子速度，从布拉格X光摄影\"看见\"分子到卢瑟福发现原子核、玻尔-海森堡的量子力学——整章如阶梯般逐级下沉，直抵物质结构的底层。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">92<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">自然化学元素</div>
+    <div class="kpi-note">加上人工合成·构成万物</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1/1840<span class="kpi-unit"></span></div>
+    <div class="kpi-label">电子质量÷氢原子质量</div>
+    <div class="kpi-note">汤姆森1897年测定</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">100,000<span class="kpi-unit">:1</span></div>
+    <div class="kpi-label">原子直径÷原子核直径</div>
+    <div class="kpi-note">卢瑟福1911年发现</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">10⁻⁷<span class="kpi-unit">cm</span></div>
+    <div class="kpi-label">油分子直径</div>
+    <div class="kpi-note">水面油膜法简易测得</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">概念进化</div>
+    <div class="section-title t-01">从四元素到92元素：炼金术的正确与错误</div>
+    <div class="section-desc"><strong>古希腊哲学家德谟克利特提出\"原子\"（不可分物）的假说，恩培多克勒则认为世界由土、水、气、火四种基本原子组成。</strong>中世纪的炼金术士试图往铁中加入更多\"火原子\"来制造黄金——从他们的角度看，这与现代化学家合成橡胶一样合理。他们理论与实践的错误在于将金属视为复合物而非元素。但如果不是这些徒劳的尝试，我们可能永远不知道金属是基本化学元素。实际上，铁的冶炼不是土原子和火原子的结合，而是氧原子从氧化铁分子中的分离——恰恰是原子的分裂，而非结合。</div>
+    <div class="flow-row">
+      <div class="flow-step">古希腊<br>4元素·原子假说</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">中世纪<br>炼金术·金属=复合物</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">现代化学<br>92元素·原子组合万物</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">简易实验</div>
+    <div class="section-title t-02">油膜测分子：普通人也能看到原子的证据</div>
+    <div class="section-desc"><strong>1立方毫米的油滴可覆盖约1平方米水面，延展至破裂前即为单分子层。</strong>将一个浅长容器装满水并调至水平，滴入一小滴纯油，用金属丝推动油层扩散。油层会先呈现彩虹色（因上下界面反射光干涉），随厚度递减从红→黄→绿→蓝→紫，最终颜色消失但油面仍比水面\"暗淡\"。继续扩展至破裂——此时厚度即为油分子直径：约10⁻⁷cm。这大概是德谟克利特在两三千年前就能想到的最简单方法。一个油分子由多个原子组成，原子还要更小。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">1 mm³ 油滴</div>
+        <div class="data-sm">边长1mm立方体<br>扩散面积需×10⁶</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">1 m² 水面覆盖</div>
+        <div class="data-sm">单层分子膜<br>厚度 = 直径 = 10⁻⁷cm</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">彩虹消失</div>
+        <div class="data-sm">厚度＜可见光波长<br>油面仍比水面更暗淡</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">实验证据</div>
+    <div class="section-title t-03">分子束与原子摄影：眼见为实</div>
+    <div class="section-desc"><strong>斯特恩的分子束装置证明：200℃时钠原子每秒移动1.5公里，速度随温度升高而增加。</strong>这为热动力学提供了最直接的依据——物体的热量仅是其分子不规则热运动的加剧。更令人信服的是英国物理学家布拉格发明的X光原子摄影法：由于分子间距仅10⁻⁸cm，可见光波长太长，必须用X光。布拉格借助阿贝显微镜成像理论，从不同角度拍摄大量X光带状图案，再叠加在感光纸上——像多色版印刷一样合成出分子影像。六甲基苯分子的碳环结构清晰可见，氢原子虽轻但也确在其中。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔬</div>
+        <div class="dual-text">
+          <h4>❌ 普通显微镜：波长太长</h4>
+          <p>可见光≈5×10⁻⁵cm·分子间距≈10⁻⁸cm·波长＞物体尺寸→照片模糊·如同刷墙刷子画波斯细密画</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>✅ X光摄影：波长够短</h4>
+          <p>X光波长比可见光短数千倍·多角度拍摄带状图案·叠加合成·晶体分子保持稳定方可成功</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">原子解剖</div>
+    <div class="section-title t-04">解剖原子：从西瓜模型到微型太阳系</div>
+    <div class="section-desc"><strong>汤姆森发现电子（质量仅为氢的1/1840），提出\"西瓜模型\"：正电荷均匀分布，电子如西瓜子嵌于其中。</strong>1911年卢瑟福用α粒子轰击铝箔，发现α粒子偶尔大幅偏转——这意味着原子的正电荷与质量集中在比原子直径小千倍的\"原子核\"中。<strong>新图景：原子=微型太阳系，原子核=太阳（占质量99.97%），电子=行星。</strong>电吸引力与万有引力一样遵循反平方定律。氢有1个电子，氦有2个，锂有3个……铀有92个。门捷列夫周期律源于电子壳层的稳定结构：2, 8, 8, 18, 18……</div>
+    <div class="flow-row">
+      <div class="flow-step">汤姆森模型<br>西瓜·正电荷均匀</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">卢瑟福模型<br>原子核·微型太阳系</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">玻尔-量子力学<br>电子壳层·周期律</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">不确定性</div>
+    <div class="section-title t-05">微观力学：轨迹的消失与不确定性原理</div>
+    <div class="section-desc"><strong>若电子轨道的力学规律与行星相同，它将在0.01微秒内因电磁辐射耗尽能量坠入原子核——但事实是原子极其稳定。</strong>问题的根源在于：经典力学的\"轨迹\"和\"速度\"概念当应用于比炮弹轻几十亿倍的电子时，已不再适用。量子力学发现：<strong>物质间的任何相互作用都存在一个下限——\"作用量子\"，观察行为本身成为运动的一部分，精确的数学轨迹必须被有一定厚度的扩散带取代。</strong>这就像几何光学中无限细的光线遇到小孔（≈波长）时不再沿直线传播而呈扇形扩散。德布罗意和薛定谔的波动力学将粒子运动描述为类似光波的连续分布，完美解释了斯特恩的原子衍射实验。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">经典力学</div>
+        <div class="data-sm">精确的数学直线轨迹<br>位置与速度同时确定<br>适用于炮弹·行星</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">量子力学</div>
+        <div class="data-sm">扩散带替代轨迹<br>位置与速度不确定<br>适用于电子·原子尺度</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">波动力学</div>
+        <div class="data-sm">粒子=概率波分布<br>衍射实验证实<br>光与物质统一描述</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">从德谟克利特的哲学原子到卢瑟福的微型太阳系，再到海森堡的不确定性原理，物质科学沿着一条下降的阶梯不断深入。每一级台阶都推翻了一部分先前的认知——元素的数量从4增到92，原子从不可分到可以解剖，牛顿力学从绝对真理变成宏观近似。但有一点始终不变：科学通过实验而非先验获得真理。油膜、分子束、X光、α粒子散射——每一个亲手可做的实验都在回答同一个问题：物质究竟是什么？</div>
+</div>
+
+<div class="footer">
+  《从一到无穷大》第15章信息图 · 第六章「下降的阶梯」· 乔治·伽莫夫 著 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

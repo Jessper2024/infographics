@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从一到无穷大 · 第13章「时空的相对性」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-value { font-size: 32px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Risk */
+  .risk-row-wrap { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { width: 100px; font-size: 13px; color: #555; font-weight: bold; text-align: right; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 14px; background: #fce7f3; border-radius: 7px; overflow: hidden; }
+  .risk-fill { height: 100%; background: #db2777; border-radius: 7px; }
+  .risk-val { width: 80px; font-size: 12px; color: #db2777; font-weight: bold; flex-shrink: 0; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid; }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.d3 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big { font-size: 18px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; line-height: 1.4; }
+  .data-sm { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch013-info-en.html">English / 中文</a>
+</div>
+
+<h1>从一到无穷大 · 第13章「时空的相对性」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">第五章 · 科学革命的四维世界观</span>
+  爱因斯坦的狭义与广义相对论彻底颠覆了牛顿的绝对时空观。迈克尔逊实验揭开以太之谜，运动物体会收缩、时间会膨胀——这一切都可从四维时空坐标的旋转中优雅导出。更惊人的是：重力并非力，而是弯曲时空的几何效应。宇宙可能是封闭的，如同一颗巨大的时空泡泡。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是全书理论最深邃的一章。从四维时空的旋转讲到迈克尔逊推翻以太的实验，从运动物体的收缩、时间膨胀讲到弯曲空间替代万有引力，最后探讨宇宙究竟是"开"还是"闭"。所有结论都源于一个核心洞察：空间与时间是一体的——它们只是恒定四维距离在不同坐标轴上的投影。</p>
+</div>
+
+<!-- KPI 4 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">300,000<span class="kpi-unit">km/s</span></div>
+    <div class="kpi-label">光速·宇宙终极上限</div>
+    <div class="kpi-note">任何有质量物体不可超越</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1.75<span class="kpi-unit">″</span></div>
+    <div class="kpi-label">太阳引力偏折星光角度</div>
+    <div class="kpi-note">1919年日食观测证实</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">70,000<span class="kpi-unit">×</span></div>
+    <div class="kpi-label">99.99999999%光速时的时间膨胀</div>
+    <div class="kpi-note">18年旅程≈1天体感</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">0.01<span class="kpi-unit">mm</span></div>
+    <div class="kpi-label">百米火箭25,000mph时的收缩</div>
+    <div class="kpi-note">日常速度几乎无可察觉</div>
+  </div>
+</div>
+
+<!-- 01: 四维时空旋转 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心框架</div>
+    <div class="section-title t-01">四维时空旋转：空间与时间的一体两面</div>
+    <div class="section-desc"><strong>空间距离和时间间隔只是恒定四维距离在坐标轴上的不同投影。</strong>如同旋转二维坐标系会改变x、y轴上的投影，旋转时空坐标轴则会将空间距离部分变为时间间隔，反之亦然。"旋转时空坐标"的秘密就在日常之中——只要登上行驶的公交车，时间轴便随之倾斜。从车上观察者看，两个事件的空间距离与时间间隔都与地面静止者不同。这不是错觉，而是时空本身的属性。</div>
+    <div class="flow-row">
+      <div class="flow-step">经典物理<br>空间固定·时间独立</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">四维时空<br>时空坐标可旋转</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">统一图景<br>时空互相转换</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 迈克尔逊实验 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">实验革命</div>
+    <div class="section-title t-02">以太风的消失：迈克尔逊实验推翻经典时空</div>
+    <div class="section-desc"><strong>19世纪物理学最大的错误：假设以太像普通物质一样具有力学属性。</strong>迈克尔逊设计精巧干涉仪，用零点法比较光在垂直两方向上的速度。按预期，顺地球运动的以太风会使光速差约0.01%。但实验结果是——<strong>干涉条纹纹丝不动。</strong>无论光朝哪个方向传播，以太风对其毫无影响。这个"顽固的事实"动摇了牛顿绝对时空的根基，唯一合理的解释是：运动物体本身在运动方向上发生了空间的普遍收缩，而非物体材质决定，只与速度有关。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔬</div>
+        <div class="dual-text">
+          <h4>❌ 经典预期：以太风影响光速</h4>
+          <p>顺以太风光速快·逆以太风慢·干涉条纹应移动·地球30km/s ≈ 光速万分之一</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>✅ 实验结果：条纹毫不移动</h4>
+          <p>以太风不存在·光速各向同性·运动物体普遍收缩·空间本身的性质而非材质</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 运动效应 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">时间膨胀</div>
+    <div class="section-title t-03">运动的物体变短，时间变慢</div>
+    <div class="section-desc"><strong>空间收缩和时间膨胀是一体两面：两者由同一个因子决定，只是空间是除法，时间是乘法。</strong>时速50迈汽车长度缩短一个原子核直径，百米火箭仅缩短0.01mm——日常速度的效应微乎其微。但当速度接近光速：50%光速→长度86%；90%→45%；99%→14%。<strong>若飞船以99.99999999%光速往返天狼星（9光年），地球上看18年，宇航员仅需几小时，吃完早饭出发、晚饭前回家，亲朋好友已享用6570顿晚餐。</strong>但无论如何努力，光速是永远不可企及的极限，最后一枚小数无法征服。</div>
+    <div class="risk-row-wrap">
+      <div class="risk-row">
+        <div class="risk-label">50% 光速</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:86%"></div></div>
+        <div class="risk-val">长度 86%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">90% 光速</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:45%"></div></div>
+        <div class="risk-val">长度 45%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">99% 光速</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:14%"></div></div>
+        <div class="risk-val">长度 14%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">99.99999999%</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:0.14%"></div></div>
+        <div class="risk-val">时间×70,000</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 弯曲空间 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">广义相对论</div>
+    <div class="section-title t-04">重力不是力——是弯曲空间的几何效应</div>
+    <div class="section-desc"><strong>大质量物体使其周围的时空弯曲，物质在弯曲空间中沿测地线（最短路径）运动。</strong>二维影子科学家可从三角形内角和判断所处表面是平是弯：平面上=180°，球面上>180°，马鞍面上&lt;180°。我们的三维世界同理——太阳质量使周围空间弯曲，穿过其附近的光线发生偏折。<strong>1919年日全食观测证实：星光偏折1.61″±0.30，与爱因斯坦预测1.75″吻合。</strong>由此，重力作为一种"独立力"的概念消失了，取而代之的是纯几何：所有物质在巨大质量造成的弯曲空间中沿测地线运动。</div>
+    <div class="flow-row">
+      <div class="flow-step">平面空间<br>三角形=180°</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">正弯曲空间<br>三角形&gt;180°</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">负弯曲空间<br>三角形&lt;180°</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 有限还是无限 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">宇宙形状</div>
+    <div class="section-title t-05">闭空间与开空间：宇宙有多大？</div>
+    <div class="section-desc"><strong>宇宙这张巨脸除了局部"空间粉刺"——大质量天体造成的弯曲，整体本身是平是弯？</strong>正弯曲空间对应球面或任何封闭几何体，四面八方弯曲方式一致；负弯曲空间如同马鞍，一个方向向上弯，另一个方向向下弯。在球面上，一定半径内的面积增长慢于平面，马鞍面则快于平面。同样地，三维观测者可以通过测量巨大三角形内角和或计算不同半径所含物质数量，来推断宇宙究竟是有限封闭的还是无限开放的。<strong>这个问题将在第十章的宇宙学讨论中给出答案。</strong></div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">平坦空间</div>
+        <div class="data-sm">三角和=180°<br>面积∝r²<br>无限开放</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">正弯曲空间</div>
+        <div class="data-sm">三角和&gt;180°<br>面积增长慢于r²<br>有限封闭·如球面</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">负弯曲空间</div>
+        <div class="data-sm">三角和&lt;180°<br>面积增长快于r²<br>无限开放·如马鞍</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">空间和时间不是绝对独立的舞台，而是四维时空坐标的不同投影。运动系统中的时间轴和空间轴一同旋转——由此自动导出长度收缩、时间膨胀和同时性的相对性。迈克尔逊实验击碎了以太幻想，爱因斯坦则以弯曲空间取代了重力之"力"——物质告诉时空如何弯曲，弯曲时空告诉物质如何运动。这就是20世纪最伟大科学革命的精髓。</div>
+</div>
+
+<div class="footer">
+  《从一到无穷大》第13章信息图 · 第五章「时空的相对性」· 乔治·伽莫夫 著 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

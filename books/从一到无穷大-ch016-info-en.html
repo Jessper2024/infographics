@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Two Three... Infinity · Ch16「Modern Alchemy」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 32px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .risk-row-wrap { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { width: 120px; font-size: 13px; color: #555; font-weight: bold; text-align: right; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 14px; background: #fce7f3; border-radius: 7px; overflow: hidden; }
+  .risk-fill { height: 100%; background: #db2777; border-radius: 7px; }
+  .risk-val { width: 130px; font-size: 12px; color: #db2777; font-weight: bold; flex-shrink: 0; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid; }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.d3 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big { font-size: 18px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; line-height: 1.4; }
+  .data-sm { font-size: 12px; color: #777; line-height: 1.6; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch016-info-zh.html">中文 / English</a>
+</div>
+
+<h1>One Two Three... Infinity · Ch16「Modern Alchemy」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Part III · Chapter 7 · From Elementary Particles to Nuclear Energy</span>
+  The alchemists' dream—turning base metals into gold—was realized in the 20th century in a form beyond their imagination. We not only transmuted elements but released the stellar energy locked within atomic nuclei. This chapter covers the discovery of elementary particles, the liquid-drop model of the nucleus, fission vs. fusion, and how chain reactions transformed pure science into atomic bombs and nuclear power that changed human destiny. From Prout's hydrogen hypothesis to Hahn's uranium fission, alchemy finally moved from smoky furnaces into the modern physics laboratory.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This is the chapter with the greatest "real-world impact" in the entire book. From the discovery of protons and neutrons confirming Prout's century-old hypothesis, to the liquid-drop model explaining nuclear fission and fusion, to the engineering realization of cloud chambers, cyclotrons, and chain reactions—Gamow's own pioneering work in nuclear physics runs throughout. The closing estimate is sobering: uranium reserves could last centuries, thorium could extend this to millennia, and when all rich ores are exhausted, each ton of ordinary granite, containing 16 grams of uranium and thorium, could yield energy equivalent to 320 tons of gasoline.</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">2.4×10¹⁴<span class="kpi-unit">×</span></div>
+    <div class="kpi-label">Nuclear Fluid Density vs Water</div>
+    <div class="kpi-note">Nuclear soap film weighs 50M tons</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">15,000,000<span class="kpi-unit">×</span></div>
+    <div class="kpi-label">Nuclear vs Chemical Energy</div>
+    <div class="kpi-note">1g nuclear = 15 tons gasoline</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">100,000,000<span class="kpi-unit">°C</span></div>
+    <div class="kpi-label">Thermonuclear Ignition Temp</div>
+    <div class="kpi-note">H-bomb·Controlled fusion challenge</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">0.7<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">U-235 in Natural Uranium</div>
+    <div class="kpi-note">Only natural fissile material</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">~2<span class="kpi-unit">n</span></div>
+    <div class="kpi-label">Neutrons per Fission</div>
+    <div class="kpi-note">Chain reaction multiplier</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Elementary Particles</div>
+    <div class="section-title t-01">The Ultimate Recipe: Nucleons, Electrons & Neutrinos</div>
+    <div class="section-desc"><strong>In the 19th century, Prout proposed all atoms are built from hydrogen, dismissed because atomic weights weren't all integers—until Aston's 1919 discovery of isotopes proved him right.</strong> In modern terms: different nuclei consist of varying numbers of protons (hydrogen nuclei) and neutrons (chargeless protons). Oxygen = 8p+8n, iodine = 53p+74n, uranium = 92p+146n. Additionally: positrons (free positive charges) and neutrinos (chargeless, nearly massless, can pass through light-years of lead). Neutrinos were discovered via "reductio ad absurdum"—energy went missing in β-decay; a thief must have taken it. The elementary particle family stops here: nucleons, electrons, neutrinos, electromagnetic waves—four players performing the infinite drama of the universe.</div>
+    <div class="flow-row">
+      <div class="flow-step">Nucleons<br>p ⇌ n</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Electrons<br>e⁺ ⇌ e⁻</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Neutrinos<br>Energy thief</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">EM Waves<br>Force carrier</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Liquid-Drop Model</div>
+    <div class="section-title t-02">Heart of the Atom: Nuclear Fluid & the Tug-of-War for Stability</div>
+    <div class="section-desc"><strong>Gamow's own liquid-drop model: the nucleus is like a tiny droplet of "nuclear fluid," with surface tension (cohesion) counteracting electric repulsion among protons.</strong> Nuclear fluid density is 2.4×10¹⁴ times water; surface tension 10¹⁸ times water—a nuclear soap film would weigh 50 million tons and support a trillion-ton weight. Bohr and Wheeler's 1939 calculations yielded a decisive conclusion: <strong>in the first half of the periodic table (up to silver), surface tension dominates → fusion releases energy; beyond silver, electric repulsion dominates → fission releases energy.</strong> All nuclei heavier than silver are unstable—only the prohibitively high activation energy prevents spontaneous decay. We live in a world of nuclear explosives—thankfully, ignition is extremely difficult.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">☀️</div>
+        <div class="dual-text">
+          <h4>✅ Light Nuclei Fusion (&lt; Ag)</h4>
+          <p>Surface tension dominates·Two light nuclei merge releasing energy·Needs 100M°C to overcome repulsion·Source of the Sun's energy</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">💥</div>
+        <div class="dual-text">
+          <h4>⚠️ Heavy Nuclei Fission (&gt; Ag)</h4>
+          <p>Electric repulsion dominates·Heavy nucleus splits releasing energy·Needs neutron impact for vibration·Source of atomic bomb energy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Atom Smashers</div>
+    <div class="section-title t-03">Particle Accelerators & Cloud Chambers: Seeing Nuclear Reactions</div>
+    <div class="section-desc"><strong>In 1919, Rutherford bombarded nitrogen with natural α particles, achieving the first artificial nuclear transmutation—aluminum into silicon.</strong> Three main acceleration devices followed: the <strong>electrostatic generator</strong> (repeatedly charging from inside a sphere, theoretically unlimited voltage), the <strong>cyclotron</strong> (two semicircular boxes in a magnetic field alternately charged, particles spiral-accelerated), and the <strong>linear accelerator</strong> (cylinders of increasing length, particles accelerated stepwise). The cloud chamber (Wilson chamber) makes high-speed particle tracks visible—particles passing through supersaturated water vapor leave mist trails, allowing direct photography of nuclear transmutations: a nitrogen nucleus struck by an α particle splits into oxygen and a proton; a boron nucleus shattered by a proton into three helium nuclei…</div>
+    <div class="flow-row">
+      <div class="flow-step">Electrostatic<br>Surface charge stacking</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Cyclotron<br>Magnetic spiral accelerate</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Linear Accelerator<br>Staged electric field push</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Cloud Chamber<br>Photograph transmutation</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Chain Reaction</div>
+    <div class="section-title t-04">Nucleonics: The "Rabbit Multiplication" Logic of Chain Reactions</div>
+    <div class="section-desc"><strong>Charged particle bombardment is extremely inefficient—only 1 in 10,000 particles smashes a nucleus; converting 1g of boron would take 20,000 years.</strong> The solution: neutrons—uncharged, not slowed by electron shells, but free neutrons don't exist in nature. Nuclear fission provides the answer—<strong>when a uranium nucleus fissions, each fragment, vibrating violently, ejects neutrons (average ~2 per fission).</strong> This builds a rabbit-breeding chain reaction: 100 neutrons → 35 fissions → 56 second-generation neutrons (decaying) OR 100 → 65 fissions → 143 second-generation (progressive explosion). Key parameters: neutron fission efficiency × neutron yield per fission. Only 0.7% of natural uranium (U-235) can sustain chain reactions, requiring separation via diffusion, magnetic methods, or moderator technology.</div>
+    <div class="risk-row-wrap">
+      <div class="risk-row">
+        <div class="risk-label">Decaying Chain</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:56%"></div></div>
+        <div class="risk-val">Eff. 35%·Yield 1.6</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Critical Point</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">Eff. = 1/Yield</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Progressive Explosion</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:143%"></div></div>
+        <div class="risk-val">Eff. 65%·Yield 2.2</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Future Energy</div>
+    <div class="section-title t-05">The Nuclear Future: From Uranium Ore to Granite</div>
+    <div class="section-desc"><strong>Known U-235 reserves could power global industry (fully nuclear) for several years; converting U-238 to plutonium extends this to centuries; adding thorium (4× uranium reserves) converted to U-233 extends to at least a millennium.</strong> When all rich ores are exhausted, each ton of ordinary granite contains 4g uranium and 12g thorium—converted to fissile material, yielding energy equivalent to 320 tons of gasoline. <strong>For fusion: deuterium (hydrogen isotope in heavy water)—two deuteron collisions produce either helium+neutron or tritium+proton, requiring temperatures above 100 million degrees. The H-bomb achieved uncontrolled fusion; controlled thermonuclear reactions require strong magnetic fields to confine super-hot plasma—the core challenge of "artificial suns."</strong> Physicists have opened Pandora's box; using its contents depends on human wisdom, not physical law.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">U-235 Reserves</div>
+        <div class="data-sm">Global industry for years<br>Only natural fissile material<br>Just 0.7% of natural uranium</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">U-238 → Pu-239</div>
+        <div class="data-sm">Extends to centuries<br>Th-232 → U-233<br>Extends to millennium+</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">Granite Nuclear</div>
+        <div class="data-sm">4g U + 12g Th per ton<br>→ 320 tons gasoline equivalent<br>Ultimate energy reservoir</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The alchemists' dream was realized in the 20th century in a form far beyond their imagination—not only transmuting elements but releasing stellar-level energy locked within matter. From the "cosmic recipe" of elementary particles (nucleons + electrons + neutrinos + EM waves) to the elegant liquid-drop explanation of nuclear stability, from accelerators shattering nuclei to chain reactions multiplying like rabbits—all this constitutes "nucleonics," the science that changed human destiny. The only true limit is the speed of light; and the single element "silver" sits exactly at the balance point between stability and rupture. The physical laws are laid out; how to use them is a question humanity must answer for itself.</div>
+</div>
+
+<div class="footer">
+  One Two Three... Infinity · Ch16 Infographic · Part III Ch7「Modern Alchemy」· George Gamow · For study reference
+</div>
+</div>
+</body>
+</html>

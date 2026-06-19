@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从一到无穷大 · 第11章「空间的独特性」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .equation-box {
+    background: #f8f6f3; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 22px; margin-top: 10px; font-size: 15px; color: #333;
+    line-height: 1.8; text-align: center;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .polyhedron-table {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; margin-top: 10px;
+  }
+  .poly-card {
+    border-radius: 10px; padding: 12px 8px; text-align: center;
+    background: #faf8f5; border: 1px solid #e8e0d5; font-size: 12px; line-height: 1.6;
+  }
+  .poly-name { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 4px; }
+  .poly-stat { color: #555; }
+
+  .obj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .obj-card {
+    border-radius: 12px; padding: 16px 18px; border: 1px solid; text-align: center;
+  }
+  .obj-card.chiral { background: #fef2f2; border-color: #fecaca; }
+  .obj-card.achiral { background: #f0fdf4; border-color: #bbf7d0; }
+  .obj-icon { font-size: 28px; margin-bottom: 6px; }
+  .obj-title { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .obj-desc { font-size: 12px; color: #888; line-height: 1.7; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .obj-grid, .polyhedron-table { grid-template-columns: 1fr 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}
+    .kpi-value{font-size:34px}
+  }
+  @media(max-width:400px){
+    .kpi-row,.kpi-row.cols-4,.polyhedron-table{grid-template-columns:1fr}
+  }
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}
+  .kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+  .kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}
+  .kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}
+  .kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}
+  .kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}
+  .kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}
+  .kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}
+  .kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}
+  .kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}
+  .kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+  .kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="从一到无穷大-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch011-info-en.html">中文 / English</a>
+</div>
+
+<h1>从一到无穷大 · 第11章「空间的独特性」</h1>
+<p class="subtitle">拓扑学——不测长度与角度的几何学，揭示空间最根本的秘密</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>我们熟知的三维空间，远比你想象的更加神奇。本章从坐标体系出发，引入了拓扑学——一种"不用测算"的几何学。欧拉定理 V+F=E+2 揭示了多面体顶点、棱、面的基本关系；四色问题挑战了所有数学家的大脑——为什么球体上的地图四种颜色就够了，而甜甜圈却需要七种？莫比乌斯环和克莱因瓶展示了空间扭曲的惊人之美——一只左手的毛驴沿着莫比乌斯面走一圈，竟然变成了右手毛驴。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">V+F<span class="kpi-unit">=E+2</span></div>
+    <div class="kpi-label">欧拉定理</div>
+    <div class="kpi-note">多面体顶点数+面数=棱数+2<br>拓扑学的基本定理</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">正多面体</div>
+    <div class="kpi-note">只有5种常规正多面体<br>四面体·立方体·八面体·十二面体·二十面体</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit">色</span></div>
+    <div class="kpi-label">四色猜想</div>
+    <div class="kpi-note">球体/平面地图<br>4种色够用·从未被证明</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">7<span class="kpi-unit">色</span></div>
+    <div class="kpi-label">甜甜圈着色</div>
+    <div class="kpi-note">环形表面地图<br>7种色足够·有严格证明</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">V+F=E+<span class="kpi-unit">2-2N</span></div>
+    <div class="kpi-label">有孔多面体</div>
+    <div class="kpi-note">N=洞的数量<br>甜甜圈(N=1): V+F=E · 椒盐卷饼(N=2): V+F=E-2</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">坐标</span></div>
+    <div class="kpi-label">三维空间</div>
+    <div class="kpi-note">前后·左右·上下<br>三个独立垂直方向</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">∞<span class="kpi-unit"></span></div>
+    <div class="kpi-label">空间拓扑变换</div>
+    <div class="kpi-note">拉伸·挤压不改变拓扑性质<br>但切割或撕裂会改变</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">空间感知</div>
+    <div class="section-title t-01">维度与坐标：用三个数字定位万物</div>
+    <div class="section-desc">我们都知道空间是什么，但"空间"这个词似乎很难定义。空间由三个相互独立且垂直的方向组成——前后、左右、上下——这就是我们称其为三维空间的原因。空间里的任何一个位置都可由这三个方向明确地定位出来。直角坐标系（纽约的街区道路）和极坐标系（莫斯科以克里姆林宫为中心的放射状街道）都是有效的定位方式。我们很容易想象二维平面和一维直线——但正因我们生活在三维空间中，"从内往外看"让我们更难想象三维空间本身也可以弯曲。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🏙️</div>
+        <div class="dual-text">
+          <h4>直角坐标系（纽约）</h4>
+          <p>街道呈网格状相交，形成天然直角坐标。地址："南面步行5个街区、右转2个街区、往上7层楼"——三个坐标精确到位</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🏛️</div>
+        <div class="dual-text">
+          <h4>极坐标系（莫斯科）</h4>
+          <p>克里姆林宫为中心，街道呈放射状+环形发展。"克里姆林宫西北偏北20个街区的环形林荫道上"——角度+半径+高度同样精准</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">拓扑定理</div>
+    <div class="section-title t-02">欧拉定理 V+F=E+2：不量尺寸的几何学</div>
+    <div class="section-desc">拓扑学是几何学中不用测量长度或角度的分支。通过拉伸或挤压——但不切割或撕裂——空间的拓扑性质保持不变。欧拉定理是拓扑学中最基本的发现：任何一个多面体的顶点数（V）、棱数（E）和面数（F）之间满足 V+F=E+2。这个关系不依赖于棱的长度或面的面积，只取决于几何单元的数量。笛卡儿最早注意到这个关系，欧拉给出了严格证明。如果多面体有洞（如甜甜圈），公式变为 V+F=E+2-2N（N=洞数）。</div>
+    <div class="equation-box">
+      <strong>欧拉定理：</strong><br>
+      普通多面体：V + F = E + 2<br>
+      甜甜圈（1个洞）：V + F = E<br>
+      椒盐卷饼（2个洞）：V + F = E - 2<br>
+      一般公式：V + F = E + 2 - 2N（N = 洞的数量）
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">五大正多面体</div>
+    <div class="section-title t-03">只有5种常规正多面体——欧拉定理的经典推论</div>
+    <div class="section-desc">欧拉定理有一个有趣的推论：事实上只可能存在五种常规正多面体（所有面棱数相等、所有顶点等价的凸多面体）。这是从 V+F=E+2 与每个面边数、每个顶点棱数的整数约束推导出来的必然结果——不多不少，刚好五种。</div>
+    <div class="polyhedron-table">
+      <div class="poly-card">
+        <div class="poly-name">🔺 正四面体</div>
+        <div class="poly-stat">4面·4顶点·6棱<br>V+F=8·E+2=8</div>
+      </div>
+      <div class="poly-card">
+        <div class="poly-name">📦 立方体</div>
+        <div class="poly-stat">6面·8顶点·12棱<br>V+F=14·E+2=14</div>
+      </div>
+      <div class="poly-card">
+        <div class="poly-name">🔷 正八面体</div>
+        <div class="poly-stat">8面·6顶点·12棱<br>V+F=14·E+2=14</div>
+      </div>
+      <div class="poly-card">
+        <div class="poly-name">⬡ 正十二面体</div>
+        <div class="poly-stat">12面·20顶点·30棱<br>V+F=32·E+2=32</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">着色问题</div>
+    <div class="section-title t-04">四色与七色：从平面到甜甜圈</div>
+    <div class="section-desc">给地图着色，相邻区域颜色必须不同。欧拉定理可用于证明五种颜色足以应付任何平面地图——但四色是否真的够用？这是一个"实际生活中无人怀疑，但数学上无人能证明"的经典案例。讽刺的是，更复杂的表面（甜甜圈、椒盐卷饼）反而更容易证明——甜甜圈表面需要七种颜色，有严格证明和实际例子支持。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">4色</div>
+        <div class="data-sm">球体/平面着色<br>日常够用但不被证明<br>所有数学家望而却步</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">5色</div>
+        <div class="data-sm">已数学证实的上限<br>基于欧拉定理的推导<br>考虑国家·边界·交点</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">7色</div>
+        <div class="data-sm">甜甜圈着色已证明<br>有实际支撑例子<br>可真的做出7个相邻区域</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">空间翻转</div>
+    <div class="section-title t-05">由内而外：莫比乌斯环·克莱因瓶·左右手之谜</div>
+    <div class="section-desc">莫比乌斯环只需将一条纸带扭转半圈后首尾相连即可做成。沿着它走一圈，你会发现——本来"左侧脸"的驴子变成了"右侧脸"驴子！同样的原理，右手手套能否在四维空间中变成左手手套？通过对二维平面上的"影子居民"的类比分析，我们发现：在莫比乌斯扭曲的空间里，左右手物体可以相互转换。如果我们的宇宙也以类似方式扭曲，太空旅行者回来时心脏可能在右胸腔。</div>
+    <div class="obj-grid">
+      <div class="obj-card chiral">
+        <div class="obj-icon">🧤</div>
+        <div class="obj-title">左右手物体（手性）</div>
+        <div class="obj-desc">手套·鞋·高尔夫球杆·方向盘<br>无法通过旋转在三维空间左右互换<br>通过莫比乌斯面行走却可实现<br>自然界中：糖有左手/右手之分</div>
+      </div>
+      <div class="obj-card achiral">
+        <div class="obj-icon">🧢</div>
+        <div class="obj-title">对称物体（非手性）</div>
+        <div class="obj-desc">帽子·茶杯·网球拍<br>存在对称面·可分割成相同两半<br>"左手茶杯"不存在</div>
+      </div>
+    </div>
+    <div class="flow-row" style="margin-top:12px;">
+      <div class="flow-step">📐<br>纸带扭转180°</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄<br>首尾粘合</div>
+      <div class="flow-step end">🪞<br>走一圈→左右互换</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">空间的本质远比我们能测量的维度更丰富。拓扑学告诉我们：不用尺子和量角器，仅凭顶点、棱和面的计数就能揭示空间的基本规律。欧拉定理 V+F=E+2 贯通了从正多面体到四色问题的广阔领域。而莫比乌斯环与克莱因瓶则提醒我们：空间不仅可以弯曲，甚至可以"由内而外"翻转自身。</div>
+</div>
+
+<div class="footer">
+  《从一到无穷大》第11章「空间的独特性」信息图 · 乔治·伽莫夫 著 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大国大城 (Great State Needs Big City) · Introduction「City & Countryside」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  h1 small { font-size: 18px; display: block; color: #888; letter-spacing: 0.5px; margin-top: 4px; }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="大国大城-catalog.html">← Back to Chapter Index</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大国大城-ch001-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Great State Needs Big City<small>Introduction · Between City & Countryside</small></h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">The Matsutake Story → China's Puzzle</span>
+  Tibetan villagers in Shangri-La wake at 3 AM to forage matsutake mushrooms, earning 5,000 yuan in two months.
+  Meanwhile, coastal factories face labor shortages, and over 61 million children are left behind in the countryside.
+  Urban-rural divide, regional imbalance, and restricted mobility — China stands at the crossroads of a "great nation's dilemma."
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter opens with the matsutake mushroom foraging story from the documentary <em>A Bite of China</em>, introducing the core contradictions in China's urban-rural and regional development: Why can hardworking farmers not earn a decent income in cities? Why is there a labor shortage on the coast alongside an employment crisis inland? Why are over 61 million children left behind in rural areas? Behind these problems lie deep structural issues — restricted labor mobility, the hukou (household registration) system, and the conflict between administrative resource allocation and market forces. The book unfolds from here, asking how China, as a vast unified nation, can achieve both efficiency and balance in a single market.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">61<span class="kpi-unit">M</span></div>
+    <div class="kpi-label">Rural Left-Behind Children</div>
+    <div class="kpi-note">2010 Census</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">270<span class="kpi-unit">M</span></div>
+    <div class="kpi-label">Total Migrant Workers</div>
+    <div class="kpi-note">&gt;160M as cross-region migrants</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">×+</span></div>
+    <div class="kpi-label">Urban-Rural Income Gap</div>
+    <div class="kpi-note">City residents earn ~3× rural</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit">M</span></div>
+    <div class="kpi-label">Northeast Net Outflow</div>
+    <div class="kpi-note">2000–2010</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Opening Story</div>
+    <div class="section-title t-01">One Kilometer for One Matsutake: The Poverty Trap of Labor-Intensive Agriculture</div>
+    <div class="section-desc"><strong>"Generally, you walk one kilometer to find one matsutake."</strong> Zhuoma and her mother in Yunnan's Shangri-La head into the forest at 3 AM every day during rainy season, earning 5,000 yuan over two months. Too many people, limited resources, coordination difficulties — this is the microcosm of inefficient rural production. When too many people work the same limited land, everyone works harder but nobody earns more. The only way to raise rural incomes is to reduce the agricultural population.</div>
+    <div class="flow-row">
+      <div class="flow-step">Too Many Farmers<br>High Coordination Cost</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Land Bottleneck<br>Output Ceiling</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Inefficient Farming<br>Low Per Capita Income</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Only Solution<br>Reduce Farm Population</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Dual Structure</div>
+    <div class="section-title t-02">Two Chinas: Coastal Boom vs. Interior Decline</div>
+    <div class="section-desc"><strong>Coastal cities bristle with factories and busy ports, while inland villages face hollowing, aging populations, and left-behind children.</strong> Destination cities complain of overcrowding and pollution, blaming "too many people." Source regions like the Northeast, Anhui, and Sichuan worry about "economic emergencies" and elderly left alone. Few realize that the root cause may lie thousands of miles away — institutional barriers that block labor mobility and prevent market forces from operating properly.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏭</div>
+        <div class="dual-text">
+          <h4>Coastal Cities (Inflow Areas)</h4>
+          <p>Factories can't find workers, wages rising, subway overcrowding, smog, soaring housing prices. Local governments raise barriers to reduce migrant children's access to schools.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🌾</div>
+        <div class="dual-text">
+          <h4>Inland Countryside (Outflow Areas)</h4>
+          <p>61M left-behind children, rural aging and hollowing, elderly living alone, agricultural inefficiency. Northeast shifts from population inflow to outflow; provinces like Anhui and Sichuan see continuous net outflows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Core Thesis</div>
+    <div class="section-title t-03">A Book's Mission: A Conversation with Ourselves</div>
+    <div class="section-desc"><strong>"In discussions of public policy, many don't realize that the very obstacle to improving social welfare is ourselves."</strong> Author Lu Ming poses the book's central question: As a unified great nation, how can China achieve both efficiency and balance through free labor mobility? Why do all countries' economies concentrate in a few areas, while China tries to allocate resources evenly through administrative means? The book is divided into two parts — Part I "The Great Nation's Puzzle" discusses the Europeanization of China's economy, agglomeration and balance, the impossible triangle; Part II "The Great City Solution" focuses on why big cities survive, the urbanization debate, and tackling urban diseases.</p>
+    <div class="flow-row">
+      <div class="flow-step">Part I<br>Great Nation's Puzzle</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Europeanization of China's Economy</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Balance Through Agglomeration</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="flex:0.8;">Breaking the Impossible Triangle</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Part II: The Great City Solution</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Global Perspective</div>
+    <div class="section-title t-04">The World Is Not Flat: Global Economic Concentration</div>
+    <div class="section-desc"><strong>The World Bank's 2009 World Development Report notes that half of global economic activity occurs on just 1.5% of land.</strong> Satellite nightlight images show bright areas where economies thrive — this is no coincidence but economic logic. The more developed a country, the higher its economic concentration. The US economy concentrates on the East and West Coasts; Japan's three major metropolitan areas hold over 50% of its population. China's per capita GDP gap exists precisely because population agglomeration is insufficient, not excessive.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🌍</div>
+        <div class="dual-text">
+          <h4>Global Agglomeration Patterns</h4>
+          <p>USA: Economy concentrated on East/West Coasts<br>Japan: Tokyo metro 36M people = 1/3 of the nation<br>France: Economy like Eiffel Tower, centered on Paris<br>Australia: Vast land, yet economy in few coastal cities<br>India: Developing countries also show high concentration</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🇨🇳</div>
+        <div class="dual-text">
+          <h4>China's Unique Position</h4>
+          <p>Compared with developed nations (US, Japan, Europe) China's population concentration is lower; compared with developing peers (Brazil, South Africa), it's also low. China's secondary and tertiary industries account for over 90% of GDP, yet policies still reflect an agricultural-era mindset restricting big cities. East of the Hu Line: 43% of land holds 93% of the population and 95% of GDP.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Starting Point</div>
+    <div class="section-title t-05">"The More You Stretch History, the More You Believe in Universal Laws"</div>
+    <div class="section-desc"><strong>"What determines the trajectory of human development are universal laws, and each country's distinctive features only blossom under these laws."</strong> This is the book's methodological foundation. China's path has unique characteristics, but it will not escape universal economic laws — agglomeration, population mobility, urbanization, industrial upgrading. Part I approaches from four angles: the lesson of European monetary union, the dialectic of spatial agglomeration and balance, the great nation's "impossible triangle," and the distorting hand of administrative intervention. Each chapter pursues the same question: How can China work with economic laws rather than against them, achieving sustainable development as a unified great nation?</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📘</div>
+        <div class="data-name">Part I: Great Nation's Puzzle</div>
+        <div class="data-sm">Europeanization · Balance Through Agglomeration · Impossible Triangle · Distorting Hand</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📗</div>
+        <div class="data-name">Part II: Great City Solution</div>
+        <div class="data-sm">Big Cities Survive · Global Perspective · Urbanization Debate · Social Division · Fight Urban Diseases</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔑</div>
+        <div class="data-name">Core Argument</div>
+        <div class="data-sm">Balance through agglomeration — free population mobility is the fundamental path to regional balance</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Conclusion</div>
+  <div class="takeaway-text">China faces a fundamental dilemma: labor shortages and rising wages on the coast coexist with left-behind children and rural hollowing inland. This is not a problem of economic development itself, but of institutional barriers that block free labor mobility and prevent market forces from working properly. The solution lies not in allocating resources evenly through administrative means, but in following economic laws — letting labor flow freely to the most productive locations, achieving balance through agglomeration. This is the book's theoretical starting point and core argument.</div>
+</div>
+
+<div class="footer">
+  <em>Great State Needs Big City</em> Introduction Infographic · Based on Lu Ming's book · For study reference only
+</div>
+</div>
+</body>
+</html>

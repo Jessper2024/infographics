@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Great Country, Big City · Ch.7「The Logic of a Great Nation」</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 36px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.5px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .chapter-overview { background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555; line-height: 1.8; }
+  .chapter-overview p { margin: 0; }
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; } .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; } .section-05 { border-left-color: #db2777; } .section-06 { border-left-color: #0891b2; } .section-07 { border-left-color: #059669; } .section-08 { border-left-color: #7c3aed; } .section-09 { border-left-color: #d97706; } .section-10 { border-left-color: #1d4ed8; }
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; } .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; } .num-05 { background: #fdf2f8; color: #db2777; } .num-06 { background: #ecfeff; color: #0891b2; } .num-07 { background: #ecfdf5; color: #059669; } .num-08 { background: #f5f3ff; color: #7c3aed; } .num-09 { background: #fffbeb; color: #d97706; } .num-10 { background: #eff6ff; color: #1d4ed8; }
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; } .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; } .tag-05 { background: #fdf2f8; color: #db2777; } .tag-06 { background: #ecfeff; color: #0891b2; } .tag-07 { background: #ecfdf5; color: #059669; } .tag-08 { background: #f5f3ff; color: #7c3aed; } .tag-09 { background: #fffbeb; color: #d97706; } .tag-10 { background: #eff6ff; color: #1d4ed8; }
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; } .t-06 { color: #0891b2; } .t-07 { color: #059669; } .t-08 { color: #7c3aed; } .t-09 { color: #d97706; } .t-10 { color: #1d4ed8; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-value { font-size: 34px; font-weight: bold; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+  .grid-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .grid-card { border-radius: 12px; padding: 16px; text-align: center; border: 1px solid; }
+  .grid-card.g1 { background: #fef2f2; border-color: #fecaca; }
+  .grid-card.g2 { background: #fff7ed; border-color: #fed7aa; }
+  .grid-card.g3 { background: #fefce8; border-color: #fde68a; }
+  .grid-card.g4 { background: #eef2ff; border-color: #c7d2fe; }
+  .grid-card.g5 { background: #fdf2f8; border-color: #f9a8d4; }
+  .grid-card.g6 { background: #ecfeff; border-color: #a5f3fc; }
+  .grid-icon { font-size: 28px; margin-bottom: 6px; }
+  .grid-name { font-size: 14px; font-weight: bold; color: #1a1a1a; margin-bottom: 4px; }
+  .grid-desc { font-size: 12px; color: #777; line-height: 1.6; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.d1 { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.d2 { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; } .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; } .section-05 { border-top-color: #db2777; } .section-06 { border-top-color: #0891b2; } .section-07 { border-top-color: #059669; } .section-08 { border-top-color: #7c3aed; } .section-09 { border-top-color: #d97706; } .section-10 { border-top-color: #1d4ed8; }
+    .dual-grid, .grid-3col, .grid-2col { grid-template-columns: 1fr; } .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); } .container { padding: 0 8px; } h1 { font-size: 26px; } .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); } .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) { .kpi-row.cols-4 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大国大城-ch007-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Great Country, Big City · Ch.7「The Logic of a Great Nation」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Economies of Scale · Unified Market · Institutional Dividends · Governance Costs · Optimal Size</span>
+  Why does being a great nation matter? From ancient emperors collecting taxes, diversifying risk, and securing defense, to modern economies of scale, technological innovation, and public goods provision—"bigness" has always conferred irreplaceable advantages. But governing a large nation also carries costs—market segmentation, local protectionism, and factor mobility barriers. Understanding the logic of a great nation is the prerequisite for understanding why China must pursue a unified market.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter serves as the theoretical hub of the entire book, bridging the problem-awareness of the Introduction with the concrete arguments of Chapter 1. It begins with pre-modern economies, analyzing the three values of a large nation for ancient emperors—taxation, risk diversification, and national defense. It then moves to modern economies, discussing four manifestations of economies of scale: strategic industries, technological innovation, public goods provision, and modern services. Following the "benefits of size," it analyzes the governance challenges of large nations—the tension between political centralization and economic decentralization, and the resulting market segmentation and factor market fragmentation. Finally, it leads to the book's core proposition: China stands at a crossroads, transitioning from a "demographic dividend" to an "institutional dividend," where the release of institutional dividends depends on building a unified market. This chapter provides the theoretical foundation for Chapter 1's "Europeanization" warning.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01"><div class="kpi-value">3</div><div class="kpi-label">Nations capable of building large aircraft</div><div class="kpi-note">Only US, Europe, China</div></div>
+  <div class="kpi-card c02"><div class="kpi-value">63.2<span class="kpi-unit">%</span></div><div class="kpi-label">Japan's services share of GDP (1985)</div><div class="kpi-note">Already a developed economy</div></div>
+  <div class="kpi-card c03"><div class="kpi-value">10<span class="kpi-unit">pp</span></div><div class="kpi-label">China's urbanization below intl. standard</div><div class="kpi-note">Based on economic development level</div></div>
+  <div class="kpi-card c04"><div class="kpi-value">75<span class="kpi-unit">%</span></div><div class="kpi-label">Target urbanization rate</div><div class="kpi-note">At current pace, still needs 20 years</div></div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Pre-modern</div>
+    <div class="section-title t-01">The Ancient Emperor's Three Priorities: Tax, Risk, Defense</div>
+    <div class="section-desc">Ancient China went through cycles of unification and fragmentation, but always returned to unity—not by accident. Ancient emperors pursued three things: First, tax revenue—"Under Heaven, every land is the king's land; along the shores, every person is the king's subject." Bigger was always better. Second, risk diversification—the same earthquake could destroy a small state, but in a large country like China, "when one region suffers, others come to its aid." Roads and canals connecting the capital to other regions ensured the capital's food supply against local disasters. Third, security—the Central Plain is mostly flat terrain. When divided into small states, war was constant; when unified, peace prevailed. There is also an economy of scale in defense—per capita military spending is diluted across a larger population.</div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Strategic Industry</div>
+    <div class="section-title t-02">Large Aircraft and Large Nations: Only Three Can Build</div>
+    <div class="section-desc">In modern economies, the importance of scale is even greater than in pre-modern times. Take the civilian large aircraft industry: <strong>initial investment is enormous; the larger the domestic market, the lower the average production cost.</strong> To break even, a minimum domestic market size is needed. Currently only three places on Earth have sufficiently large markets: the United States, Europe, and China. This is no coincidence—all three have or are building unified large markets. If China's market were fragmented, no single region's aircraft industry could reach the minimum scale threshold.</div>
+    <div class="grid-3col">
+      <div class="grid-card g1"><div class="grid-icon">🇺🇸</div><div class="grid-name">USA (Boeing)</div><div class="grid-desc">World's largest aviation market</div></div>
+      <div class="grid-card g2"><div class="grid-icon">🇪🇺</div><div class="grid-name">Europe (Airbus)</div><div class="grid-desc">Multi-nation unified market</div></div>
+      <div class="grid-card g3"><div class="grid-icon">🇨🇳</div><div class="grid-name">China (C919)</div><div class="grid-desc">Vast per capita market capacity</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Innovation</div>
+    <div class="section-title t-03">Scale Fosters Innovation—From "Seatbelt Silencers" to Taobao</div>
+    <div class="section-desc">Because of China's massive market size, even niche innovations can survive. The author offers a darkly humorous example—the "seatbelt silencer": <strong>a device that silences your car's seatbelt alarm when inserted into the buckle, comes in countless styles—probably only available in China.</strong> Of all global e-commerce platforms, only those in the US and China have truly thrived, and this is related to the number of English and Chinese speakers. Taobao would not be nearly as successful without China's enormous population. Apps like WeChat similarly benefit from their massive user base. Multinational corporations are moving R&D centers to China specifically because of its vast market. The scale-innovation link cannot be overemphasized.</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Public Goods</div>
+    <div class="section-title t-04">Satellite Navigation & Global Public Goods: A Great Nation's Capacity</div>
+    <div class="section-desc">In pre-modern times, public goods mainly meant national defense. Today, there are far more—satellite navigation systems being a prime example. The earliest developer was the US, followed by Western Europe and Russia. China leveraged its economies of scale to develop its own "BeiDou" satellite navigation system. <strong>Great nations also have the capacity to provide international public goods</strong>—anti-piracy escort in the Gulf of Aden, medical aid fighting Ebola, initiating the Asian Infrastructure Investment Bank (AIIB). These international public goods cannot be provided without a sufficiently large economic scale. A large nation is not only a pursuer of its own interests but also a builder of the global governance system.</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Modern Services</div>
+    <div class="section-title t-05">Wall Street, Universities, and Hollywood: Competitiveness Through Scale</div>
+    <div class="section-desc">Truly powerful nations have their competitiveness concentrated in modern services. <strong>America's competitive edge has three iconic sources: Wall Street (finance), its universities (education), and Hollywood (culture).</strong> These modern services require a certain scale to attract top global talent. Cultural and education industries particularly benefit from a large country's economies of scale due to cultural barriers. Mainland film stars' fees rise rapidly; Hong Kong and Taiwan stars flock to the mainland to film; singers compete for TV shows—all related to the size of the mainland market. The success of shows like Hunan TV's "I Am a Singer" with cross-border appeal is related to large-budget production—made possible by the advertising revenue of a massive market.</div>
+  </div>
+</div>
+
+<div class="section section-06">
+  <div class="section-num num-06">06</div>
+  <div class="section-body">
+    <div class="tag tag-06">Currency Hegemony</div>
+    <div class="section-title t-06">International Vehicle Currency: Seigniorage Benefits Unique to Large Nations</div>
+    <div class="section-desc">In the globalized modern economy, one unique benefit is available only to large nations—seigniorage from becoming an International Vehicle Currency (IVC). In international trade, <strong>the transaction cost of using a foreign currency as a medium of exchange is inversely related to its global usage.</strong> For a country's currency to become an IVC, its economy must maintain advantages over others for a considerable period. Currently, the world's major IVCs are the US dollar and the euro. The RMB's inclusion in the IMF's Special Drawing Rights (SDR) basket in late 2015, ranking third, was a milestone for RMB internationalization. As the RMB gradually internationalizes, becoming an IVC is only a matter of time.</div>
+    <div class="flow-row">
+      <div class="flow-step">Economic Scale↑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Trade Settlement↑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Currency Trust↑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#ecfdf5;border-color:#bbf7d0;color:#166534;">IVC Status</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Seigniorage</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-07">
+  <div class="section-num num-07">07</div>
+  <div class="section-body">
+    <div class="tag tag-07">Optimal Size</div>
+    <div class="section-title t-07">Bigger Isn't Always Better: Scale Benefits vs. Governance Costs</div>
+    <div class="section-desc">The author clearly states: despite many advantages, a larger nation is not always better. As land area increases, so do population, ethnic diversity, and natural resources—and governance costs rise accordingly. <strong>A country's "optimal size" depends on the trade-off between scale benefits and governance costs.</strong> Transaction costs between different ethnic groups can rival those of international trade. Even in the post-WWII peaceful era, many countries adjusted their size due to this trade-off—the most famous example being the Soviet Union's dissolution after the Cold War. For China, the key isn't debating size itself, but rather maximizing scale benefits within its current borders by reducing governance costs (breaking market segmentation, reforming the Hukou system).</div>
+  </div>
+</div>
+
+<div class="section section-08">
+  <div class="section-num num-08">08</div>
+  <div class="section-body">
+    <div class="tag tag-08">Governance History</div>
+    <div class="section-title t-08">A Millennium of Centralization vs. Decentralization</div>
+    <div class="section-desc">Ancient China's core governance puzzle was centralization versus decentralization. Qin Shi Huang established the commandery-county system, placing local official appointments under central control. But the country was too vast to fully control from the center, so decentralization emerged—the Western Han enfeoffed royal relatives across the country. In modern times, Mao Zedong emphasized balancing central and local initiative in "On the Ten Major Relationships." <strong>Post-reform decentralization on one hand incentivized local governments to develop the economy, but on the other hand planted the seeds of market segmentation.</strong> Every locality wants to protect its local industries, leading to duplicative construction, industrial isomorphism, and local protectionism—factors that collectively suppress China's ability to realize its natural economies of scale.</div>
+    <div class="dual-grid">
+      <div class="dual-card d1"><div class="dual-icon">🏛️</div><div class="dual-text"><h4>Centralization Pros</h4><p>Unified market, currency, policy; Qin's standardization of writing, cart tracks, and measures laid institutional foundations for unity</p></div></div>
+      <div class="dual-card d2"><div class="dual-icon">⚖️</div><div class="dual-text"><h4>Decentralization Pros</h4><p>Local initiative mobilized for context-specific development; post-reform Chinese-style economic decentralization</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-09">
+  <div class="section-num num-09">09</div>
+  <div class="section-body">
+    <div class="tag tag-09">Factor Markets</div>
+    <div class="section-title t-09">Three Factor Market Segments: Labor, Land, Capital</div>
+    <div class="section-desc">Even today, China's three major factor markets remain fragmented: <strong>Labor</strong>—non-local Hukou holders cannot access public services equally; <strong>Land</strong>—construction land quotas distributed through an egalitarian approach, tight supply in the east inflates housing prices, excessive supply in central-west leads to ghost cities; <strong>Capital</strong>—local governments hinder cross-province investment using tax audits as threats, higher-level political connections help firms break market entry barriers. The fragmentation of these three factor markets prevents the full exploitation of the large country's economies of scale while causing multiple structural distortions. The consequence is not just efficiency loss but also a risk profile analogous to the European debt crisis.</div>
+    <div class="grid-3col">
+      <div class="grid-card g4"><div class="grid-icon">👥</div><div class="grid-name">Labor Fragmentation</div><div class="grid-desc">Hukou barriers, unequal public services, non-portable social security</div></div>
+      <div class="grid-card g5"><div class="grid-icon">🏗️</div><div class="grid-name">Land Fragmentation</div><div class="grid-desc">Construction land quota system, no cross-province trading</div></div>
+      <div class="grid-card g6"><div class="grid-icon">💰</div><div class="grid-name">Capital Fragmentation</div><div class="grid-desc">Project approval, market entry barriers, local protection</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-10">
+  <div class="section-num num-10">10</div>
+  <div class="section-body">
+    <div class="tag tag-10">Institutional Dividend</div>
+    <div class="section-title t-10">From Demographic Dividend to Institutional Dividend: China's Crossroads</div>
+    <div class="section-desc">As the demographic dividend has largely ended, the growth of both labor and capital factors is slowing, and China's economy may enter a period of decelerating growth. <strong>If China can sustain medium-high growth for the next 20 years, it will cross the "middle-income trap." Where will the growth come from? The answer: a "transitioning and developing great nation."</strong> In the "development" sense, urbanization is paramount—currently only just over half complete, and reaching 75% coverage will take another 20 years. In the "great nation" sense, different regions and cities have different endowments; if production factors can be allocated freely across regions, a differentiated division of labor can form, further improving resource allocation efficiency. Institutional "transformation"—from demographic dividend to institutional dividend—is the strategic path to improve resource allocation efficiency.</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Core Conclusion</div>
+  <div class="takeaway-text">A great nation's "greatness" is not merely about land area and population—it lies in the unique advantages conferred by economies of scale: from strategic industries (large aircraft) to technological innovation (Taobao, WeChat), from public goods provision (BeiDou navigation) to international currency (RMB internationalization), to the competitiveness of modern services (finance, education, culture)—"bigness" itself is an economic resource. But governing a large nation also poses deep challenges: the tension between political centralization and economic decentralization leads to market segmentation and factor mobility barriers; the demographic dividend is nearly exhausted while the institutional dividend has yet to be fully released. Standing at a crossroads, China must recognize that a large country's advantages are not automatic—they depend on building a unified large market. If the market is fragmented, a large nation becomes "large but not strong," or even faces the danger of "Europeanization." From "large country scale" to "large country advantage," the critical step is breaking barriers, promoting mobility, and unifying the market.</div>
+</div>
+
+<div class="footer">
+  Infographic for "Great Country, Big City" Ch.7 · Based on Lu Ming's work · For study reference only
+</div>
+</div>
+</body>
+</html>

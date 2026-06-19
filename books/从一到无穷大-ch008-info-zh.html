@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从一到无穷大 · 第8章「第一章 大数字」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01, .section-06 { border-left-color: #dc2626; }
+  .section-02, .section-07 { border-left-color: #ea580c; }
+  .section-03, .section-08 { border-left-color: #ca8a04; }
+  .section-04, .section-09 { border-left-color: #4f46e5; }
+  .section-05, .section-10 { border-left-color: #db2777; }
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .num-01, .num-06 { background: #fef2f2; color: #dc2626; }
+  .num-02, .num-07 { background: #fff7ed; color: #ea580c; }
+  .num-03, .num-08 { background: #fefce8; color: #ca8a04; }
+  .num-04, .num-09 { background: #eef2ff; color: #4f46e5; }
+  .num-05, .num-10 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .tag-01, .tag-06 { background: #fef2f2; color: #dc2626; }
+  .tag-02, .tag-07 { background: #fff7ed; color: #ea580c; }
+  .tag-03, .tag-08 { background: #fefce8; color: #ca8a04; }
+  .tag-04, .tag-09 { background: #eef2ff; color: #4f46e5; }
+  .tag-05, .tag-10 { background: #fdf2f8; color: #db2777; }
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .t-01,.t-06 { color: #dc2626; } .t-02,.t-07 { color: #ea580c; }
+  .t-03,.t-08 { color: #ca8a04; } .t-04,.t-09 { color: #4f46e5; }
+  .t-05,.t-10 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}
+  .kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+  .kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}
+  .kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}
+  .kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}
+  .kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}
+  .kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}
+  .kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}
+  .kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}
+  .kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}
+  .kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+  .kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 14px; text-align: center; border: 1px solid; }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+  .timeline-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .timeline-card { border-radius: 12px; padding: 14px 10px; text-align: center; border: 1px solid; font-size: 12px; line-height: 1.6; }
+  .timeline-card.tc1 { background: #fef2f2; border-color: #fecaca; }
+  .timeline-card.tc2 { background: #fff7ed; border-color: #fed7aa; }
+  .timeline-card.tc3 { background: #fefce8; border-color: #fde68a; }
+  .timeline-card.tc4 { background: #eef2ff; border-color: #c7d2fe; }
+  .timeline-year { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-year.r { color: #dc2626; }
+  .timeline-year.o { color: #ea580c; }
+  .timeline-year.g { color: #ca8a04; }
+  .timeline-year.b { color: #4f46e5; }
+  .grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .equation-box { background: #f8f6f3; border: 1px solid #e8e0d5; border-radius: 12px; padding: 18px 22px; margin-top: 10px; font-size: 15px; color: #333; line-height: 1.8; text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+  .risk-row + .risk-row { margin-top: 10px; }
+  .risk-label { font-size: 13px; color: #555; min-width: 100px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 16px; background: #fdf2f8; border-radius: 8px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 8px; background: #db2777; }
+  .risk-val { font-size: 13px; color: #555; min-width: 50px; text-align: right; }
+  .list-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .list-item { background: #faf8f5; border: 1px solid #e8e0d5; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #555; line-height: 1.7; }
+  .list-item strong { color: #333; }
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01,.section-06 { border-top-color: #dc2626; } .section-02,.section-07 { border-top-color: #ea580c; }
+    .section-03,.section-08 { border-top-color: #ca8a04; } .section-04,.section-09 { border-top-color: #4f46e5; }
+    .section-05,.section-10 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .grid-3-col, .timeline-row, .list-2col { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}
+    .kpi-value{font-size:34px}
+  }
+  @media(max-width:400px){ .kpi-row,.kpi-row.cols-4{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="从一到无穷大-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch008-info-en.html">中文 / English</a>
+</div>
+
+<h1>从一到无穷大 · 第8章「第一章 大数字」</h1>
+<p class="subtitle">从霍屯督人的"3"到康托尔的无穷数——大数字的惊奇之旅</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本书的第一章带领读者踏上一场数字的惊奇之旅。从霍屯督人数到"3"就无能为力开始，我们学会了用科学计数法书写宇宙中的原子数量（3×10⁷⁴）。故事一路经过阿基米德的《数沙者》、印度国王的棋局、婆罗门之塔和自动打印机，最终进入康托尔的无穷数王国——在那里，奇数的数量竟然"等于"所有整数的数量，一条线上的点比整数"更多"，而"部分等于整体"成了自然法则。这是全书最迷人的开篇。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3</div>
+    <div class="kpi-label">霍屯督人最大数</div>
+    <div class="kpi-note">非洲霍屯督人<br>无法数到4</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3×10⁷⁴</div>
+    <div class="kpi-label">宇宙中原子总数</div>
+    <div class="kpi-note">3后面74个0<br>即3×10⁷⁴</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">18.4×10¹⁸</div>
+    <div class="kpi-label">棋盘麦粒数</div>
+    <div class="kpi-note">18,446,744,073,709,551,615<br>全球2000年小麦产量</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">ℵ₀,ℵ₁,ℵ₂</div>
+    <div class="kpi-label">康托尔无穷数</div>
+    <div class="kpi-note">整数ℵ₀·点ℵ₁·曲线ℵ₂</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">计数起源</div>
+    <div class="section-title t-01">从霍屯督人的"3"到科学计数法</div>
+    <div class="section-desc">在非洲霍屯督人的部落中，没有任何词汇可以表达比3更大的数字——问一个土著他有多少个儿子，如果超过3个，他会回答"很多"。而今天我们想写多大的数字就能写多大——只需要在数字右边加上足够多的0。宇宙中所有原子的数量是3×10⁷⁴（3后面74个0）。这种由不具名的印度数学家发明的十进制位值计数法，是现代科学最重要的基石之一，但它存在了还不到两千年。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🏹</div>
+        <div class="dual-text">
+          <h4>古人计数之困</h4>
+          <p>霍屯督人→3为止。古埃及人表示8732需要画满符号。罗马人要写"一百万"需一连写上1000个M——够他们忙上几个小时。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🔢</div>
+        <div class="dual-text">
+          <h4>现代计数法</h4>
+          <p>印度数学家发明的十进制位值系统：3×10⁷⁴简洁表达天文数字。阿拉伯数字传入欧洲后彻底改变了数学和科学的面貌。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">阿基米德</div>
+    <div class="section-title t-02">阿基米德的《数沙者》：古代的大数字冒险</div>
+    <div class="section-desc">公元前3世纪，阿基米德在他的著作《数沙者》中提出，他可以写一个比"填满整个宇宙的沙子的数量"还大的数字。他借助当时最大数字单位"万"（myriad），创造了万万、万万万等分级单位，类似于现代科学计数法。他估算的宇宙半径约10亿英里（土星到太阳的距离），结论是填满该宇宙的沙粒不超过"一千万个第八级单位"——以今天的尺度看，需要10¹⁰⁰（1后面100个0）粒沙。</div>
+    <div class="equation-box">
+      <strong>阿基米德的宇宙沙粒计算：</strong><br>
+      宇宙半径（阿里斯塔克斯估计）= 10,000,000,000 希腊里 ≈ 10亿 英里<br>
+      结论：不超过"一千万个第八级单位"= 10⁶³ ≈ 1后面63个0<br>
+      现代推算（可见宇宙半径500亿光年）= 需要 10¹⁰⁰ 粒沙
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">棋盘传说</div>
+    <div class="section-title t-03">印度国王的债：棋盘上的麦粒</div>
+    <div class="section-desc">大宰相西萨·本·达依尔发明国际象棋后向国王要求：第一格1粒麦，第二格2粒，第三格4粒，每格翻倍，共64格。国王欣然答应，但很快发现——当数到第64格时，需要18,446,744,073,709,551,615粒麦粒！相当于约40,000亿蒲式耳小麦（全球2000年的产量）。故事里国王选择了"砍掉宰相的头"来抵债。这个等比数列S=2⁶⁴-1揭示了一个深刻的道理：指数增长是最难以凭直觉把握的数学概念。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">1</div>
+        <div class="data-sm">第一格麦粒<br>翻倍开始</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">~10亿</div>
+        <div class="data-sm">第31格后<br>超过10亿</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">18.4×10¹⁸</div>
+        <div class="data-sm">第64格总数<br>全球2000年小麦产量</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">世界末日</div>
+    <div class="section-title t-04">婆罗门之塔：5800亿年后的世界末日</div>
+    <div class="section-desc">在印度神话中，主神梵天将64个金圆片放在三根金刚石针上，僧侣需将它们全部移到另一根针上——每次只能移动一个，且大金片不能放小金片之上。当64片全部移完，梵塔、寺庙和众生都将化为灰尘。所需的总步数恰好等于棋盘麦粒数：2⁶⁴-1步。假设僧侣每秒移动一步（全年无休），需要约5800亿年。而现代宇宙学认为，太阳的核燃料只能再维持100-150亿年——宇宙的寿命比印度神话的预言短得多！</div>
+    <div class="timeline-row">
+      <div class="timeline-card tc1">
+        <div class="timeline-year r">1</div>
+        <div>第一个金片<br>只需1步</div>
+      </div>
+      <div class="timeline-card tc2">
+        <div class="timeline-year o">127</div>
+        <div>7个金片<br>127步·约1小时</div>
+      </div>
+      <div class="timeline-card tc3">
+        <div class="timeline-year g">18.4×10¹⁸</div>
+        <div>64个金片总步数<br>=棋盘麦粒数</div>
+      </div>
+      <div class="timeline-card tc4">
+        <div class="timeline-year b">5800亿年</div>
+        <div>每秒一步所需时间<br>远超宇宙实际年龄</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">打印机问题</div>
+    <div class="section-title t-05">自动打印机：写出莎士比亚所有未完成的句子</div>
+    <div class="section-desc">设想一台自动打印机，用50个字符（26字母+10数字+14符号）打印每行65个位置。它会产生所有可能的字符组合——一共50⁶⁵ ≈ 10¹¹⁰行。在这堆"垃圾"中，我们能找到莎士比亚的每一行文字（包括被扔进废纸篓的手稿）、30世纪的诗歌、未来科学发现，以及2344年星际交通事故的统计数据。但即使将宇宙中每个原子都变成一台打印机，从宇宙诞生打印到现在，也仅完成了全部文字的三千分之一！</div>
+    <div class="equation-box">
+      <strong>自动打印机计算：</strong><br>
+      50个字符 × 每行65个位置 → 总行数 = 50⁶⁵ ≈ 10¹¹⁰<br>
+      全宇宙原子数(3×10⁷⁴)充当打印机 × 30亿年 × 10¹⁵行/秒<br>
+      → 打印出 3×10¹⁰⁶ 行 = 仅为总数的 1/3000
+    </div>
+  </div>
+</div>
+
+<div class="section section-06">
+  <div class="section-num num-06">06</div>
+  <div class="section-body">
+    <div class="tag tag-06">无穷的比较</div>
+    <div class="section-title t-06">康托尔的革命：无穷数的大小比较</div>
+    <div class="section-desc">格奥尔格·康托尔——"无穷数算术"之父——提出了比较无穷数的基本方法：一一对应。如果两个无限集合的所有元素都能配对，则它们的数量相等。这个看似简单的方法引出了惊人的结论：奇数的数量等于偶数的数量，还等于所有整数的数量！——在无穷的世界里，"部分等于整体"。所有普通分数的数量也等于所有整数的数量——只需按照分子分母之和的大小排成一列即可。</div>
+    <div class="list-2col">
+      <div class="list-item"><strong>✅ 奇数 = 偶数</strong><br>1→2, 3→4, 5→6, …<br>一一对应·数量相等</div>
+      <div class="list-item"><strong>✅ 整数 = 偶数</strong><br>1→2, 2→4, 3→6, …<br>一一对应·部分=整体</div>
+      <div class="list-item"><strong>✅ 分数 = 整数</strong><br>分子分母和排序法<br>一一对应·数量相等</div>
+      <div class="list-item"><strong>❌ 实数 ≠ 整数</strong><br>康托尔对角线法<br>实数"更多"·不可数</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-07">
+  <div class="section-num num-07">07</div>
+  <div class="section-body">
+    <div class="tag tag-07">希尔伯特旅馆</div>
+    <div class="section-title t-07">希尔伯特的无穷旅馆：最直观的无穷悖论</div>
+    <div class="section-desc">大卫·希尔伯特用一个旅店的故事说明了无穷数的奇妙特性。想象一个有无数房间的旅舍，全部客满。新来一位客人——老板让1号移去2号，2号去3号，以此类推——1号房间空出来了！如果来的是无限多新客人——老板让1号去2号，2号去4号，3号去6号……然后所有奇数房间都空了出来，可以安排无限多的新客人。这个故事生动地描述了无穷数与我们日常算术的截然不同。</div>
+    <div class="flow-row">
+      <div class="flow-step">🏨<br>无穷旅馆<br>全部客满</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">1️⃣<br>1位新客<br>移位法</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🆕<br>无限新客<br>n→2n移位</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🏁<br>全部入住<br>奇数全空</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-08">
+  <div class="section-num num-08">08</div>
+  <div class="section-body">
+    <div class="tag tag-08">对角线证明</div>
+    <div class="section-title t-08">康托尔对角线法：实数比整数"多"</div>
+    <div class="section-desc">一条线段上的点和所有整数之间无法建立一一对应关系。康托尔的证明堪称数学中最优雅的反证法之一：假设已经建立了一一对应表。构造一个新小数——第一位与1号小数的第一位不同，第二位与2号小数的第二位不同，以此类推。无论怎么找，这个新小数都不在原来的表上——因为它在每一位上都与同号的对应位不同。因此，线段上的点的数量（ℵ₁，连续统的势）严格大于整数的数量（ℵ₀）。</div>
+    <div class="equation-box">
+      <strong>康托尔对角线证明：</strong><br>
+      假设：所有实数 {0.a₁a₂a₃…} = 所有整数 {1,2,3,…}<br>
+      构造：b₁≠a₁₁, b₂≠a₂₂, b₃≠a₃₃, …<br>
+      新数 0.b₁b₂b₃… 不在原表中<br>
+      → 矛盾 → 实数比整数更多不可数<br>
+      ∴ 一线段上的点 > 所有整数的数量
+    </div>
+  </div>
+</div>
+
+<div class="section section-09">
+  <div class="section-num num-09">09</div>
+  <div class="section-body">
+    <div class="tag tag-09">空间维度</div>
+    <div class="section-title t-09">不可思议：线段=平面=立方体中的点数</div>
+    <div class="section-desc">更惊人的结论是：无论线段多长、平面多大、立方体有多大——它们容纳的点数量完全相同。证明方法：将代表线段上某点的无穷小数按奇偶位拆分成两个小数，用这两个小数在正方形中定位——如此便建立了一一对应关系。同样的方法可将小数拆分为三部分，在立方体中定位。这意味着尽管我们直觉上认为"面"比"线"包含更多的点，但在无穷数算术中，一维、二维、三维空间中的点数量却是完全相等的。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">1英寸线</div>
+        <div class="data-sm">ℵ₁个点<br>0.abcdef…</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">正方形</div>
+        <div class="data-sm">ℵ₁个点<br>0.ace… + 0.bdf…</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">立方体</div>
+        <div class="data-sm">ℵ₁个点<br>三等分小数定位</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-10">
+  <div class="section-num num-10">10</div>
+  <div class="section-body">
+    <div class="tag tag-10">无穷等级</div>
+    <div class="section-title t-10">阿列夫数：无穷的等级序列</div>
+    <div class="section-desc">康托尔用希伯来字母ℵ（阿列夫）表示无穷数，右下角数字表示等级。ℵ₀代表所有整数和分数的数量。ℵ₁代表所有几何点的数量（连续统的势）。ℵ₂代表所有曲线样式的数量——比几何点更多。但迄今为止，还没有人想出需要用到ℵ₃的无穷数。这三个无穷数已足以描述我们所能想到的一切无穷集合——这恰好与我们的老朋友霍屯督人形成鲜明对比：他们只能数到3，而我们也只需要3个无穷数！</div>
+    <div class="timeline-row">
+      <div class="timeline-card tc1">
+        <div class="timeline-year r">ℵ₀</div>
+        <div>整数和分数的数量<br>可数无穷<br>例：1,2,3,4,…</div>
+      </div>
+      <div class="timeline-card tc2">
+        <div class="timeline-year o">ℵ₁</div>
+        <div>几何点的数量<br>连续统的势<br>例：线段上的点</div>
+      </div>
+      <div class="timeline-card tc3">
+        <div class="timeline-year g">ℵ₂</div>
+        <div>曲线样式的数量<br>比点"更多"<br>例：所有可能曲线</div>
+      </div>
+      <div class="timeline-card tc4">
+        <div class="timeline-year b">ℵ₃？</div>
+        <div>尚未有人能想到<br>需要ℵ₃的无穷数<br>现有三级足够</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">第一章以一场数字的惊奇之旅开启了全书。从霍屯督人无法数到4的窘境，到阿基米德数沙的计算，从印度国王破产的棋局到5800亿年后世界末日的预言——伽莫夫用这些精彩的故事告诉我们：数字的世界远比我们的直觉广阔。而康托尔的无穷数理论则是本章的高潮——它揭示了一个反直觉的真理：无穷有不同的等级，在无限的王国里，"部分等于整体"是常态而非悖论。从有限的"1"到无穷的"ℵ"，这正是全书主题的完美开端。</div>
+</div>
+
+<div class="footer">
+  《从一到无穷大》第8章「第一章 大数字」信息图 · 乔治·伽莫夫 著 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

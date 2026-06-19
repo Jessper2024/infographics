@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Two Three... Infinity · Ch13「Relativity of Space & Time」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-value { font-size: 32px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .risk-row-wrap { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { width: 100px; font-size: 13px; color: #555; font-weight: bold; text-align: right; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 14px; background: #fce7f3; border-radius: 7px; overflow: hidden; }
+  .risk-fill { height: 100%; background: #db2777; border-radius: 7px; }
+  .risk-val { width: 100px; font-size: 12px; color: #db2777; font-weight: bold; flex-shrink: 0; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid; }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.d3 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big { font-size: 18px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; line-height: 1.4; }
+  .data-sm { font-size: 12px; color: #777; line-height: 1.6; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch013-info-zh.html">中文 / English</a>
+</div>
+
+<h1>One Two Three... Infinity · Ch13「Relativity of Space & Time」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Part II · Chapter 5 · The Four-Dimensional Worldview</span>
+  Einstein's special and general relativity overturned Newton's absolute space and time. The Michelson experiment exposed the ether fiction; moving bodies contract and time dilates—all elegantly derived from rotating four-dimensional spacetime coordinates. Even more astonishing: gravity is not a force but geometry—curved spacetime tells matter how to move. The universe may be closed, like a giant spacetime bubble.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This is the most conceptually profound chapter in the book. From the rotation of four-dimensional spacetime, through Michelson's ether-shattering experiment, to length contraction and time dilation, curved space replacing gravity, and finally whether the universe is "open" or "closed"—all conclusions flow from one core insight: space and time are one. They are merely the projections of a fixed four-dimensional distance onto different coordinate axes.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">300,000<span class="kpi-unit">km/s</span></div>
+    <div class="kpi-label">Speed of Light—Cosmic Limit</div>
+    <div class="kpi-note">No massive object can exceed it</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1.75<span class="kpi-unit">″</span></div>
+    <div class="kpi-label">Starlight Deflection by Sun</div>
+    <div class="kpi-note">Confirmed by 1919 solar eclipse</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">70,000<span class="kpi-unit">×</span></div>
+    <div class="kpi-label">Time Dilation at 99.99999999% c</div>
+    <div class="kpi-note">18 Earth-years ≈ 1 day subjective</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">0.01<span class="kpi-unit">mm</span></div>
+    <div class="kpi-label">100m rocket contraction at 25,000 mph</div>
+    <div class="kpi-note">Daily speeds produce tiny effects</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Core Framework</div>
+    <div class="section-title t-01">Rotating Spacetime Coordinates: Two Faces of One Reality</div>
+    <div class="section-desc"><strong>Space distances and time intervals are merely different projections of a fixed four-dimensional interval onto coordinate axes.</strong> Just as rotating a 2D coordinate system changes projections on x and y axes, rotating spacetime axes converts parts of space distance into time interval and vice versa. The secret of "rotating spacetime axes" is mundane—board a moving bus and the time axis tilts. From a moving observer, both the space distance and time interval between two events differ from a stationary observer. This is not an illusion; it is a property of spacetime itself.</div>
+    <div class="flow-row">
+      <div class="flow-step">Classical Physics<br>Fixed space·Separate time</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Spacetime<br>Coordinates rotate</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Unified Picture<br>Space ⟷ Time</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Experimental Revolution</div>
+    <div class="section-title t-02">The Vanishing Ether Wind: Michelson Shatters Classical Spacetime</div>
+    <div class="section-desc"><strong>The greatest error of 19th-century physics: assuming the ether possessed mechanical properties like ordinary matter.</strong> Michelson built an ingenious interferometer, using the null method to compare light speeds in two perpendicular directions. By expectations, the ether wind accompanying Earth's motion should produce a ~0.01% speed difference. But the result: <strong>interference fringes did not budge.</strong> No matter the direction, the ether wind had zero effect on light speed. This "stubborn fact" shattered Newton's absolute spacetime. The only reasonable explanation: moving bodies undergo a universal spatial contraction in the direction of motion—dependent on speed alone, not material composition.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔬</div>
+        <div class="dual-text">
+          <h4>❌ Classical Prediction: Ether Affects Light</h4>
+          <p>Faster with ether·Slower against·Fringe shift expected·Earth at 30km/s ≈ 1/10,000 c</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>✅ Experimental Result: No Shift at All</h4>
+          <p>No ether wind·Light speed isotropic·Moving bodies contract universally·A property of space, not material</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Time Dilation</div>
+    <div class="section-title t-03">Moving Objects Shrink, Time Slows Down</div>
+    <div class="section-desc"><strong>Length contraction and time dilation are two faces of one coin: the same factor governs both—division for space, multiplication for time.</strong> A car at 50 mph shortens by one atomic nucleus diameter; a 100m rocket at 25,000 mph contracts by only 0.01mm—daily speeds produce imperceptible effects. But near light speed: 50% c → 86% length; 90% → 45%; 99% → 14%. <strong>If a spaceship travels at 99.99999999% c round-trip to Sirius (9 light-years away), 18 years pass on Earth while the astronaut feels just a few hours—leaving after breakfast, returning before dinner, while friends have eaten 6,570 dinners in between.</strong> Yet no matter how hard we try, the speed of light remains forever unreachable; the last decimal can never be conquered.</div>
+    <div class="risk-row-wrap">
+      <div class="risk-row">
+        <div class="risk-label">50% c</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:86%"></div></div>
+        <div class="risk-val">Length 86%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">90% c</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:45%"></div></div>
+        <div class="risk-val">Length 45%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">99% c</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:14%"></div></div>
+        <div class="risk-val">Length 14%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">99.99999999% c</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:0.14%"></div></div>
+        <div class="risk-val">Time ×70,000</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">General Relativity</div>
+    <div class="section-title t-04">Gravity Is Not a Force—It Is Curved Spacetime</div>
+    <div class="section-desc"><strong>Massive bodies curve spacetime around them; matter moves along geodesics (shortest paths) through curved space.</strong> Two-dimensional shadow scientists could determine whether their surface is flat or curved by measuring triangle angle sums: flat=180°, sphere&gt;180°, saddle&lt;180°. Our 3D world works the same way—the Sun's mass curves the space around it, deflecting starlight passing nearby. <strong>The 1919 solar eclipse observation confirmed: starlight deflection of 1.61″±0.30, matching Einstein's prediction of 1.75″.</strong> Thus, gravity as an "independent force" disappears, replaced by pure geometry: all matter moves along geodesics in the curved space created by massive bodies.</div>
+    <div class="flow-row">
+      <div class="flow-step">Flat Space<br>Σ = 180°</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Positively Curved<br>Σ &gt; 180°</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Negatively Curved<br>Σ &lt; 180°</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Shape of the Universe</div>
+    <div class="section-title t-05">Closed vs. Open Space: How Big Is the Universe?</div>
+    <div class="section-desc"><strong>Beyond local "space pimples"—curvatures caused by massive bodies—is the universe's overall face flat or curved?</strong> Positively curved space corresponds to a sphere or any closed geometry, bending uniformly in all directions; negatively curved space resembles a saddle, bending upward in one direction and downward in another. On a sphere, area within a given radius grows slower than on a plane; on a saddle, faster. Likewise, 3D observers can deduce whether the universe is finite and closed or infinite and open by measuring giant triangle angle sums or counting matter within different radii. <strong>This question will be answered in the cosmological discussion of Chapter 10.</strong></div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">Flat Space</div>
+        <div class="data-sm">Σ = 180°<br>Area ∝ r²<br>Infinite & open</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">Positive Curvature</div>
+        <div class="data-sm">Σ &gt; 180°<br>Area grows slower than r²<br>Finite & closed (like sphere)</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">Negative Curvature</div>
+        <div class="data-sm">Σ &lt; 180°<br>Area grows faster than r²<br>Infinite & open (like saddle)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Space and time are not separate absolute stages but different projections of a four-dimensional spacetime continuum. In moving systems, both time and space axes rotate together—automatically yielding length contraction, time dilation, and relativity of simultaneity. Michelson's experiment shattered the ether illusion; Einstein replaced gravity-the-force with curved-spacetime-the-geometry. Matter tells spacetime how to curve; curved spacetime tells matter how to move. This is the essence of the 20th century's greatest scientific revolution.</div>
+</div>
+
+<div class="footer">
+  One Two Three... Infinity · Ch13 Infographic · Part II Ch5「Relativity of Space & Time」· George Gamow · For study reference
+</div>
+</div>
+</body>
+</html>

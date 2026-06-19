@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从一到无穷大 · 第12章「四维的世界」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .equation-box {
+    background: #f8f6f3; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 22px; margin-top: 10px; font-size: 15px; color: #333;
+    line-height: 1.8; text-align: center;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .timeline-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .timeline-card {
+    border-radius: 12px; padding: 14px 10px; text-align: center;
+    border: 1px solid; font-size: 12px; line-height: 1.6;
+  }
+  .timeline-card.tc1 { background: #fef2f2; border-color: #fecaca; }
+  .timeline-card.tc2 { background: #fff7ed; border-color: #fed7aa; }
+  .timeline-card.tc3 { background: #fefce8; border-color: #fde68a; }
+  .timeline-card.tc4 { background: #eef2ff; border-color: #c7d2fe; }
+  .timeline-year { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-year.r { color: #dc2626; }
+  .timeline-year.o { color: #ea580c; }
+  .timeline-year.b { color: #4f46e5; }
+
+  .hypercube-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .hyper-card {
+    border-radius: 12px; padding: 16px 14px; text-align: center;
+    border: 1px solid #e8e0d5; background: #faf8f5;
+  }
+  .hyper-num {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; font-weight: 700; line-height: 1.2;
+  }
+  .hyper-num.hc1 { color: #dc2626; }
+  .hyper-num.hc2 { color: #ea580c; }
+  .hyper-num.hc3 { color: #4f46e5; }
+  .hyper-label { font-size: 13px; color: #888; margin-top: 4px; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .hypercube-grid, .timeline-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}
+    .kpi-value{font-size:34px}
+  }
+  @media(max-width:400px){
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}
+  }
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}
+  .kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+  .kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}
+  .kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}
+  .kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}
+  .kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}
+  .kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}
+  .kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}
+  .kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}
+  .kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}
+  .kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+  .kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="从一到无穷大-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch012-info-en.html">中文 / English</a>
+</div>
+
+<h1>从一到无穷大 · 第12章「四维的世界」</h1>
+<p class="subtitle">时间作为第四维：从超立方体到闵可夫斯基时空</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章将时间确立为物理世界的第四个维度，开启了四维时空的全新视角。我们无法在脑海中"想象"第四个空间方向，但可以用时间作为第四维——每个物理存在体都有四个维度：长、宽、高和时间。通过光速将时间转换为空间单位，爱因斯坦的四维距离公式用空间坐标平方和减去时间坐标平方来确定事件的间隔。明科夫斯基将时间坐标改为虚数，使得毕达哥拉斯定理在四维时空中优雅自洽。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">16<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">超立方体顶点</div>
+    <div class="kpi-note">四维超立方体=普通立方体<br>在时间方向延伸</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">32<span class="kpi-unit">条</span></div>
+    <div class="kpi-label">超立方体棱</div>
+    <div class="kpi-note">12条空间棱+8条时间棱<br>+12条(结束时)=32</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">c=299,776<span class="kpi-unit">km/s</span></div>
+    <div class="kpi-label">光速</div>
+    <div class="kpi-note">时空"翻译因子"<br>任何物质速度上限</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">光年</span></div>
+    <div class="kpi-label">≈9.46万亿km</div>
+    <div class="kpi-note">时间→空间的桥梁<br>1光英尺=0.0000000011秒</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">i·ct<span class="kpi-unit"></span></div>
+    <div class="kpi-label">闵可夫斯基第四坐标</div>
+    <div class="kpi-note">时间坐标×√-1转化为虚数<br>令毕达哥拉斯定理完美适用</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">√(x²+y²+z²<span class="kpi-unit">-c²t²)</span></div>
+    <div class="kpi-label">四维距离（爱因斯坦）</div>
+    <div class="kpi-note">时间坐标平方前加负号<br>保留空间与时间的物理差异</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">24<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">超立方体面</div>
+    <div class="kpi-note">原始立方体6个面<br>+时间方向延展18个<br>= 24个矩形面</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">第四维度</div>
+    <div class="section-title t-01">时间作为第四维：每一个物理存在体都有四个维度</div>
+    <div class="section-desc">第四维度的概念常招致神秘和怀疑。作为三维生物，我们无法在脑海中"想象"出一个四维形体——就像无法将三维物体"压进"二维平面而不变形一样。但我们可以通过投影来理解：四维超立方体在三维空间中的投影就是两个嵌套的立方体，顶点相连——正如一个三维立方体在二维平面上的投影是两个嵌套的正方形。更关键的是：我们每天都在使用第四个维度——它就是时间。你居住的房子不仅有长、宽、高，还有从动工到拆除之间的时间维度。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🎲</div>
+        <div class="dual-text">
+          <h4>超立方体 (四维立方体)</h4>
+          <p>16个顶点 · 32条棱 · 24个面<br>三维投影为两个嵌套立方体<br>类比：立方体的平面投影=两个嵌套正方形</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">⏳</div>
+        <div class="dual-text">
+          <h4>四维存在 = 三维存在×时间段</h4>
+          <p>一个5月1日到6月1日的立方体<br>→ 顶点在时间方向延伸出"时间棱"<br>→ 人从出生到死亡是一条四维"橡胶条"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">超几何学</div>
+    <div class="section-title t-02">超立方体的构成：16个顶点·32条棱·24个面</div>
+    <div class="section-desc">四维超立方体并非神秘之物——它不过就是一个存在于特定时间段内的普通立方体。假设你在5月1日构建了一个立方体，一个月后将其拆解。每个角上的点沿着时间方向延伸一个月，形成"时间棱"。数一数：形成时有12条空间棱，8条"时间肋"（每个顶点一条），结束时又有12条空间棱——共32条。同理可得16个顶点（开始8个+结束8个）和24个面（原始6个正方形面+18个由棱沿时间方向延展形成的"半时间半空间"矩形面）。</div>
+    <div class="hypercube-grid">
+      <div class="hyper-card">
+        <div class="hyper-num hc1">16</div>
+        <div class="hyper-label">顶点 = 8(起始) + 8(结束)</div>
+      </div>
+      <div class="hyper-card">
+        <div class="hyper-num hc2">32</div>
+        <div class="hyper-label">棱 = 12(起始) + 8(时间肋) + 12(结束)</div>
+      </div>
+      <div class="hyper-card">
+        <div class="hyper-num hc3">24</div>
+        <div class="hyper-label">面 = 6(原始面) + 18(时间方向延展)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">光速测量</div>
+    <div class="section-title t-03">光速：时空之间的"翻译因子"</div>
+    <div class="section-desc">要将时间换算为空间单位，需要一个标准速度作为"翻译因子"。光速是物理学上唯一具有所需一般属性的速度——任何作用在物质体之间的力（电吸引力、重力）都以相同速度传播；光速代表任何可能物质速度的上限。伽利略最早尝试测量光速（用两盏灯），但失败了——光速太快，几英里的距离只需几十万分之一秒。罗默通过观测木星卫星的星食第一次测量到光速。斐佐用齿轮装置精确测量：当齿轮以每秒1000转旋转时，光线恰好从两齿轮的齿缝间穿过。</div>
+    <div class="timeline-row">
+      <div class="timeline-card tc1">
+        <div class="timeline-year r">1600s</div>
+        <div>伽利略尝试<br>两盏灯·机械快门<br>❌ 失败（光太快）</div>
+      </div>
+      <div class="timeline-card tc2">
+        <div class="timeline-year o">1675</div>
+        <div>罗默观测木星卫星<br>星食时间差异<br>→ 光速 ≈ 185,000 mi/s</div>
+      </div>
+      <div class="timeline-card tc3">
+        <div class="timeline-year g">1849</div>
+        <div>斐佐齿轮实验<br>1000转/秒→光线通过<br>c ≈ 300,000 km/s</div>
+      </div>
+      <div class="timeline-card tc4">
+        <div class="timeline-year b">现代</div>
+        <div>c = 299,776 km/s<br>= 186,300 mi/s<br>最精确测量值</div>
+      </div>
+    </div>
+    <div class="equation-box">
+      <strong>光速与时空转换：</strong><br>
+      c = 299,776 km/s = 186,300 mi/s<br>
+      1光年 = 9.46 × 10¹² 公里<br>
+      1光英尺 ≈ 0.0000000011 秒<br>
+      15分钟 = 8000亿光英尺
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">四维距离</div>
+    <div class="section-title t-04">爱因斯坦的四维距离：空间平方和减去时间平方</div>
+    <div class="section-desc">两个事件在四维时空中的距离如何计算？以1945年纽约银行抢劫案和帝国大厦飞机失事为例：空间距离3360英尺，时间间隔15分钟（8000亿光英尺）。爱因斯坦提出，四维距离 = √(空间坐标平方和 - 时间坐标平方)。时间坐标平方前加负号——这保留了空间和时间之间的物理差异，即时间不可逆的特性。如果两个事件的四维距离为虚数，则它们属于"时间型"（在物理上可能的时间顺序）；若为实数，则为"空间型"（无法建立因果关系）。</div>
+    <div class="equation-box">
+      <strong>爱因斯坦四维距离公式：</strong><br>
+      纽约事件空间距离：√(3200²+400²+936²) = 3360英尺<br>
+      时间间隔：15分钟 = 8×10¹¹ 光英尺<br>
+      四维距离 = √(3360² - (8×10¹¹)²) → 虚数（时间型）<br>
+      <br>
+      <strong>闵可夫斯基虚数第四坐标：</strong><br>
+      用 x⁴ = i·ct（i=√-1）作为第四坐标<br>
+      四维距离 = √(x₁² + x₂² + x₃² + (i·ct)²)<br>
+      = √(x₁² + x₂² + x₃² - c²t²) ← 自动包含负号
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">世界线</div>
+    <div class="section-title t-05">世界线与世界带：每一个原子都有自己贯穿时空的轨迹</div>
+    <div class="section-desc">在四维时空几何中，每个物质粒子的历史轨迹被称为"世界线"。由于原子不可摧毁，人死后分解的骨头和灰烬不过是各自分开的细丝向着不同方向分散游离。太阳、地球和彗星的世界线：太阳沿着时间轴呈直线，地球的世界线环绕太阳成螺旋线，彗星的世界线先靠近后远离太阳。从四维视角看，整个宇宙就是一团相互交织的世界线——宇宙的拓扑形态与历史融合为一幅和谐的画面。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🌍</div>
+        <div class="dual-text">
+          <h4>太阳·地球·彗星的世界线</h4>
+          <p>太阳世界线：平行于时间轴的直线<br>地球世界线：环绕太阳的螺旋线<br>彗星世界线：先靠近后远离的曲线</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🧬</div>
+        <div class="dual-text">
+          <h4>人的四维存在</h4>
+          <p>从出生到死亡的四维"橡胶条"<br>胚胎期细 → 婴儿期摇摆 → 稳定 → 分解<br>每根"纤维"=一个原子的世界线</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">时间就是第四维——每个存在体都有四个维度：长、宽、高和时间。用光速作为"翻译因子"，时空变成了一个统一的四维几何结构。爱因斯坦和闵可夫斯基告诉我们：四维时空中的距离是空间坐标平方和减去时间坐标平方的平方根。实数的四维距离对应空间间隔，虚数的四维距离对应时间间隔——这解释了为什么我们永远无法将标尺变成时钟。</div>
+</div>
+
+<div class="footer">
+  《从一到无穷大》第12章「四维的世界」信息图 · 乔治·伽莫夫 著 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

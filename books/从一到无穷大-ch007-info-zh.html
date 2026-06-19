@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从一到无穷大 · 第7章「现代炼金术」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01, .section-06 { border-left-color: #dc2626; }
+  .section-02, .section-07 { border-left-color: #ea580c; }
+  .section-03, .section-08 { border-left-color: #ca8a04; }
+  .section-04, .section-09 { border-left-color: #4f46e5; }
+  .section-05, .section-10 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01, .num-06 { background: #fef2f2; color: #dc2626; }
+  .num-02, .num-07 { background: #fff7ed; color: #ea580c; }
+  .num-03, .num-08 { background: #fefce8; color: #ca8a04; }
+  .num-04, .num-09 { background: #eef2ff; color: #4f46e5; }
+  .num-05, .num-10 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01, .tag-06 { background: #fef2f2; color: #dc2626; }
+  .tag-02, .tag-07 { background: #fff7ed; color: #ea580c; }
+  .tag-03, .tag-08 { background: #fefce8; color: #ca8a04; }
+  .tag-04, .tag-09 { background: #eef2ff; color: #4f46e5; }
+  .tag-05, .tag-10 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01,.t-06 { color: #dc2626; } .t-02,.t-07 { color: #ea580c; }
+  .t-03,.t-08 { color: #ca8a04; } .t-04,.t-09 { color: #4f46e5; }
+  .t-05,.t-10 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}
+  .kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+  .kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}
+  .kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}
+  .kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}
+  .kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}
+  .kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}
+  .kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}
+  .kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}
+  .kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}
+  .kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+  .kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 14px; text-align: center; border: 1px solid; }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+  .timeline-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .timeline-card { border-radius: 12px; padding: 14px 10px; text-align: center; border: 1px solid; font-size: 12px; line-height: 1.6; }
+  .timeline-card.tc1 { background: #fef2f2; border-color: #fecaca; }
+  .timeline-card.tc2 { background: #fff7ed; border-color: #fed7aa; }
+  .timeline-card.tc3 { background: #fefce8; border-color: #fde68a; }
+  .timeline-card.tc4 { background: #eef2ff; border-color: #c7d2fe; }
+  .timeline-year { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-year.r { color: #dc2626; }
+  .timeline-year.o { color: #ea580c; }
+  .timeline-year.g { color: #ca8a04; }
+  .timeline-year.b { color: #4f46e5; }
+  .grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .equation-box { background: #f8f6f3; border: 1px solid #e8e0d5; border-radius: 12px; padding: 18px 22px; margin-top: 10px; font-size: 15px; color: #333; line-height: 1.8; text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+  .risk-row + .risk-row { margin-top: 10px; }
+  .risk-label { font-size: 13px; color: #555; min-width: 100px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 16px; background: #fdf2f8; border-radius: 8px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 8px; background: #db2777; }
+  .risk-val { font-size: 13px; color: #555; min-width: 50px; text-align: right; }
+  .list-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .list-item { background: #faf8f5; border: 1px solid #e8e0d5; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #555; line-height: 1.7; }
+  .list-item strong { color: #333; }
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01,.section-06 { border-top-color: #dc2626; } .section-02,.section-07 { border-top-color: #ea580c; }
+    .section-03,.section-08 { border-top-color: #ca8a04; } .section-04,.section-09 { border-top-color: #4f46e5; }
+    .section-05,.section-10 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .grid-3-col, .timeline-row, .list-2col { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}
+    .kpi-value{font-size:34px}
+  }
+  @media(max-width:400px){ .kpi-row,.kpi-row.cols-4{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="从一到无穷大-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch007-info-en.html">中文 / English</a>
+</div>
+
+<h1>从一到无穷大 · 第7章「现代炼金术」</h1>
+<p class="subtitle">基本粒子 · 原子之心 · 原子加速 · 核子学——从普劳特假说到链式反应</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>核物理的每一个重大发现都像一场侦探悬疑片。本章讲述科学家如何从普劳特假说出发，一路发现质子、中子、正电子、中微子，并最终揭示了原子核的"液滴"结构、核裂变与聚变的机制。伽莫夫以他标志性的幽默——从"宇宙厨房"的食谱式比喻到"巴格达窃贼"中微子——把最神秘的核世界变得可亲可感。本章分为四节：基本粒子、原子之心（原子核结构）、原子加速（粒子加速器与核嬗变）、核子学（链式反应与核能）。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">基本粒子</div>
+    <div class="kpi-note">核子·电子·中微子<br>构成一切物质</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">35.5<span class="kpi-unit">→35/37</span></div>
+    <div class="kpi-label">氯的同位素</div>
+    <div class="kpi-note">阿斯顿发现同位素<br>普劳特假说复活</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">240万亿<span class="kpi-unit">倍</span></div>
+    <div class="kpi-label">核液体vs水密度</div>
+    <div class="kpi-note">核液体密度是水的<br>240,000,000,000,000倍</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">10¹⁰<span class="kpi-unit">卡/克</span></div>
+    <div class="kpi-label">核裂变能量</div>
+    <div class="kpi-note">汞的核裂变释放<br>100亿卡/克</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">基本粒子</div>
+    <div class="section-title t-01">宇宙的积木：从普劳特假说到基本粒子三大家族</div>
+    <div class="section-desc">19世纪中叶，英国化学家威廉·普劳特提出一个大胆假设：所有化学元素本质上只是氢原子的不同"浓度"。虽然当时因氯的原子量35.5而遭到否认，但1919年阿斯顿发现同位素（氯35和37的混合物）使这一假说重获新生。最终人们认识到，无限多样的物质仅由三种基本粒子组合而成：核子（可中性或带正电）、电子（负电自由电荷）和中微子（无电荷、几乎无质量）。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">核子</div>
+        <div class="data-sm">可中性（中子）或<br>带正电（质子）<br>物质的基本组成</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">电子</div>
+        <div class="data-sm">正或负的自由电荷<br>环绕原子核运行<br>正负电子可湮灭</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">中微子</div>
+        <div class="data-sm">不带电荷·质量极轻<br>穿透力极强<br>"巴格达窃贼"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">正反物质</div>
+    <div class="section-title t-02">狂野的婚姻与共同自杀：正电子与反物质</div>
+    <div class="section-desc">当一个正电子与一个负电子相遇时，两个电子消失，能量转化为强烈的伽马辐射——玻恩称之为"狂野的婚姻"，布朗则称作"共同自杀"。反过来，伽马射线经过原子核附近时也能"凭空"产生一对正负电子。如果存在由"负质子"和"正电子"构成的"反向原子"，由它们组成的水和黄油将与普通物质无法区分——除非两者相遇，到时会发生毁灭性的大爆炸。</div>
+    <div class="flow-row">
+      <div class="flow-step">e⁻ + e⁺<br>正+负电子</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚡<br>湮灭</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">ɣ射线<br>电磁辐射</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">e⁻ + e⁺<br>电子对生成</div>
+    </div>
+    <div class="equation-box">
+      <strong>正负电子湮灭与生成：</strong><br>
+      e⁻ + e⁺ → 辐射（湮灭）| 辐射 → e⁻ + e⁺（电子对生成）<br>
+      "如果存在反向行星系统，扔一块普通石头过去就会引发原子弹级别的爆炸"
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">中微子侦探</div>
+    <div class="section-title t-03">归谬法：中微子的"在场证明"</div>
+    <div class="section-desc">中微子的存在是通过"能量失踪案"发现的：β衰变中释放的电子动能本应确定，观测到的却是一个从零到上限的连续谱。泡利假设存在一个看不见的"窃贼"带走了丢失的能量——中微子。它不带电荷，质量极小，可以穿过数光年厚的铅板。虽然无法直接捕捉，但通过原子核的反冲效应（无论电子速度如何，反冲速度恒定），这一假说得到了完美证实。</div>
+    <div class="list-2col">
+      <div class="list-item"><strong>🕵️ 案件</strong><br>β衰变中能量不守恒→能量"失踪"</div>
+      <div class="list-item"><strong>🔎 嫌疑犯</strong><br>中微子（泡利假设）：不带电，质量极轻</div>
+      <div class="list-item"><strong>⚖️ 证据</strong><br>原子核反冲恒定：抛出电子+中微子的合力</div>
+      <div class="list-item"><strong>🏆 结论</strong><br>中微子存在得到证实·可穿透数光年铅</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">液滴模型</div>
+    <div class="section-title t-04">原子之心：核流体液滴的惊人特性</div>
+    <div class="section-desc">原子核的结构可以用"核流体液滴"模型完美解释。核子像沙丁鱼一样紧密挤压，核液体的密度是水的240万亿倍，表面张力是水的一百亿亿倍。如果肥皂膜用核液体做成，其重量达5000万吨，可悬挂约1万亿吨的负荷（相当于火星卫星的质量！）。原子核的稳定性取决于表面张力（凝聚）与质子间电荷斥力（分裂）之间的博弈。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">💧</div>
+        <div class="dual-text">
+          <h4>核液体 vs 普通水</h4>
+          <p>密度：240,000,000,000,000倍<br>表面张力：1,000,000,000,000,000,000倍</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">⚖️</div>
+        <div class="dual-text">
+          <h4>表面张力 vs 电荷斥力</h4>
+          <p>轻核：表面张力占上风→可聚变<br>银附近：平衡点<br>重核：电荷斥力占上风→可裂变</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">聚变与裂变</div>
+    <div class="section-title t-05">核分裂与核融合：释放宇宙的能量</div>
+    <div class="section-desc">比银轻的原子核倾向于融合（聚变），表面张力使它们结合并释放巨大能量。比银重的原子核则倾向于分裂（裂变），电荷斥力最终占据上风。1克氧和碳的核聚变释放140亿卡路里，是化学燃烧的1500万倍。但所有核反应都需要极高的活化能——温度需达数百万摄氏度。正如伽莫夫所说："我们之所以不会被炸成碎片，是因为要引发核反应极其困难。"</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">聚变</div>
+        <div class="data-sm">轻核→重核<br>释放能量<br>例：太阳核心</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">裂变</div>
+        <div class="data-sm">重核→两个碎片<br>释放中子+能量<br>例：铀核</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">1克→140亿卡</div>
+        <div class="data-sm">核反应释放能量<br>是化学反应的1500万倍</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-06">
+  <div class="section-num num-06">06</div>
+  <div class="section-body">
+    <div class="tag tag-06">加速器</div>
+    <div class="section-title t-06">原子粉碎机：从威尔逊云雾室到回旋加速器</div>
+    <div class="section-desc">卢瑟福1919年用天然α粒子轰击铝箔，首次实现了元素的人工嬗变。此后，静电发生器、回旋加速器和直线加速器将轰击粒子的能量推至新高。云雾室让科学家得以亲眼看到核反应的过程——α粒子穿过气体时留下的电离轨迹凝结成薄雾，仿佛拉烟飞机在天空中画出的线条。这些"原子粉碎机"将元素嬗变从前沿实验变成了系统的核科学研究。</div>
+    <div class="timeline-row">
+      <div class="timeline-card tc1">
+        <div class="timeline-year r">1919</div>
+        <div>卢瑟福<br>首次人工嬗变<br>α轰击铝→质子</div>
+      </div>
+      <div class="timeline-card tc2">
+        <div class="timeline-year o">回旋加速</div>
+        <div>磁场+交变电场<br>螺旋加速离子<br>高速粒子束</div>
+      </div>
+      <div class="timeline-card tc3">
+        <div class="timeline-year g">直线加速</div>
+        <div>递增长度圆柱体<br>每一步加速<br>可到任意速度</div>
+      </div>
+      <div class="timeline-card tc4">
+        <div class="timeline-year b">云雾室</div>
+        <div>电离→水滴凝结<br>粒子轨迹可见<br>核反应"拍照"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-07">
+  <div class="section-num num-07">07</div>
+  <div class="section-body">
+    <div class="tag tag-07">轰击效率</div>
+    <div class="section-title t-07">效率的噩梦：为什么核嬗变如此困难</div>
+    <div class="section-desc">带电粒子轰击原子核的效率低得令人沮丧。原子与原子核的直径比约为10,000:1，面积比约为100,000,000:1。每个带电粒子穿过原子时会损失约万分之一能量，大约穿过10,000个原子后就会完全停止。因此10,000个粒子中仅约1个有机会击中原子核。要完全转化1克硼，最强大的加速器需持续工作至少两万年！这就是为什么中子（不带电）的发现对核能实际应用如此关键。</div>
+    <div class="equation-box">
+      <strong>核轰击的低效率：</strong><br>
+      原子直径 : 原子核直径 ≈ 10,000 : 1<br>
+      受力面积比 ≈ 100,000,000 : 1<br>
+      10,000个带电粒子 → 只有≈1个击中原子核<br>
+      转化1克硼 → 需超20,000年
+    </div>
+  </div>
+</div>
+
+<div class="section section-08">
+  <div class="section-num num-08">08</div>
+  <div class="section-body">
+    <div class="tag tag-08">链式反应</div>
+    <div class="section-title t-08">中子繁殖：链式反应的"兔子"逻辑</div>
+    <div class="section-desc">中子的优势是不带电，可以轻松穿透原子核。但自然界不存在自由中子——它们很快被俘获。链式反应的突破在于铀裂变产生的每个碎片会喷射出平均2个中子。如果这些中子能引发更多裂变，中子的数量就会像兔子繁殖一样增长。条件是每次裂变产生的第二代中子数 > 原始中子数。铀235是自然界唯一的天然裂变物质（占比仅0.7%），其余99.3%为不可裂变的铀238。</div>
+    <div class="flow-row">
+      <div class="flow-step">💥<br>铀235裂变</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔴<br>释放~2中子</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔥<br>2中子→更多裂变</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">💣<br>链式反应·爆炸</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-09">
+  <div class="section-num num-09">09</div>
+  <div class="section-body">
+    <div class="tag tag-09">同位素分离</div>
+    <div class="section-title t-09">铀的提纯：分离0.7%的"燃烧物"</div>
+    <div class="section-desc">铀235仅占天然铀的0.7%，与铀238的化学性质完全相同——无法用普通化学方法分离。唯一的区别是质量差1.3%。科学家利用这一微小差异，通过扩散法（轻分子扩散更快）或磁场法（轻离子偏转更大）进行分离。或者通过慢化剂降低中子速度，使铀235更易捕获慢中子，从而实现"堆"式反应。钚（Pu239）和铀233也可通过中子俘获人工合成。</div>
+    <div class="list-2col">
+      <div class="list-item"><strong>🔬 扩散法</strong><br>轻分子扩散更快<br>气体透过隔板→富集铀235</div>
+      <div class="list-item"><strong>🧲 磁场法</strong><br>较轻离子偏转更大<br>磁分离→部分分离</div>
+      <div class="list-item"><strong>🌊 慢化剂</strong><br>重水/碳/铍盐<br>降低中子速度→铀235捕获</div>
+      <div class="list-item"><strong>⚗️ 人工合成</strong><br>铀238+中子→钚239<br>钍232+中子→铀233</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-10">
+  <div class="section-num num-10">10</div>
+  <div class="section-body">
+    <div class="tag tag-10">能源展望</div>
+    <div class="section-title t-10">核能未来：从天然铀到普通花岗岩</div>
+    <div class="section-desc">已知铀矿床中的铀235可满足全球工业数年的能源需求。若将铀238转化为钚，延长至几个世纪。加上钍的储量，可达上千年。但即便耗尽所有铀矿和钍矿——普通花岗岩中也含有微量的铀和钍（每吨含4克铀+12克钍）。1吨花岗岩转化后相当于320吨普通燃料。热核聚变（氘）的潜力更加巨大，但实现受控热核反应（为太阳供能的同一过程）仍然是人类面临的重大技术挑战。</div>
+    <div class="risk-row">
+      <div class="risk-label">铀235直接利用</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:10%;background:#dc2626"></div></div>
+      <div class="risk-val">数年</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">铀238转钚利用</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:30%;background:#ea580c"></div></div>
+      <div class="risk-val">数世纪</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">+钍的储量</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:50%;background:#ca8a04"></div></div>
+      <div class="risk-val">~1000年</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">普通花岗岩提取</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:90%;background:#4f46e5"></div></div>
+      <div class="risk-val">近乎无限</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">现代炼金术将古代梦想变成了现实：从基本粒子（核子、电子、中微子）到原子核的液滴模型，从核裂变到链式反应，科学家不仅理解了物质最深刻的构成，还学会了如何释放原子内部近乎无限的能源。然而，这种力量的获取伴随着责任——正如伽莫夫所警示的，我们必须在利用核能和防止自毁之间找到平衡。花岗岩中的铀和钍提醒我们：能源的潜力无处不在，关键在于我们如何智慧地使用它。</div>
+</div>
+
+<div class="footer">
+  《从一到无穷大》第7章「现代炼金术」信息图 · 乔治·伽莫夫 著 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

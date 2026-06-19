@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从一到无穷大 · 第6章「目 录」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01, .section-06 { border-left-color: #dc2626; }
+  .section-02, .section-07 { border-left-color: #ea580c; }
+  .section-03, .section-08 { border-left-color: #ca8a04; }
+  .section-04, .section-09 { border-left-color: #4f46e5; }
+  .section-05, .section-10 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01, .num-06 { background: #fef2f2; color: #dc2626; }
+  .num-02, .num-07 { background: #fff7ed; color: #ea580c; }
+  .num-03, .num-08 { background: #fefce8; color: #ca8a04; }
+  .num-04, .num-09 { background: #eef2ff; color: #4f46e5; }
+  .num-05, .num-10 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01, .tag-06 { background: #fef2f2; color: #dc2626; }
+  .tag-02, .tag-07 { background: #fff7ed; color: #ea580c; }
+  .tag-03, .tag-08 { background: #fefce8; color: #ca8a04; }
+  .tag-04, .tag-09 { background: #eef2ff; color: #4f46e5; }
+  .tag-05, .tag-10 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01,.t-06 { color: #dc2626; } .t-02,.t-07 { color: #ea580c; }
+  .t-03,.t-08 { color: #ca8a04; } .t-04,.t-09 { color: #4f46e5; }
+  .t-05,.t-10 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}
+  .kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+  .kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}
+  .kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}
+  .kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}
+  .kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}
+  .kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}
+  .kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}
+  .kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}
+  .kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}
+  .kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+  .kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .timeline-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .timeline-card {
+    border-radius: 12px; padding: 14px 10px; text-align: center;
+    border: 1px solid; font-size: 12px; line-height: 1.6;
+  }
+  .timeline-card.tc1 { background: #fef2f2; border-color: #fecaca; }
+  .timeline-card.tc2 { background: #fff7ed; border-color: #fed7aa; }
+  .timeline-card.tc3 { background: #fefce8; border-color: #fde68a; }
+  .timeline-card.tc4 { background: #eef2ff; border-color: #c7d2fe; }
+  .timeline-year { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-year.r { color: #dc2626; }
+  .timeline-year.o { color: #ea580c; }
+  .timeline-year.g { color: #ca8a04; }
+  .timeline-year.b { color: #4f46e5; }
+
+  .grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+
+  .equation-box {
+    background: #f8f6f3; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 22px; margin-top: 10px; font-size: 15px; color: #333;
+    line-height: 1.8; text-align: center;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+  .risk-row + .risk-row { margin-top: 10px; }
+  .risk-label { font-size: 13px; color: #555; min-width: 100px; flex-shrink: 0; }
+  .risk-meter { flex: 1; height: 16px; background: #fdf2f8; border-radius: 8px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 8px; background: #db2777; }
+  .risk-val { font-size: 13px; color: #555; min-width: 50px; text-align: right; }
+
+  .list-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .list-item { background: #faf8f5; border: 1px solid #e8e0d5; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #555; line-height: 1.7; }
+  .list-item strong { color: #333; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01,.section-06 { border-top-color: #dc2626; } .section-02,.section-07 { border-top-color: #ea580c; }
+    .section-03,.section-08 { border-top-color: #ca8a04; } .section-04,.section-09 { border-top-color: #4f46e5; }
+    .section-05,.section-10 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .grid-3-col, .timeline-row, .list-2col { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}
+    .kpi-value{font-size:34px}
+  }
+  @media(max-width:400px){
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="从一到无穷大-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="从一到无穷大-ch006-info-en.html">中文 / English</a>
+</div>
+
+<h1>从一到无穷大 · 第6章「目 录」</h1>
+<p class="subtitle">全书结构总览：四大篇章，十一章节，从数字游戏到宇宙创生</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>《从一到无穷大》全书分为四大部分共11章，沿着"从数到空间、从微观到宏观"的线索展开。第一部分"数字游戏"从大数和质数出发；第二部分"空间、时间与爱因斯坦"转向相对论与四维几何；第三部分"微观世界"深入原子核与生命之谜；第四部分"宏观世界"则以宇宙的整体视野收束全书。读这本科普经典，从目录就能感受到伽莫夫独特的叙事弧线——从最简单的1出发，一直抵达宇宙之无穷。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">部分</span></div>
+    <div class="kpi-label">全书结构</div>
+    <div class="kpi-note">数字游戏 → 空间时间 →<br>微观世界 → 宏观世界</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">11<span class="kpi-unit">章</span></div>
+    <div class="kpi-label">章节总数</div>
+    <div class="kpi-note">每章含2-4个专题<br>覆盖数理化生天</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1948<span class="kpi-unit"></span></div>
+    <div class="kpi-label">初版年份</div>
+    <div class="kpi-note">伽莫夫完成初版<br>1961年再版修订</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">篇序</span></div>
+    <div class="kpi-label">序言总数</div>
+    <div class="kpi-note">第一版序·1961版序<br>以及作者自序</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">全貌</div>
+    <div class="section-title t-01">从数到无穷：伽莫夫的宏大叙事弧线</div>
+    <div class="section-desc">《从一到无穷大》的目录本身就是一件艺术品。它从最简单的概念——"1"——出发，经过数字的王国、时空的本质、微观粒子的密码，最终抵达宇宙的整体图景。这种"从小处着手，向大处展开"的结构完美呼应了书名"从一到无穷大"。伽莫夫不是按学术分科讲科学，而是讲述一个连贯的故事——从人类最早学会计算的"一"，一直到人类认识宇宙的"无穷"。</div>
+    <div class="flow-row">
+      <div class="flow-step">1️⃣<br>数字游戏</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🌌<br>空间·时间·爱因斯坦</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔬<br>微观世界</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🌠<br>宏观世界·宇宙起源</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">第一部分</div>
+    <div class="section-title t-02">数字游戏：数学的纯粹开端（第1-2章）</div>
+    <div class="section-desc">第一部分是全书最"轻松"的内容——玩数字游戏。第一章"大数字"展示人类面对巨大数字时的惊奇：国际象棋棋盘上的麦粒数、婆罗门之塔的金片移动次数、以及康托尔的无穷数分类。第二章"自然数和人工数"进入数论的核心——质数的无穷性、哥德巴赫猜想和费马大定理，最后引入"人工"的虚数，揭示数学中"存在但不自然"的数字同样充满魅力。</div>
+    <div class="equation-box">
+      <strong>第一部分核心主题：</strong><br>
+      📐 第一章·大数字：从霍屯督人的"3"到宇宙原子数3×10⁷⁴<br>
+      🔢 第二章·自然数和人工数：质数无穷→虚数i=√-1的几何解释<br>
+      关键问题：无穷大有不同的大小吗？→ 康托尔ℵ₀, ℵ₁, ℵ₂
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">第二部分</div>
+    <div class="section-title t-03">空间、时间与爱因斯坦：重塑时空观（第3-5章）</div>
+    <div class="section-desc">第二部分是全书最具颠覆性的内容。第三章"空间的独特性"从几何学出发：为什么空间是三维的？能否存在四维空间？第四章"四维的世界"引入时空连续体的概念，将时间作为第四维。第五章"时空的相对性"直接进入爱因斯坦相对论的核心——运动的相对性、光速不变、时间膨胀和质能等效E=mc²。伽莫夫用生动的比喻（如"乘光速飞行的双胞胎悖论"）让最难懂的物理变得亲切可及。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🌐</div>
+        <div class="dual-text">
+          <h4>第三至五章：爱因斯坦革命</h4>
+          <p>三维空间 + 一维时间 = 四维时空连续体。光速不变性→长度收缩·时间膨胀→E=mc²。双胞胎悖论：一个乘光速旅行，另一个留在地球——回来后谁更年轻？</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🧮</div>
+        <div class="dual-text">
+          <h4>关键洞见</h4>
+          <p>闵可夫斯基说："从今以后，空间本身和时间本身将消失在纯粹的阴影中，只有两者的某种结合才能保持独立存在。"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">第三部分</div>
+    <div class="section-title t-04">微观世界：从原子到生命（第6-9章）</div>
+    <div class="section-desc">第三部分是全书篇幅最大、内容最丰富的部分。第六章"下降的阶梯"——从分子到原子到原子核，一层层深入物质结构。第七章"现代炼金术"——元素嬗变、粒子加速器、核反应。第八章"无序定律"——热力学第二定律、熵、概率与无序。第九章"生命之谜"——从DNA到遗传密码，生命的化学基础。伽莫夫本人曾提出"遗传密码的三联体假说"，因此这一章格外有深度。</div>
+    <div class="grid-3-col" style="grid-template-columns:repeat(4,1fr);gap:10px;">
+      <div class="list-item" style="text-align:center;background:#fef2f2;border-color:#fecaca;"><strong>⬇️ 下降</strong><br>分子→原子→<br>原子核</div>
+      <div class="list-item" style="text-align:center;background:#fff7ed;border-color:#fed7aa;"><strong>⚗️ 炼金</strong><br>元素嬗变<br>粒子加速器</div>
+      <div class="list-item" style="text-align:center;background:#fefce8;border-color:#fde68a;"><strong>🎲 无序</strong><br>熵·概率<br>热力学第二定律</div>
+      <div class="list-item" style="text-align:center;background:#eef2ff;border-color:#c7d2fe;"><strong>🧬 生命</strong><br>DNA·遗传密码<br>病毒合成</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">第四部分</div>
+    <div class="section-title t-05">宏观世界：宇宙的画卷（第10-11章）</div>
+    <div class="section-desc">最后一部分将视野拉到最大。第十章"拓宽视野"讲述天文学如何从肉眼观测发展到巨型望远镜，人类对宇宙大小的认知不断刷新。第十一章"初创之日"讲述宇宙的起源——从星云假说到现代宇宙学，包括恒星的能源机制（热核聚变）和星系的演化。全书以一个宏大的问题结束：宇宙有起点吗？V符号象征着那最初的"神秘一跳"——从无到有的创生。</div>
+    <div class="timeline-row">
+      <div class="timeline-card tc1">
+        <div class="timeline-year r">肉眼</div>
+        <div>古人观星<br>天球概念</div>
+      </div>
+      <div class="timeline-card tc2">
+        <div class="timeline-year o">望远镜</div>
+        <div>伽利略→海尔<br>200英寸帕洛玛</div>
+      </div>
+      <div class="timeline-card tc3">
+        <div class="timeline-year g">星系</div>
+        <div>银河之外<br>膨胀宇宙</div>
+      </div>
+      <div class="timeline-card tc4">
+        <div class="timeline-year b">起源</div>
+        <div>恒星聚变<br>宇宙创生</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-06">
+  <div class="section-num num-06">06</div>
+  <div class="section-body">
+    <div class="tag tag-06">结构艺术</div>
+    <div class="section-title t-06">为什么这样排序？伽莫夫的叙事策略</div>
+    <div class="section-desc">这本科普书的结构体现了伽莫夫独特的叙事智慧：他从最具体、最易理解的内容（大数字、数论）开始，逐步过渡到抽象概念（时空相对性、四维几何），再深入微观世界（原子核、粒子和生命），最后以广阔的宏观宇宙收尾。这种"从已知到未知、从具象到抽象、从微小到宏大"的递进结构，使读者能沿着一条自然的认知路径游走于科学的各个领域，不会感到学科跳跃带来的困惑。</div>
+    <div class="list-2col">
+      <div class="list-item"><strong>📌 从具体到抽象</strong><br>大数字（具体）→ 相对论（抽象）→ 宇宙起源（终极）</div>
+      <div class="list-item"><strong>📌 从小到大的尺度跳跃</strong><br>数字（思维）→ 时空（物理）→ 原子核（纳米）→ 宇宙（光年）</div>
+      <div class="list-item"><strong>📌 从已知到未知</strong><br>霍屯督人计数 → 康托尔无穷数 → E=mc² → 遗传密码 → 宇宙起源</div>
+      <div class="list-item"><strong>📌 统一性线索</strong><br>一条线贯穿数学、物理、化学、生物、天文——通才科普的极致</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-07">
+  <div class="section-num num-07">07</div>
+  <div class="section-body">
+    <div class="tag tag-07">学科跨度</div>
+    <div class="section-title t-07">全科学覆盖：一本书读懂五大学科</div>
+    <div class="section-desc">《从一到无穷大》的独特之处在于它覆盖了从纯数学到应用物理、从微观粒子到宏观宇宙的几乎全部自然科学。数学（数论、集合论）、物理学（相对论、量子力学、核物理）、化学（元素、同位素）、生物学（DNA、遗传密码）、天文学（恒星、宇宙学）——五大学科在11章中无缝衔接。伽莫夫本人是一位具有"通才"视野的物理学家，他的科普作品也因此成为跨学科思维的典范。</div>
+    <div class="risk-row">
+      <div class="risk-label">数学</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:20%;background:#dc2626"></div></div>
+      <div class="risk-val">第1-2章</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">物理学</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:30%;background:#ea580c"></div></div>
+      <div class="risk-val">第3-5,7-8章</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">化学</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:15%;background:#ca8a04"></div></div>
+      <div class="risk-val">第6-7章</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">生物学</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:15%;background:#4f46e5"></div></div>
+      <div class="risk-val">第9章</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">天文学</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:20%;background:#db2777"></div></div>
+      <div class="risk-val">第10-11章</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-08">
+  <div class="section-num num-08">08</div>
+  <div class="section-body">
+    <div class="tag tag-08">教育价值</div>
+    <div class="section-title t-08">六十年不衰的教育奇迹</div>
+    <div class="section-desc">自1948年出版以来，《从一到无穷大》已被翻译成数十种语言，影响了全球几代科学家和科普爱好者。杨振宁回忆说他在西南联大就读时曾读过此书中文版，深受启发。物理学家弗里曼·戴森称其为"最好的科普书之一"。本书的成功在于它将科学教育从枯燥的公式中解放出来——用故事、比喻和幽默来呈现最深刻的科学思想，让读者在不知不觉中完成了跨学科的科学启蒙。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">1948</div>
+        <div class="data-sm">初版至今<br>七十六年畅销不衰</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">数十种</div>
+        <div class="data-sm">语言译本<br>全球影响力</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">爱因斯坦</div>
+        <div class="data-sm">亲笔推荐<br>"最好的科普书"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-09">
+  <div class="section-num num-09">09</div>
+  <div class="section-body">
+    <div class="tag tag-09">关键概念</div>
+    <div class="section-title t-09">贯穿全书的核心思想</div>
+    <div class="section-desc">《从一到无穷大》不止是一本分科的科普书，它有一条贯穿始终的线索：世界在本质上是一个井然有序的统一体，数学、物理、化学、生物只是描述这个统一体的不同语言。无论是大数还是无穷级数、是质子还是行星、是熵还是DNA——它们都遵循着相同的自然法则。伽莫夫通过这些概念搭建了一座连接各学科的桥梁——这也是"从一到无穷大"这个书名的深层含义。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">♾️</div>
+        <div class="dual-text">
+          <h4>"无穷"的主题</h4>
+          <p>大数的无穷（第一章）→ 时间的无穷（相对论）→ 粒子的无穷多组合（量子力学）→ 宇宙的无穷（天文学）——无穷既是一个数学概念，也是物理世界的本质特征。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🔗</div>
+        <div class="dual-text">
+          <h4>统一性主题</h4>
+          <p>物质与能量的统一（E=mc²）、空间与时间的统一（相对论）、粒子与力的统一（核力）、化学与生命的统一（遗传密码）——科学的终极追求是统一。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-10">
+  <div class="section-num num-10">10</div>
+  <div class="section-body">
+    <div class="tag tag-10">阅读指南</div>
+    <div class="section-title t-10">如何阅读《从一到无穷大》</div>
+    <div class="section-desc">伽莫夫在书中巧妙地安排了可选的"跳跃路径"：数学背景较强的读者可以直接从第一章开始，享受数字游戏；偏好物理的读者可以跳到第二部分（第三章）直接进入相对论；对生命科学感兴趣的则可以直接从第九章入手。但伽莫夫建议从头到尾地阅读——因为每一章都为后一章的概念奠定基础，前面的"轻松"内容会让后面的"艰深"话题变得平易近人。每个章节的末尾都有"译者注"和脚注，提供了额外的背景信息。</div>
+    <div class="flow-row">
+      <div class="flow-step">📖<br>从头读起（推荐）</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔢<br>数→时空→微观→宏观</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📚<br>或按兴趣跳跃阅读</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🤔<br>品味伽莫夫的幽默</div>
+      <div class="flow-step end">🌟<br>理解"从一到无穷"</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">《从一到无穷大》的目录本身就是一幅科学地图。它引导读者从最熟悉的"1"出发，穿越数学的抽象王国、时空的相对性迷宫、物质的微观宫殿，最终抵达宇宙起源的壮丽全景。这11章构成了一个完美的叙事弧线——伽莫夫以"通才"的视野，用统一的概念框架将五个学科串联成一个有机整体，让读者在每一次翻页中都离科学的终极理解更近一步。</div>
+</div>
+
+<div class="footer">
+  《从一到无穷大》第6章「目 录」信息图 · 乔治·伽莫夫 著 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>
