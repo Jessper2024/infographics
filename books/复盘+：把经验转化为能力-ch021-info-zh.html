@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 附录A「复盘画布」</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+.container{max-width:880px;width:100%}
+h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+.subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+.section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+.section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+.section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+.section-body{flex:1}
+.tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+.section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+.section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+.dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+.dual-card.yes{background:#eef2ff;border:1px solid #c7d2fe}
+.dual-card.no{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+.dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.dual-text p{font-size:12px;color:#777;line-height:1.6}
+.flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.flow-step{background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#3730a3;line-height:1.5;font-weight:bold}
+.flow-arrow{font-size:20px;color:#4f46e5;flex-shrink:0;font-weight:bold}
+.flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+.three-card{border-radius:12px;padding:16px 14px;text-align:center;font-size:12px;line-height:1.6}
+.three-card.tc1{background:#f0fdf4;border:2px solid #bbf7d0;color:#166534}
+.three-card.tc2{background:#fef2f2;border:2px solid #fecaca;color:#991b1b}
+.three-card.tc3{background:#eef2ff;border:2px solid #c7d2fe;color:#3730a3}
+.three-card h4{font-size:15px;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;color:#1a1a1a}
+.canvas-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:10px;font-size:13px;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.canvas-table th{background:#fef2f2;color:#dc2626;padding:12px 10px;text-align:center;font-weight:bold;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:13px;border-bottom:2px solid #fecaca}
+.canvas-table td{background:#fff;padding:10px 12px;color:#555;line-height:1.6;border-bottom:1px solid #f0ebe0;vertical-align:top}
+.canvas-table .row-label{background:#fff7ed;color:#ea580c;font-weight:bold;text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;min-width:80px}
+.takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+.takeaway-label{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+.takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:0.03em;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity 0.15s}
+.lang-btn:hover{opacity:0.75}
+@media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.three-col{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}.canvas-table{font-size:11px}}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch"><a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch021-info-en.html">中文 / English</a></div>
+
+<h1>复盘+：把经验转化为能力 · 附录A「复盘画布」</h1>
+<p class="subtitle">标准化的复盘引导框架——自上而下、从左至右的系统研讨工具</p>
+<div class="divider"></div>
+<div class="chapter-overview"><p>复盘画布是作者基于多家企业实践提炼的标准化复盘引导模板，遵循第2章所述的复盘四步法：回顾目标→评估结果→分析原因→总结规律。画布从左上至右下依次展开：先填写概要信息与初衷目标，再对照目标评估亮点与不足，深挖主客观原因，最后制定具体行动计划。作者强调：画布是引导工具而非填表过程，不可将复盘简化为「走过场」的机械操作。</p></div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">步法</span></div>
+    <div class="kpi-label">复盘画布步骤</div>
+    <div class="kpi-note">回顾目标→评估结果<br>→分析原因→总结规律</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">类</span></div>
+    <div class="kpi-label">后续行动</div>
+    <div class="kpi-note">开始做什么·停止做什么<br>·继续做什么</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">2<span class="kpi-unit">维</span></div>
+    <div class="kpi-label">原因分析</div>
+    <div class="kpi-note">主观原因+客观原因<br>鱼骨图·5Why·思考罗盘</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">SMART</div>
+    <div class="kpi-label">目标设定法则</div>
+    <div class="kpi-note">具体·可衡量·可实现<br>·相关·有时限</div>
+  </div>
+</div>
+
+<div class="section section-01">
+<div class="section-num num-01">01</div>
+<div class="section-body">
+<div class="tag tag-01">画布框架</div>
+<div class="section-title t-01">复盘画布：自上而下、从左至右的引导表格</div>
+<div class="section-desc"><strong>复盘画布是一个结构化的引导表格，不能把复盘简化为填表过程。</strong>画布适用于事件/活动复盘；对于大型项目或战略复盘，画布仅作为会议设计、组织和引导的参考，不能用于最终呈现。使用时需自上而下、从左至右进行研讨引导——先填写概要信息（主题、时间、地点、参与人），再依次按步骤1至步骤4展开讨论。</div>
+<table class="canvas-table">
+<tr><th width="14%">步骤</th><th width="43%">要点</th><th width="43%">填写指引</th></tr>
+<tr><td class="row-label">概要</td><td>基本信息</td><td>复盘主题、时间、地点、参与人员、事件简述</td></tr>
+<tr><td class="row-label">步骤①</td><td>回顾目标</td><td>初衷（出发点）与具体目标（SMART法则）；如无量化的目标，列出阶段性里程碑</td></tr>
+<tr><td class="row-label">步骤②</td><td>评估结果</td><td>以目标为基准：亮点（做得好）与不足（未达预期）。兼顾过程中超出预期或明显不理想的做法</td></tr>
+<tr><td class="row-label">步骤③</td><td>分析原因</td><td>成功/失败的原因：客观原因+深挖主观原因。参考鱼骨图、五个为什么、思考的罗盘</td></tr>
+<tr><td class="row-label">步骤④</td><td>总结经验</td><td>行动计划：具体措施+时间表+责任人。开始做·停止做·继续做。值得改进 vs 值得坚持</td></tr>
+</table>
+</div>
+</div>
+
+<div class="section section-02">
+<div class="section-num num-02">02</div>
+<div class="section-body">
+<div class="tag tag-02">步骤①</div>
+<div class="section-title t-02">回顾目标：初衷与目标的区别</div>
+<div class="section-desc"><strong>「初衷」是做某件事最初的目的和出发点，相对宽泛；「目标」是衡量目的是否达到的具体指标，必须符合SMART法则。</strong>如果难以设定量化目标，至少要列出阶段性的重要事件或「里程碑」，以衡量事件的进度或成败。清晰区分初衷与目标，是复盘的第一步——很多复盘效果不佳，根源在于最初的目标设定就模糊不清。</div>
+<div class="dual-grid">
+<div class="dual-card yes"><div class="dual-icon">🎯</div><div class="dual-text"><h4>目标（SMART）</h4><p>具体的、可衡量的指标。如：销售额增长20%、项目6月30日前交付。是评估成败的客观尺度。</p></div></div>
+<div class="dual-card no"><div class="dual-icon">💭</div><div class="dual-text"><h4>初衷（出发点）</h4><p>做这件事的根本目的与愿景。如：提升客户满意度、打造行业标杆。是行动的内在驱动力。</p></div></div>
+</div>
+</div>
+</div>
+
+<div class="section section-03">
+<div class="section-num num-03">03</div>
+<div class="section-body">
+<div class="tag tag-03">步骤②③④</div>
+<div class="section-title t-03">评估结果→分析原因→总结经验</div>
+<div class="section-desc"><strong>评估结果时，以目标为基准兼顾过程表现：既要识别「亮点」，也要诚实面对「不足」。</strong>原因分析需兼顾客观与主观，深挖根源——对于复杂因果，可借助鱼骨图、五个为什么或思考的罗盘等工具（参见附录B）。总结经验阶段，要制定具体、可落地的行动计划，避免泛泛的「虚话」。</div>
+<div class="three-col">
+<div class="three-card tc1"><h4>🟢 开始做什么</h4>新的发现或补救行动。哪些是有价值的新做法，以前没做但现在需要做的。</div>
+<div class="three-card tc2"><h4>🔴 停止做什么</h4>不再奏效或被验证不当的措施。哪些是曾以为有用但实际上无效甚至有害的。</div>
+<div class="three-card tc3"><h4>🔵 继续做什么</h4>推进到位或需坚持、发扬光大的地方。哪些做法效果良好，需要继续坚持和深化。</div>
+</div>
+</div>
+</div>
+
+<div class="section section-04">
+<div class="section-num num-04">04</div>
+<div class="section-body">
+<div class="tag tag-04">关键原则</div>
+<div class="section-title t-04">复盘画布 ≠ 填表走过场</div>
+<div class="section-desc"><strong>复盘画布的核心价值在于「引导思维」而非「记录结果」。</strong>它是引导师推动团队深度对话的工具，绝不能简化为机械填表的任务。画布的价值体现在引导过程中激发的深度反思、坦诚交流与集体智慧——如果只是让参与者逐项填空，复盘将沦为形式主义，失去了其作为组织学习方法的核心意义。画布的正确使用方式是：用它激发对话、结构化思考，而非用它记录对话。</div>
+</div>
+</div>
+
+<div class="section section-05">
+<div class="section-num num-05">05</div>
+<div class="section-body">
+<div class="tag tag-05">适用场景</div>
+<div class="section-title t-05">不同层级使用画布的注意事项</div>
+<div class="section-desc"><strong>画布适用于事件/活动复盘；大型项目和战略复盘需要更灵活地运用。</strong>对于事件/活动级别的复盘，画布可以直接作为现场引导与呈现工具。对于重大项目复盘和经营/战略复盘，画布仅列出逻辑框架和必备要素——实际执行中需要更复杂的会议设计，如分组研讨、世界咖啡汇谈、多轮迭代等，画布结构作为底层的逻辑骨架贯穿始终。</div>
+<div class="flow-row">
+<div class="flow-step">事件/活动<br>复盘</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">直接使用<br>画布引导<br>逐项研讨</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">项目<br>复盘</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">画布为<br>逻辑框架<br>分组+多轮</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step end">战略<br>复盘</div>
+</div>
+</div>
+</div>
+
+<div class="takeaway">
+<div class="takeaway-label">核心结论</div>
+<div class="takeaway-text">复盘画布是引导深度反思的结构化工具，其价值在于激发对话而非填表记录。四步法——<strong>回顾目标（初衷+SMART目标）→评估结果（亮点与不足，以目标为基准）→分析原因（客观+主观，借助鱼骨图/5Why/思考罗盘）→总结经验（开始做·停止做·继续做，具体措施+时间表+责任人）</strong>——为复盘提供了清晰的逻辑路径。记住：画布是用来思考的，不是用来填写的。</div>
+</div>
+
+<div class="footer">来源：邱昭良《复盘+：把经验转化为能力》附录A · 复盘画布</div>
+</div>
+</body>
+</html>

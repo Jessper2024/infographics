@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 第8章「推广复盘」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+  .flow-step.start { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+
+  .triple-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .triple-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center; border: 1px solid;
+  }
+  .triple-card.t1 { background: #fef2f2; border-color: #fecaca; }
+  .triple-card.t2 { background: #fff7ed; border-color: #fed7aa; }
+  .triple-card.t3 { background: #f0fdf4; border-color: #bbf7d0; }
+  .triple-icon { font-size: 28px; margin-bottom: 8px; }
+  .triple-title { font-size: 15px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif; }
+  .triple-desc { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 16px 12px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-card.dc4 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 4px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-big.b { color: #4f46e5; }
+  .data-sm { font-size: 11px; color: #888; line-height: 1.6; }
+
+  .stage-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .stage-card {
+    border-radius: 12px; padding: 18px 16px; text-align: center;
+    border: 1px solid;
+  }
+  .stage-card.s1 { background: #fef2f2; border-color: #fecaca; }
+  .stage-card.s2 { background: #fff7ed; border-color: #fed7aa; }
+  .stage-card.s3 { background: #f0fdf4; border-color: #bbf7d0; }
+  .stage-num { font-size: 32px; font-weight: bold; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif; }
+  .stage-card.s1 .stage-num { color: #dc2626; }
+  .stage-card.s2 .stage-num { color: #ea580c; }
+  .stage-card.s3 .stage-num { color: #16a34a; }
+  .stage-label { font-size: 14px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; }
+  .stage-desc { font-size: 11px; color: #888; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+    border: 1px solid;
+  }
+  .dual-card.a { background: #eef2ff; border-color: #c7d2fe; }
+  .dual-card.b { background: #fefce8; border-color: #fde68a; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .habit-flow { margin-top: 10px; }
+  .habit-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .habit-label { font-size: 13px; color: #555; width: 80px; flex-shrink: 0; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif; }
+  .habit-steps { display: flex; align-items: center; gap: 6px; flex: 1; }
+  .habit-step {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px;
+    padding: 8px 10px; text-align: center; font-size: 12px; color: #991b1b;
+    flex: 1; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .habit-step.reward { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+
+  .quote-block {
+    background: #fefce8; border-left: 4px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #92400e;
+    line-height: 1.8; font-style: italic;
+  }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .triple-row, .data-row, .dual-grid, .stage-row { grid-template-columns: 1fr; }
+    .flow-row, .habit-steps { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .habit-row { flex-wrap: wrap; }
+    .habit-label { width: 100%; }
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch019-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘+ · 第8章「推广复盘」</h1>
+<p class="subtitle">从1.0到3.0——如何让复盘在组织中扎根、生长、成为文化基因</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>复盘的操作手法简单、功效显著，但Signet咨询集团调查显示"许多试图学习和应用AAR的努力都失败了，因为人们把这种生动实践简化为枯燥乏味的技术"。做一次复盘不难，难的是做到位、推广开、形成习惯并建立体系。本章系统阐述复盘应用的三阶段进化（1.0规范→2.0实效→3.0体系）、三个"成长引擎"（员工·引导师·组织）、推广的六个阶段（松土→赋能→试点→总结→推广→优化）、四种推广策略（自上而下·循序渐进·嵌入业务·分工合作），以及评估效果的四个层次、扩大影响的两个维度和养成习惯的"暗示→惯常行为→奖赏→渴求"回路。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">应用阶段</div>
+    <div class="kpi-note">1.0自发→规范<br>2.0规范→实效<br>3.0实效→体系</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">大</span></div>
+    <div class="kpi-label">成长引擎</div>
+    <div class="kpi-note">员工真切感受价值<br>引导师提升技能<br>组织改善文化</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">6<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">推广阶段</div>
+    <div class="kpi-note">松土→赋能→试点<br>总结→推广→优化</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">4<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">推广策略</div>
+    <div class="kpi-note">自上而下 · 循序渐进<br>嵌入业务 · 分工合作</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">4<span class="kpi-unit">层</span></div>
+    <div class="kpi-label">评估层次</div>
+    <div class="kpi-note">现场反应→会议成果<br>行动落地→商业价值</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">百万<span class="kpi-unit">元</span></div>
+    <div class="kpi-label">复盘商业价值</div>
+    <div class="kpi-note">汽车经销集团复盘<br>创造接近百万元价值</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit">维</span></div>
+    <div class="kpi-label">扩大影响</div>
+    <div class="kpi-note">扩大共享范围<br>增加应用深度</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">三阶段</div>
+    <div class="section-title t-01">应用复盘的三个阶段：从"做了"到"做成"</div>
+    <div class="section-desc">企业推广复盘通常会经历三个阶段的进化。复盘1.0是从自发状态到规范——企业将工作总结升级为团队复盘，但仍有机械套模板、参与度不足、缺乏引导、不成体系等遗憾。复盘2.0是从规范到实效——通过复盘引导师认证培训，提升参与者、引导师和组织的适配度，切实将复盘做到位，避免沦为"形式主义"。复盘3.0是从实效到体系——将复盘与企业管理业务运作结合，"润物细无声"地形成完整的工作—学习—改进体系，最终成为习惯与企业文化。万达、联想、英国石油公司、美军均处于3.0阶段。</div>
+    <div class="stage-row">
+      <div class="stage-card s1">
+        <div class="stage-num">1.0</div>
+        <div class="stage-label">从自发到规范</div>
+        <div class="stage-desc">机械套取模板<br>参与度差·缺乏引导<br>未能形成体系</div>
+      </div>
+      <div class="stage-card s2">
+        <div class="stage-num">2.0</div>
+        <div class="stage-label">从规范到实效</div>
+        <div class="stage-desc">提高复盘质量<br>培养引导师<br>找配方·做出效果</div>
+      </div>
+      <div class="stage-card s3">
+        <div class="stage-num">3.0</div>
+        <div class="stage-label">从实效到体系</div>
+        <div class="stage-desc">嵌入业务运作<br>润物细无声<br>形成习惯与文化</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">增长动力</div>
+    <div class="section-title t-02">启动复盘的三个"成长引擎"</div>
+    <div class="section-desc">推动复盘的持续推广，需要分别激活三类主体的热情，使其成为推动复盘发展的"引擎"。员工：若一开始确保每次复盘达到预期效果，让大家学到宝贵经验且在过程中感受良好，就会提高参与积极性，形成"感受好→更愿意参与→学到更多"的良性循环。复盘引导师：有效的复盘会振奋信心，激励引导师积极总结反思、提高技能。组织：到位复盘会改善流程、制度、规范乃至深层信念，改善企业文化，让大家更愿意坦诚反思、激发集体智慧——三个引擎相互影响，共同推动复盘效果持续提升。</div>
+    <div class="triple-row">
+      <div class="triple-card t1">
+        <div class="triple-icon">👤</div>
+        <div class="triple-title">员工引擎 R1</div>
+        <div class="triple-desc">感受到价值→乐意参与→开放心态→学到更多→感受更佳→形成良性循环，反之则陷入恶性循环</div>
+      </div>
+      <div class="triple-card t2">
+        <div class="triple-icon">🎤</div>
+        <div class="triple-title">引导师引擎 R2</div>
+        <div class="triple-desc">复盘效果好→信心振奋→积极总结→提高引导技能→效果更好→持续提升的正向飞轮</div>
+      </div>
+      <div class="triple-card t3">
+        <div class="triple-icon">🏢</div>
+        <div class="triple-title">组织引擎 R3</div>
+        <div class="triple-desc">复盘到位→改善制度流程→优化文化→更愿坦诚反思→复盘效果提升→组织持续进化</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">路线图</div>
+    <div class="section-title t-03">推广复盘的六个阶段：像种庄稼一样培育复盘文化</div>
+    <div class="section-desc">推广复盘不能以"搞运动""走形式"的方式推动。就像种庄稼需要耐心，经历六个阶段：松土（宣传倡导、明确价值、营造氛围）；赋能（培训复盘引导师、普及内部知识）；试点（从小团队或具体事件入手、逐步积累经验）；及时总结提炼（用复盘方法复盘每次复盘、提高策划实施能力）；逐步推广（由易到难扩展四类复盘）；评估优化（沉淀标准规程模板、影响更多人改善文化）。这是一项长期生态化系统工程，不可"拔苗助长"，只能顺应内在规律。</div>
+    <div class="flow-row">
+      <div class="flow-step start">🌱<br>松土</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🎓<br>赋能</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔬<br>试点</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📝<br>总结提炼</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📈<br>逐步推广</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🔄<br>评估优化</div>
+    </div>
+    <p style="margin-top:12px; font-size:13px; color:#888;">推广复盘是一项长期的生态化系统工程——就像种庄稼：改良土壤→播下种子→施肥浇水→等待发芽→收获反思→提升能力。推动复盘不能着急，"拔苗助长"只能事与愿违，"欲速则不达"。</p>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">策略武器库</div>
+    <div class="section-title t-04">推广复盘的四种策略 + 评估复盘效果的四个层次</div>
+    <div class="section-desc">推广复盘可运用四种互补策略：自上而下——各级领导人以身作则是让复盘落地的唯一途径（柳传志："以身作则，不是影响他人的重要途径，而是唯一途径"）；循序渐进——从事件/活动层面复盘做起，易于组织、见效快、树立信心；嵌入业务——将复盘作为团队正式工作纳入日程，而非"可选项"；分工合作——HR/企业大学培训、各级领导发起、企划部机制、宣传部表彰、事业部分享会协同推进。同时，可从现场反应→会议成果→行动落地→商业价值四个层次评估复盘效果。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">自上而下</div>
+        <div class="data-sm">领导人以身作则<br>行胜于言·上行下效<br>柳传志"改脾气"</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">循序渐进</div>
+        <div class="data-sm">从事件复盘做起<br>人员少·易组织<br>易驾驭·见效快</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">嵌入业务</div>
+        <div class="data-sm">纳入正式日程<br>不是"额外工作"<br>联想：事后自然复盘</div>
+      </div>
+      <div class="data-card dc4">
+        <div class="data-big b">分工合作</div>
+        <div class="data-sm">HR培训·领导发起<br>企划机制·宣传表彰<br>共享网站·培养引导师</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">持续进化</div>
+    <div class="section-title t-05">从两个维度扩大影响 + 让复盘成为习惯</div>
+    <div class="section-desc">复盘就像在池塘中投下一粒石子，产生层层涟漪。扩大复盘的影响力有两个维度：横向扩展共享范围——从复盘团队内部学习，到其他团队参与或获取结果，再到整个组织通过知识管理系统发布（美军AKO、微信社群、邮件群组如雪佛龙"安全预警网络"）；纵向加深应用深度——从单个团队跟进落实，到发现解决共性问题，再到优化组织制度/流程/规范和文化。让复盘成为习惯则需遵循"习惯回路"：通过日历和议程创造"暗示"，用认可和成效强化"奖赏"，将奖赏与内心对学习成长的"渴求"联系起来，并充分利用团队力量（实践社群、分享会、培训）。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">↔️</div>
+        <div class="dual-text">
+          <h4>横向：扩大共享范围</h4>
+          <p>复盘团队→其他团队现场参与→组织级知识管理系统发布→"蒲公英的种子"随人员流动传播。——让复盘不只是局部改善，而是全员智慧资产。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">↕️</div>
+        <div class="dual-text">
+          <h4>纵向：加深应用深度</h4>
+          <p>团队跟进落实→发现共性问题→优化制度/流程/规范/文化。——从"就事论事"走向"整体提升"，发挥复盘的最大杠杆价值。</p>
+        </div>
+      </div>
+    </div>
+    <div class="habit-flow">
+      <div class="habit-row">
+        <div class="habit-label">习惯回路</div>
+        <div class="habit-steps">
+          <div class="habit-step">💡 暗示<br>日历/例会</div>
+          <div class="habit-step">🏃 惯常行为<br>进行复盘</div>
+          <div class="habit-step reward">🏆 奖赏<br>认可/成效</div>
+          <div class="habit-step reward">🔥 渴求<br>学习成长</div>
+        </div>
+      </div>
+    </div>
+    <div class="quote-block">"重要的是日复一日地坚持下去。除非AAR在组织的所有层次上都得以推行，否则它们会被视为一种可有可无的爱好。"——《美国陆军领导力手册》</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">推广复盘不是一场运动，而是一次生态培育。从1.0到3.0的进化需要激活员工、引导师和组织三个成长引擎，耐心走过松土→赋能→试点→总结→推广→优化的六个阶段，灵活运用自上而下、循序渐进、嵌入业务、分工合作四种策略。评估效果从现场反应到商业价值四个层次步步深入，扩大影响则横向共享、纵向深耕。最终目标：让复盘从"一种方法"变成"一种习惯"，再用习惯塑造文化——正如《美国陆军领导力手册》所言，"除非AAR在所有层次都得以推行，否则只是一种可有可无的爱好"。</div>
+</div>
+
+<div class="footer">
+  《复盘+：把经验转化为能力》第8章「推广复盘」信息图 · 邱昭良 著 · 机械工业出版社 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

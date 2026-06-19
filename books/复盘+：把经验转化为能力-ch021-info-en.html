@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Review+ · Appendix A「Review Canvas」</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+.container{max-width:880px;width:100%}
+h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+.subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+.section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+.section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+.section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+.section-body{flex:1}
+.tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+.section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+.section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+.dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+.dual-card.yes{background:#eef2ff;border:1px solid #c7d2fe}
+.dual-card.no{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+.dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.dual-text p{font-size:12px;color:#777;line-height:1.6}
+.flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.flow-step{background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#3730a3;line-height:1.5;font-weight:bold}
+.flow-arrow{font-size:20px;color:#4f46e5;flex-shrink:0;font-weight:bold}
+.flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+.three-card{border-radius:12px;padding:16px 14px;text-align:center;font-size:12px;line-height:1.6}
+.three-card.tc1{background:#f0fdf4;border:2px solid #bbf7d0;color:#166534}
+.three-card.tc2{background:#fef2f2;border:2px solid #fecaca;color:#991b1b}
+.three-card.tc3{background:#eef2ff;border:2px solid #c7d2fe;color:#3730a3}
+.three-card h4{font-size:15px;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;color:#1a1a1a}
+.canvas-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:10px;font-size:13px;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.canvas-table th{background:#fef2f2;color:#dc2626;padding:12px 10px;text-align:center;font-weight:bold;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:13px;border-bottom:2px solid #fecaca}
+.canvas-table td{background:#fff;padding:10px 12px;color:#555;line-height:1.6;border-bottom:1px solid #f0ebe0;vertical-align:top}
+.canvas-table .row-label{background:#fff7ed;color:#ea580c;font-weight:bold;text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;min-width:80px}
+.takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+.takeaway-label{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+.takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif}
+.footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+.lang-switch{text-align:right;margin-bottom:16px}
+.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:0.03em;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity 0.15s}
+.lang-btn:hover{opacity:0.75}
+@media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.three-col{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}.canvas-table{font-size:11px}}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html">← Chapter Catalog</a></div>
+<div class="lang-switch"><a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch021-info-en.html">中文 / English</a></div>
+
+<h1>Review+ · Appendix A「Review Canvas」</h1>
+<p class="subtitle">A standardized review facilitation framework — a systematic discussion tool that progresses top-to-bottom, left-to-right</p>
+<div class="divider"></div>
+<div class="chapter-overview"><p>The Review Canvas is a standardized facilitation template based on the author's practice across multiple organizations, following the four-step method outlined in Chapter 2: Review Objectives → Evaluate Results → Analyze Causes → Summarize Insights. The canvas progresses from top-left to bottom-right: first fill in overview information and original intent/goals, then evaluate highlights and shortcomings against objectives, deeply analyze both objective and subjective causes, and finally formulate concrete action plans. The author emphasizes: the canvas is a facilitation tool, not a form-filling exercise — never reduce review to a mechanical checkbox process.</p></div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">Steps</span></div>
+    <div class="kpi-label">Canvas Process</div>
+    <div class="kpi-note">Review Objectives→Evaluate Results<br>→Analyze Causes→Summarize Insights</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">Types</span></div>
+    <div class="kpi-label">Follow-up Actions</div>
+    <div class="kpi-note">Start Doing · Stop Doing<br>· Continue Doing</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">2<span class="kpi-unit">Dimensions</span></div>
+    <div class="kpi-label">Cause Analysis</div>
+    <div class="kpi-note">Objective + Subjective Causes<br>Fishbone · 5Whys · Thinking Compass</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">SMART</div>
+    <div class="kpi-label">Goal-Setting Rule</div>
+    <div class="kpi-note">Specific · Measurable · Achievable<br>· Relevant · Time-bound</div>
+  </div>
+</div>
+
+<div class="section section-01">
+<div class="section-num num-01">01</div>
+<div class="section-body">
+<div class="tag tag-01">Canvas Structure</div>
+<div class="section-title t-01">The Review Canvas: Top-Down, Left-to-Right Facilitation Table</div>
+<div class="section-desc"><strong>The Review Canvas is a structured facilitation table — never reduce review to a form-filling exercise.</strong> The canvas works well for event/activity reviews; for major project reviews or strategic reviews, it serves only as a logical framework and meeting design reference, not for final presentation. Always conduct discussions top-to-bottom and left-to-right: first fill in overview information (topic, time, location, participants), then proceed through Steps 1–4 in sequence.</div>
+<table class="canvas-table">
+<tr><th width="14%">Step</th><th width="43%">Focus</th><th width="43%">Guidance</th></tr>
+<tr><td class="row-label">Overview</td><td>Basic Info</td><td>Review topic, date, location, participants, event summary</td></tr>
+<tr><td class="row-label">Step ①</td><td>Review Objectives</td><td>Original intent (purpose/driver) vs. concrete goals (SMART). If goals cannot be quantified, list key milestones.</td></tr>
+<tr><td class="row-label">Step ②</td><td>Evaluate Results</td><td>Benchmarked against objectives: Highlights (what went well) & Shortcomings (what fell short). Also capture what exceeded or underperformed expectations during the process.</td></tr>
+<tr><td class="row-label">Step ③</td><td>Analyze Causes</td><td>Reasons for success/failure: both objective and subjective root causes. Use Fishbone Diagram, 5 Whys, or Thinking Compass (see Appendix B).</td></tr>
+<tr><td class="row-label">Step ④</td><td>Summarize Insights</td><td>Action plan: concrete measures + timeline + responsible person. Start Doing · Stop Doing · Continue Doing. What to improve vs. what to sustain.</td></tr>
+</table>
+</div>
+</div>
+
+<div class="section section-02">
+<div class="section-num num-02">02</div>
+<div class="section-body">
+<div class="tag tag-02">Step ①</div>
+<div class="section-title t-02">Review Objectives: Distinguishing Intent from Goals</div>
+<div class="section-desc"><strong>"Original intent" is the broader purpose and starting point; "goals" are the concrete, measurable indicators of whether that purpose was achieved — goals must follow the SMART rule.</strong> If quantifiable goals are difficult to set, at minimum list key milestones to measure progress and success. Clearly distinguishing intent from goals is the first step of review — many reviews fail because the initial goal-setting was vague.</div>
+<div class="dual-grid">
+<div class="dual-card yes"><div class="dual-icon">🎯</div><div class="dual-text"><h4>Goals (SMART)</h4><p>Concrete, measurable indicators. E.g., 20% sales growth, deliver by June 30. Provide objective benchmarks for evaluation.</p></div></div>
+<div class="dual-card no"><div class="dual-icon">💭</div><div class="dual-text"><h4>Intent (Purpose)</h4><p>The fundamental reason and vision behind the action. E.g., improve customer satisfaction, establish industry benchmark. The intrinsic motivation.</p></div></div>
+</div>
+</div>
+</div>
+
+<div class="section section-03">
+<div class="section-num num-03">03</div>
+<div class="section-body">
+<div class="tag tag-03">Steps ②③④</div>
+<div class="section-title t-03">Evaluate → Analyze → Summarize</div>
+<div class="section-desc"><strong>When evaluating results, benchmark against objectives while also capturing process-level performance: identify both "highlights" and honestly confront "shortcomings."</strong> Cause analysis must cover both objective and subjective factors, digging deep for root causes — for complex causality, use Fishbone Diagrams, 5 Whys, or the Thinking Compass (see Appendix B). In the summarization phase, create specific, actionable plans — avoid vague platitudes.</div>
+<div class="three-col">
+<div class="three-card tc1"><h4>🟢 Start Doing</h4>New discoveries or remedial actions. Valuable practices not yet attempted but now needed.</div>
+<div class="three-card tc2"><h4>🔴 Stop Doing</h4>Measures that no longer work or have proven ineffective. What to abandon despite past investment.</div>
+<div class="three-card tc3"><h4>🔵 Continue Doing</h4>What has been well executed and deserves reinforcement. Proven effective practices to sustain and deepen.</div>
+</div>
+</div>
+</div>
+
+<div class="section section-04">
+<div class="section-num num-04">04</div>
+<div class="section-body">
+<div class="tag tag-04">Key Principle</div>
+<div class="section-title t-04">Review Canvas ≠ Filling Out a Form</div>
+<div class="section-desc"><strong>The core value of the Review Canvas is "guiding thinking," not "recording results."</strong> It is a tool for facilitators to drive deep team dialogue. Never reduce it to a mechanical checkbox task. The canvas's value emerges from the deep reflection, candid communication, and collective wisdom it stimulates. The correct way to use the canvas: let it spark dialogue and structure thinking, not merely document it.</div>
+</div>
+</div>
+
+<div class="section section-05">
+<div class="section-num num-05">05</div>
+<div class="section-body">
+<div class="tag tag-05">Usage Scenarios</div>
+<div class="section-title t-05">Using the Canvas Across Different Levels</div>
+<div class="section-desc"><strong>The canvas is ideal for event/activity reviews; major projects and strategic reviews require more flexible application.</strong> For event-level reviews, the canvas can serve directly as a live facilitation and presentation tool. For major project reviews and strategic/business reviews, the canvas provides only the logical framework — actual execution demands more sophisticated meeting design, such as breakout groups, World Cafe, and multi-round iteration, with the canvas structure serving as the underlying logical backbone throughout.</div>
+<div class="flow-row">
+<div class="flow-step">Event / Activity<br>Review</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Direct use<br>of canvas for<br>step-by-step facilitation</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Project<br>Review</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Canvas as<br>logical backbone<br>Groups + Multi-round</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step end">Strategic<br>Review</div>
+</div>
+</div>
+</div>
+
+<div class="takeaway">
+<div class="takeaway-label">Key Takeaway</div>
+<div class="takeaway-text">The Review Canvas is a structured tool for guiding deep reflection — its value lies in sparking dialogue, not filling in boxes. The four-step method — <strong>Review Objectives (Intent + SMART Goals) → Evaluate Results (Highlights & Shortcomings, benchmarked against objectives) → Analyze Causes (Objective + Subjective, using Fishbone/5Whys/Thinking Compass) → Summarize Insights (Start Doing · Stop Doing · Continue Doing, with concrete measures + timeline + responsible person)</strong> — provides a clear logical path for every review. Remember: the canvas is for thinking, not for filling.</div>
+</div>
+
+<div class="footer">Source: Qiu Zhaoliang, Review+: Turning Experience into Capability, Appendix A · Review Canvas</div>
+</div>
+</body>
+</html>

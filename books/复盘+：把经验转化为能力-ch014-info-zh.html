@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 第4章「团队复盘」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 20px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.d3 { background: #fefce8; border-color: #fde68a; }
+  .data-card.d4 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #dc2626; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #555; line-height: 1.6; }
+
+  .quote-block { background: #f8f6f3; border-left: 4px solid #ea580c; border-radius: 8px; padding: 16px 20px; margin: 14px 0; font-size: 14px; color: #777; line-height: 1.9; font-style: italic; }
+  .quote-block .quote-author { display: block; margin-top: 8px; font-style: normal; font-weight: bold; color: #9a3412; font-size: 13px; }
+
+  .bulleted-list { margin-top: 10px; padding-left: 0; list-style: none; }
+  .bulleted-list li { padding: 6px 0 6px 20px; position: relative; font-size: 14px; color: #555; line-height: 1.8; }
+  .bulleted-list li::before { content: '▸'; position: absolute; left: 0; color: #dc2626; font-size: 12px; }
+
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; } h1 { font-size: 26px; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch014-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘+：把经验转化为能力 · 第4章「团队复盘」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 核心洞察</span>
+  复盘的机理简单，但团队复盘绝非易事——美军将其列为标准操作规范，联想、华为、BP等企业深耕多年。为什么？因为专业引导才是团队复盘成败的关键。本章揭示美军AAR四阶段法、复盘两大流派、引导师的10项职责，以及独创的"三阶九步法"。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>团队复盘的核心不在于"知道"，而在于"引导"——引导的质量决定复盘的质量。</strong>本章从美军AAR实战出发，拆解正式与非正式复盘的操作流程（计划→准备→执行→跟进）。结合联想与BP实践，提出团队复盘的四阶段小流程（回顾评估→分析反思→萃取提炼→转化应用），对比过程还原派与结果导向派两大流派。重点阐述引导师如何区分"过程"与"内容"，履行10项职责，并详解独创的"三阶九步法"（精心准备→有效引导→推进到位）。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">阶段</span></div>
+    <div class="kpi-label">AAR流程</div>
+    <div class="kpi-note">计划 → 准备<br>→ 执行 → 跟进<br>美军标准操作规范</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit">大流派</span></div>
+    <div class="kpi-label">复盘风格</div>
+    <div class="kpi-note">过程还原派（美军/BP）<br>vs 结果导向派<br>（联想/谷歌）</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">10<span class="kpi-unit">项职责</span></div>
+    <div class="kpi-label">引导师工作</div>
+    <div class="kpi-note">营造氛围·关注过程<br>促进参与·提问激发<br>总结提炼·后续跟进</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3×3<span class="kpi-unit">步法</span></div>
+    <div class="kpi-label">三阶九步</div>
+    <div class="kpi-note">精心准备（3步）<br>有效引导（3步）<br>推进到位（3步）</div>
+  </div>
+</div>
+
+<!-- 01: AAR -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">美军实践</div>
+    <div class="section-title t-01">美军AAR：世界上最成熟的团队复盘体系</div>
+    <div class="section-desc"><strong>AAR是对一次事件的专业讨论，侧重于绩效表现，让战士们自己发现发生了什么、为什么发生、如何改进：</strong>美军将其列为各级指挥官标准操作规范，分正式AAR（提前6-8周策划，有OC观察者控制人）和非正式AAR（当场快速进行），贯穿计划→准备→执行→跟进四个阶段。</div>
+    <div class="flow-row">
+      <div class="flow-step">计划<br>确定OC/目标</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">准备<br>观察记录整合</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">执行<br>导入→回顾→讨论</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">跟进<br>短期·中期·长期</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 团队复盘四阶段 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">操作手法</div>
+    <div class="section-title t-02">团队复盘四阶段：从回顾到转化</div>
+    <div class="section-desc"><strong>基于"复盘之道"，团队复盘分四大阶段：</strong>①回顾评估——对照目标找出亮点与不足，关键是实事求是、团队达成共识；②分析反思——用五个为什么、鱼骨图等工具找根本原因；③萃取提炼——如铸剑需要模具、材料、工匠、火候，萃取知识也需要五要素到位；④转化应用——开始做什么、继续做什么、停止做什么，落实到责任人时限。</div>
+    <div class="flow-row">
+      <div class="flow-step">①回顾<br>评估目标/事实</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">②分析<br>反思根因</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③萃取<br>提炼规律</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">④转化<br>行动应用</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 两大流派 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">两大流派</div>
+    <div class="section-title t-03">过程还原派 vs 结果导向派：殊途同归</div>
+    <div class="section-desc"><strong>复盘评估结果阶段有两种处理手法：</strong>过程还原派（美军/BP）按时间顺序复现关键环节，利于增进了解但可能冗长；结果导向派（联想/谷歌）直接对照目标列出优劣，高效聚焦但新成员可能缺乏背景。两派殊途同归——选择取决于团队成员熟悉度和复盘目的。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>过程还原派（美军·BP）</h4>
+          <p>按时间/职能条线复现关键环节→找出待深入议题。优点：操作简便、线索清晰、促进相互了解。缺点：可能陷入流水账。</p>
+        </div>
+      </div>
+      <div class="dual-card yes" style="background:#eef2ff;border-color:#c7d2fe;">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>结果导向派（联想·谷歌）</h4>
+          <p>对照目标直接列出优劣→必要时复现过程。优点：简单高效、保持聚焦。缺点：新成员可能缺乏背景共识。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 引导师 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">引导师</div>
+    <div class="section-title t-04">复盘引导师：区分"过程"与"内容"是关键</div>
+    <div class="section-desc"><strong>引导（facilitation）本意是"使……变得容易"：</strong>引导师的终极目的是鼓励参与、改进互动、提高合作效能。核心技能是区分"过程"（如何交谈、方法、氛围）与"内容"（交谈什么、议题本身）。引导师管理过程、保持中立，将内容交给全体参与者。如果引导师对内容一无所知，可能错失深入探询的机会。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🗣️</div>
+        <div class="data-name" style="color:#dc2626;">营造氛围</div>
+        <div class="data-sm">信任 开放 客观<br>管理人际互动<br>创新对话环境</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚖️</div>
+        <div class="data-name" style="color:#ea580c;">客观中立</div>
+        <div class="data-sm">不参与内容讨论<br>不提供答案<br>不对结果进行评判</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">👥</div>
+        <div class="data-name" style="color:#4f46e5;">过程管理</div>
+        <div class="data-sm">设计会议 引导研讨<br>激发思考 提供反馈<br>总结提炼 澄清共识</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 三阶九步 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">三阶九步</div>
+    <div class="section-title t-05">三阶九步法™：团队复盘引导的完整框架</div>
+    <div class="section-desc"><strong>邱昭良独创的团队复盘引导体系：</strong>阶段一「精心准备」——策划方案、组织会议、提前准备；阶段二「有效引导」——开场申明规则、顺序研讨深入挖掘（四个步骤不跳过）、收尾总结致谢；阶段三「推进到位」——整理分享结果、跟进推动落地、评估与改善。全程确保复盘不是"开了会就算了"。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes" style="background:#eef2ff;border-color:#c7d2fe;">
+        <div class="dual-icon">📐</div>
+        <div class="dual-text">
+          <h4>阶段一：精心准备</h4>
+          <p>策划方案 → 组织会议（面对面优先、关键人必须到场）→ 提前准备（汇总资料、行政后勤）</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎤</div>
+        <div class="dual-text">
+          <h4>阶段二：有效引导</h4>
+          <p>开场（规则+预热）→ 顺序研讨（回顾→反思→萃取→转化，但要抓重点深入）→ 收尾</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:14px 18px;font-size:13px;color:#92400e;line-height:1.7;">
+      <strong>阶段三：推进到位</strong> · 整理分享复盘结果（微课/知识管理）→ 跟进实施推动落地 → 评估与改善（复盘效果、下一步方向）
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">团队复盘成败的关键不在于"方法论是否有名"，而在于"引导是否到位"。美军AAR用四阶段流程规范操作，但最核心的是引导师——区分过程与内容，保持中立，让团队自己找到答案。三阶九步法为国内企业提供了可操作的框架：精心准备是地基，有效引导是核心，推进到位是闭环。复盘的质量关键在于引导的品质和流畅度。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《复盘+：把经验转化为能力》第4章「团队复盘」信息图 · 邱昭良 著 · 基于原文提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

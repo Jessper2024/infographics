@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 第5章「项目复盘」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 20px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fefce8; border-color: #fde68a; }
+  .data-card.d2 { background: #f0fdf4; border-color: #bbf7d0; }
+  .data-card.d3 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-card.d4 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #ca8a04; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #555; line-height: 1.6; }
+
+  .quote-block { background: #f8f6f3; border-left: 4px solid #ea580c; border-radius: 8px; padding: 16px 20px; margin: 14px 0; font-size: 14px; color: #777; line-height: 1.9; font-style: italic; }
+  .quote-block .quote-author { display: block; margin-top: 8px; font-style: normal; font-weight: bold; color: #9a3412; font-size: 13px; }
+
+  .bulleted-list { margin-top: 10px; padding-left: 0; list-style: none; }
+  .bulleted-list li { padding: 6px 0 6px 20px; position: relative; font-size: 14px; color: #555; line-height: 1.8; }
+  .bulleted-list li::before { content: '▸'; position: absolute; left: 0; color: #dc2626; font-size: 12px; }
+
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; } h1 { font-size: 26px; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch015-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘+：把经验转化为能力 · 第5章「项目复盘」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 核心洞察</span>
+  项目天然适合复盘——但大型项目如果只在最后做一次，时间拖太久、人员变动多、问题积累深。怎么办？BP的12条项目复盘秘诀+多重迭代式模式：分层（小组→项目组）、分阶段（关键事件→定期→阶段性→总体）反复复盘，让每一次重复都比上一次更好。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>项目是天然适合复盘的主题——每一次重复都应该比上一次更好。</strong>本章从英国石油公司（BP）的"事后回顾"实践出发，提炼出7条指导原则与12条项目复盘操作秘诀。结合联想ERP项目、谷歌、沃尔玛等案例，提出"多重迭代式复盘"模式：分层级（小组/职能线→项目组层面）与分阶段（关键事件→定期进展→阶段性→总体）反复进行。最后总结四大关键成功要素：领导重视、明确责任、积少成多、把复盘融入工作本身。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">12<span class="kpi-unit">条秘诀</span></div>
+    <div class="kpi-label">BP项目复盘</div>
+    <div class="kpi-note">召集·邀请·联络人<br>重温目标·回顾计划<br>整理分发·落实行动</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit">层复盘</span></div>
+    <div class="kpi-label">分层迭代</div>
+    <div class="kpi-note">小组/职能条线层面<br>项目组层面<br>各层独立又联动</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit">种时机</span></div>
+    <div class="kpi-label">分阶段复盘</div>
+    <div class="kpi-note">关键事件·定期进展<br>阶段性·项目总体<br>将复盘嵌入项目节奏</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">4<span class="kpi-unit">大要素</span></div>
+    <div class="kpi-label">成功关键</div>
+    <div class="kpi-note">领导重视·明确责任<br>积少成多·融入工作<br>不做额外负担</div>
+  </div>
+</div>
+
+<!-- 01: BP Review -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">BP实践</div>
+    <div class="section-title t-01">BP事后回顾：20分钟让每个人比上次做得更好</div>
+    <div class="section-desc"><strong>BP借鉴美军AAR，称为"事后回顾"，是"做中学"机制：</strong>一个坦诚务实的事后回顾会不超过20分钟，在项目进行期间、任何一个能定义出开始和结束的事件之后立即进行（不是等项目结束）。长期项目可能举行10~15次。核心方针：马上开会→氛围开诚布公（不是批评追责）→任命联络人引导→回顾预期目标→再现实际情况→比较差异→记录分享。</div>
+    <div class="flow-row">
+      <div class="flow-step">马上开会<br>≤20分钟</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">营造氛围<br>坦诚开放</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">联络人引导<br>回顾→再现→比较</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">记录分享<br>持续改进</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 12 Secrets -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">操作秘诀</div>
+    <div class="section-title t-02">项目复盘的12条秘诀：BP多年实践结晶</div>
+    <div class="section-desc"><strong>12条屡试不爽的操作准则：</strong>①召集面对面会议（项目结束后两周内）②邀请合适的人（客户、类似新项目成员）③任命独立联络人 ④重温项目目标和交付成果 ⑤重温项目计划与过程 ⑥从做得好的地方开始 ⑦分析成功原因转化为建议 ⑧询问哪些可以做得更好 ⑨找出困难与改进建议 ⑩确保没有遗漏（打分法）⑪询问"接下来做什么"⑫整理并分发会议记录。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📋</div>
+        <div class="data-name">召集与邀请</div>
+        <div class="data-sm">面对面会议·两周内<br>邀客户及类似项目<br>至少20分钟每人</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔍</div>
+        <div class="data-name">重温与分析</div>
+        <div class="data-sm">重温目标与成果<br>画项目流程图<br>先问做得好的地方</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📝</div>
+        <div class="data-name">记录与分发</div>
+        <div class="data-sm">详细记录建议<br>标注发言要点<br>征求确认后分发</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Multi-Iteration -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">多重迭代</div>
+    <div class="section-title t-03">分层+分阶段：多重迭代式项目复盘模式</div>
+    <div class="section-desc"><strong>大型项目只在最后做一次复盘远远不够——</strong>时间拖长事实模糊、人员变动不了解先前状况、问题堆积产生畏难情绪。因此必须采用"多重迭代式"操作：分层（小组/职能条线→项目组层面）与分阶段反复进行，将复盘融入项目运作之中。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes" style="background:#eef2ff;border-color:#c7d2fe;">
+        <div class="dual-icon">📐</div>
+        <div class="dual-text">
+          <h4>分层复盘</h4>
+          <p>小组/职能条线内部定期复盘（如每1-2周）→ 项目组层面（各小组负责人及骨干参加），参考第4章团队复盘模式操作。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📊</div>
+        <div class="dual-text">
+          <h4>分阶段复盘</h4>
+          <p>关键事件复盘 → 定期进展回顾（周/月例会）→ 阶段性复盘（每个阶段结束时）→ 项目总体复盘（结束前后）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Four Timing -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">复盘时机</div>
+    <div class="section-title t-04">四种复盘时机：贯穿项目全生命周期的学习节奏</div>
+    <div class="section-desc"><strong>在项目过程中，四种情况值得复盘：</strong>①关键活动或事件——新的、重要的、有价值或未达预期的节点，及时复盘；②定期进展回顾——融入周/月例会，在常规汇报之外组织复盘；③阶段性复盘——项目每个阶段结束时，发现隐藏风险与短板；④项目总体复盘——结束前后做总体回顾，谷歌、联想、沃尔玛等均有此机制。</div>
+    <div class="flow-row">
+      <div class="flow-step">关键事件<br>发生时</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">定期进展<br>周/月例会</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">阶段结束<br>每阶段</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">项目总体<br>结束前后</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Success Factors -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">成功要素</div>
+    <div class="section-title t-05">四大关键成功要素：项目复盘的落地之道</div>
+    <div class="section-desc"><strong>把项目复盘推行到位、长期坚持的四个关键：</strong>①领导重视——联想ERP项目两任总监亲自参加、柳传志亲自参加君联资本项目复盘。②明确责任——投入专门时间和精力是值得的，联想ERP复盘形成了数万字报告，后续SCM/CRM项目有效借鉴。③积少成多、图难于易——定期复盘形成书面资料，日积月累为总体复盘提供素材。④把复盘融入工作——不把复盘当额外任务，而是与实际研讨推进紧密结合，及时调整目标策略。</div>
+    <div class="data-row" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="data-card d1">
+        <div class="data-big">👤</div>
+        <div class="data-name">领导重视</div>
+        <div class="data-sm">负责人亲身参加<br>推动成果落地<br>否则难以开展</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🎯</div>
+        <div class="data-name">明确责任</div>
+        <div class="data-sm">投入专门时间精力<br>各项目组是第一<br>责任人</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📚</div>
+        <div class="data-name">积少成多</div>
+        <div class="data-sm">定期形成书面资料<br>日常积累为总体<br>复盘提供素材</div>
+      </div>
+      <div class="data-card d4">
+        <div class="data-big">🔗</div>
+        <div class="data-name">融入工作</div>
+        <div class="data-sm">不是额外任务<br>与实际研讨推进<br>紧密结合</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">项目复盘的本质是把"每一次重复都比上一次做得更好"变成组织的肌肉记忆。英国石油公司的12条秘诀归结为一条：不要等项目结束后才做，而是把复盘融入项目节奏——分层（小组到项目组）、分阶段（关键事件到总体），反复迭代。联想ERP项目用无数次阶段性复盘换来数万字报告，后续SCM/CRM项目因此缩短周期、降低成本。复盘不是额外工作，它就是工作本身。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《复盘+：把经验转化为能力》第5章「项目复盘」信息图 · 邱昭良 著 · 基于原文提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

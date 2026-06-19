@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fupan+: Turning Experience into Capability · Ch4 "Team Review"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; color: #555; font-size: 15px; line-height: 2.0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 20px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.d3 { background: #fefce8; border-color: #fde68a; }
+  .data-card.d4 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #dc2626; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #555; line-height: 1.6; }
+
+  .quote-block { background: #f8f6f3; border-left: 4px solid #ea580c; border-radius: 8px; padding: 16px 20px; margin: 14px 0; font-size: 14px; color: #777; line-height: 1.9; font-style: italic; }
+  .quote-block .quote-author { display: block; margin-top: 8px; font-style: normal; font-weight: bold; color: #9a3412; font-size: 13px; }
+
+  .bulleted-list { margin-top: 10px; padding-left: 0; list-style: none; }
+  .bulleted-list li { padding: 6px 0 6px 20px; position: relative; font-size: 14px; color: #555; line-height: 1.8; }
+  .bulleted-list li::before { content: '▸'; position: absolute; left: 0; color: #dc2626; font-size: 12px; }
+
+  .takeaway { background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px; padding: 24px 32px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626; }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; } h1 { font-size: 26px; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html">← Back to Chapter Index</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch014-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Fupan+: Turning Experience into Capability · Ch4 "Team Review"</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Core Insight</span>
+  Fupan's mechanism is simple, but effective team review is anything but easy — the U.S. Army made it Standard Operating Procedure; Lenovo, Huawei, and BP have practiced it for decades. Why? Because professional facilitation is the key to team fupan success. This chapter reveals the Army's AAR four-phase method, the two schools of review, the facilitator's 10 responsibilities, and the proprietary "Three-Stage, Nine-Step Method™."
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>Team fupan's core isn't about "knowing" — it's about "facilitating." The quality of facilitation determines the quality of the review.</strong> Starting from U.S. Army AAR practice, this chapter breaks down formal vs. informal review processes (Plan → Prepare → Execute → Follow-up). Integrating Lenovo and BP practices, it presents the four-phase micro-process (Review & Assess → Analyze & Reflect → Extract & Distill → Transform & Apply), and contrasts the Process Reconstruction school versus the Results-Oriented school. It focuses on how facilitators distinguish "process" from "content," fulfill 10 core duties, and master the proprietary "Three-Stage, Nine-Step Method" (Thorough Preparation → Effective Facilitation → Follow Through).</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">Phases</span></div>
+    <div class="kpi-label">AAR Process</div>
+    <div class="kpi-note">Plan → Prepare<br>→ Execute → Follow-up<br>Army Standard Procedure</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit">Schools</span></div>
+    <div class="kpi-label">Review Styles</div>
+    <div class="kpi-note">Process Reconstruction<br>(Army/BP) vs Results-<br>Oriented (Lenovo/Google)</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">10<span class="kpi-unit">Duties</span></div>
+    <div class="kpi-label">Facilitator's Role</div>
+    <div class="kpi-note">Create climate · Process focus<br>Encourage participation<br>Summarize · Follow up</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3×3<span class="kpi-unit">Steps</span></div>
+    <div class="kpi-label">Nine-Step Method</div>
+    <div class="kpi-note">Prepare (3 steps)<br>Facilitate (3 steps)<br>Follow Through (3 steps)</div>
+  </div>
+</div>
+
+<!-- 01: AAR -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">U.S. Army Practice</div>
+    <div class="section-title t-01">The U.S. Army AAR: The World's Most Mature Team Review System</div>
+    <div class="section-desc"><strong>An AAR is a professional discussion of an event focused on performance, where soldiers discover for themselves what happened, why it happened, and how to improve:</strong> The Army makes it Standard Operating Procedure for all commanders, divided into formal AAR (planned 6–8 weeks ahead, with OC observers/controllers) and informal AAR (conducted immediately on-site), spanning four phases: Plan → Prepare → Execute → Follow-up.</div>
+    <div class="flow-row">
+      <div class="flow-step">Plan<br>Set OC & Goals</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Prepare<br>Observe & Record</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Execute<br>Intro→Review→Discuss</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Follow-up<br>Short·Mid·Long-term</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Four Phases -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Operating Method</div>
+    <div class="section-title t-02">The Four Phases of Team Fupan: From Review to Transformation</div>
+    <div class="section-desc"><strong>Based on the "Way of Fupan," team review divides into four phases:</strong> ① Review & Assess — compare objectives vs. results to identify strengths and gaps, the key is being factual and reaching team consensus; ② Analyze & Reflect — use 5 Whys, fishbone diagrams to find root causes; ③ Extract & Distill — like forging a sword requires mold, materials, craftsman, and heat, knowledge extraction requires five elements; ④ Transform & Apply — Start doing, Continue doing, Stop doing, assigned to owners with deadlines.</div>
+    <div class="flow-row">
+      <div class="flow-step">① Review<br>Goals vs Facts</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">② Analyze<br>Root Causes</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③ Extract<br>Distill Patterns</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">④ Transform<br>Apply Actions</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Two Schools -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Two Schools</div>
+    <div class="section-title t-03">Process Reconstruction vs. Results-Oriented: Different Paths, Same Destination</div>
+    <div class="section-desc"><strong>Two approaches for the assessment phase:</strong> Process Reconstruction (Army/BP) replays key events chronologically — builds shared understanding but can be lengthy; Results-Oriented (Lenovo/Google) directly lists strengths and gaps against goals — efficient and focused but newcomers may lack context. Both converge on the same outcome — the choice depends on team familiarity and review purpose.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>Process Reconstruction (Army · BP)</h4>
+          <p>Replay key phases chronologically → identify deep-dive topics. Pros: simple, clear trail, builds understanding. Cons: may become a rambling narrative.</p>
+        </div>
+      </div>
+      <div class="dual-card yes" style="background:#eef2ff;border-color:#c7d2fe;">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>Results-Oriented (Lenovo · Google)</h4>
+          <p>List strengths/gaps directly against goals → replay process only when needed. Pros: simple, efficient, stays focused. Cons: newcomers may lack shared context.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Facilitator -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Facilitator</div>
+    <div class="section-title t-04">The Fupan Facilitator: Distinguishing "Process" from "Content" Is Key</div>
+    <div class="section-desc"><strong>Facilitation literally means "to make easier":</strong> The facilitator's ultimate goal is to encourage participation, improve interaction, and boost team effectiveness. The core skill is separating "process" (how to converse, methods, atmosphere) from "content" (what to discuss, the topic itself). The facilitator manages process and stays neutral, leaving content to all participants. However, a facilitator totally ignorant of the content may miss opportunities for deep inquiry.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🗣️</div>
+        <div class="data-name">Climate Setting</div>
+        <div class="data-sm">Trust · Open · Objective<br>Manage interpersonal dynamics<br>Innovative dialogue space</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚖️</div>
+        <div class="data-name">Neutral & Objective</div>
+        <div class="data-sm">Don't join content discussion<br>Don't provide answers<br>Don't judge outcomes</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">👥</div>
+        <div class="data-name">Process Management</div>
+        <div class="data-sm">Design meetings · Guide discussion<br>Stimulate thinking · Give feedback<br>Summarize · Clarify consensus</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Three-Stage Nine-Step -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Three-Stage Nine-Step</div>
+    <div class="section-title t-05">The Three-Stage, Nine-Step Method™: A Complete Framework for Team Fupan Facilitation</div>
+    <div class="section-desc"><strong>Qiu Zhaoliang's proprietary team fupan facilitation system:</strong> Stage 1 "Thorough Preparation" — plan the approach, organize the meeting, prepare in advance; Stage 2 "Effective Facilitation" — open with rules, sequential discussion with deep dives (don't skip the four steps), close with summary and thanks; Stage 3 "Follow Through" — organize and share results, track implementation, evaluate and improve. Ensures fupan doesn't end with "just a meeting."</div>
+    <div class="dual-grid">
+      <div class="dual-card yes" style="background:#eef2ff;border-color:#c7d2fe;">
+        <div class="dual-icon">📐</div>
+        <div class="dual-text">
+          <h4>Stage 1: Thorough Preparation</h4>
+          <p>Plan → Organize (face-to-face preferred, key people must attend) → Prepare (compile materials, logistics)</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎤</div>
+        <div class="dual-text">
+          <h4>Stage 2: Effective Facilitation</h4>
+          <p>Open (rules + warm-up) → Sequential discussion (Review→Reflect→Extract→Transform, with deep dives on key points) → Close</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:14px 18px;font-size:13px;color:#92400e;line-height:1.7;">
+      <strong>Stage 3: Follow Through</strong> · Share review results (micro-courses / KM) → Track implementation → Evaluate & improve (review effectiveness, next directions)
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The key to team fupan success isn't the fame of the methodology — it's whether facilitation is done right. The U.S. Army AAR standardizes operations through four phases, but what matters most is the facilitator: distinguishing process from content, staying neutral, letting the team find answers themselves. The Three-Stage, Nine-Step Method provides an actionable framework for organizations: preparation is the foundation, facilitation is the core, and follow-through closes the loop. The quality of fupan hinges on the quality and fluency of facilitation.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Fupan+: Turning Experience into Capability · Ch4 "Team Review" Infographic · By Qiu Zhaoliang · For learning reference only
+</div>
+
+</div>
+</body>
+</html>

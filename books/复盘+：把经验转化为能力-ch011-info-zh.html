@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 第2章「复盘之道」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .u-shape {
+    display: flex; flex-direction: column; align-items: center; margin-top: 10px; gap: 6px;
+  }
+  .u-row { display: flex; align-items: center; gap: 12px; width: 100%; justify-content: center; }
+  .u-step {
+    background: #fff; border-radius: 12px; padding: 14px 16px;
+    text-align: center; width: 170px;
+    border: 2px solid; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .u-step.s1 { border-color: #dc2626; }
+  .u-step.s2 { border-color: #ea580c; }
+  .u-step.s3 { border-color: #ca8a04; }
+  .u-step.s4 { border-color: #4f46e5; }
+  .u-step .u-icon { font-size: 22px; margin-bottom: 2px; }
+  .u-step .u-label { font-size: 13px; font-weight: bold; color: #1a1a1a; }
+  .u-step .u-desc { font-size: 11px; color: #888; line-height: 1.5; }
+  .u-arrow-down { font-size: 18px; color: #aaa; text-align: center; }
+  .u-bottom { display: flex; gap: 12px; justify-content: center; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .u-row, .u-bottom { flex-direction: column; align-items: center; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch011-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘+：把经验转化为能力 · 第2章「复盘之道」</h1>
+<p class="subtitle">U型学习法揭示的底层逻辑——复盘何以让学习真正发生？</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>复盘之所以有效，源自其操作手法内含了学习的深层机理。本章以荀子「不闻不若闻之，闻之不若见之，见之不若知之，知之不若行之」为基，提出U型学习法，揭示复盘的四步学习机理。同时阐明复盘与PDCA的区别与联系，剖析复盘如何同时支持单环学习与双环学习，并概览企业中常见的四类复盘——「道」相同，「术」各异，分别对应修身、齐家、治国、平天下。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">U型学习法</div>
+    <div class="kpi-note">闻→见→知→行<br>由表及里·由此及彼</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">4<span class="kpi-unit">点</span></div>
+    <div class="kpi-label">与PDCA整合</div>
+    <div class="kpi-note">目标→计划·回顾→检查<br>分析→纠偏·萃取→PDCA外</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">2<span class="kpi-unit">类</span></div>
+    <div class="kpi-label">学习类型</div>
+    <div class="kpi-note">单环学习→适应性<br>双环学习→创新性</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">4<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">复盘类型</div>
+    <div class="kpi-note">个人·团队·项目<br>经营与战略复盘</div>
+  </div>
+</div>
+
+<div class="kpi-row cols-3">
+  <div class="kpi-card c05">
+    <div class="kpi-value">荀子<span class="kpi-unit"></span></div>
+    <div class="kpi-label">理论基础</div>
+    <div class="kpi-note">《儒效篇》四段论<br>为中国芯装上古籍智慧</div>
+  </div>
+  <div class="kpi-card c01">
+    <div class="kpi-value">道·法·术<span class="kpi-unit"></span></div>
+    <div class="kpi-label">三层架构</div>
+    <div class="kpi-note">道→基本原理<br>法→实践方法·术→具体工具</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">P·D·C·A<span class="kpi-unit"></span></div>
+    <div class="kpi-label">区分与配合</div>
+    <div class="kpi-note">复盘以学习为目的<br>PDCA以推进工作为目的</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">学习机理</div>
+    <div class="section-title t-01">U型学习法：荀子智慧中的复盘四步学习机理</div>
+    <div class="section-desc">复盘的学习机理根源在《荀子·儒效篇》：「不闻不若闻之，闻之不若见之，见之不若知之，知之不若行之。学至于行而止矣。」四步形成U型轨迹——第一步「闻」：回顾梳理具体经历（此·表）；第二步「见」：分析对比找出根因与洞见（此·里）；第三步「知」：举一反三提炼一般规律（彼·里）；第四步「行」：将知识应用于未来行动（彼·表）。整个过程的轮廓像英文字母U，故称U型学习法。</div>
+    <div class="u-shape">
+      <div class="u-row">
+        <div class="u-step s1"><div class="u-icon">👁️</div><div class="u-label">闻 · 回顾</div><div class="u-desc">梳理具体经历<br>此·表</div></div>
+        <div class="u-step s4"><div class="u-icon">🏃</div><div class="u-label">行 · 应用</div><div class="u-desc">转化实际行动<br>彼·表</div></div>
+      </div>
+      <div class="u-arrow-down">⬇ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ⬆</div>
+      <div class="u-bottom">
+        <div class="u-step s2"><div class="u-icon">🔍</div><div class="u-label">见 · 分析</div><div class="u-desc">找根因与洞见<br>此·里</div></div>
+        <div class="u-step s3"><div class="u-icon">💡</div><div class="u-label">知 · 提炼</div><div class="u-desc">举一反三规律<br>彼·里</div></div>
+      </div>
+    </div>
+    <div class="case-quote">「由表及里的过程要求用心、洞悉本质；由此及彼的过程要求去粗取精、去伪存真；理论到实践要求灵活创新、学以致用。」</div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">复盘四步</div>
+    <div class="section-title t-02">复盘的一般过程：回顾评估→分析反思→萃取提炼→转化应用</div>
+    <div class="section-desc">基于U型学习法，复盘必须遵循四个步骤：第一，回顾目标与过程、评估实际结果，找出有学习价值的差异（亮点或不足）；第二，对差异进行深入分析与反思，找出根本原因，「知其然，知其所以然」；第三，退出画面看画，萃取提炼经验教训，适度抽象，把握一般规律；第四，将所学转化为后续行动——开始做什么、停止做什么、继续做什么。这就是复盘之道。</div>
+    <div class="flow-row">
+      <div class="flow-step">🎯<br>回顾<br>评估</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔍<br>分析<br>反思</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">💎<br>萃取<br>提炼</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🚀<br>转化<br>应用</div>
+    </div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">回顾评估</div>
+        <div class="data-sm">梳理目标·策略·结果<br>对比预期与实际<br>找出亮点与不足</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">分析反思</div>
+        <div class="data-sm">深入分析根因<br>知其所以然<br>反思性观察</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">萃取提炼</div>
+        <div class="data-sm">适度抽象·总结规律<br>哪些奏效·哪些无效<br>可继承可推广的经验</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">PDCA与双环</div>
+    <div class="section-title t-03">复盘≠PDCA——复盘如何支持单环与双环学习？</div>
+    <div class="section-desc">复盘与PDCA侧重点不同：复盘以学习为目的，PDCA以推进工作为目的。但二者紧密整合——复盘第一步明确目标（plan的先导）、回顾执行与评估结果（check）、分析偏差成因（指导act）、提炼经验教训转化应用（PDCA未明确的内容）。复盘反思的深度决定学习层次：仅战术性反思→单环学习（适应性改善）；深度反思目标背后的假设、规则与心智模式→双环学习（根本性创新）。这就是「上手容易深化难」的本质原因。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🔄</div>
+        <div class="dual-text"><h4>复盘 vs PDCA 区别</h4><p>复盘=以学习为目的·结构化反思·提炼经验教训·PDCA=以推进工作为目的·计划→执行→检查→纠偏循环</p></div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🔗</div>
+        <div class="dual-text"><h4>复盘与PDCA整合四要点</h4><p>目标→计划的先导·回顾执行→检查·分析偏差→指导纠偏·萃取转化→PDCA未覆盖的核心内容</p></div>
+      </div>
+      <div class="dual-card a">
+        <div class="dual-icon">🔁</div>
+        <div class="dual-text"><h4>单环学习</h4><p>既定目标框架内纠偏·改善执行效率·战术性反思·适应性学习·改善现状</p></div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🔮</div>
+        <div class="dual-text"><h4>双环学习</h4><p>质疑目标背后的假设与规则·突破思维定式·修正政策与规范·创新性学习·变革内在结构</p></div>
+      </div>
+    </div>
+    <div class="case-quote">「复盘既支持单环学习，也支持双环学习，主要取决于反思的深度。」</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">四类复盘</div>
+    <div class="section-title t-04">企业中四类复盘：「道」相同，「术」各异——对应修身齐家治国平天下</div>
+    <div class="section-desc">按参与人员的范围与主题性质，企业中的复盘可分为四类，恰对应孔子的社会集合层次。个人复盘（修身）：随时随地进行结构化自我反思，提升领导力、专业力、执行力。团队复盘（齐家）：多人协作活动后召开复盘会，增进相互了解与协同作战。项目复盘（治国）：多重迭代式复盘——分层次、分时段嵌入项目运作，提升组织协作与创新。经营与战略复盘（平天下）：定期对经营/战略复盘，反思整体运作模式、规则、政策与文化。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🧘</div>
+        <div class="dual-text"><h4>个人复盘 · 修身</h4><p>非正式·随时随地·自我反思·提升领导力/专业力/执行力（详见第3章）</p></div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">👥</div>
+        <div class="dual-text"><h4>团队复盘 · 齐家</h4><p>事件后复盘会·三阶九步法·增进协同·便于团队学习（详见第4章）</p></div>
+      </div>
+      <div class="dual-card a">
+        <div class="dual-icon">🏗️</div>
+        <div class="dual-text"><h4>项目复盘 · 治国</h4><p>多重迭代式·分层次分时段·嵌入项目运作·激发创新（详见第5章）</p></div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🌐</div>
+        <div class="dual-text"><h4>经营与战略复盘 · 平天下</h4><p>定期回顾·业务特色·反思组织运作模式·战略协同（详见第6章）</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">道法术</div>
+    <div class="section-title t-05">以道驭术：复盘的道、法、术三层架构</div>
+    <div class="section-desc">中国古代智慧讲究「道、法、术」兼备。复盘之「道」：U型学习法四步机理——回顾评估→分析反思→萃取提炼→转化应用，是一切复盘通用的底层逻辑。复盘之「法」：针对四类复盘的具体操作策略——个人复盘的小流程、团队复盘的三阶九步法、项目复盘的多重迭代式、经营战略复盘的定期嵌入。复盘之「术」：具体工具——复盘画布、思考的罗盘、管理改进建议书模板等。以道驭术，道法术兼备，方能把复盘做到位。</div>
+    <div class="flow-row">
+      <div class="flow-step">☯️<br>道<br>U型学习机理</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📐<br>法<br>四类操作策略</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🛠️<br>术<br>具体工具方法</div>
+    </div>
+    <div class="case-quote">「复盘的操作手法非常简单，而且其内在的学习逻辑是普遍适用的，因而复盘的应用范围也非常广泛。」</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">复盘之道在于U型学习法——从具体经历的回顾，到根因的深度分析，再到一般规律的萃取提炼，最终落实到行动改进。复盘与PDCA互补而非替代，既支持维持现状的单环学习，也可实现突破创新的双环学习。四类复盘道相同而术各异，对应修身、齐家、治国、平天下。以道驭术，道法术兼备，才是复盘从「知道」走向「做到」再走向「活出」的关键。</div>
+</div>
+
+<div class="footer">
+  《复盘+：把经验转化为能力》第2章「复盘之道」信息图 · 邱昭良 著 · 机械工业出版社 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>
