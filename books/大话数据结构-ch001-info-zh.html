@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大话数据结构 · 第1章「数据结构绪论」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-num { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.5; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block { background: #f8f6f3; border-radius: 12px; padding: 18px 24px; margin: 14px 0; border-left: 3px solid #ca8a04; font-size: 14px; color: #555; line-height: 1.9; font-style: italic; }
+
+  .callout { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 18px 24px; margin: 14px 0; font-size: 14px; color: #1e40af; line-height: 1.9; }
+  .callout strong { color: #1e3a8a; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="大话数据结构-catalog.html">← 章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大话数据结构-ch001-info-en.html">中文 / English</a>
+</div>
+
+<h1>大话数据结构 · 第1章「数据结构绪论」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  本章是全书的总纲。作者通过小菜在工作中用错数据结构的真实故事，引出"数据结构很重要"的核心命题。本章建立了完整的概念体系：从数据→数据元素→数据项→数据对象→数据结构，再到四大逻辑结构（集合、线性、树形、图形）与两大物理存储结构（顺序存储、链式存储），最后引入抽象数据类型（ADT），将"是什么"与"能做什么"统一起来。本章还追溯了1968年Knuth教授开创数据结构课程体系的历史。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是全书的总纲。作者通过小菜在工作中用错数据结构的真实故事，引出"数据结构很重要"的核心命题。本章建立了完整的概念体系：从数据→数据元素→数据项→数据对象→数据结构，再到四大逻辑结构（集合、线性、树形、图形）与两大物理存储结构（顺序存储、链式存储），最后引入抽象数据类型（ADT），将"是什么"与"能做什么"统一起来。本章还追溯了1968年Knuth教授开创数据结构课程体系的历史。</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01"><div class="kpi-num">4</div><div class="kpi-label">逻辑结构<br>种 类</div></div>
+  <div class="kpi-card c02"><div class="kpi-num">2</div><div class="kpi-label">物理存储<br>方 式</div></div>
+  <div class="kpi-card c03"><div class="kpi-num">1968</div><div class="kpi-label">课程体系<br>开创元年</div></div>
+  <div class="kpi-card c04"><div class="kpi-num">5</div><div class="kpi-label">概念层次<br>级 别</div></div>
+</div>
+
+<!-- 01: 小菜的教训：数据结构为何重要 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">起源故事</div>
+    <div class="section-title t-01">小菜的教训：数据结构为何重要</div>
+    <div class="section-desc"><strong>小菜用数据库表+自增ID实现客服排队系统，上线后系统崩溃——他根本不知道"队列"这种数据结构。</strong>加班用数组重写后又被告知数组可能溢出。最终在表哥帮助下用队列结构重写才过关。这个故事揭示了核心命题：<strong>若不了解数据结构，你会在工作中用错误的方式解决已经解决的问题。</strong>正如封清扬老师所说："将来不要有某个人对你说一句——你数据结构怎么学的？"数据结构是一门研究非数值计算的程序设计问题中操作对象、关系与操作的学科。</div>
+    <div class="quote-block">"If you give someone a program, you will frustrate them for a day; if you teach them how to program, you will frustrate them for a lifetime." — 封清扬老师的开场白</div>
+    <div class="flow-row">
+      <div class="flow-step">用错数据结构<br>系统崩溃</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">加班用数组<br>重写代码</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">用队列结构<br>正确解决</div>
+    </div>
+  </div>
+</div>
+<!-- 02: 从数据到数据结构：五层概念塔 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">概念体系</div>
+    <div class="section-title t-02">从数据到数据结构：五层概念塔</div>
+    <div class="section-desc"><strong>数据（Data）：描述客观事物的符号，能输入计算机处理的符号集合。</strong>数据元素（Data Element）：组成数据的基本单位，通常作为整体处理。数据项（Data Item）：数据元素的不可分割的最小单位。数据对象（Data Object）：性质相同的数据元素的集合，是数据的子集。<strong>数据结构（Data Structure）：相互之间存在一种或多种特定关系的数据元素的集合。</strong>这个五层概念体系是理解所有后续章节的基础。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">① 数据</div>
+        <div class="data-name">最外层</div>
+        <div class="data-sm">描述客观事物的符号集合，如所有学生记录</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">② 数据对象</div>
+        <div class="data-name">性质相同的子集</div>
+        <div class="data-sm">如所有学生记录中的"姓名"集合</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">③ 数据元素</div>
+        <div class="data-name">基本单位</div>
+        <div class="data-sm">如一条学生记录，由多个数据项组成</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 03: 四大逻辑结构 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">逻辑结构</div>
+    <div class="section-title t-03">四大逻辑结构：数据元素的组织方式</div>
+    <div class="section-desc"><strong>逻辑结构是数据元素之间的相互关系，分为四类：集合结构（元素同属一个集合，无其他关系）、线性结构（一对一关系）、树形结构（一对多的层次关系）、图形结构（多对多的任意关系）。</strong>逻辑结构面向问题，是抽象的数据组织形式。例如：排队中的小朋友是线性结构，公司组织架构是树形结构，城市交通网络是图形结构。这四种结构覆盖了几乎所有现实世界的建模需求。</div>
+    <div class="flow-row">
+      <div class="flow-step">集合结构<br>松散·无关系</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">线性结构<br>一对一</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">树形结构<br>一对多</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">图形结构<br>多对多</div>
+    </div>
+  </div>
+</div>
+<!-- 04: 两大物理结构 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">物理存储</div>
+    <div class="section-title t-04">两大物理结构：顺序存储与链式存储</div>
+    <div class="section-desc"><strong>物理结构（存储结构）是数据结构在计算机内存中的实际存储方式。</strong>顺序存储结构：把数据元素存放在地址连续的存储单元里，数据间的逻辑关系和物理关系一致——如同排队时每个人紧挨着站在一起。链式存储结构：把数据元素存放在任意的存储单元里，通过指针来连接——如同医院候诊时每人手里拿一个号码牌，通过号码关联。<strong>顺序存储适合大量读取，链式存储适合频繁插入删除。</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📦</div>
+        <div class="dual-text">
+          <h4>顺序存储结构</h4>
+          <p>地址连续·逻辑物理一致·像数组·读取O(1)·插入删除O(n)</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔗</div>
+        <div class="dual-text">
+          <h4>链式存储结构</h4>
+          <p>地址任意·指针连接·像链条·读取O(n)·插入删除O(1)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 05: 抽象数据类型(ADT) -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">抽象数据类型</div>
+    <div class="section-title t-05">抽象数据类型(ADT)：从"是什么"到"能做什么"</div>
+    <div class="section-desc"><strong>抽象数据类型（Abstract Data Type, ADT）：一个数学模型及定义在该模型上的一组操作。</strong>ADT不关心具体实现，只关心"是什么"和"能做什么"。例如：整型的ADT包含加减乘除等操作，而不关心底层如何存储。线性表的ADT包含初始化、查找、插入、删除等操作。<strong>ADT是连接"数据结构概念"与"具体编程实现"的桥梁——先定义数据能做什么，再实现怎么做。</strong>这体现了面向对象思想的核心：封装与抽象。</div>
+    <div class="callout"><strong>🧠 核心理解：</strong>ADT = 数据对象 + 数据关系 + 基本操作。"抽象"的意义在于隐藏实现复杂性，只暴露可操作的接口。"数据类型"的含义是它和int、float一样，提供一组定义好的操作。</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">数据结构是相互之间存在一种或多种特定关系的数据元素的集合。四大逻辑结构（集合、线性、树形、图形）加上两种物理存储方式（顺序、链式），构成了一切数据结构知识的基础。抽象数据类型（ADT）将"数据的定义"与"数据的操作"封装在一起，是面向对象思想的基石。学数据结构，不是为了考试，而是为了在工作中"用正确的方式解决已经解决的问题"。</div>
+</div>
+
+<div class="footer">
+  《大话数据结构》第1章"数据结构绪论"信息图 · 作者：程杰 · 基于原书内容提炼 · 仅供学习参考 · 生成时间：2026-06-20
+</div>
+</div>
+</body>
+</html>

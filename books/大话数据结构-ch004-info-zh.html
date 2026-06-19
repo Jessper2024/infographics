@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大话数据结构 · 第4章「栈与队列」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-num { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.5; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block { background: #f8f6f3; border-radius: 12px; padding: 18px 24px; margin: 14px 0; border-left: 3px solid #ca8a04; font-size: 14px; color: #555; line-height: 1.9; font-style: italic; }
+
+  .callout { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 18px 24px; margin: 14px 0; font-size: 14px; color: #1e40af; line-height: 1.9; }
+  .callout strong { color: #1e3a8a; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="大话数据结构-catalog.html">← 章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大话数据结构-ch004-info-en.html">中文 / English</a>
+</div>
+
+<h1>大话数据结构 · 第4章「栈与队列」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  本章从左轮手枪弹夹的故事出发，生动引入了两个受限的线性表——<strong>栈（LIFO后进先出）和队列（FIFO先进先出）。</strong>作者逐层展开：顺序栈的push/pop均为O(1)；两栈共享空间通过向中间靠拢提升利用率；链栈无需预分空间；栈的应用涵盖递归（斐波那契数列）和四则运算表达式求值（后缀表达式/逆波兰）。队列方面，循环队列用取模运算解决"假溢出"，链队列用front/rear两指针实现。本章揭示了受限操作背后的强大应用——限制不是削弱，而是精准。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章从左轮手枪弹夹的故事出发，生动引入了两个受限的线性表——<strong>栈（LIFO后进先出）和队列（FIFO先进先出）。</strong>作者逐层展开：顺序栈的push/pop均为O(1)；两栈共享空间通过向中间靠拢提升利用率；链栈无需预分空间；栈的应用涵盖递归（斐波那契数列）和四则运算表达式求值（后缀表达式/逆波兰）。队列方面，循环队列用取模运算解决"假溢出"，链队列用front/rear两指针实现。本章揭示了受限操作背后的强大应用——限制不是削弱，而是精准。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01"><div class="kpi-num">O(1)</div><div class="kpi-label">入栈/出栈<br>时间复杂度</div></div>
+  <div class="kpi-card c02"><div class="kpi-num">2</div><div class="kpi-label">栈共享<br>空间数</div></div>
+  <div class="kpi-card c03"><div class="kpi-num">后缀式</div><div class="kpi-label">表达式求值<br>核心方法</div></div>
+  <div class="kpi-card c04"><div class="kpi-num">取模</div><div class="kpi-label">循环队列<br>关键技术</div></div>
+</div>
+
+<!-- 01: 栈的定义与顺序存储 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">栈的定义与实现</div>
+    <div class="section-title t-01">栈的定义与顺序存储：后进先出的精髓</div>
+    <div class="section-desc"><strong>栈（Stack）：限定仅在表尾进行插入和删除操作的线性表。允许操作的一端叫栈顶（top），另一端叫栈底（bottom）。</strong>LIFO（Last In First Out）后进先出结构。类比：手枪弹夹，后压入的子弹先射出。顺序栈：用数组实现，top变量指示栈顶位置。空栈时top=-1，满栈时top=MAXSIZE-1。进栈（push）：S->top++；S->data[S->top]=e。出栈（pop）：*e=S->data[S->top]；S->top--。<strong>两步操作，均为O(1)。</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">空栈<br>top=-1</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">push A<br>top=0</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">push B<br>top=1</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">pop B<br>top=0</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">后进先出<br>LIFO</div>
+    </div>
+  </div>
+</div>
+<!-- 02: 两栈共享空间与链栈 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">两栈共享与链栈</div>
+    <div class="section-title t-02">两栈共享空间与链式栈：更灵活的选择</div>
+    <div class="section-desc"><strong>两栈共享空间：一个数组存储两个栈，栈底分别在数组两端（下标0和n-1），两栈向中间增长。</strong>栈满条件：top1+1==top2。这就像两人合租一套两居室——共享公共空间，比各自租一居室更高效利用资源。链栈：用链表实现栈，栈顶放在链表头部。进栈=头插法，出栈=删除头结点。<strong>链栈最大优势：不需要预分空间，不会栈满溢出（除非内存耗尽）。</strong>对比顺序栈：顺序栈适合元素个数变化不大、追求速度的场景；链栈适合元素个数变化大、对空间利用率要求高的场景。</div>
+    <div class="callout"><strong>🏠 比喻：两栈共享空间</strong><br>两个大学室友合租一套两居室，各住各的卧室，共享客厅厨房——比各自租一居室省钱且空间利用率更高。数组也同样：一个数组容纳两个栈，两端向中间延伸，空间利用率最大化。</div>
+  </div>
+</div>
+<!-- 03: 栈的应用 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">栈的应用</div>
+    <div class="section-title t-03">栈的应用：从递归到四则运算表达式求值</div>
+    <div class="section-desc"><strong>递归：一个直接调用自己或通过一系列调用语句间接调用自己的函数。</strong>递归的执行过程就是栈的"压入—弹出"过程：每次函数调用将参数、局部变量等压入栈帧，返回时弹出。以斐波那契数列F(n)=F(n-1)+F(n-2)为例——虽然递归代码优雅，但因大量重复计算，效率不如迭代。<strong>四则运算表达式求值：中缀表达式→后缀表达式（逆波兰表示法），再用栈计算。</strong>后缀表达式不需要括号，操作数遇到数字压栈，遇到运算符弹出两个操作数计算后压回——这是编译器和计算器的核心原理。</div>
+    <div class="flow-row">
+      <div class="flow-step">中缀式<br>9+(3-1)×3+10÷2</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">后缀式<br>9 3 1-3×+10 2÷+</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">栈计算<br>遇数压栈·遇符计算</div>
+    </div>
+  </div>
+</div>
+<!-- 04: 队列的定义与循环队列 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">队列定义与循环队列</div>
+    <div class="section-title t-04">队列的定义与循环队列：先进先出的艺术</div>
+    <div class="section-desc"><strong>队列（Queue）：只允许在一端进行插入操作、在另一端进行删除操作的线性表。FIFO（First In First Out）。</strong>类比：排队买票，先到的人先得到服务。顺序队列用数组实现，front指向队头，rear指向队尾的下一个位置。但顺序队列存在"假溢出"问题：rear已到数组末端但前端还有空位，无法再入队。<strong>循环队列：把数组首尾相接，形成一个环。rear=(rear+1)%MAXSIZE实现循环移动。</strong>空队列条件：front==rear；满队列条件：(rear+1)%MAXSIZE==front（保留一个空位来区分空满）。</div>
+    <div class="callout"><strong>⚠️ 假溢出问题：</strong><br>顺序队列中，rear到达数组末尾后即使前面有可用空间也无法继续入队——这就是"假溢出"。循环队列通过取模运算把数组变成环形：<strong>(rear+1) % QueueSize</strong>——rear回到0后继续循环利用空间。</div>
+  </div>
+</div>
+<!-- 05: 链队列 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">链队列</div>
+    <div class="section-title t-05">队列的链式存储：链队列的实现</div>
+    <div class="section-desc"><strong>链队列：用链表实现的队列，需要front指针指向队头结点，rear指针指向队尾结点。</strong>入队时在链表尾部插入结点（rear->next=new_node；rear=new_node），出队时删除头部结点（front=front->next）。空队列判断：front==rear（都指向头结点）。<strong>链队列不会有"假溢出"问题，也不需要预分空间，适合元素个数变化大的场景。</strong>对于确定最大值的情况，建议使用循环队列；无法估计长度时，使用链队列。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔄</div>
+        <div class="dual-text">
+          <h4>循环队列（顺序）</h4>
+          <p>数组实现·取模循环·O(1)操作·需预知最大容量·无指针开销</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔗</div>
+        <div class="dual-text">
+          <h4>链队列（链式）</h4>
+          <p>链表实现·front+rear指针·O(1)操作·动态分配·无假溢出</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">栈（LIFO）和队列（FIFO）是两种受限的线性表——限制操作位置非但不是缺陷，反而带来了精准的控制能力。栈的push/pop均为O(1)，两栈共享空间提升数组利用率，链栈无容量限制。栈的应用包括递归和四则运算表达式求值（后缀表达式）。队列通过循环队列解决假溢出，链队列动态分配空间。核心思想：限制不是削弱——通过精确限制操作位置，栈和队列各自成为了解决特定问题的利器。</div>
+</div>
+
+<div class="footer">
+  《大话数据结构》第4章"栈与队列"信息图 · 作者：程杰 · 基于原书内容提炼 · 仅供学习参考 · 生成时间：2026-06-20
+</div>
+</div>
+</body>
+</html>

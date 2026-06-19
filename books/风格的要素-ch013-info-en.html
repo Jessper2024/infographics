@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Elements of Style · Ch.13 "Use Definite, Specific, Concrete Language"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch013-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Elements of Style · Ch.13 "Use Definite, Specific, Concrete Language"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Prefer the definite to the general · the specific to the vague · the concrete to the abstract — learn from "He grinned as he pocketed the coin"</span>
+  Rule 12 is the crown of Strunk's "three principles of writing" — after the active voice (Rule 10) and positive form (Rule 11), concreteness unifies them both. He contrasts "A period of unfavorable weather set in" with "It rained every day for a week," and "He showed satisfaction as he took possession of his well-earned reward" with "He grinned as he pocketed the coin" — these contrasts reveal writing's most fundamental truth: good prose is not "understood" but "seen."
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Rule 12 is the culminating work of Strunk's "three principles of writing" (Rule 10: Active Voice, Rule 11: Positive Form, Rule 12: Concrete Language). It builds four progressive layers: ① Three classic contrasts — \"A period of unfavorable weather\" vs \"It rained every day for a week\" and others, intuitively demonstrating the power of concrete language. ② Strunk and the universal consensus — citing \"If those who have studied the art of writing are in accord on any one point, it is on this: the surest way to arouse and hold the reader's attention is by being specific, definite, and concrete,\" elevating this rule to the center of writing research. ③ Five classic writers — Browning, Defoe, Swift, Hawthorne, and Herrick, demonstrating multi-level techniques of concretization from \"the spiritual universe\" to \"rough stone-carving.\" ④ The writing experiment — if the works of these masters were recast in general, vague, abstract language, \"the most absorbing writing might be turned into a weariness of the flesh.\" This is a rule you can verify through your own experiment.</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit"> pairs</span></div>
+    <div class="kpi-label">Core Contrasts</div>
+    <div class="kpi-note">General vs Concrete</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit"> writers</span></div>
+    <div class="kpi-label">Classic Models</div>
+    <div class="kpi-note">Browning·Defoe·Swift etc.</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit"> tiers</span></div>
+    <div class="kpi-label">Progressive Principle</div>
+    <div class="kpi-note">Definite·Specific·Concrete</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">∞</div>
+    <div class="kpi-label">Self-Verification</div>
+    <div class="kpi-note">Rewrite masters→compare</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">1<span class="kpi-unit"> consensus</span></div>
+    <div class="kpi-label">Writing Research</div>
+    <div class="kpi-note">Surest way to hold attention</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Three Contrasts</div>
+    <div class="section-title t-01">General vs concrete: good prose is not "understood" — it is "seen"</div>
+    <div class="section-desc"><strong>Strunk uses three contrasts to reveal concreteness as the highest principle of writing.</strong> ① "A period of unfavorable weather set in" vs "It rained every day for a week": the former is an abstract statement that creates no picture in the reader's mind; the latter is a concrete image that can be seen and remembered. ② "He showed satisfaction as he took possession of his well-earned reward" vs "He grinned as he pocketed the coin": the former is a generic emotional label; the latter is a visible action and expression. ③ "There is a general agreement among those who have enjoyed the experience that surf-riding is productive of great exhilaration" → "All who have tried surf-riding agree that it is most exhilarating." Each contrast strips away abstraction to reveal the living detail beneath.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>General, Abstract, Vague</h4>
+          <p>"A period of unfavorable weather set in." → The reader sees nothing; must guess.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Definite, Specific, Concrete</h4>
+          <p>"It rained every day for a week." → The reader instantly sees it: seven days of rain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Three Tiers</div>
+    <div class="section-title t-02">Definite beats general, specific beats vague, concrete beats abstract — a three-tier progressive standard</div>
+    <div class="section-desc"><strong>Strunk proposes a three-tier progressive standard.</strong> ① Definite: your language designates a specific referent, not all things in general — "He grinned" designates one specific action, while "He showed satisfaction" could designate a thousand different behaviors. ② Specific: your language selects a concrete example, not hovering at the conceptual level — "pocketed the coin" is a specific, detailed action, while "took possession of his well-earned reward" is a chain of concepts with no visual. ③ Concrete: your language expresses content receivable by the senses — "grinned" and "pocketed" are both visible and recordable, while "satisfaction" and "possession" belong to invisible, abstract states. These three tiers form the "concreteness pyramid" of writing: definite → specific → concrete.</div>
+    <div class="flow-row">
+      <div class="flow-step">Definite<br>Designates a specific<br>referent, not all things</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Specific<br>Selects a concrete<br>example, not concepts</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Concrete<br>Receivable by the<br>senses, visible, recordable</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Three tiers<br>form the<br>"Concreteness Pyramid"</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Writing Consensus</div>
+    <div class="section-title t-03">The universal consensus of writing research: the surest way to hold the reader's attention is being specific, definite, concrete</div>
+    <div class="section-desc"><strong>Strunk places concreteness at the highest position in the writing technique system.</strong> He cites a universal consensus among those who have studied the art of writing: "the surest way to arouse and hold the reader's attention is by being specific, definite, and concrete." This is not an optional style suggestion — it is the foundational logic of writing. If the active voice makes your sentences more direct, and positive form makes your expression more vivid, then concreteness is the only way to make the reader truly "see" what you are saying. What's worth understanding deeply: the three great writers — Browning ("the spiritual universe"), Defoe ("rough stone-carving"), Swift — their prose is great not because of any special rhetorical technique, but because their every word allows the reader to see, hear, and touch the world they describe.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📚</div>
+        <div class="data-name">Surest Attention Method</div>
+        <div class="data-sm">Specific + Definite + Concrete — repeatedly verified by writing research, not personal preference.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🎯</div>
+        <div class="data-name">Foundation, Not Option</div>
+        <div class="data-sm">Active makes you more direct, positive makes you more vivid, concrete makes you visible to the reader.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔬</div>
+        <div class="data-name">Self-Verification</div>
+        <div class="data-sm">Rewrite a master's passage in vague abstract terms → compare. The difference is immediate. A self-evident truth.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Classic Models</div>
+    <div class="section-title t-04">Five classic writers: a concretization spectrum from cosmic to everyday scale</div>
+    <div class="section-desc"><strong>Strunk cites five classic writers, demonstrating concreteness applied at different scales.</strong> Browning — "the spiritual universe": philosophic-level concretization, rendering abstract spiritual experience as a clearly visible universe. Defoe — "rough stone-carving": compressing a character into one concrete stone statue, stunningly concise yet unforgettable. Swift — satirical description: making the absurd believable through extremely specific details. Hawthorne — atmospheric description: building emotional atmosphere through precise sensory details (light, sound, smell). Herrick — lyric poetry: carrying grand emotion through tiny, concrete things — a flower, a dewdrop. Five writers covering the full scale from cosmic to everyday, together proving one truth: regardless of subject size, concreteness is the only channel through which words can reach the reader's mind.</div>
+    <div class="flow-row">
+      <div class="flow-step">Browning<br>Cosmic scale<br>Soul becomes universe</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Defoe<br>Character compressed<br>Figure becomes sculpture</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Swift<br>Satirical proof<br>Detail makes absurd credible</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Hawthorne<br>Atmosphere built<br>Sensory details → emotion</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Herrick<br>Tiny carries grand<br>Flower and dewdrop emotion</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Practical Methods</div>
+    <div class="section-title t-05">Four practical methods for transforming general language into concrete language</div>
+    <div class="section-desc"><strong>How to elevate your writing from general to concrete?</strong> ① Replace abstract nouns with concrete nouns: "unfavorable weather" → "rain every day"; "satisfaction" → "grin"; "reward" → "coin." ② Replace states with actions: "took possession of" → "pocketed"; "showed satisfaction" → "grinned." ③ Choose details perceptible by the senses: not "unfavorable weather" but "rain"; not "reward" but "coin"; not "exhilaration" but "surf-riding." ④ Self-experiment: take a passage from your favorite writer, recast it in general, vague, abstract language — then compare the original and the rewrite. You will find that "the most absorbing writing might be turned into a weariness of the flesh." This fourth step is the most important, because it transforms you from a "believer" into a "falsifier."</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>Replace abstract → concrete nouns</h4>
+          <p>unfavorable weather→rain / satisfaction→grin / reward→coin / exhilaration→exhilarating</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔬</div>
+        <div class="dual-text">
+          <h4>Self-experiment: rewrite → compare</h4>
+          <p>Take a master's passage → rewrite in vague terms → compare. No authority needed; the difference is immediate. The most powerful way to learn.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 KEY TAKEAWAY</div>
+  <div class="takeaway-text">Concreteness is the crown of the three writing principles — the active voice gives you power, positive form gives you clarity, concrete language gives you life. Strunk's Rule 12 is not merely one rule among many — it is the summary of the most central conclusion in all of writing research: "the surest way to arouse and hold the reader's attention is by being specific, definite, and concrete." If you remember only one writing principle, remember this one. The absence of active and positive can be remedied through editing, but the absence of concreteness — using "a period of unfavorable weather" instead of "it rained every day for a week" — means you never gave the reader anything to see, hear, or touch from the very beginning. Use concrete words. Make your prose a sensory experience for the reader, not merely a conceptual transmission.</div>
+</div>
+
+<div class="footer">
+  The Elements of Style Ch.13 Infographic · Based on Rule 12 "Use Definite, Specific, Concrete Language" · William Strunk Jr. · For study reference only
+</div>
+</div>
+</body>
+</html>

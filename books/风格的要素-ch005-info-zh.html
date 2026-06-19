@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格的要素 · 第5章「常被误用的词语和表达方式」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch005-info-en.html">中文 / English</a>
+</div>
+
+<h1>风格的要素 · 第5章「常被误用的词语和表达方式」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">准确比华丽更重要 · 当作者"决定准确表达个人想法"时，语言才开始真正工作</span>
+  斯特伦克在本章中列举了数十个常被误用的词语，从完全不能接受的低级错误（like I did），到需谨慎使用的中性表达（split infinitive），再到本身没错但常被用错的词汇（case, factor, feature）。核心原则：发现问题时，重写整个句子，而非简单替换一词。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是《风格的要素》中最具实用价值的一章。斯特伦克按字母顺序逐一辨析了英文写作中常见的误用——总计涵盖约60个条目，从All right到Worth while。他将错误分为三类：①完全不能接受的用法（如like替代as、Different than）；②虽有人支持但一般不建议的用法（如分裂不定式）；③本身没错但常被用错地方的词汇（如case, factor, feature）。最关键的修复策略是：不要简单替换一个词，而应重写整个句子——这正是规则12"使用清晰具体语言"和规则13"删掉不必要的词"在实战中的延伸应用。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">~60<span class="kpi-unit">条</span></div>
+    <div class="kpi-label">辨析条目总数</div>
+    <div class="kpi-note">从All right到Worth while</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">级</span></div>
+    <div class="kpi-label">错误严重程度</div>
+    <div class="kpi-note">完全禁止·谨慎使用·常见误用</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1<span class="kpi-unit">条铁律</span></div>
+    <div class="kpi-label">修复原则</div>
+    <div class="kpi-note">重写句子，非简单替换一词</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">大名著</span></div>
+    <div class="kpi-label">参考权威</div>
+    <div class="kpi-note">牛津简明词典·Word·Quiller-Couch</div>
+  </div>
+</div>
+
+<!-- 01: 结构性冗余词 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">冗余词</div>
+    <div class="section-title t-01">删掉Case、Character、Nature、Factor、Feature——它们不带来任何新信息</div>
+    <div class="section-desc"><strong>许多词汇是纯粹的结构性冗余，删掉后句子反而更有力。</strong>Case的定义是"某事发生的情况"，但在"In many cases, the rooms were poorly ventilated"中，删掉"in many cases"后变成"Many of the rooms were poorly ventilated"，意思不变却更简洁。Character常用于"acts of a hostile character"，应直接改作"hostile acts"。Nature同样如此——"acts of a hostile nature"就是"hostile acts"。Factor和Feature更被称为"陈旧的词汇"，Heavy artillery has become an increasingly important factor → Heavy artillery has played a constantly larger part。System也常被滥用：Dayton has adopted the commission system of government → Dayton has adopted government by commission。</div>
+    <div class="flow-row">
+      <div class="flow-step">Case<br>"In many cases" → 删掉</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Character/Nature<br>"hostile acts" 代替啰嗦短语</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Factor/Feature<br>用更直接、更地道的词替换</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">System/Student body<br>"students" 即可，无需"群体"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 混淆词对 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">混淆辨析</div>
+    <div class="section-title t-02">Less/Fewer、Like/As、Compare to/with——成对易混淆词的正确用法</div>
+    <div class="section-desc"><strong>英文中有大量成对词汇，它们的细微差别决定了句子的准确性。</strong>Less指"量更少"，Fewer指"数更少"：His troubles are less than mine（麻烦没有我的大）vs. His troubles are fewer than mine（麻烦没有我的多）。Like用于名词和代词前，As用于短语和从句前：不是"He thought like I did"而是"He thought as I did"。Compare to指不同类事物的相似性类比（人生可比作一场朝圣），Compare with指同类事物的差异性比较（美国国会可与英国议会相比较）。Effect（名词=结果，动词=导致）不能与Affect（动词=影响）混淆。Data是复数——These data were tabulated。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Less 误用 / Like 误用</h4>
+          <p>He had less men — 应改为 fewer men。He thought like I did — 应改为 as I did。Different than — 绝不允许，用 different from。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Compare to vs with / Effect vs Affect</h4>
+          <p>人生可比作一场朝圣(compare to)；美国国会可与英国议会相比较(compare with)。Effect是结果，Affect是影响。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 语法错误 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">语法陷阱</div>
+    <div class="section-title t-03">分裂不定式、分词与动名词、Whom误用——三类顽固的语法错误</div>
+    <div class="section-desc"><strong>自14世纪起就有人在分裂不定式，但严谨的作者应尽量避免。</strong>"to diligently inquire"应改为"to inquire diligently"。更隐蔽的错误是将动名词前的分词误用："Do you mind me asking a question?"应改为"Do you mind my asking a question"——这里需要所有格，因为"接受的可能性"是提问这个动作的可能性，而不是"我"的可能性。When作"当……时"时不能用while替代：While the temperature reaches 90 degrees in the daytime, the nights are often chilly 是不对的。Whom常被误用来替代who做后面动词的主语：His brother, whom he said would send him the money...应改为who he said。</div>
+    <div class="flow-row">
+      <div class="flow-step">分裂不定式<br>to + 副词 + verb → verb + 副词</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">分词/动名词<br>mind me asking → mind my asking</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">While误用<br>用分号替代不当的while连接</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Whom误用<br>作主语时用who，不用whom</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 俗套表达 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">俗套陷阱</div>
+    <div class="section-title t-04">One of the most、Interesting、He is a man who——让文章索然无味的俗套表达</div>
+    <div class="section-desc"><strong>避免在文章或段落开头使用"One of the most..."这样的表达——句子本身没错，但表达俗套且无力。</strong>"He is a man who is very ambitious"是典型的冗余表达，直接说"He is very ambitious"即可。同理"Spain is a country which I have always wanted to visit"应改为"I have always wanted to visit Spain"。用Interesting做导入语是最糟糕的习惯："An interesting story is told of..."——你应该让他人觉得内容有趣，而不是你自己声称它有趣，直接讲故事，不要铺垫。Along these lines、Worth while、Respective/Respectively等也应尽量不用或完全摒弃。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>需完全避免的表达</h4>
+          <p>One of the most...开头、An interesting story is told of...（直接讲故事！）、along these lines、He is a man who...</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>正确做法</h4>
+          <p>简洁直接陈述：I have always wanted to visit Spain。重写啰嗦结构。用具体描述替代含糊的"Worth while"。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 滥用强调 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">滥用词</div>
+    <div class="section-title t-05">Very、Certainly、So、Literal——滥用强调词只会削弱而非增强表达</div>
+    <div class="section-desc"><strong>慎用Very！若想要表示强调，使用本身就具有强烈色彩的词汇。</strong>斯特伦克对Very只用了一个字的评价："慎用！"一些作者滥用Certainly来强调每一句话，这种习性在口语中影响不好，在写作中更糟。书面语中应避免用So来加强语气（so good, so warm）。Litteral/literally常被误用在夸张比喻中——"a literal flood of abuse"和"literally dead with fatigue"都不是字面意思。Most不能用于替换almost——"most everybody"应改为"almost everybody"。同样，But作连词时过多使用会导致松散句泛滥——"一个but接着一个but"是最蹩脚的用法。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🛑</div>
+        <div class="data-name">Very</div>
+        <div class="data-sm">"慎用！"——用本身就有强烈色彩的词替代。不要very good，找一个本身就表达"极好"的词。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🛑</div>
+        <div class="data-name">Certainly</div>
+        <div class="data-sm">"滥用certainly强调每一句话"是坏习惯。在口语中影响不好，在写作中影响更糟。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🛑</div>
+        <div class="data-name">Literal/Most/But</div>
+        <div class="data-sm">Literal不可用于夸张。Most≠almost。But避免连续使用。精简句式，增强力量。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">英语写作的精准不在于知道哪些词"可以"用，而在于知道哪些词"不该"用。删掉case/character/nature/factor/feature/system等填充词，分清less/fewer、like/as、compare to/with，修复分裂不定式，摒弃One of the most这种俗套开头，停止用very和certainly无谓强调。最关键的一件事：当你发现句子出了问题，正确地做法是完全重写，而不是替换其中的一个词——这正是规则12和规则13在实战中的延伸。</div>
+</div>
+
+<div class="footer">
+  《风格的要素》第5章信息图 · 基于「常被误用的词语和表达方式」内容提炼 · 威廉·斯特伦克 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

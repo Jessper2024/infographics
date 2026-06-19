@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Elements of Style · Ch.12 "Put Statements in Positive Form"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch012-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Elements of Style · Ch.12 "Put Statements in Positive Form"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Readers are dissatisfied with being told what is not; they wish to be told what is — not is for denial, not evasion</span>
+  Rule 11 embodies one of Strunk's most penetrating insights into the psychology of language. He reveals a law of writing: readers are naturally dissatisfied with being told what something is not — they hunger to know what it is. Not should express denial or antithesis, never serve as a means of evasion. Three contrast examples — from "he was not very often on time" to "he usually came late" — cleanly demonstrate that positive statements possess far greater force than negative ones. Strunk goes so far as to observe that even negative meaning is best expressed in positive form.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Rule 11 is a deep observation about language psychology, not a simple grammar rule. Strunk builds five progressive layers: ① The correct use of not — only for denial and antithesis; never as a refuge for evasive, ambiguous expression. ② Three classic contrasts — from "He was not very often on time" → "He usually came late" to the rewriting of The Taming of the Shrew critique from vague negation to crisp affirmation. ③ The core psychological insight — readers, consciously or unconsciously, are dissatisfied with being told what is not; they wish to be told what is. ④ A concrete conversion table — five pairs of negative→positive vocabulary transformations (not honest→dishonest, did not remember→forgot). ⑤ The special power of negative-positive antithesis — "Not charity, but simple justice" is more forceful than pure affirmation because contrast creates tension.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit"> pairs</span></div>
+    <div class="kpi-label">Contrast Examples</div>
+    <div class="kpi-note">Negative → Positive rewrite</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit"> pairs</span></div>
+    <div class="kpi-label">Neg→Pos Conversion</div>
+    <div class="kpi-note">not honest→dishonest etc.</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1<span class="kpi-unit"> insight</span></div>
+    <div class="kpi-label">Reader Psychology</div>
+    <div class="kpi-note">People want to know "what is"</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit"> uses</span></div>
+    <div class="kpi-label">Correct Uses of Not</div>
+    <div class="kpi-note">Denial · Antithesis</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Core Principle</div>
+    <div class="section-title t-01">Not is a tool for denial, not an excuse for evasion — readers want to know "what is"</div>
+    <div class="section-desc"><strong>Make definite assertions. Avoid tame, colorless, hesitating, non-committal language.</strong> Strunk draws a clear boundary for not: use it to express denial or antithesis, never as a means of evasion. When a writer writes "not important" instead of "trifling," or "did not remember" instead of "forgot," he is presenting the reader with a fill-in-the-blank exercise rather than a complete statement. The reader must mentally supply what lies behind "what it is not" — this increases cognitive load and reduces expressive efficiency. <strong>Consciously or unconsciously, the reader is dissatisfied with being told only what is not; he wishes to be told what is.</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">Writer writes<br>"not important"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Reader fills in<br>"Then what is it?"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Cognitive load ↑<br>Efficiency ↓</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Correct approach<br>Write "trifling"</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Three Contrasts</div>
+    <div class="section-title t-02">Three classic rewrites from vagueness to affirmation: the expressive power released by positive form</div>
+    <div class="section-desc"><strong>Strunk reveals the massive advantage of positive form through three contrasts.</strong> ① "He was not very often on time" → "He usually came late": a negative, vague statement requiring reverse inference from the reader versus a positive, definite statement that lands in one step. ② "He did not think that studying Latin was much use" → "He thought the study of Latin useless": the former circles through a double-negative detour, the latter gives the conclusion directly. ③ The most brilliant case — the critique of The Taming of the Shrew is rewritten from a paragraph of vague negation ("Shakespeare does not portray Katharine as a very admirable character...") into three affirmative sentences: "Katharine is disagreeable, Bianca insignificant." This case proves: positive form is not just a language technique but an attitude of mind — the writer must know definitively what he wants to say.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Negative / Vague</h4>
+          <p>He was not very often on time. / He did not think that studying Latin was much use. Reader must reverse-engineer meaning.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Positive / Definite</h4>
+          <p>He usually came late. / He thought the study of Latin useless. Lands in one step, no cognitive burden on reader.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Conversion Table</div>
+    <div class="section-title t-03">The negative-to-positive vocabulary replacement table: express even negative ideas in positive words</div>
+    <div class="section-desc"><strong>Strunk provides five direct negative→positive conversions:</strong> not honest→dishonest, not important→trifling, did not remember→forgot, did not pay any attention to→ignored, did not have much confidence in→distrusted. This table reveals a startling fact: virtually every "not+X" expression in English has a corresponding positive word — and that positive word is always briefer and more forceful. Strunk's advice: unless you are deliberately setting up a "negation versus affirmation" contrast effect, always use the positive. Because every time you write "not honest," you make the reader read one extra word and perform one extra "reverse decoding" step.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔄</div>
+        <div class="data-name">not honest → dishonest</div>
+        <div class="data-sm">2 words → 1. not important→trifling. did not remember→forgot.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔄</div>
+        <div class="data-name">did not pay attention → ignored</div>
+        <div class="data-sm">4 words → 1. did not have much confidence in→distrusted.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔄</div>
+        <div class="data-name">Pattern: not+X → positive synonym</div>
+        <div class="data-sm">Positive words are always briefer. Rule: unless building contrast, always use positive form.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Special Technique</div>
+    <div class="section-title t-04">The power of negative-positive contrast: "Not charity, but simple justice" — contrast creates tension</div>
+    <div class="section-desc"><strong>Negation is not bad in all cases. When negation forms a clear contrast with affirmation, the expressive effect is actually stronger.</strong> Strunk notes: "Not charity, but simple justice" is more forceful than pure "simple justice." Likewise, "Not that I loved Caesar less, but Rome the more" — this negation→affirmation contrast structure creates dramatic linguistic tension. This is the correct use of not: not evasion, not vagueness, but <strong>establishing a clear antithesis</strong>. When you say "not A," the reader needs to know exactly what you are excluding, and "but B" immediately provides the positive answer. Additionally, negative words other than not (never, etc.) are usually stronger — "The sun never sets upon the British flag" carries more force than "The sun does not set."</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>not for evasion (wrong)</h4>
+          <p>"He was not very often on time." — not conceals the writer's true meaning. The reader doesn't know when he actually arrived.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>not for contrast (right)</h4>
+          <p>"Not charity, but simple justice." — not explicitly excludes one thing, immediately gives the positive answer. Contrast creates tension.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Self-Checklist</div>
+    <div class="section-title t-05">A writing self-check: five questions to root out your dependence on negation</div>
+    <div class="section-desc"><strong>Transform Rule 11 into an actionable writing habit.</strong> ① Does my sentence contain "not"? → If yes, check: is it denial/antithesis, or evasion/vagueness? ② If evasion, what is the positive version? → Write it directly. ③ Can I replace "not+X" with one positive word? → Consult the conversion table. ④ Does my negation serve a deliberate contrast? → If yes, keep it and ensure the "but" portion is clear and forceful. ⑤ Would a stronger negative word (never, etc.) create more force than not? → Consider upgrading for dramatic tension. These five questions form a rapid filtering system to help you break free from the habit of "not daring to say what is."</div>
+    <div class="flow-row">
+      <div class="flow-step">① Check not<br>Denial or evasion?</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">② Write positive<br>Direct affirmative version</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③ Find synonym<br>not+X→positive word</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">④ Check contrast<br>Not A, but B</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⑤ Upgrade negation<br>never etc. stronger</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 KEY TAKEAWAY</div>
+  <div class="takeaway-text">Rule 11 is not a ban on "not" — it is a lesson in expressive courage. Strunk's core insight is psychological: when a reader encounters "he was not very often on time," their response is not to accept this information but to ask "so when did he arrive?" — your not becomes the reader's fill-in-the-blank exercise. The solution is stunningly simple: say directly "he usually came late." When you replace "did not pay any attention to" with "ignored," or "did not remember" with "forgot," every word substitution is a "vague→definite" mental leap. The sole exception — and the most elegant part of this rule — is when you deliberately use "not A, but B" to create contrastive tension. In that case, negation serves affirmation, rather than being an excuse for avoiding it.</div>
+</div>
+
+<div class="footer">
+  The Elements of Style Ch.12 Infographic · Based on Rule 11 "Put Statements in Positive Form" · William Strunk Jr. · For study reference only
+</div>
+</div>
+</body>
+</html>

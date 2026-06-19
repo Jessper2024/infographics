@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格的要素 · 第10章「以一个主题句开始段落」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #666; line-height: 1.8;
+    font-style: italic;
+  }
+  .quote-block .attribution { font-style: normal; color: #aaa; font-size: 12px; margin-top: 6px; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch010-info-en.html">中文 / English</a>
+</div>
+
+<h1>风格的要素 · 第10章「以一个主题句开始段落」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">三段式段落结构 · 主题句→展开→结论——让读者在段落前后都知道你要说什么</span>
+  规则9是斯特伦克关于段落内部结构的最重要规则，也是「写作的基本原则」中篇幅最长、案例最丰富的一条。它定义了经典的三段式段落结构——主题句、论证展开、结论呼应——并提供了史蒂文森《徒步旅行》和莱基《历史的政治价值》两个完整的段落解剖案例，展示了优秀写作者如何在实践中将这一原则发挥到极致。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>这是全书论证最详尽的规则之一。斯特伦克不满足于仅仅说"使用主题句"——他构建了一个完整的段落内部组织框架：①结构的黄金三段——主题句→展开论证→结论呼应；②五大展开方法——重申主题、定义术语、否定对立、举例说明、检验论证；③过渡的艺术——有时一个单词（again/therefore/for the same reason）就足以建立段落与上文的联系，有时需要整段的过渡性引导；④两大经典解剖——对史蒂文森9句段落和莱基6句段落的逐句分析，揭示了主题句如何在实践中被扩展、论证和强化。规则还区分了议论文/说明文（需主题句）与记叙文/描写文（可能有隐含主题或无需主题句）的不同应用场景。</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">三段式结构</div>
+    <div class="kpi-note">主题句→展开→结论</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">展开方法</div>
+    <div class="kpi-note">重申·定义·否定·举例·检验</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">2<span class="kpi-unit">篇</span></div>
+    <div class="kpi-label">经典解剖案例</div>
+    <div class="kpi-note">史蒂文森·莱基</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">9<span class="kpi-unit">句</span></div>
+    <div class="kpi-label">史蒂文森段落</div>
+    <div class="kpi-note">逐句分析示范</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">2<span class="kpi-unit">种文体</span></div>
+    <div class="kpi-label">应用差异</div>
+    <div class="kpi-note">议论文/记叙文</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">三段式</div>
+    <div class="section-title t-01">经典三段式：主题句 → 解释论证 → 结论呼应，形成完整的逻辑闭环</div>
+    <div class="section-desc"><strong>最关键的段落写作——尤其在说明文和议论文中——应遵循三段式结构。</strong>①主题句出现在段首或段首附近，让读者在开始阅读时就清楚段落的目的；②随后的句子解释、论证或展开主题句中的观点；③最后一句要么强调主题句中的观点，要么说明某个重要结论。要注意<strong>严禁段尾跑题或以无关紧要的细节收尾</strong>——结尾必须是主题的强化，而不是注意力的分散。这一结构保证了读者在段落前后都能准确地知道你的核心论点。</div>
+    <div class="flow-row">
+      <div class="flow-step">① 主题句<br>段首或段首附近<br>预告段落目的</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">② 展开论证<br>解释·论证·展开<br>主题句中的观点</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③ 结论句<br>强调主题观点<br>或说明重要结论</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⚠️禁止<br>段尾跑题或<br>无关细节收尾</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">五大方法</div>
+    <div class="section-title t-02">展开主题句的五种武器：重申、定义、否定、举例、检验</div>
+    <div class="section-desc"><strong>作者可以根据写作意图，通过五种不同方式将整个段落与主题句联系起来。</strong>①重申主题——用不同的话再说一遍，强化记忆；②定义术语——对主题句中的关键概念进行精确界定；③否定对立——通过驳斥相反观点来使主题的含义更清晰；④举例说明——用具体案例让抽象的原则落地；⑤检验论证——通过逻辑检验来证明主题的正确性。在长段落中，作者可以同时使用这几种方法。斯特伦克随后用史蒂文森和莱基的两个段落展示了这五种方法在实践中的组合使用。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔄</div>
+        <div class="data-name">重申+定义</div>
+        <div class="data-sm">换种方式再说一遍主题，同时准确定义关键术语，让读者从多个角度理解核心观点。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚔️</div>
+        <div class="data-name">否定+举例</div>
+        <div class="data-sm">通过驳斥相反观点强化立场，再用具体案例将抽象原则转化为可感知的内容。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔬</div>
+        <div class="data-name">检验论证</div>
+        <div class="data-sm">通过逻辑检验证明主题的正确性——展现主题的内涵与推论来进一步阐明。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">经典逐句解剖</div>
+    <div class="section-title t-03">史蒂文森9句段落逐句解剖：从主题句到升华结论的完整示范</div>
+    <div class="section-desc"><strong>斯特伦克选取史蒂文森《徒步旅行》中的一个经典段落，逐句展示了三段式结构如何运作。</strong>句①是主题句"Now, to be properly enjoyed, a walking tour should be gone upon alone."。句②通过否定对立观点（结伴而行失去本质）使主题句含义更清楚——展开方法之"否定"。句③以简略形式重申主题句并列举三个原因——展开方法之"重申"+"检验"。句④-⑤表明第四个原因并换种方式重申——展开方法之"重申"。句⑥-⑦借黑兹利特的话表明相同原因——展开方法之"举例"。句⑧以释义法重述——展开方法之"重申"。句⑨以强调和升华的语言表明第四个原因，得出一个强有力的结论——完美实现了"结论呼应"的目标。</div>
+    <div class="quote-block">
+      "Now, to be properly enjoyed, a walking tour should be gone upon alone."<br>—— 主题句，预告整个段落的核心论点
+      <div class="attribution">— Robert Louis Stevenson, Walking Tours</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">第二解剖案例</div>
+    <div class="section-title t-04">莱基6句段落解剖：主题句→定义→扩展→对比→补充→结论</div>
+    <div class="section-desc"><strong>莱基的段落展示了另一种展开模式。</strong>句①"18世纪出现了一种截然不同的历史观"——主题句。句②更清晰地表达主题句的含义，定义新的历史观——展开方法之"定义"。句③扩展定义——展开方法之"定义+举例"。句④通过对比来阐释定义（they sought rather to write a history of peoples than a history of kings）——展开方法之"否定+对比"。句⑤补充定义：新历史观的又一要素（因果关系链）——展开方法之"重申"。句⑥结论：新历史观带来的一个重要影响——完美的结论呼应。此案例证明：同一套三段式框架，可以在不同的主题和风格中产生完全不同的文字节奏。</div>
+    <div class="quote-block">
+      "It was chiefly in the eighteenth century that a very different conception of history grew up."<br>—— 主题句，将时间、方向、变化全部压缩在一句之中
+      <div class="attribution">— Lecky, The Political Value of History</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">过渡与文体区别</div>
+    <div class="section-title t-05">过渡的艺术 + 记叙/描写文体中主题句的灵活应用</div>
+    <div class="section-desc"><strong>段落之间的联系同样需要设计。</strong>如果段落属于全文的一部分，就要点明它与上文的关系。有时仅靠主题句中的一个单词或短语即可：again（此外）、therefore（因此）、for the same reason（基于相同原因）。但有时在主题句之前使用一个或多个引导句或过渡句更佳；如果需要多个此类句子，最好将过渡句独立成段。<strong>在记叙文和描写文中，规则更灵活。</strong>有时段落以一个精炼的概括句开始以统摄细节（如"The breeze served us admirably"），但更常见的是起始句直接点明主题并预示发展方向（如"He picked up the heavy lamp from the table and began to explore"）。生动的叙事段落经常没有主题句——分段仅为修辞停顿。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>议论文/说明文：须有主题句</h4>
+          <p>三段式结构严格适用。主题句+展开+结论。过渡词建立段落间的逻辑链。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>记叙文/描写文：灵活处理</h4>
+          <p>可用概括句统摄细节，也可直接叙事。短段落常无主题句，仅为修辞停顿。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">主题句不是写作公式中的一项可选项——它是读者阅读体验的"预告系统"。斯特伦克提供的不是一条死规矩，而是一套完整的段落工程学：三段式结构定义了段落内部的逻辑流动；五种展开方法提供了丰富论证的工具箱；两个逐句解剖案例展示了理论如何转换为实践。最关键的一点：无论你的段落是9句还是6句、是议论文还是记叙文，读者进入段落时需要知道"这里要说什么"，出去时需要确认"刚才说了什么"。做到这两点，你的段落就不只是文字的堆砌，而是一次逻辑完整的理性旅程。</div>
+</div>
+
+<div class="footer">
+  《风格的要素》第10章信息图 · 基于「规则9：以一个主题句开始段落」内容提炼 · 威廉·斯特伦克 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

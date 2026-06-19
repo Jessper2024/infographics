@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Elements of Style · Ch.11 "Use the Active Voice"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch011-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Elements of Style · Ch.11 "Use the Active Voice"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Active is more direct · more vigorous · more concise — but do not discard the passive entirely</span>
+  Rule 10 is one of Strunk's most famous pieces of writing advice. With starkly contrasting examples, he proves that "I shall always remember my first visit to Boston" is vastly superior to "My first visit to Boston will always be remembered by me." But he also makes clear: this is not a dogmatic ban — the passive voice has its legitimate uses in English. The key is choosing voice based on which particular word the paragraph needs as its subject, not mechanically avoiding the passive.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This is one of the book's most quoted rules — and one of its most misunderstood. Strunk's argument unfolds in five layers: ① The direct advantage of active voice — more direct, more vigorous, more concise, demonstrated by "I shall always remember my first visit to Boston" versus "My first visit to Boston will always be remembered by me." ② The danger of over-trimming — removing "by me" makes the sentence ambiguous: remembered by whom? ③ Legitimate passive scenarios — when the paragraph focuses on the passive subject (e.g., "The dramatists of the Restoration are little esteemed today"), passive is more appropriate. ④ Two common errors — the double passive construction (e.g., "Gold was not allowed to be exported" → "It was forbidden to export gold") and the nominalized passive waste (e.g., "A survey of this region was made" → "This region was surveyed"). ⑤ The magic of active transformation — replacing "there is" and "could be heard" with active verbs turns lifeless prose into vigorous writing.</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit"> pairs</span></div>
+    <div class="kpi-label">Contrast Examples</div>
+    <div class="kpi-note">Active vs Passive</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit"> types</span></div>
+    <div class="kpi-label">Passive Misuse</div>
+    <div class="kpi-note">Double passive · Nominalization</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit"> cases</span></div>
+    <div class="kpi-label">Active Transformations</div>
+    <div class="kpi-note">there is → active verb</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit"> principle</span></div>
+    <div class="kpi-label">Passive is OK When</div>
+    <div class="kpi-note">Subject demands it</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">∞</div>
+    <div class="kpi-label">Applies to All Genres</div>
+    <div class="kpi-note">Narrative · Description · Exposition</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Core Contrast</div>
+    <div class="section-title t-01">The active voice is more direct, more vigorous, and more concise — proven in one clean example</div>
+    <div class="section-desc"><strong>The active voice is usually more direct and vigorous than the passive.</strong> Strunk's simplest example says it all: "I shall always remember my first visit to Boston" is vastly better than "My first visit to Boston will always be remembered by me." The latter is less direct, less bold, and less concise. If one tries to make it more concise by dropping "by me" — "My first visit to Boston will always be remembered" — it becomes indeterminate: remembered by whom? The writer? Some unnamed person? The world at large? This example perfectly reveals the passive's core risk: information density drops while ambiguity rises.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Active: I shall always remember my first visit to Boston.</h4>
+          <p>Direct · Vigorous · Concise. Clear subject (I), clear action (remember), clear object (visit). One sentence tells exactly who did what.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>Passive: My first visit to Boston will always be remembered by me.</h4>
+          <p>Wordy · Indirect · Weak. If "by me" is removed, it becomes indeterminate. The classic demonstration of the passive's three failings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Legitimate Passive</div>
+    <div class="section-title t-02">The passive voice has its place — the deciding factor is which word the paragraph needs as its subject</div>
+    <div class="section-desc"><strong>This rule does not mean the writer should entirely discard the passive voice.</strong> Strunk explicitly states: the passive is frequently convenient and sometimes necessary in English. He gives a decisive test — which particular word does the paragraph need as its subject? "The dramatists of the Restoration are little esteemed today" works in the passive because the paragraph is about the dramatists. "Modern readers have little esteem for the dramatists of the Restoration" works in the active because the paragraph is about the tastes of modern readers. The correct choice is determined not by a "rule" but by <strong>context and focus</strong>.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>Passive fits: focus is on the dramatists</h4>
+          <p>"The dramatists of the Restoration are little esteemed today." — The paragraph is about dramatists; passive keeps the focus on them.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>Active fits: focus is on readers</h4>
+          <p>"Modern readers have little esteem for the dramatists of the Restoration." — The paragraph is about readers' tastes; active works better.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Two Traps</div>
+    <div class="section-title t-03">The double passive and the nominalized passive: the two most common passive-voice errors</div>
+    <div class="section-desc"><strong>Strunk identifies two particularly bad forms of passive misuse.</strong> ① The double passive — one passive directly dependent on another. "Gold was not allowed to be exported" → correct to "It was forbidden to export gold." Or "He has been proved to have been seen entering the building" → "It has been proved that he was seen to enter the building." The problem: a word related to the second passive becomes the subject of the first passive, distorting the logical chain. ② The nominalized passive waste — a noun expressing the entire action serves as the subject of a passive construction, making the verb a hollow form-filler. "A survey of this region was made in 1900" → "This region was surveyed in 1900." "Mobilization of the army was rapidly effected" → "The army was rapidly mobilized."</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔗</div>
+        <div class="data-name">Double Passive</div>
+        <div class="data-sm">Gold was not allowed to be exported. → It was forbidden to export gold. The logical subject chain is twisted.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📦</div>
+        <div class="data-name">Nominalized Waste</div>
+        <div class="data-sm">A survey...was made → This region was surveyed. Hollow verbs like make/effect/obtain serve as predicates.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">✅</div>
+        <div class="data-name">Exception: meaningful predicate</div>
+        <div class="data-sm">"The export of gold was prohibited." — "prohibited" expresses meaning that "export" alone does not. Acceptable.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Active Transformation Magic</div>
+    <div class="section-title t-04">Replace bland expressions with active verbs to bring lifeless prose alive</div>
+    <div class="section-desc"><strong>The power of the active voice applies not only to narrative but to all kinds of writing.</strong> Strunk provides four active-transformation examples — by replacing "there is" and "could be heard" with active verbs, lifeless description or exposition becomes vivid and forceful. "There were a great number of dead leaves lying on the ground" → "Dead leaves covered the ground." "The sound of a guitar somewhere in the house could be heard" → "Somewhere in the house a guitar hummed sleepily." "The reason that he left college was that his health became impaired" → "Failing health compelled him to leave college." "It was not long before he was very sorry that he had said what he had" → "He soon repented his words." Each transformation turns a static description into a dynamic event.</div>
+    <div class="flow-row">
+      <div class="flow-step">There were leaves<br>lying on the ground</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Dead leaves<br>covered the ground</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">The reason was<br>that health became impaired</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Failing health<br>compelled him to leave</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">All Genres</div>
+    <div class="section-title t-05">The active voice applies to all genres — narrative, description, exposition, argument</div>
+    <div class="section-desc"><strong>The active voice's advantage is not confined to any one genre.</strong> Strunk specifically emphasizes: this holds true not only for narrative principally concerned with action but for writing of any kind. "Dead leaves covered the ground" beats "There were a great number of dead leaves lying on the ground" — active transformation in description. "Failing health compelled him to leave college" beats "The reason that he left college was that his health became impaired" — active transformation in exposition. "He soon repented his words" beats "It was not long before he was very sorry that he had said what he had" — active transformation in argument. Whatever your writing purpose, active verbs are your best ally.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>Narrative / Description</h4>
+          <p>Dead leaves covered the ground. / A guitar hummed sleepily. Active verbs make images move.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>Exposition / Argument</h4>
+          <p>Failing health compelled him to leave college. / He soon repented his words. Active verbs make arguments more forceful.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 KEY TAKEAWAY</div>
+  <div class="takeaway-text">The active voice is not merely a grammatical choice — it is a habit of mind. When you default to active voice, you are forced to answer three questions: Who did it? What did they do? To whom? The answers to these three questions are your sentence. Strunk's advice is not "never use the passive" but "default to active, use passive only when you have a clear reason." That reason is one thing only: when your paragraph's focus happens to be the passive sentence's subject. In all other cases — especially the double passive and nominalized passive — avoid passive entirely. Replace "there is" and "could be heard" with active verbs, and you will find your prose transforming from static description into dynamic narrative.</div>
+</div>
+
+<div class="footer">
+  The Elements of Style Ch.11 Infographic · Based on Rule 10 "Use the Active Voice" · William Strunk Jr. · For study reference only
+</div>
+</div>
+</body>
+</html>

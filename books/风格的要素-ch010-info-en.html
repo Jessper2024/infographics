@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Elements of Style · Ch.10 "Begin Each Paragraph with a Topic Sentence"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #666; line-height: 1.8;
+    font-style: italic;
+  }
+  .quote-block .attribution { font-style: normal; color: #aaa; font-size: 12px; margin-top: 6px; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch010-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Elements of Style · Ch.10 "Begin Each Paragraph with a Topic Sentence"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Three-part structure · Topic sentence → Development → Conclusion — reader knows what you'll say, then what you said</span>
+  Rule 9 is Strunk's longest and most richly illustrated rule on paragraph structure. It defines the classic three-part paragraph — topic sentence, development through argument, and a concluding restatement — then provides two complete sentence-by-sentence analyses: Stevenson's 9-sentence paragraph from Walking Tours and Lecky's 6-sentence paragraph from The Political Value of History. Strunk shows how a great writer puts this principle into practice at the highest level.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This is one of the book's most thoroughly argued rules. Strunk goes far beyond simply saying "use topic sentences" — he builds a complete framework for paragraph-level internal organization: ① The golden three-part structure — Topic sentence → Development → Concluding restatement. ② Five methods of development — restatement, definition, negation of the contrary, illustration, and proof. ③ The art of transition — sometimes a single word (again, therefore, for the same reason) establishes the paragraph's connection to what precedes; sometimes an entire transitional paragraph is needed. ④ Two classic dissections — sentence-by-sentence analyses of Stevenson's 9-sentence and Lecky's 6-sentence paragraphs, revealing how a topic sentence is expanded, argued, and reinforced. The rule also distinguishes between expository/argumentative writing (which requires topic sentences) and narrative/descriptive writing (where topic sentences are optional or implied).</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit"> steps</span></div>
+    <div class="kpi-label">Three-Part Structure</div>
+    <div class="kpi-note">Topic→Develop→Conclude</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit"> ways</span></div>
+    <div class="kpi-label">Development Methods</div>
+    <div class="kpi-note">Restate·Define·Negate·Illustrate·Prove</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">2<span class="kpi-unit"> cases</span></div>
+    <div class="kpi-label">Classic Dissections</div>
+    <div class="kpi-note">Stevenson · Lecky</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">9<span class="kpi-unit"> sent.</span></div>
+    <div class="kpi-label">Stevenson Paragraph</div>
+    <div class="kpi-note">Sentence-by-sentence analysis</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">2<span class="kpi-unit"> modes</span></div>
+    <div class="kpi-label">Style Distinction</div>
+    <div class="kpi-note">Expository / Narrative</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Three-Part</div>
+    <div class="section-title t-01">The classic three-part structure: Topic sentence → Development → Concluding restatement, forming a complete logical loop</div>
+    <div class="section-desc"><strong>The best paragraphs — especially in exposition and argument — follow a three-part structure.</strong> ① The topic sentence appears at or near the beginning, so the reader knows the paragraph's purpose from the start. ② The sentences that follow explain, argue for, or develop the idea stated in the topic sentence. ③ The final sentence either emphasizes the topic-sentence idea or states an important consequence. <strong>Never end a paragraph with a digression or an unimportant detail</strong> — the ending must reinforce the topic, not scatter the reader's attention. This structure ensures the reader knows your central claim both entering and exiting the paragraph.</div>
+    <div class="flow-row">
+      <div class="flow-step">① Topic Sentence<br>At or near the beginning<br>Announces purpose</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">② Development<br>Explain·Argue·Expand<br>the topic-sentence idea</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③ Conclusion<br>Emphasize the idea<br>or state a consequence</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⚠️ Forbidden<br>Digression or<br>trivial detail ending</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Five Methods</div>
+    <div class="section-title t-02">Five weapons for developing a topic sentence: restate, define, negate, illustrate, prove</div>
+    <div class="section-desc"><strong>The writer may develop the paragraph-to-topic-sentence relationship in five distinct ways.</strong> ① Restatement — say the same thing in different words, reinforcing memory. ② Definition — precisely define key terms from the topic sentence. ③ Negation of the contrary — refute the opposite view to make the topic clearer. ④ Illustration — use concrete examples to ground abstract principles. ⑤ Proof — demonstrate the topic's validity through logical testing. In a long paragraph, the writer may use several of these methods together. Strunk's subsequent dissections of Stevenson and Lecky show exactly how these five methods combine in practice.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔄</div>
+        <div class="data-name">Restate + Define</div>
+        <div class="data-sm">Say the same thing in different words while precisely defining key terms. The reader understands the core idea from multiple angles.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚔️</div>
+        <div class="data-name">Negate + Illustrate</div>
+        <div class="data-sm">Refute the contrary view to strengthen your position, then ground abstract principles with concrete examples.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔬</div>
+        <div class="data-name">Prove (by test)</div>
+        <div class="data-sm">Demonstrate the topic's validity through logical testing — show its implications and consequences to further clarify.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Classic Dissection</div>
+    <div class="section-title t-03">Stevenson's 9-sentence paragraph dissected: from topic sentence to elevated conclusion</div>
+    <div class="section-desc"><strong>Strunk selects a classic paragraph from Stevenson's Walking Tours to demonstrate the three-part structure sentence by sentence.</strong> Sentence ① is the topic sentence: "Now, to be properly enjoyed, a walking tour should be gone upon alone." Sentence ② makes the meaning clearer by denying the contrary (traveling in company) — development via <em>negation</em>. Sentence ③ restates the topic sentence in briefer form and gives three reasons — <em>restatement</em> + <em>proof</em>. Sentences ④-⑤ state a fourth reason and restate it in different language — <em>restatement</em>. Sentences ⑥-⑦ state the same reason in the words of Hazlitt — <em>illustration</em>. Sentence ⑧ restates in paraphrase — <em>restatement</em>. Sentence ⑨ states the fourth reason in emphatic and elevated language, forming a strong conclusion — the perfect <em>concluding restatement</em>.</div>
+    <div class="quote-block">
+      "Now, to be properly enjoyed, a walking tour should be gone upon alone."<br>— Topic sentence announcing the paragraph's central claim
+      <div class="attribution">— Robert Louis Stevenson, Walking Tours</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Second Dissection</div>
+    <div class="section-title t-04">Lecky's 6-sentence paragraph dissected: Topic → Define → Expand → Contrast → Supplement → Conclude</div>
+    <div class="section-desc"><strong>Lecky's paragraph demonstrates a different development pattern.</strong> Sentence ① "It was chiefly in the eighteenth century that a very different conception of history grew up" — topic sentence. Sentence ② defines the new conception more clearly — <em>definition</em>. Sentence ③ expands the definition — <em>definition + illustration</em>. Sentence ④ defines by contrast ("they sought rather to write a history of peoples than a history of kings") — <em>negation + contrast</em>. Sentence ⑤ supplements the definition: another element of the new conception (the chain of causes and effects) — <em>restatement</em>. Sentence ⑥ conclusion: an important consequence of the new conception — a perfect concluding restatement. This case proves that the same three-part framework can produce entirely different textual rhythms with different subjects and styles.</div>
+    <div class="quote-block">
+      "It was chiefly in the eighteenth century that a very different conception of history grew up."<br>— Topic sentence compressing time, direction, and change into a single sentence
+      <div class="attribution">— Lecky, The Political Value of History</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Transitions & Mode Distinctions</div>
+    <div class="section-title t-05">The art of transition + flexible topic sentence use in narrative and descriptive writing</div>
+    <div class="section-desc"><strong>Connections between paragraphs must also be designed.</strong> If a paragraph is part of a larger whole, its relation to what precedes must be indicated. Sometimes a single word or phrase in the topic sentence suffices: again, therefore, for the same reason. But sometimes one or more introductory or transitional sentences before the topic sentence serve better; if more than one such sentence is needed, the transition is best made an independent paragraph. <strong>In narrative and descriptive writing, the rule is more flexible.</strong> Sometimes a concise, comprehensive sentence at the beginning binds together the details that follow ("The breeze served us admirably"). More often, the opening sentence simply indicates the direction ("He picked up the heavy lamp from the table and began to explore"). Vivid narrative paragraphs are often brief and lack anything resembling a topic sentence — the paragraph break serves only as a rhetorical pause.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>Expository/Argumentative: topic sentence required</h4>
+          <p>Three-part structure applies strictly. Topic→Develop→Conclude. Transition words build logical chains between paragraphs.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>Narrative/Descriptive: flexible approach</h4>
+          <p>A comprehensive sentence may bind details together, or the opening may simply suggest direction. Short paragraphs often lack topic sentences — the break is purely rhetorical.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 KEY TAKEAWAY</div>
+  <div class="takeaway-text">A topic sentence is not optional decoration — it is your reader's advance-notification system. Strunk provides not a rigid rule but a complete paragraph engineering kit: the three-part structure defines the paragraph's internal logical flow; five development methods provide a rich toolbox for argumentation; two sentence-by-sentence dissections demonstrate how theory translates into practice. The critical insight: whether your paragraph is 9 sentences or 6, expository or narrative, the reader must know "what this is about" upon entering and must confirm "what was just said" upon leaving. Achieve both, and your paragraph becomes not a heap of sentences but a complete, logical intellectual journey.</div>
+</div>
+
+<div class="footer">
+  The Elements of Style Ch.10 Infographic · Based on Rule 9 "Begin Each Paragraph with a Topic Sentence" · William Strunk Jr. · For study reference only
+</div>
+</div>
+</body>
+</html>

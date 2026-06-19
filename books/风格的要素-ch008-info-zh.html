@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格的要素 · 第8章「老人与海（英文版）」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch008-info-en.html">中文 / English</a>
+</div>
+
+<h1>风格的要素 · 第8章「老人与海」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">一个人可以被打倒，但不能被打败 · A man can be destroyed but not defeated</span>
+  海明威笔下的古巴老渔夫圣地亚哥，在连续84天空手而归后，第85天独自驾着小船驶向湾流深处，钩住了一条他一生中见过的最大的马林鱼。在与巨鱼和大海的搏斗中，海明威用极简的英文散文诠释了人类尊严的全部定义：不是胜利，不是战利品，而是在无可挽回的失去之后，依然能够安然入睡，梦见非洲海滩上的狮子。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>《老人与海》是海明威普利策奖和诺贝尔文学奖的双料获奖之作，也是他写作哲学——「冰山原则」——的极致体现。在这部中篇中，海明威用最简洁的英文句子（全书平均句长仅14词）构建了文学史上最宏大的隐喻之一：一个被称作salao（最倒霉的人）的老渔夫，在第85天钓到一条比他的船还大的马林鱼，经过三天三夜的搏斗，却在返回途中被鲨鱼将鱼肉啃食殆尽，只带回一副18英尺长的骨架。海明威通过这部作品证明：①伟大的文学作品不需要复杂的句法——简洁就是力量；②人类的尊严不在于赢得什么，而在于承受失去之后继续活着的能力；③人与自然的对抗不是征服关系，而是一种带着尊重的共生搏斗。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">84<span class="kpi-unit">天</span></div>
+    <div class="kpi-label">连续无鱼</div>
+    <div class="kpi-note">他被叫做salao——最倒霉的人</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">天</span></div>
+    <div class="kpi-label">海上搏斗</div>
+    <div class="kpi-note">与马林鱼从正午斗到正午再到正午</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">~18<span class="kpi-unit">英尺</span></div>
+    <div class="kpi-label">马林鱼长度</div>
+    <div class="kpi-note">比他12英尺的小船还要长出6英尺</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">~14<span class="kpi-unit">词/句</span></div>
+    <div class="kpi-label">全书平均句长</div>
+    <div class="kpi-note">海明威「冰山原则」的数字证据</div>
+  </div>
+</div>
+
+<!-- 01: 人物与起点 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">人物基石</div>
+    <div class="section-title t-01">圣地亚哥与马诺林：在陆地上，老与少之间，故事的一切情感已经搭建完毕</div>
+    <div class="section-desc"><strong>小说全部的情感张力，在海明威前三页就设定了——两个男人的一顿啤酒，一个关于撒丁鱼和棒球的对话，就完成了一部英雄史诗的全部铺垫。</strong>老人圣地亚哥，瘦削憔悴，后颈刻满深深的皱纹，双手布满被鱼线割出的老茧——这些伤口古老如无鱼的沙漠。但只有他的眼睛除外，它们如海一般颜色，充满愉悦、不可战胜。男孩马诺林五岁就跟老人出海学捕鱼——"I remember everything from when we first went together." 他的父母说他跟老人是salao，命令他去别的船。但他每天仍来帮老人扛卷绳、渔叉和打着面粉袋补丁的船帆——那补丁累累的帆，看起来像永败之旗。There was no cast net, no pot of yellow rice and fish. But they went through this fiction every day.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">👴</div>
+        <div class="dual-text">
+          <h4>老人 圣地亚哥</h4>
+          <p>Everything about him was old except his eyes and they were the same color as the sea and were cheerful and undefeated. 他梦见年轻时在非洲海滩上看到的狮子。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">👦</div>
+        <div class="dual-text">
+          <h4>男孩 马诺林</h4>
+          <p>"I would like to go. If I cannot fish with you, I would like to serve in some way." 他每天为老人带来食物、咖啡和希望——虚构的渔网和虚构的黄米饭不过是爱的仪式。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 出海与钩鱼 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">出海与钩鱼</div>
+    <div class="section-title t-02">第85天：独自驶向深海，在600英尺的深蓝中钩住一生之鱼</div>
+    <div class="section-desc"><strong>海明威用精确到令人窒息的技术细节构建了这一天的全部仪式。</strong>老人在黑暗中独自划出港口，"leaving the smell of the land behind and rowing out into the clean early morning smell of the ocean." 他将四条钓线精准地放在40、75、100和125英寻的深度——"Others let them drift with the current and sometimes they were at sixty fathoms when the fishermen thought they were at a hundred. But, he thought, I keep them with precision. Only I have no luck any more. But who knows? Maybe today." 然后他感觉到那轻轻的试探——"He felt the light delicate pulling and then a harder pull when a sardine's head must have been more difficult to break from the hook." 然后是巨大的重量——"he felt something hard and unbelievably heavy."</div>
+    <div class="flow-row">
+      <div class="flow-step">破晓出海<br>黑暗中独自划出港口</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">四条钓线<br>40/75/100/125英寻</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">轻微试探<br>He felt the delicate pulling</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">巨大重量<br>"unbelievably heavy"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 人与鱼的搏斗 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">人鱼搏斗</div>
+    <div class="section-title t-03">三天三夜：背上勒着钓线，右手抽筋，左手血淋淋，却从不说我会输</div>
+    <div class="section-desc"><strong>这场搏斗的核心矛盾不是征服，而是一种带着深刻敬意的共生关系——"Fish, I'll stay with you until I am dead."</strong>第一天：鱼拖着船往西北方移去，四小时后仍在游，老人用一条面粉袋衬垫横跨肩膀的钓线。"I can do nothing with him and he can do nothing with me," he thought. 老人右手被钓线割破，左手抽筋，生吃金枪鱼和飞鱼。他自言自语——自从男孩离开后，他就在海上自言自语，"since there was no one that they could annoy." 第二天夜里鱼终于浮出水面，"two feet longer than the skiff"——比他12英尺的小船还长。老人用渔叉杀死了它，绑在船侧。这不仅是捕鱼，这是一场两个同等对手之间的角斗："I have never seen a greater, or more beautiful, or a calmer or more noble thing than you, brother."</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🩸</div>
+        <div class="dual-text">
+          <h4>肉体的极限</h4>
+          <p>左手连续抽筋数小时。右手被钓线割到见骨。生吃金枪鱼和飞鱼。三天未眠。"Pain does not matter to a man."</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🐟</div>
+        <div class="dual-text">
+          <h4>灵魂的对话</h4>
+          <p>"Fish, I love you and respect you very much. But I will kill you dead before this day ends." 对手是兄弟，不是敌人。杀死鱼不是征服，而是完成一条鱼和一个渔夫之间命定的契约。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 鲨鱼与失去 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">鲨鱼劫掠</div>
+    <div class="section-title t-04">一条接一条的鲨鱼——用刀、用浆、用舵把，杀死鲨鱼但保不住鱼——这是人类命运最残酷的隐喻</div>
+    <div class="section-desc"><strong>从第一条灰鲭鲨（Mako）到最后的加拉诺鲨，鲨鱼的攻击序列构成了全书最黑暗的段落。</strong>第一条Mako鲨鱼从深处升起——"built as a sword fish except for his huge jaws… everything about him was beautiful except his jaws"。老人用渔叉刺入它的脑中，但也失去了渔叉。他只能用刀绑在桨上做新武器。第二条、第三条——他在黑暗中击退了一波又一波的鲨鱼，"fought them with the club and the tiller and the short knife until he could not see." 但每次一条鲨鱼被杀死，都会带走40磅鱼肉。当他最终看见哈瓦那的灯火时，那条18英尺的马林鱼只剩下一副骨架——"the old man saw the fish was gone now and the sharks still came." 他说出了那句为人类尊严重新定义的话："But man is not made for defeat. A man can be destroyed but not defeated."</div>
+    <div class="flow-row">
+      <div class="flow-step">第一条鲨鱼<br>Mako·渔叉刺入脑中<br>失去渔叉，失去40磅肉</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">刀绑在桨上<br>连续杀死多条鲨鱼<br>刀折断</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">舵把和短棍<br>"fought until he could not see"<br>鱼肉被吃光</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">只剩骨架<br>"A man can be destroyed<br>but not defeated."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 归航与意义 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">归航与意义</div>
+    <div class="section-title t-05">扛着桅杆爬上山顶，回棚屋睡去——他又梦见了狮子</div>
+    <div class="section-desc"><strong>小说的结尾不是胜利的欢呼，不是永久的失去——而是人类在最彻底的失败之后，依然能够重新开始的平静。</strong>老人深夜里扛着桅杆——像扛着十字架——艰难地走回他的棚屋。"He started to climb again and at the top he fell and lay for some time with the mast across his shoulder." 早上，男孩马诺林找到了他，看到他那被鲨鱼割烂的双手，哭了。游客们在咖啡店指着那副"大鲨鱼的美丽白骨"——他们不知道那是一条马林鱼。男孩为老人带来了咖啡，说："现在我们又可以一起捕鱼了。"老人睡着了。在他梦里，狮子又出现在非洲的海滩上。海明威用结尾三个词结束了现代文学史上最宏伟的隐喻：The old man was dreaming about the lions. ——不是关于鱼，不是关于失败，不是关于胜利。是关于年轻时见过的那些狮子。一切都可以失去，但不会失去的是做梦的能力。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⛪</div>
+        <div class="data-name">十字架意象</div>
+        <div class="data-sm">老人扛桅杆上山三次跌倒——"he fell and lay for some time with the mast across his shoulder" — 海明威的基督受难隐喻。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🦴</div>
+        <div class="data-name">被误解的胜利</div>
+        <div class="data-sm">游客们惊叹"大鲨鱼的骨架"——他们不知道真相，不知道代价，不知道什么是真正的伟大。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🦁</div>
+        <div class="data-name">永恒之梦</div>
+        <div class="data-sm">"The old man was dreaming about the lions." 不是鱼，不是鲨鱼——是狮子。青春和力量从未死去。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">《老人与海》的终极力量不在其故事——一个老人捕获一条大鱼然后失去了它——而在于海明威用最简洁的语言回答了人类最根本的问题：当一切都被夺走之后，人还剩下什么？答案是：做梦的能力。"A man can be destroyed but not defeated"不是一句口号，而是海明威用整部小说的结构证明的定理：你可以失去渔叉、刀子、鱼肉、一切看得见的东西，但在棚屋里睡去后，狮子仍会出现在梦中。海明威的「冰山原则」在语言上的体现是每句14词的平均句长，在文学上的体现则是：这部小说只说出了水面上的八分之一，剩下的七分之八——关于孤独、尊严、衰老、人与自然的共生——全部留给了每个读者自己去发现。</div>
+</div>
+
+<div class="footer">
+  《风格的要素》第8章信息图 · 基于海明威「老人与海」英文本内容提炼 · 威廉·斯特伦克 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

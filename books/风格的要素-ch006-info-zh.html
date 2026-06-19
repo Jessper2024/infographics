@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格的要素 · 第6章「拼写」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch006-info-en.html">中文 / English</a>
+</div>
+
+<h1>风格的要素 · 第6章「拼写」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">拼写不取决于权威，而取决于约定俗成 · 过度简化会分散读者的注意力</span>
+  斯特伦克指出英语拼写的本质是约定俗成，而非任何权威的决定。本章提供了56个常被拼错的单词列表，以及三条实用的拼写规则。核心洞察：过于简化的拼写（如tho代替though）之所以不被接受，是因为它迫使读者脑补缺失的字母，分散了注意力，降低了阅读效率。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>这是全书最短的一章，却抓住了英文拼写的根本原理。斯特伦克阐明三个层次：①拼写的本质逻辑——英语单词的拼写取决于约定俗成，而非权威规定；②过度简化为什么会失败——tho之所以不如though，不是因为"错误"，而是因为读者读完though不需要拼写意识，读tho却要脑补缺失字母；③实操指南——一个56词的常错列表加上三条规则（双写辅音、连字符、分写复合词），构成了写作者最基本的拼写工具包。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">56<span class="kpi-unit">词</span></div>
+    <div class="kpi-label">常被拼错词汇</div>
+    <div class="kpi-note">从accidentally到villain</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">条</span></div>
+    <div class="kpi-label">核心拼写规则</div>
+    <div class="kpi-note">双写辅音·连字符·分写</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1<span class="kpi-unit">条原理</span></div>
+    <div class="kpi-label">拼写本质</div>
+    <div class="kpi-note">约定俗成，非权威决定</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">0<span class="kpi-unit">例外</span></div>
+    <div class="kpi-label">简化拼写被认可</div>
+    <div class="kpi-note">仅有rime=rhyme是例外</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">拼写本质</div>
+    <div class="section-title t-01">拼写取决于约定俗成，而非任何权威的规定</div>
+    <div class="section-desc"><strong>英语单词的拼写并非一成不变，也并非取决于权威，而是取决于约定俗成。</strong>如今大部分单词的拼写形式都已统一。在任一时期，总有一小部分单词拥有不止一种拼写形式——其中一种会逐渐受到偏爱，被冷落的则慢慢过时，最终被摒弃。新的拼写形式（大多是简化拼写）不时被创造出来，有的被认可，有的则逐渐被淘汰。这个过程完全是自发的、民主的、来自语言使用者的集体选择。</div>
+    <div class="flow-row">
+      <div class="flow-step">拼写变体出现<br>多种形式并存</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">约定俗成<br>一种形式被偏爱</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">冷落淘汰<br>其他形式被遗忘</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">新简化尝试<br>被认可或淘汰</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">简化陷阱</div>
+    <div class="section-title t-02">过于简化的拼写不被接受——不是因为错，而是因为它分散读者注意力</div>
+    <div class="section-desc"><strong>不易被接受或过于简化的拼写形式会引起读者的不悦，这是人们不接纳它们的真实理由。</strong>斯特伦克用一个精妙的例子揭示真相：当读到though时，读者不假思索地理解其意，完全不会去想拼写是否复杂；而读到tho时，读者还要脑补缺失的字母，造成注意力分散，使阅读效果大打折扣。简化拼写的失败，不在于"拼写规则"本身，而在于认知心理学——它增加了读者的认知负荷。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🚫</div>
+        <div class="dual-text">
+          <h4>tho（过度简化）</h4>
+          <p>读者需脑补缺失的字母，注意力被分散，阅读被中断。拼写的目的不是"简单"，而是"不打扰"。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>though（约定拼写）</h4>
+          <p>读者不假思索地理解其意，不会去想拼写是否复杂。阅读流畅，无认知阻力。这才是好拼写的标准。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">常错词表</div>
+    <div class="section-title t-03">56个高频率拼错词——从accidentally到villain的完整防错清单</div>
+    <div class="section-desc"><strong>斯特伦克列出的56个常被拼错单词覆盖了英语写作中最常见的陷阱。</strong>这些词大致可分为几类：①双写字母类（accidentally, occurred, disappoint, dissipate）；②ie/ei混淆类（believe, deceive, siege, seize, relieve）；③静默字母类（fascinate, rhythm, privilege, undoubtedly）；④易混词缀类（preceding, pursue, repetition, separate, similar）；⑤人名专有类（Philip, playwright的wright非write）；⑥常见功能词（until, too, tries, led/lead的过去式）。记住这些词，能避免绝大多数拼写错误。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔤</div>
+        <div class="data-name">ie/ei 混淆</div>
+        <div class="data-sm">believe, deceive, siege, seize, relieve, mischief, achieve, receive — 注意believe是ie，seize是ei</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔤</div>
+        <div class="data-name">双写字母陷阱</div>
+        <div class="data-sm">accidentally, occurred, disappoint, dissipate, embarrass, parallel — 双写辅音的位置是高频错误区</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔤</div>
+        <div class="data-name">静默&易混词缀</div>
+        <div class="data-sm">rhythm(h后y), privilege(无d), separate(非seperate), precede(非proceed), pursue(非pursue)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">双写规则</div>
+    <div class="section-title t-04">短元音+单辅音：加-ed或-ing前需双写词尾辅音</div>
+    <div class="section-desc"><strong>当一个发短元音且重读的元音字母后面只跟着一个辅音字母（除了v），应先双写词尾的辅音字母，再加-ed或-ing。</strong>例如：planned（plan→planned），letting（let→letting），beginning（begin→beginning）。唯一的例外是coming（come→coming，因为词尾的e已去掉）。这条规则非常简洁，但许多写作者因不重视而频繁犯错。将它内化成肌肉记忆，能避免writing→write→错写成writting这类错误。</div>
+    <div class="flow-row">
+      <div class="flow-step">短元音+单辅音<br>plan · let · begin</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">双写辅音<br>plan→planned · let→letting</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">特殊情况<br>come→coming(去e)<br>v不打双写</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">检查<br>planed✗ planned✓</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">连字符规则</div>
+    <div class="section-title t-05">连字符与分写规则：to-day需连字符，any one写成两个词</div>
+    <div class="section-desc"><strong>写to-day, to-night, to-morrow时，中间应加连字符（together除外）。</strong>将any one、every one、some one、some time（如果意为"以前"则写成sometime）写成两个单词。这两条规则看起来简单，却是当时英语写作的正式标准——它们提醒我们：拼写规则随时代演变。今天的to-day已写成today，但any one vs anyone的区分依然重要。关键是理解规则背后的逻辑：连字符和空格不是装饰，而是为读者消除歧义的工具。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>需连字符（传统）</h4>
+          <p>to-day · to-night · to-morrow。注意together例外，不分开。连字符是消除视觉歧义的工具。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>分写两个词</h4>
+          <p>any one · every one · some one · some time（"一段时间"）。但sometime（"从前"）连写。分词vs合词取决于语义。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">拼写不服务于"正确性"，而服务于"不打扰"。though优于tho不是因为"规则"正确，而是因为though让读者不假思索地理解内容，而tho打断阅读，增加认知负担。记住56个高频错词的拼写、掌握双写辅音规则、理解连字符与分写规律——这些不是无聊的琐事，而是让你的文字"隐形"的基本功：好的拼写不会让读者注意到你，只会让读者专注于你的思想。</div>
+</div>
+
+<div class="footer">
+  《风格的要素》第6章信息图 · 基于「拼写」内容提炼 · 威廉·斯特伦克 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Elements of Style · Ch.9 "Make the Paragraph the Unit of Composition"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch009-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Elements of Style · Ch.9 "Make the Paragraph the Unit of Composition"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">One paragraph, one topic · Each paragraph's beginning signals a new step in the argument</span>
+  Strunk's Rule 8 opens his "Elementary Principles of Composition." He makes a simple, powerful point: paragraphs are not arbitrary line breaks — they are a navigation system built for the reader. From a brief one-paragraph summary to a seven-paragraph poetry critique, the purpose of paragraphing is constant: to let the reader know, at the start of every paragraph, that a distinct unit of thought is about to begin.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This is the first rule in Chapter III — Elementary Principles of Composition — and Strunk's core teaching on paragraph-level organization. Rule 8 establishes a three-tier decision framework: ① When not to subdivide — if the subject is narrow and the treatment brief, a single paragraph suffices. ② When to subdivide — a large subject requires division into smaller topics, each forming its own paragraph. ③ How to determine paragraph count — depends on the scope of each subtopic. Strunk provides three concrete templates: poetry critique (7 paragraphs), novel analysis (4 paragraphs), and historical event (3 paragraphs). He also emphasizes three exceptions: transitional sentences, dictionary-style entries, and dialogue — each new speaker requires a new paragraph.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit"> types</span></div>
+    <div class="kpi-label">Paragraph Templates</div>
+    <div class="kpi-note">Poetry · Novel · History</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit"> cases</span></div>
+    <div class="kpi-label">Single-Sentence OK</div>
+    <div class="kpi-note">Transition·Dictionary·Dialogue</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">7<span class="kpi-unit"> paras</span></div>
+    <div class="kpi-label">Poetry Critique Model</div>
+    <div class="kpi-note">The most complex template</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit"> rule</span></div>
+    <div class="kpi-label">Fundamental Purpose</div>
+    <div class="kpi-note">Serve the reader, not the writer</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Core Principle</div>
+    <div class="section-title t-01">One paragraph per topic: the sole purpose of paragraphing is to build a clear navigation system for the reader</div>
+    <div class="section-desc"><strong>Paragraphing serves the reader, not the writer.</strong> Strunk states plainly: the beginning of each paragraph signals to the reader that a new step in the argument is about to begin. This is a pure reader-experience principle. The writer already knows the terrain; the reader approaches it for the first time. Paragraphs are the map the writer draws, marking "a new topic starts here." A large subject should be divided into smaller topics, each given its own paragraph — not for the writer's convenience, but for the reader's cognitive comfort.</div>
+    <div class="flow-row">
+      <div class="flow-step">Large subject<br>needs subdivision</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Divide into<br>smaller topics</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Each topic<br>its own paragraph</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Paragraph start<br>signals new topic</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">When NOT to Subdivide</div>
+    <div class="section-title t-02">A narrow subject with brief treatment: write one paragraph, then check if subdivision would be better</div>
+    <div class="section-desc"><strong>More paragraphs is not always better.</strong> If the subject is narrow — a brief description, a book summary in brief, a short account of an incident, an outline of an action, a single idea — it is best written as a single paragraph. The crucial step: <strong>examine afterward</strong> whether one paragraph serves better than several. This after-the-fact test transforms paragraphing from guesswork into verification. If the one-paragraph version reads worse than a subdivided one, rewrite. If not, leave it.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Single paragraph works</h4>
+          <p>Brief description, book summary, incident account, action outline, simple idea. Examine after writing whether subdivision would help.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📐</div>
+        <div class="dual-text">
+          <h4>Subdivision needed</h4>
+          <p>Large subject → multiple subtopics. Use templates to guide paragraph count: poetry (7), novel (4), history (3).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Paragraph Templates</div>
+    <div class="section-title t-03">Three classic paragraphing templates: from 2 to 7 paragraphs, a progressive structure system</div>
+    <div class="section-desc"><strong>Strunk provides three concrete, reusable paragraphing templates covering analysis from simple to complex.</strong> ① Book/poem brief review (2 paras): A. Account of the work → B. Critical discussion. ② Poetry critique (7 paras): A. Facts of composition and publication → B. Kind of poem; metrical form → C. Subject → D. Treatment of subject → E. For what chiefly remarkable → F. Wherein characteristic of the writer → G. Relationship to other works. ③ Novel analysis (4 paras): A. Setting → B. Plot → C. Characters → D. Purpose. ④ Historical event (3 paras): A. What led up to → B. Account of → C. What followed. Strunk notes: in practice, some subtopics may need further subdivision.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📖</div>
+        <div class="data-name">Brief Review (2)</div>
+        <div class="data-sm">A. Account of the work → B. Critical discussion. The simplest two-paragraph structure.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🎭</div>
+        <div class="data-name">Poetry Critique (7)</div>
+        <div class="data-sm">From publication facts to relationships with other works. The full analysis dimension.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📚</div>
+        <div class="data-name">Novel & History (4/3)</div>
+        <div class="data-sm">Novel: Setting·Plot·Characters·Purpose. History: Lead-up·Account·Consequences.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Three Exceptions</div>
+    <div class="section-title t-04">Single-sentence paragraphs allowed: transitions, dictionary entries, and dialogue speaker changes</div>
+    <div class="section-desc"><strong>As a rule, single sentences should not be written as paragraphs. Three exceptions exist.</strong> ① Transitional sentences: in exposition or argument, a brief sentence indicating the relation between parts commonly stands alone as a paragraph. ② Dictionary-style entries: in textbooks or guides, many topics are touched upon briefly, each as its own short paragraph. ③ Dialogue: each speech, even if only a single word, is a paragraph by itself; a new paragraph begins with each change of speaker. When narrative and dialogue are combined, Strunk recommends learning this rule from well-printed works of fiction.</div>
+    <div class="flow-row">
+      <div class="flow-step">Transition<br>Exposition/Argument</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Dictionary entries<br>Textbooks/Guides</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Dialogue<br>New speaker=new para</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Learn from<br>well-printed fiction</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">The Art of Subdivision</div>
+    <div class="section-title t-05">Templates are a starting point, not a prison: subdivide further when the material demands it</div>
+    <div class="section-desc"><strong>Strunk's templates are a starting point, not an endpoint.</strong> He specifically warns: when actually writing on either of these two subjects — poetry or fiction — the writer may find it necessary to subdivide one or more of the topics. For poetry, paragraphs C (Subject) and D (Treatment) vary with the poem — C may need to state the actual or imagined circumstances, then indicate the subject and outline its development; if the poem is a narrative in the third person, C need contain no more than a concise summary of the action. D should indicate the leading ideas and show how they are made prominent, or indicate what points the narrative chiefly emphasizes. Paragraph design must flex based on the specific content, not mechanically follow a template.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>C (Subject) adapts flexibly</h4>
+          <p>State circumstances → indicate subject → outline development. For third-person narrative: concise action summary only.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>D (Treatment) adapts flexibly</h4>
+          <p>Indicate leading ideas + show how they are made prominent, or note what the narrative chiefly emphasizes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 KEY TAKEAWAY</div>
+  <div class="takeaway-text">Paragraphing is not formatting convention — it is reader-experience infrastructure. Strunk's rule is elegantly simple: one paragraph, one independent unit of thought; each paragraph's opening announces "a new topic begins." Whether a one-paragraph brief or a seven-paragraph poetry analysis, the principle is constant — it serves the reader, building an ordered cognitive map through unfamiliar content. When unsure how to paragraph, start with Strunk's three templates, then adjust in the writing. Good paragraphing makes the reader forget paragraphs exist, focusing only on your ideas.</div>
+</div>
+
+<div class="footer">
+  The Elements of Style Ch.9 Infographic · Based on Rule 8 "Make the Paragraph the Unit of Composition" · William Strunk Jr. · For study reference only
+</div>
+</div>
+</body>
+</html>

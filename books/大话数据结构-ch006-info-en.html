@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Structures in Plain Language · Chapter 6 "Trees"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Quote block */
+  .quote-block { background: #fdf2f8; border-left: 3px solid #db2777; border-radius: 8px; padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #831843; line-height: 1.7; font-style: italic; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="大话数据结构-catalog.html">← Chapter Index</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大话数据结构-ch006-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Data Structures in Plain Language · Chapter 6 "Trees"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Linear structures cannot model the ubiquitous one-to-many relationships in the real world. Trees far surpass linear lists in complexity — storage, traversal, and search all pose challenges. This chapter uses the binary tree as a bridge: recursive traversal → threading → Huffman coding — three techniques that transform complex tree structures into simple, efficient linear operations, while revealing the principle of lossless data compression.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>A tree is a finite set of n (n≥0) nodes, defined recursively: there is exactly one designated root node, and the remaining nodes are partitioned into m (m>0) mutually disjoint subsets, each of which is itself a tree (a subtree). This chapter builds foundational concepts: node/degree/leaf/level/depth/forest; covers three storage representations (parent, child, child-sibling); then dives into binary tree traversal (4 methods), threaded binary trees that repurpose null pointers, and Huffman coding — the theoretical bedrock of data compression.</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">2<span class="kpi-unit">subtrees</span></div>
+    <div class="kpi-label">Max Children per Binary Node</div>
+    <div class="kpi-note">Left/right order matters</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">4<span class="kpi-unit">methods</span></div>
+    <div class="kpi-label">Binary Tree Traversals</div>
+    <div class="kpi-note">Pre·In·Post·Level-order</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">n+1<span class="kpi-unit">slots</span></div>
+    <div class="kpi-label">Null Pointer Fields</div>
+    <div class="kpi-note">n nodes → 2n pointers → n-1 branches</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">220<span class="kpi-unit"> vs 315</span></div>
+    <div class="kpi-label">Huffman vs. Naive WPL</div>
+    <div class="kpi-note">~30% fewer comparisons for grading</div>
+  </div>
+</div>
+
+<!-- 01: Tree Definition & Concepts -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Recursive Definition</div>
+    <div class="section-title t-01">Tree Definition & Core Concepts: From One Tree to a Forest</div>
+    <div class="section-desc"><strong>A tree is a finite set of n (n≥0) nodes, defined recursively.</strong> n=0 is the empty tree. A non-empty tree has exactly one root node, with remaining nodes partitioned into m disjoint subtrees. Key concepts: node degree (subtree count), leaf (degree 0), branch node (degree > 0), tree degree (max node degree); child/parent/sibling/ancestor/descendant; level (root at 1) → depth (max level); forest (a set of m disjoint trees). <strong>The essential difference from linear lists: one-to-many vs. one-to-one.</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">Node<br>degree/leaf/branch/parent</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Hierarchy<br>Root→Subtrees→Leaves</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Forest<br>Set of trees</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Tree Storage -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Storage Schemes</div>
+    <div class="section-title t-02">Three Storage Representations: Parent, Child, Child-Sibling</div>
+    <div class="section-desc"><strong>Parent representation: sequential storage with a parent field — find parent in O(1), find children requires traversal.</strong> Extendable with first-child and right-sibling fields. Child representation: sequential header array + per-node child linked list — balances traversal and child finding. Child-sibling representation (binary linked list): each node has firstchild and rightsib pointers — <strong>this is the crucial bridge that transforms any tree into a binary tree.</strong> Storage design has no silver bullet; choose based on the operations you need.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">👨‍👧</div>
+        <div class="dual-text">
+          <h4>Parent Representation</h4>
+          <p>data+parent field: find parent O(1). Add first-child and right-sibling fields to also find children and siblings efficiently</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🌳</div>
+        <div class="dual-text">
+          <h4>Child-Sibling Repr.</h4>
+          <p>data+firstchild+rightsib: transforms any n-ary tree into a binary tree — the key to all binary tree algorithms</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Binary Tree Traversal -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Traversal System</div>
+    <div class="section-title t-03">Four Binary Tree Traversals: Turning Trees into Linear Sequences</div>
+    <div class="section-desc"><strong>Each binary tree node has at most two subtrees, ordered left and right.</strong> Five basic forms: empty, root-only, left-only, right-only, both children. Special types: skewed trees (left/right), full binary tree (all levels full), complete binary tree (level-order numbering has no gaps). Five key properties: layer i has ≤2ⁱ⁻¹ nodes; depth k has ≤2ᵏ-1 nodes; n₀=n₂+1; depth ⌊log₂n⌋+1; parent-child indices 2i & 2i+1. <strong>Four traversals linearize the tree: Pre-order (root→left→right), In-order (left→root→right), Post-order (left→right→root), Level-order (top-down, left to right).</strong> Pre+In or Post+In uniquely determine a binary tree; Pre+Post alone cannot.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">Pre-order</div>
+        <div class="data-name">Root→Left→Right</div>
+        <div class="data-sm">Visit root first, then recursively left, then right</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">In-order</div>
+        <div class="data-name">Left→Root→Right</div>
+        <div class="data-sm">Recursively left first, then visit root, then right</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">Post-order</div>
+        <div class="data-name">Left→Right→Root</div>
+        <div class="data-sm">Recursively left & right first, then visit root</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Threaded Binary Trees -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Space Optimization</div>
+    <div class="section-title t-04">Threaded Binary Trees: Turning Null Pointers into GPS Navigation</div>
+    <div class="section-desc"><strong>An n-node binary linked list has 2n pointer fields but only n-1 branches — leaving n+1 null pointers wasted.</strong> Threading repurposes these null pointers to store the predecessor and successor of each node under a specific traversal order — like a GPS that tells you where to go next. Add ltag/rtag flags to distinguish "points to child" (0) from "points to thread" (1). <strong>A threaded binary tree is effectively a doubly linked list, enabling O(n) traversal without ever needing to re-traverse to find predecessors/successors.</strong> Adding a head node allows traversal from the first node forward to the last, or from the last backward to the first.</div>
+    <div class="flow-row">
+      <div class="flow-step">Null Pointers<br>n+1 wasted</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Add Threads<br>Store pred./succ.</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Doubly Linked List<br>O(n) traversal·no backtrack</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Huffman Tree & Coding -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Compression</div>
+    <div class="section-title t-05">Huffman Tree & Coding: The Mathematical Beauty of Data Compression</div>
+    <div class="section-desc"><strong>A Huffman tree is the binary tree with the minimum weighted path length (WPL). Construction: repeatedly merge the two smallest-weight nodes into a new parent whose weight is their sum.</strong> Huffman coding: build a Huffman tree using character frequencies as weights; assign 0 to left branches, 1 to right branches; the root-to-leaf path is the character's code. <strong>Key property: no character's code is a prefix of another's (prefix code) — guaranteeing unambiguous decoding.</strong> Example with frequencies A27/B8/C15/D15/E30/F5: Huffman coding compresses a 30-bit binary string to 25 bits — ~17% space saved. This is the theoretical foundation of lossless compression underlying ZIP, JPEG, and modern codecs.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📊</div>
+        <div class="dual-text">
+          <h4>Huffman Tree Construction</h4>
+          <p>①Sort weights ②Merge two smallest ③Repeat until one tree remains → WPL=40×1+30×2+15×3+10×4+5×4=205 (optimal)</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🗜️</div>
+        <div class="dual-text">
+          <h4>Huffman Coding Traits</h4>
+          <p>Prefix code·unambiguous decoding·short codes for frequent chars·sender/receiver agree on same Huffman tree → 30 bits→25 bits, 17% compression</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Trees transcend the one-to-one limit of linear structures through recursive definition. The binary tree is the chapter's hub: four traversals linearize trees for computer processing; threading repurposes n+1 null pointers for O(n) backtrack-free traversal; the child-sibling representation unifies arbitrary trees as binary trees. The Huffman tree minimizes WPL; Huffman coding achieves lossless compression through prefix codes — Huffman's 1952 discovery still underpins ZIP, JPEG, and modern codecs today. The equivalence transformation among trees, forests, and binary trees proves that complex problems have simple solutions.</div>
+</div>
+
+<div class="footer">
+  Data Structures in Plain Language · Chapter 6 Infographic · Author: Cheng Jie · Condensed from Chapter 6 "Trees" · For study reference only
+</div>
+</div>
+</body>
+</html>

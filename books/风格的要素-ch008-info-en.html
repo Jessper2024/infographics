@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Elements of Style · Ch8「The Old Man and the Sea」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← Chapter Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch008-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Elements of Style · Ch8「The Old Man and the Sea」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">A man can be destroyed but not defeated · Hemingway's iceberg in 14-word sentences</span>
+  Santiago, an aging Cuban fisherman who has gone eighty-four days without a fish, sails alone into the Gulf Stream on the eighty-fifth day and hooks the greatest marlin of his life. In the three-day battle that follows — against the fish, against the sea, and against the sharks that finally strip his prize to a skeleton — Hemingway demonstrates, in the leanest English prose ever written, the full definition of human dignity: not victory, not trophies, but the ability to dream of lions on an African beach after losing everything.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><em>The Old Man and the Sea</em> is Hemingway's Pulitzer- and Nobel-double-winning work, and the ultimate expression of his writing philosophy — the "Iceberg Theory." In this novella, Hemingway uses the leanest English sentences (average 14 words per sentence) to construct one of literature's grandest metaphors: an old fisherman, labeled <em>salao</em> (the worst form of unlucky), hooks a marlin bigger than his boat on day 85, fights it for three days and nights, only to have sharks devour the flesh on his return journey, leaving him with nothing but an 18-foot skeleton. Through this work, Hemingway proves: ① great literature needs no complex syntax — simplicity is power; ② human dignity consists not in what you win, but in the capacity to keep living after losing everything; ③ the human-nature confrontation is not conquest, but a symbiotic struggle born of deep respect.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">84<span class="kpi-unit"> days</span></div>
+    <div class="kpi-label">Without a Fish</div>
+    <div class="kpi-note">He was salao — the unluckiest form</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit"> days</span></div>
+    <div class="kpi-label">Battle at Sea</div>
+    <div class="kpi-note">From noon to noon to noon</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">~18<span class="kpi-unit"> feet</span></div>
+    <div class="kpi-label">Marlin Length</div>
+    <div class="kpi-note">Six feet longer than his 12-ft skiff</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">~14<span class="kpi-unit"> w/s</span></div>
+    <div class="kpi-label">Average Sentence Length</div>
+    <div class="kpi-note">The Iceberg Theory in numbers</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Character Foundation</div>
+    <div class="section-title t-01">Santiago and Manolin: on land, between old and young, the entire emotional architecture is built</div>
+    <div class="section-desc"><strong>In the first three pages, over a beer and a conversation about sardines and baseball, Hemingway sets every emotional pillar of the epic.</strong> The old man is thin and gaunt with deep wrinkles in the back of his neck, hands bearing the deep-creased scars from handling heavy fish — as old as erosions in a fishless desert. But everything about him was old except his eyes and they were the same color as the sea and were cheerful and undefeated. The boy Manolin has fished with Santiago since age five. His parents forced him to leave — the old man is salao, the worst kind of unlucky. But every day he still comes to help carry the coiled lines, gaff, and harpoon, and the sail patched with flour sacks that looked like the flag of permanent defeat. There was no cast net and there was no pot of yellow rice and fish. But they went through this fiction every day.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">👴</div>
+        <div class="dual-text">
+          <h4>Santiago, the Old Man</h4>
+          <p>Everything about him was old except his eyes and they were the same color as the sea and were cheerful and undefeated. He dreams of lions on the beaches of Africa from his youth.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">👦</div>
+        <div class="dual-text">
+          <h4>Manolin, the Boy</h4>
+          <p>"I would like to go. If I cannot fish with you, I would like to serve in some way." He brings coffee, food, and hope daily. The fiction of the cast net and rice is a ritual of love.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Going Out & Hooking</div>
+    <div class="section-title t-02">Day 85: alone into the deep, at 600 feet of blue water, he hooks the fish of a lifetime</div>
+    <div class="section-desc"><strong>Hemingway builds the day's ritual with breathtakingly precise technical detail.</strong> The old man rows out alone in the dark, leaving the smell of the land behind and rowing out into the clean early morning smell of the ocean. He sets four lines at precisely 40, 75, 100, and 125 fathoms. "Others let them drift with the current and sometimes they were at sixty fathoms when the fishermen thought they were at a hundred. But, he thought, I keep them with precision. Only I have no luck any more. But who knows? Maybe today." Then he feels the tentative pull — "He felt the light delicate pulling and then a harder pull when a sardine's head must have been more difficult to break from the hook." Then the weight — "he felt something hard and unbelievably heavy."</div>
+    <div class="flow-row">
+      <div class="flow-step">Before Dawn<br>Rowing out alone in the dark</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Four Lines<br>40/75/100/125 fathoms</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">The Tentative Touch<br>He felt the delicate pulling</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Unbelievable Weight<br>"unbelievably heavy"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">The Battle</div>
+    <div class="section-title t-03">Three days and nights: line cutting into his back, right hand cramping, left hand bleeding — he never says defeat</div>
+    <div class="section-desc"><strong>The core of the battle is not conquest but a symbiotic relationship of deep respect: "Fish, I'll stay with you until I am dead."</strong> Day one: the fish tows the skiff northwest, still swimming after four hours. The old man braces the line across his back with a flour sack for padding. "I can do nothing with him and he can do nothing with me," he thought. His right hand is cut by the line, his left hand cramps, he eats raw tuna and flying fish. He talks aloud — since the boy left, he talks to himself on the sea, since there was no one that they could annoy. Night two, the fish finally surfaces — "two feet longer than the skiff." He kills it with the harpoon, lashes it to the boat. This is not fishing; this is a contest between equals: "I have never seen a greater, or more beautiful, or a calmer or more noble thing than you, brother."</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🩸</div>
+        <div class="dual-text">
+          <h4>The Body's Limit</h4>
+          <p>Left hand cramped for hours. Right hand cut to the bone. Eats raw tuna. Three days without sleep. "Pain does not matter to a man."</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🐟</div>
+        <div class="dual-text">
+          <h4>Soul's Dialogue</h4>
+          <p>"Fish, I love you and respect you very much. But I will kill you dead before this day ends." The opponent is a brother, not an enemy. Killing the fish is not conquest but the fulfillment of a destined contract.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">The Sharks</div>
+    <div class="section-title t-04">Shark after shark — with harpoon, knife, club, and tiller, he kills sharks but cannot save the fish — the cruelest metaphor of human fate</div>
+    <div class="section-desc"><strong>From the first Mako to the final galanos, the shark attack sequence forms the book's darkest passage.</strong> The first Mako rises from the depths — "built as a sword fish except for his huge jaws… everything about him was beautiful except his jaws." Santiago drives the harpoon into its brain, losing the harpoon in the process. He lashes his knife to an oar as a new weapon. Shark after shark — he fights them in the dark with the club and the tiller and the short knife until he could not see. Each shark killed takes 40 pounds of flesh. When he finally sees the lights of Havana, the 18-foot marlin is nothing but a skeleton. "He knew he was beaten now finally and without remedy." Then he says the words that redefined human dignity: "But man is not made for defeat. A man can be destroyed but not defeated."</div>
+    <div class="flow-row">
+      <div class="flow-step">First Shark — Mako<br>Harpoon into brain<br>Loses harpoon, 40 lbs gone</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Knife on Oar<br>Kills multiple sharks<br>Knife breaks</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Club & Tiller<br>"fought until he could not see"<br>All flesh devoured</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Skeleton Remains<br>"A man can be destroyed<br>but not defeated."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Return & Meaning</div>
+    <div class="section-title t-05">Carrying the mast up the hill, back to the shack — he sleeps, and dreams of lions again</div>
+    <div class="section-desc"><strong>The novel's ending is not a cry of triumph, not permanent loss — but the calm of a man who, after the most complete defeat, can still begin again.</strong> In the night, the old man carries the mast — like a cross — up the hill to his shack. "He started to climb again and at the top he fell and lay for some time with the mast across his shoulder." In the morning, the boy finds him, sees his hands shredded by the sharks, and weeps. Tourists at the Terrace café marvel at "the beautiful white skeleton of a large shark" — they do not know it is a marlin, do not know what it cost. The boy brings coffee and says: "Now we will fish together again." The old man sleeps. In his dreams, the lions return to the African beach. Hemingway closes the greatest metaphor in modern literature with three words: The old man was dreaming about the lions. Not about the fish, not about failure, not about victory. About the lions he saw as a young man. Everything can be taken away — except the capacity to dream.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⛪</div>
+        <div class="data-name">Cross Imagery</div>
+        <div class="data-sm">Carrying the mast up the hill, falling three times — "he fell and lay for some time with the mast across his shoulder" — Hemingway's Christ-passion metaphor.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🦴</div>
+        <div class="data-name">The Misunderstood Prize</div>
+        <div class="data-sm">Tourists marvel at "a large shark skeleton" — they do not know the truth, the cost, what greatness is.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🦁</div>
+        <div class="data-name">The Eternal Dream</div>
+        <div class="data-sm">"The old man was dreaming about the lions." Not the fish, not the sharks — the lions. Youth and strength never die.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Core Takeaway</div>
+  <div class="takeaway-text">The ultimate power of <em>The Old Man and the Sea</em> lies not in its story — an old man catches a great fish and loses it — but in how Hemingway, using the leanest possible language, answers the deepest human question: when everything has been taken away, what remains? The answer: the capacity to dream. "A man can be destroyed but not defeated" is not a slogan — it is a theorem proved by the entire structure of the novel: you can lose the harpoon, the knife, the flesh of the fish, everything visible — but in the shack, after sleep, the lions still appear in the dream. Hemingway's Iceberg Theory, at the sentence level, is 14 words per sentence. At the literary level, it is this: the novel speaks only one-eighth above the water. The remaining seven-eighths — about solitude, dignity, aging, the symbiosis of man and nature — are left for each reader to discover on their own.</div>
+</div>
+
+<div class="footer">
+  The Elements of Style ch008 infographic · Based on Hemingway's "The Old Man and the Sea" English text · William Strunk Jr. · for study only
+</div>
+</div>
+</body>
+</html>

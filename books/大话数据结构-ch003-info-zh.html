@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大话数据结构 · 第3章「线性表」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-num { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.5; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block { background: #f8f6f3; border-radius: 12px; padding: 18px 24px; margin: 14px 0; border-left: 3px solid #ca8a04; font-size: 14px; color: #555; line-height: 1.9; font-style: italic; }
+
+  .callout { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 18px 24px; margin: 14px 0; font-size: 14px; color: #1e40af; line-height: 1.9; }
+  .callout strong { color: #1e3a8a; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="大话数据结构-catalog.html">← 章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大话数据结构-ch003-info-en.html">中文 / English</a>
+</div>
+
+<h1>大话数据结构 · 第3章「线性表」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  本章从幼儿园小朋友排队的故事切入，生动引出线性表的定义：<strong>零个或多个数据元素的有限序列。</strong>作者系统对比了两种存储实现方式：顺序存储结构（数组）——读取O(1)但插入删除O(n)；链式存储结构（单链表）——插入删除更灵活但读取需O(n)。在此基础上，还介绍了链表的三种变体：静态链表（用数组模拟链表）、循环链表（尾结点指向头结点）、双向链表（每个结点有前驱和后继两个指针）。理解线性表是理解栈、队列等所有后续结构的前提。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章从幼儿园小朋友排队的故事切入，生动引出线性表的定义：<strong>零个或多个数据元素的有限序列。</strong>作者系统对比了两种存储实现方式：顺序存储结构（数组）——读取O(1)但插入删除O(n)；链式存储结构（单链表）——插入删除更灵活但读取需O(n)。在此基础上，还介绍了链表的三种变体：静态链表（用数组模拟链表）、循环链表（尾结点指向头结点）、双向链表（每个结点有前驱和后继两个指针）。理解线性表是理解栈、队列等所有后续结构的前提。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01"><div class="kpi-num">O(1)</div><div class="kpi-label">顺序表<br>读取速度</div></div>
+  <div class="kpi-card c02"><div class="kpi-num">O(n)</div><div class="kpi-label">顺序表<br>插入/删除</div></div>
+  <div class="kpi-card c03"><div class="kpi-num">O(n)</div><div class="kpi-label">单链表<br>读取速度</div></div>
+  <div class="kpi-card c04"><div class="kpi-num">4</div><div class="kpi-label">链表变体<br>种 类</div></div>
+</div>
+
+<!-- 01: 线性表的定义 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">线性表定义</div>
+    <div class="section-title t-01">线性表的定义：排队中的数学抽象</div>
+    <div class="section-desc"><strong>线性表（List）：零个或多个数据元素的有限序列。第一个元素无前驱，最后一个元素无后继，其余每个元素有且只有一个前驱和一个后继。</strong>作者用幼儿园小朋友一个拉着一个衣服排队的场景来比喻——次序固定，前驱后继关系明确。线性表的抽象数据类型（ADT）定义了基本操作：初始化、判断空、清空、获取元素、定位元素、插入、删除、获取长度等。这一定义是所有线性结构（栈、队列、串、数组等）的共同祖先。</div>
+    <div class="quote-block">"线性表，从名字上你就能感觉到，是具有像线一样的性质的表。" — 程杰</div>
+    <div class="flow-row">
+      <div class="flow-step">a₁<br>无前驱</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">a₂<br>前驱a₁</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">a₃<br>前驱a₂</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">aₙ<br>无后继</div>
+    </div>
+  </div>
+</div>
+<!-- 02: 顺序存储结构 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">顺序存储</div>
+    <div class="section-title t-02">顺序存储结构：用数组实现的线性表</div>
+    <div class="section-desc"><strong>用一段地址连续的存储单元依次存储线性表的数据元素——这就是顺序表。</strong>读取操作：只需O(1)时间，因为可以通过下标直接计算地址 LOC(aᵢ) = LOC(a₁) + (i-1)×c。插入操作：要在第i个位置插入元素，需要将i到n位置的所有元素向后移动一位，时间复杂度O(n)。删除操作：同理，需要将i+1到n位置的所有元素向前移动一位，时间复杂度O(n)。<strong>顺序表的优缺点非常鲜明：读取极快，插入删除极慢。</strong></div>
+    <div class="callout"><strong>📐 地址计算公式：</strong>LOC(aᵢ) = LOC(a₁) + (i-1) × c<br>其中c为每个元素占用的存储单元数。这意味着<strong>存取时间性能为O(1)</strong>——这是顺序表最大的优势。</div>
+  </div>
+</div>
+<!-- 03: 链式存储结构 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">链式存储</div>
+    <div class="section-title t-03">链式存储结构：单链表的节点与操作</div>
+    <div class="section-desc"><strong>单链表用"结点"存储数据，每个结点包含数据域（data）和指针域（next），指针指向下一个结点的地址。</strong>n个结点链接成一个链表，即线性表的链式存储结构。头指针（head）指向第一个结点，最后一个结点的指针为空（NULL）。读取第i个元素：必须从头结点开始遍历i次，时间复杂度O(n)。插入和删除：如果已知位置，只需修改指针指向即可，时间复杂度O(1)；但找到位置本身需要O(n)的遍历。整表创建有两种方法：头插法（每次新结点插在头部）和尾插法（每次新结点插在尾部）。</div>
+    <div class="flow-row">
+      <div class="flow-step">头指针<br>head</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">结点1<br>data│next</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">结点2<br>data│next</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">结点n<br>data│NULL</div>
+    </div>
+  </div>
+</div>
+<!-- 04: 顺序 vs 链式 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">存储方式对比</div>
+    <div class="section-title t-04">顺序 vs 链式：场景决定最优选择</div>
+    <div class="section-desc"><strong>如果应用场景以查找/读取为主，插入删除很少，选顺序存储结构。如果应用场景插入删除频繁，元素个数变化大，选链式存储结构。</strong>具体对比如下——空间：顺序需要预分配（可能浪费或不够），链式按需分配。时间：顺序读取O(1)、插入删除O(n)；链式读取O(n)、插入删除O(1)（已知位置时）。弹性：顺序表容量固定，链表可动态扩展。<strong>没有绝对的优劣，只有适合不适合——这是数据结构选型的核心思维。</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📦</div>
+        <div class="dual-text">
+          <h4>选顺序存储</h4>
+          <p>频繁查找/读取·元素个数稳定·内存连续访问快·缓存友好</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔗</div>
+        <div class="dual-text">
+          <h4>选链式存储</h4>
+          <p>频繁插入/删除·元素个数变化大·不需预知容量·动态分配</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 05: 三种链表变体 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">链表变体</div>
+    <div class="section-title t-05">三种链表变体：超越单链表的更多可能</div>
+    <div class="section-desc"><strong>①静态链表：用数组来描述链表——数组元素由data和cur（游标）组成，cur存放下一个元素的下标。</strong>解决了没有指针的语言（如早期Basic）实现链表的问题。②循环链表：将单链表中终端结点的指针由NULL改为指向头结点，形成环。好处是从任意结点出发都能遍历全表。③双向链表：每个结点有prior（前驱指针）和next（后继指针）两个指针域。可以双向遍历，但每个结点需要多存储一个指针，空间换时间。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔢 静态链表</div>
+        <div class="data-name">数组模拟</div>
+        <div class="data-sm">data+cur游标·适合无指针语言·需预定最大容量</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔄 循环链表</div>
+        <div class="data-name">首尾相连</div>
+        <div class="data-sm">终端指向头结点·任意结点出发遍历·环形结构</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">↔️ 双向链表</div>
+        <div class="data-name">前后都可走</div>
+        <div class="data-sm">prior+next双指针·双向遍历·空间换时间</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">线性表是最基础的数据结构。顺序存储（数组）读取O(1)但插入删除O(n)；链式存储（链表）插入删除灵活但读取需O(n)。没有绝对的优劣——频繁查找选顺序，频繁增删选链表。此外，静态链表、循环链表、双向链表分别针对不同场景提供了优化方案。理解线性表的选择逻辑，就掌握了数据结构选型的核心思维：场景决定结构。</div>
+</div>
+
+<div class="footer">
+  《大话数据结构》第3章"线性表"信息图 · 作者：程杰 · 基于原书内容提炼 · 仅供学习参考 · 生成时间：2026-06-20
+</div>
+</div>
+</body>
+</html>

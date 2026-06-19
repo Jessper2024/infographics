@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格的要素 · 第9章「篇章要以段落为单位」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch009-info-en.html">中文 / English</a>
+</div>
+
+<h1>风格的要素 · 第9章「篇章要以段落为单位」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">一段一主题 · 每段的开始都在提示读者：一个新的论述即将展开</span>
+  斯特伦克的规则8是「写作的基本原则」之开篇。他明确指出：段落不是随意换行的结果，而是服务于读者的导航系统。大到一部小说的多段分析、小到一个简短想法的单段阐述——分段的目的始终如一：让读者在每一段开始时就知道自己将面对一个独立的主题单元。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>这是全书第三章——英语写作的基本原则——的第一条规则，也是斯特伦克关于"篇章组织"的核心教义。规则8建立了一个三层决策框架：①何时不需要分段——主题范围窄、篇幅简短时，一段即可；②何时需要分段——一个大主题需细分为若干小主题时，每个小主题自成一段；③如何决定段落的数量——取决于小主题展开的幅度，斯特伦克给出了诗歌品评（7段）、小说分析（4段）、历史事件（3段）三个具体模板。此外，他还特别强调了三个例外：过渡句可独段、词典式条目可独段、对话中每换一人须另起一段。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">段落数量模板</div>
+    <div class="kpi-note">诗歌·小说·历史事件</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">个例外</span></div>
+    <div class="kpi-label">单句成段场景</div>
+    <div class="kpi-note">过渡句·词典条目·对话</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">7<span class="kpi-unit">段</span></div>
+    <div class="kpi-label">诗歌品评标准结构</div>
+    <div class="kpi-note">最复杂的模板案例</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">条原则</span></div>
+    <div class="kpi-label">分段根本目的</div>
+    <div class="kpi-note">方便读者，非方便作者</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心原则</div>
+    <div class="section-title t-01">一段一主题：分段的唯一目的是为读者建立清晰的导航系统</div>
+    <div class="section-desc"><strong>分段服务于读者，而非作者。</strong>斯特伦克开门见山地阐明：每段的开始都向读者发出一个信号——新的论述即将展开。这是一个纯粹的读者体验原则。段落不是作者随意换行的产物，而是一个有意识的设计：每个主题单元自成一段，让读者的注意力可以在段落之间有序切换。作者在写作时已经熟悉自己的思路，但读者是第一次接触这些内容；分段就是作者为读者画的地图，告诉他们"这里是一个新话题的起点"。</div>
+    <div class="flow-row">
+      <div class="flow-step">大主题<br>需要细分</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">拆分为<br>若干小主题</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">每个小主题<br>自成一段</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">段落开头<br>提示新论述</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">何时不分段</div>
+    <div class="section-title t-02">主题窄、篇幅短时不必分段——用一段写完，然后检验是否比分段更好</div>
+    <div class="section-desc"><strong>分段不是越多越好。</strong>如果主题范围较窄，或者只想简要陈述，就不必细分。无论是一篇简短描述、一部文学作品概要、一个事件简介、一次行动大纲，还是一个简单想法的阐述——所有这些，最好用一个自然段写成。关键步骤是<strong>写完之后再检验</strong>：回头看看，一段写完的效果是否比分几段更好？如果答案是否定的，就应该重新分段。这个"写完再检验"的习惯将分段决策从事先的猜测变成了事后的验证，大大提高了决策质量。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>一段写完的场景</h4>
+          <p>简短描述、文学作品概要、事件简介、行动大纲、简单想法阐述。写完后检验是否比分段更好。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📐</div>
+        <div class="dual-text">
+          <h4>需要分段的场景</h4>
+          <p>大主题→多个小主题。分析一本书、一部小说、一个历史事件。模板指导分段数量。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">分段模板</div>
+    <div class="section-title t-03">三种经典分段模板：从2段到7段的递进式结构示范</div>
+    <div class="section-desc"><strong>斯特伦克提供了三个具体可复用的分段模板，覆盖从简单到复杂的分析场景。</strong>①书本/诗歌简短介绍（2段）：A.作品简介→B.批判性评价。②诗歌品评（7段）：A.写作和出版→B.诗型与韵律→C.主题→D.表现手法→E.显著特征→F.诗人气质风格→G.与其他作品的关系。③小说分析（4段）：A.背景→B.情节→C.人物→D.目的。④历史事件（3段）：A.缘起→B.经过→C.后果。他特别指出：在实际写作中，作者可能发现有必要将其中某些小标题再细分。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📖</div>
+        <div class="data-name">书本简评（2段）</div>
+        <div class="data-sm">A. 作品简介 → B. 批判性评价。最简单的两段式结构。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🎭</div>
+        <div class="data-name">诗歌品评（7段）</div>
+        <div class="data-sm">从出版背景到与其他作品的关系，覆盖诗歌分析的完整维度。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📚</div>
+        <div class="data-name">小说分析（4段）</div>
+        <div class="data-sm">背景·情节·人物·目的。历史事件为3段：缘起·经过·后果。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">三个例外</div>
+    <div class="section-title t-04">单句成段的三种例外场景：过渡句、词典条目、对话换人</div>
+    <div class="section-desc"><strong>通常单句不能独立成段，但有三类例外。</strong>①过渡句：在说明文或议论文中，用以指出各部分之间的关系，常以单句成段的方式出现。②词典式条目：教材、指南或其他参考性著作中，许多主题都是一带而过，每条单独成段。③对话换人：在对话中，每一次说话——哪怕只有一个单词——也必须单独成段；每换一人说话，就另起一段。当既有对话又有叙述时，斯特伦克建议从印刷精良的小说作品中学习如何运用这条规则。</div>
+    <div class="flow-row">
+      <div class="flow-step">过渡句<br>说明文/议论文</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">词典式条目<br>教材/指南</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">对话换人<br>每换一人另起段</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">参考印刷精良<br>的小说学习</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">细分艺术</div>
+    <div class="section-title t-05">模板不是枷锁：在实际写作中发现有必要时，将小标题再细分</div>
+    <div class="section-desc"><strong>斯特伦克的模板是起点，不是终点。</strong>他特别提醒：当真正写一个主题时，作者可能会发现有必要将模板中的某个小标题再进行细分。例如在诗歌品评中，C段（主题）和D段（表现手法）的内容随具体诗歌而变化——C段可能需阐明诗歌的创作背景（情境）、点明主题、概述其发展深化；如果诗歌为第三人称叙事，则C段仅需对情节做简单概述。D段则应阐明诗歌的中心思想并分析其表现方式。这意味着段落设计需要根据内容的具体情况灵活调整，而不是机械套用模板。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>C段（主题）灵活调整</h4>
+          <p>阐明创作背景→点明主题→概述发展。第三人称叙事时仅需情节概述。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>D段（表现手法）灵活调整</h4>
+          <p>阐明中心思想+分析表现方式，或指出叙事诗主要强调的要点。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">分段不是格式惯例，而是读者体验的基础设施。斯特伦克的法则简洁而深刻：每段一个独立主题单元，每段的开头向读者宣告"新话题开始"。无论是一段写完的简短评述，还是七段展开的深度诗歌品评，分段的原则恒定不变——它服务于读者，帮助读者在陌生的内容中建立有序的认知导航。当你不确定如何分段时，用斯特伦克的三个模板作为起点，然后在写作中灵活调整。好的分段让读者忘记段落的"存在"，只专注于你的思想。</div>
+</div>
+
+<div class="footer">
+  《风格的要素》第9章信息图 · 基于「规则8：篇章要以段落为单位」内容提炼 · 威廉·斯特伦克 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

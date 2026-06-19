@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Elements of Style · Ch7「Exercises on Chapters II and III」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="风格的要素-catalog.html">← Chapter Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="风格的要素-ch007-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Elements of Style · Ch7「Exercises on Chapters II and III」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Rules are not to be known, but to be practiced · 25 exercises covering every dimension of punctuation, syntax, diction, and style</span>
+  Strunk transforms the 7 grammar rules of Chapter II and 11 writing principles of Chapter III into 25 practical exercises. From punctuating a long passage on the French Revolution and Byron's travels, to analyzing how tiny textual changes between the 1798 and 1800 editions of Coleridge shifted meaning, to correcting 17 error-riddled sentences — this is the book's proving ground, designed to turn rules into instinct.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter is the practical testing ground of <em>The Elements of Style</em>. The 25 exercises are organized into four tiers: ① Punctuation mastery (Ex. 1-2) — add correct punctuation to two unpunctuated historical passages, testing Rules 2-7 directly; ② Meaning analysis (Ex. 3) — compare Coleridge's 1798 and 1800 editions of <em>The Rime of the Ancient Mariner</em>, observing how punctuation and word choice shift meaning; ③ Punctuation correction (Ex. 4-8) — identify and fix erroneous punctuation in 5 passages; ④ Sentence correction (Ex. 9-25) — identify and fix grammar, structure, or style errors in 17 sentences. These exercises cover every one of the 18 rules from the preceding two chapters.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">25<span class="kpi-unit"> ex.</span></div>
+    <div class="kpi-label">Total Exercises</div>
+    <div class="kpi-note">2 punct + 1 meaning + 5 + 17</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">18<span class="kpi-unit"> rules</span></div>
+    <div class="kpi-label">Rules Coverage</div>
+    <div class="kpi-note">All Ch2 grammar + all Ch3 style</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit"> types</span></div>
+    <div class="kpi-label">Exercise Dimensions</div>
+    <div class="kpi-note">Punct · Meaning · Fix · Rewrite</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit"> classics</span></div>
+    <div class="kpi-label">Historical Passages</div>
+    <div class="kpi-note">French Revolution · Byron</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Punctuation Mastery</div>
+    <div class="section-title t-01">Punctuating historical documents: the French Revolution and Byron</div>
+    <div class="section-desc"><strong>Exercises 1 and 2 present two long unpunctuated passages requiring correct punctuation — a comprehensive test of Chapter II Rules 2-7.</strong> Exercise 1 is a historical account of the French Revolution — the King's advisers warning of bankruptcy in 1788, the summoning of the States-General, the storming of the Bastille. Exercise 2 covers Byron's first continental tour and the creation of <em>Childe Harold's Pilgrimage</em>. Both demand simultaneous application of comma-separation of series (Rule 2), comma-enclosure of parenthetic expressions (Rule 3), comma before conjunction introducing an independent clause (Rule 4), avoidance of comma-joined independent clauses (Rule 5), and avoidance of broken sentences (Rule 6).</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📜</div>
+        <div class="dual-text">
+          <h4>Ex.1 The French Revolution</h4>
+          <p>From "In 1788 the King's advisers warned him" to "principal supplies of arms and munitions in Paris." Tests commas, semicolons, relative clause punctuation.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📜</div>
+        <div class="dual-text">
+          <h4>Ex.2 Byron's First Tour</h4>
+          <p>From "On his first continental tour" to "he awoke and found himself famous." Tests parenthetic commas, appositives, quotation punctuation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Meaning Analysis</div>
+    <div class="section-title t-02">Coleridge's two versions: how punctuation and word choice transform poetic meaning</div>
+    <div class="section-desc"><strong>Exercise 3 is the sole meaning-analysis question.</strong> Strunk gives Coleridge's <em>Rime of the Ancient Mariner</em> in two editions — 1798: "God save thee, ancyent Marinere! From the fiends that plague thee thus—" vs. 1800: "God save thee, ancient Mariner! From the fiends, that plague thee thus!" Four tiny differences — ancyent → ancient, Marinere → Mariner, insertion of a comma, dash → exclamation mark — yet these four shifts fundamentally alter the poem's tone, rhythm, and emotional register: from colloquial archaic English to more formal modern pronunciation, from one connected utterance to two independent cries. This exercise demonstrates the entire philosophy behind Rule 12 (definite, specific language) and Rule 17 (consistent tense/style): tiny linguistic choices produce massive differences in effect.</div>
+    <div class="flow-row">
+      <div class="flow-step">1798 Edition<br>ancyent Marinere<br>no comma · dash</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">1800 Edition<br>ancient Mariner<br>comma · exclamation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Effect Shift<br>archaic/colloquial → modern/formal</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Rule Mapping<br>Word choice (R12) + style consistency (R17)</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Punctuation Fixes</div>
+    <div class="section-title t-03">Five punctuation correction exercises: non-restrictive clauses, comma splices, sentence fragments</div>
+    <div class="section-desc"><strong>Exercises 4-8 require identifying, explaining, and correcting erroneous punctuation — covering the most persistent classes of punctuation error.</strong> Exercise 4: "This course is intended for Freshmen, who in the opinion of the Department are not qualified for military drill" — the who-clause is restrictive (only those freshmen not qualified), so the comma is erroneous. Exercise 5: advertising punctuation abuse. Exercise 6: <em>The Nation</em> poets passage — a comma joins independent clauses, violating Rule 5. Exercise 7: a sentence fragment — "A long and narrow passage…" is wrongly split from its preceding sentence, violating Rule 6. Exercise 8: a misleading comma distorts the causal attribution of "largely because."</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📝</div>
+        <div class="data-name">Restrictive Clause Mispunctuation</div>
+        <div class="data-sm">Ex.4,8: unjustified commas after who/that change clause type, altering sentence meaning improperly.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📝</div>
+        <div class="data-name">Comma Splice</div>
+        <div class="data-sm">Ex.6: a comma joins two independent clauses, violating Rule 5 "Do not join independent clauses with a comma."</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📝</div>
+        <div class="data-name">Sentence Fragment</div>
+        <div class="data-sm">Ex.7: a noun phrase erroneously stands alone, violating Rule 6 "Do not break sentences in two."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Correction: Grammar</div>
+    <div class="section-title t-04">Dangling participles, misplaced modifiers, subject drift — the first 8 corrections target grammar structure</div>
+    <div class="section-desc"><strong>Exercises 9-16 focus on Chapter II's core grammar rules, especially Rule 7 (participle subject agreement), Rule 16 (keep related words together), and Rules 4-6 (clause joining).</strong> Exercise 9: "During childhood his mother had died" — "during childhood" modifies "had died" not "his mother," but the placement creates logical confusion. Exercise 11: "My farm consisted of… having given a hundred pounds…" — the participle's logical subject should be "I," not "My farm" (Rule 7, dangling participle). Exercises 12-13: the same participle-subject mismatch problem. Exercise 14: "had several long and intimate conversations during the tedious weeks of the conference with his British colleague" — "with his British colleague" is misplaced, should be adjacent to "conversations" (Rule 16, keep related words together).</div>
+    <div class="flow-row">
+      <div class="flow-step">Dangling Participle<br>During childhood his mother died — whose childhood?</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Misplaced Modifier<br>conversations... with his colleague — too distant</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Participle Subject<br>Having given... my farm — the subject mismatches</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Subject Drift<br>Pale and swooning... they carried — who swooned?</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Correction: Style</div>
+    <div class="section-title t-05">Wordiness, vagueness, passive voice — the last 9 corrections target Chapter III's writing principles</div>
+    <div class="section-desc"><strong>Exercises 17-25 drill into Chapter III's writing principles, especially Rule 10 (active voice), Rule 12 (specific language), Rule 13 (omit needless words), Rule 14 (avoid loose sentences), and Rule 18 (emphatic words at end).</strong> Exercise 17 is a series of three loose sentences about building a fire — "Fire, therefore… Happily… Of these…" — a textbook example of consecutive loose sentences violating Rule 14. Exercise 22: "Not only had the writer… but by royalty also" — the but-clause structure is not parallel (Rule 15). Exercise 24: "Earnings from other sources are of such a favorable character as to enable a splendid showing to be made by the company" — this is Rule 13's ultimate anti-example: "character" is a filler, "splendid showing" is vague, and the passive voice bloats the whole. Exercise 25: "the status of affairs is such as to make it impossible to predict…" — similarly, a dual offense of vagueness + wordiness.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Loose Sentences & Parallel Imbalance</h4>
+          <p>Ex.17: three loose sentences chained — per Rule 14, restructure into periodic form. Ex.22: not only… but by royalty also — not parallel (Rule 15).</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Filler Words & Passive Voice</h4>
+          <p>Ex.24/25 are anti-examples for Rules 13+10: character, favorable, splendid showing, status of affairs — delete these, switch to active voice, and the sentence clears instantly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Core Takeaway</div>
+  <div class="takeaway-text">Twenty-five exercises prove one truth: good English writing is not about "knowing the rules" but about "executing them under fire." Chapter II's 7 grammar rules and Chapter III's 11 style principles are all compressed into these exercises. Every comma, semicolon, and dash is a miniature logical judgment. Every correction of a dangling participle is an act of loyalty to the "clear subject" principle. Every deletion of a filler word demonstrates the power of Rule 13. Strunk's exercises are not designed for the reader to "get them right" — they are designed so that, in the process of getting them wrong, analyzing why, and correcting them, the rules become muscle memory.</div>
+</div>
+
+<div class="footer">
+  The Elements of Style ch007 infographic · Based on Chapter VII "Exercises on Chapters II and III" · William Strunk Jr. · for study only
+</div>
+</div>
+</body>
+</html>

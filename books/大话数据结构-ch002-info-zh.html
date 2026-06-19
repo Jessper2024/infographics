@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大话数据结构 · 第2章「算法」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-num { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.5; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block { background: #f8f6f3; border-radius: 12px; padding: 18px 24px; margin: 14px 0; border-left: 3px solid #ca8a04; font-size: 14px; color: #555; line-height: 1.9; font-style: italic; }
+
+  .callout { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 18px 24px; margin: 14px 0; font-size: 14px; color: #1e40af; line-height: 1.9; }
+  .callout strong { color: #1e3a8a; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="大话数据结构-catalog.html">← 章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大话数据结构-ch002-info-en.html">中文 / English</a>
+</div>
+
+<h1>大话数据结构 · 第2章「算法」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  本章从高斯求和的故事出发，揭示了一个核心事实：<strong>解决同一个问题，不同算法的效率可以相差数十万倍。</strong>作者系统讲解了算法的五大特性（输入、输出、有穷性、确定性、可行性）和四大设计要求（正确性、可读性、健壮性、高效性），然后重点展开算法效率的度量方法——从事后统计的局限到事前分析的优越性，推导出大O阶表示法。最后，用函数的渐近增长概念串起常见时间复杂度的排序：O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n²) &lt; O(n³) &lt; O(2ⁿ) &lt; O(n!)。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章从高斯求和的故事出发，揭示了一个核心事实：<strong>解决同一个问题，不同算法的效率可以相差数十万倍。</strong>作者系统讲解了算法的五大特性（输入、输出、有穷性、确定性、可行性）和四大设计要求（正确性、可读性、健壮性、高效性），然后重点展开算法效率的度量方法——从事后统计的局限到事前分析的优越性，推导出大O阶表示法。最后，用函数的渐近增长概念串起常见时间复杂度的排序：O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n²) &lt; O(n³) &lt; O(2ⁿ) &lt; O(n!)。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01"><div class="kpi-num">5</div><div class="kpi-label">算法特性<br>必 备</div></div>
+  <div class="kpi-card c02"><div class="kpi-num">4</div><div class="kpi-label">设计要求<br>标 准</div></div>
+  <div class="kpi-card c03"><div class="kpi-num">1 对 100</div><div class="kpi-label">高斯求和<br>效率对比</div></div>
+  <div class="kpi-card c04"><div class="kpi-num">8</div><div class="kpi-label">复杂度<br>层级排序</div></div>
+</div>
+
+<!-- 01: 算法的五大特性 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">算法定义</div>
+    <div class="section-title t-01">算法的五大特性：什么才算"算法"？</div>
+    <div class="section-desc"><strong>算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，每条指令表示一个或多个操作。</strong>算法必须具备五大特性：（1）输入——有零个或多个输入；（2）输出——至少有一个输出；（3）有穷性——执行有限步骤后自动结束，不会无限循环；（4）确定性——每一步都有确定含义，不会出现二义性；（5）可行性——每一步都能通过有限次执行完成。同时满足这五个条件的求解步骤才是合格的算法。</div>
+    <div class="flow-row">
+      <div class="flow-step">输入<br>0或多个</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">有穷性<br>有限步骤</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">确定性<br>无二义</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">可行性<br>可执行</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">输出<br>≥1个</div>
+    </div>
+  </div>
+</div>
+<!-- 02: 高斯求和 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">效率对比</div>
+    <div class="section-title t-02">高斯求和：两种算法 × 天壤之别</div>
+    <div class="section-desc"><strong>计算1+2+…+100：第一种算法用循环累加（执行100次加法，O(n)）；第二种用高斯公式n(n+1)/2（一次乘法+一次除法+一次加法，O(1)）。</strong>这不仅是算法优劣的对比，更是思维方式的分水岭。高斯小时候能想到公式法，不是因为他知道"时间复杂度"这个概念，而是因为他具备<strong>抽象思维</strong>——从具体问题中发现模式、归纳规律。<strong>算法设计的本质，就是用更聪明的方式让计算机少做事。</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🐢</div>
+        <div class="dual-text">
+          <h4>循环累加法 O(n)</h4>
+          <p>int sum=0; for(i=1;i&lt;=100;i++) sum+=i;<br>执行100次加法 → 时间复杂度 O(n)</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🚀</div>
+        <div class="dual-text">
+          <h4>高斯公式法 O(1)</h4>
+          <p>sum = n*(n+1)/2 = 100*101/2 = 5050<br>1次乘法+1次加法+1次除法 → O(1)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 03: 算法效率度量 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">效率度量</div>
+    <div class="section-title t-03">算法效率的度量：从事后统计到事前分析</div>
+    <div class="section-desc"><strong>事后统计法：写完程序后运行计时——严重依赖硬件、数据规模、编译优化，不可靠。</strong>事前分析估算法：在程序编写前，依据统计方法对算法进行估算。核心洞察：<strong>一个程序的运行时间依赖于算法的好坏和问题的输入规模，而最终落脚点在基本操作的执行次数上。</strong>因此，我们忽略所有常数和低阶项，只关注输入规模n趋于无穷时增长最快的项——这就是大O阶的核心思想。</div>
+    <div class="quote-block">"测定运行时间最可靠的办法，就是计算对运行时间有消耗的基本操作的执行次数。运行时间与这个计数成正比。" — 程杰</div>
+  </div>
+</div>
+<!-- 04: 推导大O阶 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">大O阶推导</div>
+    <div class="section-title t-04">时间复杂度：推导大O阶的三步法</div>
+    <div class="section-desc"><strong>推导大O阶：①用常数1取代运行时间中的所有加法常数；②只保留最高阶项；③去掉最高阶项的系数。</strong>例如：3n²+2n+1 → O(n²)。常数阶（无循环）= O(1)，线性阶（一层循环）= O(n)，对数阶（每次乘2）= O(log n)，平方阶（两层嵌套循环）= O(n²)。<strong>理解这一点：大O阶不关心具体数字，只关心当n→∞时的增长速度。</strong></div>
+    <div class="callout"><strong>📐 三步法示例：</strong><br>
+    原始执行次数：f(n) = 3n² + 100n + 2000<br>
+    ① 用1替换常数：3n² + 100n + 1<br>
+    ② 保留最高阶：3n²<br>
+    ③ 去掉系数：n²<br>
+    → <strong>O(n²)</strong></div>
+  </div>
+</div>
+<!-- 05: 常见时间复杂度全排序 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">复杂度全景</div>
+    <div class="section-title t-05">常见时间复杂度的全排序与场景</div>
+    <div class="section-desc"><strong>O(1) &lt; O(log n) &lt; O(n) &lt; O(n log n) &lt; O(n²) &lt; O(n³) &lt; O(2ⁿ) &lt; O(n!)</strong>。O(1)是哈希查找的理想，O(log n)见于二分查找，O(n)是线性遍历，O(n log n)是归并/快速排序，O(n²)是冒泡/选择排序，O(n³)是三重循环，O(2ⁿ)是子集枚举，O(n!)是全排列。此外还有算法的空间复杂度——计算算法所需存储空间的量度。<strong>时间换空间还是空间换时间，取决于具体场景的资源约束。</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">O(1)<br>常数</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">O(log n)<br>对数</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">O(n)<br>线性</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">O(n²)<br>平方</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">O(2ⁿ)<br>指数爆炸</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">算法的质量决定了程序的效率。五大特性和四大设计要求是检验算法的标准。算法效率分析的核心是大O时间复杂度——通过推导大O阶，忽略常数和低阶项，只关注增长趋势。常见时间复杂度从O(1)到O(n!)共有8个层级，不同复杂度的算法在面对大规模数据时差距惊人。好的算法=用更聪明的方式让计算机少做事。学会分析时间复杂度，是成为优秀程序员的必修课。</div>
+</div>
+
+<div class="footer">
+  《大话数据结构》第2章"算法"信息图 · 作者：程杰 · 基于原书内容提炼 · 仅供学习参考 · 生成时间：2026-06-20
+</div>
+</div>
+</body>
+</html>

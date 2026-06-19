@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大话数据结构 · 第5章「串」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Code block */
+  .code-block { background: #1e1e2e; color: #cdd6f4; border-radius: 10px; padding: 16px 20px; margin-top: 10px; font-size: 12px; line-height: 1.6; font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; overflow-x: auto; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="大话数据结构-catalog.html">← 章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大话数据结构-ch005-info-en.html">中文 / English</a>
+</div>
+
+<h1>大话数据结构 · 第5章「串」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  计算机从科学计算走向非数值处理，需要字符操作能力。然而朴素模式匹配算法在大量部分匹配场景下极度低效——主串不回溯的匹配如何实现？本章从串的定义出发，引入KMP算法利用前后缀相似度避免回溯，并通过nextval数组进一步优化，将匹配时间复杂度从O((n-m+1)·m)降至O(n+m)。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>串（string）是由零个或多个字符组成的有限序列，是对线性表的字符化扩展。本章不同于线性表关注单个元素，转而聚焦子串的查找、替换、匹配操作。核心突破是KMP模式匹配算法：通过预处理模式串构造next数组，在主串匹配时不回溯i值，将最坏时间复杂度从O((n-m+1)·m)优化至O(n+m)。改版nextval数组进一步消除重复字符导致的冗余判断。</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">128<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">标准ASCII字符集</div>
+    <div class="kpi-note">7位二进制编码表示</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">65,536<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">Unicode编码容量</div>
+    <div class="kpi-note">16位二进制·涵盖全球语言</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">O(n+m)<span class="kpi-unit"></span></div>
+    <div class="kpi-label">KMP算法时间复杂度</div>
+    <div class="kpi-note">主串不回溯·next数组引导</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">O((n-m+1)·m)<span class="kpi-unit"></span></div>
+    <div class="kpi-label">朴素算法最坏时间</div>
+    <div class="kpi-note">每个位置都可能比较到最后一个字符</div>
+  </div>
+</div>
+
+<!-- 01: 串的定义与比较 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">基础概念</div>
+    <div class="section-title t-01">串的定义与比较：字符序列的数学抽象</div>
+    <div class="section-desc"><strong>串（string）是由零个或多个字符组成的有限序列 s="a₁a₂…aₙ"，n为串长。</strong>空串长度为零（"" 或 Φ），空格串是由空格组成的非空串。子串是串中任意连续字符组成的子序列，子串位置即其首字符在主串中的序号。串的比较基于字符编码：两个串相等⇔长度相等且每个对应位置字符均相等；不等时，按字典序逐位比较，直到发现首个不同字符或短串结束。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🔤</div>
+        <div class="dual-text">
+          <h4>字符编码体系</h4>
+          <p>ASCII: 7位·128字符 → 扩展ASCII: 8位·256字符 → Unicode: 16位·65,536字符，前256与ASCII兼容</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>字典序比较法则</h4>
+          <p>如英语词典排序：两串逐位比较，首个不同字符决定大小；若短串为长串前缀，则短串更小</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 串的存储结构 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">存储方案</div>
+    <div class="section-title t-02">串的存储结构：定长数组与链式取舍</div>
+    <div class="section-desc"><strong>串的顺序存储用定长数组，将串长存于0下标或用'\0'作结束标记。</strong>问题在于Concat、StrInsert、Replace等操作可能使结果超出数组容量MaxSize，导致截断或溢出。动态分配（堆管理·malloc/free）可缓解此问题。链式存储每个结点可存一字符或多字符，未满结点用#补全——结点大小直接影响处理效率。总体而言，<strong>链式存储除连接操作外不如顺序存储灵活且性能较差。</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">定长数组<br>串长存[0]或用\0</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">溢出风险<br>超MaxSize截断</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">堆分配<br>malloc/free动态</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 朴素模式匹配 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">暴力匹配</div>
+    <div class="section-title t-03">朴素模式匹配：双重循环的代价</div>
+    <div class="section-desc"><strong>朴素算法对主串S每个位置i作为起点，与模式串T逐字符比较。</strong>匹配成功则返回位置，失败则i后移一位、j重置为1。最好情况：首位置即匹配→O(1)；平均情况：首字符不匹配→O(n+m)；最坏情况：每次不匹配均在T的最后一个字符才发现（如S="000…001"对T="0000000001"）→O((n-m+1)·m)。这一低效在计算机二进制01串的处理中尤为致命。</div>
+    <div class="flow-row">
+      <div class="flow-step">i=pos, j=1<br>开始匹配</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">S[i]==T[j]?<br>i++,j++</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">不等时<br>i回溯,j=1</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">j>T.len?<br>返回i-T.len</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: KMP模式匹配算法 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">核心突破</div>
+    <div class="section-title t-04">KMP模式匹配：好马不吃回头草</div>
+    <div class="section-desc"><strong>KMP算法的核心思想：主串i值不回溯，仅变化j值。</strong>当T="abcdex"（无重复字符）时，一旦出现不匹配，可直接将j重置为1；当T="abcabx"（前缀"ab"=后缀"ab"）时，j由6退至3继续匹配。next[j]记录T串中位置j之前子串的前后缀最大相等长度：前后缀一个字符相等→k=2，n个相等→k=n+1。算法分两步：①预处理T得next数组O(m) ②模式匹配O(n)，总复杂度O(n+m)。KMP在大量"部分匹配"场景下优势显著。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">next[1]=0</div>
+        <div class="data-name">j=1时固定为0</div>
+        <div class="data-sm">标志第一个字符就不匹配时i++</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">"abcdex"</div>
+        <div class="data-name">next=011111</div>
+        <div class="data-sm">无重复字符，每次倒退到j=1</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">"abcabx"</div>
+        <div class="data-name">next=011123</div>
+        <div class="data-sm">前缀"ab"=后缀"ab"，j退至3</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: KMP改进——nextval -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">精益求精</div>
+    <div class="section-title t-05">nextval改进：消除冗余回溯判断</div>
+    <div class="section-desc"><strong>KMP仍有缺陷：当T中多个连续字符相同时（如"aaaaax"），next回溯会产生多余比较。</strong>例如主串S="aaaabcde"匹配T="aaaaax"时，i=5,j=5不匹配后j依次退至4→3→2→1，每次比较的仍是"b"与"a"，完全多余。改进方案nextval：计算next时，若T[i]与T[next[i]]相等，则nextval[i]=nextval[next[i]]，跳过不必要的回溯。例如T="aaaaaaaab"→next=012345678→nextval=000000008，大幅减少冗余步骤。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">"ababaaaba"</div>
+        <div class="data-name">nextval=010104210</div>
+        <div class="data-sm">vs next=011234223，消除了冗余</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">"aaaaaaaab"</div>
+        <div class="data-name">nextval=000000008</div>
+        <div class="data-sm">vs next=012345678，大幅优化</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">关键法则</div>
+        <div class="data-name">相等→跳转，不等→保留</div>
+        <div class="data-sm">若T[i]==T[next[i]]，则继承nextval</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">串是线性表的字符化扩展，核心操作聚焦于子串查找与匹配。朴素模式匹配的最坏时间复杂度O((n-m+1)·m)在二进制数据处理中堪称灾难。KMP算法通过预处理next数组实现主串不回溯，将复杂度降至O(n+m)；nextval改进针对重复字符序列进一步消除冗余回溯。回文诗《璇玑图》以841字可成7958首诗——字符串的逆转与匹配不仅是算法的艺术，更是文化的密码。</div>
+</div>
+
+<div class="footer">
+  《大话数据结构》第5章信息图 · 作者程杰 · 基于原书第5章「串」内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

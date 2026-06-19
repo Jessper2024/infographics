@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play Data Structures · Ch.3 "Linear Lists"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-num { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.5; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block { background: #f8f6f3; border-radius: 12px; padding: 18px 24px; margin: 14px 0; border-left: 3px solid #ca8a04; font-size: 14px; color: #555; line-height: 1.9; font-style: italic; }
+
+  .callout { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 18px 24px; margin: 14px 0; font-size: 14px; color: #1e40af; line-height: 1.9; }
+  .callout strong { color: #1e3a8a; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="大话数据结构-catalog.html">← Chapter Index</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="大话数据结构-ch003-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Play Data Structures · Ch.3 "Linear Lists"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · Situation → Complication → Question → Answer</span>
+  Starting from the story of kindergarten children lining up, this chapter vividly introduces the definition of linear lists: <strong>a finite sequence of zero or more data elements.</strong> The author systematically compares two storage implementations: sequential storage (array) — O(1) reads but O(n) insertions/deletions; linked storage (singly linked list) — more flexible insertions/deletions but O(n) reads. Additionally, three list variants are introduced: static linked lists (simulating linked lists with arrays), circular linked lists (tail points to head), and doubly linked lists (each node has both predecessor and successor pointers). Understanding linear lists is the prerequisite for understanding all subsequent structures like stacks and queues.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Starting from the story of kindergarten children lining up, this chapter vividly introduces the definition of linear lists: <strong>a finite sequence of zero or more data elements.</strong> The author systematically compares two storage implementations: sequential storage (array) — O(1) reads but O(n) insertions/deletions; linked storage (singly linked list) — more flexible insertions/deletions but O(n) reads. Additionally, three list variants are introduced: static linked lists (simulating linked lists with arrays), circular linked lists (tail points to head), and doubly linked lists (each node has both predecessor and successor pointers). Understanding linear lists is the prerequisite for understanding all subsequent structures like stacks and queues.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01"><div class="kpi-num">O(1)</div><div class="kpi-label">Seq. List<br>Read Speed</div></div>
+  <div class="kpi-card c02"><div class="kpi-num">O(n)</div><div class="kpi-label">Seq. List<br>Insert/Delete</div></div>
+  <div class="kpi-card c03"><div class="kpi-num">O(n)</div><div class="kpi-label">Linked List<br>Read Speed</div></div>
+  <div class="kpi-card c04"><div class="kpi-num">4</div><div class="kpi-label">List<br>Variants</div></div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">List Definition</div>
+    <div class="section-title t-01">Definition of Linear List: Mathematical Abstraction of Queueing</div>
+    <div class="section-desc"><strong>Linear List: a finite sequence of zero or more data elements. The first element has no predecessor, the last has no successor, and every other element has exactly one predecessor and one successor.</strong> The author uses the analogy of kindergarten children holding each other's clothes in line — fixed order, clear predecessor-successor relationships. The List ADT defines basic operations: init, isEmpty, clear, getElement, locateElement, insert, delete, getLength. This definition is the common ancestor of all linear structures (stacks, queues, strings, arrays).</div>
+    <div class="quote-block">"A linear list, as the name suggests, has properties like a line." — Cheng Jie</div>
+    <div class="flow-row">
+      <div class="flow-step">a₁<br>No Predecessor</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">a₂<br>Pred: a₁</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">a₃<br>Pred: a₂</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">aₙ<br>No Successor</div>
+    </div>
+  </div>
+</div>
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Sequential Storage</div>
+    <div class="section-title t-02">Sequential Storage: Implementing Lists with Arrays</div>
+    <div class="section-desc"><strong>Using a contiguous block of memory addresses to store list elements sequentially — this is the sequential list.</strong> Read operation: only O(1) time, because the address can be directly computed: LOC(aᵢ) = LOC(a₁) + (i-1)×c. Insertion: to insert at position i, all elements from i to n must shift backward — O(n). Deletion: similarly, all elements from i+1 to n must shift forward — O(n). <strong>Sequential lists have very clear pros and cons: blazing fast reads, painfully slow insertions/deletions.</strong></div>
+    <div class="callout"><strong>📐 Address Formula:</strong> LOC(aᵢ) = LOC(a₁) + (i-1) × c<br>where c is the storage size per element. This means <strong>O(1) access time</strong> — the biggest advantage of sequential lists.</div>
+  </div>
+</div>
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Linked Storage</div>
+    <div class="section-title t-03">Linked Storage: Nodes and Operations of Singly Linked Lists</div>
+    <div class="section-desc"><strong>A singly linked list stores data in "nodes," each containing a data field and a pointer field (next) that points to the next node's address.</strong> n nodes linked together form a linked list — the linked storage structure of a linear list. The head pointer points to the first node; the last node's pointer is NULL. Reading element i: must traverse from the head, i iterations — O(n). Insertion/Deletion: if the position is known, only pointer modifications are needed — O(1); but finding the position itself requires O(n) traversal. List creation has two methods: head insertion (each new node at the front) and tail insertion (each new node at the back).</div>
+    <div class="flow-row">
+      <div class="flow-step">Head Ptr<br>head</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Node 1<br>data│next</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Node 2<br>data│next</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Node n<br>data│NULL</div>
+    </div>
+  </div>
+</div>
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Storage Comparison</div>
+    <div class="section-title t-04">Sequential vs Linked: The Scenario Decides the Winner</div>
+    <div class="section-desc"><strong>If your scenario is search/read-heavy with few insertions/deletions, choose sequential storage. If insertions/deletions are frequent with varying element counts, choose linked storage.</strong> Specific comparison — Space: sequential requires pre-allocation (may waste or be insufficient); linked allocates on demand. Time: sequential reads O(1), insert/delete O(n); linked reads O(n), insert/delete O(1) (when position is known). Flexibility: sequential capacity is fixed; linked can dynamically expand. <strong>There is no absolute winner — only fitness for purpose. This is the core mindset of data structure selection.</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📦</div>
+        <div class="dual-text">
+          <h4>Choose Sequential</h4>
+          <p>Frequent searches/reads · Stable element count · Contiguous memory · Cache-friendly</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔗</div>
+        <div class="dual-text">
+          <h4>Choose Linked</h4>
+          <p>Frequent insert/delete · Variable element count · No capacity pre-planning · Dynamic allocation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">List Variants</div>
+    <div class="section-title t-05">Three List Variants: Beyond the Singly Linked List</div>
+    <div class="section-desc"><strong>① Static Linked List: describes a linked list using an array — array elements consist of data and cur (cursor), where cur stores the index of the next element.</strong> Solves the problem of implementing linked lists in languages without pointers (e.g., early BASIC). ② Circular Linked List: changes the terminal node's pointer from NULL to point to the head node, forming a ring. Advantage: can traverse the entire list from any node. ③ Doubly Linked List: each node has prior (predecessor pointer) and next (successor pointer). Enables bidirectional traversal, but each node requires one extra pointer — trading space for time.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔢 Static</div>
+        <div class="data-name">Array Simulation</div>
+        <div class="data-sm">data+cursor · For pointerless languages · Max capacity planned</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔄 Circular</div>
+        <div class="data-name">Head-Tail Ring</div>
+        <div class="data-sm">Tail→Head · Traverse from any node · Ring structure</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">↔️ Doubly</div>
+        <div class="data-name">Bidirectional</div>
+        <div class="data-sm">prior+next pointers · Two-way traversal · Space for time</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The linear list is the most fundamental data structure. Sequential storage (array) offers O(1) reads but O(n) insertions/deletions; linked storage (list) offers flexible insertions/deletions but O(n) reads. There is no absolute winner — choose sequential for frequent searches, linked for frequent modifications. Additionally, static, circular, and doubly linked lists provide optimizations for different scenarios. Understanding the selection logic of linear lists means mastering the core mindset of data structure design: the scenario determines the structure.</div>
+</div>
+
+<div class="footer">
+  "Play Data Structures" Chapter 3 "Linear Lists" Infographic · Author: Cheng Jie · Based on original book content · For study reference only · Generated: 2026-06-20
+</div>
+</div>
+</body>
+</html>
