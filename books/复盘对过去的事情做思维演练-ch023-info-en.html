@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fupan · Ch23「Discovering New Knowledge and Fresh Thinking」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html">← Back to Chapter Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch023-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Fupan · Chapter 23「Discovering New Knowledge and Fresh Thinking」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">30% from books · 70% from yourself · Fupan is the process of awakening</span>
+  The U.S. Army reviewed why plans kept failing — and created 「Commander's Intent」: prescribe no details, only lock in the ultimate mission.
+  Shen Nong tasting herbs was fupan. Scientific experiments are fupan. Children observing parents is fupan. All human knowledge is the result of fupan.
+  Liu Chuanzhi: 70% of learning comes from yourself — the key is fupan. Without fupan, you walk on one leg.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>Fupan is a critical source of our knowledge formation and the core method of capability improvement.</strong> Beginning with the creation of the U.S. Army's 「Commander's Intent」 (CI) concept, this chapter systematically presents fupan's epistemological significance: human knowledge falls into three categories (genetic, cultural, and atomic). Of the three acquisition paths for atomic knowledge, the first two are fupan. Reading and fupan are the only two ways to learn and improve — and Liu Chuanzhi's "70% from yourself" means fupan is more important than reading, because knowledge you "awaken to" and "realize" yourself is remembered most deeply, understood most thoroughly, and applied most seamlessly.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">30<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Learn from books / others</div>
+    <div class="kpi-note">Liu Chuanzhi: the 30% from others</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">70<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Learn from yourself (fupan)</div>
+    <div class="kpi-note">The key is mastering fupan</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit"> Types</span></div>
+    <div class="kpi-label">Human knowledge categories</div>
+    <div class="kpi-note">Genetic · Cultural · Atomic</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit"> Paths</span></div>
+    <div class="kpi-label">Atomic knowledge acquisition</div>
+    <div class="kpi-note">Personal trial · Observe others · Read books</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">A New Idea Is Born</div>
+    <div class="section-title t-01">The U.S. Army reviewed why plans kept failing → created 「Commander's Intent」: no details, only mission</div>
+    <div class="section-desc"><strong>The U.S. military once had an extremely detailed planning system — from the President's orders cascading down to every infantryman's specific actions.</strong> The planning process took years to refine, involving repeated communication. But it had one fatal flaw: plans at the end kept failing. In the 1980s, the Army reviewed this reality and overhauled the planning process, creating the 「Commander's Intent」 (CI) concept — appearing at the top of every order, clearly stating the plan's goal and desired end state. No specific details prescribed, because details become invalid due to unexpected events. But it ensures: "You never lose the responsibility to execute the ultimate intent."</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>Old model: exhaustive plans (often failed)</h4>
+          <p>President → Joint Chiefs → General → Colonel → Captain → infantryman. Every step: what to do, what equipment, how to get supplies. More detail = more ways to fail.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>New model: Commander's Intent (CI)</h4>
+          <p>States only the goal: "Destroy enemy morale in SE region" or "Take Hill 4305 and provide cover for 3rd Brigade's flank." One soldier on the hill must still accomplish the mission.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Knowledge Framework</div>
+    <div class="section-title t-02">The three-layer structure of human knowledge: genetic, cultural, and atomic knowledge</div>
+    <div class="section-desc"><strong>Every person's knowledge system consists of three layers: genetic knowledge is instinct, cultural knowledge is environmental imprint, atomic knowledge is actively acquired.</strong> Genetic knowledge: evolution-internalized instincts over millennia — dodging punches, avoiding fire, seeking food when hungry, drinking when thirsty. Cultural knowledge: absorbed from one's cultural environment — Chinese use chopsticks, value filial piety, shake hands when greeting. Both are acquired unconsciously. Only atomic knowledge is actively acquired through personal effort — and this is where fupan exerts its greatest power.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🧬</div>
+        <div class="data-name">Genetic Knowledge</div>
+        <div class="data-sm">Evolution-internalized instincts: avoid harm, seek benefit, survive, reproduce — born with it, no learning required, safeguards survival</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🏮</div>
+        <div class="data-name">Cultural Knowledge</div>
+        <div class="data-sm">Absorbed from cultural environment: language, etiquette, values — unconsciously acquired, evolved by ethnicity or group</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚛️</div>
+        <div class="data-name">Atomic Knowledge</div>
+        <div class="data-sm">Actively acquired personal knowledge: through personal trial-and-error, observing others, reading books — fupan's primary battlefield</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Acquisition Paths</div>
+    <div class="section-title t-03">Of the three paths to atomic knowledge, the first two are fundamentally fupan</div>
+    <div class="section-desc"><strong>Atomic knowledge is acquired through three paths — and the first two are essentially fupan.</strong> Path 1: through personal practice, experiencing different things, trial and error, summarizing — this is fupan of one's own experience. Path 2: observing others, summarizing their successes and failures as your own lessons — this is fupan of others' experience. Path 3: learning from others' summarized experience, from books, from training — this is traditional learning. Of the three paths, two are fupan. This means fupan is the primary way to acquire personal knowledge.</div>
+    <div class="flow-row">
+      <div class="flow-step">Path 1<br>Personal trial &amp; error<br>Summarize own experience</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Path 2<br>Observe others<br>Summarize their results</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Path 3<br>Read &amp; study<br>Learn others' summaries</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Practice<br>Apply knowledge<br>Solve problems</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Two Ways to Learn</div>
+    <div class="section-title t-04">Reading and fupan are the only two ways to learn — fupan matters more, because what you awaken to yourself cuts deepest</div>
+    <div class="section-desc"><strong>Liu Chuanzhi said: learning from books and others accounts for only 30%; the remaining 70% comes from learning from yourself.</strong> The key to learning from yourself is fupan. Reading absorbs knowledge and patterns summarized by others — it builds a knowledge framework, but it's one layer removed: it's someone else's "awakening" and "realization." Fupan, by contrast, produces lessons you have awakened to and realized yourself — remembered deeply, understood thoroughly. In future application, only then can you integrate and apply them seamlessly. Shen Nong tasting herbs was fupan. Scientific experiments are fupan. Children observing parents is fupan. The knowledge in books is nothing more than conclusions others reached through fupan.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text">
+          <h4>Reading (30% · learning from others)</h4>
+          <p>Absorb others' summarized knowledge and patterns → build knowledge framework → but "scratching through boots" — lacks the depth of personal verification.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🧘</div>
+        <div class="dual-text">
+          <h4>Fupan (70% · learning from yourself)</h4>
+          <p>Lessons awakened to and realized yourself → remembered deeply, understood thoroughly → applied seamlessly. This is true "internalization."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Ultimate Conclusion</div>
+    <div class="section-title t-05">Fupan is awakening: without mastering fupan, you walk on one leg — you can't go fast or far</div>
+    <div class="section-desc"><strong>If you want your life to amount to something, you must first love reading, and second master fupan.</strong> All human knowledge is the result of fupan — Shen Nong tasting herbs, scientific experiments, children observing parents — all discover patterns through post-event review. In an era where people read less than ever, mastering fupan is even more critical. Without it, you have no means of learning and improving. It's like having neither leg to walk on — unable to walk at all, let alone walk fast or far. Of course, if you just want to drift through life, then fupan has nothing to do with you.</div>
+    <div class="flow-row">
+      <div class="flow-step">Reading<br>Learn others' fupan<br>conclusions (30%)</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-step">Fupan<br>Awaken to your own<br>lessons (70%)</div>
+      <div class="flow-arrow">=</div>
+      <div class="flow-step">Two-legged stride<br>Knowledge + wisdom<br>Go fast, go far</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Life's achievement<br>Capability growth<br>Face future challenges</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">All human knowledge is the result of fupan — from Shen Nong tasting herbs to the U.S. Army's 「Commander's Intent」, without exception. Reading and fupan are the only two ways to learn, and Liu Chuanzhi's "30% vs 70%" tells us fupan is far more important than reading. Because books are other people's fupan results — one layer removed. What you arrive at through your own fupan, you have awakened to and realized yourself — remembered most deeply, understood most thoroughly. Without mastering fupan, you walk on one leg — you can't go fast or far. Fupan is your core ability to understand the world, elevate yourself, and create new knowledge.</div>
+</div>
+
+<div class="footer">
+  《Fupan》Ch.23 Infographic · Based on「Discovering New Knowledge and Fresh Thinking」· For learning reference only
+</div>
+</div>
+</body>
+</html>

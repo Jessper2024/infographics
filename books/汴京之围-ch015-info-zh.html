@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汴京之围 · 第13章「艰难的谈判」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="汴京之围-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="汴京之围-ch015-info-en.html">中文 / English</a>
+</div>
+
+<h1>汴京之围 · 第13章「艰难的谈判」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">第三部 汴京失陷 · 城破求和 → 皇帝亲临青城 → 降表称臣 → 索求无度</span>
+  外城陷落后，宋钦宗将希望寄托于和谈，亲赴青城递降表称臣。
+  金人初见友好，但索赔数字令人窒息——金一千万锭、银二千万锭，是上次的二十倍。
+  开封府高效运转：搜刮金银、上缴马匹、交割绢帛、抓捕女人抵债。
+  皇帝以为满足要求就能保住半壁江山，一场更大的变局却已在酝酿。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章记录了外城陷落后宋金谈判的完整过程。闰十一月三十，宋钦宗亲赴粘罕青城大营，在北设香案前向北四拜称臣，呈递经反复修改的降表。粘罕以胜利者姿态保持礼节，改「负罪」为「失德」、「宇宙」为「寰海」——宋帝如小学生般一一遵从。十二月初三，金军索赔文书送达：金一千万锭、银二千万锭（折合一亿两金、十亿两银），外加绢帛一千万匹。开封府在王时雍、徐秉哲主持下化身高效榨取机器：行政、司法、监察联动，贵戚权贵戴枷锁走，百姓互相告发。更可怕的是——女人被明码标价抵债：宫女银五百锭，歌女二百锭，民女一百锭。</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">20<span class="kpi-unit">倍</span></div>
+    <div class="kpi-label">赔款增幅（较上次）</div>
+    <div class="kpi-note">金一千万锭+银二千万锭</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1,000<span class="kpi-unit">万匹</span></div>
+    <div class="kpi-label">绢帛索赔数</div>
+    <div class="kpi-note">库藏1400万匹，勉强可付</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">7,000<span class="kpi-unit">+匹</span></div>
+    <div class="kpi-label">搜刮马匹数</div>
+    <div class="kpi-note">此后士大夫只能骑驴乘轿</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">16<span class="kpi-unit">万两</span></div>
+    <div class="kpi-label">最终缴金（仅1%）</div>
+    <div class="kpi-note">银600万两约占十分之一</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">5<span class="kpi-unit">万/两</span></div>
+    <div class="kpi-label">金价暴涨至</div>
+    <div class="kpi-note">正常价1万钱→恐慌5万</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">下风口谈判</div>
+    <div class="section-title t-01">城破之夜：皇帝选择相信金军，不再相信自己的军队</div>
+    <div class="section-desc"><strong>外城陷落当晚，景王赵杞、梅执礼、秦桧等寥寥数人守在皇帝身边。</strong>众人讨论结果：除了和谈别无选择。景王坐筐从城上吊下出使斡离不军营。李若水带回粘罕口信——五百里内皆是金兵，皇帝无处可逃，快派人来和谈。宰相何㮚前往粘罕营地：「不肯来是为了社稷，今天来是为了生灵。」粘罕感慨他是忠臣。但随后的要求让宋使目瞪口呆：太上皇必须亲自出城，否则质押皇太后和公主。城内同时失控——溃军劫掠、大相国寺饥民号哭、人相食、尸体瞬间被割光。</div>
+    <div class="flow-row">
+      <div class="flow-step">城破<br>闰十一月廿五</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">景王出使<br>斡离不营</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">何㮚见粘罕<br>「为生灵而来」</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">金人要求<br>太上皇出城</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">皇帝亲临</div>
+    <div class="section-title t-02">降表：一篇让宋帝如小学生般反复修改的投降书</div>
+    <div class="section-desc"><strong>闰十一月三十，宋钦宗带三百随从出南薰门，被金军铁骑裹挟至青城斋宫。</strong>粘罕让他先写降表。孙觌起草、粘罕否决，反反复复改了不下四次：粘罕要求必须是四六骈文、有文学性，保留「大金皇帝」但将「大宋皇帝」删去只准称「臣」，改「负罪」为「失德」、「宇宙」为「寰海」。十二月初二正式投降仪式：斋宫龙纹被青毯遮挡，北设香案，皇帝北拜四拜称臣。粘罕笑道：城都打下来了，你带来的金帛就分给将士吧——理论上所有东西都已属于金军。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📜</div>
+        <div class="dual-text">
+          <h4>降表精修过程</h4>
+          <p>孙觌初稿→粘罕否决→修改四次→删「大宋皇帝」改称「臣」→改「负罪」为「失德」→「宇宙」改「寰海」→宋帝夸大臣「若非勤练，哪能写出如此优雅投降书」</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">❄️</div>
+        <div class="dual-text">
+          <h4>宋人的心理世界</h4>
+          <p>皇帝北拜时青城下雪而汴京未下→宋人赋予象征意义。归来时百姓山呼感天动地→皇帝说「我以为再也见不到万民了」→全城烧香拜佛以为灾难结束</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">康王避难</div>
+    <div class="section-title t-03">蜡丸密诏与白矾密信：赵宋最后的希望在夹缝中求生</div>
+    <div class="section-desc"><strong>早在闰十一月二十二，康王赵构就从顶发藏黄绢的使者秦仔处收到了宋钦宗密诏——拜天下兵马大元帅，速领兵入卫。</strong>十二月初一康王设元帅府于相州。金人逼迫皇帝召回康王，宋钦宗先用蜡丸密信、后用白矾水写在使者袖上——科技手段躲过检查。但康王身边也有主战（宗泽）与主和（汪伯彦）之争，汪伯彦主张远遁东平府保安全。十二月十九康王从大名府转移至东平避难。在相州，他遇到了日后名将岳飞。其余勤王部队也不顺利：范致虚的二十万大军在千秋镇被金军一触即溃。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>金人追捕</h4>
+          <p>逼迫皇帝多次召回康王→派曹辅去相州未果→派张澂与金人监视者同去开德府→情报错误：康王根本不在前线</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📡</div>
+        <div class="dual-text">
+          <h4>皇帝密信技术</h4>
+          <p>蜡丸藏黄绢（金人会搜）→升级为白矾水写于使者袖上→特制水浸泡显影→科技手段躲过金人检查</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">索求不已</div>
+    <div class="section-title t-04">女人标价、金价暴涨、万户萧疏：开封府的极限榨取</div>
+    <div class="section-desc"><strong>十二月十三起，开封府在王时雍、徐秉哲主持下化身高效榨取机器。</strong>行政、司法、监察联动——贵戚权贵官至承宣留后、妇人封恭人夫人，不缴金银一律戴枷锁带走。百姓互相告发可得30%奖励。金价从一万钱一两涨到五万。郑皇后宅隐匿金银被追夺封赏。更令人发指的是——金人索要一千五百名少女劳军，宫女银五百锭、歌女二百锭、民女一百锭明码标价抵债。太学生徐揆独自前往南薰门递交请愿书被金人杀害。皇帝淡淡回应：「此事岂口舌所能下！」</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">💰</div>
+        <div class="data-name">金银搜刮</div>
+        <div class="data-sm">告密者奖30%→入户搜查→金银铺子一搜数万两→行政司法监察三权联动</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🐴</div>
+        <div class="data-name">马匹征缴</div>
+        <div class="data-sm">御马+民间马一律交出→执政官只准留一匹→凑七千余匹→此后士大夫骑马绝迹</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">👩</div>
+        <div class="data-name">女人抵债</div>
+        <div class="data-sm">宫女500锭银→歌女200锭→民女100锭→教坊择优录用→大街哭声撼天动地</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">搜刮漩涡</div>
+    <div class="section-title t-05">从尚书省大火到艮岳毁灭：一座城市的精神崩溃</div>
+    <div class="section-desc"><strong>赔款数额首次公开后，汴京社会彻底瓦解。</strong>十二月十五尚书省大火波及祠部、吏部、刑部，人们拆下尚书省牌匾投入火中「镇火」。十二月二十二天降大雪尺余，皇帝开放艮岳万岁山让百姓砍树取暖——但木材全被流氓团伙夺走。次日毁山行动失控，亭台楼阁尽数拆毁，房屋倒塌砸死上百人，斗殴致死数百人，尸体瞬间被刮成白骨。开封府杀五人后才恢复秩序。一代盛景艮岳只存在了几年便毁于一旦。金人最终将赔款降至金一百万锭、银五百万锭，但即便修改后的数字也根本无法完成。</div>
+    <div class="flow-row">
+      <div class="flow-step">赔款数字<br>公之于众</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">尚书省<br>大火</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">艮岳<br>毁灭</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">金人减额<br>但远仍不够</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">投降并没有换来和平，只开启了无底洞般的勒索。宋钦宗以为亲赴青城、递上降表、满足赔款就能保住半壁江山——但他面对的是一个无法兑现的承诺体系。每一轮索求都在榨干这座城市的最后一点血肉：从金银到马匹，从绢帛到女人，从书籍到古玩，从工匠到乐师。而更残酷的是，这些牺牲换来的只是金人的变本加厉。当开封府高效运转时，当告密者获得30%奖励时，当女人被明码标价时，一个文明的尊严已被彻底碾碎。而皇帝还天真地以为：只要再打一场球就能回去了。</div>
+</div>
+
+<div class="footer">
+  《汴京之围》第13章信息图 · 基于第三部「汴京失陷」内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

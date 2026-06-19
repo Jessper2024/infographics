@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汴京之围 · 第十七章「撤离」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="汴京之围-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="汴京之围-ch019-info-en.html">中文 / English</a>
+</div>
+
+<h1>汴京之围 · 第十七章「撤离」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">一万四千人北行 · 从汴京到五国城的屈辱之路</span>
+  金军满载金银与女人北归，七批俘虏分批启程。一万四千人出发，到燕云后男人只剩十分之四。
+  宋钦宗伏地大哭告别汴京，张邦昌白衣设香案相送。两位皇帝在羞辱中走完余生——
+  牵羊礼、昏德公、重昏侯，赵氏宗族融入了北方的血脉，金人也接受了农耕文明。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>靖康二年三月末至四月初，金军分七批押送俘虏北归。斡离不带太上皇走河北路，粘罕带少帝走山西路。二帝在撤离前与汴京做最后的告别——宋钦宗伏地大哭"天地为愁，城震有声"，张邦昌率百官白衣相送。北行路上满目疮痍：太上皇之子燕王俣死于途中，尸体只能装在马槽里烧掉；宗室三千余人到达燕京时只剩一千数百人，十人九病。此后二帝被不断北迁：燕京→中京→上京→韩州→五国城。牵羊礼、昏德公、重昏侯——侮辱层层加码。绍兴五年太上皇死于五国城，少帝在孤独中又活了二十一年。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">7<span class="kpi-unit">批次</span></div>
+    <div class="kpi-label">俘虏分批发送</div>
+    <div class="kpi-note">含宗室·妇女·工匠·教坊等</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">14,000<span class="kpi-unit">人</span></div>
+    <div class="kpi-label">起行俘虏总数</div>
+    <div class="kpi-note">入寨前死亡散失2000·释放2000</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">40%<span class="kpi-unit"></span></div>
+    <div class="kpi-label">男性存活率</div>
+    <div class="kpi-note">到燕云后男人只剩十分之四</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">30<span class="kpi-unit">万两匹</span></div>
+    <div class="kpi-label">减免后岁币</div>
+    <div class="kpi-note">金国主动减岁币100万贯铜钱</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">撤退部署</div>
+    <div class="section-title t-01">满载而归的军队：金军如何确保安全北归</div>
+    <div class="section-desc"><strong>入侵时金军依靠闪击战，撤退时却变成了另一支军队——满载金银珠玉，马上驮着女人而非战士。</strong>每人带着发财的冲动和对女色的贪婪，不愿再打仗。金军最担心的是北方宋军的拦截。三月初四，粘罕之弟阿懒押着一千零五十车书籍礼器先行探路，车头插上北宋皇帝旗帜——如果康王放过这支队伍，就证明道路安全。金军还在开德、兴仁、濮州等地连续击败康王部队，宗泽的车阵在南华之战被摧毁。康王更多考虑的是金军走后的秩序重建，并不想将金军截留内地。</div>
+    <div class="flow-row">
+      <div class="flow-step">阿懒先行<br>1050车书籍探路</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">连战连捷<br>开德·兴仁·濮州</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">三月十八<br>下令拔营</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">七批俘虏<br>分批北归</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">告别汴京</div>
+    <div class="section-title t-02">天地为愁：二帝与汴京的最后告别</div>
+    <div class="section-desc"><strong>三月二十七，宋钦宗伏地大哭告别他再也见不到的汴京城。</strong>"天地为愁，城震有声。"张邦昌采用天子仪卫，却浑身穿着象征丧礼的白色，在南薰门和五岳观设香案，率领百官和士庶（同样穿白衣），痛哭着送别太上皇和皇帝。三月二十八黎明，青城俘虏合并到刘家寺，太上皇与诸王、驸马最后相见。帝姬们从寿圣院出来拜见父母和夫婿——这是他们此生最后一次家庭团聚。当晚金兵从城墙上撤下，将城门防卫交给了大楚军队。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">😭</div>
+        <div class="dual-text">
+          <h4>钦宗的绝望告别</h4>
+          <p>伏地大哭，天地为愁。写信给城内要求"可怜可怜老主子，送一点上路钱"——只要厨房用品和三千贯现钱。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">⚰️</div>
+        <div class="dual-text">
+          <h4>张邦昌白衣送别</h4>
+          <p>天子仪卫却全身丧服白色。百姓感慨：一边是老天子离开，一边是新天子招摇。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">北行之路</div>
+    <div class="section-title t-03">从汴京到五国城：二帝的不断北迁之路</div>
+    <div class="section-desc"><strong>二帝的北迁是一条不断加码的侮辱之路。</strong>太上皇随斡离不走河北路，待遇相对优厚——斡离不与他打球喝酒，路过中山时还让太上皇劝降守将（未成功）。少帝在粘罕军中却饱受折磨：穿青衣戴毡帽乘黑马，连号泣都被呵止。到燕京后，二帝在延寿寺和愍忠祠暂住。但康王称帝后，金国皇帝认为燕京离南方太近，将他们迁往中京（距燕京九百九十里）。建炎二年又因马扩在五马山举事，被怀疑与二帝有关，再迁通塞州自耕自食。最终于建炎四年迁至胡里改路五国城——太上皇夫妇的最终归宿。</div>
+    <div class="flow-row">
+      <div class="flow-step">汴京<br>1127.3.28</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">燕京<br>延寿寺/愍忠祠</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">中京<br>1127.10（990里）</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">上京<br>1128献俘</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">五国城<br>1130~终老</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">献俘仪式</div>
+    <div class="section-title t-04">牵羊礼与昏德公：对皇帝的终极羞辱</div>
+    <div class="section-desc"><strong>建炎二年八月二十四，二帝经历了人生中最屈辱的一天。</strong>斡离不于前一年去世，刘彦宗也已不在，再无人保护二帝。金国皇帝举行了盛大的献俘仪式：二帝及后妃被剥去外袍，裹上羊皮，到金国宗庙前行牵羊礼——手执羊皮绳，象征如羊一般任人宰割。朱后不堪羞辱，上吊被救下后又投水而死。十月二十五，太上皇被封为"昏德公"，少帝被封为"重昏侯"——这两个侮辱性的封号，是对北宋君主制的终极嘲弄。赵氏宗室女性赤裸上身、只披羊皮，千人被当场分配给金国侍卫。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🐑</div>
+        <div class="data-name">牵羊礼</div>
+        <div class="data-sm">二帝裹羊皮·执羊皮绳。金国皇帝亲手宰两只羊供于殿中</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">💀</div>
+        <div class="data-name">朱后之死</div>
+        <div class="data-sm">上吊被救下·又投水而死。"妇人一死何足道"的悲壮</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🏷️</div>
+        <div class="data-name">昏德公·重昏侯</div>
+        <div class="data-sm">对两代宋帝的终极侮辱封号。侮辱的极致</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">血脉融合</div>
+    <div class="section-title t-05">赵氏融入北方：帝姬嫁王子·宗室娶契丹公主</div>
+    <div class="section-desc"><strong>赵氏宗族并非全部悲惨，许多人逐渐适应了北方生活。</strong>洵德帝姬（富金）嫁给了设也马大王成为夫人；茂德帝姬、惠福帝姬也嫁给了王子；荣德帝姬、宁福帝姬、华福帝姬、庆福帝姬更嫁给了金国皇帝，被封为次妃。相国公娶了契丹公主耶律氏，建安郡王娶了金国皇帝的"内夫人"。赵氏宗族完成了从农耕文明向游牧文明的转型——"南方的血统和北方的血统迅速融合在了一起"。而原本游牧的金人，也在同时转向了农耕文明，习惯于接受宋朝的文化和一个庞大的后宫。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">👰</div>
+        <div class="dual-text">
+          <h4>帝姬们的新归宿</h4>
+          <p>洵德帝姬→设也马夫人；茂德/惠福帝姬→王子夫人；荣德/宁福/华福/庆福→金帝次妃</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🤝</div>
+        <div class="dual-text">
+          <h4>南北血脉双向融合</h4>
+          <p>赵氏宗室不再在乎礼法规矩。相国公娶契丹公主；建安郡王娶金国内夫人。金人同时接受宋朝文化。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">金军的北归不仅是一次军事撤退，更是一次文明的大迁徙与融合。一万四千名俘虏从汴京出发，到燕云后男性只剩十分之四，女性幸存的更多——女人比男人更能跨越文明的边界。两位皇帝在屈辱中走完余生：牵羊礼将君主贬为牲畜，昏德公的封号将耻辱刻入史册。但赵氏的帝姬们嫁给了金国王子与皇帝，宗室子弟娶了契丹公主——他们的后代将成为金国的子民。靖康之变的悲剧，最终以血脉融合的方式写下了历史的结语。</div>
+</div>
+
+<div class="footer">
+  《汴京之围》第十七章信息图 · 基于第十七章「撤离」内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

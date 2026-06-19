@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘对过去的事情做思维演练 · 第34章「情境重现法」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.field { background: #fffbeb; border: 1px solid #fde68a; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .quote-block {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
+    padding: 16px 20px; margin-top: 10px; font-size: 13px; color: #991b1b;
+    line-height: 1.8; font-style: italic;
+  }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}.kpi-card{border-radius:12px;padding:18px 14px;text-align:center}.kpi-card.c01{background:#fef2f2;border:1px solid #fecaca}.kpi-card.c02{background:#fff7ed;border:1px solid #fed7aa}.kpi-card.c03{background:#fefce8;border:1px solid #fde68a}.kpi-card.c04{background:#eef2ff;border:1px solid #c7d2fe}.kpi-val{font-size:26px;font-weight:bold;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}.kpi-val.v01{color:#dc2626}.kpi-val.v02{color:#ea580c}.kpi-val.v03{color:#ca8a04}.kpi-val.v04{color:#4f46e5}.kpi-label{font-size:12px;color:#888;line-height:1.5}@media(max-width:640px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch034-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘对过去的事情做思维演练 · 第34章「情境重现法」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  网络公开课点击量超1000万，却少有人坚持到第5节课——学习需要\"情境\"，而非仅靠信息。只说\"我做了什么\"不是完整复盘，只是工作总结。<strong>如何真正重现过去的情境？</strong>
+  答案是情境重现法：重现信息场（有什么）、思维场（是什么）、情绪场（为什么），三场合一形成能量场（会怎样），通过直接叙述完整还原。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>情境重现是复盘方法之一。\"情境\"概念最早由美国社会学家托马斯与兹纳尼茨基提出：只有把个人的主观态度和社会客观文化的价值综合起来考察，才能充分解释人的行为。情境不仅与背景、环境有关，<strong>还与当事人的心理活动有关</strong>——人的思维和行为，只有与情境结合，才能得到合理的解释。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card c01"><div class="kpi-val v01">1000万+</div><div class="kpi-label">《公正》公开课<br>网络点击量</div></div>
+  <div class="kpi-card c02"><div class="kpi-val v02">3</div><div class="kpi-label">三种场<br>信息场·思维场·情绪场</div></div>
+  <div class="kpi-card c03"><div class="kpi-val v03">3</div><div class="kpi-label">三种流<br>信息流·思维流·情绪流</div></div>
+  <div class="kpi-card c04"><div class="kpi-val v04">1</div><div class="kpi-label">能量场（气场）<br>三场合一形成行动</div></div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">概念定义</div>
+    <div class="section-title t-01">什么是情境：三场与三流</div>
+    <div class="section-desc"><strong>情境远远超过背景、环境等信息，包含三种"场"（空间状态）和三种"流"（时间变化）。</strong>\"场\"强调空间维度，\"流\"强调时间维度。只有重现了这三种场/流，一个情境才可以说相对完整地被重现了，一种行为才有了理解的前提和基础。只说\"我做了什么\"不叫复盘，那叫工作总结。</div>
+    <div class="dual-grid">
+      <div class="dual-card field">
+        <div class="dual-text">
+          <h4>📋 信息场（有什么）</h4>
+          <p style="font-size:13px;color:#555;line-height:1.6">当时现场的外在环境\"有什么\"。是否有太阳，都谁参加了，谁在场，谁有什么语言动作，工具如何摆放。有助于厘清项目或行业的事实。</p>
+        </div>
+      </div>
+      <div class="dual-card field">
+        <div class="dual-text">
+          <h4>🧠 思维场（是什么）</h4>
+          <p style="font-size:13px;color:#555;line-height:1.6">当时现场每个人自己\"是什么\"。大家如何思考，社会对此类场景的潜在共识/潜规则是什么。有助于判断方法和思路是否正确。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">核心构成</div>
+    <div class="section-title t-02">情绪场与能量场：从"为什么"到"会怎样"</div>
+    <div class="section-desc"><strong>情绪场告诉我们当时现场的人员之间"为什么"——他们处于怎样的相互关系之中。</strong>两人之间是否有碰撞，人们是兴高采烈还是垂头丧气，心理是否起冲突。情绪是一种无形的东西，最难被复盘——等到能被观察到时，已经表现为行动。信息场、思维场和情绪场的结合形成"能量场"（气场），最终能量按阻力最小的方向发展，决定了当时人们可能采取的行动：\"会怎样\"。</div>
+    <div class="flow-row">
+      <div class="flow-step">📋<br>信息场<br>有什么</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-step">🧠<br>思维场<br>是什么</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-step">❤️<br>情绪场<br>为什么</div>
+      <div class="flow-arrow">=</div>
+      <div class="flow-step end">⚡<br>能量场<br>会怎样</div>
+    </div>
+    <div class="quote-block">「微反应技术可以观察到一个人不受自我控制的微反应，从而破译内心情绪——微反应是千百年自然进化的动物自我保护本能。」</div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">重现方法</div>
+    <div class="section-title t-03">直接叙述法：按时间顺序完整叙述</div>
+    <div class="section-desc"><strong>情境重现必须按"直接叙述"的方式进行。</strong>从事件开始发生的时间说起，按照发展的自然流程，一部分一部分、一个阶段一个阶段地进行叙述。叙述其中的信息场、思维场和情绪场。这种看起来像流水账的方式，是保证信息真实、全面、完整的最好方式。一个真正希望通过复盘提高自己的人，会更关注信息的有效性，而不会追求叙述方式的有趣。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">✅ 直接叙述</div>
+        <div class="confusion-arrow">→ 价值 →</div>
+        <div class="confusion-right">保证信息真实、全面、完整。流水账但有效。追求提高的人不会因叙述方式\"无趣\"而放弃有效信息。</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">❌ 工作总结</div>
+        <div class="confusion-arrow">→ 局限 →</div>
+        <div class="confusion-right">只是状态描述，是信息，没有情境。没有包括\"为什么这么做\"以及前后的联系。不能算完整复盘。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">三场对应</div>
+    <div class="section-title t-04">三场与叙述人三原则的对应</div>
+    <div class="section-desc"><strong>情境重现法中三种场的重现，与前述叙述人三原则有着完美的对应关系。</strong>信息场对应\"要真实，完整呈现复盘事件\"——必须遵从真实、全面、完整三条标准。思维场对应\"要超脱，站在自身之外看复盘\"——勇敢袒露自己的所思所想。情绪场对应\"要虚心，放空自己进行复盘\"——说的只是当时的情绪，像一个旁观者看待当时的情绪，不能带入现在的复盘。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📋</div>
+        <div class="data-name">信息场</div>
+        <div class="data-sm">对应原则：真实<br>必须遵从真实、全面、完整<br>厘清项目事实<br>重现外在客观存在</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🧠</div>
+        <div class="data-name">思维场</div>
+        <div class="data-sm">对应原则：超脱<br>勇敢袒露所思所想<br>不担心人笑我幼稚<br>不担心人说没逻辑</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">❤️</div>
+        <div class="data-name">情绪场</div>
+        <div class="data-sm">对应原则：虚心<br>像旁观者看待情绪<br>不将当时的情绪<br>带入现在的复盘中</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">应用价值</div>
+    <div class="section-title t-05">情境重现的目的：从过去的经历中学习</div>
+    <div class="section-desc"><strong>复盘的目的主要在行动上，而非情绪上。</strong>情境重现的核心价值是厘清事实（信息场）、判断方法（思维场）、认识自己（情绪场）。即使不能很好地复盘情绪场——尤其在复盘他人时——只要重现了信息场和思维场，复盘依旧可以让大家从过去的经历中学习，提高做事的能力。对成功人士的\"幻灭\"往往是因为只了解片断信息，而不是完整的情境。</div>
+    <div class="dual-grid">
+      <div class="dual-card" style="background:#fef2f2;border:1px solid #fecaca;">
+        <div class="dual-text">
+          <h4>🎯 复盘目的</h4>
+          <p style="font-size:13px;color:#555;line-height:1.6">从过去的经历中学习，找到正确的做法，摸清事情的规律。提升能力的关键在于理解完整情境——包括信息、思维和情绪——而不是孤立的行为描述。</p>
+        </div>
+      </div>
+      <div class="dual-card" style="background:#f0fdf4;border:1px solid #bbf7d0;">
+        <div class="dual-text">
+          <h4>⚠️ 名人幻灭</h4>
+          <p style="font-size:13px;color:#555;line-height:1.6">巴菲特有当国会议员的父亲，盖茨的母亲是IBM董事。人们了解这些信息后\"再也不相信成功学\"——但这是片面的：有这些关系的人很多，做到他们的成就的很少。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">情境重现是复盘的第一方法。只重现行为\"做了什么\"是工作总结，不是复盘。真正的复盘需要重现三种场：信息场（厘清事实）、思维场（判断方法）和情绪场（认识自己），通过直接叙述完整还原。三场合一形成能量场，决定了\"会怎样\"。而理解完整情境的价值，不在于评判个人，而在于从过去的经历中学习，为未来的行动提供根基。</div>
+</div>
+
+<div class="footer">
+  来源：陈中《复盘：对过去的事情做思维演练》第34章「情境重现法」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汴京之围 · 幕间「另一个版本的收复燕京」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="汴京之围-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="汴京之围-ch007-info-en.html">中文 / English</a>
+</div>
+
+<h1>汴京之围 · 幕间「另一个版本的收复燕京」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">宣和五年 · 谎言、狂欢与阿骨打之死</span>
+  童贯的奏章里，燕京之战是一连串的"大胜"；而真实的历史是溃败、赎买与空城。当君臣沉浸在超越周汉的虚幻功业中时，阿骨打的去世让金国鹰派登上了历史舞台。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>北宋收复燕京的历史存在两个截然不同的版本。在童贯呈给皇帝的奏章中，北伐是一连串辉煌的"大胜"——从五月到十二月，几乎每十天就打赢一场战斗，燕京百姓欢欣鼓舞地迎接王师。而在真实的版本里，宋军被辽国以少胜多击溃，不得不用天价从金人手中"买"回一座空城。当宋朝君臣沉浸在狂欢之中——童贯封公、蔡攸封师、王黼封傅——只有少数清醒者发出了警告：赵良嗣预言和平最多维持三年，郑居中拒绝受封，马扩紧急呼吁修建防御。然而，最致命的转折发生在当年五月：金太祖完颜阿骨打去世。他生前那句"我死了，就随便你们了"，正式宣告了鹰派时代的到来。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">9<span class="kpi-unit">场"大胜"</span></div>
+    <div class="kpi-label">童贯奏章中的虚构胜利</div>
+    <div class="kpi-note">从五月到十二月，几乎每十天一"胜"</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">赵良嗣预警的和平期限</div>
+    <div class="kpi-note">收复后私下悲观预测，请求归隐被拒</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">40<span class="kpi-unit">万缗</span></div>
+    <div class="kpi-label">马扩估算的防御建设费</div>
+    <div class="kpi-note">一个月可建牢固防御系统，建议未被采纳</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1123<span class="kpi-unit">年5月</span></div>
+    <div class="kpi-label">阿骨打去世</div>
+    <div class="kpi-note">山后诸州移交中止，鹰派粘罕上台</div>
+  </div>
+</div>
+
+<!-- 01: 两个版本的燕京之战 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">历史叙事</div>
+    <div class="section-title t-01">同一场战争，两个截然不同的版本：童贯奏章中的"九连胜"与真实的历史</div>
+    <div class="section-desc"><strong>如果没有后来的靖康之耻，宋朝正史将按照童贯的叙述，在一片胜利的欢呼声中记载宋徽宗的"丰功伟绩"。</strong>童贯在奏章中将每一次战斗都记载为"大胜"——五月二十二大胜、五月二十五大胜、五月二十九大胜……他虚构的叙事甚至包括：郭药师是受童贯感召才投降的，易州是因为宋军几乎杀光了城内契丹人才占领的，燕京是金国与宋军"夹攻"收复的。更令人震惊的是，他将宋徽宗的功业与周代、汉代对比——"周代伐猃狁只到太原，汉代击匈奴不过渭河，宋徽宗打到燕京已超越历代"。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📜</div>
+        <div class="dual-text">
+          <h4>童贯奏章中的版本</h4>
+          <p>连串大胜，郭药师感召而降，宋金夹攻收复燕京。宋徽宗功业超越周汉——这是准备写入正史的"官方叙事"。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>真实的燕京之战</h4>
+          <p>白沟溃败，刘延庆烧营而逃，用天价赎买空城。唯一的亮点——郭药师奇袭——也被刘光世的后援不至毁掉。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 君臣狂欢 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">权力狂欢</div>
+    <div class="section-title t-02">收复后的狂欢盛宴：所有人都在庆祝，除了几个不合时宜的清醒者</div>
+    <div class="section-desc"><strong>童贯晋封徐豫国公，蔡攸封少师，王黼封太傅，就连运送"盘固侯"石头的工程师朱勔也获封节度使。</strong>太宰王黼上表称贺，百官争相奉承。在这场举国狂欢中，有三个人保持了清醒：郑居中以"没有功劳"为由拒绝受封的太保之职；赵良嗣私下预测和平只能维持三年，上书请求归隐种田，被皇帝驳回；马扩提议只需四十万缗和一个月时间就能建立牢固的燕京防御系统——他的建议被淹没在贺表之中。童贯仅在燕京象征性驻扎不到半个月就匆匆撤离，将防务扔给了詹度和郭药师。</div>
+    <div class="flow-row">
+      <div class="flow-step">童贯封公<br>蔡攸封师</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">王黼封傅<br>百官称贺</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">童贯驻扎<br>不到半月撤离</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">马扩警告<br>无人理会</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 赵良嗣的悲剧 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">个人命运</div>
+    <div class="section-title t-03">首倡联金灭辽之人，最终成为所有人的替罪羊</div>
+    <div class="section-desc"><strong>赵良嗣被封为延康殿学士，却看透了这场狂欢背后的危险。</strong>他私下预测燕京收复后最多只能保三年和平，请求隐退——"买一点田地过日子就足够了"。他甚至幻想有人见到耕地的他，能在背后议论："这就是平燕的首谋之人，现在不图富贵，在家种田，这是天下多大的美事啊！"但皇帝坚决不许他引退。此后发生的一切印证了他的悲观：他因反对接纳张觉而被贬官，被朝野上下唾弃，至今仍背负骂名。而马扩——那个更受金人尊重的勇士——担任了武功大夫，继续呼吁加强武备，同样无人理会。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🌾</div>
+        <div class="dual-text">
+          <h4>赵良嗣的愿望</h4>
+          <p>请求归隐种田，幻想有人在背后说他"不图富贵"。皇帝不许，他被迫留在即将崩溃的系统中。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">⚔️</div>
+        <div class="dual-text">
+          <h4>马扩的警告</h4>
+          <p>修缮城池、招抚流民、训练军士、流转无主田地——四十万缗可建牢固防御。但"所有的人都在狂欢"，无人倾听。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 阿骨打去世 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">权力更迭</div>
+    <div class="section-title t-04">阿骨打之死：和平时代终结，鹰派粘罕登上历史舞台</div>
+    <div class="section-desc"><strong>宣和五年三月，在展示那套复杂的汉式礼仪时，马扩敏锐地观察到阿骨打已经病得不轻。</strong>五月，这位金朝开国皇帝去世。阿骨打是宋金盟约的最后守护者——他拒绝了粘罕只承认涿州易州的提议，坚持按海上之盟归还燕京。但他同时留下了一句致命的话："我死了，就随便你们了。"继承皇位的是他的弟弟吴乞买。山后诸州的移交工作在六月骤然中止。那些曾在阿骨打时代被压制的鹰派——以粘罕为首——迅速崛起。他们经历了战争的考验，也见识了南方的繁华，更重要的是，北宋的软弱让原本主张和平的粘罕也转向了强硬。</div>
+    <div class="flow-row">
+      <div class="flow-step">阿骨打在位<br>守约归还燕京</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">宣和五年五月<br>阿骨打病逝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">吴乞买即位<br>鹰派上台</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">六月十一<br>山后移交中止</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 谎言的历史代价 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">深层教训</div>
+    <div class="section-title t-05">虚构的胜利制造真实的失败：谎言是如何摧毁一个帝国的</div>
+    <div class="section-desc"><strong>童贯的谎言不只是个人的虚荣——它系统性地瘫痪了北宋的预警机制。</strong>如果宋徽宗听到的不是"九连胜"而是"白沟溃败、烧营而逃"，他或许会认真对待马扩的防御建议。虚假的胜利叙事至少在三个层面制造了灾难：它让皇帝高估了宋军的战斗力，低估了金国的威胁；它让本该受到惩罚的军官（刘延庆）继续带兵，本该被加强的防御无人问津；它让整个官僚系统陷入了"报喜不报忧"的恶性循环——许亢宗带回金国即将南侵的情报，却被皇帝"妄言边疆者流徙三千里"的命令堵住了嘴。一场基于谎言的狂欢，最终以靖康之耻的真实惨剧收场。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔕</div>
+        <div class="dual-text">
+          <h4>谎言的结果</h4>
+          <p>刘延庆未受军法处置，防御系统从未建立，边境奏报一百七十余通无人理会。系统性地瘫痪了预警。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">💀</div>
+        <div class="dual-text">
+          <h4>真话的代价</h4>
+          <p>许亢宗归国后欲报告金国即将南侵——皇帝已下令："妄言边疆者，流徙三千里，大赦不免。"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">"另一个版本的收复燕京"是一个关于谎言如何杀死帝国的寓言。童贯的"九连胜"叙事不是无害的自我欺骗——它让整个国家的防御系统建立在虚构之上。当真实的战败被包装成伟大的胜利，预警信号被系统性地过滤，决策者看到的是扭曲的镜像。赵良嗣看到了三年后的灾难，马扩计算出了需要四十万缗的防御费用，许亢宗带回了金国即将南侵的情报——但所有人的声音都被狂欢淹没。而阿骨打的去世，则从外部彻底关闭了和平的窗口。当一个帝国的全部信息渠道都服务于让皇帝高兴时，毁灭只是时间问题。</div>
+</div>
+
+<div class="footer">
+  《汴京之围》幕间信息图 · 基于「另一个版本的收复燕京」章节内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

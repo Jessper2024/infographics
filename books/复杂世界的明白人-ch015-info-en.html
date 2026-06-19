@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding the Complex World · Chapter 15 "A Million Words Make a Master"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复杂世界的明白人-catalog.html">← Back to Chapter Index</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复杂世界的明白人-ch015-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Understanding the Complex World · Chapter 15 "A Million Words Make a Master"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Volume Is the Key Threshold of Skill · Muscle Memory Is the Only Real Memory</span>
+  A saying in the web novel world goes: "If you want to be a master, write a million words first." Over a decade later,
+  those who kept writing daily became the masters; the rest left the arena. Volume is the universal key to all skills —
+  300 hours in PUBG, 100,000 lines of code, 1 million words of web fiction. Pushing through the long, boring period of low reward is your ticket to mastery.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter reveals the foundational logic of skill growth. A million words is not the finish line but the starting point — "quantity begets quality" is not a motivational cliché but a reproducible phenomenon. The author cross-validates this from three dimensions: web fiction writing, gaming, and programming. Volume is the hard currency of skill. The chapter also introduces the mental dimension of "muscle memory": people who routinely face difficulties naturally handle adversity with composure. Finally, the 15% Rule explains why learning accelerates — the larger your knowledge base, the closer new knowledge comes to the optimal learning ratio.</p>
+</div>
+
+<!-- KPI KPI cards -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">1M<span class="kpi-unit"> words</span></div>
+    <div class="kpi-label">Web Novel Mastery Threshold</div>
+    <div class="kpi-note">Finish it, transform completely</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">300<span class="kpi-unit"> hours</span></div>
+    <div class="kpi-label">PUBG Watershed Point</div>
+    <div class="kpi-note">Pinpoint precision, esports-level play</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">100K<span class="kpi-unit"> lines</span></div>
+    <div class="kpi-label">Code Transformation Line</div>
+    <div class="kpi-note">Code flows from your fingertips</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3,000<span class="kpi-unit"> chars/day</span></div>
+    <div class="kpi-label">Daily Publishing Requirement</div>
+    <div class="kpi-note">99% can't make it past the first week</div>
+  </div>
+</div>
+
+<!-- 01: The Million-Unit Threshold -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Volume Law</div>
+    <div class="section-title t-01">Quantity Begets Quality Is Not a Cliché: Million-Level Input Is the Universal Skill Watershed</div>
+    <div class="section-desc"><strong>Everyone who hits that "million" target undergoes a complete transformation.</strong> Web fiction writers can eventually weave any tidbit of knowledge or technique effortlessly into their stories. PUBG players at 300+ hours pull off moves that once looked impossible in a split second. Programmers at around 100,000 lines enter a state where "code flows from your fingertips." Most people have brilliant ideas in their heads, but their craft isn't strong enough to pour them out — the only way is to write every single day, keep writing no matter what, and force yourself to write when nothing comes.</div>
+    <div class="flow-row">
+      <div class="flow-step">Web Fiction<br>1M words</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">PUBG<br>300 hours</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Code<br>100K lines</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Transformation<br>Effortless Mastery</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Personality Does Not Dictate Destiny -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Mindset Breakthrough</div>
+    <div class="section-title t-02">"Personality Dictates Destiny" Is a Self-Imposed Cage — Personality Shifts With Wealth and Circumstance</div>
+    <div class="section-desc"><strong>Personality, wealth, knowledge, perspective, and social connections — these variables influence each other in a web of mutual causality.</strong> Rising wealth makes people more open and sunny; their social relationships become far smoother. A socially awkward, introverted tech geek switches from engineering to marketing and becomes warm and outgoing — and that new warmth brings in new income streams and connections. The emotions people display are often just "comfort zone expressions." Social anxiety isn't a split personality — it's fear of being rejected by strangers. Change your job or industry, give it enough time, and your personality might just change with it.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🔒</div>
+        <div class="dual-text">
+          <h4>Fixed Mindset: Personality = Fate</h4>
+          <p>"I'm just an introvert," "I'm naturally bad with people" — these beliefs are self-built prison walls.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🔓</div>
+        <div class="dual-text">
+          <h4>Growth Reality: Personality Follows Environment</h4>
+          <p>Switch industry → experiences change → personality shifts → new relationships → more doors open. Personality is a result, not the root cause.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Muscle Memory -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Skill Essence</div>
+    <div class="section-title t-03">Muscle Memory Is the Only Real Memory: The Gap Between Expert and Novice Lies in the Depth of Their Toolset</div>
+    <div class="section-desc"><strong>A few days after finishing a book, most of the content fades — but a small fraction stays with you for life. That's muscle memory.</strong> In programming, common algorithms come out effortlessly; the uncommon ones need repeated debugging. The difference between an expert and a novice is that the expert's muscle memory arsenal is far deeper — they can pull out a full toolkit and deploy it with near-zero errors. Extend this to the mental realm: people who can weather any storm have done so because they face problems routinely. The mindset and capability to handle those problems have become mental muscle memory — no deliberate summoning required, they just show up naturally.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🧠</div>
+        <div class="data-name">Declarative Memory</div>
+        <div class="data-sm">What you can recall after reading a book = what you remember. Most fades in days; only a tiny fraction sticks.</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">💪</div>
+        <div class="data-name">Muscle Memory</div>
+        <div class="data-sm">The small fraction that stays for life, always at your fingertips, never needing deliberate recall.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🎯</div>
+        <div class="data-name">Mental Muscle</div>
+        <div class="data-sm">Routinely facing difficulties → resilience becomes internalized "mental muscle memory" → calm, natural composure.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Don't Attend the Losers' Party -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Environment Choice</div>
+    <div class="section-title t-04">Stay Away from the Losers' Party: Pessimistic Expectations Destroy Action; A Positive Environment Is the Prerequisite for Productivity</div>
+    <div class="section-desc"><strong>Every human behavior is fundamentally a command executed under the mind's governance — no one can muster full, blazing focus under a cloud of pessimism.</strong> Follow cynical keyboard warriors long enough, and you'll start believing nothing matters, that nothing is worth the effort. Humans have a peculiar appetite for bad news — those viral negative cases sweeping social media are amplifiers of "pessimistic expectations." Society stays the same; you're the one who's broken yourself. To do anything complex well, you need three things: positive emotions, a healthy body, and deep knowledge reserves. All three must be in place. Don't let anyone compromise any of them.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🌪️</div>
+        <div class="dual-text">
+          <h4>Pessimistic Environment: Slow-Acting Poison</h4>
+          <p>Fixating on the dark side every day → motivation dies → nothing gets done. Wanting to achieve but half-assing it = game over.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">☀️</div>
+        <div class="dual-text">
+          <h4>Positive Environment: Fuel Depot</h4>
+          <p>Positive mood + healthy body + knowledge base, constantly sharpened day by day. Don't let pessimism pull your steering wheel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: The 15% Rule -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Learning Acceleration</div>
+    <div class="section-title t-05">Anchor to the 15% Rule: The Optimal Learning Ratio — 85% Known + 15% New — Leaps Over the Anxiety Zone Into the Flywheel</div>
+    <div class="section-desc"><strong>Top students learn with ease and speed not because they're geniuses, but because they quickly cross the initial anxiety zone and enter the "15% learning phase."</strong> All-new material → brain overload → frustration and quitting. All-old material → boredom and stagnation. 15% new content keeps things challenging while preventing overload. Education has two phases: early-stage rote cramming to build foundations, then — once the base is thick enough — you naturally enter the 15% joyful learning zone. Recruitment experience confirms the same pattern: people who can focus deeply and invest time daily enter the 15% phase fast; poor performers stay stuck at the foundation-building phase, unable to cross over.</div>
+    <div class="flow-row">
+      <div class="flow-step">Foundation Phase<br>All New Material<br>Anxiety & Frustration</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Tipping Point<br>Knowledge Accumulates<br>New ≈ 50%</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">15% Phase<br>85% Known + 15% New<br>Flywheel Accelerates</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">"A million words make a master" is not mysticism — it's the inevitable outcome of the volume law. The essence of all skill is the deposition of "muscle memory" — write a million words, and the material in your brain naturally "pours out"; write 100,000 lines of code, and complex patterns emerge on their own. Personality is not destiny — it changes as wealth and environment change. The most important choice is to leave those "losers' parties" behind and guard your emotions, your body, and your knowledge reserves. Then use the 15% rule to keep accelerating — the bigger your base, the faster you learn. The key to becoming a master is slogging through the long, boring, low-reward periods even when you don't feel anything is happening.</div>
+</div>
+
+<div class="footer">
+  <i>Understanding the Complex World</i> · Chapter 15 Infographic · Based on "A Million Words Make a Master" · For Reference Only
+</div>
+</div>
+</body>
+</html>

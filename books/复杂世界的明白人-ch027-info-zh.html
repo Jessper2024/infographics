@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复杂世界的明白人 · 第27章「被热议的"内循环"到底是什么」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Quote */
+  .quote-block { background: #fefce8; border: 1px solid #fde68a; border-radius: 12px; padding: 16px 20px; margin-top: 10px; font-size: 13px; color: #92400e; line-height: 1.9; font-style: italic; }
+  .quote-block .q-author { margin-top: 6px; font-style: normal; font-weight: bold; color: #b45309; font-size: 12px; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复杂世界的明白人-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复杂世界的明白人-ch027-info-en.html">中文 / English</a>
+</div>
+
+<h1>复杂世界的明白人 · 第27章「被热议的"内循环"到底是什么」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  全球产能过剩——资本家赚的利润不消费，工人工资买不完商品，周期性经济危机如影随形。
+  过去中国长期依赖出口导向，境外一感冒境内就发烧，类似二战前德国的命运。
+  如何真正实现可持续发展、摆脱外部依赖？答案：经济内循环为主、双循环促进——短期转移支付提升基层消费，长期科技突破创造新增长极。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章从"过剩"这一根本矛盾切入——只要商人逐利，就必有部分利润不进入消费，对应商品就卖不出去。工业革命以来，英国靠殖民地倾销、德国靠军工外循环、美国靠罗斯福改革转向内需大市场，各有解法。中国当前的"经济内循环为主、双循环促进发展"既是历史的必然，也是危机倒逼的转型。作者从三个维度拆解：过剩的数学原理 → 外部循环的脆弱性 → 内部循环的建设路径。最终答案：短期靠转移支付给基层让利（扶贫攻坚），长期靠科技突破催生新产业新岗位（如同移动互联网创造了数千万岗位）。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">25<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">1929美国0.1%富人财富占比</div>
+    <div class="kpi-note">贫富两极分化触发大萧条</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2亿<span class="kpi-unit">+岗位</span></div>
+    <div class="kpi-label">移动互联网创造就业数</div>
+    <div class="kpi-note">技术拉动内循环的标杆案例</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">5万<span class="kpi-unit">~100万</span></div>
+    <div class="kpi-label">中国中产阶层年收入区间</div>
+    <div class="kpi-note">6个5万＞1个30万的消费力</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">6%<span class="kpi-unit">→2%</span></div>
+    <div class="kpi-label">余额宝利率十年走势</div>
+    <div class="kpi-note">利率下行，资金空转</div>
+  </div>
+</div>
+
+<!-- 01: 过剩本质 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">根本矛盾</div>
+    <div class="section-title t-01">过剩的数学原理：资本家赚100元，工人只有80元</div>
+    <div class="section-desc"><strong>只要商人逐利，就必然有部分收益不被用于消费，对应物资就卖不出去。</strong>假设商品价值100万，资本家拿20万利润，工人得80万工资。工人80万买不完100万商品，资本家也不会花光全部利润——富人的消费占收入比例远低于穷人。这20万的缺口就是过剩的根源。从工业革命第一天起，英国就面临这个困境：生产力无限，但本国工人买不起。解决方案就是打开海外市场——从炮舰打开大清国门，到占据印度作为原料产地和倾销地。</div>
+    <div class="flow-row">
+      <div class="flow-step">生产100万<br>商品价值</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">工人80万<br>购买力不足</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">20万<br>卖不出去</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">工厂倒闭<br>工人失业</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">全球经济<br>危机爆发</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 外循环脆弱 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">历史教训</div>
+    <div class="section-title t-02">外循环的致命脆弱：德国从大萧条到希特勒</div>
+    <div class="section-desc"><strong>依赖外部市场的国家，境外一旦出事就是大规模失业，毫无缓冲余地。</strong>一战后德国靠美国贷款恢复生产，商品主要卖到美国——这是典型的外向型经济体。1929年美国经济危机爆发，美国买不起德国货，德国工厂停工、工人大规模失业。绝望之下，希特勒上台，以国家发债扩大军工来吸收过剩产能，随后武装打劫邻国——形成新的"武力外循环"。同理，中国过去过于依赖出口导向，外部需求一旦收缩，境内经济就跟着发病。所以必须把内部市场做大，成为双循环：外部不丢，但内部为主。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">💀</div>
+        <div class="dual-text">
+          <h4>❌ 纯外循环（德国1930s）</h4>
+          <p>出口依赖 → 外部市场崩溃 → 失业潮 → 军工扩张 → 战争外循环。无内需缓冲，一条路走到黑。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🔄</div>
+        <div class="dual-text">
+          <h4>✅ 内外双循环（中国方向）</h4>
+          <p>内部市场做主引擎，外部市场做补充。境外感冒时内部市场继续转动，经济体有韧性。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 美国经验 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">他山之石</div>
+    <div class="section-title t-03">美国的双循环之路：罗斯福削贫富差距，\"国转民\"推动技术落地</div>
+    <div class="section-desc"><strong>罗斯福真正厉害的地方，在于他超前意识到社会要稳定必须有一个庞大的中产阶层。</strong>1929年美国0.1%富人拿走全社会25%财富，90%的人只分到16%，老百姓没钱消费就是经济危机。罗斯福做对了两件事：①拆分工业金融巨头、对大企业征税、搞转移支付、提高工人工资——把"金字塔社会"变成"橄榄球社会"；②"国转民"——原子能、计算机、互联网、基因工程都是由国家力量研发，然后交给市场经济廉价化、平民化，创造海量高收入岗位和巨大内需市场。这才是真正的内外双循环。</div>
+    <div class="flow-row">
+      <div class="flow-step">01<br>拆分垄断巨头</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">02<br>累进税·转移支付</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">03<br>提升工人工资</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">04<br>庞大中产阶层</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">05<br>巨大内需市场</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 中国路径 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">中国方略</div>
+    <div class="section-title t-04">短期靠转移，长期靠科技——中国的\"两步走\"内循环战略</div>
+    <div class="section-desc"><strong>内循环短期靠财政向基层转移财富，提升消费能力；长期靠技术突破搞几个新爆发点出来。</strong>为什么给不同收入层减税效果完全不同？年收入100万的家庭退税10万可能去海外消费→外循环；年收入30万的更可能攒着买下一套房；只有低收入阶层最愿意在本地消费——这就是扶贫攻坚的经济学意义。移动互联网是最成功的"政府搭台、企业唱戏"案例：国家投资网络基础设施→涌现一轮又一轮互联网公司→创造数千万高薪岗位→技术触手伸到偏远农村。这才是决定性的操作。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">💵</div>
+        <div class="data-name">短期：转移支付</div>
+        <div class="data-sm">扶贫攻坚战 → 基层提升购买力 → 消费本国工业品 → 改善民生一石二鸟</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔬</div>
+        <div class="data-name">长期：科技突破</div>
+        <div class="data-sm">国家投资研发 → 技术转民企廉价化 → 新公司涌现 → 更多高薪岗位</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🏠</div>
+        <div class="data-name">辅助：住房分化</div>
+        <div class="data-sm">新加坡模式：政府低价保障房 + 核心区商品房金融化 → 富人消费留在国内</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 格局展望 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">格局展望</div>
+    <div class="section-title t-05">危机倒逼转型：被热议的进口替代与富人消费留存</div>
+    <div class="section-desc"><strong>以前对内部市场重视不够，今后要作为国家安全问题来看待——就像粮食安全一样。</strong>中国工业品门类齐全，但富人消费的高端物品严重依赖进口：几千元一把的菜刀、两千元的珐琅锅、一万元一顶的帐篷。进口替代就是要让这些高端消费品国产化。同时借鉴新加坡模式——关系民生的房价慢慢平复（二三四线非核心区），但一二线核心区彻底金融化，给有钱人一个留在国内的豪宅出口。总结成一句话：穷人国家补，富人国内花；科技要突破，进口要替代。</div>
+    <div class="quote-block">
+      "危机绝对是转机。肯定是之前的老路走不下去才有了危机，这时候不得不跳出舒适区，去做那些艰难的事，解决复杂问题，这才是进步之源。"
+      <div class="q-author">—— 作者对内循环转型的最终判断</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">内循环不是闭关锁国，而是把内部市场建成经济的主引擎——外部市场做补充、内部市场做主驱动。短期靠转移支付提升基层消费力（扶贫攻坚），长期靠技术突破创造新产业新岗位（移动互联网模式）。三个年入5万的人比一个年入30万的人对经济循环贡献大。发达国家都要有强大内部市场消化产能，否则外部一感冒境内就没法过日子。危机是转机——老路走不下去才能跳出舒适区做艰难而正确的事，这才是进步之源。</div>
+</div>
+
+<div class="footer">
+  《复杂世界的明白人》第27章信息图 · 基于原著内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

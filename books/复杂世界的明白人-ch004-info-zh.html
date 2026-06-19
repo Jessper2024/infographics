@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复杂世界的明白人 · 第4章「写在前面」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .quote-block {
+    background: #fefce8; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 16px 20px; margin-top: 12px;
+  }
+  .quote-block p { font-size: 14px; color: #8b6f02; line-height: 1.8; font-style: italic; margin: 0; }
+
+  .insight-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .insight-card {
+    border-radius: 12px; padding: 18px 16px; border: 1px solid; text-align: center;
+  }
+  .insight-card.grow { background: #f0fdf4; border-color: #bbf7d0; }
+  .insight-card.decline { background: #fef2f2; border-color: #fecaca; }
+  .insight-icon { font-size: 28px; margin-bottom: 6px; }
+  .insight-title {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;
+  }
+  .insight-stat { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .insight-card.grow .insight-stat { color: #16a34a; }
+  .insight-card.decline .insight-stat { color: #dc2626; }
+  .insight-desc { font-size: 12px; color: #888; line-height: 1.7; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .insight-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复杂世界的明白人-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复杂世界的明白人-ch004-info-en.html">中文 / English</a>
+</div>
+
+<h1>复杂世界的明白人 · 第4章「写在前面」</h1>
+<p class="subtitle">十年职场沉浮录：写作如何将"捡垃圾"变幂律增长——一盏越来越亮的灯</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>作者从毕业十年回顾出发，感慨从北京西二旗的茫然少年到全网近千万关注者的蜕变。他揭示了一个核心洞见：奋斗并非全程痛苦——因为他有写作与分享相伴。写作本身是一盏越来越亮的灯，你培养它，它照顾你。生活如同游戏中的"捡垃圾"，写作就是为每个捡到的碎片找位置存放，通过费曼学习法将知识挂靠到树上，最终形成不可阻挡的幂律增长。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">10<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">职场沉浮</div>
+    <div class="kpi-note">从北京西二旗街头<br>到公司职位越来越高</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">≈1000<span class="kpi-unit">万</span></div>
+    <div class="kpi-label">全网关注者</div>
+    <div class="kpi-note">写这篇文章前<br>全网关注者接近一千万</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">∞<span class="kpi-unit"></span></div>
+    <div class="kpi-label">幂律增长</div>
+    <div class="kpi-note">一开始超级慢<br>到后来超级快</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">盏灯</span></div>
+    <div class="kpi-label">写作之灯</div>
+    <div class="kpi-note">培养它·它照顾你<br>越来越亮·照亮他人</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">十年蜕变</div>
+    <div class="section-title t-01">从格子间焦虑到千万关注者：奋斗并不痛苦</div>
+    <div class="section-desc">十年前站在西二旗街头茫然四顾，格子间里连夜调试代码，担心过不了实习期的焦虑，会议室外等待升职消息的忐忑——这些作者都经历过。但回顾往事，他说奋斗并非全程痛苦：因为陪伴他的，有写作与分享。曾经遥不可及的目标已在不知不觉中实现，从二十几岁的小伙变成了三十多岁的大叔，职位越来越高，写作越来越好。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">💻</div>
+        <div class="dual-text">
+          <h4>十年前 · 北漂码农</h4>
+          <p>北京西二旗 · 连夜调代码 · 焦虑实习期 · 忐忑等待升职 · 茫然四顾的街头</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text">
+          <h4>十年后 · 成长博主</h4>
+          <p>全网千万关注 · 职位越来越高 · 写作越来越好 · 《向上生长》出版 · 照亮他人</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">知识管理</div>
+    <div class="section-title t-02">生活是"捡垃圾"游戏：找到位置存放，才能合成高级玩意儿</div>
+    <div class="section-desc">生活像游戏中的"捡垃圾"——到一个地方翻遍箱柜，找出有用的东西，将来技能升级后垃圾合成为高级玩意儿，成为你的得力工具，让你升级更快、战斗力更强。这就是幂律增长：一开始超级慢，到后来超级快。但问题在于：捡的时候不知道哪些有用，甚至丢掉将来用得上的东西。生活就成了狗熊掰棒子，一边掰一边扔，最后啥也不剩。</div>
+    <div class="flow-row">
+      <div class="flow-step">🔍<br>翻找/探索</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📦<br>收集碎片</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🧩<br>存放/链接</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔧<br>合成工具</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🚀<br>幂律增长</div>
+    </div>
+    <p style="margin-top:14px; font-size:13px; color:#888;">⚠️ 如果没有存放/链接这一步 → 就是狗熊掰棒子，捡了又丢，最后啥也不剩。</p>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">费曼学习法</div>
+    <div class="section-title t-03">写作 = 费曼学习法 + 知识挂靠：一盏越来越亮的灯</div>
+    <div class="section-desc">弄懂了的东西，用自己的话描述一遍，分享出来——这就是费曼学习法最核心的内容。同时这些观点也有了挂靠和链接，链接到之前的知识树上。写作过程本身就是学习过程。写作是一盏灯：你培养它，它照顾你。它不仅是输出工具，更是把碎片信息整合成结构化知识体系的引擎。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">输入</div>
+        <div class="data-sm">阅读·研究·探索<br>接触新领域新知识</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">消化</div>
+        <div class="data-sm">用自己的话描述<br>费曼学习法核心</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">输出</div>
+        <div class="data-sm">写作分享·挂靠知识树<br>灯越来越亮</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">成长心态</div>
+    <div class="section-title t-04">不了解才需要学：为什么写不熟悉的领域？</div>
+    <div class="section-desc">总有人问他"某个领域你不熟悉，为什么还要写？"他的回答很直接：不了解才需要学习。学得越多，思维越开阔，解决问题就越容易。他对自己的定位是"关注成长的分享博主"，而非科普博主——一直有种研究不太了解话题的冲动。不断写作和分享让他受益良多：职位越来越高，写作越来越好，还有越来越多人关注。</div>
+    <div class="insight-row">
+      <div class="insight-card grow">
+        <div class="insight-icon">🧠</div>
+        <div class="insight-title">成长型思维</div>
+        <div class="insight-stat">不了解 → 学习 → 越开阔</div>
+        <div class="insight-desc">对不熟悉的领域保持好奇心 · 学得越多思维越开阔 · 解决问题越来越容易 · 始终定位"成长分享博主"</div>
+      </div>
+      <div class="insight-card grow">
+        <div class="insight-icon">🌱</div>
+        <div class="insight-title">持续迭代</div>
+        <div class="insight-stat">写作 → 职位↑ → 质量↑</div>
+        <div class="insight-desc">写作分享不断精进 · 公司职位越来越高 · 文章质量越来越好 · 意外收获：千万关注者</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">影响他人</div>
+    <div class="section-title t-05">那盏灯，照亮了一点点他人的路</div>
+    <div class="section-desc">《向上生长》出版后，北京不少名校老师把书送给即将步入社会的学生，希望"那盏反复擦拭的灯能照亮一点点他们的路"。还有人留言说这本书缓解了他们的抑郁。作者说："听到这些，我还是很高兴的。"——这是写作带来的意外价值：不仅能让自己成长，还能无意中改变他人的生活轨迹。</div>
+    <div class="quote-block">
+      <p>"写作本身就是力量，也是一盏越来越亮的灯，你培养它，它照顾你。"</p>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">生活如同"捡垃圾"游戏——关键在于能否为每个碎片找到存放位置。写作就是最好的存放引擎：通过费曼学习法用自己的话描述、分享，将知识挂靠到知识树上，形成幂律增长。奋斗不一定痛苦，因为写作这盏灯会越来越亮——你培养它，它照顾你，还能无意中照亮他人的路。</div>
+</div>
+
+<div class="footer">
+  《复杂世界的明白人》第4章「写在前面」信息图 · 九边 著 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

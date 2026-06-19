@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汴京之围 · 画外音「百姓真的在乎帝王吗？」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="汴京之围-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="汴京之围-ch020-info-en.html">中文 / English</a>
+</div>
+
+<h1>汴京之围 · 画外音「百姓真的在乎帝王吗？」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">忠君爱国还是幸灾乐祸？百姓用小说将皇帝的侮辱翻倍</span>
+  二帝北狩，文人哭天抢地，但普通百姓却将他们的遭遇编成了段子。
+  在《南烬纪闻录》《窃愤录》等民间小说中，百姓尽情想象皇帝们所受的侮辱：被绑在柱子上、
+  被士兵对着撒尿拉屎、死后被烧成灯油——恶毒到令人不寒而栗。皇权与民意之间，从无真正的家国情怀。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>当赵氏皇室对二帝遭遇哭天抢地、当爱国将领信誓旦旦要雪耻时，普通百姓做了什么？他们用笔记体小说将皇帝的侮辱翻了好几倍。在南宋中期流传的《南烬纪闻录》《窃愤录》《窃愤续录》中（假托辛弃疾之名），二帝被从早到晚、日复一日地折磨——不给他们饭吃、绑在柱子上过夜、被士兵对着撒尿拉屎、死后尸体被烧成灯油。这些恶毒段子与史实相去甚远（金人对二帝并未蓄意虐待），却堂而皇之地流传于民间，南宋皇帝也无可奈何。《大宋宣和遗事》更是将两位亡国之君的命运写成了一场全民狂欢。这揭示了一个残酷的真相：中国古代史始终在"忠君爱国"与"对权力的无休止侮辱"之间震荡，从未形成真正的"家国情怀"。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">部</span></div>
+    <div class="kpi-label">民间讽刺小说</div>
+    <div class="kpi-note">《南烬纪闻录》《窃愤录》《窃愤续录》</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">1<span class="kpi-unit">部</span></div>
+    <div class="kpi-label">长篇小说</div>
+    <div class="kpi-note">《大宋宣和遗事》·宋江故事+亡国叙事</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">36<span class="kpi-unit">天罡</span></div>
+    <div class="kpi-label">《水浒传》源头</div>
+    <div class="kpi-note">宣和遗事首次记载宋江等36天罡名字</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2000<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">钟摆震荡</div>
+    <div class="kpi-note">忠君与诅咒之间从未有真正的家国情怀</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">民间叙事</div>
+    <div class="section-title t-01">当文人痛哭流涕时，百姓在写段子</div>
+    <div class="section-desc"><strong>在南宋中期，几部假托辛弃疾之名的小说在民间流传开来。</strong>《南烬纪闻录》《窃愤录》《窃愤续录》专门描写二帝北狩遭遇，表面上要激起爱国热情，背地里却是对北宋皇家的报复——让两位皇帝也尝一尝耻辱的滋味。书中描写堪称恶毒：帝后们每天只能吃一顿饭、喝一次水；郑太后被逼得肚子疼快要气绝身亡；泽利（盖天大王）不断猥亵两位皇后；士兵对着被绑在柱子上的帝后撒尿拉屎；夜晚听着奸淫之声连眼都不敢睁开。这些情节几乎全部是虚构——金人并未蓄意虐待赵氏——但百姓乐于读到它们的翻倍版。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📜</div>
+        <div class="dual-text">
+          <h4>史实：金人的实际待遇</h4>
+          <p>太上皇随斡离不走河北路，打球喝酒不亦乐乎。少帝虽待遇较差，但都不至于被蓄意虐待。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>小说：百姓的翻倍想象</h4>
+          <p>每日一顿饭·绑柱过夜·当着帝后奸淫·士兵对帝后撒尿拉屎——侮辱被放大了无数倍。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">小说细节</div>
+    <div class="section-title t-02">从被辱到变灯油：百姓对皇帝最恶毒的想象</div>
+    <div class="section-desc"><strong>《窃愤录》中对太上皇之死的描写达到了恶意的极致。</strong>太上皇在均州的土坑里得病死去，少帝大哭时，押送官阿计替告诉他：均州没有坟地，人死后都是用火烧，烧掉一半后用木杆挑到城内北部一个大石坑里去——大石坑里有一种水，比南方的油还稠，可以用来点灯，就是由尸体产生的。把太上皇的尸体烧掉变成灯油——这是对死人最后的侮辱。而少帝的死法更具戏剧性：金海陵王让辽国天祚帝与少帝各领一队人马演习，突然一箭穿心射死天祚帝，再一箭射死少帝，万马奔腾中将尸体踩入烂泥无处寻找。两个亡国之君以最屈辱的方式同时谢幕。</div>
+    <div class="flow-row">
+      <div class="flow-step">太上皇病死<br>均州土坑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">尸体被火烧<br>烧到一半</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">木杆穿透<br>拖行扔坑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">尸体变灯油<br>用来点灯</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">文化意义</div>
+    <div class="section-title t-03">《大宋宣和遗事》：宋江故事与亡国叙事的奇特融合</div>
+    <div class="section-desc"><strong>现代人关注《大宋宣和遗事》是因为它是《水浒传》最重要的源头之一。</strong>该书首次完整记载了宋江之乱和三十六天罡的名字，为后来的名著打下了基础。但宋江只是其中一小部分——这本书既写了王安石、宋徽宗几大奸臣、皇帝崇信道士、汴京元宵灯会，也写了传奇妓女李师师的故事。到了书末，作者笔锋一转，开始写金军的进攻和二帝北狩，将两位皇帝所受的侮辱翻了好几倍，尽情地折磨他们，一点也不在乎他们曾是大宋的领导人。这样的书只能出现在宋代——在其他任何封建王朝，调侃本朝皇帝都是死罪。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🏛️</div>
+        <div class="data-name">前朝盛景</div>
+        <div class="data-sm">王安石变法·徽宗奸臣·道士林灵素·汴京元宵灯会·妓女李师师</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚔️</div>
+        <div class="data-name">宋江之乱</div>
+        <div class="data-sm">三十六天罡名字首次记载·为《水浒传》奠基</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">💀</div>
+        <div class="data-name">亡国叙事</div>
+        <div class="data-sm">金军进攻·二帝北狩·尽情想象皇帝所受的侮辱</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">权力真相</div>
+    <div class="section-title t-04">钟摆的两端：忠君爱国与恶毒诅咒之间</div>
+    <div class="section-desc"><strong>中国古代历史始终在一个巨型钟摆中震荡。</strong>在钟摆的一端，是"忠君爱国"式的教导——将爱国扭曲为对权力的无限服从，百姓浑浑噩噩活在蝇营狗苟之中，皇帝的权威无限且不容怀疑。但一旦皇权倒台，钟摆立即甩到另一端——百姓变成最恶毒的诅咒者，恨不得对前皇室进行无休无止的侮辱与谩骂，甚至不惜直接动手撕成碎片。在这两端之间，却始终缺乏中间状态——真正的"家国情怀"。皇帝们深知自己享受的无限服从不是来自爱戴而是武力，所以用暴力维持刚性稳定，将脆断的那一天尽量往后延。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">👑</div>
+        <div class="dual-text">
+          <h4>钟摆一端：盲目的忠君爱国</h4>
+          <p>皇权无限·不容怀疑·百姓浑浑噩噩。爱国被扭曲为对权力的无限服从。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🔥</div>
+        <div class="dual-text">
+          <h4>钟摆另一端：恶毒的诅咒报复</h4>
+          <p>皇权倒台·全民狂欢。百姓变成最恶毒的诅咒者，恨不得将前皇室撕成碎片。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">历史回响</div>
+    <div class="section-title t-05">赵宋的宽容与诅咒：最宽容的王朝为何遭受最恶毒的想象</div>
+    <div class="section-desc"><strong>赵宋是中国古代史中最宽容的王朝，皇帝却仍然受到了如此恶毒的诅咒。</strong>宋代的言论自由度远超其他王朝——在南宋民间，调侃本朝皇帝的小说可以堂而皇之地流传，皇帝明知其中编造了许多对皇室的侮辱却无法禁止。这本身就说明赵宋的宽容。但宽容并未换来爱戴——百姓不是用同情的语调去传言二帝的遭遇，而是写出最恶毒的段子，将赵宋皇室的尊严扒得一点不剩。直到今天，人们仍然能从这些文字中感受到扑面而来的怨恨与诅咒。这揭示了一个令人不安的事实：在两千年帝制历史中，统治者与被统治者之间的鸿沟从未真正弥合。</div>
+    <div class="flow-row">
+      <div class="flow-step">赵宋：最宽容的王朝<br>允许调侃本朝皇帝</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">民间：最恶毒的诅咒<br>对皇权尽情侮辱</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">鸿沟：君臣之间<br>从未有真正认同</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">真相：忠君是<br>武力维持的假象</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">百姓真的在乎帝王吗？答案是否定的。在两千年帝制历史中，统治者与被统治者之间从未形成真正的"家国情怀"。皇权强盛时，百姓被教育要无限服从；皇权倒台时，百姓立即变成最恶毒的诅咒者。二帝北狩的遭遇在民间被编成段子无限放大侮辱——《南烬纪闻录》中帝后被绑在柱子上被士兵撒尿拉屎，《窃愤录》中太上皇尸体被烧成灯油——这些恶毒想象与史实相去甚远，却反映了百姓对皇权的真实态度。赵宋是中国最宽容的王朝，但宽容并未换来爱戴。历史证明：皇帝们享受的无限服从，从来不是来自爱戴，而是来自武力。</div>
+</div>
+
+<div class="footer">
+  《汴京之围》画外音信息图 · 基于「百姓真的在乎帝王吗？」内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

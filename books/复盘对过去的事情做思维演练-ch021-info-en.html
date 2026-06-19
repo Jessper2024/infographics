@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fupan · Ch21「From Shooting Blind to Aimed Fire」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html">← Back to Chapter Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch021-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Fupan · Chapter 21「From Shooting Blind to Aimed Fire」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Step back to see the whole picture · Extreme purposefulness · Never mistake means for ends</span>
+  Lenovo bought back for $200M what it sold for $100M — seemingly foolish, yet in reality a precisely aimed shot born from fupan.
+  The 3721 disaster and the secretary's blunder share one root cause: forgetting why you started while you're in the middle of it.
+  Fupan constantly recalibrates your heading, turning blind shooting into aimed fire with crosshairs.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>One of fupan's core values is enabling you to constantly review your direction mid-execution to ensure you don't deviate from the goal.</strong> Through classic cases — Lenovo's "sell first, buy back later" mobile strategy, Zhou Hongyi's 3721 failure, and the secretary who mistook phone calls for the goal — this chapter demonstrates: most failures aren't from lack of direction or effort, but from drifting off course mid-journey. Liu Chuanzhi's "step back to see the picture," Lenovo's "extreme purposefulness," and Sun Taoran's "from shooting blind to aimed fire" — all three converge on fupan's direction-calibration function: review as you act, always lock on target.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">$200<span class="kpi-unit">M</span></div>
+    <div class="kpi-label">Buy-back price of Lenovo Mobile</div>
+    <div class="kpi-note">Previously sold for $100M</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">$120<span class="kpi-unit">M</span></div>
+    <div class="kpi-label">3721 sale price to Yahoo</div>
+    <div class="kpi-note">Zhou Hongyi's first fortune</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit"> Rivals</span></div>
+    <div class="kpi-label">3721/CNNIC/Baidu war</div>
+    <div class="kpi-note">Deleting each other's clients on user PCs</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">∞</div>
+    <div class="kpi-label">Cost of substituting means for ends</div>
+    <div class="kpi-note">Secretary thought "calling" was the goal</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Strategic Calibration</div>
+    <div class="section-title t-01">Sold for $100M, bought back for $200M: Lenovo's mobile deal as precision aiming after fupan</div>
+    <div class="section-desc"><strong>In 2008 Lenovo sold Lenovo Mobile for $100M; in 2009 bought it back for $200M — seemingly a $100M loss, but in reality two precise decisions after fupan.</strong> The sale: Lenovo's core PC business faced immense internationalization pressure, couldn't spare focus for mobile; fupan led to refocusing on core business. The buyback: iPhone had ignited the smartphone revolution, iPad revealed convergence; fupan showed owning mobile was essential for the future. HP entered mobile in 2012, confirming the buyback logic. Each step was "stepping back to see the picture" at the strategic level.</div>
+    <div class="flow-row">
+      <div class="flow-step">2008 Fupan<br>Return to core<br>Sell mobile $100M</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Full focus<br>PC global expansion<br>Stabilize market</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">2009 Fupan<br>Convergence trend<br>Buy back $200M</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Aimed fire<br>Future mobile era<br>Secure a position</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Lenovo's Methodology</div>
+    <div class="section-title t-02">Extreme purposefulness: for every action, ask "what is the purpose?" — never deviate from the higher-level goal</div>
+    <div class="section-desc"><strong>Lenovo's methodology has two core weapons: fupan + extreme purposefulness.</strong> For every action, ask: what is its purpose? Does this purpose align with a higher-level requirement? By relentlessly questioning purpose layer by layer, you firmly grasp the direction and ultimately achieve the goal. Fupan plays the calibration role — checking whether each step's purpose is correct and direction is accurate, correcting deviations immediately. Together, they form the complete methodology of "aimed fire."</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>Extreme purposefulness (crosshairs)</h4>
+          <p>Every action → ask "what is the purpose?" → check alignment with higher goals → relentlessly question → lock on target direction</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔄</div>
+        <div class="dual-text">
+          <h4>Fupan (the calibrator)</h4>
+          <p>Examine each step's purpose and direction → detect deviations → immediately correct → retroactively verify original decision → determine if adjustment needed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Cautionary Tale</div>
+    <div class="section-title t-03">3721's collapse: eyes only on rivals, not users — the classic lesson of forgetting business = human nature</div>
+    <div class="section-desc"><strong>When Zhou Hongyi reviewed 3721's failure, he realized: it wasn't rivals who defeated him, it was users.</strong> 3721 pioneered address-bar search, installing its client through pop-up windows. But for users clicking "NO," it kept popping up on every new page — hugely irritating. Worse, 3721, CNNIC, and Baidu fought wars inside users' computers — deleting each other's clients without user knowledge. Three companies sued each other while users' PCs became battlefields. Zhou's painful lesson: business is about human nature; you must respect user interests and experience. This insight directly shaped Qihoo 360.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">💡</div>
+        <div class="data-name">Good start</div>
+        <div class="data-sm">Address-bar search innovation, simplified internet for everyday people, brought Zhou his first fortune</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">💥</div>
+        <div class="data-name">Fatal mistake</div>
+        <div class="data-sm">Three-way client-deletion war with CNNIC and Baidu on user computers. Users became the battlefield.</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🧠</div>
+        <div class="data-name">Fupan insight</div>
+        <div class="data-sm">Business = human nature. Rivals don't defeat you — losing users' hearts defeats you.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Common Pitfall</div>
+    <div class="section-title t-04">Mistaking means for ends: the secretary who kept calling and forgot why she was dialing</div>
+    <div class="section-desc"><strong>"The boss asked his secretary to contact a client about meeting, required a reply by 5 PM. At 5 PM she said: 'I called him, no one answered.'"</strong> This classic dialogue exposes the most common workplace deviation: mistaking the means (calling) for the goal (scheduling a meeting). The boss pressed: did you text? Weibo DM? Email? She hadn't tried any — because calling was her imagined "goal." JDB vs. Wanglaoji employees fighting, Lianjia vs. Woaiwojia staff brawling — all the same error: mistaking competitive tactics for the goal, forgetting the goal is winning customers, not beating rivals.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Blind shooting (means substituting for ends)</h4>
+          <p>Call → no answer → idle wait → try nothing else. The act of "calling" became the entire mission.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Aimed fire (locked on target)</h4>
+          <p>Call → text → Weibo DM → email → IM message. All channels serve one goal: reach the client.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Ultimate Mindset</div>
+    <div class="section-title t-05">Sun Taoran: entrepreneurship is blind shooting — fupan is critical to turn it into aimed fire</div>
+    <div class="section-desc"><strong>Lakala CEO Sun Taoran said: "Entrepreneurship is a process of shooting blind. In this process, fupan is crucial. Review as you go, constantly reflect on the process — only then can you effectively extract lessons from success and failure, making the past valuable for the future, turning it into momentum for continued growth."</strong> From blind shooting to aimed fire: with a plan, with steps, with crosshairs, with results. Fupan turns every action into aiming practice, continuously calibrating, continuously refining.</div>
+    <div class="flow-row">
+      <div class="flow-step">Blind shooting<br>By feel · no crosshairs<br>Easy to drift</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Fupan as you go<br>Review direction<br>Calibrate target</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Extract lessons<br>Successes and failures<br>Become experience</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Aimed fire<br>With plan · with steps<br>With crosshairs · with results</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">"People fail not because they lack direction or effort, but because midway through, they suddenly find they've deviated from the planned path." Fupan is your GPS navigation — helping you step back to see the whole picture, checking whether each step has drifted off course, ensuring means always serve ends rather than substitute for them. From Lenovo's sell-first-buy-back-later, to 3721's bitter lesson, to the secretary's classic blunder — all cases point to one conclusion: review as you go to transform from shooting blind to aimed fire.</div>
+</div>
+
+<div class="footer">
+  《Fupan》Ch.21 Infographic · Based on「From Shooting Blind to Aimed Fire」· For learning reference only
+</div>
+</div>
+</body>
+</html>

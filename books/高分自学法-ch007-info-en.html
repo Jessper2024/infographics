@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Study Mastery · Ch.2「Concrete Learning Methods: Principles at the Core」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a; line-height: 1.1;
+    margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; } .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; } .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; } .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; } .kpi-card.c04 .kpi-value { color: #4f46e5; }
+  .kpi-card.c05 { border-left: 3px solid #db2777; } .kpi-card.c05 .kpi-value { color: #db2777; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 20px 12px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-row.cols-3 { grid-template-columns: repeat(1, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5, .kpi-row.cols-3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="高分自学法-catalog.html">← Back to Chapter Index</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="高分自学法-ch007-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Self-Study Mastery · Ch.2「Concrete Learning Methods: Principles at the Core」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Situation → Conflict → Question → Answer</span>
+  Countless learning methods exist, but most are merely "techniques" applying core principles to specific situations — not principles themselves. People desperately search for their ideal method yet never see results because they fixate on techniques while ignoring five immutable principles: exercise, goal-setting, repetition, deep focus, and spare moments.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>BLUF:</strong> The core of learning is not technique, but principle. Principles surpass all techniques. Drawing from brain science, psychology, and historical cases, this chapter systematically explains five principles: ① Exercise — priming the brain for optimal performance; ② Goal-setting — activating the goal-directed mechanism; ③ Repetition — myelin formation and Ebbinghaus curves as the ultimate secret; ④ Deep Focus — Csikszentmihalyi's flow theory and three conditions; ⑤ Spare Moments — creating competitive differentiation. Each principle includes concrete practice methods. With the right direction, you will always reach the destination.</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">5<span class="kpi-unit">principles</span></div>
+    <div class="kpi-label">Learning Core</div>
+    <div class="kpi-note">Exercise · Goal · Repetition<br>Deep Focus · Spare Moments</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">#1<span class="kpi-unit">st</span></div>
+    <div class="kpi-label">Naperville TIMSS</div>
+    <div class="kpi-note">203 District #1 science<br>#6 math globally · 97% took test</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Yale Written Goals</div>
+    <div class="kpi-note">The 3% who wrote goals<br>out-earned the 97% combined</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">10<span class="kpi-unit">x</span></div>
+    <div class="kpi-label">Copy → Memorize</div>
+    <div class="kpi-note">Rewrite 10 times<br>to fully memorize text</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">1<span class="kpi-unit">min</span></div>
+    <div class="kpi-label">Spare Moments</div>
+    <div class="kpi-note">Even 1 minute counts<br>This is where difference is made</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Principle 1</div>
+    <div class="section-title t-01">Exercise: The Starting Point — Key to Optimal Brain State</div>
+    <div class="section-desc"><strong>Learning begins with exercise.</strong> Murakami runs 10km daily, King Jeongjo scored 49/50 arrows, da Vinci single-handedly controlled a horse — they succeeded <em>because</em> they exercised, not while exercising. Naperville 203 District's "Zero Period" P.E. boosted reading speed and led to #1 in science globally on TIMSS. California's study of 1M+ students found fully-fit students averaged 67 in math vs. just 35 for students passing only one fitness standard. Three mechanisms: ① more oxygen & nutrients to the brain; ② neurotransmitter concentrations rise for efficient signaling; ③ neuron growth expands memory storage.</div>
+    <div class="flow-row">
+      <div class="flow-step">🏃<br>Exercise</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🧠<br>Brain Blood Flow<br>Neurotransmitters ↑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🏗️<br>Neuron Growth<br>Memory Storage ↑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">📚<br>Learning Efficiency<br>Dramatically ↑</div>
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔬</div>
+        <div class="dual-text">
+          <h4>3 Scientific Mechanisms</h4>
+          <p>① Brain gets O₂ & nutrients → optimal state ② Neurotransmitters ↑ → efficient signaling ③ Neurons grow → more memory capacity. Post-exercise learning effect doubles.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🏃</div>
+        <div class="dual-text">
+          <h4>Practice Principles</h4>
+          <p>Exercise daily → study after exercise → exercise when brain feels sluggish. Exercise when tired = recharging, not draining. Even 450 pushups/day works.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Principle 2</div>
+    <div class="section-title t-02">Goal-Setting: The Biological Force of Goal-Directed Mechanism</div>
+    <div class="section-desc"><strong>Once a clear goal is set, the body blindly follows it.</strong> The 1953 Yale study: 3% who wrote clear goals out-earned the remaining 97% combined 22 years later. Professor Hwang Nong-mun's son aimed for "#1 nationwide" — within one month, he voluntarily quit gaming and resisted sleeping early. Brain sets goal → neuron signals strengthen → myelin thickens → goal takes root → body follows blindly. What matters is a "clear" goal, not an "impressive" goal.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Biology Principle</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Brain declares "this is the goal" → body blindly follows. Goal near = positive feedback (joy); goal far = negative feedback (motivation).</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">SMART Framework</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">"The Analects" · 10 pages daily · on subway during commute · finish in 1 month. Clear = Specific + Measurable + Achievable + Realistic + Time-based.</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Practice Tips</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Repeatedly recall goals (visualization · phone wallpaper · wrist band); remind at every opportunity; clarity > impressiveness.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Principle 3</div>
+    <div class="section-title t-03">Repetition: Ebbinghaus Curves & Myelin — The Ultimate Secret</div>
+    <div class="section-desc"><strong>Repetition is the ultimate learning method — the single secret behind all learning techniques.</strong> The Ebbinghaus forgetting curve proves: forgetting begins the moment learning ends, with no exceptions. But the memory curve proves: with each review, the forgetting curve flattens until nearly horizontal — becoming permanent long-term memory. From the myelin perspective, repetition thickens myelin, accelerating signal transmission. The student who went from 3rd-to-last to 3rd used just three repetitions: after class + end of day + end of week. The author memorized full texts by copying them just 10 times.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📉</div>
+        <div class="dual-text">
+          <h4>Forgetting Curve</h4>
+          <p>Forgetting starts immediately after learning, no exceptions. Good memorizers simply "regather scattered information" — that is repetition.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📈</div>
+        <div class="dual-text">
+          <h4>Memory Curve</h4>
+          <p>Each review → forgetting curve flattens → nearly horizontal. More repetitions → thicker myelin → faster signals → harder to forget.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flow-row" style="margin-top:12px;">
+      <div class="flow-step">📖<br>Re-read<br>(Basic)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">✍️<br>Re-copy<br>(Effective)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄<br>Close-Book Recall<br>(Best)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🧬<br>Myelin Thickens<br>Long-Term Memory</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Principle 4</div>
+    <div class="section-title t-04">Deep Focus: Csikszentmihalyi's Flow — Three Conditions</div>
+    <div class="section-desc"><strong>Study volume = Study time × Focus intensity.</strong> Mihaly Csikszentmihalyi named the state of "complete loss of time awareness" as Flow. Newton skipped meals for research; mobile gamers miss their stop — the same flow mechanism. As focus rises, relevant neurons and synapses activate, and the brain releases dopamine for pleasure. Three conditions for deep flow: clear goal, fast feedback, and balanced difficulty.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">🎯 Condition 1</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+        <div class="risk-val">Clear Goal</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">📡 Condition 2</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">Fast Feedback</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">⚖️ Condition 3</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:80%"></div></div>
+        <div class="risk-val">Balanced Diff.</div>
+      </div>
+    </div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🎯</div>
+        <div class="data-name">Precision Goals</div>
+        <div class="data-sm">10yr → 1yr → 1mo → 1wk<br>→ today → 1 hour<br>Cascade down to needle-point sharp</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📡</div>
+        <div class="data-name">Fast Feedback</div>
+        <div class="data-sm">Close book & confirm understanding<br>Solve problems & check answers<br>Instant feedback replaces a coach</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚖️</div>
+        <div class="data-name">Balanced Difficulty</div>
+        <div class="data-sm">Too easy → boredom<br>Too hard → despair<br>Use time limits to adjust</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Principle 5</div>
+    <div class="section-title t-05">Spare Moments: The Secret to Sleeping, Playing, and Learning Well</div>
+    <div class="section-desc"><strong>Using spare moments is not "nice to do" — it is "must do."</strong> Einstein always carried problems to think about. The author spent 2 hours commuting daily, using that time to review error notebooks while still sleeping 8 hours even in senior year. Two reasons: ① necessary for competitive differentiation — use time others discard; ② maintain focus without dropping to zero — like crawling in traffic rather than turning off the engine. Four tools: handbook → flash cards → smartphone apps → mental recall.</div>
+    <div class="flow-row">
+      <div class="flow-step">📝<br>Handbooks<br>for hard-to-remember</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🃏<br>A4 cut into 16<br>flash cards</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📱<br>Smartphone<br>vocab apps</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🧠<br>Mental recall<br>no tools needed</div>
+    </div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Handbook Method</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">All hard-to-remember content — English words, historical dates, formulas — write them down, carry and review repeatedly, toss when memorized.</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Flash Cards</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Cut A4 into 16 business-card-sized pieces, question on front/answer on back, one piece of info per card, create and review anywhere.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The five learning principles form the complete system for self-study: <strong>① Exercise</strong> — exercise first, study second; prime the brain for optimal performance; <strong>② Goal-setting</strong> — set clear goals to activate the goal-directed mechanism, and the body will follow; <strong>③ Repetition</strong> — the single ultimate secret behind all learning methods; forgetting is inevitable but repetition converts it to long-term memory; <strong>④ Deep Focus</strong> — enter flow state using clear goals, fast feedback, and balanced difficulty; <strong>⑤ Spare Moments</strong> — the final weapon for creating competitive differentiation, allowing you to sleep, play, and learn well simultaneously. With the right direction, you will always reach the destination.</div>
+</div>
+
+<div class="footer">
+  Source: Han Jae-hee, <em>Self-Study Mastery</em>, Ch.2 "Concrete Learning Methods: Principles at the Core" · Infographic · For reference only
+</div>
+
+</div>
+</body>
+</html>

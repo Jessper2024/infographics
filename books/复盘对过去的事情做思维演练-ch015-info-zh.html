@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘对过去的事情做思维演练 · 复盘的关键是推演</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch015-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘的关键是推演</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  很多人觉得复盘也没什么特殊，不就是总结经验教训吗？
+  但柳传志将复盘作为联想三大方法论之一，要求全球每个员工「与复盘同呼吸共命运」。
+  复盘与总结的本质区别是什么？答案是：推演——虚拟探究未发生的可能性。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>复盘不等于总结。总结是对事件过程的静止梳理，只关注关键点和里程碑；复盘则是在头脑中从头到尾重新走一遍，还包括对未发生行为进行虚拟探究——即推演。推演是复盘与总结最显著的区别。就像下围棋：总结只告诉棋手哪里下得好不好，复盘则让棋手对每一手进行探究，看是否有不同下法及其后续变化。复盘还可以审视事件发生之前的思考和逻辑，排除错误认知，找到更有效的做法。总结是平面行为，复盘是立体行为。当精通复盘后，人可以不必一板一眼推演，直接从现象中抓住关键——这是从推演中训练出来的直觉。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">推演</div>
+    <div class="kpi-label">核心区别</div>
+    <div class="kpi-note">复盘vs总结的本质差异<br>对未发生行为的虚拟探究</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">联想</div>
+    <div class="kpi-label">三大方法论</div>
+    <div class="kpi-note">柳传志要求全球员工<br>与复盘同呼吸共命运</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">平面<span class="kpi-unit">vs</span>立体</div>
+    <div class="kpi-label">维度对比</div>
+    <div class="kpi-note">总结静止跳跃<br>复盘动态连续立体</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">沙盘<span class="kpi-unit">vs</span>复盘</div>
+    <div class="kpi-label">推演对比</div>
+    <div class="kpi-note">沙盘事前想象推演<br>复盘事后确定推演</div>
+  </div>
+</div>
+
+<!-- 01: 本质区别 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">本质区别</div>
+    <div class="section-title t-01">复盘 ≠ 总结：超越经验教训的核心差异</div>
+    <div class="section-desc"><strong>总结只是复盘的一部分，复盘有比总结更为丰富的内涵。</strong>总结是对事件过程的梳理，关注关键点和里程碑。复盘则是从头到尾的审视，还包括对未发生行为的虚拟探究——这正是复盘的灵魂所在。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>总结：静止跳跃</h4>
+          <p>梳理已发生行为与结果·关注关键点和里程碑·描述→分析→归纳·平面化处理</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔄</div>
+        <div class="dual-text">
+          <h4>复盘：动态连续</h4>
+          <p>头脑中从头到尾重新走一遍·审视事件全程·虚拟探究其他可能性·立体化处理</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 推演动作 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">推演动作</div>
+    <div class="section-title t-02">推演：复盘最核心的探究动作</div>
+    <div class="section-desc"><strong>推演使得我们可以对各种可能性及其不同后果进行审视和设计。</strong>看看为什么会成功，为什么会失败，成功的地方是否有更成功的措施，失败的地方是否可以找到不同的路径。就像下围棋，复盘不仅告诉棋手哪里下得好或不好，更让棋手对问题手进行探究，看看是否有不同下法、不同下法导致的后续变化与应对。</div>
+    <div class="flow-row">
+      <div class="flow-step">审视成功<br>找更优路径</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">审视失败<br>找不同路径</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">虚拟探究<br>未发生行为</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">审视事前<br>思考逻辑</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">排除错误<br>找到更好做法</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 平面vs立体 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">平面vs立体</div>
+    <div class="section-title t-03">总结平面 vs 复盘立体：维度之差决定价值之别</div>
+    <div class="section-desc"><strong>复盘还可以对事件发生之前的思考和逻辑进行梳理，去审视当时思考的过程以及逻辑。</strong>通过复盘加上执行实践的参照比对，从而排除错误的认识和路径，找到更有效、更符合本质规律的做法，确定哪些行为可以继续，哪些行为必须终止，应该开始什么新的行为。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">总结</div>
+        <div class="confusion-arrow">→ 被误认为 →</div>
+        <div class="confusion-right">仅梳理已发生的结果</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">复盘</div>
+        <div class="confusion-arrow">→ 多出推演步骤 →</div>
+        <div class="confusion-right">审视未发生的可能性 + 审视事前思考逻辑</div>
+      </div>
+      <div class="confusion-divider">—— 分隔线 ——</div>
+      <div class="confusion-row">
+        <div class="confusion-left">总结输出</div>
+        <div class="confusion-arrow">→ 经验教训 →</div>
+        <div class="confusion-right">知道哪对哪错</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">复盘输出</div>
+        <div class="confusion-arrow">→ 确定性方法 →</div>
+        <div class="confusion-right">知道怎么做得更好</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 沙盘vs复盘 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">沙盘vs复盘</div>
+    <div class="section-title t-04">沙盘事前推演 vs 复盘事后推演：确定性的分野</div>
+    <div class="section-desc"><strong>沙盘是事前的推演，此时还没有实践，结论来自想象中的可能性。</strong>复盘是事后的推演，因为已经有了执行经验与结果作为参照比对，结论不再只是想象的可能性，而是可以帮助解决问题的确定性方法。没有人将沙盘等同于计划，自然，复盘也不等同于总结。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🏗️</div>
+        <div class="dual-text">
+          <h4>沙盘推演</h4>
+          <p>事前的想象推演·没有实践参照·结论是可能性组合·帮助建立初始假设</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>复盘推演</h4>
+          <p>事后的确定推演·有执行经验与结果比对·结论是确定性方法·帮助解决问题</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 直觉境界 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">直觉境界</div>
+    <div class="section-title t-05">精通复盘：从刻意推演到惊人直觉</div>
+    <div class="section-desc"><strong>当一个人精通复盘之后，他对自己的工作就会有深刻认识和体悟，具有一种惊人的直觉。</strong>此时他不用一板一眼地进行推演，就可以从纷繁复杂的现象中一眼抓住关键所在，找出解决问题的方法和路径。这时候究竟是复盘还是总结，一般人难以区别——但区别确实存在，只是内化为直觉。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📊</div>
+        <div class="data-name">初学阶段</div>
+        <div class="data-sm">一板一眼推演<br>按步骤进行<br>靠流程驱动</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🧠</div>
+        <div class="data-name">熟练阶段</div>
+        <div class="data-sm">快速推演<br>压缩步骤<br>靠模式识别</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚡</div>
+        <div class="data-name">精通境界</div>
+        <div class="data-sm">惊人直觉<br>一眼抓住关键<br>不用推演却能解决问题</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">复盘与总结的本质区别在于推演——对未发生行为的虚拟探究。总结是平面的、静止的、跳跃的；复盘是立体的、动态的、连续的。沙盘推演来自想象的可能性，复盘推演来自经验验证的确定性。从刻意推演到内化直觉，这正是复盘从方法升华为能力的过程。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《复盘对过去的事情做思维演练》第15章「复盘的关键是推演」· 陈中 著 · 基于全书内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

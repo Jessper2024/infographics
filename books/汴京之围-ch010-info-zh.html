@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汴京之围 · 第10章「遗患无穷」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="汴京之围-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="汴京之围-ch010-info-en.html">中文 / English</a>
+</div>
+
+<h1>汴京之围 · 第10章「遗患无穷」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">孤城守将 · 短兵相接 · 外交大溃败 · 官家议和百姓遭殃</span>
+  李纲以兵部侍郎之身力挽狂澜，在酸枣门血战击退金军。
+  但宋钦宗却被恐惧吞噬——答应赔偿金五百万两、银五千万两、割让三镇。
+  一场不可能完成的天价勒索，将汴京百姓推入地狱。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章记录了汴京第一次围城战的全过程。正月初五，李纲几乎以一己之力阻止了皇帝的逃亡，随即在五天之内仓促组织城防。正月初七至初九，金军猛攻西水门和北面四门，李纲以长钩阻火船、蔡京假山填水道、神臂弓退敌，酸枣门血战一日毙敌数千。然而战场上的胜利并没有转化为谈判桌上的优势——宋钦宗在恐慌中全盘接受金军条件：金五百万两、银五千万两、割让太原中山河间三镇、亲王作人质。正月二十统计：仅搜得金三十余万两（6%）、银一千二百余万两（24%）——一个皇帝对自己首都财富的无知，酿成了这场倾国悲剧。</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">50<span class="kpi-unit">里</span></div>
+    <div class="kpi-label">汴京外城周长</div>
+    <div class="kpi-note">20城门+8水门·3层瓮城</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">500万<span class="kpi-unit">两金</span></div>
+    <div class="kpi-label">金军索赔总额</div>
+    <div class="kpi-note">+银5000万两+绢200万匹</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">仅6<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">黄金完成率</div>
+    <div class="kpi-note">实际缴金30余万两/需500万</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">镇</span></div>
+    <div class="kpi-label">割让领土</div>
+    <div class="kpi-note">太原·中山·河间=北方门户全失</div>
+  </div>
+</div>
+
+<!-- 01: 孤城守将 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">城防体系</div>
+    <div class="section-title t-01">李纲五日备战：将一百六十年未经战事的汴京武装起来</div>
+    <div class="section-desc"><strong>汴京一百六十余年未经战火，城墙上的防御塔楼早被宋徽宗的美化工程拆毁——李纲必须在五天之内将一座和平城市变成战争堡垒。</strong>汴京外城周长五十里一百六十五步，城墙每百步设马面战棚，外有宽十余丈的护龙河。但京城所负责人陈良弼直言"首都是守不住的"：木制楼橹已被拆除，新式墙面与旧楼橹制式不合，需五千木匠一月才能修复。李纲每面城墙配备一万二千正规军，设立前后左右中五军各八千人，前军守延丰仓（存粮四十万石），后军驻樊家冈高地——他用铁腕纪律在绝望中筑起了一道防线。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🏰</div>
+        <div class="data-name">外城规模</div>
+        <div class="data-sm">周长50里165步·12陆门+8水门·3层扭头瓮城·马面战棚</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🛡️</div>
+        <div class="data-name">兵力部署</div>
+        <div class="data-sm">每面城墙1.2万正规军+保甲厢兵·五军各8千人·宗室武臣提举</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🏗️</div>
+        <div class="data-name">器械准备</div>
+        <div class="data-sm">战棚·毯子·大炮·弓弩·砖石炮弹·檑木·火油火炬·蔡京假山</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 短兵相接 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">汴京保卫战</div>
+    <div class="section-title t-02">酸枣门血战：李纲斩滥杀者稳军心，一日毙敌数千</div>
+    <div class="section-desc"><strong>正月初九晨，金军猛攻北面酸枣门——李纲从大内策马狂奔二十里，赶在城门失陷前抵达。</strong>战斗最激烈时，城楼上突然扔下六七颗宋军士兵的人头——守军声称是奸细。李纲敏锐意识到这不是肃奸而是恐慌：士兵疑神疑鬼滥杀无辜，一旦蔓延城池必失。他立刻将杀人者斩首，下令凡称奸细必须带人见长官说明理由，擅杀者斩。控制住恐慌后，他分层防御：远用床子弩坐炮、中用神臂弓强弩、近用檑木手炮。敢死队缒城而下，烧毁金军云梯十几座，斩杀戴金耳环的将领十余人。从晨至暮，金军死伤数千，酸枣门被射成刺猬——汴京第一次围城战以宋军胜利告终。</div>
+    <div class="flow-row">
+      <div class="flow-step">远程<br>床子弩·坐炮</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">中程<br>神臂弓·强弩</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">近程<br>檑木·手炮</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">敢死队<br>缒城烧云梯</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 外交大溃败 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">谈判投降</div>
+    <div class="section-title t-03">一场不可能完成的天价勒索：金人开价是宋钦宗底线的十倍</div>
+    <div class="section-desc"><strong>战场上的胜利在谈判桌上被彻底葬送——宋钦宗在恐慌中答应了连金人都未必敢想象的全部条件。</strong>谈判过程暴露了两个致命问题：第一，金国使臣萧三宝奴开价金五十万锭、银一百万锭（折合金五百万两、银五千万两），是宋钦宗原本设想的上限的十倍——而皇帝竟然一口答应。第二，正使李棁在谈判中唯唯诺诺不敢争辩，被金人嘲笑为"女人"，副使郑望之反而敢与金人争论。李纲力主拖延谈判等待勤王军，但宋钦宗已决心不惜一切代价买和平：金五百万两、银五千万两、马牛骡各一万头、骆驼一千头、绢二百万匹，外加割让太原中山河间三镇，以及康王赵构作人质。三镇是中原门户，一旦丢失整个北方将无险可守。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">💰</div>
+        <div class="dual-text">
+          <h4>金军索赔清单</h4>
+          <p>金500万两+银5000万两+马牛骡1万头+骆驼1000头+绢200万匹——"买卖"变成"强取"。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🏰</div>
+        <div class="dual-text">
+          <h4>三镇=北方门户</h4>
+          <p>太原（山西门户）+中山（东西通道）+河间（东路据点）——割让三镇等于间接灭国。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 官家议和百姓遭殃 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">民间搜刮</div>
+    <div class="section-title t-04">从内官到妓女：皇帝对首都黄金储量的灾难性无知</div>
+    <div class="section-desc"><strong>宋钦宗犯了一个致命的错误——他不知道自己的首都到底有多少金银，却答应了一个永远不可能完成的数字。</strong>正月初十起，搜刮令层层加码：先抄蔡京、童贯等"六贼"家产；再征缴宫内太监、僧道医药群体的金银；接着向民间"借用"，允许相互告发并分得一半财产；最后连红灯区的李师师等老鸨头牌的积蓄也尽数抄收。正月二十统计：仅得金三十余万两（完成6%）、银一千二百余万两（完成24%）。正月二十诏书甚至恐吓百姓：凑不够金银，金兵必攻城"男子尽杀、妇人驱虏、屋宇焚烧"。在绝望中，皇帝开始用宫廷珠玉宝物折价充数——而这些无价之宝被摆在野地里，由金人一一核对估价。到正月二十八，总共搜得金五十一万七千余两、银一千四百三十万二千余两，仍然不到要求的十分之一。</div>
+    <div class="flow-row">
+      <div class="flow-step">①内官<br>金100万·银500万</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">②抄六贼<br>蔡京·童贯等</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③民间借用<br>相互告发分半</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">④红灯区<br>李师师等抄没</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">结果<br>金仅得10%</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 替罪羊 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">事后追责</div>
+    <div class="section-title t-05">李纲被罢、李棁替罪：和约签署后的权力清洗</div>
+    <div class="section-desc"><strong>和约签署后，宋钦宗开始清理"责任人"——但不是自己，而是执行他命令的使臣。</strong>李纲因为反对割让三镇、反对凑钱赔款被边缘化，只负责守城事务，和谈大权由主和派把持。康王赵构和少宰张邦昌被送往金营做人质——赵构表现不卑不亢，斡离不称"如同见到兄弟"。李纲利用手中军权扣下了发往三镇的交割命令，只要三镇不知道被皇帝卖了，就能继续抵抗。但太原的割让诏令已通过金人发出。正月十七，当初出使谈判的李棁和郑望之被罢官成为替罪羊。然而五天后，由于无人敢出使说明金银不足的情况，皇帝再次请回李棁、郑望之——他们又硬着头皮前往金营，用宫廷珠宝折价充数。北宋外交官的命运，就是如此悲凉而荒诞。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🔒</div>
+        <div class="dual-text">
+          <h4>李纲最后的抵抗</h4>
+          <p>扣下割让三镇诏书不发——只要命令不到，三镇就继续抵抗。但太原诏令已由金人发出。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">😞</div>
+        <div class="dual-text">
+          <h4>使臣的宿命</h4>
+          <p>李棁、郑望之正月十七被罢官→正月二十二被重新起用→硬着头皮再去金营。北宋外交，进退皆死。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">李纲在战场上证明了汴京可以守住——金军不过六万人，宋军守城绰绰有余。但宋钦宗在恐惧中做出的投降式决策，比金军的刀剑更具毁灭性。他答应了一个永远不可能完成的天价赔偿（金500万两、银5000万两），割让了北方最后的三道门户（太原、中山、河间），亲手将帝国推向了不可逆的深渊。更荒诞的是，当搜遍汴京也只凑到金51万两、银1430万两时，他既不敢承认和约无法执行，也不敢抵抗到底——只能在无尽的恐惧中，将首都百姓、宫廷珍宝、乃至亲弟弟康王，一个接一个地献祭给金人的贪欲。</div>
+</div>
+
+<div class="footer">
+  《汴京之围》第10章信息图 · 基于「遗患无穷」章节内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

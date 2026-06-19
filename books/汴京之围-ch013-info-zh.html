@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汴京之围 · 第11章「战端重启」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="汴京之围-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="汴京之围-ch013-info-en.html">中文 / English</a>
+</div>
+
+<h1>汴京之围 · 第11章「战端重启」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">第三部 汴京失陷 · 太原陷落 → 金军长驱直入 → 康王单飞 → 第二次围城</span>
+  靖康元年八月，金国两路元帅发出问罪书，重启对宋战争。
+  太原坚守260天最终陷落，真定失守，金军沿汾河谷地一路南下。
+  宋钦宗在战和之间反复摇摆，军事体系千疮百孔——不是没有良将，而是指挥系统将一切扼杀。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是汴京失陷的前奏。金军两路元帅（粘罕、斡离不）再次南下，太原在坚守260天后陷落，守将王禀投河殉国。真定府随后失守，金军打通井陉通道。宋钦宗设立四大总管试图改革军事体制，却为时已晚。金军渡黄河如履平地，康王赵构在出使途中因民变滞留相州，意外成为赵宋最后的火种。十一月二十四，斡离不的东路军再次兵临汴京城下——第二次围城战拉开序幕。北宋官僚机器在危机面前的荒诞与低效显露无遗。</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">260<span class="kpi-unit">天</span></div>
+    <div class="kpi-label">太原坚守时长</div>
+    <div class="kpi-note">十五至六十岁全民皆兵</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">13<span class="kpi-unit">万</span></div>
+    <div class="kpi-label">黄河南岸宋军</div>
+    <div class="kpi-note">金军一夜鼓声即溃散</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit">大总管</span></div>
+    <div class="kpi-label">北宋军改最后尝试</div>
+    <div class="kpi-note">权力下放，为时已晚</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">80<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">太原城内人口损失</div>
+    <div class="kpi-note">粮尽至人相食</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">500+<span class="kpi-unit">门</span></div>
+    <div class="kpi-label">刘家寺遗留大炮</div>
+    <div class="kpi-note">官僚推诿未收，尽归金军</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">太原陷落</div>
+    <div class="section-title t-01">260天孤城死守：最顽强的城市在援军眼皮下陷落</div>
+    <div class="section-desc"><strong>太原是靖康之战中最顽强的城市，却也是最悲剧的城市。</strong>城墙长四十里，守将张孝纯全民皆兵，十五岁以上六十岁以下男性全部参战。金人动用炮石、洞子、鹅车、编桥、云梯、火梯等数千攻城器械，均被守将王禀一一化解。但缺粮成了致命伤——先杀牛马，再吃皮制品，扒尽草根树皮，最后人相食。城内人口损失80%。九月初三城破，王禀怀抱宋太宗画像投汾河而死。更可怕的是：宋军还有十几万大军在周围，却谁都过不去。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏰</div>
+        <div class="dual-text">
+          <h4>金军攻城手段</h4>
+          <p>炮石（三十发石车齐发）、洞子（铁皮牛皮带轮掩体）、鹅车（比城墙高的移动堡垒）、叠桥（木筏+树枝+席子+土填壕）</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🛡️</div>
+        <div class="dual-text">
+          <h4>宋军防御对策</h4>
+          <p>糠布袋减震保护楼橹、火攻破坏填壕、自制鹅状楼宇对抗、大石压鹅车重心——王禀一一破解，唯独解不了粮荒</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">体制之殇</div>
+    <div class="section-title t-02">不是将领无能：是宋朝的指挥系统杀死了胜利的可能</div>
+    <div class="section-desc"><strong>宋朝不缺良将——种师道、种师中、张孝纯、刘韐、折可求——但指挥系统让任何将领都无法有效作战。</strong>金军两路元帅全权调动一切资源；宋军调动须经皇帝→宰执→主战派与主和派扯皮→多重层级节制。打了败仗，言官弹劾逼上绝路；打了胜仗，宰执升官剥夺带兵权。宋太祖设计的这套制衡系统和平运行了一百多年，直到遇上金军这个克星，千疮百孔瞬间暴露。九月二十七，何㮚提出设立四大总管，相当于将全国划成四个节度使辖区——这是对北宋政治结构的彻底颠覆，但为时已晚。</div>
+    <div class="flow-row">
+      <div class="flow-step">金军决策<br>两路元帅全权</div>
+      <div class="flow-arrow">VS</div>
+      <div class="flow-step">宋军决策<br>皇帝→宰执→扯皮</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">结果<br>贻误战机</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">长驱直入</div>
+    <div class="section-title t-03">真定陷落 → 黄河失守 → 金军如入无人之境</div>
+    <div class="section-desc"><strong>真定府是河北关键堡垒——城池坚固，粮草众多，守住就能牵制金军东路军。</strong>但刘韐被调走后，真定在新守将李邈手中被攻破。粘罕的西路军沿汾河谷地南下：汾州陷，知州张克戬一家十八口殉国；回牛岭守军每天只有两升豌豆，金军一到自动溃散；平阳府丢失。十一月十二，粘罕抵达黄河北岸，折彦质领兵十二万隔河对垒——金军一夜鼓声后，南岸十三万宋军消失无踪。十三日渡河完毕，西京洛阳失守。斡离不的东路军从李固渡过黄河，一路官兵伎乐相伴。</div>
+    <div class="flow-row">
+      <div class="flow-step">太原<br>九月初三</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">汾州<br>十月初十</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">真定<br>十月初五</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">平阳府<br>十月</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">黄河渡口<br>十一月十二</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">康王单飞</div>
+    <div class="section-title t-04">一次失败的出使，意外造就了南宋的开国皇帝</div>
+    <div class="section-desc"><strong>康王赵构本是去斡离不军营谈判的质子，民变却让他滞留相州。</strong>割地使王云要求沿途坚壁清野，百姓视他为奸细，在磁州崔府君祠外将其杀死。康王在宗泽劝说下意识到继续北行只能当俘虏，连夜返回相州。在相州，他遇到了日后名将岳飞，并收到了宋钦宗的蜡丸密诏——拜康王为天下兵马大元帅，速领兵入卫。十二月初一，康王在相州设立元帅府，成为全国抗金中心。金国少了一个普通的亲王俘虏，南宋多了一个开国皇帝。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">💀</div>
+        <div class="dual-text">
+          <h4>王云之死</h4>
+          <p>坚壁清野政策得罪百姓→磁州民变中被拖下马杀死→康王不敢追究→此后再无北上谈判可能</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🔥</div>
+        <div class="dual-text">
+          <h4>康王使命</h4>
+          <p>拜天下兵马大元帅→设府相州→但主和派汪伯彦拖后腿→十二月十九转移东平避难→一盏明灯未成烈火</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">二次围城</div>
+    <div class="section-title t-05">五百门大炮的荒诞：北宋官僚机器在危机中的彻底暴露</div>
+    <div class="section-desc"><strong>十一月二十四，斡离不兵临汴京城下，驻扎刘家寺——这里原本放着朝廷阅兵用的五百门大炮。</strong>大炮归属问题引发各部门踢皮球：兵部说该枢密院管，枢密院说属军器监，军器监主管因罪去职群龙无首，京城所推给驾部，驾部推给库部——还没推完，金人已到，将五百门炮掉转炮口对准城内。城内守军不足七万，大部分是弓手。皇帝任命了层层叠叠的官员（仅南城墙就有十几位指挥官），却无兵可调。著作郎胡处晦作诗嘲讽：「用者不才才不用」。</div>
+    <div class="flow-row">
+      <div class="flow-step">兵部<br>"该枢密院管"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">枢密院<br>"属军器监"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">军器监<br>"主管去职"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">京城所<br>"推给驾部"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">库部<br>还来不及推……</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">太原失守不只是一座城的陷落，它宣告了宋朝军事体制的彻底破产。260天的坚守证明宋军不缺战斗力，缺的是一个能协调全局、快速决策的指挥系统。金军渡黄河如过小溪——十三万宋军被一夜鼓声吓散，五百门大炮被官僚推诿送入敌手。康王赵构的意外滞留，则成为这场灾难中唯一的希望火种。当第二次围城战拉开序幕时，汴京的命运已经注定——问题不在于能否守住，而在于整个系统早已失去了守住的能力。</div>
+</div>
+
+<div class="footer">
+  《汴京之围》第11章信息图 · 基于第三部「汴京失陷」内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

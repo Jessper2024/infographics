@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高分自学法 · 第3章「学习原理·大脑的使用说明书」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: 0.02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity 0.15s; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .back-catalog-btn:hover { opacity: 0.75; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label {
+    font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px;
+  }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; } .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; } .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; } .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; } .kpi-card.c04 .kpi-value { color: #4f46e5; }
+  .kpi-card.c05 { border-left: 3px solid #db2777; } .kpi-card.c05 .kpi-value { color: #db2777; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .contrast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .contrast-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .contrast-card.left { background: #fef2f2; border: 1px solid #fecaca; }
+  .contrast-card.right { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .contrast-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .contrast-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .contrast-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .cycle-diagram {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;
+  }
+  .cycle-box {
+    border-radius: 10px; padding: 14px 16px; text-align: center;
+    border: 1px solid;
+  }
+  .cycle-box.cb1 { background: #eef2ff; border-color: #c7d2fe; color: #4f46e5; }
+  .cycle-box.cb2 { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+  .cycle-box.cb3 { background: #fefce8; border-color: #fde68a; color: #92400e; }
+  .cycle-box.cb4 { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .cycle-label { font-size: 11px; font-weight: bold; opacity: 0.7; letter-spacing: 1px; }
+  .cycle-title { font-size: 16px; font-weight: bold; margin: 4px 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .cycle-desc { font-size: 12px; opacity: 0.8; line-height: 1.5; }
+
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 16px 20px; margin-top: 10px; font-size: 13px; color: #991b1b;
+    line-height: 1.8;
+  }
+  .alert-box strong { color: #dc2626; }
+
+  .quote-block {
+    background: #fefce8; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 16px 20px; margin-top: 10px;
+  }
+  .quote-text {
+    font-size: 15px; color: #92400e; line-height: 1.8; font-style: italic;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .quote-author { font-size: 12px; color: #a16207; margin-top: 6px; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .contrast-grid, .data-row, .cycle-diagram { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-value { font-size: 34px; }
+    @media (max-width: 400px) { .kpi-row, .kpi-row.cols-4 { grid-template-columns: 1fr; } }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="高分自学法-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="高分自学法-ch006-info-en.html">中文 / English</a>
+</div>
+
+<h1>高分自学法 · 第3章「学习原理·大脑的使用说明书」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  学习是将外部刺激储存为长期记忆的过程——大脑有固定的记忆储存程序，如同复杂机械需要说明书。
+  大多数人漫无目的地学习，就像随便按按钮却期待机器运转——他们遗漏了「反思的观察」这一关键阶段。
+  如何才能依照大脑的运作模式学习？答案是完整经历四个阶段循环，并用精准的重复让髓磷脂变厚——这正是必须独自学习的根本原因。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>BLUF：学习必须依照大脑的说明书操作——记忆储存是有物理规律的科学过程，而非玄学。</strong>记忆是物理现象：信息进入大脑后，神经元会变形、生长、联结，髓磷脂会在精准重复后一层层增厚。如果不完整经过「具体经验→反思观察→抽象假设→活动实验」四个阶段，学习内容便无法进入脑海。多数人学习失败的原因，在于遗漏了「反思的观察」——只被动接收信息却不主动思考联结。孔子在2500年前就说：「学而时习之」和「学而不思则罔」。</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value" style="font-size:30px">3<span class="kpi-unit">种记忆</span></div>
+    <div class="kpi-label">大脑记忆模型</div>
+    <div class="kpi-note">感觉→短期→长期<br>储存是物理现象</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">4<span class="kpi-unit">阶段</span></div>
+    <div class="kpi-label">记忆储存循环</div>
+    <div class="kpi-note">经验→观察→假设→实验<br>缺一不可</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value" style="font-size:30px">髓磷脂</div>
+    <div class="kpi-label">实力的物质基础</div>
+    <div class="kpi-note">精准重复使神经元<br>信号更快更强</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2500<span class="kpi-unit">年前</span></div>
+    <div class="kpi-label">孔子已揭示</div>
+    <div class="kpi-note">「学而时习之」<br>即完整学习循环</div>
+  </div>
+</div>
+
+<!-- 01: What is memory -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">大脑科学</div>
+    <div class="section-title t-01">记忆是物理现象：三种记忆与神经元的变形</div>
+    <div class="section-desc"><strong>记忆不是抽象的概念，而是真实占据大脑空间的物理物质。</strong>脑科学将记忆分为三种：感觉记忆（视觉仅1秒，听觉数秒后消失）、短期记忆（持续几分钟至几小时，如同厨房砧板容量有限）、长期记忆（持续一天以上）。信息储存为长期记忆是一种物理现象——大脑的神经元受到刺激后会改变形状，像树枝延长或长出新的枝丫，神经元之间通过突触联结交换信息。就像《头脑特工队》中的玻璃珠——每个记忆都是大脑中的真实存在。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">👁️</div>
+        <div class="data-name">感觉记忆</div>
+        <div class="data-sm">视觉仅1秒消失<br>听觉维持数秒<br>超短期·瞬间消逝</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🧠</div>
+        <div class="data-name">短期记忆</div>
+        <div class="data-sm">持续几分钟至数小时<br>也称工作记忆<br>容量有限如砧板</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🏗️</div>
+        <div class="data-name">长期记忆</div>
+        <div class="data-sm">持续一天以上<br>神经元物理变形<br>突触联结·真实占据空间</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Four-stage cycle -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">核心流程</div>
+    <div class="section-title t-02">记忆储存四阶段：像学煮泡面一样理解大脑的规则</div>
+    <div class="section-desc"><strong>大脑储存记忆必须完整经过四个阶段——任何一个阶段被遗漏，学习内容都会像没煮好的泡面一样半生不熟。</strong>脑科学家詹姆斯·祖尔提出记忆储存的四个阶段循环：①具体经验（阅读、听课获取视觉/听觉刺激）→②反思的观察（以已有知识为基础理解内容）→③抽象的假设（脑海中推演、提问、确认）→④活动的实验（实际解题、写报告、考试）。重复此循环，相关的神经元才会延长、联结，最终将内容稳固储存为长期记忆。如果只读课本却不实际解题（跳过阶段④），或只听讲却从不思考（跳过阶段②），那你的学习就像煮出有牙膏味的泡面——惨不忍睹。</div>
+    <div class="cycle-diagram">
+      <div class="cycle-box cb1">
+        <div class="cycle-label">STAGE 1</div>
+        <div class="cycle-title">具体经验</div>
+        <div class="cycle-desc">读书·听课·接收<br>视觉与听觉刺激</div>
+      </div>
+      <div class="cycle-box cb2">
+        <div class="cycle-label">STAGE 2</div>
+        <div class="cycle-title">反思的观察</div>
+        <div class="cycle-desc">以既有知识为基础<br>理解新内容的意义</div>
+      </div>
+      <div class="cycle-box cb3">
+        <div class="cycle-label">STAGE 3</div>
+        <div class="cycle-title">抽象的假设</div>
+        <div class="cycle-desc">向自己提问·推演<br>确认理解是否正确</div>
+      </div>
+      <div class="cycle-box cb4">
+        <div class="cycle-label">STAGE 4</div>
+        <div class="cycle-title">活动的实验</div>
+        <div class="cycle-desc">解题·写报告·考试<br>获得成绩与反馈</div>
+      </div>
+    </div>
+    <div class="alert-box" style="margin-top:14px;">
+      <strong>⚠️ 煮泡面类比：</strong>读了料理方法却不实际煮（遗漏阶段④），或煮好了却从不确认味道（遗漏反馈）——这样的人永远无法煮好泡面。学习也一样：遗漏任何一个阶段，实力水平始终都是一碗糟糕透顶的泡面。
+    </div>
+  </div>
+</div>
+
+<!-- 03: Myelin -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">物质基础</div>
+    <div class="section-title t-03">髓磷脂：为什么精准重复比长时间学习更重要</div>
+    <div class="section-desc"><strong>人与人之间「出色」程度的差异，本质上是髓磷脂厚度的差异——而髓磷脂只在信号精准重复流过神经元时才会变厚。</strong>髓磷脂是包覆神经元轴突的绝缘物质。当一模一样的信号重复流过神经元，髓磷脂便一层一层变厚——如同给通信电缆包上绝缘层防止信号泄漏。髓磷脂越厚，信号传递越快越强。这解释了为什么有人心算极快、有人英文阅读极快——不是因为天生就有「专用神经元」，而是特定路径被反复精准使用后髓磷脂变厚了。关键在于「精准」：用马虎态度学习即使坐再久，髓磷脂也不会变厚。每次都用与课本一模一样的精确理解，才是真正有效的学习。</div>
+    <div class="flow-row">
+      <div class="flow-step">📖 精准理解<br><small>透彻掌握概念</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄 精准重复<br><small>发送相同信号</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🧬 髓磷脂增厚<br><small>信号更快更强</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🏆 实力飞跃<br><small>轻松解决难题</small></div>
+    </div>
+    <div class="alert-box" style="margin-top:14px;">
+      <strong>⚠️ 深刻教训：</strong>同样考100分的两人，髓磷脂厚度可能完全不同——考试简单时看不出差距，但难题一出便高下立判。「长远来看，最后的成果终究取决于真正的实力。髓磷脂是不会骗人的。」
+    </div>
+  </div>
+</div>
+
+<!-- 04: Reflective observation -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">关键瓶颈</div>
+    <div class="section-title t-04">反思的观察：真正的「专注」不是眼睛盯着书</div>
+    <div class="section-desc"><strong>大多数人学习失败的真正原因——遗漏了「反思的观察」，让信息左耳进右耳出，从未真正进入记忆循环。</strong>专注不是挺直腰杆盯着书，也不是像拍照一样把字背下来。真正的专注是「在阅读的同时自问：这样理解对不对？」，是主动将新信息与已知信息联结。山口真由（东京大学第一名毕业，通过司法考试）的秘诀是「7次阅读」——但不是机械重复，而是在每次阅读时「下意识地正确启动思考并持续整理信息」。司法考试合格者的心得更直接：边读课本边反复前后翻找相关内容，进度慢如乌龟——但正是这种「麻烦」的专注，造就了学习之神。绝对没有「不思考、看久了自然会背下来」这种事。</div>
+    <div class="contrast-grid">
+      <div class="contrast-card left">
+        <div class="contrast-icon">❌</div>
+        <div class="contrast-text"><h4>假专注</h4><p>眼睛盯着书但脑中空白<br>左耳进右耳出<br>等待「看久了自然会背」</p></div>
+      </div>
+      <div class="contrast-card right">
+        <div class="contrast-icon">✅</div>
+        <div class="contrast-text"><h4>真专注</h4><p>主动提问「这样理解对不对？」<br>反复联结新旧知识<br>前后翻找相关内容直到打通</p></div>
+      </div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「我们要用主动的阅读启动大脑。不要再像以前一样只是单纯地让信息流过大脑，而是要在阅读的同时自问：这样理解对不对？」</div>
+      <div class="quote-author">——山口真由《7次阅读学习法》</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Learning vs Familiarizing -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">平衡之道</div>
+    <div class="section-title t-05">学而时习之：学习与熟悉的平衡——孔子2500年前的警告</div>
+    <div class="section-desc"><strong>大脑天生倾向于将「学习」与「熟悉」拆分为两半——但要想学得好，两者缺一不可。</strong>脑科学研究发现：记忆循环的前两个阶段（具体经验+反思观察）属于「学习」，后两个阶段（抽象假设+活动实验）属于「熟悉」——大脑结构使得跨组切换有困难。这造就了两种典型学习者：一号类型擅长学习却疏于熟悉（知识散装、应用能力不足），二号类型热衷提问却缺乏基础积累（报告没有核心内容）。孔子在2500年前就精确指出了这一点：「学而时习之，不亦说乎」浓缩了完整学习循环；「学而不思则罔，思而不学则殆」警告偏废一端的危险。最简单且最有效的熟悉方法：「把书合上学」——盖上书试着说出来，这便是最强的即时反馈。</div>
+    <div class="contrast-grid">
+      <div class="contrast-card left">
+        <div class="contrast-icon">📚</div>
+        <div class="contrast-text"><h4>一号类型：只学不熟</h4><p>模范生般认真听讲做笔记<br>但要解释内容时脑中一片空白<br>知识散装，缺乏应用与企划能力</p></div>
+      </div>
+      <div class="contrast-card right">
+        <div class="contrast-icon">💡</div>
+        <div class="contrast-text"><h4>二号类型：只熟不学</h4><p>积极提问富有好奇心<br>但内容一团乱没有核心<br>凭空创造，缺少系统性知识积累</p></div>
+      </div>
+    </div>
+    <div class="quote-block" style="margin-top:12px;">
+      <div class="quote-text">「学而时习之，不亦说乎。」（学习并时常温习内容，不是一件令人很愉快的事吗？）<br>「学而不思则罔，思而不学则殆。」</div>
+      <div class="quote-author">——《论语》，孔子（约公元前500年）</div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">学习是物理现象——记忆真实地占据大脑空间。大脑储存记忆必须经过四个阶段：具体经验→反思观察→抽象假设→活动实验。大多数人失败的根源在于遗漏「反思的观察」——只被动接收信息却不主动思考。真正的专注是主动联结新旧知识、反复自问自答。髓磷脂只在信号「精准」重复时才变厚，马虎学习即使坐再久也无济于事。2500年前孔子已经说透了一切：「学而时习之」——学习与熟悉两者缺一不可。增加独自学习的时间，按照大脑的说明书操作——这是唯一的出路。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  来源：《高分自学法》第3章「学习原理·大脑的使用说明书」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>"

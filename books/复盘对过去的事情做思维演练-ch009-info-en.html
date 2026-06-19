@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fupan · Chapter 9 — Lenovo's Fupan Methodology</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Risk bars ── */
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch009-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Fupan · Chapter 9 — Lenovo's Fupan Methodology</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Core Insight</span>
+  Why did Liu Chuanzhi talk about fupan in every interview? Because fupan helped Lenovo defeat Dell, acquire IBM's PC division, and become the world's #1 PC maker. Fupan is not Liu's personal preference — it is an institutionalized weapon, formally established in 2001, producing 240+ documents over ten years, and validated as Lenovo's most important methodology. And Lenovo isn't the only company using it.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>At the 2011 Legend Star Entrepreneurship Forum, Liu Chuanzhi once again emphasized: learning ability matters — you must know how to fupan. This wasn't his first time, nor his second or third. Since 2009, practically every media interview featured fupan. Fupan can be seen behind every major Lenovo milestone: in 2003, facing Dell's aggressive expansion, fupan revealed the real issue wasn't direct sales vs. distribution but superior process and efficiency, leading to a decisive turnaround in 2004. In 2009, the $200M buyback of the mobile phone business also came from fupan-driven insights into Apple and the industry. Fupan evolved from habit into the top pillar among Lenovo's three methodologies, and has been independently validated by entrepreneurs like Feng Lun, Li Dongsheng, Zhou Hongyi, and Sun Taoran.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">240<span class="kpi-unit">+</span></div>
+    <div class="kpi-label">Fupan Documents</div>
+    <div class="kpi-note">Standardized review reports<br>produced by Lenovo's fupan<br>project team, 2001–2011</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">10<span class="kpi-unit"> Years</span></div>
+    <div class="kpi-label">Institutionalized</div>
+    <div class="kpi-note">Formally established in 2001<br>ten years of systematic<br>fupan practice by 2011</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">#1<span class="kpi-unit"> Method</span></div>
+    <div class="kpi-label">Top Methodology</div>
+    <div class="kpi-note">Lenovo's three pillars:<br>Strong purpose · Phased execution<br>Growing through fupan ← #1</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">5<span class="kpi-unit">+ Leaders</span></div>
+    <div class="kpi-label">Cross-Industry Validation</div>
+    <div class="kpi-note">Liu Chuanzhi · Feng Lun<br>Li Dongsheng · Zhou Hongyi<br>Sun Taoran — all validate it</div>
+  </div>
+</div>
+
+<!-- 01: Liu Chuanzhi's quotes -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Leader's Conviction</div>
+    <div class="section-title t-01">Liu Chuanzhi's Fupan Quotes — He Said It Every Time</div>
+    <div class="section-desc"><strong>Fupan is the keyword Liu Chuanzhi has mentioned the most in recent years:</strong> from the Legend Star Forum to the World Entrepreneur Awards, from Alibaba's Netrepreneur Conference to Youmi's acquisition review interview — different formulations, same unchanging core.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📢</div>
+        <div class="dual-text">
+          <h4>World Entrepreneur Award Speech</h4>
+          <p>"Fupan is crucial... be serious, spare no face to think things through clearly."</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>Lenovo M&A Review Interview</h4>
+          <p>"Now Lenovo's European executives are all non-Chinese, but their thinking is entirely Lenovo's — they even say 'FuPan'."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Dell crisis -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Decisive Battle</div>
+    <div class="section-title t-02">Comeback via Fupan: How Lenovo Defeated Dell</div>
+    <div class="section-desc"><strong>In 2003, Dell was rampaging in China. The market thought Lenovo would lose. But through fupan, Lenovo realized the real issue:</strong> the competition wasn't about direct sales vs. distribution — it was about whose process was more excellent, who was more efficient, who captured more customer groups. After adjusting strategy accordingly, Lenovo turned the tables in 2004. Dell never threatened again.</div>
+    <div class="flow-row">
+      <div class="flow-step">2003 Dell<br>Aggressive Attack</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Fupan<br>Find Real Issue</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Discover<br>Efficiency Key</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Adjust<br>Strategy</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">2004 Decisive<br>Victory</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Three methodologies -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Methodology System</div>
+    <div class="section-title t-03">Lenovo's Three Pillars: Why Fupan Is the Core</div>
+    <div class="section-desc"><strong>Lenovo's methodology has three characteristics:</strong> first, extremely strong purpose; second, phased execution; third, growing through fupan. Growing through fupan is considered the most important — because fupan simultaneously drives purpose recalibration and phased optimization.</div>
+    <div class="risk-bars">
+      <div class="risk-row">
+        <div class="risk-label">Strong Purpose</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
+        <div class="risk-val">90%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Phased Execution</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+        <div class="risk-val">85%</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Fupan Growth</div>
+        <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+        <div class="risk-val">100% Core</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Standardized process -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Institutionalizing</div>
+    <div class="section-title t-04">Lenovo's Fupan Standard: From Personal Habit to Organizational Capability</div>
+    <div class="section-desc"><strong>Lenovo elevated fupan from individual technique to organizational institution:</strong> established a fupan project team that organized reviews around company projects; fupan begins with detailed documentation, and the team produces standardized fupan reports based on project history, current results, and collective reflection.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📋</div>
+        <div class="data-name">Project Team</div>
+        <div class="data-sm">Dedicated fupan<br>project team reviews<br>projects systematically</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📄</div>
+        <div class="data-name">Standard Docs</div>
+        <div class="data-sm">Detailed documentation<br>from the start · captures<br>history and reflection</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📚</div>
+        <div class="data-name">Knowledge Base</div>
+        <div class="data-sm">Ten years produced 240+<br>fupan documents — an<br>organizational knowledge asset</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Beyond Lenovo -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Cross-Industry Proof</div>
+    <div class="section-title t-05">Beyond Lenovo: Five Leaders Validating the Same Method</div>
+    <div class="section-desc"><strong>While Lenovo formally named it "fupan", the method has been applied by multiple entrepreneurs:</strong> Feng Lun set a "Reflection Day" at Vantone as its survival code; Li Dongsheng wrote "Rebirth of the Eagle" after fupan-ing the Thomson acquisition; Zhou Hongyi rose again with free antivirus after fupan-ing the 3721 mistake; Sun Taoran credits fupan for much of his "36 Entrepreneurial Rules."</div>
+    <div class="flow-row">
+      <div class="flow-step">Feng Lun<br>Reflection Day</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Li Dongsheng<br>Rebirth of Eagle</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Zhou Hongyi<br>3721 Fupan</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Sun Taoran<br>36 Rules</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Same Method<br>Validated</div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Fupan is not one leader's personal preference — it is a universal methodology systemized by Lenovo over ten years, validated by 240+ documents, and repeatedly proven effective by industry leaders across different sectors. Real fupan isn't just "thinking about it" — it means forming a project team, producing standardized documents, and building a knowledge asset. Whatever you call it, the method is the same.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Fupan: Mental Rehearsal of Past Events — Chapter 9 Infographic · Based on Chapter 9 · For study reference only
+</div>
+
+</div>
+</body>
+</html>

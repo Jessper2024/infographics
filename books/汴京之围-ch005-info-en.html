@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Siege of Bianjing · Ch.4 "Each Harboring Their Own Schemes"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="汴京之围-catalog.html">← Chapter List</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="汴京之围-ch005-info-zh.html">中文 / English</a>
+</div>
+
+<h1>The Siege of Bianjing · Ch.4 "Each Harboring Their Own Schemes"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Xuanhe Years 2–4 · The Rise of the Jurchens &amp; Song's Internal and External Crises</span>
+  On the surface, the Song-Jin alliance appeared harmonious, but beneath the smiles, undercurrents surged: Ma Kuo earned the Jurchens' respect on the hunting grounds but failed to secure the Western Capital; the rebellions of Fang La and Song Jiang derailed the northern expedition; Jin envoys were left stranded in Bianjing for months, and Aguda no longer waited for the Song.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>In the second year of Xuanhe (1120), the Ma Zheng diplomatic mission arrived at the camp of Jin Emperor Aguda. Ma Kuo, trained in military arts, won the Jurchens' respect with his superb archery and closely observed their hunting-and-fishing way of life — from battue hunts to diet, from tents to battle formations. Yet beneath the diplomatic toasts, Aguda denied any promises regarding the Western Capital and the prefectures north of the mountains, acknowledging only Yanjing and the prefectures south of the mountains. Meanwhile, Fang La's rebellion erupted in the southeast and Song Jiang's uprising in the north, forcing the Song to divert its main northern expedition forces southward for suppression. Jin envoys were stranded in Dengzhou for months. Aguda finally stopped waiting and launched a fatal strike against the Liao Central Capital, suddenly accelerating the race to destroy Liao.</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">200<span class="kpi-unit">yr</span></div>
+    <div class="kpi-label">Years Yanjing was severed from the Central Plains</div>
+    <div class="kpi-note">Since Shi Jingtang ceded the Sixteen Prefectures</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2M<span class="kpi-unit">+</span></div>
+    <div class="kpi-label">Civilian deaths from Fang La's rebellion</div>
+    <div class="kpi-note">Overran 6 prefectures and 52 counties</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">5<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Liao capitals captured by Jin</div>
+    <div class="kpi-note">Upper→Eastern→Central→Western→Southern</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">150K<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Troops in Tong Guan's first northern expedition</div>
+    <div class="kpi-note">Defeated at Baigou; Zhong Shidao scapegoated</div>
+  </div>
+</div>
+
+<!-- 01: Ma Kuo and the Jurchens -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Envoy Observations</div>
+    <div class="section-title t-01">Ma Kuo conquered the Jurchens with archery, but his diplomatic mission came up empty-handed</div>
+    <div class="section-desc"><strong>Ma Kuo earned the title "Yelü Mali" (Master Archer) by hitting two snow-covered targets with perfect shots and killing a yellow roe deer with one arrow, yet behind the meat and wine he witnessed the cutthroat reality of international relations.</strong> He observed: Jurchen battue hunts were military drills — linear formations contracting into spiral circles, with battlefield tactics all derived from hunting; Aguda remained frugal, but his sons had already acquired a taste for luxury; most critically, Aguda admitted to promising the Song the Yanjing prefectures, but flatly denied any promise about the Western Capital and prefectures north of the mountains — oral promises count for nothing in international relations.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🏹</div>
+        <div class="dual-text">
+          <h4>The Jurchen Hunting Law</h4>
+          <p>Riders spaced five to seven paces apart, lines connected head to tail forming a spiral — twenty to thirty dense rings. The formations evolved from hunting were the secret of Jin's invincibility.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>The Western Capital Dispute</h4>
+          <p>Zhao Liangsi's memoirs claim Aguda promised the Western Capital, but the official documents record nothing. Aguda privately told his subordinates: without the prefectures north of the mountains, how do we contain the Song?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: Fang La and Song Jiang -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Internal Crisis</div>
+    <div class="section-title t-02">Fang La and Song Jiang revolt in the south and north, completely derailing the northern expedition</div>
+    <div class="section-desc"><strong>The consequences of the Flower and Rock levy exploded at the worst possible moment — in the tenth month of Xuanhe Year 2, Fang La raised an army in Muzhou, declared himself "Sage Duke," and established his own reign era.</strong> Zhu Mian's "Southeastern Mini-Court" had plundered the wealthy southeast into a powder keg. In just over a month, the rebel army seized Hangzhou and set it ablaze for six days; within half a year, they overran six prefectures and fifty-two counties, with civilian deaths exceeding two million. Simultaneously, Song Jiang rose in the north at Haizhou. Tong Guan diverted the elite northwestern troops — originally meant for the northern expedition — southward to suppress the rebellion. The Song-Jin joint attack on Liao was completely sidelined in favor of domestic pacification. Han Shizhong captured Fang La, but the biggest beneficiary was the eunuch Tong Guan.</div>
+    <div class="flow-row">
+      <div class="flow-step">Zhu Mian's levy<br>plunders the southeast</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Fang La rises<br>takes Hangzhou</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Tong Guan diverted south<br>expedition shelved</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Financial collapse<br>southeast hollowed out</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: Jin Envoys Stranded -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Diplomatic Stalemate</div>
+    <div class="section-title t-03">Jin envoys stranded for months; Emperor Huizong's ambiguous letter sowed the seeds of disaster</div>
+    <div class="section-desc"><strong>In the second month of Xuanhe Year 3, Jin envoys landed at Dengzhou, but the garrison commander forcibly detained them — because Tong Guan, who was responsible for the negotiations, had gone south to suppress the rebellion.</strong> The Jin envoys were so enraged they nearly set out on foot for the capital. They only reached Bianjing on the first day of the fifth month, and were left waiting for another three months. In the eighth month, Emperor Huizong dismissed them with a vague letter that "said almost nothing" — neither repudiating the treaty nor making clear commitments. The Jurchens interpreted this as the Song emperor accepting Aguda's terms: only Yanjing and the prefectures south of the mountains would be returned. Even more fatally, the Song sent no envoy to accompany them back — leading the Jurchens to feel the Song were "evasive and not honest people."</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📅</div>
+        <div class="data-name">Xuanhe 3, Month 2</div>
+        <div class="data-sm">Jin envoys detained at Dengzhou while Tong Guan was suppressing the southern rebellion</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📅</div>
+        <div class="data-name">Xuanhe 3, Month 8</div>
+        <div class="data-sm">Jin envoys dismissed with a vague letter; Song sent no accompanying envoy</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Accelerated Liao Conquest -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Tipping the Scales</div>
+    <div class="section-title t-04">Aguda stops waiting: Jin forces take the Central and Western Capitals in succession, doomsday arrives for Liao</div>
+    <div class="section-desc"><strong>Once the Jin envoys returned with Emperor Huizong's ambiguous letter, Aguda immediately ordered the attack on the Liao Central Capital.</strong> Guided by Yelü Yudu (a Liao defector), Wuqimai and Nianhan led their armies and captured the Central Capital in the first month of Xuanhe Year 4. Emperor Tianzuo fled at the first report — from Yuanyang Lake → Baishui Lake → Yunzhong → Jiashan, fleeing further and further west. In the fourth month, the Jin captured the Western Capital. In Yanjing, the regent Li Chuwen and others enthroned Yelü Chun as Emperor Tianxi, splitting Liao in two. Emperor Tianxi tried to make peace with the Song, but Huizong refused to recognize him on the grounds that Emperor Tianzuo was still alive — he was busy completing his "Record of Genyue," immersed in celebrating the completion of his imperial garden.</div>
+    <div class="flow-row">
+      <div class="flow-step">Liao Central Capital falls<br>Xuanhe 4, Month 1</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Tianzuo flees west<br>racing nonstop</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Western Capital falls<br>Xuanhe 4, Month 4</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Liao splits<br>Tianxi enthroned in Yanjing</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: First Northern Expedition Fails -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Military Failure</div>
+    <div class="section-title t-05">Tong Guan leads 150,000 troops north against Yanjing; the Baigou defeat exposes Song's military impotence</div>
+    <div class="section-desc"><strong>In the fourth month of Xuanhe Year 4, Tong Guan marched north with 150,000 troops, armed with the emperor's three-tier strategy — from a smooth takeover to nominal submission.</strong> Cai You even asked the emperor for palace maids as rewards for victory. Tong Guan first tried to persuade the Liao to surrender, but every envoy he sent was beheaded by Emperor Tianxi. Ma Kuo risked his life entering Yanjing as an envoy and obtained intelligence from Liu Zongji that the Liao had no more than three hundred crack troops. Yet Zhong Shidao was ambushed and routed by Yelü Dashi at Baigou, and the western army was also defeated at Fancun. Tong Guan panicked — he blamed the failure on faulty intelligence. Zhong Shidao was forced into retirement, and He Shen was punished. In the sixth month, the army retreated, and the first northern expedition ended in a chaotic rout. The only person with a clear conscience was Ma Kuo, who had nearly lost his life as an envoy.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔴</div>
+        <div class="dual-text">
+          <h4>Tong Guan's "Three-Tier Strategy"</h4>
+          <p>Top: Yanjing lines the streets in welcome, smooth takeover. Middle: Emperor Tianxi submits as a vassal and pays tribute. Bottom: a stalemate. Not one tier covered "what if we lose."</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔵</div>
+        <div class="dual-text">
+          <h4>After-Action: Find a Scapegoat</h4>
+          <p>Tong Guan reported that "the Khitans were too strong, hence the defeat." Zhong Shidao was forced to retire, He Shen was punished. The real problems — Song military incompetence and command chaos — were never discussed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The iron law of international diplomacy: only promises written into formal documents count; oral commitments can be disowned at any time. The Song-Jin alliance was built from the start on divergent understandings of its terms — the Song believed they would recover all Sixteen Prefectures; the Jin intended to return only Yanjing and six prefectures south of the mountains. The Fang La and Song Jiang rebellions tied down Song forces at the most critical moment, causing Aguda to stop waiting for Song to join the attack. Once Tong Guan's 150,000 troops exposed Song's utter weakness in the northern expedition, the balance of power in the Song-Jin game tipped irreversibly toward the Jin.</div>
+</div>
+
+<div class="footer">
+  The Siege of Bianjing Ch.4 Infographic · Based on "Each Harboring Their Own Schemes" · For reference only
+</div>
+</div>
+</body>
+</html>

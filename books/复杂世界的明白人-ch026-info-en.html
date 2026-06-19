@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Our Complex World · Ch.26 "Why EVs Are Our Future"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Quote */
+  .quote-block { background: #fefce8; border: 1px solid #fde68a; border-radius: 12px; padding: 16px 20px; margin-top: 10px; font-size: 13px; color: #92400e; line-height: 1.9; font-style: italic; }
+  .quote-block .q-author { margin-top: 6px; font-style: normal; font-weight: bold; color: #b45309; font-size: 12px; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复杂世界的明白人-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复杂世界的明白人-ch026-info-zh.html">English / 中文</a>
+</div>
+
+<h1>Understanding Our Complex World · Ch.26 "Why EVs Are Our Future"</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">SCQA · Situation → Complication → Question → Answer</span>
+  China has the world's largest car fleet, yet its oil import dependency has breached the 70% red line. Traditional ICE engines and transmissions are locked behind a century of Western patents—a race China could never win.
+  How can China escape both energy dependence and its status as a perpetual "hired hand" in the auto industry? Answer: The EV track reset—same starting line, inherently suited for software and autonomous driving, with market scale fueling technological breakthroughs.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>The author has been a staunch EV advocate for years, with a tightly interlocking logic chain: China's oil import dependency has breached the 70% safety red line → alternative energy is a must; ICE engines and transmissions are locked behind a century of Western patents, leaving Chinese companies perpetually chasing → EVs ditch the transmission, resetting everyone to the same starting line; EVs are structurally simpler and respond ten times faster than ICE vehicles, making them naturally suited for software and autonomous driving → the car of the future is like a smartphone—software, not hardware, makes the money; China's enormous market scale drives the learning curve → sell more, costs fall, geniuses are incentivized to solve problems → the virtuous flywheel spins. The author believes this paradigm shift will complete within a decade—miss it, and you'll wait another century.</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">70<span class="kpi-unit">%+</span></div>
+    <div class="kpi-label">Oil Import Dependency</div>
+    <div class="kpi-note">Breached the 12th Five-Year Plan red line</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">90<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">Battery Cost Decline (10yr)</div>
+    <div class="kpi-note">Scale drives the learning curve downward</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">10<span class="kpi-unit">×</span></div>
+    <div class="kpi-label">EV Response Speed Advantage</div>
+    <div class="kpi-note">Inherently suited for software and autonomy</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">5<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">China Auto Chip Self-Sufficiency</div>
+    <div class="kpi-note">BYD is the exception—in-house since 2002</div>
+  </div>
+</div>
+
+<!-- 01: Oil Dependence -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Energy Security</div>
+    <div class="section-title t-01">Oil Stranglehold: Import Dependency Over 70%—Alternative Energy Is Urgent</div>
+    <div class="section-desc"><strong>China has the world's largest car fleet, and oil dependency has surged past 70%, posing a serious threat to national energy security.</strong> Oil can only be shipped from a handful of countries—Saudi Arabia, Russia—while electricity sources are far more diverse: solar, hydro, wind, and nuclear. China's vast western highlands (Gansu, Inner Mongolia, Xinjiang) are ideal for solar farms; Golmud, Qinghai already has a solar thermal tower. Full vehicle electrification would dramatically reduce oil dependence. Moreover, EV batteries and future controlled nuclear fusion both require large quantities of lithium and rare earths—resources China happens to have in abundance. The global push for rare-earth mines and African iron ore is all strategic preparation for the post-oil era.</div>
+    <div class="flow-row">
+      <div class="flow-step">Oil 70%<br>External Dependence</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">EV<br>Alternative</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Solar/Hydro<br>Wind/Nuclear</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Lithium · REE<br>Resource Advantage</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Energy Independence<br>Safe &amp; Controllable</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: ICE Barriers -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Tech Blockade</div>
+    <div class="section-title t-02">ICE Patent Wall: Forever the "Hired Hand," Forever Chasing</div>
+    <div class="section-desc"><strong>In the ICE domain, China has been like a hired hand—working tirelessly on production while the lion's share of profits goes to the West.</strong> When Chinese engine development began, quality was low and prices high; the market wouldn't buy, so companies couldn't recoup R&amp;D costs or improve. Worse still, the West had already sealed off virtually every viable path with a century of patents. The transmission is so complex it's almost unsolvable. China took a detour down "technology for market access"—and lost both: the market was handed over while breeding a crop of parasites waiting for technology, with no real progress. On the EV track, everyone starts from the same line, the patent landscape is blank, and the transmission is discarded outright—a once-in-a-century opportunity.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🔒</div>
+        <div class="dual-text">
+          <h4>❌ ICE Trap</h4>
+          <p>Engine &amp; transmission patents locked down. Poor quality at high price → no market → no R&amp;D funds → forever chasing century-old incumbents.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🏁</div>
+        <div class="dual-text">
+          <h4>✅ EV Opportunity</h4>
+          <p>Same starting line. Zero patent baggage. No transmission needed. Battery, motor, and electronic control—all three pillars can be mastered independently.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: EV Advantages -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Technical Edge</div>
+    <div class="section-title t-03">Simplified Architecture + Precision Control: EVs Are a "Software-Defined" Species</div>
+    <div class="section-desc"><strong>EVs replace the ICE engine and transmission with electronically controlled motors, making the overall architecture far simpler and delivering ten times the precision and responsiveness of ICE vehicles.</strong> If an ICE car's control precision is like a regular ruler, an EV's is a vernier caliper. The car of the future will be like a smartphone—packed with countless code modules—and all of that demands massive electricity, which EVs are naturally suited to provide in a modular fashion. If traditional ICE cars are Nokia's Symbian OS, EVs are Apple's iOS: they look vaguely similar but are fundamentally a different species. This is precisely why smartphone giants want to build EVs—genetically, they share far more DNA with EVs than traditional automakers ever will.</div>
+    <div class="flow-row">
+      <div class="flow-step">ICE Car<br>Nokia Symbian</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">EV<br>Apple iOS</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Inherently Programmable<br>Modular Expansion</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Hardware+Software<br>Give Hardware, Sell Software</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: Market Drive -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Learning Curve</div>
+    <div class="section-title t-04">Market Compounding: Sell More → Costs Fall → Geniuses Flock to Problems</div>
+    <div class="section-desc"><strong>Industrial learning curves dictate that the more you produce, the cheaper it gets—battery costs plunged nearly 90% in one decade and will continue falling in the next.</strong> China has an unmatched advantage: an enormous market. As long as products can sell, companies can keep iterating. Problems that seem unsolvable today (range, unit cost) are essentially just "not producing enough yet." Scale up → issue a bounty → geniuses swarm → the problem is conquered. In a free market, demand comes first—as long as someone is willing to pay, any obstacle will be overcome. The author cites a colleague who achieved financial freedom by going all-in on EV stocks: if you believe EVs are the future, don't worry about the "messy problems"—every one of them will be conquered.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📈</div>
+        <div class="data-name">Market Scale</div>
+        <div class="data-sm">World's largest auto market → sell more EVs → enterprises have capital to iterate</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📉</div>
+        <div class="data-name">Cost Decline</div>
+        <div class="data-sm">Learning curve effect → batteries dropped 90% in 10 years → next decade will continue downward</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🧠</div>
+        <div class="data-name">Genius-Powered R&amp;D</div>
+        <div class="data-sm">Problems = bounties → one genius outshines a thousand → every obstacle gets conquered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: Industry Landscape -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Industry Shakeout</div>
+    <div class="section-title t-05">China's Supply Chain Opportunity of the Century: BYD and Niche Competition</div>
+    <div class="section-desc"><strong>As long as China controls the supply chain, challengers and competitors will inevitably emerge within China, along with the supporting ecosystem.</strong> BYD is the standout story of this wave: its batteries rank among the world's top three, its electronic controls are fully independent of overseas imports, and it has been developing its own chips since 2002. Consumer markets won't see a single dominant player like social media does—instead, they'll settle into "one superpower plus multiple strong contenders," much like the smartphone market (Apple + various Android brands). The EV market's growth will also catalyze adjacent ecosystems like LiDAR (Huawei) and solar (LONGi). The author issues a warning: companies chasing quick money without deep commitment to technology will be swiftly ejected, not even getting to earn "slow money."</div>
+    <div class="quote-block">
+      "What you see as obstacles are someone else's bounty. Step aside and don't block the path of those who are getting things done."
+      <div class="q-author">— The author's response to "EV skepticism"</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">EVs are not a choice—they are an inevitability. Three converging forces—oil security, patent barriers, and software-defined architecture—combine with China's market scale and learning curve to power a virtuous flywheel. In the ICE era, Chinese companies were forever the "hired hands"; in the EV era, everyone starts from the same starting line. Miss this once-in-a-century paradigm shift and you'll wait another hundred years. The key isn't whether today's technology is perfect—it's that once the market expands, geniuses will convert every "unsolved problem" into "solved." This is the iron law of the tech industry: back the people, not the problems.</div>
+</div>
+
+<div class="footer">
+  Understanding Our Complex World — Ch.26 Infographic · Based on the original work · For learning purposes only
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高分自学法 · 第1章：为什么有些人更会读书？</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Back catalog ── */
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: 0.02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity 0.15s; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .back-catalog-btn:hover { opacity: 0.75; }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Header ── */
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Chapter overview ── */
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  /* ── KPI cards ── */
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note { font-size: 11px; color: #bbb; line-height: 1.6; border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center; }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; } .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; } .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; } .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; } .kpi-card.c04 .kpi-value { color: #4f46e5; }
+  .kpi-card.c05 { border-left: 3px solid #db2777; } .kpi-card.c05 .kpi-value { color: #db2777; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px; }
+
+  /* ── Quote block ── */
+  .quote-block {
+    background: #fefce8; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 16px 20px; margin-top: 10px;
+  }
+  .quote-text { font-size: 15px; color: #92400e; line-height: 1.8; font-style: italic; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .quote-author { font-size: 12px; color: #a16207; margin-top: 6px; }
+
+  /* ── Flow row ── */
+  .flow-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .flow-step {
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 10px;
+    padding: 10px 16px; text-align: center; font-size: 12px; color: #4f46e5;
+    font-family: 'FZXPYZS', 'PingFang SC', serif; line-height: 1.5;
+  }
+  .flow-step.end { background: #dcfce7; border-color: #bbf7d0; color: #166534; }
+  .flow-arrow { font-size: 18px; color: #a5b4fc; }
+
+  /* ── Data row ── */
+  .data-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 12px; }
+  .data-card {
+    background: #f8f6f3; border: 1px solid #e8e0d5; border-radius: 10px;
+    padding: 16px; text-align: center;
+  }
+  .data-big { font-size: 24px; margin-bottom: 4px; }
+  .data-name { font-size: 12px; color: #888; font-weight: bold; margin-bottom: 4px; }
+  .data-desc { font-size: 11px; color: #aaa; line-height: 1.5; }
+
+  /* ── Contrast cards ── */
+  .contrast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .contrast-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .contrast-card.left { background: #fef2f2; border: 1px solid #fecaca; }
+  .contrast-card.right { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .contrast-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .contrast-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .contrast-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Alert box ── */
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 16px 20px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.8;
+  }
+  .alert-box strong { color: #dc2626; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .contrast-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .data-row { grid-template-columns: 1fr; }
+    .container { padding: 0 8px; }
+h1 { font-size: 26px; }
+    .kpi-value { font-size: 34px; }
+    @media (max-width: 400px) { .kpi-row, .kpi-row.cols-4 { grid-template-columns: 1fr; } }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="高分自学法-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="高分自学法-ch004-info-en.html">中文 / English</a>
+</div>
+
+<h1>高分自学法 · 第1章「为什么有些人更会读书？」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:1px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  从高中到大学再到职场，作者始终好奇：为什么在相同的环境下，有些人总能更好地学习？
+  三个宝箱——大学里的"学习之神"、跨领域阅读的融会贯通、20多岁失败的切身体验——共同指向了一个答案。
+  这个困扰他20年的问题，最终汇聚成一句话。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>BLUF：为什么有些人更会读书？因为他们花很多时间，用正确的方法「独自」学习。</strong>资质不是天生的，学习量只能解答问题的一半。真正的答案隐藏在安德斯·艾利克森的"独自练习"研究中——就像骑自行车一样，那些很难用言语说明的学习方法，核心就在于独自学习。2500年前孔子与释迦牟尼的教诲、最新的脑科学研究、心理学与管理学的研究，所有资料都指向同一个方向。</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">20<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">追寻答案</div>
+    <div class="kpi-note">从高中到31岁<br>终于找到了答案</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">宝箱</div>
+    <div class="kpi-note">大学学霸·跨领域阅读<br>失败后的重生经验</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value" style="font-size:28px">独自</div>
+    <div class="kpi-label">核心答案</div>
+    <div class="kpi-note">独自练习是实力<br>提升的唯一路径</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">5<span class="kpi-unit">大领域</span></div>
+    <div class="kpi-label">全书覆盖</div>
+    <div class="kpi-note">学习原则·生活管理<br>精神管理·脑科学·自我信赖</div>
+  </div>
+</div>
+
+<!-- 01: 三个宝箱 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">探寻起点</div>
+    <div class="section-title t-01">三个宝箱：寻找答案的旅程</div>
+    <div class="section-desc"><strong>作者打开了三个宝箱来寻找"为什么有些人更会读书"的答案。</strong>第一个宝箱是大学里遇到的"学习之神"——那些轻松跻身全国排名、考取各县市第一二名的同学。他们在读书、生活、精神管理上有着惊人的共通之处。第二个宝箱是中央图书馆的跨领域阅读——人文学科、经营管理、冥想、心理学、脑科学、宗教学，这些完全不相干的知识中所藏的提示，其实都指着同一个方向。第三个宝箱是20多岁时彷徨与失败后重新站起来的切身体验——这段经历让他深刻理解了挫折、低潮，以及行为模式如何决定成败。</div>
+    <div class="quote-block">
+      <div class="quote-text">"这是很好的经验，因为你亲身经历过，所以感受更加深刻。"</div>
+      <div class="quote-author">——作者的恩师</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 错误答案 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">排除法</div>
+    <div class="section-title t-02">两个错误答案：资质与学习量</div>
+    <div class="section-desc"><strong>起初作者认为答案是"天生的资质"，但那是错的。</strong>虽然有人天生资质好，但资质并非不变的，更不是"天生的"——就像身体肌肉要多用才会发达，好的资质只是认真学习的结果。接着作者想到"学习量"，但这也只能解答问题的一半。有些正在读书的人辩称："一整天都在学习，但还是考不好。"单就学习量来看，完全无法说明为什么有些人就是比较会读书。</div>
+    <div class="contrast-grid">
+      <div class="contrast-card left"><div class="contrast-icon">❌</div><div class="contrast-text"><h4>资质说</h4><p>资质不是天生的——如同肌肉，用则发达，不用则萎缩。好资质只是认真学习的结果。</p></div></div>
+      <div class="contrast-card right"><div class="contrast-icon">⚠️</div><div class="contrast-text"><h4>学习量说</h4><p>学习量非常重要，但只能解答问题的一半。有些人学了一整天，成绩依然没有起色。</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 独自练习 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">关键启示</div>
+    <div class="section-title t-03">安德斯·艾利克森的启示：独自练习</div>
+    <div class="section-desc"><strong>瑞典心理学家安德斯·艾利克森以音乐学院学生为对象的研究，提供了关键提示。</strong>当学生们被问到哪些活动与提升实力息息相关时，所有演奏乐器的学生都给出了相同的答案——"独自练习"。就像骑自行车一样，那些我们虽然知道诀窍但很难用言语说明的学习方法，核心就在于独自学习。即使听了知名讲师的课程、尝试复杂的学习法、丝毫不错过任何最新信息，我们依然无法把书读好的原因，就在于学习必须靠自己。</div>
+    <div class="alert-box"><strong>🔑 关键发现：</strong>独自练习是提升实力的唯一路径。知名讲师的课程、复杂的学习法、最新的信息——这些都只是外力。真正的进步来自独自坐在座位上，用正确的方法学习。</div>
+  </div>
+</div>
+
+<!-- 04: 真正的答案 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">核心答案</div>
+    <div class="section-title t-04">20年追寻的答案：独自学习才是正道</div>
+    <div class="section-desc"><strong>从第一次思考这个问题的高中时期至今，作者花费20年所找到的答案是：花费许多时间努力学习实力却没有进步，并不是因为资质不好，而是因为"做很多努力"的方法错了。</strong>我们需要的不是整天上课、报名昂贵的补习班、追逐他人的读书秘诀，而是坐在座位上独自学习。要朝"用正确的方法增加独自学习的时间"这个方向倾注更多努力才对。</div>
+    <div class="flow-row">
+      <div class="flow-step">高中<br><small>初次好奇"为什么<br>有些人更会读书？"</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">大学<br><small>遇到"学习之神"<br>开始跨领域阅读</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">31岁<br><small>整合三个宝箱<br>确认"独自学习"答案</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 改变学习方式 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">行动号召</div>
+    <div class="section-title t-05">改变学习方式：从"做很多努力"到"做正确的努力"</div>
+    <div class="section-desc"><strong>现在，我们必须改变学习的方式。</strong>尽量减少在外活动的机会，立刻坐在座位上增加独自学习的时间。对学生、考生、应试者、准就业者、家长等所有必须读书的人来说，独自学习就是解答。本书将围绕五个领域展开：学习的原则、生活管理、精神管理、脑科学与自我信赖。</div>
+    <div class="data-row">
+      <div class="data-card"><div class="data-big">📖</div><div class="data-name">学习原则</div><div class="data-desc">该怎么学习<br>五大核心原则</div></div>
+      <div class="data-card"><div class="data-big">🏠</div><div class="data-name">生活管理</div><div class="data-desc">饮食·睡眠·时间<br>规律管理</div></div>
+      <div class="data-card"><div class="data-big">🧠</div><div class="data-name">精神管理</div><div class="data-desc">应对独自学习<br>时的精神崩溃</div></div>
+      <div class="data-card"><div class="data-big">🔬</div><div class="data-name">脑科学</div><div class="data-desc">为何人人都<br>能读好书</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">"为什么有些人更会读书？"——因为这个困扰作者20年的问题只有一个答案：他们花很多时间，用正确的方法「独自」学习。资质不是天生的，学习量只能解答一半。真正的秘密藏在安德斯·艾利克森的"独自练习"研究中——提升实力与独自练习息息相关。从2500年前的圣贤教诲到最新的脑科学研究，所有资料都指向同一个方向：减少在外活动，立刻坐在座位上，用正确的方法增加独自学习的时间。这就是读好书的固定模式。</div>
+</div>
+
+<div class="footer">
+  来源：《高分自学法》第1章 · 为什么有些人更会读书？ · 信息图 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>
