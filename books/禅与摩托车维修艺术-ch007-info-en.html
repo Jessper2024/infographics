@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Zen and the Art of Motorcycle Maintenance · Chapter 7 · The Ghost of Rationality</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:32px 16px 60px;font-family:'FZXPYZS','PingFang SC','Hiragino Sans GB','Microsoft YaHei',serif;color:#555}
+.container{max-width:880px;width:100%}
+.catalog-link{text-align:right;margin-bottom:12px}
+.catalog-link a{font-size:13px;color:#888;text-decoration:none;transition:color .2s;padding:4px 10px;border:1px solid #d8d0c5;border-radius:20px;background:#fff}
+.catalog-link a:hover{color:#dc2626}
+.lang-switch{text-align:center;margin-bottom:24px}
+.lang-switch a{display:inline-block;padding:6px 18px;margin:0 4px;font-size:13px;border:1px solid #d8d0c5;border-radius:20px;background:#fff;color:#555;text-decoration:none;transition:all .2s}
+.lang-switch a.active{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.lang-switch a:hover:not(.active){border-color:#dc2626;color:#dc2626}
+.header{text-align:center;margin-bottom:28px}
+.header h1{font-size:28px;color:#1a1a1a;font-weight:400;line-height:1.4;margin-bottom:6px}
+.header .subtitle{font-size:14px;color:#888;margin-bottom:16px}
+.divider{width:60px;height:3px;background:linear-gradient(to right,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.kpi-card{flex:1;min-width:140px;background:#fff;border-radius:14px;padding:16px 14px;text-align:center;box-shadow:0 1px 8px rgba(0,0,0,0.03);border-top:3px solid #ccc}
+.kpi-card .kpi-val{font-size:26px;font-weight:700;line-height:1.3}
+.kpi-card .kpi-label{font-size:12px;color:#888;margin-top:4px}
+.section{background:#fff;border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 1px 8px rgba(0,0,0,0.03);position:relative}
+.section .sec-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.section .sec-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.section .sec-tag{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;letter-spacing:.04em}
+.section .sec-title{font-size:18px;font-weight:700;line-height:1.3}
+.section .sec-body{font-size:14px;line-height:1.9;color:#555;margin-bottom:18px}
+.flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 0}
+.flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:8px 14px;font-size:13px;color:#9a3412;font-weight:600;text-align:center;white-space:nowrap}
+.flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.flow-arrow{color:#ea580c;font-size:18px;font-weight:bold}
+.dual-grid{display:flex;gap:14px}
+.dual-card{flex:1;border-radius:12px;padding:18px;font-size:13px;line-height:1.8;white-space:pre-line}
+.dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+.risk-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.risk-label{font-size:13px;color:#555;min-width:140px;font-weight:600}
+.risk-meter{flex:1;height:10px;background:#f3e8ff;border-radius:5px;overflow:hidden}
+.risk-fill{height:100%;background:#db2777;border-radius:5px}
+.risk-val{font-size:12px;color:#888;min-width:36px}
+.data-row{display:flex;gap:12px;flex-wrap:wrap}
+.data-card{flex:1;min-width:130px;border-radius:12px;padding:16px;text-align:center}
+.data-card .data-big{font-size:14px;font-weight:700;line-height:1.5}
+.data-card .data-sm{font-size:12px;color:#888;line-height:1.6;margin-top:4px}
+.quote-box{background:#fdf2f8;border:1px solid #fbcfe8;border-radius:12px;padding:18px 22px;font-size:14px;line-height:2;color:#9d174d;text-align:center}
+.takeaway{background:#fff;border-left:4px solid #db2777;border-radius:14px;padding:22px 28px;margin-top:22px;margin-bottom:22px;box-shadow:0 1px 8px rgba(0,0,0,0.03);font-size:14px;line-height:1.9;color:#555}
+.takeaway .ta-label{font-size:12px;color:#db2777;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.footer{text-align:center;font-size:13px;color:#bbb;padding:20px 0 10px;line-height:1.8}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .dual-grid{flex-direction:column}
+  .data-row{flex-direction:column}
+  .flow-row{flex-direction:column;align-items:stretch}
+}
+</style>
+</head><body>
+<div class="container">
+<div class="catalog-link">
+<a href="catalog.html">📖 Catalog</a>
+</div>
+<div class="lang-switch">
+<a href="禅与摩托车维修艺术-ch007-info-en.html" class="active">EN</a>
+<a href="禅与摩托车维修艺术-ch007-info-zh.html">中文</a>
+</div>
+<div class="header">
+<h1>Zen and the Art of Motorcycle Maintenance · Chapter 7 · The Ghost of Rationality</h1>
+<div class="subtitle">In 48-Degree Heat: A Handful of Sand, a Knife, and a Madman</div>
+</div>
+<div class="divider"></div>
+<div class="chapter-overview">
+<p>Entering Montana, the heat becomes hellish — the thermometer hits 48.8°C, exhaust pipes hiss. In Bowman, an old man in a wide-brimmed straw hat talks about the Henderson motorcycle he owned years ago, offering the narrator a brief solace in the scorching heat. Today's Chautauqua plunges into the core of Phaedrus's thought: we use the analytical knife to select a handful of sand from the world and then keep dividing it — classical cognition addresses these sand piles, romantic cognition addresses the handful before classification. And what Phaedrus hunts is the ghost behind both: rationality itself.</p>
+</div>
+<div class="kpi-row">
+<div class="kpi-card" style="border-top-color:#dc2626">
+<div class="kpi-val" style="color:#dc2626">48.8°C</div>
+<div class="kpi-label">Max Temperature</div>
+</div>
+<div class="kpi-card" style="border-top-color:#ea580c">
+<div class="kpi-val" style="color:#ea580c">55 mph</div>
+<div class="kpi-label">Speed Limit</div>
+</div>
+<div class="kpi-card" style="border-top-color:#ca8a04">
+<div class="kpi-val" style="color:#ca8a04">170 IQ</div>
+<div class="kpi-label">Phaedrus's IQ</div>
+</div>
+<div class="kpi-card" style="border-top-color:#4f46e5">
+<div class="kpi-val" style="color:#4f46e5">3 Days</div>
+<div class="kpi-label">Fasting Meditation</div>
+</div>
+</div>
+<div class="section" style="border-left:4px solid #dc2626">
+<div class="sec-header">
+<div class="sec-num" style="background:#fef2f2;color:#dc2626">01</div>
+<span class="sec-tag" style="background:#fef2f2;color:#dc2626">Heat</span>
+<span class="sec-title" style="color:#dc2626">The 48.8°C Hell of Bowman</span>
+</div>
+<div class="sec-body">The oncoming wind feels like it's blowing from a furnace. On the road, a crow drags a dried lizard corpse. In Bowman, the thermometer reads 38.8°C, but it climbs to 48.8°C — sunglasses and goggles become useless; you'd need a welder's mask. Blue smoke rises from the exhaust; spit on the glove sizzles when it touches the pipe. "What matters now is learning to endure, not trying to overcome it." They stop in Baker; in the shade the thermometer reads 42.2°C. The gas tank is too hot to touch.</div>
+<div class="sec-viz"><div class="risk-row"><div class="risk-label">Bowman Temp</div><div class="risk-meter"><div class="risk-fill" style="width:70%"></div></div><div class="risk-val">38.8°C</div></div>
+<div class="risk-row"><div class="risk-label">Baker Temp</div><div class="risk-meter"><div class="risk-fill" style="width:78%"></div></div><div class="risk-val">42.2°C</div></div>
+<div class="risk-row"><div class="risk-label">Max Temp</div><div class="risk-meter"><div class="risk-fill" style="width:92%"></div></div><div class="risk-val">48.8°C</div></div>
+<div class="risk-row"><div class="risk-label">Road Temp</div><div class="risk-meter"><div class="risk-fill" style="width:98%"></div></div><div class="risk-val">🔥</div></div>
+</div></div>
+<div class="section" style="border-left:4px solid #ea580c">
+<div class="sec-header">
+<div class="sec-num" style="background:#fff7ed;color:#ea580c">02</div>
+<span class="sec-tag" style="background:#fff7ed;color:#ea580c">Encounter</span>
+<span class="sec-title" style="color:#ea580c">The Old Man in the Straw Hat</span>
+</div>
+<div class="sec-body">On Bowman's empty streets, a solitary old man in a wide-brimmed straw hat watches them park. The three are too hot to speak, but the old man talks about the Henderson motorcycle he once owned. Under the 38-degree sun, the narrator talks motorcycles with him while John, Sylvia, and Chris grow increasingly impatient. Later in the restaurant, no one is interested in the encounter. "If a person keeps complaining, it only makes others more miserable." But the old man, walking away with heavy steps, had spoken sincerely.</div>
+<div class="sec-viz"><div class="quote-box">"They have vitality and know how to live." — about those who endure the scorching heat</div></div>
+</div>
+<div class="section" style="border-left:4px solid #ca8a04">
+<div class="sec-header">
+<div class="sec-num" style="background:#fefce8;color:#ca8a04">03</div>
+<span class="sec-tag" style="background:#fefce8;color:#ca8a04">Metaphor</span>
+<span class="sec-title" style="color:#ca8a04">A Handful of Sand and a Knife</span>
+</div>
+<div class="sec-body">Phaedrus uses the knife to divide the world and construct his ideas. "From what we observe, we select a handful of sand and call this handful the world." Once we hold this handful, we begin to differentiate — here and there, black and white, now and past. No two grains are alike; you can keep dividing by color, size, or shape without end. Classical cognition addresses these sand piles and their classifications; romantic cognition addresses the handful before classification. The two are incompatible, yet both are ways of observing the world.</div>
+<div class="sec-viz"><div class="flow-row"><div class="flow-step">Infinite Landscape</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Select a Handful<br/>"The World"</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">🔪 Classify<br/>Here/There</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Classical: Study piles<br/>Romantic: Gaze at handful</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step end">Phaedrus: Return<br/>to the sand itself</div></div></div>
+</div>
+<div class="section" style="border-left:4px solid #4f46e5">
+<div class="sec-header">
+<div class="sec-num" style="background:#eef2ff;color:#4f46e5">04</div>
+<span class="sec-tag" style="background:#eef2ff;color:#4f46e5">Ghost</span>
+<span class="sec-title" style="color:#4f46e5">The Ghost of Reason and Its Violent Discovery</span>
+</div>
+<div class="sec-body">What Phaedrus explored is the ghost behind all technology, all modern science, all Western thought — rationality itself. Its surface appearance may be incoherent and meaningless, making the most routine daily gestures seem abnormal through their alienation from everything else. "This is the ghost of ordinary existence, insisting that the ultimate purpose of life — to live — is an impossibility." Great men strive to heal others and extend lifespans; only a madman asks why. Phaedrus found this ghost — and when it appeared, it beat him viciously.</div>
+<div class="sec-viz"><div class="data-row">
+<div class="data-card" style="border:1px solid #dc262630;background:#dc262608"><div class="data-big" style="color:#dc2626">Great Men</div><div class="data-sm">Heal others<br/>Extend lifespans</div></div>
+<div class="data-card" style="border:1px solid #ea580c30;background:#ea580c08"><div class="data-big" style="color:#ea580c">Ordinary People</div><div class="data-sm">Living is the purpose<br/>Never ask why</div></div>
+<div class="data-card" style="border:1px solid #4f46e530;background:#4f46e508"><div class="data-big" style="color:#4f46e5">Phaedrus</div><div class="data-sm">Asks why<br/>And is beaten</div></div>
+</div></div>
+</div>
+<div class="section" style="border-left:4px solid #db2777">
+<div class="sec-header">
+<div class="sec-num" style="background:#fdf2f8;color:#db2777">05</div>
+<span class="sec-tag" style="background:#fdf2f8;color:#db2777">Mirror</span>
+<span class="sec-title" style="color:#db2777">The Wolf on the Mountain and the Self in the Mirror</span>
+</div>
+<div class="sec-body">In the dim twilight, Phaedrus had once fasted and meditated alone on the mountain for three days. He saw a small path and a swaying shadow — a very large sheepdog, or perhaps a wolf. The creature seemed to be watching him, judging him. Phaedrus gazed into its eyes for a long time, feeling a flicker of familiarity… It was much later that he learned it was a wolf. "He saw his own reflection in the wolf." Now the narrator sees the same image in the mirror — that animal-like presence, walking its own path, unconcerned with results.</div>
+<div class="sec-viz"><div class="quote-box">"He saw his own reflection in the wolf." — three days of fasting, on a Montana mountain</div></div>
+</div>
+<div class="takeaway">
+<div class="ta-label">💡 Key Takeaway</div>
+<p>The analytical knife divides the world and, in doing so, divides cognition. Phaedrus sought to do what no one had attempted before: to hold both the classifying and the non-classifying gaze simultaneously — not to ask "which grain of sand is the Buddha," but to return to the handful itself, back to the infinite landscape. This is a rebellion against rationality itself.</p>
+</div>
+<div class="footer">
+Source: Robert M. Pirsig, Zen and the Art of Motorcycle Maintenance
+</div>
+</div><!-- .container -->
+</body></html>

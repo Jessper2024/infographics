@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Zen and the Art of Motorcycle Maintenance · Chapter 8 · The Way of Precision</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:32px 16px 60px;font-family:'FZXPYZS','PingFang SC','Hiragino Sans GB','Microsoft YaHei',serif;color:#555}
+.container{max-width:880px;width:100%}
+.catalog-link{text-align:right;margin-bottom:12px}
+.catalog-link a{font-size:13px;color:#888;text-decoration:none;transition:color .2s;padding:4px 10px;border:1px solid #d8d0c5;border-radius:20px;background:#fff}
+.catalog-link a:hover{color:#dc2626}
+.lang-switch{text-align:center;margin-bottom:24px}
+.lang-switch a{display:inline-block;padding:6px 18px;margin:0 4px;font-size:13px;border:1px solid #d8d0c5;border-radius:20px;background:#fff;color:#555;text-decoration:none;transition:all .2s}
+.lang-switch a.active{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.lang-switch a:hover:not(.active){border-color:#dc2626;color:#dc2626}
+.header{text-align:center;margin-bottom:28px}
+.header h1{font-size:28px;color:#1a1a1a;font-weight:400;line-height:1.4;margin-bottom:6px}
+.header .subtitle{font-size:14px;color:#888;margin-bottom:16px}
+.divider{width:60px;height:3px;background:linear-gradient(to right,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.kpi-card{flex:1;min-width:140px;background:#fff;border-radius:14px;padding:16px 14px;text-align:center;box-shadow:0 1px 8px rgba(0,0,0,0.03);border-top:3px solid #ccc}
+.kpi-card .kpi-val{font-size:26px;font-weight:700;line-height:1.3}
+.kpi-card .kpi-label{font-size:12px;color:#888;margin-top:4px}
+.section{background:#fff;border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 1px 8px rgba(0,0,0,0.03);position:relative}
+.section .sec-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.section .sec-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.section .sec-tag{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;letter-spacing:.04em}
+.section .sec-title{font-size:18px;font-weight:700;line-height:1.3}
+.section .sec-body{font-size:14px;line-height:1.9;color:#555;margin-bottom:18px}
+.flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 0}
+.flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:8px 14px;font-size:13px;color:#9a3412;font-weight:600;text-align:center;white-space:nowrap}
+.flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.flow-arrow{color:#ea580c;font-size:18px;font-weight:bold}
+.dual-grid{display:flex;gap:14px}
+.dual-card{flex:1;border-radius:12px;padding:18px;font-size:13px;line-height:1.8;white-space:pre-line}
+.dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+.risk-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.risk-label{font-size:13px;color:#555;min-width:140px;font-weight:600}
+.risk-meter{flex:1;height:10px;background:#f3e8ff;border-radius:5px;overflow:hidden}
+.risk-fill{height:100%;background:#db2777;border-radius:5px}
+.risk-val{font-size:12px;color:#888;min-width:36px}
+.data-row{display:flex;gap:12px;flex-wrap:wrap}
+.data-card{flex:1;min-width:130px;border-radius:12px;padding:16px;text-align:center}
+.data-card .data-big{font-size:14px;font-weight:700;line-height:1.5}
+.data-card .data-sm{font-size:12px;color:#888;line-height:1.6;margin-top:4px}
+.quote-box{background:#fdf2f8;border:1px solid #fbcfe8;border-radius:12px;padding:18px 22px;font-size:14px;line-height:2;color:#9d174d;text-align:center}
+.takeaway{background:#fff;border-left:4px solid #db2777;border-radius:14px;padding:22px 28px;margin-top:22px;margin-bottom:22px;box-shadow:0 1px 8px rgba(0,0,0,0.03);font-size:14px;line-height:1.9;color:#555}
+.takeaway .ta-label{font-size:12px;color:#db2777;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.footer{text-align:center;font-size:13px;color:#bbb;padding:20px 0 10px;line-height:1.8}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .dual-grid{flex-direction:column}
+  .data-row{flex-direction:column}
+  .flow-row{flex-direction:column;align-items:stretch}
+}
+</style>
+</head><body>
+<div class="container">
+<div class="catalog-link">
+<a href="catalog.html">📖 Catalog</a>
+</div>
+<div class="lang-switch">
+<a href="禅与摩托车维修艺术-ch008-info-en.html" class="active">EN</a>
+<a href="禅与摩托车维修艺术-ch008-info-zh.html">中文</a>
+</div>
+<div class="header">
+<h1>Zen and the Art of Motorcycle Maintenance · Chapter 8 · The Way of Precision</h1>
+<div class="subtitle">A Thousandth of an Inch — the Ultimate Expression of Classical Beauty</div>
+</div>
+<div class="divider"></div>
+<div class="chapter-overview">
+<p>Ten in the morning, behind a hotel in Miles City, Montana, on a cool shaded rock. The narrator finally has time to adjust the tappets — a ritualistic operation requiring a cooled engine and a clear mind. At Bill's motorcycle shop, parts are scattered everywhere in the style of the "photographic-mind" school. After adjusting all four tappets, the engine noise disappears — altitude has changed, and that explains the carbon buildup. In this chapter, the motorcycle, having been decomposed by components, is revealed as a pyramid of ideas: steel, raw materials, even precision measuring instruments — all of this exists in the human mind.</p>
+</div>
+<div class="kpi-row">
+<div class="kpi-card" style="border-top-color:#dc2626">
+<div class="kpi-val" style="color:#dc2626">0.001"</div>
+<div class="kpi-label">Precision Limit</div>
+</div>
+<div class="kpi-card" style="border-top-color:#ea580c">
+<div class="kpi-val" style="color:#ea580c">4</div>
+<div class="kpi-label">Tappets Checked</div>
+</div>
+<div class="kpi-card" style="border-top-color:#ca8a04">
+<div class="kpi-val" style="color:#ca8a04">250 ft</div>
+<div class="kpi-label">Altitude</div>
+</div>
+<div class="kpi-card" style="border-top-color:#4f46e5">
+<div class="kpi-val" style="color:#4f46e5">$125</div>
+<div class="kpi-label">Harley Parts Set</div>
+</div>
+</div>
+<div class="section" style="border-left:4px solid #dc2626">
+<div class="sec-header">
+<div class="sec-num" style="background:#fef2f2;color:#dc2626">01</div>
+<span class="sec-tag" style="background:#fef2f2;color:#dc2626">Ritual</span>
+<span class="sec-title" style="color:#dc2626">Tappet Adjustment: Repair as Worship</span>
+</div>
+<div class="sec-body">"You should never repair a machine directly under the blazing sun, or when your mind is clouded after a long day. Even after repairing it a thousand times, you must keep an alert mind." The spark plugs are heavily carbon-fouled — too much fuel, too little air in the cylinder. The narrator uses a small knife to carve a hidden rod thin and clean the carbon. First tappet — fine. Second — fine. Third — fine. The fourth is too loose — exactly what was hoped for. After adjustment, the tappet noise vanishes.</div>
+<div class="sec-viz"><div class="flow-row"><div class="flow-step">Spark Plug<br/>Carbon Check</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Tappet 1<br/>✅ OK</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Tappet 2<br/>✅ OK</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Tappet 3<br/>✅ OK</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step end">Tappet 4<br/>🔧 Loose → Fixed</div></div></div>
+</div>
+<div class="section" style="border-left:4px solid #ea580c">
+<div class="sec-header">
+<div class="sec-num" style="background:#fff7ed;color:#ea580c">02</div>
+<span class="sec-tag" style="background:#fff7ed;color:#ea580c">Mechanic</span>
+<span class="sec-title" style="color:#ea580c">Bill: The "Photographic-Mind" Mechanic</span>
+</div>
+<div class="sec-body">At Bill's motorcycle shop, wrenches, screwdrivers, and old parts are scattered everywhere — so messy you can barely see the workbench. The door is wide open but no one is there. "He's probably gone fishing." Yet among this chaos, Bill can grab any tool without thinking. He sells a complete set of old Harley parts — minus the frame — for just $125. "That's also the best way to learn." In the West, everything runs on a different rhythm.</div>
+<div class="sec-viz"><div class="dual-grid"><div class="dual-card yes">🏍️ Bill's Shop
+Messy but efficient
+Fishing over minding the store
+"Photographic mind" mechanic
+Full Harley parts · $125</div><div class="dual-card no">🏢 City Shops
+Neatly organized
+By the book
+Standardized process
+Only new parts</div></div></div>
+</div>
+<div class="section" style="border-left:4px solid #ca8a04">
+<div class="sec-header">
+<div class="sec-num" style="background:#fefce8;color:#ca8a04">03</div>
+<span class="sec-tag" style="background:#fefce8;color:#ca8a04">Precision</span>
+<span class="sec-title" style="color:#ca8a04">A Thousandth of an Inch: Where Classical Beauty Lives</span>
+</div>
+<div class="sec-body">The heat and explosive pressure inside a motorcycle can only be controlled by precision instruments. If the action from the connecting rod to the crankshaft has an error of a thousandth of an inch, the transmission will be as abrupt as a hammer blow — damaging the rod, bearings, and crankshaft. As the error accumulates, the rod will snap, crashing into the rotating crankshaft and destroying the entire engine. Precision instruments express an idea. "No part of a motorcycle can achieve perfection, but if you come very close, it can miraculously fly across the countryside near its limit."</div>
+<div class="sec-viz"><div class="risk-row"><div class="risk-label">Perfect Precision</div><div class="risk-meter"><div class="risk-fill" style="width:99%"></div></div><div class="risk-val">99.9%</div></div>
+<div class="risk-row"><div class="risk-label">Fatal Error</div><div class="risk-meter"><div class="risk-fill" style="width:1%"></div></div><div class="risk-val">0.001"</div></div>
+<div class="risk-row"><div class="risk-label">Engine Failure Risk</div><div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div><div class="risk-val">95%</div></div>
+<div class="risk-row"><div class="risk-label">Classical Beauty Visible</div><div class="risk-meter"><div class="risk-fill" style="width:10%"></div></div><div class="risk-val">10%</div></div>
+</div></div>
+<div class="section" style="border-left:4px solid #4f46e5">
+<div class="sec-header">
+<div class="sec-num" style="background:#eef2ff;color:#4f46e5">04</div>
+<span class="sec-tag" style="background:#eef2ff;color:#4f46e5">System</span>
+<span class="sec-title" style="color:#4f46e5">The Pyramid of Ideas: The Nature of Systems</span>
+</div>
+<div class="sec-body">With each division — components, functions — more branches emerge, forming a massive pyramid. This structure of ideas is called a "system" — it has been the basic structure of all Western knowledge since antiquity. Kingdoms, empires, churches, armies, modern corporations, computer software, biological taxonomy — all are systems. But if we destroy them simply because they are systems, we are only addressing the result, not the cause. "The real system, the true system, is our current conception of systems — that is, rationality itself."</div>
+<div class="sec-viz"><div class="flow-row"><div class="flow-step">Motorcycle</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Components<br/>Functions</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Engine<br/>Transmission</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Cylinder<br/>Camshaft</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step end">⋯⋯<br/>Pyramid</div></div></div>
+</div>
+<div class="section" style="border-left:4px solid #db2777">
+<div class="sec-header">
+<div class="sec-num" style="background:#fdf2f8;color:#db2777">05</div>
+<span class="sec-tag" style="background:#fdf2f8;color:#db2777">Essence</span>
+<span class="sec-title" style="color:#db2777">Steel? That Too Was Designed by Humans</span>
+</div>
+<div class="sec-body">When John looks at a motorcycle, he sees only various structures and is repelled. The narrator sees the designer's ideas. "John thinks I am engaged with mechanical parts; in reality I am engaged with concepts." Steel? Steel is also something humans designed — steel does not exist in nature. Raw materials? Likewise conceived by humans — ghosts! "All of this exists within the human mind." Every part, every shape of a motorcycle was designed by people. It is not a pile of steel parts but a conceptual system.</div>
+<div class="sec-viz"><div class="quote-box">"When John sees a motorcycle, he sees only different structures and is repelled by it. But in my eyes, I see the designer's ideas."</div></div>
+</div>
+<div class="takeaway">
+<div class="ta-label">💡 Key Takeaway</div>
+<p>Motorcycle maintenance is a rational process — the art of repair is a miniature of the art of rationality. Precision is not about perfection; it is about avoiding destruction. And when you see through the parts to the designer's ideas, you understand: a motorcycle is fundamentally a product of the mind. All systems, all technology — ultimately, the answers can only be found by returning to the human mind.</p>
+</div>
+<div class="footer">
+Source: Robert M. Pirsig, Zen and the Art of Motorcycle Maintenance
+</div>
+</div><!-- .container -->
+</body></html>

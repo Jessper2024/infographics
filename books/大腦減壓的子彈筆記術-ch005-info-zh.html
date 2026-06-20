@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大腦減壓的子彈筆記術 · 大腦減壓的子彈筆記術 · 第五章「如何让这个专案系统不会有遗漏？」</title>
+<style>
+@font-face { font-family:'FZXPYZS'; src:url('../方正屏显雅宋简体.TTF') format('truetype'); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#f5f1eb; font-family:'FZXPYZS','PingFang SC','Noto Serif TC',serif;
+  color:#1a1a1a; display:flex; justify-content:center; align-items:flex-start;
+  min-height:100vh; padding:40px 16px 60px;
+}
+.container { width:100%; max-width:880px; }
+.header { text-align:center; margin-bottom:28px; }
+.catalog-link { display:inline-block; font-size:13px; color:#4f46e5; text-decoration:none;
+  margin-bottom:12px; border-bottom:1px dashed #4f46e5; padding-bottom:2px; font-family:'FZXPYZS',serif; }
+.catalog-link:hover { color:#dc2626; border-color:#dc2626; }
+.lang-switch { position:absolute; top:20px; right:20px; }
+.lang-btn { display:inline-block; padding:6px 14px; font-size:13px; color:#4f46e5;
+  background:#fff; border:1px solid #e8e0d5; border-radius:20px; text-decoration:none;
+  font-family:'FZXPYZS',serif; cursor:pointer; transition:all .2s; }
+.lang-btn:hover { background:#eef2ff; border-color:#4f46e5; }
+.lang-btn.active { background:#4f46e5; color:#fff; border-color:#4f46e5; }
+h1 { font-size:26px; color:#1a1a1a; font-weight:normal; font-family:'FZXPYZS',serif;
+  letter-spacing:.04em; margin-bottom:6px; line-height:1.5; }
+.subtitle { font-size:14px; color:#888; font-family:'FZXPYZS',serif; }
+.divider { width:60px; height:3px; margin:16px auto 20px;
+  background:linear-gradient(90deg,#dc2626,#ea580c); border-radius:2px; }
+.overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:18px 22px; margin-bottom:24px; font-size:14px; color:#555; line-height:1.9;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.overview p { margin:0; }
+.kpi-row { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; justify-content:center; }
+.kpi-card { flex:1; min-width:100px; background:#fff; border-radius:10px; padding:14px 12px;
+  text-align:center; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+.kpi-value { font-size:24px; font-weight:bold; font-family:'FZXPYZS',serif;
+  margin-bottom:4px; }
+.kpi-label { font-size:11px; color:#888; font-family:'FZXPYZS',serif; }
+.section { background:#fff; border-radius:14px; padding:22px 24px; margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); }
+.section-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.section-num { width:42px; height:42px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:13px; font-weight:bold; flex-shrink:0; font-family:'FZXPYZS',serif; }
+.section-tag { padding:3px 10px; border-radius:20px; font-size:11px; font-family:'FZXPYZS',serif; }
+.section-title { font-size:18px; font-weight:bold; margin-bottom:10px; font-family:'FZXPYZS',serif;
+  letter-spacing:.02em; }
+.section-desc { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+.flow-row { display:flex; align-items:center; gap:6px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+.flow-step { background:#fff7ed; border:1px solid #fed7aa; padding:8px 14px;
+  border-radius:8px; font-size:12px; color:#9a3412; font-family:'FZXPYZS',serif; text-align:center; max-width:200px; }
+.flow-step.end { background:#fef2f2; border-color:#fecaca; color:#991b1b; }
+.flow-arrow { color:#ea580c; font-size:16px; font-weight:bold; }
+.dual-grid { display:flex; gap:10px; margin-top:14px; }
+.dual-card { flex:1; border-radius:10px; padding:14px; font-size:12px; line-height:1.7; font-family:'FZXPYZS',serif; }
+.dual-card.yes { background:#f0fdf4; border:1px solid #bbf7d0; }
+.dual-card.no { background:#fef2f2; border:1px solid #fecaca; }
+.dual-label { font-size:13px; font-weight:bold; margin-bottom:6px; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+.dual-item { padding:2px 0; color:#555; }
+.data-row { display:flex; gap:10px; margin-top:14px; }
+.data-card { flex:1; background:#fff; border-radius:10px; padding:16px 10px;
+  text-align:center; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+.data-card.red { border-top:3px solid #dc2626; }
+.data-card.orange { border-top:3px solid #ea580c; }
+.data-card.green { border-top:3px solid #16a34a; }
+.data-big { font-size:18px; font-weight:bold; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+.data-sub { font-size:12px; color:#888; margin-top:2px; font-family:'FZXPYZS',serif; }
+.takeaway { background:linear-gradient(135deg,#fef2f2,#fff7ed,#fefce8); border-radius:14px;
+  padding:22px 26px; margin-top:8px; margin-bottom:24px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); border:1px solid #fecaca; }
+.takeaway-label { font-size:13px; color:#dc2626; font-weight:bold; margin-bottom:8px;
+  font-family:'FZXPYZS',serif; letter-spacing:.06em; }
+.takeaway-text { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+.footer { text-align:center; font-size:12px; color:#bbb; padding-top:16px;
+  border-top:1px solid #e8e0d5; font-family:'FZXPYZS',serif; }
+.footer a { color:#bbb; text-decoration:none; }
+.footer a:hover { color:#888; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="catalog-link" href="大腦減壓的子彈筆記術-catalog.html">← 返回章节目录</a>
+  <div class="lang-switch">
+    <a class="lang-btn active" href="大腦減壓的子彈筆記術-ch005-info-zh.html">中文</a>
+    <a class="lang-btn " href="大腦減壓的子彈筆記術-ch005-info-en.html">EN</a>
+  </div>
+  <div class="header">
+    <h1>大腦減壓的子彈筆記術 · 第五章「如何让这个专案系统不会有遗漏？」</h1>
+    <div class="subtitle">排程＋提醒：从准备出发，而非从执行出发</div>
+    <div class="divider"></div>
+  </div>
+  <div class="overview">
+    <p>打造了以专案主目录笔记为核心的收敛系统后（一万笔记→二十几则），还必须解决「遗漏」问题。本章补上两个关键机制：①「排程」——把每个任务和行动放在专案流程中「你一定会看到的位置」，不用记忆、不会遗漏；②「提醒」——重新定义时间提醒的本质：不是提醒你几点去做什么，而是提醒你「什么时候该开始准备」。两者的共同哲学是：系统自动把该做的事推到眼前，你只需照着流程执行。</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid #dc2626">
+  <div class="kpi-value" style="color:#dc2626">2步</div>
+  <div class="kpi-label">排程核心步骤</div>
+</div>    <div class="kpi-card" style="border-top:3px solid #ea580c">
+  <div class="kpi-value" style="color:#ea580c">准备提醒</div>
+  <div class="kpi-label">有效提醒新思维</div>
+</div>    <div class="kpi-card" style="border-top:3px solid #ca8a04">
+  <div class="kpi-value" style="color:#ca8a04">20+则</div>
+  <div class="kpi-label">每天聚焦专案数</div>
+</div>    <div class="kpi-card" style="border-top:3px solid #4f46e5">
+  <div class="kpi-value" style="color:#4f46e5">0遗漏</div>
+  <div class="kpi-label">系统可靠性</div>
+</div>
+  </div>
+    <div class="section" style="border-left:4px solid #dc2626">
+      <div class="section-header">
+        <div class="section-num" style="background:#fef2f2;color:#dc2626">01</div>
+        <div class="section-tag" style="background:#fef2f2;color:#dc2626">排程哲学</div>
+      </div>
+      <div class="section-title" style="color:#dc2626">为什么排程是「防漏」的根本？</div>
+      <div class="section-desc">人的大脑记不住所有行动的顺序和时间。排程的本质不是制定严格的时间表，而是「把每一个行动放在做这件事时一定会看到的位置」。就像整理家居——每件东西都有固定的位置，任何新东西来了也知道该放哪里。专案主目录笔记就是那个「固定位置」：你顺着流程推进，当下该做的行动自然出现在眼前，不用记忆，不会遗漏。</div><div class="flow-row"><div class="flow-step ">大脑无法记忆所有行动</div><div class="flow-arrow">→</div><div class="flow-step ">专案主目录=固定位置</div><div class="flow-arrow">→</div><div class="flow-step end">照着流程推进自然不漏</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #ea580c">
+      <div class="section-header">
+        <div class="section-num" style="background:#fff7ed;color:#ea580c">02</div>
+        <div class="section-tag" style="background:#fff7ed;color:#ea580c">排程两步法</div>
+      </div>
+      <div class="section-title" style="color:#ea580c">顺序＋归位：排程的唯一两个动作</div>
+      <div class="section-desc">第一步：不只是创建专案主目录，要按照推进次序排列目录中的任务顺序。目录顺序就是你推进专案的前后步骤。第二步：任何新任务、新行动出现时，不要随便丢在一旁，而要把它放入专案主目录中它真正该在的那个位置。两个动作重复做，专案系统就永远处于「有序、可见、不漏」的状态。</div>
+      <div class="dual-grid">
+  <div class="dual-card yes"><div class="dual-label">✅ 有效做法</div><div class="dual-item">新任务出现→放入专案目录的正确位置→照着流程执行</div></div>
+  <div class="dual-card no"><div class="dual-label">❌ 无效做法</div><div class="dual-item">新任务出现→临时记在脑中或丢到杂乱的待办清单→遗忘或错位</div></div>
+</div>
+    </div>
+    <div class="section" style="border-left:4px solid #ca8a04">
+      <div class="section-header">
+        <div class="section-num" style="background:#fefce8;color:#ca8a04">03</div>
+        <div class="section-tag" style="background:#fefce8;color:#ca8a04">提醒新思维</div>
+      </div>
+      <div class="section-title" style="color:#ca8a04">有效提醒的本质：准备提醒，而非执行提醒</div>
+      <div class="section-desc">传统时间提醒无效的原因：它提醒你「几点几分去做某事」，但那个时间点你可能根本没空。有效的提醒是「准备提醒」——不是叫你当下执行，而是告诉你「某个即将到达的事情，现在该开始准备了」。例如6月1日有课程，设定5月15日提醒——不是让你5月15日去上课，而是提醒你该开始准备课程了。你有充裕时间安排行动，而不是被最后一刻的紧迫压垮。</div><div class="flow-row"><div class="flow-step ">传统: 明天下午2点写文章</div><div class="flow-arrow">→</div><div class="flow-step ">无效→届时可能没空</div><div class="flow-arrow">→</div><div class="flow-step ">有效: 课程是6/1→5/15提醒</div><div class="flow-arrow">→</div><div class="flow-step end">现在开始准备→从容安排</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #4f46e5">
+      <div class="section-header">
+        <div class="section-num" style="background:#eef2ff;color:#4f46e5">04</div>
+        <div class="section-tag" style="background:#eef2ff;color:#4f46e5">Evernote实操</div>
+      </div>
+      <div class="section-title" style="color:#4f46e5">Evernote提醒事项清单：到期的自动聚集</div>
+      <div class="section-desc">Evernote时间提醒的最佳设计不是弹出通知，而是「提醒事项清单」。当任务笔记的提醒到期后，所有到期的笔记自动出现在记事清单上方的提醒事项清单中。这告诉你：这些任务是需要现在开始采取行动、做准备的。设定逻辑很简单：决定这个任务「应该什么时候开始准备」，把那个准备时间设为提醒日期。</div><div class="data-row"><div class="data-card red"><div class="data-big">设定准备日</div><div class="data-sub">非执行日</div></div><div class="data-card orange"><div class="data-big">到期自动聚合</div><div class="data-sub">提醒事项清单</div></div><div class="data-card green"><div class="data-big">逐一执行准备</div><div class="data-sub">从容不迫</div></div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #db2777">
+      <div class="section-header">
+        <div class="section-num" style="background:#fdf2f8;color:#db2777">05</div>
+        <div class="section-tag" style="background:#fdf2f8;color:#db2777">完整流程总结</div>
+      </div>
+      <div class="section-title" style="color:#db2777">每天只需做一件事：信任系统，执行眼前</div>
+      <div class="section-desc">系统完整搭建后，每天打开Evernote，看到的不是底层杂乱的任务，而是系统顶端少数聚焦的专案主目录笔记。不用担心视野之外的事——系统建构完整、相对没有漏洞。就算漏掉一些事，那一定是不重要的事。有时来自过去的时间提醒会出现，告诉你现在该推进哪个专案的准备。你只需要做一件事：每天打开系统，相信系统，执行系统推到你眼前的、少数聚焦的专案、任务与行动。</div><div class="data-row"><div class="data-card red"><div class="data-big">打开系统</div><div class="data-sub">专案主目录</div></div><div class="data-card orange"><div class="data-big">相信系统</div><div class="data-sub">无遗漏</div></div><div class="data-card green"><div class="data-big">执行眼前</div><div class="data-sub">聚焦少数</div></div></div>
+    </div>
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心要点</div>
+    <div class="takeaway-text">防遗漏的真谛不在于更强的记忆力或更长的清单，而在于「位置」与「时机」的系统设计。把每个行动放在推进流程中一定会看到的位置（排程），并为关键节点设定「何时开始准备」的提醒（提醒），系统就会自动把该做的事推到眼前。你不需要记住任何事——你只需要信任系统，照做就行。</div>
+  </div>
+  <div class="footer">
+    来源：大腦減壓的子彈筆記術（電腦玩物站長Esor）· 第5章 · 2026-06-20
+  </div>
+</div>
+</body>
+</html>

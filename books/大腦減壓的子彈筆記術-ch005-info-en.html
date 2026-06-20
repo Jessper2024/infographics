@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大腦減壓的子彈筆記術 · 大腦減壓的子彈筆記術 · Chapter 5 "How to Make the Project System Leak-Proof"</title>
+<style>
+@font-face { font-family:'FZXPYZS'; src:url('../方正屏显雅宋简体.TTF') format('truetype'); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#f5f1eb; font-family:'FZXPYZS','PingFang SC','Noto Serif TC',serif;
+  color:#1a1a1a; display:flex; justify-content:center; align-items:flex-start;
+  min-height:100vh; padding:40px 16px 60px;
+}
+.container { width:100%; max-width:880px; }
+.header { text-align:center; margin-bottom:28px; }
+.catalog-link { display:inline-block; font-size:13px; color:#4f46e5; text-decoration:none;
+  margin-bottom:12px; border-bottom:1px dashed #4f46e5; padding-bottom:2px; font-family:'FZXPYZS',serif; }
+.catalog-link:hover { color:#dc2626; border-color:#dc2626; }
+.lang-switch { position:absolute; top:20px; right:20px; }
+.lang-btn { display:inline-block; padding:6px 14px; font-size:13px; color:#4f46e5;
+  background:#fff; border:1px solid #e8e0d5; border-radius:20px; text-decoration:none;
+  font-family:'FZXPYZS',serif; cursor:pointer; transition:all .2s; }
+.lang-btn:hover { background:#eef2ff; border-color:#4f46e5; }
+.lang-btn.active { background:#4f46e5; color:#fff; border-color:#4f46e5; }
+h1 { font-size:26px; color:#1a1a1a; font-weight:normal; font-family:'FZXPYZS',serif;
+  letter-spacing:.04em; margin-bottom:6px; line-height:1.5; }
+.subtitle { font-size:14px; color:#888; font-family:'FZXPYZS',serif; }
+.divider { width:60px; height:3px; margin:16px auto 20px;
+  background:linear-gradient(90deg,#dc2626,#ea580c); border-radius:2px; }
+.overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:18px 22px; margin-bottom:24px; font-size:14px; color:#555; line-height:1.9;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.overview p { margin:0; }
+.kpi-row { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; justify-content:center; }
+.kpi-card { flex:1; min-width:100px; background:#fff; border-radius:10px; padding:14px 12px;
+  text-align:center; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+.kpi-value { font-size:24px; font-weight:bold; font-family:'FZXPYZS',serif;
+  margin-bottom:4px; }
+.kpi-label { font-size:11px; color:#888; font-family:'FZXPYZS',serif; }
+.section { background:#fff; border-radius:14px; padding:22px 24px; margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); }
+.section-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.section-num { width:42px; height:42px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:13px; font-weight:bold; flex-shrink:0; font-family:'FZXPYZS',serif; }
+.section-tag { padding:3px 10px; border-radius:20px; font-size:11px; font-family:'FZXPYZS',serif; }
+.section-title { font-size:18px; font-weight:bold; margin-bottom:10px; font-family:'FZXPYZS',serif;
+  letter-spacing:.02em; }
+.section-desc { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+.flow-row { display:flex; align-items:center; gap:6px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+.flow-step { background:#fff7ed; border:1px solid #fed7aa; padding:8px 14px;
+  border-radius:8px; font-size:12px; color:#9a3412; font-family:'FZXPYZS',serif; text-align:center; max-width:200px; }
+.flow-step.end { background:#fef2f2; border-color:#fecaca; color:#991b1b; }
+.flow-arrow { color:#ea580c; font-size:16px; font-weight:bold; }
+.dual-grid { display:flex; gap:10px; margin-top:14px; }
+.dual-card { flex:1; border-radius:10px; padding:14px; font-size:12px; line-height:1.7; font-family:'FZXPYZS',serif; }
+.dual-card.yes { background:#f0fdf4; border:1px solid #bbf7d0; }
+.dual-card.no { background:#fef2f2; border:1px solid #fecaca; }
+.dual-label { font-size:13px; font-weight:bold; margin-bottom:6px; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+.dual-item { padding:2px 0; color:#555; }
+.data-row { display:flex; gap:10px; margin-top:14px; }
+.data-card { flex:1; background:#fff; border-radius:10px; padding:16px 10px;
+  text-align:center; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+.data-card.red { border-top:3px solid #dc2626; }
+.data-card.orange { border-top:3px solid #ea580c; }
+.data-card.green { border-top:3px solid #16a34a; }
+.data-big { font-size:18px; font-weight:bold; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+.data-sub { font-size:12px; color:#888; margin-top:2px; font-family:'FZXPYZS',serif; }
+.takeaway { background:linear-gradient(135deg,#fef2f2,#fff7ed,#fefce8); border-radius:14px;
+  padding:22px 26px; margin-top:8px; margin-bottom:24px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); border:1px solid #fecaca; }
+.takeaway-label { font-size:13px; color:#dc2626; font-weight:bold; margin-bottom:8px;
+  font-family:'FZXPYZS',serif; letter-spacing:.06em; }
+.takeaway-text { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+.footer { text-align:center; font-size:12px; color:#bbb; padding-top:16px;
+  border-top:1px solid #e8e0d5; font-family:'FZXPYZS',serif; }
+.footer a { color:#bbb; text-decoration:none; }
+.footer a:hover { color:#888; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="catalog-link" href="大腦減壓的子彈筆記術-catalog.html">← Back to Catalog</a>
+  <div class="lang-switch">
+    <a class="lang-btn " href="大腦減壓的子彈筆記術-ch005-info-en.html">中文</a>
+    <a class="lang-btn active" href="大腦減壓的子彈筆記術-ch005-info-zh.html">中文</a>
+  </div>
+  <div class="header">
+    <h1>大腦減壓的子彈筆記術 · Chapter 5 "How to Make the Project System Leak-Proof"</h1>
+    <div class="subtitle">Scheduling + Reminders: Start from Preparation, Not Execution</div>
+    <div class="divider"></div>
+  </div>
+  <div class="overview">
+    <p>After building the convergence system centered on project master directory notes (10,000 notes → ~20), we must solve the "leakage" problem. This chapter adds two key mechanisms: ① "Scheduling" — placing every task and action at a position in the project flow where you "will definitely see it," eliminating the need to memorize; ② "Reminders" — redefining their essence: not telling you what to do at what time, but telling you "when to start preparing." The shared philosophy: the system automatically pushes what needs to be done right in front of you; you just follow the flow and execute.</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid #dc2626">
+  <div class="kpi-value" style="color:#dc2626">2 Steps</div>
+  <div class="kpi-label">Core Scheduling</div>
+</div>    <div class="kpi-card" style="border-top:3px solid #ea580c">
+  <div class="kpi-value" style="color:#ea580c">Prep Reminder</div>
+  <div class="kpi-label">New Reminder Paradigm</div>
+</div>    <div class="kpi-card" style="border-top:3px solid #ca8a04">
+  <div class="kpi-value" style="color:#ca8a04">~20 Projects</div>
+  <div class="kpi-label">Daily Focus Scope</div>
+</div>    <div class="kpi-card" style="border-top:3px solid #4f46e5">
+  <div class="kpi-value" style="color:#4f46e5">Zero Leak</div>
+  <div class="kpi-label">System Reliability</div>
+</div>
+  </div>
+    <div class="section" style="border-left:4px solid #dc2626">
+      <div class="section-header">
+        <div class="section-num" style="background:#fef2f2;color:#dc2626">01</div>
+        <div class="section-tag" style="background:#fef2f2;color:#dc2626">Scheduling Philosophy</div>
+      </div>
+      <div class="section-title" style="color:#dc2626">Why Scheduling Is the Foundation of 'Leak Prevention'</div>
+      <div class="section-desc">The human brain cannot remember the sequence and timing of all actions. The essence of scheduling isn't creating a rigid timetable — it's 'placing every action where you will definitely see it when doing that task.' Like organizing a home — every item has a fixed spot, and any new item knows where to go. The project master directory note IS that 'fixed spot': as you follow the flow, the next action naturally appears in front of you. No memorization, no leakage.</div><div class="flow-row"><div class="flow-step ">Brain can't track all actions</div><div class="flow-arrow">→</div><div class="flow-step ">Master directory = fixed position</div><div class="flow-arrow">→</div><div class="flow-step end">Flow-based execution = zero leak</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #ea580c">
+      <div class="section-header">
+        <div class="section-num" style="background:#fff7ed;color:#ea580c">02</div>
+        <div class="section-tag" style="background:#fff7ed;color:#ea580c">Two-Step Scheduling</div>
+      </div>
+      <div class="section-title" style="color:#ea580c">Sequence + Placement: The Only Two Actions for Scheduling</div>
+      <div class="section-desc">Step 1: Go beyond creating a project master directory — arrange tasks in the order you'll advance them. The directory order IS your project advancement sequence. Step 2: When any new task or action appears, don't toss it randomly — place it at its correct position in the project master directory. Repeat these two actions, and your project system stays perpetually 'ordered, visible, and leak-proof.'</div>
+      <div class="dual-grid">
+  <div class="dual-card yes"><div class="dual-label">✅ 有效做法</div><div class="dual-item">New task → insert into directory at correct position → follow the flow</div></div>
+  <div class="dual-card no"><div class="dual-label">❌ 无效做法</div><div class="dual-item">New task → jot down mentally or dump into messy to-do list → forgotten or misplaced</div></div>
+</div>
+    </div>
+    <div class="section" style="border-left:4px solid #ca8a04">
+      <div class="section-header">
+        <div class="section-num" style="background:#fefce8;color:#ca8a04">03</div>
+        <div class="section-tag" style="background:#fefce8;color:#ca8a04">New Reminder Paradigm</div>
+      </div>
+      <div class="section-title" style="color:#ca8a04">The Essence of Effective Reminders: Preparation Reminders, Not Execution Reminders</div>
+      <div class="section-desc">Traditional time reminders fail because they tell you 'do X at Y o'clock' — but you may not be free at Y. Effective reminders are 'preparation reminders' — they don't tell you to execute now, but tell you 'a deadline is approaching; start preparing now.' Example: Course on June 1st → set reminder for May 15th — not telling you to teach on May 15th, but to start preparing. You have ample time to arrange actions calmly, rather than being crushed by last-minute urgency.</div><div class="flow-row"><div class="flow-step ">Traditional: 'Write at 2pm tomorrow'</div><div class="flow-arrow">→</div><div class="flow-step ">Ineffective → may be busy then</div><div class="flow-arrow">→</div><div class="flow-step ">Effective: 'Course is 6/1 → remind 5/15'</div><div class="flow-arrow">→</div><div class="flow-step end">Start preparing now → calm arrangement</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #4f46e5">
+      <div class="section-header">
+        <div class="section-num" style="background:#eef2ff;color:#4f46e5">04</div>
+        <div class="section-tag" style="background:#eef2ff;color:#4f46e5">Evernote in Practice</div>
+      </div>
+      <div class="section-title" style="color:#4f46e5">Evernote Reminder List: Auto-Aggregation at Expiry</div>
+      <div class="section-desc">Evernote's best reminder design isn't pop-up notifications, but the 'Reminder Items List.' When a note's reminder expires, all due notes automatically appear in the reminder list at the top of the note list. This tells you: these tasks need action and preparation NOW. The setup logic is simple: decide 'when should I start preparing' for this task, and set that date as the reminder.</div><div class="data-row"><div class="data-card red"><div class="data-big">Set Prep Date</div><div class="data-sub">Not execution date</div></div><div class="data-card orange"><div class="data-big">Auto-aggregate</div><div class="data-sub">Reminder list at top</div></div><div class="data-card green"><div class="data-big">Execute one by one</div><div class="data-sub">Calm and unrushed</div></div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #db2777">
+      <div class="section-header">
+        <div class="section-num" style="background:#fdf2f8;color:#db2777">05</div>
+        <div class="section-tag" style="background:#fdf2f8;color:#db2777">Complete Flow Summary</div>
+      </div>
+      <div class="section-title" style="color:#db2777">One Thing Daily: Trust the System, Execute What's in Front of You</div>
+      <div class="section-desc">After the system is fully built, opening Evernote daily shows you not chaotic low-level tasks, but the few focused project master directory notes at the system's top. Don't worry about things outside your view — the system is thoroughly built, relatively leak-free. Even if something gets missed, it must be unimportant. Occasionally, past-scheduled reminders will surface, telling you which project's preparation phase to advance now. You only need to do one thing: open the system daily, trust the system, and execute the few focused projects, tasks, and actions pushed before your eyes.</div><div class="data-row"><div class="data-card red"><div class="data-big">Open System</div><div class="data-sub">Master directories</div></div><div class="data-card orange"><div class="data-big">Trust System</div><div class="data-sub">No leaks</div></div><div class="data-card green"><div class="data-big">Execute</div><div class="data-sub">Few in focus</div></div></div>
+    </div>
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心要点</div>
+    <div class="takeaway-text">The true art of leak prevention lies not in stronger memory or longer lists, but in the systematic design of 'position' and 'timing.' Place every action where you'll definitely see it in the advancement flow (scheduling), and set 'when to start preparing' reminders for key milestones. The system automatically pushes what needs to be done right in front of you. You don't need to remember anything — you just need to trust the system and act.</div>
+  </div>
+  <div class="footer">
+    Source: 大腦減壓的子彈筆記術 (電腦玩物站長Esor) · Chapter 5 · 2026-06-20
+  </div>
+</div>
+</body>
+</html>
