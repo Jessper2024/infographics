@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Principles · Chapter One「First Principles: The Foundational Axioms of Any Rational System」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Back to catalog ── */
+  .back-catalog {
+    text-align: left; margin-bottom: 8px;
+  }
+  .back-catalog a {
+    font-size: 13px; color: #4f46e5; text-decoration: none;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .back-catalog a:hover { text-decoration: underline; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #4f46e5;
+  }
+
+  /* ── KPI row ── */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 16px 12px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-label {
+    font-size: 11px; color: #888; margin-bottom: 6px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    letter-spacing: 1px;
+  }
+  .kpi-value {
+    font-size: 22px; color: #1a1a1a; font-weight: bold;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; }
+    .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; }
+    .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .section-body { text-align: center; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .data-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Language Switch -->
+  <div class="lang-switch">
+    <a class="lang-btn" href="第一性原理-ch001-info-zh.html">中文</a>
+  </div>
+
+  <!-- Back to Catalog -->
+  <div class="back-catalog">
+    <a href="第一性原理-catalog.html">← 返回章节目录</a>
+  </div>
+
+  <!-- Chapter Title -->
+  <h1>First Principles · Chapter One「First Principles: The Foundational Axioms of Any Rational System」</h1>
+
+  <!-- Subtitle -->
+  <div class="subtitle">Induction can only falsify, never prove · Deduction needs an axiom outside the system · Find your “One”</div>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Overview -->
+  <div class="splash">
+    <p>This chapter lays the philosophical foundation of the entire book. The author contrasts two fundamental modes of human thinking—induction and deduction. Induction, the source of 99% of daily knowledge, suffers from the “induction fallacy”: the hidden assumption of continuity cannot be logically self-proven; it can only falsify, never prove. Deduction, by contrast, guarantees truth when premises are correct—but those premises must themselves come from a higher-level deduction. Tracing this chain to its end reveals a self-evident, unshakable starting point: the First Principle. Every rational system = First Principle + Deduction, and the First Principle always lies outside the system itself.</p>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Daily knowledge from induction</div>
+        <div class="kpi-value">99%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Aristotle on First Principles</div>
+        <div class="kpi-value">2300 yrs ago</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Deduction truth condition</div>
+        <div class="kpi-value">An axiom</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Rational system formula</div>
+        <div class="kpi-value">One+Deduction=System</div>
+      </div>
+  </div>
+
+  <!-- Content Sections -->
+    <!-- Section 1 / 01 -->
+    <div class="section section-01">
+      <div class="section-num num-01">01</div>
+      <div class="section-body">
+        <span class="tag tag-01">Nature of Thinking</span>
+        <div class="section-title t-01">Induction: Humanity’s Built-in Thinking Mode—Survive Without Truth</div>
+        <div class="section-desc"><strong>99% of human knowledge comes from induction, but it can only falsify—never prove.</strong> Spatial induction assumes what works in one space works everywhere; temporal induction assumes past regularities persist. Both depend on an unprovable hidden assumption: continuity. Hume argued we cannot prove a priori that the future resembles the past; Popper declared falsifiability the hallmark of science. Inductive conclusions are essentially hypotheses awaiting refutation. Their true value lies not in truth-seeking but in survival at minimal cognitive cost—humanity’s “principle of least effort” and the Achilles’ heel of “surviving without truth.”</div>
+        <div class="flow-row">
+            <div class="flow-step ">Spatial Induction
+White swans seen=all white</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Temporal Induction
+Sun rose east=will rise east</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Continuity Assumption
+Future=Past</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Hume’s Problem
+Induction Fallacy</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">Popper
+Falsifiability=Science</div>
+          </div>
+      </div>
+    </div>
+    <!-- Section 2 / 02 -->
+    <div class="section section-02">
+      <div class="section-num num-02">02</div>
+      <div class="section-body">
+        <span class="tag tag-02">Light of Reason</span>
+        <div class="section-title t-02">Deductive Syllogism: Logic Is More Real Than Facts</div>
+        <div class="section-desc"><strong>Deduction is the primary vehicle of rational thought, originating in ancient Greece.</strong> Aristotle created the syllogism: major premise→minor premise→conclusion; if premises are correct, the conclusion must be true. The core criterion is logical correctness, not factual verification—the ancient Greeks even believed logic was the substance, while physical things need not be. Unlike the Eastern “practice yields truth” inductive tradition, Western deduction places logical hypotheses first and empirical verification second. Newton solved no practical problem; he merely discovered F=ma—an abstract logic. Then Watt applied it to the steam engine, igniting the First Industrial Revolution. This is deduction’s power—one abstract formula can solve all related concrete problems.</div>
+        <div class="dual-grid">
+          <div class="dual-card yes">
+            <div class="dual-icon">✅</div>
+            <div class="dual-text">
+              <h4>Western: Hypothesis → Verify</h4>
+              <p>Abstract theory hypothesis first guides life, then verified by practice. Slow, but yields transferable theory. Newton found F=ma→Watt’s steam engine→1st Industrial Revolution.</p>
+            </div>
+          </div>
+          <div class="dual-card no">
+            <div class="dual-icon">❌</div>
+            <div class="dual-text">
+              <h4>Eastern: Practice → Truth</h4>
+              <p>Technique and art built on practice; experience-summary follows. Typical induction. Practice first, truth second—“practice yields truth.”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section 3 / 03 -->
+    <div class="section section-03">
+      <div class="section-num num-03">03</div>
+      <div class="section-body">
+        <span class="tag tag-03">Hidden Assumption</span>
+        <div class="section-title t-03">Premise Accuracy: The Structural Dilemma of Deduction</div>
+        <div class="section-desc"><strong>Deduction has a structural flaw—it cannot falsify; its truth-preservation depends entirely on correct premises.</strong> But where do premises come from? Ultimately from induction—which cannot guarantee truth—so deduction is ultimately invalid. The only escape: premises must come from a higher-level deductive conclusion. But this chain cannot regress infinitely—there must be a self-evident, self-confirming origin: the First Principle. In science it is called the First Cause; in philosophy, the Logical Singularity. Without a First Principle, no rational system can be built.</div>
+        <div class="flow-row">
+            <div class="flow-step ">Inductive premise
+(from experience)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Deductive syllogism
+premise→conclusion</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Premise must be true
+→ultimately invalid</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Higher-level deduction
+as new premise</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">The Axiom
+First Principle</div>
+          </div>
+      </div>
+    </div>
+    <!-- Section 4 / 04 -->
+    <div class="section section-04">
+      <div class="section-num num-04">04</div>
+      <div class="section-body">
+        <span class="tag tag-04">System Foundation</span>
+        <div class="section-title t-04">Every System Has a Foundational Axiom—and It Lies Outside the System</div>
+        <div class="section-desc"><strong>2300 years ago, Aristotle stated: every system inquiry has a First Principle that cannot be omitted, deleted, or violated.</strong> Importantly, a First Principle is not a system’s central idea but a meta-premise that lies outside and before the system. Newtonian mechanics’ central idea is F=ma, but its First Principles are inertia and gravity. Einstein’s relativity centers on E=mc², but its First Principles are light-speed constancy and the relativity principle. Same for business: a business model is the central idea, but the foundational assumption giving rise to it is the First Principle. Find your “One”—Amazon’s “One” is the customer; Jobs’ “One” is the product.</div>
+        <div class="dual-grid">
+          <div class="dual-card yes">
+            <div class="dual-icon">✅</div>
+            <div class="dual-text">
+              <h4>Newton’s First Principles</h4>
+              <p>Inertia + Gravity assumptions→derive F=ma→Watt’s steam engine→1st Industrial Revolution. Central idea≠First Principle.</p>
+            </div>
+          </div>
+          <div class="dual-card no">
+            <div class="dual-icon">❌</div>
+            <div class="dual-text">
+              <h4>Einstein’s First Principles</h4>
+              <p>Light-speed constancy + Relativity principle→derive E=mc²→Nuclear energy & modern physics. The meta-premise lies outside the system.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section 5 / 05 -->
+    <div class="section section-05">
+      <div class="section-num num-05">05</div>
+      <div class="section-body">
+        <span class="tag tag-05">Hierarchy</span>
+        <div class="section-title t-05">First Principles Have Tiered Levels: Parent System’s Central Idea = Subsystem’s First Principle</div>
+        <div class="section-desc"><strong>Systems exist in hierarchies.</strong> A parent system’s central idea becomes a subsystem’s First Principle. To Newton, F=ma was a derived conclusion; to later users like Watt, F=ma became the First Principle. E=mc² was Einstein’s conclusion; for later scientists it became the First Principle. In practice, we need not find the ultimate First Principle—any parent system larger than our target system can provide its central idea as our subsystem’s First Principle. Every system has its scope; no First Principle is universal. Many large systems are supported by 2–3 First Principles simultaneously—note that “First Principles” is plural.</div>
+        <div class="flow-row">
+            <div class="flow-step ">Parent system
+foundational axiom</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Parent central idea
+F=ma</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Subsystem
+First Principle=F=ma</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Watt’s steam engine
+Industrial Revolution</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">What is YOUR “One”?</div>
+          </div>
+      </div>
+    </div>
+
+  <!-- Key Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">📌 KEY TAKEAWAY</div>
+    <div class="takeaway-text">The First Principle is the “source code” of any rational system. Induction helps you survive; deduction helps you innovate—but only if you find the self-evident axiom that lies outside the system. To overturn a conclusion, attack its hidden assumption, not the conclusion itself. Ask: what is the “One” underlying my system? Find it, live it, and work with conviction.</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+Li Shanyou · First Principles · Chapter One · Book Infographic<br>
+Source: First Principles by Li Shanyou (Posts & Telecom Press, 2021)
+  </div>
+
+</div>
+</body>
+</html>

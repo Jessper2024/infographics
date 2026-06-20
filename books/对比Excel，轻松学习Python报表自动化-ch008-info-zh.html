@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python报表自动化 · 第8章「用Python对Excel进行编辑」</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch008-info-en.html">中文 / English</a>
+</div>
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第8章「用Python对Excel进行编辑」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  Excel的「开始」选项卡「编辑」组提供排序、筛选、查找替换三大核心功能。手工操作时，选中列→点击排序→选升序/降序，或点击筛选→勾选条件——每个Sheet重复一遍。当数据每天更新、每次都要重新排序筛选时，这些重复操作就是生产力杀手。如何用Python自动完成Excel的排序与筛选？本章讲解用Pandas的sort_values()实现单列与多列排序、用Pandas条件表达式实现数字筛选与文本筛选、以及查找替换的概要介绍。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章聚焦于Excel「开始」选项卡「编辑」组的Python实现。核心要点：openpyxl的排序和筛选只会添加排序/筛选符号，不会真的改变数据顺序或过滤数据。真正的排序操作需使用Pandas库的sort_values(df, by=col, ascending=False)，支持单列排序和多列排序（列表传多列名，分别设升/降序）。筛选操作使用Pandas条件表达式（如df[df['col1']>2]实现数字筛选，df[df['col2']=='b']实现文本筛选），比Excel鼠标操作更灵活强大。查找替换在第9章详细讲解。本章展示了Python生态「组合使用」的核心思想——openpyxl处理Excel文件读写，Pandas处理数据分析逻辑。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">排序方向<br>升序 ascending=True<br>降序 ascending=False</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">多列</div>
+    <div class="kpi-label">多列排序<br>主关键字+次关键字<br>by=[col1, col2]</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">筛选类型<br>数字筛选 &gt;/&lt;/=<br>文本筛选 ==/包含</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">Pandas</div>
+    <div class="kpi-label">核心库<br>sort_values+条件表达式<br>替代Excel筛选菜单</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">数据排序</div>
+    <div class="section-title t-01">sort_values()：单列与多列排序一步到位</div>
+    <div class="section-desc">openpyxl的排序操作只添加排序符号（即Excel界面的下拉箭头），不会真正重排数据。真正的排序需用Pandas的sort_values()：df.sort_values(by='col1', ascending=False)按col1降序。多列排序传列名列表：by=['col1','col2']，先按col1排，相同值再按col2排，可分别设升/降序。</div>
+    <div class="code-block">import pandas as pd
+
+# 单列排序：按col3降序
+df_sorted = df.sort_values(by='col3', ascending=False)
+
+# 多列排序：按col1降序，相同值按col2升序
+df_sorted = df.sort_values(
+    by=['col1', 'col2'],
+    ascending=[False, True])</div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">数据筛选</div>
+    <div class="section-title t-02">Pandas条件筛选：数字与文本双模式</div>
+    <div class="section-desc">openpyxl的筛选同样只添加筛选符号，不真正过滤数据。Pandas用条件表达式直接筛选：df[df['col1']>2]筛出大于2的行，df[df['col2']=='b']筛出等于b的行。Excel分为数字筛选和文本筛选两种模式，Pandas的条件表达式统一处理，且支持复杂组合条件（&、| 多条件联合）。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔢</div>
+        <div class="dual-text"><h4>数字筛选</h4><p>df[df['col1'] > 2]<br>支持 > / < / >= / <= / ==<br>可组合多条件<br>如 (df['a']>2) & (df['a']<10)</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔤</div>
+        <div class="dual-text"><h4>文本筛选</h4><p>df[df['col2'] == 'b']<br>支持 == / != / .str.contains()<br>.str.startswith() / .str.endswith()<br>比Excel筛选更灵活</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">完整流程</div>
+    <div class="section-title t-03">从Excel到排序结果：完整的数据处理链路</div>
+    <div class="section-desc">完整的数据排序筛选流程：①用pandas.read_excel()读取Excel数据到DataFrame；②用sort_values()按指定列排序（支持多列、混合升/降序）；③用条件表达式筛选目标数据；④用to_excel()将结果写回Excel或直接用于后续分析。这一链路将Excel一整套手工操作彻底自动化。</div>
+    <div class="flow-row">
+      <div class="flow-step">📂 读取<br><small>read_excel()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄 排序<br><small>sort_values()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔍 筛选<br><small>条件表达式</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">💾 写回<br><small>to_excel()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅ 自动化<br><small>一次编写永久复用</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">对比分析</div>
+    <div class="section-title t-04">Excel vs Python 排序筛选对比</div>
+    <div class="section-desc">Excel的排序筛选是手动交互式操作——每次数据更新要重新点一遍，多列排序需弹窗设置。Python的排序筛选是代码驱动——数据变化时只需重新运行脚本，无需任何手动操作。Pandas的条件筛选远比Excel灵活：可组合任意复杂条件、可在排序前先筛选、可直接链式操作（筛选→排序→取top10）。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">🖱️</div>
+        <div class="cmp-name">Excel方式</div>
+        <div class="cmp-note">选中列→点击排序<br>每次手动重复操作<br>多列需自定义排序弹窗</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">🐍</div>
+        <div class="cmp-name">Python方式</div>
+        <div class="cmp-note">sort_values()一次编码<br>数据更新自动重算<br>可批量处理多个Sheet</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🚀</div>
+        <div class="cmp-name">Python优势</div>
+        <div class="cmp-note">多列混合排序<br>排序+筛选链式操作<br>条件组合灵活无限</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">扩展</div>
+    <div class="section-title t-05">查找替换 + openpyxl + Pandas 生态组合</div>
+    <div class="section-desc">「编辑」组的查找和替换功能将在第9章详讲，与排序筛选共同构成数据处理三步曲。实际工作流：read_excel读取→条件筛选→sort_values排序→格式化（openpyxl）→查找替换→to_excel写回。Python生态中openpyxl+ Pandas组合使用，覆盖Excel全链路自动化。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🔍</div>
+        <div class="data-name">查找</div>
+        <div class="data-sm">定位特定数据<br>匹配单元格内容<br>第9章详细讲解</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">✏️</div>
+        <div class="data-name">替换</div>
+        <div class="data-sm">批量修改内容<br>正则匹配替换<br>第9章详细讲解</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🔗</div>
+        <div class="data-name">生态组合</div>
+        <div class="data-sm">openpyxl + Pandas<br>读写 + 分析 + 自动化<br>完整Excel自动化方案</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Excel的排序与筛选在Python中需要借助Pandas库来实现真正的数据重排和过滤。openpyxl负责Excel文件读写，Pandas负责数据分析逻辑——这是Python生态「组合使用」思想的典型体现。sort_values()支持单列和多列排序，条件表达式（df[条件]）支持数字和文本两种筛选模式，比Excel的鼠标操作更灵活、更强大。排序、筛选、格式化、查找替换串联成完整工作流，一次编写脚本，每天运行即可——这就是Python报表自动化的最终形态。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第8章「用Python对Excel进行编辑」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

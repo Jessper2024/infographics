@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Principles · Chapter Three「Boundary-Breaking Innovation: Shatter the Foundation, Expand the Boundary」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Back to catalog ── */
+  .back-catalog {
+    text-align: left; margin-bottom: 8px;
+  }
+  .back-catalog a {
+    font-size: 13px; color: #4f46e5; text-decoration: none;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .back-catalog a:hover { text-decoration: underline; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #4f46e5;
+  }
+
+  /* ── KPI row ── */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 16px 12px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-label {
+    font-size: 11px; color: #888; margin-bottom: 6px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    letter-spacing: 1px;
+  }
+  .kpi-value {
+    font-size: 22px; color: #1a1a1a; font-weight: bold;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; }
+    .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; }
+    .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .section-body { text-align: center; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .data-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Language Switch -->
+  <div class="lang-switch">
+    <a class="lang-btn" href="第一性原理-ch003-info-zh.html">中文</a>
+  </div>
+
+  <!-- Back to Catalog -->
+  <div class="back-catalog">
+    <a href="第一性原理-catalog.html">← 返回章节目录</a>
+  </div>
+
+  <!-- Chapter Title -->
+  <h1>First Principles · Chapter Three「Boundary-Breaking Innovation: Shatter the Foundation, Expand the Boundary」</h1>
+
+  <!-- Subtitle -->
+  <div class="subtitle">Break hidden assumptions → Rebuild foundational axioms → Envision a new system · Don’t solve old problems—make them irrelevant · Philosophy begins by questioning the self-evident</div>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Overview -->
+  <div class="splash">
+    <p>Innovation means “no breaking, no building”—break the First Principle that forms the system, then build a new one. This is boundary-breaking innovation. This chapter proposes a 3-step method: ① “Break” the hidden assumption—identify and shatter the default group belief that forms the system boundary; ② “Build” a new foundational axiom—reconstruct a deeper, stronger First Principle; ③ “Envision” a new system—a fresh system naturally emerges on the new foundation. From Euclidean to non-Euclidean geometry, Ptolemy to Copernicus, IBM to Apple, Nokia to iPhone, countless cases prove: boundary-breaking innovation operates on structure, not content—it renders old problems irrelevant rather than solving them.</p>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Boundary-breaking innovation method</div>
+        <div class="kpi-value">3 Steps</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Euclidean to Non-Euclidean</div>
+        <div class="kpi-value">2000+ yrs</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Apple-1 price·10x change</div>
+        <div class="kpi-value">$1,295</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Post-stall recovery probability</div>
+        <div class="kpi-value"><4%</div>
+      </div>
+  </div>
+
+  <!-- Content Sections -->
+    <!-- Section 1 / 01 -->
+    <div class="section section-01">
+      <div class="section-num num-01">01</div>
+      <div class="section-body">
+        <span class="tag tag-01">The Trilogy</span>
+        <div class="section-title t-01">The Boundary-Breaking Innovation Trilogy: Work on Structure, Not Content</div>
+        <div class="section-desc"><strong>Boundary-breaking innovation is truly disruptive innovation.</strong> The First Principle supports the rational system but also imprisons its boundary—it is the system’s greatest certainty yet also its greatest vulnerability, the true Achilles’ heel. Shatter the foundational First Principle, and the building above collapses. The 3 steps: <strong>① “Break” the hidden assumption</strong>—use philosophical thinking to leap outside the system, identify and shatter the default group belief; <strong>② “Build” a new foundational axiom</strong>—reconstruct a deeper, stronger new First Principle (typically from fundamental disciplines); <strong>③ “Envision” a new system</strong>—on the new foundation, use axiomatic methods to deduce a new system, with boundaries emerging naturally. Key insight: boundary-breaking innovation operates on structure, not content—it works in the invisible. It’s not about effort or diligence; it’s about cognition and wisdom.</div>
+        <div class="flow-row">
+            <div class="flow-step ">Identify
+hidden assumption</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Shatter old
+First Principle</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Rebuild deeper
+foundational axiom</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">New system
+naturally emerges</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">Old problems
+become irrelevant</div>
+          </div>
+      </div>
+    </div>
+    <!-- Section 2 / 02 -->
+    <div class="section section-02">
+      <div class="section-num num-02">02</div>
+      <div class="section-body">
+        <span class="tag tag-02">Cognitive Prisoner</span>
+        <div class="section-title t-02">The Difficulty of Breaking Boundaries: Group Belief Is the Most Dangerous Hidden Assumption</div>
+        <div class="section-desc"><strong>The most common hidden assumption is the group belief.</strong> When a consensus becomes deeply internalized as common sense, people never—or forget to—question it. This is wired into human genes: in primitive societies, non-conforming individuals faced death, so the habit of following group cognition is genetically embedded. Harari argues that humans dominate Earth through the ability to “imagine together” fictional stories—religion and fiat currency depend on this collective imagination. Thus, the key and difficulty of boundary-breaking innovation is: discover and shatter group beliefs. Like Zen practice, when you “see” the hidden assumption, you have already “begun” breaking it. Question group consensus; dare to shatter group beliefs—this is the fundamental method.</div>
+        <div class="dual-grid">
+          <div class="dual-card yes">
+            <div class="dual-icon">✅</div>
+            <div class="dual-text">
+              <h4>Genetic Roots</h4>
+              <p>Primitive societies lacked defenses against disasters and beasts; non-conforming individuals faced death. The habit of following group cognition is deeply etched in human genes—an evolutionary legacy that is also the shackle of innovation.</p>
+            </div>
+          </div>
+          <div class="dual-card no">
+            <div class="dual-icon">❌</div>
+            <div class="dual-text">
+              <h4>The Power of Fiction</h4>
+              <p>Harari’s Sapiens: the key is not just imagination but “imagining together.” Religion, fiat money, corporations, nations—all are fictions collectively woven by humanity, yet they became “truth.”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section 3 / 03 -->
+    <div class="section section-03">
+      <div class="section-num num-03">03</div>
+      <div class="section-body">
+        <span class="tag tag-03">Scientific Revolution</span>
+        <div class="section-title t-03">Boundary-Breaking in Science: All Major Scientific Revolutions Are Paradigm Shifts</div>
+        <div class="section-desc"><strong>Kuhn demonstrated: almost all genuine scientific revolutions are not revolutions of new discoveries but revolutions of paradigm shifts.</strong> Geometry: Euclidean geometry rested on the hidden assumption of “flat space.” Lobachevsky and Riemann identified this, proposed non-flat space, and pioneered non-Euclidean geometry—logically rigorous, though empirically unverifiable at the time, until Einstein used Riemannian geometry to express general relativity. Astronomy: Ptolemy (geocentrism + uniform circular motion) → Copernicus (identified logical inconsistency in the old system, proposed heliocentrism) → Kepler (shattered the uniform-circular-motion assumption, established elliptical orbits)—each time was “break old foundation → build new one.” Kuhn: “Only by destroying the old paradigm can new discoveries be made—this is the only viable approach.”</div>
+        <div class="flow-row">
+            <div class="flow-step ">Euclidean Geometry
+Flat space→5 postulates</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Lobachevsky
+Shatter flat-space assumption</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Riemann
+Elliptic geometry</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Einstein
+Curved spacetime→General relativity</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">Paradigm Shift
+Revolution, not inheritance</div>
+          </div>
+      </div>
+    </div>
+    <!-- Section 4 / 04 -->
+    <div class="section section-04">
+      <div class="section-num num-04">04</div>
+      <div class="section-body">
+        <span class="tag tag-04">Business Cases</span>
+        <div class="section-title t-04">IBM and Jobs’ Boundary-Breaking Innovation: From Research Computers to a Computer in Every Home</div>
+        <div class="section-desc"><strong>The complete saga of boundary-breaking innovation in the computer industry.</strong> UNIVAC/IBM’s initial hidden assumption: computers are only for scientific research→IBM broke it, rebuilt “enterprise market has huge potential,” becoming the mainframe king. DEC broke IBM’s “only large enterprises need computers” assumption, rebuilt “small companies need them too,” became the minicomputer king. But DEC was then imprisoned by its own hidden assumption “computers are only for business,” missing the PC era. Jobs broke DEC’s assumption, rebuilt “every family can have a computer,” Apple-1 priced at $1,295 (1/10 of DEC’s), opening the PC era. Even more stunning at the product level: iPod Shuffle removed the screen (random play), iPod removed the power switch, iPhone replaced the keyboard with a touchscreen—each time: “identify hidden assumption→reconstruct foundation→define a new category.”</div>
+        <div class="flow-row">
+            <div class="flow-step ">UNIVAC→IBM
+Science→Business</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">DEC
+Large→Small business</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Apple
+Business→Every home</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">iPhone
+Keyboard→Touchscreen</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">Boundary-Breaking
+Old problems irrelevant</div>
+          </div>
+      </div>
+    </div>
+    <!-- Section 5 / 05 -->
+    <div class="section section-05">
+      <div class="section-num num-05">05</div>
+      <div class="section-body">
+        <span class="tag tag-05">Innovator Mindset</span>
+        <div class="section-title t-05">Becoming an Innovative Entrepreneur: Problem-Solver vs. Theorist—Be the One Who Makes Old Problems Irrelevant</div>
+        <div class="section-desc"><strong>Mathematicians divide into two types: problem-solvers and theorists. The theorist’s greatest moment is discovering a new theory—it solves NO old problems, but renders them irrelevant.</strong> Same for entrepreneurs. Ordinary entrepreneurs solve limit-point problems (solving problems within problems); innovative entrepreneurs solve boundary problems (boundary-breaking innovation). Ford didn’t solve the carriage problem—the automobile made it irrelevant. Jobs didn’t solve the feature-phone problem. Musk didn’t solve the traditional-car problem. Zhang Xiaolong didn’t solve PC instant-messaging problems. Zhang Yiming didn’t solve portal-news problems—they all made old problems irrelevant. The essence of the second curve is not solving the first curve’s limit point but building a new system that renders it irrelevant. Boundary-breaking innovation is Hundun University’s crown jewel innovation model.</div>
+        <div class="flow-row">
+            <div class="flow-step ">Ford
+Automobile→Carriage irrelevant</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Jobs
+iPhone→Feature phone irrelevant</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Musk
+Tesla→Gas car irrelevant</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">Zhang Xiaolong
+WeChat→PC IM irrelevant</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">Zhang Yiming
+Toutiao→Portal news irrelevant</div>
+          </div>
+      </div>
+    </div>
+
+  <!-- Key Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">📌 KEY TAKEAWAY</div>
+    <div class="takeaway-text">Boundary-breaking innovation is “inside-out” innovation—shatter inner cognitive boundaries, trigger outer reality changes. Work on structure, not content. Don’t ask “how to solve this problem”—ask “what hidden assumption does this problem rest on?” Break that assumption, and the old problem becomes irrelevant. We don’t live in an objective world but in the thought-world built for us by thinkers—break it, and you are free.</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+Li Shanyou · First Principles · Chapter Three · Book Infographic<br>
+Source: First Principles by Li Shanyou (Posts & Telecom Press, 2021)
+  </div>
+
+</div>
+</body>
+</html>

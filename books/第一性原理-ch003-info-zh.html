@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第一性原理 · 第三「破界创新：打破基石，边界外延」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  /* ── Back to catalog ── */
+  .back-catalog {
+    text-align: left; margin-bottom: 8px;
+  }
+  .back-catalog a {
+    font-size: 13px; color: #4f46e5; text-decoration: none;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .back-catalog a:hover { text-decoration: underline; }
+
+  /* ── Header ── */
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #4f46e5;
+  }
+
+  /* ── KPI row ── */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 16px 12px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-label {
+    font-size: 11px; color: #888; margin-bottom: 6px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    letter-spacing: 1px;
+  }
+  .kpi-value {
+    font-size: 22px; color: #1a1a1a; font-weight: bold;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; }
+    .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; }
+    .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .section-body { text-align: center; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .data-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Language Switch -->
+  <div class="lang-switch">
+    <a class="lang-btn" href="第一性原理-ch003-info-en.html">EN</a>
+  </div>
+
+  <!-- Back to Catalog -->
+  <div class="back-catalog">
+    <a href="第一性原理-catalog.html">← 返回章节目录</a>
+  </div>
+
+  <!-- Chapter Title -->
+  <h1>第一性原理 · 第三「破界创新：打破基石，边界外延」</h1>
+
+  <!-- Subtitle -->
+  <div class="subtitle">破隐含假设→立基石假设→见全新系统 · 不解决旧问题，让它无关紧要 · 哲学始于对自明的追问</div>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Overview -->
+  <div class="splash">
+    <p>创新“不破不立”——“破”的是系统得以形成的第一性原理，“立”的是新的第一性原理，这就是破界创新。本章提出破界创新的三部曲：①“破”隐含假设——识别并打破构成系统边界的那个默认为真的群体信念；②“立”基石假设——重建一个更深、更强的第一性原理；③“见”全新系统——在新基石上自然涌现出全新体系。从欧氏几何到非欧几何、托勒密到哥白尼、IBM到苹果、诺基亚到iPhone，无数案例证明：破界创新不在内容上做功，而在结构上做功——它让原有问题变得无关紧要，而不是解决原有问题。</p>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">破界创新三部曲</div>
+        <div class="kpi-value">3步</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">欧氏几何→非欧几何</div>
+        <div class="kpi-value">2000+年</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Apple-1售价·十倍速变化</div>
+        <div class="kpi-value">$1295</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">失速点后恢复增长概率</div>
+        <div class="kpi-value"><4%</div>
+      </div>
+  </div>
+
+  <!-- Content Sections -->
+    <!-- Section 1 / 01 -->
+    <div class="section section-01">
+      <div class="section-num num-01">01</div>
+      <div class="section-body">
+        <span class="tag tag-01">三部曲</span>
+        <div class="section-title t-01">破界创新三部曲：不在内容上做功，在结构上做功</div>
+        <div class="section-desc"><strong>破界创新是真正意义上的颠覆式创新。</strong>第一性原理支撑了理性系统，也同时禁锢了它的边界——它是系统最大的确定性，也是最脆弱之处，是真正的阿喀琉斯之踵。打破系统边界的最直接方式，就是将作为基石假设的第一性原理击碎。三部曲：<strong>①“破”隐含假设</strong>——用哲学思维跳出系统，发现并打破那个默认的群体信念；<strong>②“立”基石假设</strong>——重构一个比原有层次更深、强度更大的新第一性原理（通常来自基础学科）；<strong>③“见”全新系统</strong>——在新基石上通过公理化方法演绎出新系统，新边界自然涌现。关键洞见：破界创新不在内容上做功，而在结构上做功，在看不见的地方做功。这不是努力勤奋的事，而是一种认知、一种智慧。</div>
+        <div class="flow-row">
+            <div class="flow-step ">识别
+隐含假设</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">打破旧
+第一性原理</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">重构更深
+基石假设</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">新系统
+自然涌现</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">旧问题
+变得无关紧要</div>
+          </div>
+      </div>
+    </div>
+    <!-- Section 2 / 02 -->
+    <div class="section section-02">
+      <div class="section-num num-02">02</div>
+      <div class="section-body">
+        <span class="tag tag-02">认知囚徒</span>
+        <div class="section-title t-02">破界创新的难点：群体信念是最危险的隐含假设</div>
+        <div class="section-desc"><strong>最常见的隐含假设就是群体信念。</strong>当某种共识深入人心变成常识时，人们根本不会甚至忘了去质疑它。这与人类的基因相关——原始社会不合群的个体面临死亡，因此听从群体认知的惯习刻在基因里。赫拉利指出，人类之所以主宰地球，靠的是“一起想象”虚构故事的能力——宗教、纸币均仰赖于这种集体想象。所以，破界创新的关键和难点在于：发现并打破群体信念。与禅修类似，当“看”到隐含假设时，我们就“开始”打破它了。质疑群体性共识，敢于打破群体信念，这是破除隐含假设的根本方法。</div>
+        <div class="dual-grid">
+          <div class="dual-card yes">
+            <div class="dual-icon">✅</div>
+            <div class="dual-text">
+              <h4>基因根源</h4>
+              <p>原始社会缺乏抵御天灾和野兽的手段，不合群的人面临死亡。听从群体认知的习性深深烙印在人类基因中——这是进化的遗产，也是创新的枷锁。</p>
+            </div>
+          </div>
+          <div class="dual-card no">
+            <div class="dual-icon">❌</div>
+            <div class="dual-text">
+              <h4>虚构的力量</h4>
+              <p>赫拉利《人类简史》：虚构的重点不只在于想象，更在于“一起”想象。宗教、纸币、公司、国家——都是人类集体编织的虚构故事，却成了真理。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section 3 / 03 -->
+    <div class="section section-03">
+      <div class="section-num num-03">03</div>
+      <div class="section-body">
+        <span class="tag tag-03">科学革命</span>
+        <div class="section-title t-03">科学领域的破界创新：所有重大科学革命都是范式转换</div>
+        <div class="section-desc"><strong>库恩指出：几乎所有真正的科学革命都不是新发现的革命，而是范式转换的革命。</strong>几何学：欧氏几何建立在“平直空间”的隐含假设上。罗巴切夫斯基和黎曼发现这一假设，提出非平直空间，开创了非欧几何——从逻辑角度看这是严谨的，虽然当时无人能验证，但后来爱因斯坦用黎曼几何表达了广义相对论。天文学：托勒密（地心说+匀速圆周）→哥白尼（发现旧系统逻辑失洽，提出日心说）→开普勒（打破匀速圆周假设，建立椭圆轨道）——每一次都是“破旧基石→立新基石”。库恩说：“只有破坏旧范式才能得到新发现，这是唯一可行的办法。”</div>
+        <div class="flow-row">
+            <div class="flow-step ">欧氏几何
+平直空间→5公设</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">罗巴切夫斯基
+打破平直空间假设</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">黎曼
+椭圆几何</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">爱因斯坦
+弯曲时空→广义相对论</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">范式转换
+革命而非继承</div>
+          </div>
+      </div>
+    </div>
+    <!-- Section 4 / 04 -->
+    <div class="section section-04">
+      <div class="section-num num-04">04</div>
+      <div class="section-body">
+        <span class="tag tag-04">商业实战</span>
+        <div class="section-title t-04">IBM和乔布斯的破界创新：从科研计算机到每个家庭一台电脑</div>
+        <div class="section-desc"><strong>破界创新在计算机行业的完整演绎。</strong>优尼瓦克/IBM最初隐含假设：计算机只用于科研→IBM打破它，重构“企业市场潜力巨大”，成为大型商用机霸主。DEC打破IBM“只有大企业需要计算机”的假设，重构“小公司也需要”，成为小型机之王。但DEC随后被自己的隐含假设“计算机只用于商业机构”禁锢，与PC时代擦肩而过。乔布斯打破DEC的假设，重构“每个家庭都可以拥有一台计算机”，Apple-1定价$1295（仅为DEC的1/10），开辟PC时代。更惊艳的是产品层面：iPod Shuffle去掉屏幕（随机播放），iPod去掉开关键，iPhone用触摸屏取代键盘——每一次都是“识别隐含假设→重构基石→定义新品类”。</div>
+        <div class="flow-row">
+            <div class="flow-step ">优尼瓦克→IBM
+科研→商用</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">DEC
+大企业→小企业</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">苹果
+企业→每个家庭</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">iPhone
+键盘→触摸屏</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">破界创新
+让旧问题无关紧要</div>
+          </div>
+      </div>
+    </div>
+    <!-- Section 5 / 05 -->
+    <div class="section section-05">
+      <div class="section-num num-05">05</div>
+      <div class="section-body">
+        <span class="tag tag-05">创新者思维</span>
+        <div class="section-title t-05">成为创新企业家：解题家vs理论家，做让旧问题无关紧要的人</div>
+        <div class="section-desc"><strong>数学家分为两类：解题家与理论家。理论家最荣耀的时刻是发现新理论，它不能解决任何老问题，却使它们变得无关紧要。</strong>创业者也一样。普通创业者解决极限点问题（针对问题解决问题），创新创业家解决边界问题（破界创新）。福特没有解决马车的问题，但汽车让马车的问题无关紧要；乔布斯没有解决功能手机的问题；马斯克没有解决传统汽车的问题；张小龙没有解决PC即时通信的问题；张一鸣没有解决门户新闻的问题——他们都是让旧问题无关紧要的人。第二曲线的本质不是解决第一曲线的极限点，而是构建一个新系统让它变得无关紧要。破界创新是混沌大学创新模型之王。</div>
+        <div class="flow-row">
+            <div class="flow-step ">福特
+汽车→马车无关紧要</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">乔布斯
+iPhone→功能手机无关紧要</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">马斯克
+特斯拉→燃油车无关紧要</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step ">张小龙
+微信→PC即时通信无关紧要</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step end">张一鸣
+头条→门户新闻无关紧要</div>
+          </div>
+      </div>
+    </div>
+
+  <!-- Key Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">📌 核心启示</div>
+    <div class="takeaway-text">破界创新是“由内而外”的创新——打破内在认知边界，引起外在现实变化。不要在内容上做功，要在结构上做功。不要问“怎么解决这个问题”，要问“这个问题基于什么隐含假设”。打破那个假设，旧问题会变得无关紧要。我们不是生活在客观世界中，而是生活在思想家为我们打造的思想世界中——打破它，你就自由了。</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+李善友 · 第一性原理 · 第三章 · 图书信息图<br>
+来源：第一性原理（李善友 著，人民邮电出版社，2021）
+  </div>
+
+</div>
+</body>
+</html>

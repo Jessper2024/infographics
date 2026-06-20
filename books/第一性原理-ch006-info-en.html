@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Principles · Ch6「Theory of Everything」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="第一性原理-catalog.html">← Catalog</a></div>
+<div class="lang-switch"><a class="lang-btn" target="_blank" href="第一性原理-ch006-info-zh.html">EN / 中文</a></div>
+<h1>First Principles · Ch6 "Theory of Everything: The Universe's Ultimate Code"</h1>
+<p class="subtitle"><span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Finding axioms is harder than deriving from them · Theory defines reality</span>
+    If the universe itself is a system, it too has a first principle — the Theory of Everything.
+    Einstein broke Newton's hidden assumptions, established new foundational axioms,
+    and deduced Special and General Relativity. This is first-principles thinking at its highest. </p>
+<div class="divider"></div>
+<div class="chapter-overview"><p>This chapter illustrates first principles in science: the Theory of Everything. Einstein's entire career pursued physics' ultimate unified theory. He identified Newton's two hidden assumptions (absolute time and absolute space), established two new axioms (constancy of light speed and the principle of relativity), and deduced Special Relativity (unifying space-time and mass-energy) and General Relativity (replacing gravity with spacetime curvature). Einstein not only changed physics but transformed how scientists work — a problem cannot be solved in its original dimension; only by ascending dimensions can the answer be found.</p></div>
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">2<span class="kpi-unit"> Hidden</span></div>
+    <div class="kpi-label">Newton's Assumptions</div>
+    <div class="kpi-note">Absolute time · Absolute space</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit"> New</span></div>
+    <div class="kpi-label">Einstein's Axioms</div>
+    <div class="kpi-note">Light speed constant · Relativity</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">10<span class="kpi-unit"> Years</span></div>
+    <div class="kpi-label">Special → General</div>
+    <div class="kpi-note">1905 Special → 1915 General</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit"> Unifications</span></div>
+    <div class="kpi-label">Dimensional Unification</div>
+    <div class="kpi-note">Space-time · Mass-energy</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">4D<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Spacetime</div>
+    <div class="kpi-note">3D space + time = spacetime</div>
+  </div>
+</div>
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Axiom Discovery</div>
+    <div class="section-title t-01">Finding Axioms Is Harder than Deriving From Them: Einstein's "Laws of Laws"</div>
+    <div class="section-desc"><strong>Einstein divided theorists' work into two steps: discover axioms, then derive conclusions from them.</strong> Step two requires only diligence and intelligence; step one — discovering axioms — is fundamentally different. It cannot be reached through logical derivation, only through continuous hypothesis and trial-and-error. Einstein had two methods: "laws of laws" (symmetry, conservation, least action) and "thought experiments" (pure logical deduction in the mind). Curiosity and imagination matter far more than knowledge.</div>
+    <div class="flow-row">
+      <div class="flow-step">Laws of Laws<br>Symmetry · Conservation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Thought Experiments<br>Pure logical deduction</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Discover Axioms<br>Cannot be logically derived</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Boundary Breaking</div>
+    <div class="section-title t-02">Questioning Newton's Mechanical System: Breaking a 200-Year Foundation</div>
+    <div class="section-desc"><strong>From 1687 to the early 20th century, Newton's classical mechanics was the bedrock of physics.</strong> On the last day of the 19th century, Lord Kelvin declared "the edifice of physics is complete, only decoration remains." Just five years later, 26-year-old Einstein published six papers — four of them "god-tier," any one worthy of a Nobel Prize. 1905 became "Einstein's Miracle Year." Einstein identified Newton's hidden assumptions: absolute time and absolute space.</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏛️</div>
+        <div class="dual-text">
+          <h4>Newton's Hidden Assumptions</h4>
+          <p>Absolute time (uniform flow independent of reference frames) and absolute space (fixed stage independent of matter). Ruled for 200 years.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>Einstein's Question</h4>
+          <p>If time and space are absolute, light speed shouldn't be constant across reference frames — yet experiments show it always is.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">New Axioms</div>
+    <div class="section-title t-03">Two New Foundational Assumptions That Led to Special Relativity</div>
+    <div class="section-desc"><strong>Einstein proposed two new axioms: light speed constancy (in any inertial frame, vacuum light speed is constant) and the principle of relativity (all physical laws are equivalent in all inertial frames).</strong> From these, he deduced: time and space are not absolute — the faster you move, the slower time flows and the shorter space becomes. This completely overturned Newton's spacetime view. Einstein said: "New theories are not revolutions of discovery but revolutions of concepts."</div>
+    <div class="flow-row">
+      <div class="flow-step">Light Speed Constancy<br>c is always constant</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Relativity Principle<br>All inertial frames equal</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Special Relativity<br>Time & Space relative</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Dimensional Ascent</div>
+    <div class="section-title t-04">Einstein's Dimensional Ascent: 3D Space → 4D Spacetime → E=mc²</div>
+    <div class="section-desc"><strong>Special Relativity created a spacetime crisis: time and space became relative concepts.</strong> Einstein ascended dimensions — merged time and space into one entity (spacetime), discovering that "spacetime" remains invariant in all inertial frames. The same logic applied to mass and energy: faster objects gain mass; the added mass must come from energy. Thus E=mc² — mass and energy are two faces of one entity (mass-energy). Kaku: "The laws of nature are simpler in higher dimensions."</div>
+    <div class="flow-row">
+      <div class="flow-step">Time + Space<br>→ Spacetime (4D)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Mass + Energy<br>→ Mass-Energy</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">E=mc²<br>Science's most famous equation</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Ultimate Breakthrough</div>
+    <div class="section-title t-05">General Relativity: Gravity Doesn't Exist — It's the Curvature of Spacetime</div>
+    <div class="section-desc"><strong>Ten years later, Einstein made his boldest deduction: universal gravitation isn't a "force" at all — it's the manifestation of spacetime curvature.</strong> Massive objects curve the surrounding spacetime field; other objects moving in this curved spacetime follow curved paths due to the principle of least action. The 1919 solar eclipse observation confirmed his prediction: light passing near the sun bent exactly as Einstein calculated. Newton saw gravity as a naturally existing force; Einstein broke this group consensus — "The most incomprehensible thing about the universe is that it is comprehensible."</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🍎</div>
+        <div class="dual-text">
+          <h4>Newton's Paradigm</h4>
+          <p>Gravity is a distant, instantaneous, superluminal mysterious force. Sun vanishes → Earth immediately breaks orbit.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🌀</div>
+        <div class="dual-text">
+          <h4>Einstein's Paradigm</h4>
+          <p>Gravity = spacetime curvature. Sun vanishes → Earth escapes 8 minutes later, because gravity waves travel at light speed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Core Takeaway</div>
+  <div class="takeaway-text">Einstein's entire career embodied first-principles thinking: identify a system's hidden assumptions (absolute spacetime), break them, establish new axioms (constant light speed + relativity principle), and deduce a new system through deduction (Special and General Relativity). In the original dimension, you can only present problems; only by ascending dimensions can you solve them. The laws of nature are simpler in higher dimensions. The key to understanding the universe is not more experimental data but deeper first principles.</div>
+</div>
+<div class="footer">"First Principles" Ch6 Infographic · Based on "Theory of Everything" · By Li Shanyou · For learning reference</div>
+</div>
+</body>
+</html>

@@ -1,777 +1,702 @@
 #!/usr/bin/env python3
+"""Generate chapter infographics for chapters 5-8 of 对比Excel，轻松学习Python报表自动化"""
 import os
-base = os.path.expanduser("~/.openclaw/workspace/infographics/books")
 
-def css():
-    return '''  @font-face {
-    font-family: 'FZXPYZS';
-    src: url('../方正屏显雅宋简体.TTF') format('truetype');
-    font-weight: normal; font-style: normal;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #f5f1eb;
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
-    display: flex; justify-content: center; align-items: flex-start;
-    min-height: 100vh; padding: 40px 20px 60px;
-  }
-  .container { max-width: 880px; width: 100%; }
+BOOKDIR = "/Users/jessper/.openclaw/workspace/infographics/books"
+BASE = "对比Excel，轻松学习Python报表自动化"
+FONT = "../方正屏显雅宋简体.TTF"
 
-  .lang-switch { text-align: right; margin-bottom: 16px; }
-  .lang-btn {
-    display: inline-block; padding: 6px 16px; border-radius: 8px;
-    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
-    transition: opacity 0.15s;
-  }
-  .lang-btn:hover { opacity: 0.75; }
+CSS = '''
+  @font-face {font-family:'FZXPYZS';src:url('%s') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}}
+''' % FONT
 
-  .back-catalog {
-    text-align: left; margin-bottom: 8px;
-  }
-  .back-catalog a {
-    font-size: 13px; color: #4f46e5; text-decoration: none;
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-  }
-  .back-catalog a:hover { text-decoration: underline; }
 
-  h1 {
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-    font-size: 36px; color: #1a1a1a; text-align: center;
-    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
-    letter-spacing: 1.5px;
-  }
-  .subtitle {
-    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
-    max-width: 640px; margin-left: auto; margin-right: auto;
-  }
-  .divider {
-    width: 60px; height: 3px;
-    background: linear-gradient(90deg, #dc2626, #ea580c);
-    margin: 0 auto 28px; border-radius: 2px;
-  }
-
-  .splash {
-    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
-    padding: 28px 32px; margin-bottom: 24px; color: #555;
-    font-size: 15px; line-height: 2.0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    border-left: 4px solid #4f46e5;
-  }
-
-  .kpi-row {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-    margin-bottom: 24px;
-  }
-  .kpi-card {
-    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 12px;
-    padding: 16px 12px; text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  .kpi-label {
-    font-size: 11px; color: #888; margin-bottom: 6px;
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-    letter-spacing: 1px;
-  }
-  .kpi-value {
-    font-size: 22px; color: #1a1a1a; font-weight: bold;
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-  }
-
-  .section {
-    background: #ffffff; border-radius: 14px;
-    margin-bottom: 18px; padding: 24px 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    display: flex; gap: 20px; align-items: flex-start;
-    border-left: 4px solid transparent;
-  }
-  .section-01 { border-left-color: #dc2626; }
-  .section-02 { border-left-color: #ea580c; }
-  .section-03 { border-left-color: #ca8a04; }
-  .section-04 { border-left-color: #4f46e5; }
-  .section-05 { border-left-color: #db2777; }
-
-  .section-num {
-    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 17px; font-weight: bold; margin-top: 2px;
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-  }
-  .num-01 { background: #fef2f2; color: #dc2626; }
-  .num-02 { background: #fff7ed; color: #ea580c; }
-  .num-03 { background: #fefce8; color: #ca8a04; }
-  .num-04 { background: #eef2ff; color: #4f46e5; }
-  .num-05 { background: #fdf2f8; color: #db2777; }
-
-  .section-body { flex: 1; }
-  .tag {
-    display: inline-block; font-size: 11px; font-weight: bold;
-    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
-    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-  }
-  .tag-01 { background: #fef2f2; color: #dc2626; }
-  .tag-02 { background: #fff7ed; color: #ea580c; }
-  .tag-03 { background: #fefce8; color: #ca8a04; }
-  .tag-04 { background: #eef2ff; color: #4f46e5; }
-  .tag-05 { background: #fdf2f8; color: #db2777; }
-
-  .section-title {
-    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-  }
-  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
-  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
-  .t-05 { color: #db2777; }
-
-  .section-desc {
-    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
-  }
-
-  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
-  .dual-card {
-    border-radius: 12px; padding: 18px 20px;
-    display: flex; gap: 12px; align-items: flex-start;
-  }
-  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
-  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
-  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
-  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
-  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
-
-  .flow-row {
-    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    margin-top: 6px;
-  }
-  .flow-step {
-    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
-    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
-    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
-  }
-  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
-  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
-
-  .risk-bars { margin-top: 10px; }
-  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-  .risk-label { font-size: 13px; color: #555; width: 130px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
-  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
-  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
-  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 50px; text-align: right; flex-shrink: 0; }
-
-  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
-  .data-card {
-    border-radius: 12px; padding: 20px 16px; text-align: center;
-    border: 1px solid #fce7f3;
-  }
-  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
-  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
-  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
-  .data-big { font-size: 28px; margin-bottom: 6px; }
-  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
-  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
-
-  .takeaway {
-    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
-    padding: 24px 32px; margin-bottom: 18px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    border-left: 4px solid #dc2626;
-  }
-  .takeaway-label {
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
-    font-weight: bold;
-  }
-  .takeaway-text {
-    font-size: 16px; color: #1a1a1a; line-height: 1.9;
-    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
-  }
-
-  .footer {
-    text-align: center; margin-top: 32px; padding-top: 20px;
-    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
-  }
-
-  @media (max-width: 640px) {
-    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
-    .section-01 { border-top-color: #dc2626; }
-    .section-02 { border-top-color: #ea580c; }
-    .section-03 { border-top-color: #ca8a04; }
-    .section-04 { border-top-color: #4f46e5; }
-    .section-05 { border-top-color: #db2777; }
-    .section-body { text-align: center; }
-    .dual-grid { grid-template-columns: 1fr; }
-    .flow-row { flex-direction: column; }
-    .flow-arrow { transform: rotate(90deg); }
-    .kpi-row { grid-template-columns: repeat(2, 1fr); }
-    .data-row { grid-template-columns: 1fr; }
-  }'''
-
-zh_nums = {5:'五',6:'六',7:'七',8:'八'}
-en_ord = {5:'Five',6:'Six',7:'Seven',8:'Eight'}
-
-def gen_html(lang, chap_num, title_en, zh_title, subtitle, overview, kpis, sections, takeaway_text, footer_info):
-    if lang == 'zh':
-        h1 = f'楚汉双雄 · 第{zh_nums[chap_num]}章「{zh_title}」'
-        en_file = f'楚汉双雄-ch{chap_num:03d}-info-en.html'
-        lang_label = 'EN'
-        catalog = '← 返回章节目录'
-    else:
-        h1 = f'The Chu-Han Contention · Chapter {en_ord[chap_num]}「{title_en}」'
-        en_file = f'楚汉双雄-ch{chap_num:03d}-info-zh.html'
-        lang_label = '中文'
-        catalog = '← Back to Catalog'
-
-    html_lang = 'zh-CN' if lang == 'zh' else 'en'
-
-    sec_html = ''
-    for i, s in enumerate(sections):
-        n = i + 1
-        tag = s.get('tag', '')
-        title = s.get('title', '')
-        desc = s.get('desc', '')
-        extra = s.get('extra', '')
-        sec_html += f'''    <!-- Section {n} / {n:02d} -->
-    <div class="section section-{n:02d}">
-      <div class="section-num num-{n:02d}">{n:02d}</div>
-      <div class="section-body">
-        <span class="tag tag-{n:02d}">{tag}</span>
-        <div class="section-title t-{n:02d}">{title}</div>
-        <div class="section-desc">{desc}</div>
-{extra}
-      </div>
-    </div>
-'''
-
-    kpi_html = ''
-    if kpis:
-        kpi_html = '  <div class="kpi-row">\n'
-        for k in kpis:
-            kpi_html += f'''      <div class="kpi-card">
-        <div class="kpi-label">{k[0]}</div>
-        <div class="kpi-value">{k[1]}</div>
-      </div>
-'''
-        kpi_html += '  </div>\n'
+def build_html(ch_num, zh_data):
+    """Build ZH HTML for a chapter"""
+    ch_pad = f"ch{ch_num:03d}"
+    ch_name = zh_data['ch_name']
+    scqa = zh_data['scqa']
+    overview = zh_data['overview']
+    kpis_html = zh_data['kpis_html']
+    sections_html = zh_data['sections_html']
+    takeaway = zh_data['takeaway']
+    footer_ch = zh_data['footer_ch']
+    catalog = f"{BASE}-catalog.html"
+    en_link = f"{BASE}-{ch_pad}-info-en.html"
 
     return f'''<!DOCTYPE html>
-<html lang="{html_lang}">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{h1}</title>
+<title>{BASE} · 第{ch_num}章「{ch_name}」</title>
 <style>
-{css()}
+{CSS}
 </style>
 </head>
 <body>
 <div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="{catalog}">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="{en_link}">中文 / English</a>
+</div>
 
-  <!-- Language Switch -->
-  <div class="lang-switch">
-    <a class="lang-btn" href="{en_file}" target="_blank">{lang_label}</a>
-  </div>
+<h1>{BASE} · 第{ch_num}章「{ch_name}」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  {scqa}
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>{overview}</p>
+</div>
 
-  <!-- Back to Catalog -->
-  <div class="back-catalog">
-    <a href="楚汉双雄-catalog.html">{catalog}</a>
-  </div>
+{kpis_html}
+{sections_html}
 
-  <!-- Chapter Title -->
-  <h1>{h1}</h1>
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">{takeaway}</div>
+</div>
 
-  <!-- Subtitle -->
-  <div class="subtitle">{subtitle}</div>
-
-  <!-- Divider -->
-  <div class="divider"></div>
-
-  <!-- Overview -->
-  <div class="splash">
-    {overview}
-  </div>
-
-  <!-- KPI Row -->
-{kpi_html}
-  <!-- Content Sections -->
-{sec_html}
-  <!-- Key Takeaway -->
-  <div class="takeaway">
-    <div class="takeaway-label">{'📌 核心启示' if lang == 'zh' else '📌 KEY TAKEAWAY'}</div>
-    <div class="takeaway-text">{takeaway_text}</div>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-{footer_info}
-  </div>
+<div class="footer">
+  来源：张俊红《{BASE}》第{ch_num}章「{footer_ch}」· 信息图 · 仅供学习参考
+</div>
 
 </div>
 </body>
 </html>'''
 
-# ── Chapter 5: 暗度陈仓 ──
 
-ch5_title_zh = '暗度陈仓：月下追回来的"汉中对"'
-ch5_title_en = 'Secretly Crossing Chencang: The "Hanzhong Strategy" Retrieved Under the Moon'
+# ===== Chapter 5 =====
+zh5 = {
+    'ch_name': '用Python设置Excel对齐方式',
+    'scqa': '在Excel中调整对齐方式——左对齐、居中、右对齐、自动换行、合并单元格——只需在「开始」选项卡的「对齐方式」组点击几次按钮。但当你有数百行数据需要统一对齐、或每天生成的报表都要标准化排版时，手工调整就枯燥低效。如何用Python批量控制Excel单元格的对齐方式？本章系统讲解Alignment()函数的6大参数、水平/垂直对齐类型、合并/解除单元格、以及批量对齐的实战案例。',
+    'overview': '本章聚焦于Excel「开始」选项卡中「对齐方式」组的Python实现。首先介绍Alignment()函数的6个核心参数：horizontal（水平对齐，支持left/center/right/justify/distributed/fill等9种）、vertical（垂直对齐，top/center/bottom）、text_rotation（文本旋转角度，0-360°）、wrap_text（自动换行）、shrink_to_fit（自适应缩小字号）、indent（缩进字符数）。然后讲解单元格合并/解除合并（merge_cells/unmerge_cells），以及合并后单元格通过top_left_cell进行样式设置的方法。最后通过一个批量设置对齐方式加合并标题行的综合案例，展示如何用for循环一次性完成整表标准化排版。',
+    'kpis_html': '''
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">6个</div>
+    <div class="kpi-label">Alignment()参数<br>水平/垂直/旋转等</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">9种</div>
+    <div class="kpi-label">水平对齐类型<br>居左/居中/居右等</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">垂直对齐类型<br>顶部/居中/底部</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">批量对齐<br>遍历整表统一排版</div>
+  </div>
+</div>''',
+    'sections_html': '''
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心函数</div>
+    <div class="section-title t-01">Alignment()：六参数掌控对齐全局</div>
+    <div class="section-desc">Alignment(horizontal, vertical, text_rotation, wrap_text, shrink_to_fit, indent) 是 openpyxl 对齐设置的核心。设置方式：cell.alignment = Alignment(参数1=值1, ...)。6个参数直接映射Excel功能区按钮，学习曲线平缓。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">↔️</div>
+        <div class="cmp-name">horizontal</div>
+        <div class="cmp-note">水平对齐<br>left/center/right<br>justify/distributed/fill</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">↕️</div>
+        <div class="cmp-name">vertical</div>
+        <div class="cmp-note">垂直对齐<br>top/center/bottom<br>上下方向控制</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🔄</div>
+        <div class="cmp-name">旋转·换行·缩进</div>
+        <div class="cmp-note">text_rotation (0-360°)<br>wrap_text (布尔值)<br>indent (缩进字符数)</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-ch5_sub_zh = '从萧何月下追韩信到一个月平定三秦——刘邦集团的最强引擎是如何在汉中启动的'
-ch5_sub_en = 'From Xiao He chasing Han Xin under the moon to pacifying the Three Qins in one month — how Liu Bang\'s faction ignited its most powerful engine in Hanzhong'
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">水平对齐</div>
+    <div class="section-title t-02">水平方向对齐：9种类型从常规到特殊</div>
+    <div class="section-desc">horizontal参数支持9种对齐类型：left（左对齐）、center（居中）、right（右对齐）、justify（两端对齐，占满行靠两边界，未满行左对齐）、distributed（分散对齐，未满行自动调字间距占满）、fill（填满对齐，重复字符填充）、general（一般对齐）、centerContinuous、distributed。日常最常用的是left/center/right三种。</div>
+    <div class="flow-row">
+      <div class="flow-step">⚫ 左对齐<br><small>left</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚫ 居中对齐<br><small>center</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚫ 右对齐<br><small>right</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📐 两端对齐<br><small>justify</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">📏 分散对齐<br><small>distributed</small></div>
+    </div>
+  </div>
+</div>
 
-ch5_overview_zh = '<p>公元前206年，刘邦被项羽分封到偏远的巴蜀汉中。在这个"养老之地"，将士纷纷逃亡，连大管家萧何也"跑了"。但萧何并非逃跑，而是月下追回了一位能改变天下格局的天才——韩信。在萧何的力荐下，刘邦以空前隆重的仪式拜韩信为大将。随后，韩信献上"汉中对"，明确指出项羽的四大致命弱点，力主立即打回关中。仅用四个月整军备战，一个月内三路出击、四面开花，秦汉之际第二位"战神"正式登上历史舞台。</p>'
-ch5_overview_en = '<p>In 206 BC, Liu Bang was assigned by Xiang Yu to the remote Ba-Shu-Hanzhong region. In this "retirement paradise," soldiers deserted in droves, and even chief steward Xiao He "ran away." But Xiao He wasn\'t fleeing — he was chasing back a genius who could reshape the world: Han Xin. Under Xiao He\'s forceful recommendation, Liu Bang appointed Han Xin as Grand General in an unprecedentedly grand ceremony. Han Xin then presented the "Hanzhong Strategy," identifying Xiang Yu\'s four fatal weaknesses and urging an immediate counterattack on Guanzhong. In just four months of preparation and one month of three-pronged attack, the second "God of War" of the Qin-Han era officially took the stage.</p>'
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">换行与旋转</div>
+    <div class="section-title t-03">自动换行、文本旋转与字号自适应</div>
+    <div class="section-desc">当文本超过列宽时三种处理：wrap_text=True自动换行，文本在单元格内分行显示；shrink_to_fit=True自动缩小字体适配单元格；text_rotation设置旋转角度（逆时针）。text_rotation与shrink_to_fit不能同时使用，各有适用场景——换行适合备注列，自适应适合紧凑表格，旋转适合窄列表头。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text"><h4>自动换行（wrap_text=True）</h4><p>超列宽自动换行<br>字体大小不变<br>行高自动增加<br>适合长文本列</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔎</div>
+        <div class="dual-text"><h4>自适应+旋转</h4><p>shrink_to_fit 缩小字体<br>text_rotation 旋转角度<br>indent 缩进字符<br>各有独立适用场景</p></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-ch5_kpis_zh = [('韩信拜将', '从未带兵者'), ('还定三秦', '1个月'), ('汉军整编', '10万人'), ('出秦岭通道', '3路并行')]
-ch5_kpis_en = [('Han Xin\'s Rise', 'From Nobody'), ('Pacifying 3 Qins', '1 Month'), ('Han Army Size', '100,000 Men'), ('Routes Out', '3 Axes')]
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">合并操作</div>
+    <div class="section-title t-04">单元格合并与解除：merge_cells / unmerge_cells</div>
+    <div class="section-desc">merge_cells('A2:D2')合并指定区域，unmerge_cells('A2:D2')解除合并。合并后单元格以左上角单元格（top_left_cell）为代表进行样式设置——字体、填充、对齐方式均作用于此。这一设计保证了合并区域样式的一致性。</div>
+    <div class="code-block">from openpyxl.styles import Alignment, Font
 
-ch5_sections = [
-    dict(tag='关键抉择', title='萧何月下追韩信：刘邦的识人之明',
-         desc='刘邦被分封到汉中后，将士因看不到希望纷纷逃亡。一天，听说萧何也跑了，刘邦如遭晴天霹雳。但萧何并非逃跑，而是月下追回了韩信。萧何以"国士无双"四字力荐，并说服刘邦以最隆重的仪式拜韩信为大将。全军大惊——一个从未带过兵的人怎么就成了总司令？但刘邦赌的是萧何的眼光，而非韩信的才干。这一赌，赌出了大汉四百年江山。',
-         extra='''        <div class="dual-grid">
-          <div class="dual-card yes">
-            <div class="dual-icon">✅</div>
-            <div class="dual-text">
-              <h4>刘邦的选择（高明）</h4>
-              <p>信任萧何的判断力，以超规格拜将。用仪式感和权威压住老将们的质疑，为韩信创造施展空间。本质上赌的是对"人"的判断力——信的不是韩信，是萧何。</p>
-            </div>
-          </div>
-          <div class="dual-card no">
-            <div class="dual-icon">❌</div>
-            <div class="dual-text">
-              <h4>普通领导的反应（平庸）</h4>
-              <p>看履历、看资历、看出身。一个管后勤的无名之辈凭什么当大将？按常理出牌就会错过顶级人才。项羽就是这样错过了韩信——让天才当执戟郎中。</p>
-            </div>
-          </div>
-        </div>'''),
-    dict(tag='战略蓝图', title='韩信的"汉中对"：刘邦版的隆中对',
-         desc='韩信拜将后，为刘邦分析了项羽的致命弱点：匹夫之勇（不能放手用将）、妇人之仁（舍不得分封利益）、没有原则（任人唯亲定都彭城）、失去民心（坑杀降卒烧杀抢掠）。他明确指出：打回关中的窗口期稍纵即逝——此时关中民心向汉，三秦王民心不稳，一旦章邯巩固统治，再进关中难如登天。这篇"汉中对"让刘邦茅塞顿开，也确认了萧何为何死保韩信——"萧何抢档案，韩信承秦制，你俩是个组合！"',
-         extra='''        <div class="risk-bars">
-          <div class="risk-row">
-            <div class="risk-label">关中民心向汉</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
-            <div class="risk-val">100%</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">三秦王民心不稳</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
-            <div class="risk-val">85%</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">项羽失信于天下</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
-            <div class="risk-val">90%</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">章邯防御能力</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:30%"></div></div>
-            <div class="risk-val">30%</div>
-          </div>
-        </div>'''),
-    dict(tag='制度建设', title='"韩信申军法"：军事上的全面继承大秦',
-         desc='韩信没有凭空创造一套新系统，而是相信一百多年来的正确选择——全面继承秦国的军事制度。这就是"因地制宜的拿来主义"。军功说话、有法可依，整个汉军被拧成一股绳。萧何在后方用"国家操作系统"（秦宫档案）动员战争力量，韩信在前方用秦制训练军队。仅仅四个月，汉中就从三万残兵扩张到十万大军，粮草辎重齐备——刘邦出汉中时已不是那个灰溜溜南下的败军之将了。',
-         extra='''        <div class="flow-row">
-            <div class="flow-step ">萧何抢秦宫档案</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">建立后勤系统</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">韩信承秦军制</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">整军备战十万</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step end">一个月定三秦</div>
-          </div>'''),
-    dict(tag='战术天才', title='四面烟雾三路出击：史上唯一成功出秦岭的战例',
-         desc='韩信的总思路是"四面烟雾，三路出击"：派老弱病残修褒斜道放烟雾弹；曹参樊哙走祁山道佯攻陇西；灌婴走子午道牵制司马欣；自己率主力出陈仓道。章邯面对多路战报左右为难，只能平均布防。韩信充分发挥了"大有大的难处"的反向逻辑——用多路出击把章邯的兵力劣势放大到极致。一旦突破秦岭，各路迅速集中，永远在人多打人少。韩信出汉中攻关中，成为中国几千年历史中唯一一次成功的战例。此后诸葛亮六出祁山皆无功而返。',
-         extra='''        <div class="flow-row">
-            <div class="flow-step ">修褒斜道放烟幕</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">曹参樊哙出祁山</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">灌婴走子午牵制</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">韩信主力出陈仓</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step end">三秦大定</div>
-          </div>'''),
-    dict(tag='战神降临', title='一个月还定三秦：第二位"战神"的完美首秀',
-         desc='章邯的老思路没问题：实力不济就收缩。但他面对的是一个永远在人多打人少的对手。韩信的所有调度都是：凉州闹完调回西路军、主力决战引出三秦全部力量、灌婴子午口出场、曹参打阻击引出残余力量后迅速支援。整个还定三秦过程，没有一战是纠结于攻城战的——全是调动出来以野战消灭有生力量。一个月内，除章邯死守废丘外，渭水河谷全部平定。司马欣投降，董翳投降，章邯最终自杀。秦末第二位"战神"正式就位。',
-         extra='''        <div class="data-row">
-            <div class="data-card d1">
-              <div class="data-big">4个月</div>
-              <div class="data-name">整军备战</div>
-              <div class="data-sm">从三万残兵到十万大军的速度</div>
-            </div>
-            <div class="data-card d2">
-              <div class="data-big">1个月</div>
-              <div class="data-name">定三秦</div>
-              <div class="data-sm">韩信平定雍、塞、翟三国的总时间</div>
-            </div>
-            <div class="data-card d3">
-              <div class="data-big">唯一</div>
-              <div class="data-name">成功纪录</div>
-              <div class="data-sm">中国史上唯一一次成功从汉中攻入关中</div>
-            </div>
-          </div>'''),
-]
+# 合并单元格
+ws.merge_cells('A2:D2')
 
-ch5_takeaway_zh = '韩信出汉中的真正秘密不在"明修栈道暗度陈仓"的戏剧性，而在于三点：出汉时限论（抓住民心窗口期立即行动）、申军法承秦制（不打无准备之仗）、四面出击法（用多路作战放大己方优势）。这三个战略层面的"庙算之胜"，比任何战术花招都重要。刘邦赌萧何的眼光，萧何识韩信的天才，韩信识大势的窗口——三层信任链环环相扣，才是刘邦集团真正启动的核心引擎。'
-ch5_takeaway_en = 'The true secret of Han Xin\'s breakout from Hanzhong is not the dramatic "repairing the plank road while secretly crossing Chencang," but three strategic insights: the time-limit doctrine (seizing the window of popular support), military reform by inheriting Qin\'s system (preparing before fighting), and multi-axis assault (amplifying one\'s own advantages). These "temple calculations of victory" mattered far more than any tactical trick. Liu Bang bet on Xiao He\'s judgment, Xiao He recognized Han Xin\'s genius, and Han Xin read the strategic window — this three-layer chain of trust was the core engine that truly launched Liu Bang\'s faction.'
+# 通过左上角单元格设置样式
+top_left_cell = ws['A2']
+top_left_cell.alignment = Alignment(
+    horizontal='center', vertical='center')
+top_left_cell.font = Font(bold=True)
 
-ch5_footer_zh = '渤海小吏 · 楚汉双雄 · 第五章 · 图书信息图<br>\n来源：楚汉双雄（渤海小吏 著，台海出版社，2020）'
-ch5_footer_en = 'Bohai Xiaoli · The Chu-Han Contention · Chapter 5 · Book Infographic<br>\nSource: The Chu-Han Contention (by Bohai Xiaoli, Taihai Press, 2020)'
+# 解除合并
+ws.unmerge_cells('A2:D2')</div>
+  </div>
+</div>
 
-# ── Chapter 6: 彭城大屠杀 ──
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">批量实战</div>
+    <div class="section-title t-05">批量设置对齐：整表标准化一个循环搞定</div>
+    <div class="section-desc">真实场景极少只格式化一个单元格。在字体格式化的for循环基础上增加alignment属性，即可一次性完成水平居中、垂直居中、换行设置。配合标题行合并与加粗，代码编写一次，永久适用于同类报表。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📐</div>
+        <div class="data-name">水平居中</div>
+        <div class="data-sm">遍历所有数据单元格<br>horizontal='center'<br>整列数据统一居中</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">垂直居中</div>
+        <div class="data-sm">遍历所有数据单元格<br>vertical='center'<br>行高统一视觉美观</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🏷️</div>
+        <div class="data-name">标题行</div>
+        <div class="data-sm">merge_cells合并<br>Font(bold=True)加粗<br>一次编写永久复用</div>
+      </div>
+    </div>
+  </div>
+</div>''',
+    'takeaway': 'Excel的对齐方式——水平对齐、垂直对齐、自动换行、文本旋转、缩进、合并单元格——在Python中对应一个核心函数Alignment()和两个操作函数merge_cells()/unmerge_cells()。参数直接映射Excel功能区按钮，学习成本极低。真正的威力在于批量：一个for循环遍历所有数据单元格，统一设置alignment属性，配合标题行合并加粗，让报表排版和数据处理一样全自动化。这就是Python报表自动化的核心价值——取代一切重复、枯燥的工作。',
+    'footer_ch': '用Python设置Excel对齐方式'
+}
 
-ch6_title_zh = '彭城大屠杀："西楚霸王"的闪电战'
-ch6_title_en = 'The Pengcheng Massacre: The "Hegemon-King of Western Chu\'s" Blitzkrieg'
-
-ch6_sub_zh = '项羽三万铁骑如何用一次闪电奔袭击溃刘邦的五十六万诸侯联军——大胜与大败之间只隔了一夜'
-ch6_sub_en = 'How Xiang Yu crushed Liu Bang\'s 560,000-strong coalition army with 30,000 cavalry in a single lightning raid — the thin line between total victory and catastrophic defeat'
-
-ch6_overview_zh = '<p>公元前205年四月，刘邦趁项羽深陷齐国泥潭，率五十六万诸侯联军攻占了项羽的都城彭城。然而仅仅一个月后，项羽亲率三万精骑从齐国闪电回师，先击破樊哙北面防线，再走泗水线直插萧县，拂晓闪电突袭汉军侧翼。从清晨战至正午，汉军全线崩溃，被驱赶入泗水、睢水，溺死者不计其数，"睢水为之不流"。刘邦仅率数十骑在沙尘暴中侥幸逃脱。此后张良指明三大关键人物——英布、彭越、韩信——成为扭转战局的核心战略。</p>'
-ch6_overview_en = '<p>In April 205 BC, Liu Bang exploited Xiang Yu\'s entanglement in Qi to capture the Chu capital Pengcheng with a 560,000-strong coalition army. Yet just one month later, Xiang Yu personally led 30,000 elite cavalry in a lightning return from Qi, breaking through Fan Kuai\'s northern defenses, racing down the Sishui line to Xiao County, and launching a dawn flank attack. By noon the Han army had completely collapsed, driven into the Si and Sui rivers with countless drowned — "the Sui River ceased to flow." Liu Bang escaped with only dozens of horsemen in a sandstorm. Zhang Liang then identified three pivotal figures — Ying Bu, Peng Yue, Han Xin — as the strategic key to reversing the war.</p>'
-
-ch6_kpis_zh = [('联军号称', '56万'), ('项羽精骑', '3万'), ('汉军被歼', '10余万'), ('关键人物', '3人')]
-ch6_kpis_en = [('Coalition Claimed', '560,000'), ('Xiang Yu\'s Cavalry', '30,000'), ('Han Losses', '100,000+'), ('Key Figures', '3 Named')]
-
-ch6_sections = [
-    dict(tag='战略灾难', title='项羽的齐国之困：战略目标达成后不知打住',
-         desc='公元前206年四月项羽分封完诸侯，五月田荣就反了。项羽北伐灭齐，击溃田荣、斩杀田假，战略目标全部达成。但他没有收手——恼怒于齐人，尽烧房屋、劫掠妇女，一路屠到北海。"西楚霸王"变成了杀人恶魔。田横趁机收揽败军，齐国人民群起反抗，项羽陷入了与齐国人民作战的汪洋大海。拿破仑说过："胜利的时刻往往潜伏着最大的危险。"项羽缺乏自制力和大局观——他不知道何时该停止，这成为他最终失败的深层原因。',
-         extra='''        <div class="dual-grid">
-          <div class="dual-card yes">
-            <div class="dual-icon">✅</div>
-            <div class="dual-text">
-              <h4>正确的做法</h4>
-              <p>战略目标达成后及时收手。扶植傀儡政权、收取贡赋、撤军休整。省下来的时间、资源和机会可以用于更重要的方向。</p>
-            </div>
-          </div>
-          <div class="dual-card no">
-            <div class="dual-icon">❌</div>
-            <div class="dual-text">
-              <h4>项羽的做法</h4>
-              <p>被情绪驱动，将战争变为无限报复。烧杀抢掠导致全民反抗，深陷泥潭无法脱身。百战百胜的最后，往往是数胜而亡。</p>
-            </div>
-          </div>
-        </div>'''),
-    dict(tag='闪电突袭', title='三万对五十六万：史上最惊人的以少胜多闪电战',
-         desc='项羽面对号称五十六万的诸侯联军，做出了令人瞠目的决定：留下主力继续攻齐，自率三万精骑救楚。他的思路极其清晰——多国联军最大的弱点是指挥系统不协调。项羽先击破樊哙北面防线，不理纠缠马不停蹄走泗水线直扑萧县，拂晓由西向东闪击汉军侧翼。从清晨战至正午，汉军全线崩溃。项羽咬定刘邦中军穷追猛打，将汉军驱赶入泗水、睢水，"睢水为之不流"。此一战汉军被歼十余万，刘邦仅率数十骑在沙尘暴中逃脱。项羽又一次创下战争史上以少胜多的奇迹。',
-         extra='''        <div class="flow-row">
-            <div class="flow-step ">破樊哙北面防线</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">走泗水线南下</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">拂晓突袭萧县</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">击溃汉军侧翼</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step end">屠杀泗水睢水</div>
-          </div>'''),
-    dict(tag='战略眼光', title='张良的下邑画策：三根柱子撑住将倾的大厦',
-         desc='刘邦逃到下邑后对张良说："关东的土地我不要了！都分了！"张良回答："分了就对了！指你一个人搞不定项羽。重要的只有三个人：英布（项羽头号战将，近期表现可疑，所处九江在西楚上游占据地利）、彭越（没有背景却越混越壮，一直跟项羽捣乱还没被打死）、韩信（不用争取，调回来就行）。只有这三个人全部站到你这边并发挥出全部力量，才有可能战胜项羽。"刘邦对张良言听计从，派随何争取英布，调韩信驰援荥阳，让彭越继续袭扰。这套三路牵制战略为整个楚汉战争定下了总框架。',
-         extra='''        <div class="data-row">
-            <div class="data-card d1">
-              <div class="data-big">①</div>
-              <div class="data-name">英布</div>
-              <div class="data-sm">项羽头号战将，九江扼守西楚上游，争取他对刘邦至关重要</div>
-            </div>
-            <div class="data-card d2">
-              <div class="data-big">②</div>
-              <div class="data-name">彭越</div>
-              <div class="data-sm">无背景无投资，靠游击越混越壮，处中原腹地一直骚扰项羽</div>
-            </div>
-            <div class="data-card d3">
-              <div class="data-big">③</div>
-              <div class="data-name">韩信</div>
-              <div class="data-sm">唯一能独当一面率方面军执行战略任务的人，赶紧从围城调回来</div>
-            </div>
-          </div>'''),
-    dict(tag='当机立断', title='随何说英布：就差几天改变历史的先手棋',
-         desc='刘邦派随何前往九江争取英布。随何到后，英布三天不见。随何直接挑明——"项羽伐齐你只派几千人，刘邦攻彭城你按兵不动，你这么\'忠心\'让项羽怎么想？"一针见血击中英布最害怕的地方。英布虽同意归汉但仍想观望，再三叮嘱随何万不可走漏风声。恰好项羽的使者也来催促英布出兵，随何当机立断闯入王廷当众宣告"九江王已归汉"，逼英布上贼船。就差几天的工夫——如果楚使先到，英布就可能倒向项羽。刘邦的"当机立断"为自己争取了宝贵的半年战略窗口期。',
-         extra='''        <div class="flow-row">
-            <div class="flow-step ">刘邦派随何出使</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">英布观望三天</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">随何挑明利害</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">项羽使者到来</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step end">随何逼英布杀使归汉</div>
-          </div>'''),
-    dict(tag='成本意识', title='战争的成本与代价：为什么必须"化敌为友"',
-         desc='项羽打完田荣后如果收手，齐国会进贡、战士可回家、百姓能生产、资源可建粮仓桥梁。但他选择了无限报复，结果深陷泥潭——刘邦趁机攻占彭城。但刘邦也犯了同样的错误：进彭城后日日置酒高会、尽享项羽财宝美人，没有挥师北上找项羽决战。一夜之间，五十六万大军灰飞烟灭。战争的核心原则：凡是能直接用钱解决的，代价最低；凡是能用嘴解决的，不要用拳头。每个领导人都应该满足于战略目标达成后的胜利——因为你的每次行动，都是有成本的。人生很长，没有战略方针和自制力的人，到达不了巅峰。',
-         extra='''        <div class="risk-bars">
-          <div class="risk-row">
-            <div class="risk-label">化敌为友的成本</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:5%"></div></div>
-            <div class="risk-val">5%</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">战争直接成本</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:60%"></div></div>
-            <div class="risk-val">60%</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">战争机会成本</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div>
-            <div class="risk-val">90%</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">无限战争反噬</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
-            <div class="risk-val">100%</div>
-          </div>
-        </div>'''),
-]
-
-ch6_takeaway_zh = '彭城之战展示了两个极端：项羽三万骑兵击溃五十六万联军——军事天才的极致；但项羽的战略灾难——不知何时打住的无限报复——却让他从"霸王"变成"恶魔"，从此陷入四面楚歌。刘邦的大败则催生了张良的"下邑画策"，锁定英布、彭越、韩信三根战略支柱。从此楚汉战争变成了一场消耗战——不是比谁的拳头更硬，而是比谁的体系更能撑。项羽每一次胜利都在消耗自己，刘邦每一次失败都在学习成长。这才是最终结局的决定性差异。'
-ch6_takeaway_en = 'The Battle of Pengcheng revealed two extremes: Xiang Yu\'s 30,000 cavalry routing a 560,000-strong coalition — military genius at its peak; but his strategic disaster — endless vengeful warfare without knowing when to stop — transformed him from "Hegemon-King" to "demon," plunging him into encirclement. Liu Bang\'s catastrophic defeat catalyzed Zhang Liang\'s "Xia Yi Plan," locking in Ying Bu, Peng Yue, and Han Xin as three strategic pillars. Henceforth the Chu-Han war became a war of attrition — not about who punched harder, but whose system could endure longer. Every Xiang Yu victory consumed his own strength; every Liu Bang defeat was a learning experience. This was the decisive difference in the final outcome.'
-
-ch6_footer_zh = '渤海小吏 · 楚汉双雄 · 第六章 · 图书信息图<br>\n来源：楚汉双雄（渤海小吏 著，台海出版社，2020）'
-ch6_footer_en = 'Bohai Xiaoli · The Chu-Han Contention · Chapter 6 · Book Infographic<br>\nSource: The Chu-Han Contention (by Bohai Xiaoli, Taihai Press, 2020)'
-
-# ── Chapter 7: 背水一战 ──
-
-ch7_title_zh = '背水一战："兵仙"的一路向北'
-ch7_title_en = 'The Battle of Jingxing: The "God of War\'s" Northern Campaign'
-
-ch7_sub_zh = '韩信如何在十个月内用五万人横扫北方四国——"背水一战"的七个关键环节比你想象的复杂一万倍'
-ch7_sub_en = 'How Han Xin swept four northern kingdoms with 50,000 men in ten months — the seven critical links of the "Back-to-the-River Battle" are far more complex than you imagined'
-
-ch7_overview_zh = '<p>彭城大败后，刘邦派韩信率两万偏师北上灭魏。韩信在一个月内用木罂渡黄河、声东击西擒魏豹，随后三万人灭代，五万人破赵。最著名的"背水一战"——井陉口韩信背水列阵诱出赵军全部主力，两千骑兵奇袭空营换红旗，两面夹击大破陈馀二十万大军。战后用李左车"不战而屈人之兵"之计招降燕国。十个月内，韩信仅用五万非嫡系部队完成了对整个中国北方的征服。但"背水一战"的真正秘密不是"退无可退、拼命一战"——那是七个精密环节环环相扣的结果。</p>'
-ch7_overview_en = '<p>After the Pengcheng disaster, Liu Bang sent Han Xin north with only 20,000 men to destroy Wei. Within one month Han Xin used wooden floats to cross the Yellow River, feigned east and struck west to capture Wei Bao. Then 30,000 men destroyed Dai, and 50,000 crushed Zhao. The most famous "Back-to-the-River Battle" — at Jingxing Pass, Han Xin arrayed his army with the river behind, baited out Zhao\'s entire force, sent 2,000 cavalry to seize the empty camp and raise red banners, then attacked from both sides, routing Chen Yu\'s 200,000-strong army. Afterward he employed Li Zuoche\'s strategy of "subduing the enemy without fighting" to force Yan\'s surrender. In ten months, Han Xin conquered all of northern China with just 50,000 non-elite troops. But the true secret of the "Back-to-the-River" victory was not "no retreat, fight to the death" — it was the result of seven precisely interlocking steps.</p>'
-
-ch7_kpis_zh = [('完成北伐', '10个月'), ('使用兵力', '5万人'), ('灭国数量', '4个'), ('背水关键', '7环节')]
-ch7_kpis_en = [('Campaign Duration', '10 Months'), ('Troops Used', '50,000'), ('Kingdoms Destroyed', '4'), ('Victory Links', '7 Steps')]
-
-ch7_sections = [
-    dict(tag='情报先行', title='灭魏：每次作战前用间谍摸清所有底牌',
-         desc='韩信每次战前必派大量间谍刺探敌情，汇总所有消息后才下达作战部署。灭魏时，他得知魏豹将主力全部集结在蒲津渡封锁黄河，龙门渡却无人设防——这是一个致命漏洞。韩信用灌婴骑兵和舟船在蒲津渡大张旗鼓佯攻，吸引魏军全部注意力；同时派曹参率主力在上游夏阳用木罂偷渡黄河，直插安邑切断魏军退路。两面夹击下魏军大败，魏豹被俘。山西高原一战而定。韩信为何成功？因为他不相信任何侥幸——"兵者，国之大事，生死之地，不可不察也。"',
-         extra='''        <div class="dual-grid">
-          <div class="dual-card yes">
-            <div class="dual-icon">✅</div>
-            <div class="dual-text">
-              <h4>韩信做法（情报驱动）</h4>
-              <p>先派间谍摸清敌情。发现魏豹赌在蒲津渡，龙门渡空虚。用自己的"虚"（旌旗舟船）牵制对方"实"，用自己的"实"（主力偷渡）打击对方"虚"。</p>
-            </div>
-          </div>
-          <div class="dual-card no">
-            <div class="dual-icon">❌</div>
-            <div class="dual-text">
-              <h4>魏豹做法（盲目下注）</h4>
-              <p>兵力有限就孤注一掷堵蒲津渡，认为韩信没船就过不了河。但韩信根本不用船——用木罂搭浮桥偷渡。不撒胡椒面的结果是被一锅端。</p>
-            </div>
-          </div>
-        </div>'''),
-    dict(tag='恩怨驱动', title='陈馀放韩信进井陉：私仇如何毁掉一个国家',
-         desc='陈馀部下李左车提出完美方案：给我三万骑兵断汉军粮道，您深沟高垒不战，不出十天韩信张耳人头送到。方案有分析有论据无风险。但陈馀拒绝了，理由冠冕堂皇——"我们是仁义之师，不以诡计取胜"。真实原因只有一个：张耳。陈馀无法忍受当着张耳的面不是碾压而是偷袭——他要让张耳亲眼看到，"没有我，你什么也不是"。这种将个人恩怨凌驾于国家利益的决策，为背水一战这场千古名局搭好了舞台。也是"对人不对事"的经典反面教材。',
-         extra='''        <div class="flow-row">
-            <div class="flow-step ">张耳陈馀生死之交</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">巨鹿之战产生裂痕</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">陈馀弃印张耳取之</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">由爱生恨势同水火</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step end">陈馀为私仇弃良策</div>
-          </div>'''),
-    dict(tag='七环紧扣', title='背水一战：七个环节缺一不可的精密工程',
-         desc='流传两千年的"背水一战"故事极其简化——退无可退，奋勇上前。但这是完全的误导。实际情况是七个环节环环相扣：①提前用间谍探明井陉道无伏兵；②半夜派两千骑兵秘密出发至埋伏点；③先派一万兵背水列阵骄兵兼做缓冲；④自己殿后确保全军过河；⑤亲自做诱饵主力且战且退丢旗弃鼓；⑥背水阵成建制一万兵截住追兵让韩信喊出"退无可退"；⑦两千骑兵夺空营换红旗两面夹击。七个环节少了任何一个，韩信都赢不了。古往今来只成功过一次，是因为只有韩信做全了这七个步骤。',
-         extra='''        <div class="risk-bars">
-          <div class="risk-row">
-            <div class="risk-label">①间谍探路</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
-            <div class="risk-val">致命</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">②半夜伏兵</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
-            <div class="risk-val">致命</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">③背水缓冲阵</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
-            <div class="risk-val">致命</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">④⑦夺营红旗</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
-            <div class="risk-val">致胜</div>
-          </div>
-        </div>'''),
-    dict(tag='被忽略的真相', title='韩信成功的深层原因：时代红利与国运窗口',
-         desc='韩信北伐之所以十个月横扫北方，不仅因为军事天才，更因为三个时代红利：①对手虚弱——魏代赵燕都是"空降干部"，户口钱粮民心啥也没有；②项羽的顶层设计造成这种虚弱——他把各国故地重新洗牌，新封的国王全无根基；③刘邦在关中的民心优势和萧何的动员能力持续输血。还有一个被忽视的因素：韩信出汉中时有水路运粮（西汉水和嘉陵江），而四百年后诸葛亮北伐时武都大地震改变了河道，大泽消失，运粮成为噩梦。国运在时万事俱备，国运不在，再遇"国士无双"也无法逆天改命。',
-         extra='''        <div class="data-row">
-            <div class="data-card d1">
-              <div class="data-big">🕐</div>
-              <div class="data-name">对手虚弱</div>
-              <div class="data-sm">四国皆为刚"空降"的政权，无户口钱粮无民心基础</div>
-            </div>
-            <div class="data-card d2">
-              <div class="data-big">🌊</div>
-              <div class="data-name">水运便利</div>
-              <div class="data-sm">西汉水嘉陵江贯通汉中至关中，船运解决粮草问题</div>
-            </div>
-            <div class="data-card d3">
-              <div class="data-big">⚙️</div>
-              <div class="data-name">后方造血</div>
-              <div class="data-sm">萧何用秦宫档案持续动员关中巴蜀人力物力</div>
-            </div>
-          </div>'''),
-    dict(tag='以智代力', title='不战而屈人之兵：燕国一招降服的智慧',
-         desc='破赵后韩信悬赏千金活捉李左车，以师长之礼虚心求教。李左车分析：将军连灭三国，威震天下是优势；但士卒疲惫、深入敌境是劣势。此时远征燕国坚城之下，势必久战不下，齐国就会固守边境——燕齐不下则天下胜负未分。建议：按兵不动休整士卒，摆出攻燕架势，然后派辩士游说——燕国必降。燕降后齐必跟风。韩信完全采纳，以"不战而屈人之兵"降燕。他懂得"凡动作必有成本"，能用嘴解决的就绝不动拳头。这恰恰是项羽一辈子没学会的——也是"化敌为友"比消灭敌人更高明的地方。',
-         extra='''        <div class="flow-row">
-            <div class="flow-step ">破赵立威</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">悬赏千金求李左车</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">休整摆出攻燕架势</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step ">辩士游说燕国</div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-step end">燕不战而降</div>
-          </div>'''),
-]
-
-ch7_takeaway_zh = '"背水一战"不是"退无可退奋勇上前"的励志鸡汤，而是七个精密环节环环相扣的系统工程。两千年来无数人想复制韩信的奇迹，从马谡到各种"自断后路"的豪赌者，几乎全部失败——因为他们只看到了"背水列阵"的表象，却不知道韩信做了多少前期的间谍侦察、半夜部署、伏兵安排、骄兵诱敌。真正值得学习的是韩信每次战前的"庙算"——把所有信息汇总后才下决策，把每一个环节都做足准备。即便如此，以弱搏强仍不建议作为首选——因为环节越多，出纰漏的可能性就越大。气沉丹田，踏踏实实过好每一天，今天比昨天好，明天比今天好，足以。'
-ch7_takeaway_en = '"Back-to-the-River Battle" is not an inspirational cliché of "no retreat, fight to the death" — it was a systems engineering feat of seven precisely interlocking steps. For two millennia countless imitators tried to replicate Han Xin\'s miracle, from Ma Su to various "burn your bridges" gamblers — nearly all failed. Because they only saw the surface image of "arrayed with the river behind" without knowing Han Xin\'s extensive pre-battle espionage, midnight deployments, ambush arrangements, and bait tactics. What\'s truly worth learning is Han Xin\'s pre-battle "temple calculation" — aggregating all intelligence before deciding, preparing every link thoroughly. Even so, fighting the strong with the weak is never recommended as a first choice — because the more steps, the higher the chance of failure. Ground yourself, live each day steadily, better today than yesterday, better tomorrow than today — that is enough.'
-
-ch7_footer_zh = '渤海小吏 · 楚汉双雄 · 第七章 · 图书信息图<br>\n来源：楚汉双雄（渤海小吏 著，台海出版社，2020）'
-ch7_footer_en = 'Bohai Xiaoli · The Chu-Han Contention · Chapter 7 · Book Infographic<br>\nSource: The Chu-Han Contention (by Bohai Xiaoli, Taihai Press, 2020)'
-
-# ── Chapter 8: 拉锯荥阳 ──
-
-ch8_title_zh = '拉锯荥阳：东奔西走的"霸王"'
-ch8_title_en = 'The Xingyang Stalemate: The Exhausted "Hegemon-King"'
-
-ch8_sub_zh = '情报战线的"成本革命"、两千名妇女的性掩护、打不完的"地鼠"——楚汉相持阶段的全维度消耗战'
-ch8_sub_en = 'The "cost revolution" of intelligence warfare, 2,000 women as sexual cover, endless "whack-a-mole" — the all-dimensional war of attrition in the Chu-Han stalemate'
-
-ch8_overview_zh = '<p>公元前204年起，楚汉在荥阳一线进入长达两年多的相持阶段。陈平以四万两黄金展开间谍战，离间项羽与范增、钟离昧等异姓将领；范增被驱逐后发背疮而死。荥阳危急时陈平用两千名妇女作性掩护，以纪信假扮刘邦诈降，助刘邦逃脱。此后项羽陷入"打地鼠"困境——刘邦正面牵制、彭越后方袭扰、英布南面牵制，项羽每扑灭一处火另一处又起。最终韩信潍水之战斩龙且定齐，刘邦荥阳战线起死回生。项羽第一次低下高贵的头颅，派人劝韩信三分天下——楚汉争霸走向终章。</p>'
-ch8_overview_en = '<p>From 204 BC, the Chu and Han armies entered a two-year stalemate along the Xingyang line. Chen Ping launched a spy war with 40,000 taels of gold, sowing discord between Xiang Yu and his non-clan generals like Fan Zeng and Zhongli Mei; Fan Zeng was driven out and died of an ulcerated back. When Xingyang became critical, Chen Ping used 2,000 women as sexual cover, with Ji Xin impersonating Liu Bang in a fake surrender to enable Liu Bang\'s escape. Thereafter Xiang Yu fell into a "whack-a-mole" trap — Liu Bang pinned him frontally, Peng Yue raided his rear, Ying Bu harassed from the south. Every fire Xiang Yu extinguished, another ignited elsewhere. Finally Han Xin beheaded Long Ju at the Battle of the Wei River and pacified Qi, reviving Liu Bang\'s Xingyang front. For the first time, Xiang Yu lowered his proud head and sent envoys to persuade Han Xin to divide the empire into three — the Chu-Han contest moved toward its finale.</p>'
-
-ch8_kpis_zh = [('陈平用金', '4万两'), ('对妇女', '2000名'), ('拉锯时间', '2年+'), ('范增之死', '被离间')]
-ch8_kpis_en = [('Chen Ping\'s Gold', '40,000 Taels'), ('Women Used', '2,000'), ('Stalemate', '2+ Years'), ('Fan Zeng\'s Fate', 'Alienated')]
-
-ch8_sections = [
-    dict(tag='人性洞察', title='先抑后扬：刘邦用"洗脚接见"拿下英布',
-         desc='英布为刘邦牵制项羽半年多后拼光了老本，投奔刘邦。刘邦倚着床、洗着脚接见他——英布虎目含泪当场就想自杀。但当他被引领到居处时，发现一切规格与汉王府一模一样。这种巨大的落差瞬间拿下英布："刘邦那叫随性、不做作！越看越可爱，还当我面洗脚，多皮啊！不是自己人能这样吗？"这是典型的"先辱后赏、先抑后扬"——刘邦对人性的精准把控对比项羽强了好几个档次，正如项羽在军事上对比他的巨大优势一样。英布争取来的半年时间，让韩信完成了整个北方征服。',
-         extra='''        <div class="dual-grid">
-          <div class="dual-card yes">
-            <div class="dual-icon">✅</div>
-            <div class="dual-text">
-              <h4>刘邦 · 先抑后扬</h4>
-              <p>洗脚接见制造巨大落差，然后以最高规格款待。利用人们憎恨失去的心理弱点——冷一点之后再热烈，才会让人感到春天般的温暖。</p>
-            </div>
-          </div>
-          <div class="dual-card no">
-            <div class="dual-icon">❌</div>
-            <div class="dual-text">
-              <h4>项羽 · 有恃无恐</h4>
-              <p>一直对英布喜爱有加、裂土封王。但越偏爱越有恃无恐。项羽用人时英布派几千人打发——被偏爱的永远有恃无恐。</p>
-            </div>
-          </div>
-        </div>'''),
-    dict(tag='情报革命', title='陈平登场：四万两黄金的间谍战与成本哲学',
-         desc='陈平来自项羽阵营，深知楚国内部项氏家族与异姓将领的矛盾。他向刘邦提出："给我四万两黄金，让我反间项羽君臣。"刘邦二话没说就拨了钱，连具体计划都不问。陈平用这些黄金在楚军中收买内线、散布谣言，目标精准锁定范增——项羽最不可替代的智囊。最终范增被猜忌驱逐，发背疮而死。刘邦的高明在于算清了一笔账：四万两黄金不过十万大军一个月的耗费，仗打了一年多，还在乎这点钱？"凡动作必有成本"——能用钱直接解决的，代价最低。间谍投入产出比永远最高。',
-         extra='''        <div class="risk-bars">
-          <div class="risk-row">
-            <div class="risk-label">间谍成本(月)</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:5%"></div></div>
-            <div class="risk-val">5%</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">大军开支(月)</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
-            <div class="risk-val">100%</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">范增价值</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:500%"></div></div>
-            <div class="risk-val">&infin;</div>
-          </div>
-          <div class="risk-row">
-            <div class="risk-label">投入产出比</div>
-            <div class="risk-meter"><div class="risk-fill" style="width:10%"></div></div>
-            <div class="risk-val">1:10</div>
-          </div>
-        </div>'''),
-    dict(tag='暗黑手段', title='两千名妇女与纪信替死：被史书轻描淡写的代价',
-         desc='范增死后荥阳仍然危在旦夕。陈平的脱身之计：让身形相貌酷似刘邦的纪信假扮汉王向项羽诈降，然后让两千名妇女化装成汉军出城。"两千名妇女假扮士兵"——这不是木兰从军，而是极其下作的"性掩护"。这两千名妇女让围城的饥渴楚军松懈下来，刘邦趁夜色从西门逃脱。忠勇的纪信被项羽活活烧死，两千名妇女的下场史书一字未提。陈平的手段极其冷酷高效——但代价是一批被史书抹去名字的人。情报工作永远走不到台前，这是其本质决定的。',
-         extra='''        <div class="flow-row">
-            <div class="flow-step ">纪信假扮刘邦</div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step ">2000妇女伪装出城</div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step ">楚军松懈围观</div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step ">刘邦西门逃脱</div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step end">纪信被项羽烧死</div>
-          </div>'''),
-    dict(tag='战略困境', title='"打地鼠"的项羽：为什么百战百胜却越来越被动',
-         desc='项羽的军事才能无可匹敌——刘邦在正面战场从没赢过他。但问题在于他对人不对事：谁闹得欢就去灭谁，却没有制定过固定的战略分工。他手下有钟离昧、龙且等百战名将，却因陈平的离间而始终不放心放权。结果刘邦正面牵制、彭越后方袭扰、英布南面牵制——项羽在三个战场间疲于奔命。刘邦则越来越清楚自己的定位：他就是一根牵制的大旗，靠耗下去从别的方向慢慢耗死项羽。刘邦"对事不对人"，错了就改、对了就做；项羽"对人不对事"，被情绪和猜忌驱动——这正是两人最根本的差距。',
-         extra='''        <div class="data-row">
-            <div class="data-card d1">
-              <div class="data-big">&#x1F3AF;</div>
-              <div class="data-name">刘邦牵制</div>
-              <div class="data-sm">荥阳正面顶住项羽主力，靠萧何后方持续输血</div>
-            </div>
-            <div class="data-card d2">
-              <div class="data-big">&#x1F400;</div>
-              <div class="data-name">彭越袭扰</div>
-              <div class="data-sm">在楚国后方断粮道、攻城邑，项羽一走就大肆活动</div>
-            </div>
-            <div class="data-card d3">
-              <div class="data-big">&#x2694;&#xFE0F;</div>
-              <div class="data-name">韩信北伐</div>
-              <div class="data-sm">开辟北方战场，最终从东面包抄楚国</div>
-            </div>
-          </div>'''),
-    dict(tag='终章前奏', title='潍水之战斩龙且：楚汉天平彻底倾斜',
-         desc='项羽派龙且率五万楚军救齐。龙且不屑韩信——"一个吃软饭、爬裤裆的货。"但韩信再次上演水战魔法：在潍水上游用上万沙袋筑坝蓄水，亲自引军过河诱敌，龙且率全军追击过河时，韩信下令破坝放水——突然暴涨的河水将楚军分割成两段。过河的楚军瞬间成为"背水孤军"，军心大乱，龙且被杀。潍水之战后韩信闪电平定齐国七十余城。项羽第一次感到空前的危险——西有刘邦、北有张耳、东有韩信、后方有彭越，四面楚歌。他放下了高傲，派人劝韩信三分天下。楚汉争霸走向终章。',
-         extra='''        <div class="flow-row">
-            <div class="flow-step ">上游沙袋筑坝</div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step ">韩信过河诱敌</div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step ">龙且全军追击</div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step ">破坝放水断后路</div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step end">龙且阵亡齐地平定</div>
-          </div>'''),
-]
-
-ch8_takeaway_zh = '荥阳拉锯战揭示了楚汉争霸最深刻的胜负密码：项羽百战百胜却越来越被动，刘邦屡战屡败却越来越强大。根本原因在于两人对"系统"的理解——刘邦建立了萧何后勤、张良战略、韩信军事、陈平情报的四大系统，而项羽只靠自己的军事天才单打独斗。陈平的四万两黄金间谍战展示了"凡动作必有成本"的冷酷真理：能用钱解决的代价最低。项羽舍不得封赏、不放权、不信任，最终被系统性消耗拖垮。荥阳的两年不是军事对决，是两种组织模式的对决。'
-ch8_takeaway_en = 'The Xingyang stalemate reveals the deepest code of victory in the Chu-Han contest: Xiang Yu won every battle yet grew increasingly passive; Liu Bang lost repeatedly yet grew ever stronger. The root cause lay in their understanding of "systems" — Liu Bang built four systems (Xiao He\'s logistics, Zhang Liang\'s strategy, Han Xin\'s military, Chen Ping\'s intelligence), while Xiang Yu relied solely on his own military genius. Chen Ping\'s 40,000-tael gold spy operation demonstrated the cold truth that "every action has a cost" — what can be solved with money costs the least. Xiang Yu begrudged rewards, wouldn\'t delegate, wouldn\'t trust, and was ultimately worn down by systemic attrition. The two years at Xingyang were not a military duel but a duel between two organizational models.'
-
-ch8_footer_zh = '渤海小吏 · 楚汉双雄 · 第八章 · 图书信息图<br>\n来源：楚汉双雄（渤海小吏 著，台海出版社，2020）'
-ch8_footer_en = 'Bohai Xiaoli · The Chu-Han Contention · Chapter 8 · Book Infographic<br>\nSource: The Chu-Han Contention (by Bohai Xiaoli, Taihai Press, 2020)'
+html5 = build_html(5, zh5)
+path5 = os.path.join(BOOKDIR, f"{BASE}-ch005-info-zh.html")
+with open(path5, 'w', encoding='utf-8') as f:
+    f.write(html5)
+print(f"✅ ch005 ZH: {len(html5)} bytes -> {path5}")
 
 
-# ============================================================
-# GENERATE ALL FILES
-# ============================================================
-chapters = [
-    (5, ch5_title_zh, ch5_title_en, ch5_sub_zh, ch5_sub_en, ch5_overview_zh, ch5_overview_en, ch5_kpis_zh, ch5_kpis_en, ch5_sections, ch5_takeaway_zh, ch5_takeaway_en, ch5_footer_zh, ch5_footer_en),
-    (6, ch6_title_zh, ch6_title_en, ch6_sub_zh, ch6_sub_en, ch6_overview_zh, ch6_overview_en, ch6_kpis_zh, ch6_kpis_en, ch6_sections, ch6_takeaway_zh, ch6_takeaway_en, ch6_footer_zh, ch6_footer_en),
-    (7, ch7_title_zh, ch7_title_en, ch7_sub_zh, ch7_sub_en, ch7_overview_zh, ch7_overview_en, ch7_kpis_zh, ch7_kpis_en, ch7_sections, ch7_takeaway_zh, ch7_takeaway_en, ch7_footer_zh, ch7_footer_en),
-    (8, ch8_title_zh, ch8_title_en, ch8_sub_zh, ch8_sub_en, ch8_overview_zh, ch8_overview_en, ch8_kpis_zh, ch8_kpis_en, ch8_sections, ch8_takeaway_zh, ch8_takeaway_en, ch8_footer_zh, ch8_footer_en),
-]
+# ===== Chapter 6 =====
+zh6 = {
+    'ch_name': '用Python设置Excel数字、条件格式',
+    'scqa': 'Excel的数字格式和条件格式是数据可视化的重要工具——将0.5显示为50%、将日期显示为年月日、将超标的单元格标红、给数据加上色阶或数据条。手工操作时，你要逐个选中区域、点击条件格式菜单、设置规则。但当报表每天更新且数据量庞大时，重复做这些事令人崩溃。如何用Python自动设置Excel的数字显示格式和条件格式？本章详细讲解number_format的9种数字格式、CellIsRule突出显示、DataBarRule数据条、ColorScaleRule色阶、IconSet图标集。',
+    'overview': '本章分为两大板块：数字格式和条件格式。数字格式部分，number_format属性对应Excel「数字」组，覆盖常规、小数（0.00）、百分比（0.00%）、货币（¥#,##0）、科学计数、日期时间（yyyy-mm-dd h:mm:ss）等9种常用格式。条件格式部分包括四种类型：CellIsRule()用于突出显示满足条件的单元格（支持大于/小于/介于/等于等operator）；DataBarRule()用于数据条可视化（可自定义min/max类型、颜色、是否显示数值）；ColorScaleRule()用于色阶（双色和三色刻度）；IconSet()用于图标集（多类图标可选、可设置反转和是否显示数值）。两部分共同构成Excel数据可视化的Python自动化方案。',
+    'kpis_html': '''
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">9种</div>
+    <div class="kpi-label">数字格式<br>常规/小数/百分比等</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">4类</div>
+    <div class="kpi-label">条件格式<br>高亮/数据条/色阶/图标</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">7种</div>
+    <div class="kpi-label">operator条件<br>大于/小于/介于等</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5种</div>
+    <div class="kpi-label">图标集类型<br>三色旗/箭头/信号等</div>
+  </div>
+</div>''',
+    'sections_html': '''
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">数字格式</div>
+    <div class="section-title t-01">number_format：9种数字显示格式一键切换</div>
+    <div class="section-desc">number_format属性直接映射Excel「数字」组的功能区。常用格式：常规、0.00（保留2位小数）、0.00%（百分比）、¥#,##0（货币）、0.00E+00（科学计数）、yyyy-mm-dd h:mm:ss（日期时间）。设置方式：cell.number_format = '0.00'，一行代码替代Excel的手动点击。</div>
+    <div class="flow-row">
+      <div class="flow-step">🔢 常规<br><small>General</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📊 小数<br><small>0.00</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">% 百分比<br><small>0.00%</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">¥ 货币<br><small>¥#,##0</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">📅 日期<br><small>yyyy-mm-dd</small></div>
+    </div>
+  </div>
+</div>
 
-for ch in chapters:
-    (n, tzh, ten, szh, sen, ozh, oen, kzh, ken, sec, ttz, tte, fzh, fen) = ch
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">突出显示</div>
+    <div class="section-title t-02">CellIsRule：按条件自动标记异常数据</div>
+    <div class="section-desc">conditional_formatting + CellIsRule(operator, formula, fill) 实现标准条件格式。operator支持greaterThan、lessThan、between、equal等7种。formula指定阈值（between用列表），fill定义满足条件时的填充颜色。常用于标记超过预算的支出、低于目标的KPI、区间内的合格数据。</div>
+    <div class="code-block">from openpyxl.formatting.rule import CellIsRule
+from openpyxl.styles import PatternFill
 
-    zh_path = os.path.join(base, f'楚汉双雄-ch{n:03d}-info-zh.html')
-    with open(zh_path, 'w') as f:
-        f.write(gen_html('zh', n, ten, tzh, szh, ozh, kzh, sec, ttz, fzh))
+# 大于50的单元格填充红色
+ws.conditional_formatting.add('A1:A10',
+    CellIsRule(operator='greaterThan', formula=['50'],
+               fill=PatternFill(fill_type='solid', fgColor='FF0000')))</div>
+  </div>
+</div>
 
-    en_path = os.path.join(base, f'楚汉双雄-ch{n:03d}-info-en.html')
-    with open(en_path, 'w') as f:
-        f.write(gen_html('en', n, ten, tzh, sen, oen, ken, sec, tte, fen))
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">数据条</div>
+    <div class="section-title t-03">DataBarRule：让数据大小一目了然</div>
+    <div class="section-desc">DataBarRule(start_type, start_value, end_type, end_value, color, showValue) 将数值以数据条形式可视化。可自定义min/max的类型（min/max/num/percent/percentile/formula）和值、数据条颜色、是否显示数值。同时应用于多列只需改区域范围如'A1:B10'。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📊</div>
+        <div class="dual-text"><h4>默认数据条</h4><p>start_type='min'<br>end_type='max'<br>自动取最小/最大值<br>显示数值+数据条</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🎨</div>
+        <div class="dual-text"><h4>自定义数据条</h4><p>start_type='num', value=0<br>end_type='num', value=100<br>自定义颜色+隐藏数值</p></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    print(f"✅ 楚汉双雄-ch{n:03d}-info-zh.html + en.html")
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">色阶</div>
+    <div class="section-title t-04">ColorScaleRule：双色和三色渐变直观对比</div>
+    <div class="section-desc">ColorScaleRule(start_type, start_value, start_color, mid_type..., end_type...) 用颜色渐变展示数值大小。双色刻度只需start+end参数，三色刻度增加mid中间值。常用于热力图、成绩分布、温度数据的可视化，替代手工调色。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">🔴🟢</div>
+        <div class="cmp-name">双色刻度</div>
+        <div class="cmp-note">最小值 → 最大值<br>两种颜色渐变<br>红→绿/蓝→白等</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">🔴🟡🟢</div>
+        <div class="cmp-name">三色刻度</div>
+        <div class="cmp-note">最小值 → 中间 → 最大值<br>三色渐变过渡<br>红→黄→绿等</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">⚙️</div>
+        <div class="cmp-name">自定义</div>
+        <div class="cmp-note">可设min/mid/max类型<br>可自定义颜色<br>可设具体阈值</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-print("\n🎉 All 8 files generated successfully!")
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">图标集</div>
+    <div class="section-title t-05">IconSet：用图标直观展示数据等级</div>
+    <div class="section-desc">IconSet(iconSet, percent, cfvo, showValue, reverse) 将数据映射为图标。iconSet指定图标类型（3Arrows/3Flags/3TrafficLights等），cfvo列表定义各等级阈值，showValue控制是否显示数值，reverse控制是否反转图标方向。如同手机信号格，让数据等级一目了然。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🏁</div>
+        <div class="data-name">三色旗</div>
+        <div class="data-sm">3Flags图标<br>分三个等级<br>展示具体数值</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">⬆️➡️⬇️</div>
+        <div class="data-name">三向箭头</div>
+        <div class="data-sm">3Arrows图标<br>分三个等级<br>可隐藏数值</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🚦</div>
+        <div class="data-name">红绿灯</div>
+        <div class="data-sm">3TrafficLights<br>支持4-5图标<br>可反转方向</div>
+      </div>
+    </div>
+  </div>
+</div>''',
+    'takeaway': 'Excel的数字格式和条件格式是数据呈现的利器。Python中number_format属性覆盖常规、小数、百分比、货币、日期等9种常用数字格式。条件格式通过四种规则函数——CellIsRule（突出显示）、DataBarRule（数据条）、ColorScaleRule（色阶）、IconSet（图标集）——完整复现Excel条件格式的全部功能。它们的参数直接映射Excel对话框中的选项，学习路径清晰。批量应用只需将区域范围从'A1:A10'改为'A1:C20'，同一规则即可作用于多列数据。数字格式化与条件可视化全部自动化，报表的可读性和专业性大幅提升。',
+    'footer_ch': '用Python设置Excel数字、条件格式'
+}
+
+html6 = build_html(6, zh6)
+path6 = os.path.join(BOOKDIR, f"{BASE}-ch006-info-zh.html")
+with open(path6, 'w', encoding='utf-8') as f:
+    f.write(html6)
+print(f"✅ ch006 ZH: {len(html6)} bytes -> {path6}")
+
+
+# ===== Chapter 7 =====
+zh7 = {
+    'ch_name': '用Python设置Excel单元格',
+    'scqa': 'Excel工作表的日常维护离不开插入行、删除行、调整行高列宽、隐藏区域。手工操作时，右键→插入→右键→删除→右键→行高→右键→列宽——重复无数次。当报表有几十个Sheet且每个都需要相同调整时，手工操作不仅耗时，还容易错删误改。如何用Python自动化管理Excel的单元格行列结构？本章讲解insert_rows/insert_cols、delete_rows/delete_cols、行高列宽设置、行列隐藏，以及批量遍历设置整表的实战案例。',
+    'overview': '本章聚焦于Excel「开始」选项卡「单元格」组的Python实现，涵盖四大操作：①插入行/列——insert_rows(m, n)和insert_cols(m, n)，m为位置，n为数量（默认1）；②删除行/列——delete_rows(m, n)和delete_cols(m, n)，参数含义相同，是插入的逆向操作；③行高/列宽设置——通过row_dimensions[row_num].height和column_dimensions[col_letter].width分别设置；④行列隐藏——通过column_dimensions.group和row_dimensions.group创建组合来隐藏（Python中无直接隐藏API）。最后通过一个批量案例展示如何遍历多行多列统一设置行高列宽，实现整表格式标准化。',
+    'kpis_html': '''
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2+2</div>
+    <div class="kpi-label">增删函数<br>insert & delete<br>行/列各一对</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">尺寸属性<br>row_dimensions<br>column_dimensions</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">组合</div>
+    <div class="kpi-label">隐藏方式<br>group创建组合<br>可折叠展开</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">批量遍历<br>整表多行多列<br>一次循环搞定</div>
+  </div>
+</div>''',
+    'sections_html': '''
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">插入操作</div>
+    <div class="section-title t-01">insert_rows / insert_cols：动态扩展工作表结构</div>
+    <div class="section-desc">insert_rows(m, n)在第m行前插入n行，insert_cols(m, n)在第m列前插入n列。n默认值为1，可省略。这是Excel右键「插入」功能的Python等价操作，适用于动态添加数据区域、预留空行、插入表头等场景。</div>
+    <div class="flow-row">
+      <div class="flow-step">📍 定位<br><small>指定m位置</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📥 插入行<br><small>insert_rows(m,n)</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📊 插入列<br><small>insert_cols(m,n)</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📋 数据下移<br><small>原数据自动移位</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅ 完成<br><small>可复制Sheet对比</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">删除操作</div>
+    <div class="section-title t-02">delete_rows / delete_cols：精准删除多余行列</div>
+    <div class="section-desc">delete_rows(m, n)从第m行开始删除n行，delete_cols(m, n)从第m列开始删除n列。n默认值为1。这是插入的逆向操作，用于清理空行、删除不需要的数据列、精简报表结构。小心：删除后数据不可恢复。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📥</div>
+        <div class="dual-text"><h4>插入（insert）</h4><p>insert_rows(m, n)<br>insert_cols(m, n)<br>在指定位置前插入<br>n默认=1可不写</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🗑️</div>
+        <div class="dual-text"><h4>删除（delete）</h4><p>delete_rows(m, n)<br>delete_cols(m, n)<br>从指定位置起删除<br>操作不可逆</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">尺寸设置</div>
+    <div class="section-title t-03">行高与列宽：row_dimensions / column_dimensions</div>
+    <div class="section-desc">行高通过ws.row_dimensions[row_num].height设置，列宽通过ws.column_dimensions[col_letter].width设置。这与Excel右键「行高」「列宽」对话框完成相同的功能。改其他行只需换行号数字，改其他列只需换列字母。</div>
+    <div class="code-block"># 设置第1行行高为40，第A列列宽为20
+ws.row_dimensions[1].height = 40
+ws.column_dimensions['A'].width = 20
+
+# 改行号或列字母即可调整其他行列
+ws.row_dimensions[2].height = 30
+ws.column_dimensions['B'].width = 25</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">隐藏操作</div>
+    <div class="section-title t-04">行列隐藏：通过组合（group）实现可折叠区域</div>
+    <div class="section-desc">openpyxl中隐藏行列的方式是创建组合（group）。column_dimensions.group(start, end, hidden=True)隐藏列，row_dimensions.group隐藏行。这与Excel右键「隐藏」稍有不同——group方式支持折叠/展开，更灵活。修改起止参数即可隐藏任意区域。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">📁</div>
+        <div class="cmp-name">隐藏行</div>
+        <div class="cmp-note">ws.row_dimensions.group(7, 10)<br>隐藏第7-10行<br>修改起止即可</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">📂</div>
+        <div class="cmp-name">隐藏列</div>
+        <div class="cmp-note">ws.column_dimensions.group('D', 'F')<br>隐藏D-F列<br>修改字母即可</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🔄</div>
+        <div class="cmp-name">折叠/展开</div>
+        <div class="cmp-note">group支持折叠展开<br>比简单隐藏更灵活<br>适合大量数据管理</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">批量实战</div>
+    <div class="section-title t-05">批量设置多行/列的行高列宽：遍历整表标准化</div>
+    <div class="section-desc">插入/删除行列是一次性操作，但行高列宽通常需要整表统一设置。通过遍历行号或列号列表，在for循环中对每一行/列分别设置height/width，即可一次性完成整表的尺寸标准化。代码编写一次，永久适用于同类报表。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">批量行高</div>
+        <div class="data-sm">for r in [1,2,3]:<br>ws.row_dimensions[r].height=40<br>遍历行号统一设行高</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📐</div>
+        <div class="data-name">批量列宽</div>
+        <div class="data-sm">for c in ['A','B','C']:<br>ws.column_dimensions[c].width=20<br>遍历列字母统一设列宽</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🔄</div>
+        <div class="data-name">批量插入/删除</div>
+        <div class="data-sm">一般一次性操作<br>无需遍历循环<br>直接指定位置和数量</div>
+      </div>
+    </div>
+  </div>
+</div>''',
+    'takeaway': 'Excel的行列结构管理——插入、删除、调整行高列宽、隐藏——在Python中对应四对函数/属性：insert_rows/insert_cols、delete_rows/delete_cols、row_dimensions.height/column_dimensions.width、group组合隐藏。这些API直接映射Excel的右键菜单功能，学习曲线平缓。实际工作中，插入删除通常是一次性操作，而行高列宽则需要批量遍历整表设置。一个for循环遍历所有目标行列，统一设置height和width，让整个工作表的布局一步到位。Python让Excel的"体力活"变成了"智力活"。',
+    'footer_ch': '用Python设置Excel单元格'
+}
+
+html7 = build_html(7, zh7)
+path7 = os.path.join(BOOKDIR, f"{BASE}-ch007-info-zh.html")
+with open(path7, 'w', encoding='utf-8') as f:
+    f.write(html7)
+print(f"✅ ch007 ZH: {len(html7)} bytes -> {path7}")
+
+
+# ===== Chapter 8 =====
+zh8 = {
+    'ch_name': '用Python对Excel进行编辑',
+    'scqa': 'Excel的「开始」选项卡「编辑」组提供排序、筛选、查找与替换三大核心功能。手工操作时，选中列→点击排序→选升序/降序，或点击筛选→勾选条件——每个Sheet重复一遍。当数据每天更新、每次都要重新排序筛选时，这些重复操作就是生产力杀手。如何用Python自动完成Excel的排序与筛选？本章讲解用Pandas的sort_values()实现单列与多列排序、用Pandas条件表达式实现数字筛选与文本筛选、以及查找替换的概要介绍。',
+    'overview': '本章聚焦于Excel「开始」选项卡「编辑」组的Python实现。注意：openpyxl的排序和筛选只会添加排序/筛选符号，不会真的改变数据。真正的排序操作需使用Pandas库的sort_values(df, by=col, ascending=False)，支持单列排序和多列排序（列表传多列名，分别设置ascending）。筛选操作使用Pandas条件表达式（如df[df[\'col1\']>2]实现数字筛选，df[df[\'col2\']==\'b\']实现文本筛选），比Excel的鼠标点击更灵活。查找替换在第9章详细讲解。本章展示了Python生态"组合使用"的思想——openpyxl处理Excel文件读写，Pandas处理数据分析逻辑。',
+    'kpis_html': '''
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">排序方式<br>升序ascending=True<br>降序ascending=False</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">多列</div>
+    <div class="kpi-label">多列排序<br>主关键字+次关键字<br>by=[col1,col2]</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">筛选类型<br>数字筛选(>/<)<br>文本筛选(==/包含)</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">Pandas</div>
+    <div class="kpi-label">核心库<br>sort_values + 条件表达式<br>替代Excel筛选菜单</div>
+  </div>
+</div>''',
+    'sections_html': '''
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">数据排序</div>
+    <div class="section-title t-01">sort_values()：单列与多列排序一步到位</div>
+    <div class="section-desc">openpyxl的排序操作只是添加排序符号，不会真正重排数据。真正的排序需用Pandas的sort_values()：df.sort_values(by='col1', ascending=False)按col1降序排列。多列排序传列表：by=['col1','col2']，先按col1排，重复值按col2排，可分别设升/降序。</div>
+    <div class="code-block">import pandas as pd
+
+# 单列排序：按col3降序
+df_sorted = df.sort_values(by='col3', ascending=False)
+
+# 多列排序：先col1降序，重复按col2升序
+df_sorted = df.sort_values(
+    by=['col1', 'col2'],
+    ascending=[False, True])</div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">数据筛选</div>
+    <div class="section-title t-02">Pandas条件筛选：数字与文本双模式</div>
+    <div class="section-desc">openpyxl的筛选同样只添加筛选符号，不改变数据。Pandas直接用条件表达式实现筛选：df[df['col1']>2]筛选数字大于2的行，df[df['col2']=='b']筛选文本等于b的行。这与Excel中「数字筛选>大于」和「文本筛选>等于」完全对应，但更灵活——可自由组合条件。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔢</div>
+        <div class="dual-text"><h4>数字筛选</h4><p>df[df['col1'] > 2]<br>大于 / 小于 / 等于<br>可组合多个条件<br>如 &gt;2 & &lt;10</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔤</div>
+        <div class="dual-text"><h4>文本筛选</h4><p>df[df['col2'] == 'b']<br>等于 / 包含 / 开头<br>支持字符串方法<br>.str.contains()</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">排序流程</div>
+    <div class="section-title t-03">从Excel到排序结果：完整操作链路</div>
+    <div class="section-desc">完整的数据排序流程：①用openpyxl或pandas.read_excel()读取Excel数据到DataFrame；②用sort_values()按指定列排序（支持多列、升序/降序混合）；③将排序结果写回Excel或直接用于后续分析。这一链路将Excel的手工排序彻底自动化。</div>
+    <div class="flow-row">
+      <div class="flow-step">📂 读取<br><small>read_excel()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄 排序<br><small>sort_values()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📊 筛选<br><small>条件表达式</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">💾 写回<br><small>to_excel()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅ 自动化<br><small>一次编写永久复用</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">排序对比</div>
+    <div class="section-title t-04">Excel vs Python 排序筛选对比</div>
+    <div class="section-desc">Excel的排序筛选是手动交互式操作——每次数据更新要重新点一遍。Python的排序筛选是代码驱动——数据变化时只需要重新运行脚本。更重要的是，Pandas的条件筛选远强于Excel的筛选菜单：可组合任意复杂条件、可在排序前先筛选、可直接链式操作。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">🖱️</div>
+        <div class="cmp-name">Excel方式</div>
+        <div class="cmp-note">选中列→点击排序<br>每次手动操作<br>多列需自定义排序</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">🐍</div>
+        <div class="cmp-name">Python方式</div>
+        <div class="cmp-note">df.sort_values()<br>代码一次编写<br>数据更新自动重算</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🚀</div>
+        <div class="cmp-name">Python优势</div>
+        <div class="cmp-note">多列混合排序<br>排序+筛选链式操作<br>批量处理多个Sheet</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">综合实战</div>
+    <div class="section-title t-05">查找与替换 + 完整工作流</div>
+    <div class="section-desc">「编辑」组还有查找和替换功能（第9章详讲），与排序筛选共同构成数据处理三步曲。实际工作流：读取Excel→筛选目标数据→排序→格式化→查找替换→写回。Python让这个完整流程从"手工一遍遍重复"变为"一键运行"。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🔍</div>
+        <div class="data-name">查找</div>
+        <div class="data-sm">定位特定数据<br>匹配单元格<br>第9章详讲</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">✏️</div>
+        <div class="data-name">替换</div>
+        <div class="data-sm">批量修改内容<br>正则匹配替换<br>第9章详讲</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🔗</div>
+        <div class="data-name">组合生态</div>
+        <div class="data-sm">openpyxl + Pandas<br>读写 + 分析<br>Python报表自动化</div>
+      </div>
+    </div>
+  </div>
+</div>''',
+    'takeaway': 'Excel的排序与筛选在Python中需要借助Pandas库来实现真正的数据重排和过滤。openpyxl负责Excel文件读写，Pandas负责数据分析逻辑——这是Python生态"组合使用"思想的典型体现。sort_values()支持单列和多列排序，条件表达式（df[条件]）支持数字和文本两种筛选模式，比Excel的鼠标操作更灵活、更强大。排序、筛选、格式化、查找替换串联成完整工作流，一次编写脚本，每天运行即可——这就是Python报表自动化的最终形态。',
+    'footer_ch': '用Python对Excel进行编辑'
+}
+
+html8 = build_html(8, zh8)
+path8 = os.path.join(BOOKDIR, f"{BASE}-ch008-info-zh.html")
+with open(path8, 'w', encoding='utf-8') as f:
+    f.write(html8)
+print(f"✅ ch008 ZH: {len(html8)} bytes -> {path8}")
+
+print("\n=== ALL ZH FILES WRITTEN ===")

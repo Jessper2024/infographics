@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python报表自动化 · 第5章「用Python设置Excel对齐方式」</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch005-info-en.html">中文 / English</a>
+</div>
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第5章「用Python设置Excel对齐方式」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  在Excel中调整对齐方式——左对齐、居中、右对齐、自动换行、合并单元格——只需在「开始」选项卡的「对齐方式」组点击几次按钮。但当你有数百行数据需要统一对齐、或每天生成的报表都要标准化排版时，手工调整就枯燥低效。如何用Python批量控制Excel单元格的对齐方式？本章系统讲解Alignment()函数的6大参数、9种水平/3种垂直对齐类型、合并/解除单元格、以及批量对齐的实战案例。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章聚焦于Excel「开始」选项卡中「对齐方式」组的Python实现。首先介绍Alignment()函数的6个核心参数：horizontal（水平对齐，支持left/center/right/justify/distributed/fill等9种）、vertical（垂直对齐，top/center/bottom）、text_rotation（文本旋转角度，0-360°）、wrap_text（自动换行）、shrink_to_fit（自适应缩小字号）、indent（缩进字符数）。然后讲解单元格合并/解除合并（merge_cells/unmerge_cells），以及合并后单元格通过top_left_cell进行样式设置的方法。最后通过一个批量设置对齐方式加合并标题行的综合案例，展示如何用for循环一次性完成整表标准化排版。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">6个</div>
+    <div class="kpi-label">Alignment()参数<br>水平/垂直/旋转/换行/缩进</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">9种</div>
+    <div class="kpi-label">水平对齐类型<br>居左/居中/居右等9种选择</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">垂直对齐类型<br>顶部/居中/底部对齐</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">批量对齐<br>遍历整表统一排版格式</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心函数</div>
+    <div class="section-title t-01">Alignment()：六参数掌控对齐全局</div>
+    <div class="section-desc">Alignment(horizontal, vertical, text_rotation, wrap_text, shrink_to_fit, indent) 是 openpyxl 对齐设置的核心。设置方式：cell.alignment = Alignment(参数1=值1, ...)。6个参数直接映射Excel功能区按钮，学习曲线平缓。horizontal和vertical是最常用的两个参数。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">↔️</div>
+        <div class="cmp-name">horizontal</div>
+        <div class="cmp-note">水平对齐<br>left/center/right<br>justify/distributed/fill</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">↕️</div>
+        <div class="cmp-name">vertical</div>
+        <div class="cmp-note">垂直对齐<br>top/center/bottom<br>上下方向控制</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🔄</div>
+        <div class="cmp-name">旋转·换行·缩进</div>
+        <div class="cmp-note">text_rotation (0-360°)<br>wrap_text (True/False)<br>indent (缩进字符数)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">水平对齐</div>
+    <div class="section-title t-02">水平方向对齐：9种类型从常规到特殊</div>
+    <div class="section-desc">horizontal参数支持9种对齐类型：left（左对齐）、center（居中）、right（右对齐）、justify（两端对齐，占满行靠两边界）、distributed（分散对齐，未满行自动调字间距占满）、fill（填满对齐，重复字符填充）、general（一般对齐）、centerContinuous、distributed。日常最常用的是left/center/right三种，分散对齐和填满对齐用于特殊排版需求。</div>
+    <div class="flow-row">
+      <div class="flow-step">⚫ 左对齐<br><small>left</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚫ 居中对齐<br><small>center</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚫ 右对齐<br><small>right</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📐 两端对齐<br><small>justify</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">📏 分散对齐<br><small>distributed</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">换行与旋转</div>
+    <div class="section-title t-03">自动换行、文本旋转与字号自适应</div>
+    <div class="section-desc">当文本长度超过列宽时，有三种处理方式：wrap_text=True自动换行让内容在单元格内多行显示；shrink_to_fit=True自动调小字体使内容适配单元格；text_rotation设置文本旋转角度（逆时针）。这三者在实际报表排版中非常实用，特别适合处理长文本标题和备注列。注意text_rotation与shrink_to_fit不能同时使用。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text"><h4>自动换行（wrap_text=True）</h4><p>内容超列宽自动换行<br>保持字体大小不变<br>单元格高度自动增加<br>适合长文本备注列</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔎</div>
+        <div class="dual-text"><h4>自适应+旋转+缩进</h4><p>shrink_to_fit 缩小字体适配<br>text_rotation 旋转角度<br>indent 首行缩进字符数<br>各有独立适用场景</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">合并操作</div>
+    <div class="section-title t-04">单元格合并与解除：merge_cells / unmerge_cells</div>
+    <div class="section-desc">merge_cells('A2:D2')合并指定区域为一个大单元格，对应Excel「合并后居中」按钮。unmerge_cells('A2:D2')解除合并还原。合并后的单元格以左上角单元格（top_left_cell）为代表进行样式设置——字体、填充、对齐方式均作用于top_left_cell，保证合并区域样式一致性。</div>
+    <div class="code-block">from openpyxl.styles import Alignment, Font
+
+# 合并单元格
+ws.merge_cells('A2:D2')
+
+# 通过左上角单元格设置合并后样式
+top_left_cell = ws['A2']
+top_left_cell.alignment = Alignment(
+    horizontal='center', vertical='center')
+top_left_cell.font = Font(bold=True)
+
+# 解除合并
+ws.unmerge_cells('A2:D2')</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">批量实战</div>
+    <div class="section-title t-05">批量设置对齐方式：整表标准化一个循环搞定</div>
+    <div class="section-desc">真实场景极少只格式化一个单元格。在字体格式化的for循环基础上增加alignment属性，一次性完成水平居中、垂直居中设置。配合标题行合并与加粗，一条for循环完成整表的对齐与排版统一。修改一次代码，永久适用于同类报表。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📐</div>
+        <div class="data-name">水平居中</div>
+        <div class="data-sm">遍历所有数据单元格<br>horizontal='center'<br>整列数据统一居中显示</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">垂直居中</div>
+        <div class="data-sm">遍历所有数据单元格<br>vertical='center'<br>行高统一视觉整洁</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🏷️</div>
+        <div class="data-name">标题行</div>
+        <div class="data-sm">merge_cells合并标题行<br>Font(bold=True)加粗<br>一次编写永久复用</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Excel的对齐方式——水平对齐、垂直对齐、自动换行、文本旋转、缩进、合并单元格——在Python中对应一个核心函数Alignment()和两个操作函数merge_cells()/unmerge_cells()。参数直接映射Excel功能区按钮，学习成本极低。真正的威力在于批量：一个for循环遍历所有数据单元格，统一设置alignment属性，配合标题行合并加粗，让报表排版和数据处理一样全自动化。这就是Python报表自动化的核心价值——取代一切重复、枯燥的工作。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第5章「用Python设置Excel对齐方式」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>
