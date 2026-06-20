@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 延伸阅读</title>
+<style>
+@font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="表象与本质-ch018-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 延伸阅读</h1>
+<p class="subtitle">四本认知科学经典著作，二十三则全书注释——本书的思想资源与知识网络，在此一览无余。从丹尼特的思考工具到平克的思维本质，这是一场认知科学的思想巡礼。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>延伸阅读部分向读者推荐了四本与本书主题密切相关的认知科学经典著作。丹尼尔·丹尼特的《直觉泵和其他思考工具》提供了一系列实用的思维工具；史蒂芬·平克的《思想本质》深入探讨语言与思想的关系；《心智探奇》解答"什么是智能"这一根本问题；Edge系列《思维》汇集了全球最伟大头脑关于思考、问题解决和决策的洞见。此外，该部分还附有贯穿全书的二十三则注释，涵盖译者注、编者注和作者注，为理解书中的跨文化类比、语言细节和学术背景提供了不可或缺的补充。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">本</span></div>
+    <div class="kpi-label">推荐著作</div>
+    <div class="kpi-note">涵盖认知科学、哲学<br>语言学、人工智能<br>丹尼特、平克等大家之作</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">23<span class="kpi-unit">则</span></div>
+    <div class="kpi-label">全书注释</div>
+    <div class="kpi-note">译者注+编者注+作者注<br>贯穿引言至结语<br>为正文提供关键补充</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">5<span class="kpi-unit">领域</span></div>
+    <div class="kpi-label">跨学科视野</div>
+    <div class="kpi-note">认知科学·哲学<br>语言学·心理学<br>人工智能·神经科学</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">Edge<span class="kpi-unit"></span></div>
+    <div class="kpi-label">思想平台</div>
+    <div class="kpi-note">全球最聪明的网站<br>100位最伟大的头脑<br>每年一个深度话题</div>
+  </div>
+</div>
+
+<div class="section section-001">
+  <div class="section-num num-001">001</div>
+  <div class="section-body">
+    <div class="tag tag-001">思维工具</div>
+    <div class="section-title t-001">《直觉泵和其他思考工具》——丹尼特的思维工具箱</div>
+    <div class="section-desc">享誉世界的哲学泰斗丹尼尔·丹尼特，融通计算机科学、心理学、神经科学、语言学、人工智能，倾囊相授他一生至今所搜集的各种好用的思考工具。这本书诞生于大学新生的课堂，力图做到"人人能懂"。书中使用大量方便的、辅助性的思考工具，去拓展想象力、保持专注力，让我们妥当、优雅地思考真正的难题。利用各种思考工具，拨开各种思想的层层迷雾，你会发现，那么多明摆着的观点其实根本就不是那么"明摆着"的。这本"直觉泵"（intuition pump）与本书《表象与本质》形成了极好的互补——一个教人如何不被表象迷惑，一个揭示表象与本质之间的类比关系。</div>
+
+    <div class="list-block">
+      <div class="list-item"><div class="list-num ln01">1</div><div>出身课堂：诞生于大学新生的课堂，力图做到"人人能懂"</div></div>
+      <div class="list-item"><div class="list-num ln02">2</div><div>思维工具：拓展想象力、保持专注力，让我们妥当优雅地思考真正的难题</div></div>
+      <div class="list-item"><div class="list-num ln03">3</div><div>拨开迷雾：那么多"明摆着"的观点其实根本不是明摆着的</div></div>
+      <div class="list-item"><div class="list-num ln04">4</div><div>完美互补：教人如何不被表象迷惑，与本书的类比主题形成呼应</div></div>
+    </div>
+  </div>
+</div>
+<div class="section section-002">
+  <div class="section-num num-002">002</div>
+  <div class="section-body">
+    <div class="tag tag-002">思想本质</div>
+    <div class="section-title t-002">《思想本质》《心智探奇》——平克的语言与心智探索</div>
+    <div class="section-desc">史蒂芬·平克的《思想本质》是一扇进入人类心智的窗户，一次针对语言与思想之间关系的深刻论述。书中以令人信服、生动有趣的例证，展开了一场思想之本质的探索之旅。而他的《心智探奇》则更进一层，解答"什么是智能"这一深刻问题，破解机器人难题。该书详细剖析心智的四大能力，解读"心智如何工作"，是一扇窥视人类心智活动神奇与奥秘的窗户，一场探索心智本质的奇幻之旅。这两部著作与《表象与本质》共同构成了关于"心智如何通过范畴化和类比来理解世界"的三部曲。其中，平克侧重于语言与心智的宏观图景，而侯世达和桑德尔则将类比放在认知的最核心位置。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🧠</div>
+        <div class="dual-text">
+          <h4>《思想本质》: 语言与思想</h4>
+          <p>深入论述语言与思想之间关系，以令人信服、生动有趣的例证展开思想之本质的探索之旅。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🤖</div>
+        <div class="dual-text">
+          <h4>《心智探奇》: 心智与智能</h4>
+          <p>解答"什么是智能"这一深刻问题，详细剖析心智四大能力，破解机器人难题。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="section section-003">
+  <div class="section-num num-003">003</div>
+  <div class="section-body">
+    <div class="tag tag-003">思想平台</div>
+    <div class="section-title t-003">《思维》——Edge系列：全球最伟大的头脑共论认知</div>
+    <div class="section-desc">世界上最聪明的网站Edge，每年一次，让100位全球最伟大的头脑坐在同一张桌子旁，共同解答关乎人类命运的同一个大问题，开启一场智识的探险，一次思想的旅行！作为Edge系列之一，《思维》一书着重关注了思考、问题解决和决策的种种问题，以及大众感兴趣的诸如心智理论、道德、进化、预测等话题。这种"众声喧哗"式的思想碰撞，本身就是一种跨学科的类比实践——让物理学家、生物学家、哲学家和计算机科学家用各自领域的范畴去理解同一个问题，恰恰展示了类比如何成为人类认知的"通用货币"。</div>
+
+
+  </div>
+</div>
+<div class="section section-004">
+  <div class="section-num num-004">004</div>
+  <div class="section-body">
+    <div class="tag tag-004">全书注释</div>
+    <div class="section-title t-004">二十三则注释——正文背后的知识网络</div>
+    <div class="section-desc">全书注释共有二十三则，贯穿引言到结语。其中包含译者注——如"法文中快乐的词根是heur"、"英文中月球和卫星均为moon"、"分割和除法在英文中是同一个词division"等，帮助中文读者理解语言层面的类比；编者注——如"阿喀琉斯之踵"、"达摩克利斯之剑"、"出自王国维的《人间词话》"等，补充文化背景；以及作者原注和湛庐文化备注。这些注释并非可有可无的附属物，而是理解本书"跨语言的类比思维"主题的钥匙。例如，注释(22)提醒读者"分割"和"除法"在英文中是同一个词division——如果不了解这一点，就无法充分理解书中关于朴素类比如何影响数学理解的讨论。</div>
+
+    <div class="list-block">
+      <div class="list-item"><div class="list-num ln01">1</div><div>译者注：帮助中文读者跨越语言障碍，如"法文中快乐的词根是heur"（注释1）</div></div>
+      <div class="list-item"><div class="list-num ln02">2</div><div>编者注：补充文化背景知识，如"出自王国维的《人间词话》"（注释12）</div></div>
+      <div class="list-item"><div class="list-num ln03">3</div><div>关键注释："分割"和"除法"在英文中是同一个词division（注释22）——理解朴素类比的关键</div></div>
+      <div class="list-item"><div class="list-num ln04">4</div><div>语言启示："大脑垃圾braindump仿照内核转储coredump"（注释20）——展示类比如何创造新词</div></div>
+    </div>
+  </div>
+</div>
+<div class="section section-005">
+  <div class="section-num num-005">005</div>
+  <div class="section-body">
+    <div class="tag tag-005">知识图谱</div>
+    <div class="section-title t-005">从推荐书目到全书注释——构建认知科学的阅读地图</div>
+    <div class="section-desc">延伸阅读部分虽然篇幅不长，但它构建了一个完整的认知科学阅读地图。从丹尼特的"直觉泵"思维工具，到平克的语言与心智双书，再到Edge的集体智慧——这四本推荐著作从不同角度切入认知科学的核心问题。而二十三则全书注释则像一张散布在正文中的知识网络，将语言细节（法文词根、英文多义词）、文化背景（荷马史诗、人间词话）和学术概念（格式塔心理学、柏拉图式概念）串联起来。将推荐书目与注释合在一起看，它们构建了一个从"如何思考"到"心智是什么"再到"语言如何塑造思维"的完整知识体系——而这，正是《表象与本质》一书所处的学术坐标系。</div>
+
+    <div class="list-block">
+      <div class="list-item"><div class="list-num ln01">1</div><div>丹尼特直觉泵："如何更好地思考"——思维方法论</div></div>
+      <div class="list-item"><div class="list-num ln02">2</div><div>平克双书："心智是什么"+"语言与思想的关系"——认知科学核心问题</div></div>
+      <div class="list-item"><div class="list-num ln03">3</div><div>Edge思维："100位头脑共论认知"——跨学科集体智慧</div></div>
+      <div class="list-item"><div class="list-num ln04">4</div><div>23则注释：语言细节×文化背景×学术概念——全书知识网络的节点</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">延伸阅读与全书注释共同构成了《表象与本质》的学术背景和知识网络。四本推荐著作——丹尼特的直觉泵、平克的思想本质和心智探奇、Edge的思维——从"如何思考"到"心智是什么"再到"语言与思维的关系"，构建了一条清晰的认知科学阅读路径。而二十三则贯穿全书的注释，则将语言细节（法文词根、英文多义词）、文化背景（荷马史诗、人间词话）和学术概念（格式塔心理学、柏拉图式概念）串联成网。特别值得注意的是，许多注释本身就是在展示类比思维——如"分割和除法在英文中是同一个词division"，这一语言事实正是理解朴素类比如何塑造数学认知的关键。延伸阅读不是一个附加的"尾巴"，而是邀请读者继续探索的工具箱：从这本书出发，进入更广阔的认知科学世界。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》延伸阅读信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>
