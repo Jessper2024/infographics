@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 第6章「用来搅拌的小木棍变成了用来划船的标枪」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .data-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: stretch; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    h1 { font-size: 26px; }
+  }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 16px; margin: 24px 0; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4,1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a; line-height: 1.1;
+    margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+  .chapter-card {
+    margin-top: 10px; border-radius: 10px; padding: 14px 16px;
+    background: #fafaf7; border: 1px solid #e8e0d5;
+  }
+  .chapter-card h5 {
+    font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 14px;
+    margin-bottom: 6px; font-weight: bold;
+  }
+  .chapter-card h5.c01 { color: #dc2626; }
+  .chapter-card h5.c02 { color: #ea580c; }
+  .chapter-card h5.c03 { color: #ca8a04; }
+  .chapter-card h5.c04 { color: #4f46e5; }
+  .chapter-card h5.c05 { color: #db2777; }
+  .chapter-card p { font-size: 12px; color: #777; line-height: 1.7; margin: 0; }
+  @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}
+  @media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" href="表象与本质-ch006-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 第6章「用来搅拌的小木棍变成了用来划船的标枪」</h1>
+<p class="subtitle">侯世达用一个生动的类比——用标枪代替船桨来划船——揭示了一种普遍的认知行为：当我们渴望分享强烈感受时，会在庞大的范畴系统中精挑细选，编造出"漫画类比"来让听者感同身受。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>第6章深入研究"漫画类比"——一种由强烈情感驱动、为说服他人而编造生动类比情境的认知行为。侯世达用"没有船桨只有标枪"抱怨美国咖啡文化的没落，展现了漫画类比的精髓：虚构一个与原有情境截然不同却"如出一辙"的新情境，使听者作出合乎说话人心意的结论。本章通过大量实例（从日常牢骚到政治辩论）展示漫画类比如何运作，并探讨为何有些类比能产生巨大共鸣而另一些则平淡无奇。此外，本章还讨论了"娜娜"现象——人们能就同一个抽象事件框架产生不同类比，但共享着一种核心共性，这揭示了概念框架在类比生成中的核心作用。</p>
+</div>
+
+<div class="kpi-row cols-4">
+    <div class="kpi-card c01">
+      <div class="kpi-value">标枪<span class="kpi-unit">划船</span></div>
+      <div class="kpi-label">漫画类比的经典案例</div>
+      <div class="kpi-note">用标枪替代船桨——抱怨纸杯替代瓷杯的绝妙类比</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">强烈<span class="kpi-unit">情感</span></div>
+      <div class="kpi-label">漫画类比的驱动力</div>
+      <div class="kpi-note">担心平铺直叙太乏味→编造虚拟情境来传递愤慨</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">概念<span class="kpi-unit">框架</span></div>
+      <div class="kpi-label">类比生成的核心</div>
+      <div class="kpi-note">不同类比共享同一个概念框架——如"娜娜"故事的核心</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">共鸣<span class="kpi-unit">质量</span></div>
+      <div class="kpi-label">类比为何有效</div>
+      <div class="kpi-note">好的类比在听者脑中种下种子，任其自行生长出结论</div>
+    </div>
+  </div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">定义</div>
+    <div class="section-title t-01">漫画类比：一个有创造力的交流工具</div>
+    <div class="section-desc">漫画类比是一种十分常见的认知行为——虚构出一个与原有情境截然不同的新情境，但从更深层的角度看二者"如出一辙"。被强烈情感驱动时，人们担心对情境的平铺直叙太过乏味，不足以传递心中强烈的愤慨。于是便在庞大的范畴系统中精挑细选，编造出一个虚拟情境。虽然虚拟情境远在另一个领域，却和当下情境共享同一个"概念框架"。希望这个类比能够足够生动，让听者感同身受，作出与说话人一致的结论。侯世达关于用小木棍代替勺子、用标枪代替船桨的抱怨，正是漫画类比的典范。</div>
+    <div class="flow-row">
+              <div class="flow-step">产生强烈<br>情感反应</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">在范畴系统<br>中搜索</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">编造虚拟<br>类比情境</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step end">听者产生<br>共鸣结论</div>
+            </div>
+  </div>
+</div>
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">实例</div>
+    <div class="section-title t-02">漫画类比的丰富实例——从咖啡到政治</div>
+    <div class="section-desc">漫画类比出现在生活的各个角落。一位母亲抱怨孩子总是换专业：「这就像不停地换车道的司机，到目的地比别人晚好几个小时。」一个公民批评政府时说：「预算就像一个漏水的桶，不管你往里面倒多少水，水还是会漏完。」这些类比共同的模式是：说话者先对情境产生强烈感受→搜索大脑范畴库→创造性地将当前情境映射到一个完全不同的领域→用新领域中的生动形象替代原始描述。关键在于，漫画类比不是简单的"像"——它创造的是一个全新的场景，让听者自己去"发现"与原始情境的相似之处。</div>
+    <div class="data-row" style="margin-top:14px;">
+              <div class="data-card dc1">
+                <div class="data-big r">换车道</div>
+                <div class="data-sm">母亲抱怨孩子不断换专业<br>像不停换车道的司机<br>到达目的地比别人慢几小时</div>
+              </div>
+              <div class="data-card dc2">
+                <div class="data-big o">漏水的桶</div>
+                <div class="data-sm">公民批评政府预算<br>像一个不断漏水的桶<br>不管倒多少都会漏完</div>
+              </div>
+              <div class="data-card dc3">
+                <div class="data-big g">标枪划船</div>
+                <div class="data-sm">抱怨美国咖啡店用小木棍<br>代替金属勺子搅拌咖啡<br>如用标枪替代船桨划船</div>
+              </div>
+            </div>
+  </div>
+</div>
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">共鸣</div>
+    <div class="section-title t-03">类比共鸣的质量——为何有的类比击中要害</div>
+    <div class="section-desc">并非所有漫画类比都能产生相同的效果。一个好的漫画类比之所以成功，关键在于它在听者脑中种下一颗种子，让听者自行"发现"两个情境之间的共性——而不是由说话者明确说出来。当侯世达说"用标枪划船"时，他没有解释这个类比与咖啡问题有什么相似之处。他让桑德尔自己去发现两者的共同点：都是一种荒谬的替代，让本来优雅的活动变得荒唐可笑。这种"让听者自己得出结论"的品质，使得好的漫画类比具有强大的说服力——因为结论仿佛是听者自己推导出来的，而非被动接受的。</div>
+    <div class="dual-grid">
+              <div class="dual-card a">
+                <div class="dual-icon">🌱</div>
+                <div class="dual-text">
+                  <h4>种下种子</h4>
+                  <p>好类比不直接说破相似之处，而是让听者自己"发现"联系——这使结论更有说服力。</p>
+                </div>
+              </div>
+              <div class="dual-card b">
+                <div class="dual-icon">❌</div>
+                <div class="dual-text">
+                  <h4>失败的类比</h4>
+                  <p>生硬、牵强或过于直白的类比让听者反感。类比需要在意料之外又在情理之中。</p>
+                </div>
+              </div>
+              <div class="dual-card c">
+                <div class="dual-icon">🎯</div>
+                <div class="dual-text">
+                  <h4>击中要害</h4>
+                  <p>好的漫画类比让听者瞬间理解并认同——仿佛是自己得出的结论，而非被动接受的。</p>
+                </div>
+              </div>
+              <div class="dual-card d">
+                <div class="dual-icon">🔄</div>
+                <div class="dual-text">
+                  <h4>共享概念框架</h4>
+                  <p>类比的核心不是表面相似，而是共享同一个深层抽象概念结构。</p>
+                </div>
+              </div>
+            </div>
+  </div>
+</div>
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">娜娜</div>
+    <div class="section-title t-04">"娜娜"现象——同一事件的不同类比编织</div>
+    <div class="section-desc">本章引入了一个重要概念——"娜娜"现象：不同的人针对同一个抽象事件框架可以编织出完全不同的类比故事。几个朋友都听说过"娜娜"的故事：一个人在事业上升期选择急流勇退，回归平淡生活。每个人都将这个核心概念框架映射到自己熟悉的领域：一个用足球明星退役来类比，另一个用乐坛巨星隐退来类比，还有一个用政治领袖提前卸任来类比。虽然故事的表象完全不同，但都共享同一个深层结构——在巅峰时放弃一切，选择宁静。这一现象深刻揭示了：类比不是简单的相似性匹配，而是概念框架在不同领域间的映射。</div>
+    <div class="data-row" style="margin-top:14px;">
+              <div class="data-card dc1">
+                <div class="data-big r">⚽ 足球版</div>
+                <div class="data-sm">顶级球星在巅峰期<br>选择退役<br>回归田园生活</div>
+              </div>
+              <div class="data-card dc2">
+                <div class="data-big o">🎵 音乐版</div>
+                <div class="data-sm">乐坛巨星在最红时<br>选择隐退<br>追求内心平静</div>
+              </div>
+              <div class="data-card dc3">
+                <div class="data-big g">🏛 政治版</div>
+                <div class="data-sm">政治领袖在权力顶峰<br>选择提前卸任<br>回归普通生活</div>
+              </div>
+            </div>
+  </div>
+</div>
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">框架</div>
+    <div class="section-title t-05">概念框架：类比背后的深层结构</div>
+    <div class="section-desc">"娜娜"现象揭示了一个更根本的真理：类比的核心不是表面特征的相似，而是共享同一个概念框架。概念框架是一个抽象的关系结构——"在巅峰时主动放弃一切，选择平淡生活"。一旦这个框架被内化，它就像一个模板，可以被投射到任何合适的领域生成一个具体的类比故事。这正是人类创造力的深层机制：概念框架跨越领域，类比就是框架在不同领域间的映射。这也解释了为什么漫画家、演说家、作家能够用不同的故事传递同一个信息——因为他们掌握了同一个概念框架。</div>
+    
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">漫画类比是人类最富有创造力的认知行为之一。它不是简单的"A像B"，而是创造性的框架映射——当强烈情感驱动时，人们搜索范畴库，编造一个看似完全不同但深层结构相同的虚拟情境，让听者自行发现二者之间的联系。好的类比像一颗种子，让结论在听者心中自然生长。"娜娜"现象进一步揭示：不同的人可以用完全不同的故事表达同一个概念框架，这说明类比的核心不是表面相似而是深层结构映射。从日常牢骚到政治辩论，从文学作品到科学发现，漫画类比无处不在——它是思维的延伸，是我们分享感受、传递洞见的最有力工具。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》第6章信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

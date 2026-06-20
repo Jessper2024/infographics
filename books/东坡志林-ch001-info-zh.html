@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>东坡志林 · 第一章「山水间的行吟者」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fefce8; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #92400e; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ca8a04; flex-shrink: 0; font-weight: bold; }
+
+  .quote-block {
+    background: #f8f6f3; border-radius: 12px; padding: 18px 22px;
+    margin-top: 10px; border: 1px solid #e8e0d5;
+  }
+  .quote-text {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 15px; color: #1a1a1a; line-height: 1.9; font-style: italic;
+    margin-bottom: 6px;
+  }
+  .quote-source { font-size: 12px; color: #aaa; text-align: right; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #e0e7ff;
+  }
+  .data-card.d1 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-card.d2 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-card.d3 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #3730a3; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #4338ca; line-height: 1.6; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 28px; }
+  .kpi-card {
+    background: #ffffff; border-radius: 12px; padding: 18px 14px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-top: 3px solid transparent;
+  }
+  .kpi-card.c01 { border-top-color: #dc2626; }
+  .kpi-card.c02 { border-top-color: #ea580c; }
+  .kpi-card.c03 { border-top-color: #ca8a04; }
+  .kpi-card.c04 { border-top-color: #4f46e5; }
+  .kpi-num { font-size: 28px; font-weight: bold; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .kpi-num.c01 { color: #dc2626; } .kpi-num.c02 { color: #ea580c; }
+  .kpi-num.c03 { color: #ca8a04; } .kpi-num.c04 { color: #4f46e5; }
+  .kpi-label { font-size: 12px; color: #888; line-height: 1.5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .kpi-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="东坡志林-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="东坡志林-ch001-info-en.html">中文 / English</a>
+</div>
+
+<h1>东坡志林 · 第一章「山水间的行吟者」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  苏轼一生宦海沉浮，屡遭贬谪，从黄州到惠州再到儋耳（海南），足迹遍布大半个中国。然而仕途的坎坷并未消磨他的精神——恰恰相反，他在山水中找到了安顿灵魂的方式，将每一段贬谪之旅都化为一场诗意的行吟。东坡何以在逆境中保持如此旷达的心境？答案藏在他那一篇篇清丽绝俗的游记之中。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章收录苏轼十余篇记游短文——从渡海遇险的《记过合浦》、月夜访友的《记承天寺夜游》，到庐山题诗、沙湖买田、松风亭悟道、儋耳夜书。每一篇都是苏轼在人生低谷中写就的精神独白。他并非在逃避苦难，而是在山水之间完成了一场又一场的心灵自救：将个体的不幸融入天地的大美之中，以"闲人"自居，以诗酒自娱，将贬谪之地变成了精神的故乡。</p>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-num c01">13</div>
+    <div class="kpi-label">篇记游短文<br>收入卷一</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-num c02">5</div>
+    <div class="kpi-label">次重大贬谪<br>黄州→惠州→儋耳</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-num c03">41</div>
+    <div class="kpi-label">岁起谪居黄州<br>写下最多游记</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-num c04">3</div>
+    <div class="kpi-label">部随身书稿<br>《书》《易》《论语》</div>
+  </div>
+</div>
+
+<!-- 01: 渡海遇险 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">渡海之志</div>
+    <div class="section-title t-01">"天未欲使从是也，吾辈必济"——海上绝境中的信念</div>
+    <div class="section-desc">元符三年六月晦日，苏轼从海康渡海赴合浦。连日大雨毁桥，大水无边，无月之夜碇宿大海中央。天水相接，星河满天。他抚着随身携带的《书》《易》《论语》稿本——世间仅存版本——叹道："上天不会让这些书绝版，我们一定能渡过！"翌日果然平安渡海。</div>
+    <div class="quote-block">
+      <div class="quote-text">"天水相接，星河满天，起坐四顾太息：'吾何数乘此险也！已济徐闻，复厄于此乎？'稚子过在旁鼾睡，呼不应。所撰《书》《易》《论语》皆以自随，而世未有别本。抚之而叹曰：'天未欲使从是也，吾辈必济！'"</div>
+      <div class="quote-source">—— 《记过合浦》，元符三年七月四日</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 承天寺夜游 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">月夜访友</div>
+    <div class="section-title t-02">"但少闲人如吾两人耳"——千年传颂的月光</div>
+    <div class="section-desc">元丰六年十月十二夜，贬居黄州的苏轼解衣欲睡，见月色入户，欣然起行。至承天寺寻张怀民，二人步于中庭赏月。"庭下如积水空明，水中藻荇交横，盖竹柏影也。"八十五字写尽千古月色，但点睛之笔在最后一句——"何夜无月，何处无竹柏，但少闲人如吾两人耳"。所谓"闲人"，正是两个被贬的失意者，在月光中找到了无人能夺的自由。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🌙</div>
+        <div class="dual-text">
+          <h4>庭下如积水空明</h4>
+          <p>月光洒在中庭，清澈如积水。水中藻荇交错的影子，实则是竹柏的投影。一场视觉的幻觉，道出天地之大美。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🍃</div>
+        <div class="dual-text">
+          <h4>但少闲人如吾两人耳</h4>
+          <p>"闲人"是一种身份宣告：被贬的失意者，同时也是无人能束缚的月下自由人。正是这层自嘲中的旷达，让八十五字成千古名篇。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 沙湖买田 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">沙湖奇遇</div>
+    <div class="section-title t-03">"谁道人生无再少？门前流水尚能西"——邂逅聋医的人生顿悟</div>
+    <div class="section-desc">苏轼在黄州沙湖买田时染疾，求诊于聋医庞安常。安常虽聋，"以纸画字，书不数字，辄深了人意"。苏轼戏言："余以手为口，君以眼为耳，皆一时异人也。"病愈后同游清泉寺，见兰溪西流——水向东流是常态，西流是反常——触发了他的千古名句："谁道人生无再少？君看流水尚能西，休将白发唱黄鸡。"</div>
+    <div class="flow-row">
+      <div class="flow-step">沙湖买田<br>染疾求诊</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">邂逅庞安常<br>"以眼为耳"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">同游清泉寺<br>见兰溪西流</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">作《浣溪沙》<br>"休将白发唱黄鸡"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 松风亭悟道 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">松风亭悟</div>
+    <div class="section-title t-04">"此间有甚么歇不得处"——随遇而安的最高境界</div>
+    <div class="section-desc">苏轼贬居惠州时游松风亭，足力疲乏想歇息，望着尚在远处的亭宇发愁。忽然顿悟："此间有甚么歇不得处？"——为什么非要到亭子里才能休息？当下此地，何处不能歇？由是"如挂钩之鱼，忽得解脱"。此悟不仅关乎登山，更是对整个人生态度的彻底翻转：不执著于远方，安住于当下，则处处是归处。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🌲</div>
+        <div class="data-name">松风亭</div>
+        <div class="data-sm">惠州嘉祐寺旁<br>三十余株松树环绕<br>苏轼常游之地</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🎣</div>
+        <div class="data-name">如挂钩之鱼</div>
+        <div class="data-sm">苏轼自喻<br>苦苦挣扎终得解脱<br>"忽得解脱"</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">💡</div>
+        <div class="data-name">处处可歇</div>
+        <div class="data-sm">顿悟核心<br>不执著于目的地<br>安住于当下即是归处</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 儋耳夜书 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">儋耳之夜</div>
+    <div class="section-title t-05">"进退有命，迟速有时"——天涯海角的最终安顿</div>
+    <div class="section-desc">被贬至海南儋耳，苏轼已是六十余岁老人。某夜他游城西诸多寺院，到小巷中饮酒，醉归时见"民夷杂糅，屠沽纷然"，不觉失笑。回家已半夜，儿子鼾睡如雷。他放下拐杖，笑了——"我笑韩愈在水里捞不起的，是自己在钓"，意指韩愈固执地想要教化蛮荒，而苏轼选择融入其中、乐在其中。儋耳三年，他设帐讲学，海南自此文风大盛。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🏝️</div>
+        <div class="dual-text">
+          <h4>天涯海角 融入民间</h4>
+          <p>"民夷杂糅，屠沽纷然"——苏轼在异族杂居、市井喧嚣中看到的是生机勃勃，而非鄙陋粗俗。他饮酒小巷，混迹民间，不觉其苦反得其乐。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text">
+          <h4>设帐讲学 开化南荒</h4>
+          <p>儋耳三年，苏轼设帐授徒。海南第一位举人姜唐佐即出其门。他离去后海南文风大盛——真正的文明不是居高临下的教化，而是融入后的春风化雨。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">东坡的游记不是地理笔记，而是心灵自传。每一处山水都是他精神自救的现场：渡海遇险时他以书稿为信念，承天寺月下他以"闲人"自嘲，沙湖溪边他从西流水中看到了人生逆转的可能，松风亭下他参透了随遇而安的真理。苏轼的伟大不在于从未跌倒，而在于<strong>每一次跌倒后，他都能在山水之间重新站起来——且站得比之前更高。</strong>"此间有甚么歇不得处"——这句话是整个东坡哲学的核心：人生处处可安顿，不必等到彼岸。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《东坡志林》第一章信息图 · 苏轼（宋）著 · 万卷出版公司 2016 · 基于卷一「记游」诸篇内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

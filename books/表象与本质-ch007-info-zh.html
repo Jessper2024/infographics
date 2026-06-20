@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 第7章「三件逸事」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .data-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: stretch; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    h1 { font-size: 26px; }
+  }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 16px; margin: 24px 0; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4,1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a; line-height: 1.1;
+    margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+  .chapter-card {
+    margin-top: 10px; border-radius: 10px; padding: 14px 16px;
+    background: #fafaf7; border: 1px solid #e8e0d5;
+  }
+  .chapter-card h5 {
+    font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 14px;
+    margin-bottom: 6px; font-weight: bold;
+  }
+  .chapter-card h5.c01 { color: #dc2626; }
+  .chapter-card h5.c02 { color: #ea580c; }
+  .chapter-card h5.c03 { color: #ca8a04; }
+  .chapter-card h5.c04 { color: #4f46e5; }
+  .chapter-card h5.c05 { color: #db2777; }
+  .chapter-card p { font-size: 12px; color: #777; line-height: 1.7; margin: 0; }
+  @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}
+  @media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" href="表象与本质-ch007-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 第7章「三件逸事」</h1>
+<p class="subtitle">一个四岁男孩、一位年轻女士、一位老教授——三个不同年龄段的人却犯了同一种认知错误。侯世达与桑德尔用三件精巧的逸事揭示：范畴障眼法（即类比的错误映射）贯穿人的一生，不分年龄。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>第7章通过三件跨越不同年龄段的逸事，揭示了一种普遍的认知现象：范畴的障眼法——即错误地将一个事物归入不恰当的范畴，导致对情境的完全误解。四岁的蒂姆以为剃须膏"溶化"了爸爸的胡子，因为"溶化"是他唯一能调用的类比范畴；珍妮特把titmice（山雀）误认为"小老鼠"，因为语言范畴的边界在脑中滑动了；老教授说"把你的电邮地址寄给我"——仿佛信件和电子邮件共享同一个物理传递框架。这三件事横跨整个生命周期，证明类比不仅无处不在，而且它既是我们认知的支柱，也是犯错的根源。</p>
+</div>
+
+<div class="kpi-row cols-4">
+    <div class="kpi-card c01">
+      <div class="kpi-value">4岁<span class="kpi-unit">—76岁</span></div>
+      <div class="kpi-label">年龄跨度</div>
+      <div class="kpi-note">蒂姆(4岁)→珍妮特(30+)→老教授(76岁)，相同认知现象贯穿一生</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">范畴<span class="kpi-unit">障眼法</span></div>
+      <div class="kpi-label">共同的认知错误</div>
+      <div class="kpi-note">错误归入不恰当范畴→对情境完全误解——所有人都会犯</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">溶化<span class="kpi-unit">胡子</span></div>
+      <div class="kpi-label">小蒂姆的剃须理论</div>
+      <div class="kpi-note">剃须膏"溶化"胡子→唯一可调用的类比范畴决定了理解</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">寄电邮<span class="kpi-unit">地址</span></div>
+      <div class="kpi-label">老教授的范畴滑动</div>
+      <div class="kpi-note">信件与电子邮件共享物理传递框架→口误暴露深层类比</div>
+    </div>
+  </div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">蒂姆</div>
+    <div class="section-title t-01">小蒂姆与剃须膏——溶化胡子的四岁理论</div>
+    <div class="section-desc">四岁的蒂姆看着爸爸刮胡子，形成了自己的一套理论：剃须膏把爸爸的胡子"溶化"了，剃须刀的唯一作用是把完成任务的剃须膏刮掉。小蒂姆尽了最大努力分类这个场景——他不理解剃须刀的刮削功能，但他非常清楚某些物质可以在另一些物质里溶解（如糖在热水里溶化）。于是他将"剃须"强行归入"溶解"这个唯一可用的范畴。这不是愚蠢，而是认知的资源有限性：当现有范畴无法精确匹配新场景时，大脑会自动选择最接近的范畴进行类比映射——即使这种映射是完全错误的。</div>
+    <div class="flow-row">
+              <div class="flow-step">蒂姆观察<br>爸爸刮胡子</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">搜索已有<br>范畴库</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">找到最接近<br>的范畴：溶解</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step end">结论：剃须膏<br>「溶化」胡子</div>
+            </div>
+  </div>
+</div>
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">珍妮特</div>
+    <div class="section-title t-02">珍妮特与小老鼠——语言范畴的障眼法</div>
+    <div class="section-desc">珍妮特从一个邻居那里收到消息，说看到一群titmice在树上吃昆虫。她满脑子浮现出一群小老鼠在树上跑来跑去的画面。直到读到消息末尾提到"山雀"，她才恍然大悟：titmice不是小老鼠，而是一种小鸟。titmice这个词的字面构成让她自动将其归入了"老鼠"范畴——tits（小山雀）不为人知，但mice（老鼠）的复数形式极其常见。语言的字面构成触发了错误的范畴，而这种错误一旦形成就极为顽固，直到有足够多的矛盾信息将其打破。</div>
+    <div class="dual-grid">
+              <div class="dual-card a">
+                <div class="dual-icon">🐭</div>
+                <div class="dual-text">
+                  <h4>字面误导</h4>
+                  <p>titmice → tit(不熟悉) + mice(老鼠复数) → 自动归入「老鼠」范畴。语词的字面构成引导了错误理解。</p>
+                </div>
+              </div>
+              <div class="dual-card b">
+                <div class="dual-icon">🐦</div>
+                <div class="dual-text">
+                  <h4>真相：山雀</h4>
+                  <p>titmice 实际上是一种小型鸟类（山雀），与老鼠毫无关系。词源学的陷阱揭示了范畴化的自动性。</p>
+                </div>
+              </div>
+              <div class="dual-card c">
+                <div class="dual-icon">🧠</div>
+                <div class="dual-text">
+                  <h4>范畴顽固性</h4>
+                  <p>错误范畴一旦形成，除非遇到足够多的矛盾信息，否则不会被修正。大脑倾向维持已有分类。</p>
+                </div>
+              </div>
+              <div class="dual-card d">
+                <div class="dual-icon">🔄</div>
+                <div class="dual-text">
+                  <h4>修正的触发</h4>
+                  <p>「老鼠和小鸟在树杈上和平共处」——这个矛盾画面迫使珍妮特重新审视并修正最初的范畴归类。</p>
+                </div>
+              </div>
+            </div>
+  </div>
+</div>
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">教授</div>
+    <div class="section-title t-03">亚历山大教授——「寄电邮地址」的范畴滑动</div>
+    <div class="section-desc">76岁的亚历山大教授和一位年轻同事道别。同事要去德国一个月，老教授说："到了以后，把你的电邮地址寄给我，好吗？"看到同事脸上的疑惑，教授一拍脑门："我这是说什么呢？你的电邮地址根本不变嘛。"这句口误深刻揭示了一个隐藏的类比——在教授脑中，"电子邮件地址"和"物理地址"共享同一个范畴框架：当你去一个新地方时，需要获取那里的地址。教授的大脑自动将"去德国"归入了"换地址"的范畴，激活了"索要地址"这个行为模式——这正是类比自动运作的鲜活证据。</div>
+    <div class="data-row" style="margin-top:14px;">
+              <div class="data-card dc1">
+                <div class="data-big r">去德国</div>
+                <div class="data-sm">同事要去德国一个月<br>大脑自动激活<br>「换地址」范畴</div>
+              </div>
+              <div class="data-card dc2">
+                <div class="data-big o">寄地址给我</div>
+                <div class="data-sm">物理地址与电邮地址<br>共享同一个概念框架<br>→ 自动触发索要行为</div>
+              </div>
+              <div class="data-card dc3">
+                <div class="data-big g">一拍脑门</div>
+                <div class="data-sm">「你的电邮地址<br>根本不变嘛」<br>——事后修正暴露了类比</div>
+              </div>
+            </div>
+  </div>
+</div>
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">跨越</div>
+    <div class="section-title t-04">跨越一生的认知共性——从4岁到76岁</div>
+    <div class="section-desc">小蒂姆（4岁）、珍妮特（约35岁）和亚历山大教授（76岁）——年龄跨度超过70年的三个人，体验的是完全相同的认知现象。他们都受到了类比的诱惑，上了当：现有的范畴自动被激活去解释新情境，而当范畴与新情境不完全匹配时，大脑不是"承认不知道"，而是强制性地将新情境塞入最接近的现有范畴。这种"范畴障眼法"不是智力问题，而是认知架构的必然特征——我们只能通过已有范畴来理解世界，而已有范畴永远无法完美覆盖所有新情境。错误不是缺陷，而是系统运作的副产品。</div>
+    <div class="flow-row">
+              <div class="flow-step">4岁<br>蒂姆<br>溶化胡子</div>
+              <div class="flow-arrow">⟶</div>
+              <div class="flow-step">35岁<br>珍妮特<br>小老鼠=山雀</div>
+              <div class="flow-arrow">⟶</div>
+              <div class="flow-step">76岁<br>教授<br>寄电邮地址</div>
+              <div class="flow-arrow">⟶</div>
+              <div class="flow-step end">同一认知<br>机制贯穿<br>整个生命</div>
+            </div>
+  </div>
+</div>
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">本质</div>
+    <div class="section-title t-05">范畴障眼法——类比既是恩赐也是诅咒</div>
+    <div class="section-desc">三件逸事共同指向一个深刻的道理：类比（或范畴化）是人类认知的基石，也是犯错的最根本原因。我们别无选择——大脑的默认设置就是通过已有范畴理解新事物。当我们拥有合适的范畴时，类比带来洞察和创新；当范畴不匹配时，类比导致误解和错误。这并非认知的"缺陷"可以"修复"——这是认知的"本质"。正如第5章的结论一样：类比不请自来，且主导一切。理解这一点，不是为了消除错误（那是不可能的），而是为了在我们被类比误导时能够保持警觉，及时修正。</div>
+    
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">三件年龄跨度超过70年的逸事，揭示了一个贯穿人类生命的认知真相：我们只能通过已有范畴来理解新情境，而当范畴与新情境不完全匹配时，大脑不会"承认不知道"，而是强制性地将新情境塞入最接近的现有范畴——这就是范畴障眼法。小蒂姆用"溶解"理解剃须，珍妮特被"mice"误导将山雀当作老鼠，老教授把电邮地址纳入物理地址框架——错误的表现不同，但根源一致。这既不是愚蠢，也不是缺陷，而是人类认知架构的必然特征。类比（范畴化）是思考之源、思维之火——它既是恩赐，也是诅咒，我们不能没有它，也无法摆脱它的"操纵"。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》第7章信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>
