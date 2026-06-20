@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 第9章「超越复盘」</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: normal; font-style: normal;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  display: flex; justify-content: center; align-items: flex-start;
+  min-height: 100vh; padding: 40px 20px 60px;
+}
+.container { max-width: 880px; width: 100%; }
+
+h1 {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 36px; color: #1a1a1a; text-align: center;
+  line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+  letter-spacing: 1.5px;
+}
+.subtitle {
+  text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+  max-width: 640px; margin-left: auto; margin-right: auto;
+}
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #dc2626, #ea580c);
+  margin: 0 auto 28px; border-radius: 2px;
+}
+
+.section {
+  background: #ffffff; border-radius: 14px;
+  margin-bottom: 18px; padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex; gap: 20px; align-items: flex-start;
+  border-left: 4px solid transparent;
+}
+.section-01 { border-left-color: #dc2626; }
+.section-02 { border-left-color: #ea580c; }
+.section-03 { border-left-color: #ca8a04; }
+.section-04 { border-left-color: #4f46e5; }
+.section-05 { border-left-color: #db2777; }
+
+.section-num {
+  flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: bold; margin-top: 2px;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.num-01 { background: #fef2f2; color: #dc2626; }
+.num-02 { background: #fff7ed; color: #ea580c; }
+.num-03 { background: #fefce8; color: #ca8a04; }
+.num-04 { background: #eef2ff; color: #4f46e5; }
+.num-05 { background: #fdf2f8; color: #db2777; }
+
+.section-body { flex: 1; }
+.tag {
+  display: inline-block; font-size: 11px; font-weight: bold;
+  padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+  letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.tag-01 { background: #fef2f2; color: #dc2626; }
+.tag-02 { background: #fff7ed; color: #ea580c; }
+.tag-03 { background: #fefce8; color: #ca8a04; }
+.tag-04 { background: #eef2ff; color: #4f46e5; }
+.tag-05 { background: #fdf2f8; color: #db2777; }
+
+.section-title {
+  font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+.t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+.t-05 { color: #db2777; }
+
+.section-desc {
+  font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+}
+
+.flow-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-top: 6px;
+}
+.flow-step {
+  background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+  padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+  font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+}
+.flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+.flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+.dual-card {
+  border-radius: 12px; padding: 18px 20px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+.dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+.dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+.data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+.data-card {
+  border-radius: 12px; padding: 18px 14px; text-align: center;
+  border: 1px solid;
+}
+.data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+.data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+.data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+.data-big {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 28px; font-weight: 700; margin-bottom: 6px;
+}
+.data-big.r { color: #dc2626; }
+.data-big.o { color: #ea580c; }
+.data-big.g { color: #ca8a04; }
+.data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+.case-quote {
+  background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+  padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+  font-style: italic;
+}
+
+.icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+.icon-card {
+  background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+  font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+}
+.icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+.icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+.takeaway {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 24px 32px; margin-bottom: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  border-left: 4px solid #dc2626;
+}
+.takeaway-label {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+  font-weight: bold;
+}
+.takeaway-text {
+  font-size: 16px; color: #1a1a1a; line-height: 1.9;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+
+.footer {
+  text-align: center; margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+}
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+.back-catalog { text-align: right; margin-bottom: 4px; }
+.back-catalog-btn {
+  display: inline-block; padding: 5px 14px; border-radius: 8px;
+  font-size: 12px; text-decoration: none; letter-spacing: 0.02em;
+  background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+  transition: opacity 0.15s;
+}
+.back-catalog-btn:hover { opacity: 0.75; }
+
+.chapter-overview {
+  background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+  padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+  line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+}
+.chapter-overview p { margin: 0; }
+
+.kpi-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.kpi-card {
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 24px 20px 18px; text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex; flex-direction: column; align-items: center;
+}
+.kpi-value {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 42px; font-weight: bold; color: #1a1a1a;
+  line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+}
+.kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+.kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+.kpi-note {
+  font-size: 11px; color: #bbb; line-height: 1.6;
+  border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center;
+}
+.kpi-card.c01 { border-left: 3px solid #dc2626; }
+.kpi-card.c01 .kpi-value { color: #dc2626; }
+.kpi-card.c02 { border-left: 3px solid #ea580c; }
+.kpi-card.c02 .kpi-value { color: #ea580c; }
+.kpi-card.c03 { border-left: 3px solid #ca8a04; }
+.kpi-card.c03 .kpi-value { color: #ca8a04; }
+.kpi-card.c04 { border-left: 3px solid #4f46e5; }
+.kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+@media (max-width: 768px) {
+  .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+  .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+  .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+  .section-05 { border-top-color: #db2777; }
+  .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+  .container { padding: 0 8px; }
+  h1 { font-size: 26px; }
+  .kpi-row, .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .kpi-value { font-size: 34px; }
+}
+@media (max-width: 400px) {
+  .kpi-row, .kpi-row.cols-4 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-catalog">
+    <a href="复盘+：把经验转化为能力-catalog.html" class="back-catalog-btn">← 返回目录</a>
+  </div>
+  <div class="lang-switch">
+    <a href="复盘+：把经验转化为能力-ch009-info-en.html" class="lang-btn" target="_blank">English</a>
+  </div>
+
+  <h1>复盘+：把经验转化为能力 · 第9章「超越复盘」</h1>
+  <p class="subtitle">仅靠复盘远远不够——以组织学习矩阵为框架，整合多元学习方法，搭建完备的组织学习体系，迈向学习型组织</p>
+  <div class="divider"></div>
+
+  <div class="chapter-overview">
+    <p>本章提出了「组织学习矩阵」框架，介绍复盘之外四种组织学习方法（U型理论、情景规划、标杆学习、开放式创新），并基于美军、英国石油公司等案例，阐述以复盘为基石搭建组织学习体系的基本要素，引领企业超越复盘，迈向学习型组织。</p>
+  </div>
+
+  <!-- KPI 指标卡 -->
+  <div class="kpi-row cols-4">
+    <div class="kpi-card c01">
+      <div class="kpi-value">4<span class="kpi">象限</span></div>
+      <div class="kpi-label">组织学习矩阵维度</div>
+      <div class="kpi-note">来源×渠道，覆盖过去/未来 × 内部/外部</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">4<span class="kpi-unit">种</span></div>
+      <div class="kpi-label">超越复盘的学习方法</div>
+      <div class="kpi-note">U型理论 · 情景规划 · 标杆学习 · 开放式创新</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">60<span class="kpi-unit">%</span></div>
+      <div class="kpi-label">宝洁研发能力提升</div>
+      <div class="kpi-note">开放式创新成功率提高2倍，成本下降20%</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">3<span class="kpi-unit">环</span></div>
+      <div class="kpi-label">美军学习闭环体系</div>
+      <div class="kpi-note">AAR即时复盘 → CALL知识整合 → 前瞻性研究</div>
+    </div>
+  </div>
+
+  <!-- 区块 1：复盘的局限 -->
+  <div class="section section-01">
+    <div class="section-num num-01">1</div>
+    <div class="section-body">
+      <span class="tag tag-01">SCQA · 情境</span>
+      <div class="section-title t-01">复盘是重要的，但仅靠复盘是不够的</div>
+      <p class="section-desc"><strong>复盘只能从自身过去经验学习，在颠覆性创新频发的时代，其来源、覆盖面与深度均不足以应对竞争挑战。</strong>从复盘本质看，它是一种从过去经验学习的方法。虽然"试错学习"是人类学习基本途径，但在变化迅猛的时代，仅靠复盘存在三重局限：学习来源单一（仅自身经验）、覆盖面有限（无法预见全新打法）、深度受成功者包袱制约。正如荀子所言"以近知远，以一知万"——复盘可以发现规律、激发创新，但我们不能闭门造车，必须了解各种方法的优势与局限，在正确时机选择恰当工具。</p>
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">⚠️</div>
+          <div class="dual-text">
+            <h4>复盘的三重局限</h4>
+            <p>来源单一（仅自身经验）、覆盖面不足（无法预见颠覆性打法）、深度受限（成功者包袱越重，创新胜算越低）</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">💡</div>
+          <div class="dual-text">
+            <h4>正确态度</h4>
+            <p>了解各种方法的优劣势与适用条件，在需要时选择正确方法做到位，才是企业家睿智的体现</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块 2：组织学习矩阵 -->
+  <div class="section section-02">
+    <div class="section-num num-02">2</div>
+    <div class="section-body">
+      <span class="tag tag-02">MECE · 框架</span>
+      <div class="section-title t-02">组织学习矩阵：四象限全景图</div>
+      <p class="section-desc"><strong>按学习来源（过去/未来）与渠道（内部/外部）两个维度，将组织学习机制划分为四个互补象限，构建完整的学习版图。</strong>从自己过去的行动中学习即复盘，它在整个组织学习体系中具有核心意义——从工作实践中学习是成人学习最主要的途径。但复盘只是体系的一部分，矩阵中还有三种重要机制。</p>
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="ic">🔄</div>
+          <strong>复盘</strong>
+          过去 × 内部<br>从自身行动中学习
+        </div>
+        <div class="icon-card">
+          <div class="ic">🌊</div>
+          <strong>U型理论</strong>
+          未来 × 内部<br>面向正在生成的未来
+        </div>
+        <div class="icon-card">
+          <div class="ic">🗺️</div>
+          <strong>情景规划</strong>
+          未来 × 内部<br>想象多种未来情景
+        </div>
+        <div class="icon-card">
+          <div class="ic">🏆</div>
+          <strong>标杆学习</strong>
+          过去 × 外部<br>向最佳实践看齐
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块 3：三种方法详解 -->
+  <div class="section section-03">
+    <div class="section-num num-03">3</div>
+    <div class="section-body">
+      <span class="tag tag-03">MECE · 方法</span>
+      <div class="section-title t-03">三种超越复盘的学习方法</div>
+      <p class="section-desc"><strong>U型理论、情景规划与标杆学习，各自拥有独特的学习机理与适用场景，是复盘的有力补充。</strong></p>
+
+      <!-- U型理论 -->
+      <div style="background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:16px 18px;margin-bottom:12px;">
+        <div style="font-size:15px;font-weight:bold;color:#92400e;margin-bottom:6px;">🌊 U型理论——面向正在生成的未来学习</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;">由MIT研究员奥托·夏莫提出，需要实现"注意力结构的转移"——停止下载模式、搁置判断，在场域中感知，经历暂悬→转向→放下→自然流现→接纳→结晶→原型→体制化七个步骤，促成深层次创造与变革。</p>
+      </div>
+
+      <!-- 情景规划 -->
+      <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:16px 18px;margin-bottom:12px;">
+        <div style="font-size:15px;font-weight:bold;color:#9a3412;margin-bottom:6px;">🗺️ 情景规划——在不确定性中高瞻远瞩</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;">壳牌石油公司因情景规划在1973年石油危机中从七大石油公司末座跃居翘楚。通过对关键不确定性因素的系统分析，开发多种未来情景并推演战略路径，帮助各级领导"有备无患、处乱不惊"。</p>
+      </div>
+
+      <!-- 标杆学习 + 开放式创新 -->
+      <div style="background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:16px 18px;">
+        <div style="font-size:15px;font-weight:bold;color:#92400e;margin-bottom:6px;">🏆 标杆学习 & 🔓 开放式创新</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;">施乐通过对标日本厂商夺回市场，到2005年美国80%大公司采用标杆学习。宝洁将R&D改为C&D，50%以上创新来自外部，研发能力提升60%，成功率提高2倍，成本下降20%。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块 4：案例——美军与BP -->
+  <div class="section section-04">
+    <div class="section-num num-04">4</div>
+    <div class="section-body">
+      <span class="tag tag-04">案例 · 体系</span>
+      <div class="section-title t-04">以复盘为基石，搭建组织学习体系</div>
+      <p class="section-desc"><strong>美军与英国石油公司证明：以复盘为核心，配合知识管理机制，可构建强大的"数字神经系统"般的组织学习体系。</strong></p>
+
+      <div style="font-size:14px;font-weight:bold;color:#4f46e5;margin-bottom:8px;">🎖️ 美军：AAR + CALL 三环闭环</div>
+      <div class="flow-row">
+        <div class="flow-step">R1：AAR<br>即时复盘</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">R2-1：CALL<br>知识整合传播</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">R2-2：定向研究<br>前瞻性知识</div>
+      </div>
+
+      <div class="case-quote" style="margin-top:14px;">
+        "CALL站在美军知识的十字路口。我们既是信息的提供者，也是信息的收集者。我们愿意把自己看作一种管道，来连接军队中千百个地方正在发生什么和你所在的地方需要知道什么。" —— CALL主管奈格尔上校
+      </div>
+
+      <div style="font-size:14px;font-weight:bold;color:#4f46e5;margin:16px 0 8px;">🛢️ 英国石油公司：做前学·做中学·做后学</div>
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">做前学</div>
+          <div class="data-sm">专家黄页 + 同行协助会<br>项目启动前集思广益</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">做中学</div>
+          <div class="data-sm">活动复盘 + 实践社群<br>边做边学快速迭代</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">做后学</div>
+          <div class="data-sm">阶段复盘 + 知识库<br>经验沉淀复用闭环</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块 5：组织学习体系四要素 -->
+  <div class="section section-05">
+    <div class="section-num num-05">5</div>
+    <div class="section-body">
+      <span class="tag tag-05">MECE · 要素</span>
+      <div class="section-title t-05">组织学习闭环体系的四大构成要素</div>
+      <p class="section-desc"><strong>群策群力、协同执行、复盘与知识库四大要素构成闭环，推动组织从复盘走向学习型组织。</strong>基于美军、BP等案例研究，以复盘为一个核心元素，搭配其他三个要素，形成完整闭环体系。</p>
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="ic">🤝</div>
+          <strong>群策群力</strong>
+          行动前集中智慧<br>利用已有知识周密谋划
+        </div>
+        <div class="icon-card">
+          <div class="ic">⚙️</div>
+          <strong>协同执行</strong>
+          行动中边做边学<br>小步快跑快速迭代
+        </div>
+        <div class="icon-card">
+          <div class="ic">🔄</div>
+          <strong>复盘</strong>
+          阶段性总结得失<br>及时调整改进方向
+        </div>
+        <div class="icon-card">
+          <div class="ic">📚</div>
+          <strong>知识库</strong>
+          经验沉淀与复用<br>扩大共享范围
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">✦ 本章核心启示</div>
+    <div class="takeaway-text">复盘是组织学习体系中不可或缺的一环，但仅靠复盘远远不够。以组织学习矩阵为框架，整合U型理论、情景规划、标杆学习、开放式创新等多元方法，以复盘为基石搭配群策群力、协同执行与知识管理，才能搭建完备的组织学习闭环体系，驱动企业持续发展，真正迈向学习型组织。</div>
+  </div>
+
+  <div class="footer">
+    《复盘+：把经验转化为能力》第9章 信息图 · 邱昭良 著 · 机械工业出版社 · 仅供学习参考
+  </div>
+
+</div>
+</body>
+</html>

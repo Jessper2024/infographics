@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 第6章「经营与战略复盘」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+  }
+  .icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+  .icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: 0.02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity 0.15s;
+  }
+  .back-catalog-btn:hover { opacity: 0.75; }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    margin: 24px 0;
+  }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px;
+    width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  @media (max-width: 768px) {
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+    .section { padding: 20px 18px; }
+    h1 { font-size: 28px; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .icon-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+
+  @media (max-width: 400px) {
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back-catalog">
+    <a href="复盘+：把经验转化为能力-catalog.html" class="back-catalog-btn">📚 目录</a>
+  </div>
+  <div class="lang-switch">
+    <a href="复盘+：把经验转化为能力-ch006-info-en.html" class="lang-btn" target="_blank">🌐 English</a>
+  </div>
+
+  <h1>复盘+：把经验转化为能力 · 第6章「经营与战略复盘」</h1>
+  <p class="subtitle">把复盘嵌入经营与管理，定期进行经营与战略复盘，是优秀企业的最佳实践</p>
+  <div class="divider"></div>
+
+  <div class="chapter-overview">
+    <p>本章基于谷歌、联想等公司的实践，提炼经营与战略复盘的操作方法与关键要点。从"为什么做"到"怎么做"再到"如何做好"，系统呈现经营与战略复盘的完整方法论——涵盖季度业务复盘会（QBR）、年度战略规划研讨、组织学习史三大形式，以及一把手主导、内外兼顾、到位引导等关键成功要素。</p>
+  </div>
+
+  <!-- KPI 指标卡 -->
+  <div class="kpi-row cols-4">
+    <div class="kpi-card c01">
+      <div class="kpi-value">QBR</div>
+      <div class="kpi-label">季度业务复盘会</div>
+      <div class="kpi-note">Quarterly Business Review<br>回顾绩效 · 分析差异 · 制定目标</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">4<span class="kpi-unit">步</span></div>
+      <div class="kpi-label">QBR 核心流程</div>
+      <div class="kpi-note">回顾目标 → 分析差异<br>→ 讨论事项 → 制定计划</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">3<span class="kpi-unit">类</span></div>
+      <div class="kpi-label">战略复盘形式</div>
+      <div class="kpi-note">季度复盘会 · 年度规划研讨<br>· 组织学习史</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">4<span class="kpi-unit">要素</span></div>
+      <div class="kpi-label">关键成功要素</div>
+      <div class="kpi-note">一把手主导 · 明确分工<br>内外兼顾 · 到位引导</div>
+    </div>
+  </div>
+
+  <!-- 区块1：经营与战略复盘的意义 -->
+  <div class="section section-01">
+    <div class="section-num num-01">1</div>
+    <div class="section-body">
+      <span class="tag tag-01">WHY — 为什么做</span>
+      <div class="section-title t-01">经营与战略复盘的核心意义</div>
+      <p class="section-desc"><strong>经营与战略复盘是企业从"低头拉车"转向"抬头看路"的关键机制——它让组织跳出具体事务，从经营中学习、边干边学、快速应变。</strong>好的企业家不是教出来的，而是干出来的。企业的经营与管理是复杂而微妙的系统，需要知识、技能、经验，甚至直觉和智慧。将复盘嵌入经营与管理，定期审视内外部变化、发现经营短板、优化战略，是企业家修炼的重要方式，也是公司运作不可或缺的闭环要素。</p>
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">🔍</div>
+          <div class="dual-text">
+            <h4>审视变化</h4>
+            <p>定期审视组织内外部环境变化，发现趋势与规律，顺势而为</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">⚡</div>
+          <div class="dual-text">
+            <h4>快速应变</h4>
+            <p>从试错中学习，快速调整策略，实现"快而不乱"的迭代</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块2：标杆实践 -->
+  <div class="section section-02">
+    <div class="section-num num-02">2</div>
+    <div class="section-body">
+      <span class="tag tag-02">WHO — 谁在做</span>
+      <div class="section-title t-02">标杆企业的复盘实践</div>
+      <p class="section-desc"><strong>谷歌和联想代表了两种典型路径：谷歌用 OKR+季度复盘构建开放透明的闭环机制，联想则将复盘嵌入"搭班子、定战略、带队伍"的管理体系。</strong></p>
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">🔴</div>
+          <div class="dual-text">
+            <h4>谷歌：OKR + 季度复盘</h4>
+            <p>每季度全公司会议，CEO 到每位员工逐一讨论 OKR 并打分，高管坦率剖析失误，基于同步信息制定下季度 OKR，形成开放、透明、闭环的信息反馈机制</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">🟢</div>
+          <div class="dual-text">
+            <h4>联想：复盘嵌入经营管理</h4>
+            <p>战略性复盘（重大节点与方向）+ 战术性复盘（项目与日常运营），通过务虚会、年度战略规划、季度经营复盘，形成"规划—执行—复盘—优化"闭环</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-quote">
+        "回顾联想几个重要历史时期的重要节点，柳传志先生都是依靠反复总结研究的'复盘'，才最终取得成功的。"——张涛《柳问》
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块3：三种常见形式 -->
+  <div class="section section-03">
+    <div class="section-num num-03">3</div>
+    <div class="section-body">
+      <span class="tag tag-03">WHAT — 做什么</span>
+      <div class="section-title t-03">经营与战略复盘的三种形式</div>
+      <p class="section-desc"><strong>企业进行经营与战略复盘的常见形式包括季度业务复盘会（QBR）、年度战略复盘与规划研讨会、组织学习史三种，各适用于不同场景与周期。</strong></p>
+
+      <!-- 可视化：流程图 -->
+      <p style="font-size:13px;color:#888;margin-bottom:6px;font-weight:bold;">▎QBR 季度业务复盘会流程</p>
+      <div class="flow-row">
+        <div class="flow-step">回顾绩效<br>目标</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">分析差异<br>原因</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">重要事项<br>讨论</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">制定新目标<br>行动计划</div>
+      </div>
+
+      <!-- 可视化：三卡对比 -->
+      <div class="data-row" style="margin-top:16px;">
+        <div class="data-card dc1">
+          <div class="data-big r">QBR</div>
+          <div class="data-sm">季度业务复盘会<br>回顾业绩 · 分析差异<br>讨论事项 · 制定计划</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">年度</div>
+          <div class="data-sm">战略复盘与规划研讨<br>对照战略目标 · 回顾执行<br>内外兼顾 · 制定规划</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">学习史</div>
+          <div class="data-sm">组织学习史<br>绘制发展历程 · 集体反思<br>双栏格式 · 深度对话</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块4：关键成功要素 -->
+  <div class="section section-04">
+    <div class="section-num num-04">4</div>
+    <div class="section-body">
+      <span class="tag tag-04">HOW — 如何做好</span>
+      <div class="section-title t-04">战略复盘的四大关键成功要素</div>
+      <p class="section-desc"><strong>战略复盘是最"难"的一种复盘——涉及面广、参与人多、问题复杂，必须把握一把手主导、明确分工、内外兼顾、到位引导四大要素。</strong></p>
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="ic">👑</div>
+          <strong>一把手主导</strong>
+          定战略是一把手核心职责，战略复盘必须由一把手亲自主导推动
+        </div>
+        <div class="icon-card">
+          <div class="ic">⚙️</div>
+          <strong>明确分工</strong>
+          形成机制、长期坚持，各部门先自我复盘，再参加公司层面研讨
+        </div>
+        <div class="icon-card">
+          <div class="ic">🌐</div>
+          <strong>内外兼顾</strong>
+          不能只看内部，必须对行业、客户、竞争者、外部环境进行洞察
+        </div>
+        <div class="icon-card">
+          <div class="ic">🧭</div>
+          <strong>到位引导</strong>
+          需要认证引导师，掌握 SWOT、波特五力、平衡记分卡等专业工具
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块5：小企业同样需要 -->
+  <div class="section section-05">
+    <div class="section-num num-05">5</div>
+    <div class="section-body">
+      <span class="tag tag-05">WHO ELSE — 谁还需要</span>
+      <div class="section-title t-05">小企业与创业公司同样需要战略复盘</div>
+      <p class="section-desc"><strong>"小企业不需要战略"是完全错误的想法——战略的本质是关于公司发展的全局性、长期性、根本性设计，任何企业都离不开战略。</strong>初创企业钱少、人少、资源少，更需要持续"校目标"。柳传志建议创业者从"蒙着打"变为"想着打"，再到"瞄着打"，逐步学会制定战略。虽然形式不必正式，但一把手一定要和班子成员及时、充分、坦诚地对目标、策略、进展、变化进行探讨——这实际上就是战略复盘。</p>
+      <div class="case-quote">
+        "没有战略，明天就吃不到饭；而战略不合理，也许今天就饿死。"——柳传志
+      </div>
+    </div>
+  </div>
+
+  <!-- Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心启示</div>
+    <div class="takeaway-text">
+      经营与战略复盘不是大企业的专利，而是任何组织持续进化的底层能力。将复盘嵌入"规划—执行—复盘—优化"的闭环，由一把手主导、内外兼顾、到位引导，才能真正做到"快而不乱"，在复杂多变的商业世界中立于不败之地。
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    《复盘+：把经验转化为能力》第6章 信息图 · 邱昭良 著 · 机械工业出版社 · 仅供学习参考
+  </div>
+
+</div>
+</body>
+</html>

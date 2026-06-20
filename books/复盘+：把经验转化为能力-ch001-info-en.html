@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fupan+: Turning Experience into Capability · Chapter 1 "Understanding Fupan"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px;
+    width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+  }
+  .icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+  .icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.7;
+  }
+  .alert-box .alert-title { font-weight: bold; margin-bottom: 4px; color: #dc2626; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- back-catalog -->
+  <div class="back-catalog">
+    <a href="复盘+：把经验转化为能力-catalog.html" class="back-catalog-btn">📚 Back to Catalog</a>
+  </div>
+
+  <!-- lang-switch -->
+  <div class="lang-switch">
+    <a href="复盘+：把经验转化为能力-ch001-info-zh.html" target="_blank" class="lang-btn">🌐 中文</a>
+  </div>
+
+  <!-- h1 -->
+  <h1>Fupan+: Turning Experience into Capability · Ch.1 "Understanding Fupan"</h1>
+
+  <!-- subtitle -->
+  <div class="subtitle">From a Go term to an organizational learning tool — grasping the essence, distinctions, and value of Fupan</div>
+
+  <!-- divider -->
+  <div class="divider"></div>
+
+  <!-- chapter-overview -->
+  <div class="chapter-overview">
+    <p>This chapter traces Fupan's origins in the game of Go, clarifies its three keywords (personal experience, past, learning), distinguishes it from work summaries, debunks five common misconceptions, and reveals its core value through the U.S. Army's AAR and Lenovo's practice.</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-row">
+    <div class="kpi-card c01">
+      <div class="kpi-value">3</div>
+      <div class="kpi-label">Core Keywords</div>
+      <div class="kpi-note">Personal experience · Past · Learning</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">5</div>
+      <div class="kpi-label">Misconceptions</div>
+      <div class="kpi-note">Fupan others / Post-review / Problem-solving…</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">4</div>
+      <div class="kpi-label">Lenovo's Reasons</div>
+      <div class="kpi-note">Know why · Transfer lessons · No repeats · Codify</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">4</div>
+      <div class="kpi-label">AAR Effects</div>
+      <div class="kpi-note">Training · Execution · Leadership · Org IQ</div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section section-01">
+    <div class="section-num num-01">01</div>
+    <div class="section-body">
+      <span class="tag tag-01">ESSENCE</span>
+      <div class="section-title t-01">What Is Fupan? Three Keywords</div>
+      <div class="section-desc">
+        <strong>Fupan means learning from personal experience — one of the most important forms of adult learning.</strong> Originally a Go term, Fupan refers to replaying a finished game to analyze gains and losses. In business, it means learning from past work to summarize experience, build capability, and improve performance.
+      </div>
+      <!-- Flow chart: three keywords -->
+      <div class="flow-row">
+        <div class="flow-step">🔍 Personal Experience<br><span style="font-size:11px;font-weight:normal">Your own events are the primary source of information</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">⏳ Past<br><span style="font-size:11px;font-weight:normal">Past experience is adults' main learning source</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">📖 Learning<br><span style="font-size:11px;font-weight:normal">Gain insight, build capability, improve future action</span></div>
+      </div>
+      <div class="case-quote">
+        "Fupan means sitting down after a task and reviewing the whole process — what we planned, what went wrong, why it didn't work. Next time, those lessons are absorbed." — Liu Chuanzhi, Lenovo Founder
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section section-02">
+    <div class="section-num num-02">02</div>
+    <div class="section-body">
+      <span class="tag tag-02">DISTINCTION</span>
+      <div class="section-title t-02">Fupan ≠ Work Summary</div>
+      <div class="section-desc">
+        <strong>Fupan differs fundamentally from work summaries: it is learning-oriented, process-driven, and team-based.</strong> Work summaries highlight achievements and tie to performance reviews. Fupan follows a structured logic, encourages collective reflection, and does not assign blame.
+      </div>
+      <!-- Comparison cards -->
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">📋</div>
+          <div class="dual-text">
+            <h4>Work Summary</h4>
+            <p>Highlights achievements; no fixed template; linked to performance reviews; usually individual perspective; deep reflection not required</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">🔄</div>
+          <div class="dual-text">
+            <h4>Fupan</h4>
+            <p>Learning-oriented; structured flow (Goal → Gap → Cause → Lesson → Action); collective team reflection; no blame assigned</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section section-03">
+    <div class="section-num num-03">03</div>
+    <div class="section-body">
+      <span class="tag tag-03">CLARIFICATION</span>
+      <div class="section-title t-03">Five Common Misconceptions</div>
+      <div class="section-desc">
+        <strong>Fupan is not case study, not simple recall, not a problem-solving tool, not outdated, and does not stifle innovation.</strong> Many misunderstand Fupan, preventing them from using this powerful method correctly.
+      </div>
+      <!-- Alert + icon grid -->
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="ic">❌</div>
+          <strong>Myth 1</strong>Review others' work<br>→ That's case study, not Fupan
+        </div>
+        <div class="icon-card">
+          <div class="ic">❌</div>
+          <strong>Myth 2</strong>Post-project review<br>→ Simple recall ≠ systematic Fupan
+        </div>
+        <div class="icon-card">
+          <div class="ic">❌</div>
+          <strong>Myth 3</strong>Problem-solving method<br>→ Fupan transcends problem-fixing
+        </div>
+        <div class="icon-card">
+          <div class="ic">❌</div>
+          <strong>Myth 4</strong>Too fast for Fupan<br>→ Fast iteration needs Fupan even more
+        </div>
+      </div>
+      <div class="alert-box" style="margin-top:12px">
+        <div class="alert-title">⚠️ Myth 5: Fupan kills innovation?</div>
+        Proper Fupan digs into success factors and root causes with an open mind — it actually sparks innovation. Google, Tencent, Alibaba, and others actively use Fupan to drive rapid iteration.
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section section-04">
+    <div class="section-num num-04">04</div>
+    <div class="section-body">
+      <span class="tag tag-04">ORIGINS</span>
+      <div class="section-title t-04">Origins: From Go to the Enterprise</div>
+      <div class="section-desc">
+        <strong>Fupan has deep roots — ancient Chinese wisdom, Lenovo's corporate adoption, and the U.S. Army's AAR system.</strong> Three threads converge to shape modern Fupan methodology.
+      </div>
+      <!-- Data cards -->
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">🇨🇳</div>
+          <div class="data-sm"><strong>Lenovo Group</strong><br>Coined "Fupan" in 2001<br>Structured & globalized by 2011</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">🇺🇸</div>
+          <div class="data-sm"><strong>U.S. Army AAR</strong><br>Introduced in the 1970s<br>Widely adopted after Gulf War</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">🌍</div>
+          <div class="data-sm"><strong>Global Spread</strong><br>BP / FedEx / Wanda / Alibaba<br>and many more enterprises</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section section-05">
+    <div class="section-num num-05">05</div>
+    <div class="section-body">
+      <span class="tag tag-05">VALUE</span>
+      <div class="section-title t-05">Value: AAR's Four Effects + Lenovo's Four Reasons</div>
+      <div class="section-desc">
+        <strong>Fupan is the core discipline for building organizational capability — enhancing training, execution, leadership, and organizational intelligence.</strong> Lenovo frames its value through four dimensions: knowing why, transferring lessons, avoiding repeats, and codifying processes.
+      </div>
+      <!-- Icon grid: AAR four effects -->
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="ic">🎯</div>
+          <strong>Training</strong>AAR is the "keystone" of evaluation
+        </div>
+        <div class="icon-card">
+          <div class="ic">⚡</div>
+          <strong>Execution</strong>Boosts standards compliance & team performance
+        </div>
+        <div class="icon-card">
+          <div class="ic">👑</div>
+          <strong>Leadership</strong>Officers at all levels must master AAR facilitation
+        </div>
+        <div class="icon-card">
+          <div class="ic">🧠</div>
+          <strong>Org Intelligence</strong>Rapidly capture, share & transfer lessons learned
+        </div>
+      </div>
+      <div class="case-quote" style="margin-top:12px">
+        "Fupan is the most important thing at Lenovo. Learning from yourself — that's Fupan." — Liu Chuanzhi, Lenovo Founder<br><br>
+        "Evidence suggests the U.S. Army's AAR is one of the most successful organizational learning methods ever invented." — Peter Senge
+      </div>
+    </div>
+  </div>
+
+  <!-- takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">💡 KEY TAKEAWAY</div>
+    <div class="takeaway-text">
+      Fupan is not simple review — it is a <strong>structured learning method</strong> built on <strong>personal experience</strong>. It differs fundamentally from work summaries and requires clearing up common misconceptions to be used correctly. Whether through Lenovo's "four reasons" or the U.S. Army's "four effects," evidence confirms that <strong>Fupan is the core discipline for building individual capability and organizational wisdom</strong> — true learning unites knowledge with action.
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    "Fupan+: Turning Experience into Capability" Chapter 1 Infographic · by Qiu Zhaoliang · China Machine Press · For learning reference only
+  </div>
+
+</div>
+</body>
+</html>

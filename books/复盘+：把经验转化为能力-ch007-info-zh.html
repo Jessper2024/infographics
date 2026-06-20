@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 第7章「做好复盘」信息图</title>
+<style>
+@font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+}
+.container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+}
+.subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+}
+.divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+}
+
+.section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+}
+.section-01 { border-left-color: #dc2626; }
+.section-02 { border-left-color: #ea580c; }
+.section-03 { border-left-color: #ca8a04; }
+.section-04 { border-left-color: #4f46e5; }
+.section-05 { border-left-color: #db2777; }
+
+.section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.num-01 { background: #fef2f2; color: #dc2626; }
+.num-02 { background: #fff7ed; color: #ea580c; }
+.num-03 { background: #fefce8; color: #ca8a04; }
+.num-04 { background: #eef2ff; color: #4f46e5; }
+.num-05 { background: #fdf2f8; color: #db2777; }
+
+.section-body { flex: 1; }
+.tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.tag-01 { background: #fef2f2; color: #dc2626; }
+.tag-02 { background: #fff7ed; color: #ea580c; }
+.tag-03 { background: #fefce8; color: #ca8a04; }
+.tag-04 { background: #eef2ff; color: #4f46e5; }
+.tag-05 { background: #fdf2f8; color: #db2777; }
+
+.section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+.t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+.t-05 { color: #db2777; }
+
+.section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+}
+
+.flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+}
+.flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+}
+.flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+.flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+.dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+}
+.dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+.dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+.dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+.data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+.data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+}
+.data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+.data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+.data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+.data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+}
+.data-big.r { color: #dc2626; }
+.data-big.o { color: #ea580c; }
+.data-big.g { color: #ca8a04; }
+.data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+.case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+}
+
+.icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+.icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+}
+.icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+.icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+.takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+}
+.takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+}
+.takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+
+.footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+}
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+
+@media(max-width:768px){
+    .section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}
+    .section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}
+    .section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}
+    .section-05{border-top-color:#db2777}
+    .dual-grid,.data-row,.icon-grid{grid-template-columns:1fr}
+    .flow-row{flex-direction:column}
+    .flow-arrow{transform:rotate(90deg)}
+    .container{padding:0 8px}
+    h1{font-size:26px}
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}
+    .kpi-value{font-size:34px}
+}
+@media(max-width:400px){
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Top Navigation -->
+    <div class="back-catalog">
+        <a href="复盘+：把经验转化为能力-catalog.html" class="back-catalog-btn">← 返回目录</a>
+    </div>
+    <div class="lang-switch">
+        <a href="复盘+：把经验转化为能力-ch007-info-en.html" class="lang-btn" target="_blank">🌐 English</a>
+    </div>
+
+    <!-- Title -->
+    <h1>复盘+：把经验转化为能力 · 第7章「做好复盘」</h1>
+    <p class="subtitle">复盘要做到位并不容易——需要克服25个"坑"、掌握3项核心技能、调配12项"配方"要素</p>
+    <div class="divider"></div>
+
+    <!-- Chapter Overview -->
+    <div class="chapter-overview">
+        <p>美军《AAR领导者指南》指出：AAR实施最关键的是精神——开放、诚实地讨论每一个细节，并有强烈的渴望去寻找改进机会。本章从联想实践出发，系统阐述复盘的25个"坑"及对策，总结出有效复盘的3项核心技能（复盘引导、系统思考、知识萃取），以及参与者、引导师、组织环境3个方面共12项关键成功要素——帮助你找到适合自己企业的复盘"配方"。</p>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="kpi-row cols-4">
+        <div class="kpi-card c01">
+            <div class="kpi-value">25<span class="kpi-unit">个</span></div>
+            <div class="kpi-label">复盘之"坑"</div>
+            <div class="kpi-note">5大阶段全覆盖<br>常见误区与对策</div>
+        </div>
+        <div class="kpi-card c02">
+            <div class="kpi-value">3<span class="kpi-unit">项</span></div>
+            <div class="kpi-label">核心技能</div>
+            <div class="kpi-note">复盘引导 · 系统思考<br>知识萃取</div>
+        </div>
+        <div class="kpi-card c03">
+            <div class="kpi-value">3×4</div>
+            <div class="kpi-label">配方维度×要素</div>
+            <div class="kpi-note">参与者 · 引导师 · 组织<br>共12项影响因素</div>
+        </div>
+        <div class="kpi-card c04">
+            <div class="kpi-value">7<span class="kpi-unit">项</span></div>
+            <div class="kpi-label">联想关键成功要素</div>
+            <div class="kpi-note">五求 + 两项补充<br>开放 · 坦诚 · 实事求是</div>
+        </div>
+    </div>
+
+    <!-- Section 1: 联想五大误区与七大成功要素 -->
+    <div class="section section-01">
+        <div class="section-num num-01">01</div>
+        <div class="section-body">
+            <span class="tag tag-01">LENOVO PRACTICE</span>
+            <div class="section-title t-01">联想：五大误区与七大关键成功要素</div>
+            <div class="section-desc">
+                <strong>做好复盘首先要克服五大心态误区，并培养七大关键要素——这是联想多年实践的核心发现。</strong>
+                复盘的常见误区包括：为了证明自己对、流于形式走过场、追究责任开批斗会、推卸责任归罪于外、快速下结论。相应地，需要具备七个关键要素来防范。
+            </div>
+            <div class="dual-grid">
+                <div class="dual-card a">
+                    <div class="dual-icon">⚠️</div>
+                    <div class="dual-text">
+                        <h4>五大误区</h4>
+                        <p>① 证明自己对<br>② 流于形式走过场<br>③ 追究责任批斗会<br>④ 推卸责任归罪于外<br>⑤ 快速下结论</p>
+                    </div>
+                </div>
+                <div class="dual-card b">
+                    <div class="dual-icon">✅</div>
+                    <div class="dual-text">
+                        <h4>七大成功要素（五求+2）</h4>
+                        <p>① 开放心态 ② 坦诚表达<br>③ 实事求是 ④ 集思广益<br>⑤ 反思自我 ⑥ 刨根问底<br>⑦ 重在改进</p>
+                    </div>
+                </div>
+            </div>
+            <div class="case-quote">
+                柳传志：复盘的关键是一把手敢于否定自己，要实事求是，把事实客观地摆出来，不要怕担责，要敢于"脱了裤子割尾巴"，否则容易回避真正的问题，复盘就没有意义。
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: 25个坑 - 5大阶段 -->
+    <div class="section section-02">
+        <div class="section-num num-02">02</div>
+        <div class="section-body">
+            <span class="tag tag-02">25 PITFALLS</span>
+            <div class="section-title t-02">复盘的25个"坑"：五大阶段逐个击破</div>
+            <div class="section-desc">
+                <strong>复盘全过程共有25个常见陷阱，分布在回顾评估、分析反思、萃取提炼、转化应用和复盘引导五大阶段。</strong>
+                只有识别并克服这些误区，才能真正把复盘做到位。每个阶段都有特定的挑战，需要有针对性的对策。
+            </div>
+            <div class="flow-row">
+                <div class="flow-step">📋 回顾评估<br><span style="font-size:11px;font-weight:normal">7个坑</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">🔍 分析反思<br><span style="font-size:11px;font-weight:normal">6个坑</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">💡 萃取提炼<br><span style="font-size:11px;font-weight:normal">4个坑</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">🚀 转化应用<br><span style="font-size:11px;font-weight:normal">3个坑</span></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step end">🎯 复盘引导<br><span style="font-size:11px;font-weight:normal">5个坑</span></div>
+            </div>
+            <div class="case-quote">
+                柳传志中学打乒乓球的例子：他以为赢球是新战术奏效，后来才知道对手那天忘带球拍，用了不顺手的拍子。慎提"规律"，不要轻易得出结论——这正是"快速下结论"之坑的生动写照。
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: 三项核心技能 -->
+    <div class="section section-03">
+        <div class="section-num num-03">03</div>
+        <div class="section-body">
+            <span class="tag tag-03">3 CORE SKILLS</span>
+            <div class="section-title t-03">有效复盘的三项核心技能</div>
+            <div class="section-desc">
+                <strong>要防范复盘过程中的诸多挑战，必须掌握复盘引导、系统思考和知识萃取三项核心能力。</strong>
+                复盘引导确保流程到位、氛围恰当；系统思考应对复杂性、打破"盲人摸象"；知识萃取将经验转化为可复用的知识资产。
+            </div>
+            <div class="data-row">
+                <div class="data-card dc1">
+                    <div class="data-big r">🎯</div>
+                    <div style="font-size:14px;font-weight:bold;color:#dc2626;margin-bottom:6px;">复盘引导</div>
+                    <div class="data-sm">三阶九步法™ 全程引导<br>营造场域 · 关注过程<br>保持中立 · 促进参与</div>
+                </div>
+                <div class="data-card dc2">
+                    <div class="data-big o">🧠</div>
+                    <div style="font-size:14px;font-weight:bold;color:#ea580c;margin-bottom:6px;">系统思考</div>
+                    <div class="data-sm">打破"罗生门"<br>不做"盲人摸象"<br>思考罗盘™ · 因果回路图</div>
+                </div>
+                <div class="data-card dc3">
+                    <div class="data-big g">📚</div>
+                    <div style="font-size:14px;font-weight:bold;color:#ca8a04;margin-bottom:6px;">知识萃取</div>
+                    <div class="data-sm">亲历者主导 · 结构化研讨<br>经验萃取单 · 教训记录单<br>具象化 · 可操作</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: 12项配方 -->
+    <div class="section section-04">
+        <div class="section-num num-04">04</div>
+        <div class="section-body">
+            <span class="tag tag-04">THE FORMULA</span>
+            <div class="section-title t-04">解密复盘的"配方"：3维度×12要素</div>
+            <div class="section-desc">
+                <strong>复盘质量取决于参与者、引导师和组织环境三方面共12项影响因素，需要根据企业实际调配适合自己的"配方"。</strong>
+                这些要素之间会动态地相互影响，只要其中一些甚至某一个因素非常强烈，都可能让复盘"化腐朽为神奇"。
+            </div>
+            <div class="icon-grid">
+                <div class="icon-card"><div class="ic">🧘</div><strong>开放心态</strong>虚壹而静，全心投入</div>
+                <div class="icon-card"><div class="ic">🤝</div><strong>相互信任</strong>视彼此为伙伴</div>
+                <div class="icon-card"><div class="ic">👂</div><strong>深度聆听</strong>主张与探询并重</div>
+                <div class="icon-card"><div class="ic">⚖️</div><strong>实事求是</strong>坦诚表达，真实是根基</div>
+                <div class="icon-card"><div class="ic">🌈</div><strong>尊重差异</strong>拥抱不同观点</div>
+                <div class="icon-card"><div class="ic">🎭</div><strong>营造场域</strong>安全、安心、舒适</div>
+                <div class="icon-card"><div class="ic">🔄</div><strong>关注过程</strong>引导师核心职责</div>
+                <div class="icon-card"><div class="ic">⚖️</div><strong>保持中立</strong>不预设、不站队</div>
+                <div class="icon-card"><div class="ic">🙋</div><strong>促进参与</strong>激发团队智慧</div>
+                <div class="icon-card"><div class="ic">🌐</div><strong>人际规范</strong>了解文化差异</div>
+                <div class="icon-card"><div class="ic">🏛️</div><strong>组织文化</strong>开放坦诚的土壤</div>
+                <div class="icon-card"><div class="ic">👑</div><strong>领导行为</strong>上行下效，以身作则</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 5: 方法与工具 -->
+    <div class="section section-05">
+        <div class="section-num num-05">05</div>
+        <div class="section-body">
+            <span class="tag tag-05">METHODS &amp; TOOLS</span>
+            <div class="section-title t-05">善用方法与工具：三阶九步法™</div>
+            <div class="section-desc">
+                <strong>工欲善其事，必先利其器——有效引导复盘需要掌握必备的方法与工具，贯穿"三阶九步法"全程。</strong>
+                复盘引导过程分为策划准备、实施引导、推进落地三大阶段，每阶段三个步骤，配以头脑风暴、世界咖啡、鱼骨图、五个为什么等工具，方能事半功倍。
+            </div>
+            <div class="dual-grid">
+                <div class="dual-card a">
+                    <div class="dual-icon">📐</div>
+                    <div class="dual-text">
+                        <h4>策划准备阶段</h4>
+                        <p>明确主题与目标<br>确定范围与参与者<br>设计议程与准备资料</p>
+                    </div>
+                </div>
+                <div class="dual-card b">
+                    <div class="dual-icon">🎤</div>
+                    <div class="dual-text">
+                        <h4>实施引导阶段</h4>
+                        <p>回顾评估 · 分析反思<br>萃取提炼 · 转化应用<br>全程引导、催化、干预</p>
+                    </div>
+                </div>
+            </div>
+            <div class="case-quote">
+                美军在国家培训中心采用三种方法还原事实：指派观察者/控制人、使用测量仪器和录音录像、集体研讨。企业虽难配备大量设备，但可通过培养系统思考能力来弥补，让团队"看见整体"而非陷入细节。
+            </div>
+        </div>
+    </div>
+
+    <!-- Takeaway -->
+    <div class="takeaway">
+        <div class="takeaway-label">💡 核心启示</div>
+        <div class="takeaway-text">
+            做好复盘不是一次会议的事，而是一项<strong>系统工程</strong>：需要识别并防范25个"坑"、培养复盘引导/系统思考/知识萃取3项核心技能、从参与者/引导师/组织3个维度调配12项"配方"要素。正如美军所言，复盘最关键的是精神——开放、坦诚、渴望改进。一把手以身作则，把复盘变成组织的工作习惯和文化，才能真正把经验转化为能力。
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        《复盘+：把经验转化为能力》第7章 信息图 · 邱昭良 著 · 机械工业出版社 · 仅供学习参考
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘+：把经验转化为能力 · 第3章「个人复盘」</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: normal; font-style: normal;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  display: flex; justify-content: center; align-items: flex-start;
+  min-height: 100vh; padding: 40px 20px 60px;
+}
+.container { max-width: 880px; width: 100%; }
+
+h1 {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 36px; color: #1a1a1a; text-align: center;
+  line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+  letter-spacing: 1.5px;
+}
+.subtitle {
+  text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+  max-width: 640px; margin-left: auto; margin-right: auto;
+}
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #dc2626, #ea580c);
+  margin: 0 auto 28px; border-radius: 2px;
+}
+
+.chapter-overview {
+  background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+  padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555; line-height: 1.8;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+}
+.chapter-overview p { margin: 0; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+.kpi-card {
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 24px 20px 18px; text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex; flex-direction: column; align-items: center;
+}
+.kpi-value {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 42px; font-weight: bold; line-height: 1.1;
+  margin-bottom: 6px; letter-spacing: -0.5px;
+}
+.kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+.kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+.kpi-note {
+  font-size: 11px; color: #bbb; line-height: 1.6;
+  border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center;
+}
+.kpi-card.c-red { border-left: 3px solid #dc2626; }
+.kpi-card.c-red .kpi-value { color: #dc2626; }
+.kpi-card.c-orange { border-left: 3px solid #ea580c; }
+.kpi-card.c-orange .kpi-value { color: #ea580c; }
+.kpi-card.c-gold { border-left: 3px solid #ca8a04; }
+.kpi-card.c-gold .kpi-value { color: #ca8a04; }
+.kpi-card.c-indigo { border-left: 3px solid #4f46e5; }
+.kpi-card.c-indigo .kpi-value { color: #4f46e5; }
+
+.section {
+  background: #ffffff; border-radius: 14px;
+  margin-bottom: 18px; padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex; gap: 20px; align-items: flex-start;
+  border-left: 4px solid transparent;
+}
+.section-01 { border-left-color: #dc2626; }
+.section-02 { border-left-color: #ea580c; }
+.section-03 { border-left-color: #ca8a04; }
+.section-04 { border-left-color: #4f46e5; }
+.section-05 { border-left-color: #db2777; }
+
+.section-num {
+  flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: bold; margin-top: 2px;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.num-01 { background: #fef2f2; color: #dc2626; }
+.num-02 { background: #fff7ed; color: #ea580c; }
+.num-03 { background: #fefce8; color: #ca8a04; }
+.num-04 { background: #eef2ff; color: #4f46e5; }
+.num-05 { background: #fdf2f8; color: #db2777; }
+
+.section-body { flex: 1; }
+.tag {
+  display: inline-block; font-size: 11px; font-weight: bold;
+  padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+  letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.tag-01 { background: #fef2f2; color: #dc2626; }
+.tag-02 { background: #fff7ed; color: #ea580c; }
+.tag-03 { background: #fefce8; color: #ca8a04; }
+.tag-04 { background: #eef2ff; color: #4f46e5; }
+.tag-05 { background: #fdf2f8; color: #db2777; }
+
+.section-title {
+  font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+.t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+.t-05 { color: #db2777; }
+
+.section-desc {
+  font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+}
+
+.data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+.data-card {
+  border-radius: 12px; padding: 18px 14px; text-align: center; border: 1px solid;
+}
+.data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+.data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+.data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+.data-big {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 28px; font-weight: 700; margin-bottom: 6px;
+}
+.data-big.r { color: #dc2626; }
+.data-big.o { color: #ea580c; }
+.data-big.g { color: #ca8a04; }
+.data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+.icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+.icon-card {
+  background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+  font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+}
+.icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+.icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+.flow-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;
+}
+.flow-step {
+  background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+  padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+  font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+}
+.flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+.flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+.dual-card {
+  border-radius: 12px; padding: 18px 20px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+.dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+.dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+.tip-list { margin-top: 8px; }
+.tip-item {
+  display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px;
+  padding: 12px 14px; background: #f8f6f3; border-radius: 10px; border: 1px solid #e8e0d5;
+}
+.tip-num {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: bold; background: #4f46e5; color: #fff;
+  margin-top: 1px;
+}
+.tip-text { font-size: 13px; color: #555; line-height: 1.7; }
+.tip-text strong { color: #1a1a1a; }
+
+.case-quote {
+  background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+  padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+  font-style: italic;
+}
+
+.takeaway {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 24px 32px; margin-bottom: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-left: 4px solid #dc2626;
+}
+.takeaway-label {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold;
+}
+.takeaway-text {
+  font-size: 16px; color: #1a1a1a; line-height: 1.9;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+
+.footer {
+  text-align: center; margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+}
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+.back-catalog { text-align: right; margin-bottom: 4px; }
+.back-catalog-btn {
+  display: inline-block; padding: 5px 14px; border-radius: 8px;
+  font-size: 12px; text-decoration: none; letter-spacing: 0.02em;
+  background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+  transition: opacity 0.15s;
+}
+.back-catalog-btn:hover { opacity: 0.75; }
+
+@media (max-width: 768px) {
+  .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+  .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+  .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+  .section-05 { border-top-color: #db2777; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+  .container { padding: 0 8px; }
+  h1 { font-size: 26px; }
+  .kpi-value { font-size: 34px; }
+}
+@media (max-width: 400px) {
+  .kpi-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 1. back-catalog -->
+  <div class="back-catalog">
+    <a href="复盘+：把经验转化为能力-catalog.html" class="back-catalog-btn">📚 返回目录</a>
+  </div>
+
+  <!-- 2. lang-switch -->
+  <div class="lang-switch">
+    <a href="复盘+：把经验转化为能力-ch003-info-en.html" target="_blank" class="lang-btn">🌐 English</a>
+  </div>
+
+  <!-- 3. h1 -->
+  <h1>复盘+：把经验转化为能力 · 第3章「个人复盘」</h1>
+
+  <!-- 4. subtitle -->
+  <p class="subtitle">将军不是教出来的，而是打出来的——但没有复盘，打再多仗也成不了将军</p>
+
+  <!-- 5. divider -->
+  <div class="divider"></div>
+
+  <!-- 6. chapter-overview -->
+  <div class="chapter-overview">
+    <p>本章聚焦<strong>个人复盘</strong>的方法与实践。个人复盘是个人学习与能力提升的基本方式，也是团队复盘的前提。本章从个人复盘的价值、适用场景、操作手法到注意事项，提供了一套完整的方法论，帮助读者将每一段经历转化为成长的阶梯。</p>
+  </div>
+
+  <!-- 7. KPI -->
+  <div class="kpi-row">
+    <div class="kpi-card c-red">
+      <div class="kpi-value">70<span class="kpi-unit">%</span></div>
+      <div class="kpi-label">在岗工作实践</div>
+      <div class="kpi-note">成人学习最主要来源<br>70:20:10 法则</div>
+    </div>
+    <div class="kpi-card c-orange">
+      <div class="kpi-value">20<span class="kpi-unit">%</span></div>
+      <div class="kpi-label">与他人交流</div>
+      <div class="kpi-note">发展性关系<br>学习的第二来源</div>
+    </div>
+    <div class="kpi-card c-gold">
+      <div class="kpi-value">10<span class="kpi-unit">%</span></div>
+      <div class="kpi-label">正式培训教育</div>
+      <div class="kpi-note">培训课程与项目<br>占比最小</div>
+    </div>
+    <div class="kpi-card c-indigo">
+      <div class="kpi-value">5<span class="kpi-unit">天/月</span></div>
+      <div class="kpi-label">柳传志复盘节奏</div>
+      <div class="kpi-note">每月静心复盘<br>"勤于复盘"</div>
+    </div>
+  </div>
+
+  <!-- 8. 五区块 -->
+
+  <!-- 区块1：价值 -->
+  <div class="section section-01">
+    <div class="section-num num-01">01</div>
+    <div class="section-body">
+      <span class="tag tag-01">SCQ → A</span>
+      <div class="section-title t-01">个人复盘：能力提升的必经之路</div>
+      <p class="section-desc">
+        <strong>复盘是个人从经验中学习的最有效方式，是把信息转化为能力的核心方法。</strong>
+        无论天赋多高，没有复盘习惯和能力，再多经历也无法转化为真正的成长。孔子"学而知之"、曾子"吾日三省吾身"，皆是此理。
+      </p>
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">70%</div>
+          <div class="data-sm">工作实践<br>学习来源</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">20%</div>
+          <div class="data-sm">他人交流<br>学习来源</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">10%</div>
+          <div class="data-sm">正式培训<br>学习来源</div>
+        </div>
+      </div>
+      <div class="case-quote">
+        "我对自己的评价是智商中等偏上，情商较高……那我的优势是什么呢？<strong>是勤于复盘。</strong>" ——柳传志
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块2：对什么复盘 -->
+  <div class="section section-02">
+    <div class="section-num num-02">02</div>
+    <div class="section-body">
+      <span class="tag tag-02">S → CQA</span>
+      <div class="section-title t-02">对什么进行个人复盘</div>
+      <p class="section-desc">
+        <strong>不是所有事都要复盘，但四类事件必须复盘：新的事、重要的事、有价值的事、未达预期的事。</strong>
+        这四类事件涵盖了最值得投入时间进行深度学习的关键场景，帮助你把有限精力用在刀刃上。
+      </p>
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="ic">🆕</div>
+          <strong>新的事</strong>
+          第一次做的事<br>摸索经验教训
+        </div>
+        <div class="icon-card">
+          <div class="ic">⭐</div>
+          <strong>重要的事</strong>
+          资源多、影响大<br>需格外慎重
+        </div>
+        <div class="icon-card">
+          <div class="ic">💎</div>
+          <strong>有价值的事</strong>
+          需要提升的能力<br>促进个人成长
+        </div>
+        <div class="icon-card">
+          <div class="ic">⚠️</div>
+          <strong>未达预期</strong>
+          出现偏差或缺陷<br>正是学习机会
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块3：操作手法 -->
+  <div class="section section-03">
+    <div class="section-num num-03">03</div>
+    <div class="section-body">
+      <span class="tag tag-03">SA → Q</span>
+      <div class="section-title t-03">个人复盘的两种操作手法</div>
+      <p class="section-desc">
+        <strong>个人复盘有两种路径：独立简易复盘和找教练协助，可根据事件复杂度灵活选择。</strong>
+        简易复盘适合日常事件，10-15分钟即可完成；复杂事项需留出半天甚至一天系统梳理。找教练则能突破思维盲区，提高复盘质量。
+      </p>
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">📝</div>
+          <div class="dual-text">
+            <h4>简易复盘</h4>
+            <p>找不受打扰的时间空间，按复盘逻辑逐步回想分析。可用模板引导，或用笔写下思考。每月1小时，每年半天。</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">🤝</div>
+          <div class="dual-text">
+            <h4>找一个教练</h4>
+            <p>通过结构化提问突破思维盲区。合格教练保持中立、聚焦过程、激发思考，提高复盘效率与效果。</p>
+          </div>
+        </div>
+      </div>
+      <div class="flow-row" style="margin-top: 14px;">
+        <div class="flow-step">预估时间</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">选定空间</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">按逻辑回想</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">记录要点</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">总结改进</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块4：注意事项 -->
+  <div class="section section-04">
+    <div class="section-num num-04">04</div>
+    <div class="section-body">
+      <span class="tag tag-04">SC → QA</span>
+      <div class="section-title t-04">个人复盘的五个注意事项</div>
+      <p class="section-desc">
+        <strong>做到位需要五项关键原则：坦诚面对自己、先僵化后优化、记录并定期回顾、保持开放心态、习惯成自然。</strong>
+        这五项原则环环相扣，从态度到方法到习惯，构成个人复盘的完整保障体系。
+      </p>
+      <div class="tip-list">
+        <div class="tip-item">
+          <div class="tip-num">1</div>
+          <div class="tip-text"><strong>坦诚面对自己</strong> — 冷静客观、实事求是，多问几个为什么，学会换位思考，不"文过饰非"</div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-num">2</div>
+          <div class="tip-text"><strong>先僵化，后优化</strong> — 初期按步骤严格执行，熟悉后根据实际灵活取舍</div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-num">3</div>
+          <div class="tip-text"><strong>记录要点并定期回顾</strong> — 好脑筋不如烂笔头，关联事件发现共性与深层问题</div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-num">4</div>
+          <div class="tip-text"><strong>保持开放心态</strong> — 避开"经验陷阱"，Stay Hungry, Stay Foolish，警惕既有假设</div>
+        </div>
+        <div class="tip-item">
+          <div class="tip-num">5</div>
+          <div class="tip-text"><strong>习惯成自然</strong> — 吾日三省吾身，持续反思形成下意识的自然动作</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 区块5：案例 -->
+  <div class="section section-05">
+    <div class="section-num num-05">05</div>
+    <div class="section-body">
+      <span class="tag tag-05">S → CQA</span>
+      <div class="section-title t-05">总裁是怎样炼成的</div>
+      <p class="section-desc">
+        <strong>柳传志用复盘将每一次管理混乱转化为领导力提升，证明了"勤于复盘"是卓越领导者的核心习惯。</strong>
+        早期创业时，他在办公室被同事频繁打断，晚上回去复盘发现工作事倍功半，由此得出"自己先想明白要干什么，分出轻重缓急"的管理原则。
+      </p>
+      <div class="case-quote">
+        柳传志在接受采访时表示："我平常习惯每隔一个月左右，静下心来花5天左右的时间，把近来做的事情捋一遍，写写东西。"
+      </div>
+      <div class="case-quote" style="margin-top: 8px; border-left-color: #dc2626;">
+        柳传志在联想内部大力倡导复盘，并使其成为企业的习惯。这也是联想有很强的组织学习力，可以应对一个又一个挑战的重要原因。
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">▎ 本章核心启示</div>
+    <div class="takeaway-text">
+      个人复盘是能力提升的必经之路。抓住四类关键事件（新的、重要的、有价值的、未达预期的），选择合适的操作手法，以坦诚、开放、持续的态度面对自己，让复盘成为下意识的自然习惯——这就是从"打过仗"到"成为将军"的分水岭。
+    </div>
+  </div>
+
+  <!-- 10. footer -->
+  <div class="footer">
+    《复盘+：把经验转化为能力》第3章 信息图 · 邱昭良 著 · 机械工业出版社 · 仅供学习参考
+  </div>
+
+</div>
+</body>
+</html>

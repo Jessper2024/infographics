@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>After-Action Review+ · Chapter 2 "The Way of Review"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-card.dc4 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-big.i { color: #4f46e5; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+  }
+  .icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+  .icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: 0.02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity 0.15s;
+  }
+  .back-catalog-btn:hover { opacity: 0.75; }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 28px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+    .data-row { grid-template-columns: repeat(2, 1fr); }
+    .icon-grid { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 0 12px; }
+  }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- back-catalog -->
+  <div class="back-catalog">
+    <a href="复盘+：把经验转化为能力-catalog.html" class="back-catalog-btn">← Back to Catalog</a>
+  </div>
+
+  <!-- lang-switch -->
+  <div class="lang-switch">
+    <a href="复盘+：把经验转化为能力-ch002-info-zh.html" target="_blank" class="lang-btn">中文</a>
+  </div>
+
+  <!-- h1 -->
+  <h1>After-Action Review+ · Chapter 2 "The Way of Review"</h1>
+
+  <!-- subtitle -->
+  <div class="subtitle">Guiding technique with principle — understanding the learning mechanism and operational logic behind AAR</div>
+
+  <!-- divider -->
+  <div class="divider"></div>
+
+  <!-- chapter-overview -->
+  <div class="chapter-overview">
+    <p>This chapter draws on the ancient Chinese wisdom of "Principle–Method–Technique" to explain the learning mechanism behind AAR — the U-shaped learning method (Hear → See → Know → Act). It analyzes the distinction and connection between AAR and the PDCA cycle, reveals how AAR supports both single-loop and double-loop learning, and summarizes four common types of AAR in enterprises and their operational differences.</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-row cols-4">
+    <div class="kpi-card c01">
+      <div class="kpi-value">4<span class="kpi-unit">Steps</span></div>
+      <div class="kpi-label">U-Shaped Learning Core</div>
+      <div class="kpi-note">Hear → See → Know → Act</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">4<span class="kpi-unit">Types</span></div>
+      <div class="kpi-label">Enterprise AAR Types</div>
+      <div class="kpi-note">Personal · Team · Project · Strategy</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">2<span class="kpi-unit">Loops</span></div>
+      <div class="kpi-label">Learning Levels</div>
+      <div class="kpi-note">Single-loop adapt + Double-loop innovate</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">P·M·T</div>
+      <div class="kpi-label">All Three Aligned</div>
+      <div class="kpi-note">Principle · Method · Technique</div>
+    </div>
+  </div>
+
+  <!-- Section 1: U-Shaped Learning -->
+  <div class="section section-01">
+    <div class="section-num num-01">01</div>
+    <div class="section-body">
+      <span class="tag tag-01">LEARNING MECHANISM</span>
+      <div class="section-title t-01">U-Shaped Learning: The Underlying Logic of AAR</div>
+      <div class="section-desc">
+        <strong>AAR is effective because it embodies a complete learning mechanism — the U-shaped learning method — that moves from concrete experience to general principles and back to practice.</strong>
+        Originating from Xunzi: "Not hearing is not as good as hearing; hearing is not as good as seeing; seeing is not as good as understanding; understanding is not as good as practicing. Learning reaches its fulfillment in practice." These four steps move from surface to essence, from specific to general, forming the fundamental "principle" of AAR.
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">Hear<br><span style="font-size:11px;font-weight:normal">Review experiences</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">See<br><span style="font-size:11px;font-weight:normal">Analyze & reflect</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Know<br><span style="font-size:11px;font-weight:normal">Extract principles</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Act<br><span style="font-size:11px;font-weight:normal">Apply in practice</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Four-Step Process -->
+  <div class="section section-02">
+    <div class="section-num num-02">02</div>
+    <div class="section-body">
+      <span class="tag tag-02">OPERATIONAL FLOW</span>
+      <div class="section-title t-02">The Four-Step AAR Process</div>
+      <div class="section-desc">
+        <strong>AAR follows a four-step process: Review & Evaluate → Analyze & Reflect → Extract & Distill → Transform & Apply — each step is indispensable.</strong>
+        Step 1 reviews goals and outcomes to identify gaps; Step 2 conducts deep root-cause analysis; Step 3 generalizes patterns and principles; Step 4 converts lessons into actionable improvements. This process closely aligns with David Kolb's "Experiential Learning Cycle."
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">Review & Evaluate<br><span style="font-size:11px;font-weight:normal">Compare goals vs results</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Analyze & Reflect<br><span style="font-size:11px;font-weight:normal">Find root causes</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Extract & Distill<br><span style="font-size:11px;font-weight:normal">Generalize patterns</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">Transform & Apply<br><span style="font-size:11px;font-weight:normal">Improve future actions</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: AAR vs PDCA -->
+  <div class="section section-03">
+    <div class="section-num num-03">03</div>
+    <div class="section-body">
+      <span class="tag tag-03">MECHANISM COMPARISON</span>
+      <div class="section-title t-03">AAR and PDCA: Differences and Connections</div>
+      <div class="section-desc">
+        <strong>AAR is not PDCA — they differ in focus. PDCA drives work forward; AAR prioritizes learning. Yet the two are deeply intertwined.</strong>
+        AAR requires clarifying expected goals (Plan), reviewing execution and evaluating actual results (Do + Check), analyzing deviations and formulating corrective actions (Act). It also demands extracting lessons and applying them — something PDCA does not explicitly address.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">🔄</div>
+          <div class="dual-text">
+            <h4>PDCA Cycle</h4>
+            <p>Aimed at driving work and solving problems — a management loop focused on execution correction and continuous improvement.</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">🧠</div>
+          <div class="dual-text">
+            <h4>AAR Mechanism</h4>
+            <p>Aimed at learning — emphasizes experience extraction and knowledge transformation, an organizational learning mechanism layered on top of PDCA.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Single & Double Loop -->
+  <div class="section section-04">
+    <div class="section-num num-04">04</div>
+    <div class="section-body">
+      <span class="tag tag-04">LEARNING DEPTH</span>
+      <div class="section-title t-04">Single-Loop and Double-Loop Learning</div>
+      <div class="section-desc">
+        <strong>AAR supports both single-loop learning (correcting deviations) and double-loop learning (challenging assumptions) — the depth depends on the quality of reflection.</strong>
+        Single-loop learning detects deviations and improves execution within given goals — an "adaptive" approach. Double-loop learning reflects on the assumptions and rules behind goals, enabling fundamental innovation — a "generative" approach. Deep reflection is difficult, which is why AAR is "easy to start but hard to master," and why skilled facilitation is critical.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">🔁</div>
+          <div class="dual-text">
+            <h4>Single-Loop Learning</h4>
+            <p>Tactical reflection on strategies and methods — improving execution efficiency and refining the status quo.</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">💡</div>
+          <div class="dual-text">
+            <h4>Double-Loop Learning</h4>
+            <p>Deep reflection on assumptions and rules — uncovering mental models, revising goals and policies for fundamental innovation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Four Types of AAR -->
+  <div class="section section-05">
+    <div class="section-num num-05">05</div>
+    <div class="section-body">
+      <span class="tag tag-05">APPLICATION SCENARIOS</span>
+      <div class="section-title t-05">Four Common Types of Enterprise AAR</div>
+      <div class="section-desc">
+        <strong>By participant scope and subject nature, enterprise AAR divides into four types: Personal, Team, Project, and Strategic — same principle, different techniques.</strong>
+        These four types correspond to "self-cultivation, family harmony, governance, and world peace" in Confucian philosophy. All follow the fundamental AAR process, but their operational methods differ significantly based on scope and subject characteristics.
+      </div>
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">Self</div>
+          <div class="data-sm">Personal AAR<br>Structured self-reflection<br>Anytime, anywhere</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">Team</div>
+          <div class="data-sm">Team AAR<br>Collaborative review sessions<br>Enhance team synergy</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">Project</div>
+          <div class="data-sm">Project AAR<br>Multi-iteration reviews<br>Embedded in project lifecycle</div>
+        </div>
+        <div class="data-card dc4">
+          <div class="data-big i">Strategic</div>
+          <div class="data-sm">Strategic AAR<br>Organizational operating models<br>Drive strategic alignment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">KEY TAKEAWAY</div>
+    <div class="takeaway-text">
+      The way of AAR lies in following the U-shaped learning mechanism (Hear → See → Know → Act) through a four-step process (Review & Evaluate → Analyze & Reflect → Extract & Distill → Transform & Apply), converting concrete experience into reusable capability. It intertwines with PDCA yet centers on learning, supporting both single-loop correction and double-loop innovation. The four types — Personal, Team, Project, and Strategic — share the same principle but differ in technique. Only by guiding technique with principle can we truly learn from experience.
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    After-Action Review+ · Chapter 2 Infographic · By Qiu Zhaoling · China Machine Press · For study reference only
+  </div>
+
+</div>
+</body>
+</html>
