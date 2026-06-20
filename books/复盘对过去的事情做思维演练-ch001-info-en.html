@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Replay: Mental Rehearsal of the Past · Ch.1 "What Is Replay"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px;
+    width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+  }
+  .icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+  .icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.7;
+  }
+  .alert-box .alert-title { font-weight: bold; margin-bottom: 4px; color: #dc2626; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 36px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 1. back-catalog -->
+  <div class="back-catalog">
+    <a href="复盘对过去的事情做思维演练-catalog.html" class="back-catalog-btn">📚 Back to Catalog</a>
+  </div>
+
+  <!-- 2. lang-switch -->
+  <div class="lang-switch">
+    <a href="复盘对过去的事情做思维演练-ch001-info-zh.html" target="_blank" class="lang-btn">🌐 中文</a>
+  </div>
+
+  <!-- 3. h1 -->
+  <h1>Replay: Mental Rehearsal of the Past · Ch.1 "What Is Replay"</h1>
+
+  <!-- 4. subtitle -->
+  <div class="subtitle">Review, Reflect, Explore, Improve — deduction is what fundamentally distinguishes replay from mere summary. Before action, a sandbox; after action, a replay.</div>
+
+  <!-- 5. divider -->
+  <div class="divider"></div>
+
+  <!-- 6. chapter-overview (BLUF bold) -->
+  <div class="chapter-overview">
+    <p><strong>The core of replay is not simply "summarizing lessons learned" — it is rerunning past events in your mind: reviewing the process, reflecting on causes, exploring patterns, and improving capabilities.</strong> The key to replay is <strong>deduction</strong> — it is deduction that elevates replay from a flat summary into a three-dimensional cognitive reconstruction. This chapter unpacks replay's definition, core elements, and its fundamental distinction from summarizing, tracing its origins from Go to stock markets to everyday life, revealing the underlying logic of this mental method.</p>
+  </div>
+
+  <!-- 7. KPI -->
+  <div class="kpi-row">
+    <div class="kpi-card c01">
+      <div class="kpi-value">4<span class="kpi-unit">Steps</span></div>
+      <div class="kpi-label">Core Replay Process</div>
+      <div class="kpi-note">Review · Reflect · Explore · Improve</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">1<span class="kpi-unit">Key</span></div>
+      <div class="kpi-label">The Differentiator</div>
+      <div class="kpi-note">Deduction: why replay ≠ summary</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">3<span class="kpi-unit">Origins</span></div>
+      <div class="kpi-label">Three Sources of Replay</div>
+      <div class="kpi-note">Go · Stock Markets · Daily Life</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">2<span class="kpi-unit">Sides</span></div>
+      <div class="kpi-label">Two Faces of Deduction</div>
+      <div class="kpi-note">Before-action sandbox · After-action replay</div>
+    </div>
+  </div>
+
+  <!-- 8a. Section 01 -->
+  <div class="section section-01">
+    <div class="section-num num-01">01</div>
+    <div class="section-body">
+      <span class="tag tag-01">Core Definition</span>
+      <div class="section-title t-01">The Four Elements: Review, Reflect, Explore, Improve</div>
+      <div class="section-desc">
+        <strong>Review the process, reflect on causes, explore patterns, and improve capabilities — the first three are replay's actions; improvement is replay's result.</strong> Finishing a task is only half the work. The other half is replay. Replay is not an optional bonus — it is the necessary step that transforms experience into capability.
+      </div>
+      <!-- Viz 1: flow-row -->
+      <div class="flow-row">
+        <div class="flow-step">🔍 Review<br><span style="font-size:11px;font-weight:normal">Describe the process<br>Goal · Result · Actions · Variance · Surprises</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">💭 Reflect<br><span style="font-size:11px;font-weight:normal">Identify causes<br>Why the gap? Why did execution diverge?</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">🔬 Explore<br><span style="font-size:11px;font-weight:normal">Discover patterns<br>Causes behind causes. Questions behind questions.</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">📈 Improve<br><span style="font-size:11px;font-weight:normal">Capability upgrade<br>What to do next? What to keep/stop/start?</span></div>
+      </div>
+      <div class="case-quote">
+        "For replay, review, reflection, exploration, and improvement — not one can be omitted. Review is reviewing the process; reflection is reflecting on causes; exploration is exploring patterns; improvement is improving capabilities."
+      </div>
+    </div>
+  </div>
+
+  <!-- 8b. Section 02 -->
+  <div class="section section-02">
+    <div class="section-num num-02">02</div>
+    <div class="section-body">
+      <span class="tag tag-02">Fundamental Distinction</span>
+      <div class="section-title t-02">Replay ≠ Summary: Deduction Is the Soul</div>
+      <div class="section-desc">
+        <strong>A summary is flat; replay is three-dimensional. A summary is static and jumpy; replay is dynamic and continuous.</strong> Summary merely describes, analyzes, and inducts what has already happened. Replay goes further with "deduction" — virtually exploring unrealized actions, examining their possibilities and feasibilities, and finding better paths forward.
+      </div>
+      <!-- Viz 2: dual-grid -->
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">📋</div>
+          <div class="dual-text">
+            <h4>Summary</h4>
+            <p>Flat behavior · Organizes events · Describes, analyzes, inducts only what happened · Focuses on milestones · Static, jumpy · Post-hoc presentation</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">🔄</div>
+          <div class="dual-text">
+            <h4>Replay</h4>
+            <p>3D behavior · Re-examines from start to finish · Includes summarizing plus virtual exploration · Examines premise logic and thought process · Dynamic, continuous · Finds new paths through deduction</p>
+          </div>
+        </div>
+      </div>
+      <div class="alert-box">
+        <div class="alert-title">⚠️ Many people think replay is just summarizing lessons learned — this is a serious misconception.</div>
+        Without "deduction," replay degrades into summary. Deduction lets us examine: Why did something succeed or fail? Could successes be even more successful? Could failure points find different paths? This is replay's irreplaceable value.
+      </div>
+    </div>
+  </div>
+
+  <!-- 8c. Section 03 -->
+  <div class="section section-03">
+    <div class="section-num num-03">03</div>
+    <div class="section-body">
+      <span class="tag tag-03">Historical Origin</span>
+      <div class="section-title t-03">Origins of Replay: From the Go Board to a Thinking Method</div>
+      <div class="section-desc">
+        <strong>The term "replay" (复盘) originates from Go — after finishing a game, players rerun every move on the board, rethinking each one.</strong> Through replay, Go players discover questionable moves and decisive moves, explore better alternatives, distill new patterns, and even form game records (optimal responses for specific situations). Replay is considered the single most important method for improving Go skill.
+      </div>
+      <!-- Viz 3: data-row -->
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">♟️</div>
+          <div class="data-sm"><strong>Go</strong><br>Re-running every move<br>Filtering out emotion, calm re-examination<br>Forming game records, building skill<br>"After losing, three sleepless nights replaying the game" — Rin Kaiho</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">📊</div>
+          <div class="data-sm"><strong>Stock Markets</strong><br>Daily post-market replay<br>Reviewing trends, explaining causes<br>Distilling trading techniques<br>Developing "market sense" — intuitive feel for future movements</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">🧠</div>
+          <div class="data-sm"><strong>Thinking Method</strong><br>Not just Go and stocks<br>Replay in classroom teaching<br>Post-exercise replay in military<br>Enterprise replay methodology<br>Core practice for personal growth</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8d. Section 04 -->
+  <div class="section section-04">
+    <div class="section-num num-04">04</div>
+    <div class="section-body">
+      <span class="tag tag-04">Methodology Contrast</span>
+      <div class="section-title t-04">Before-Action Sandbox, After-Action Replay</div>
+      <div class="section-desc">
+        <strong>The sandbox is deduction before action; replay's conclusions are deduction after action — no one confuses a sandbox with a plan, and likewise, replay is not summary.</strong> A sandbox's conclusions are imagined possibilities; replay, with execution experience as reference, yields conclusions that are verified, determinate methods.
+      </div>
+      <!-- Viz 4: dual-grid -->
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">🏗️</div>
+          <div class="dual-text">
+            <h4>Before-Action Sandbox</h4>
+            <p>Pre-action deduction · No real-world reference · Conclusions are imagined possibilities · Helps formulate plans · Explores "what might happen"</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">🔮</div>
+          <div class="dual-text">
+            <h4>After-Action Replay</h4>
+            <p>Post-action deduction · Execution experience as reference · Conclusions are determinate methods · Eliminates wrong paths · Determines "what should be done"</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-quote">
+        "When one masters replay, they develop profound insight and intuition about their work — they can instantly grasp the key from complex phenomena and find the solution without going through deduction step by step."
+      </div>
+    </div>
+  </div>
+
+  <!-- 8e. Section 05 -->
+  <div class="section section-05">
+    <div class="section-num num-05">05</div>
+    <div class="section-body">
+      <span class="tag tag-05">Everyday Practice</span>
+      <div class="section-title t-05">We've Always Been Replaying: A Method Everywhere</div>
+      <div class="section-desc">
+        <strong>Replay doesn't require physically redoing everything — it's more a mental reconstruction, whether a realistic rerun or a brainstorming on paper.</strong> Everyone uses replay: workplace reflection, life reconsideration, friends' "let me think it through with you" — these are all replay. We've always been replaying; we just didn't call it that.
+      </div>
+      <!-- Viz 5: icon-grid -->
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="ic">👥</div>
+          <strong>Social Interactions</strong>After a gathering, wondering why a friend seemed unhappy — did you say something wrong?
+        </div>
+        <div class="icon-card">
+          <div class="ic">💼</div>
+          <strong>Work Communication</strong>After talking with your boss, reflecting on whether you were too casual, causing a task to be reassigned
+        </div>
+        <div class="icon-card">
+          <div class="ic">🤝</div>
+          <strong>Client Analysis</strong>After meeting a client, summarizing their excitement points and real needs to find where to focus
+        </div>
+        <div class="icon-card">
+          <div class="ic">🏠</div>
+          <strong>Life Decisions</strong>Child got sick — was the blanket off last night or did they eat something bad? That back pain feels different this time — see a doctor?
+        </div>
+      </div>
+      <div class="case-quote" style="margin-top:12px">
+        "When we face something, we often seek a friend saying, 'Help me think this through.' The advice is secondary — the main thing is replay: recounting the past so another person can organize and integrate, discovering new angles and conclusions."
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">💡 Key Takeaways</div>
+    <div class="takeaway-text">
+      Replay is rerunning past events in your mind. Its essence is the four-step cycle of <strong>Review, Reflect, Explore, Improve</strong>; its soul is <strong>deduction</strong> — the very act that distinguishes replay from summary: summary is flat, replay is three-dimensional. Replay originated from Go's "re-running the game," permeates stock analysis and daily life, and is a thinking method we all use. <strong>Before action, a sandbox; after action, a replay</strong> — together they form a complete cognitive improvement loop.
+    </div>
+  </div>
+
+  <!-- 10. footer -->
+  <div class="footer">
+    Chen Zhong · China Machine Press · For Study Reference Only
+  </div>
+
+</div>
+</body>
+</html>

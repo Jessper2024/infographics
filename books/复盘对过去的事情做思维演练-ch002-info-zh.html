@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘对过去的事情做思维演练 · 第2章「为什么复盘」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px;
+    width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.b { color: #4f46e5; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.7;
+  }
+  .alert-box .alert-title { font-weight: bold; margin-bottom: 4px; color: #dc2626; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 36px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html" target="_blank">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch002-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘对过去的事情做思维演练 · 第2章「为什么复盘」</h1>
+<p class="subtitle">
+  <strong style="display:block;margin-bottom:6px;font-size:12px;color:#dc2626;letter-spacing:2px;">SCQA · 情境 → 冲突 → 问题 → 回答</strong>
+  柳传志、冯仑、周鸿祎、孙陶然等赢家都是复盘高手，三思而后行已成他们的习惯——但大多数人从不复盘，成功归功运气，失败归咎外部，终而复始重复同样的错误。<br>
+  <strong style="color:#1a1a1a;">为什么要复盘？这个问题更应该这么问：为什么不复盘？</strong><br>
+  答案是：复盘是我们提升能力的唯一手段，它通过五个核心维度将个人和企业从平庸推向卓越。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>复盘是能力提升的唯一手段——本章系统阐释了六个根本原因：避免犯同样的错误（基思与玛丽的办公室政治教训、阿九撞墙的自我警示），固化流程（从起飞检查单到清单革命再到华为"僵化—优化—固化"），校准方向（联想手机买卖的归核战略、3721竞争忘记用户的惨痛教训），看清问题背后的问题（TCL并购汤姆逊失败，根源在"发心不对"），发现新知识与新思路（指挥官意图的诞生、三类知识的划分），认清自我与提升品性（万通连续二十余年反省日的自律传统）。复盘不仅是一种方法，更是个人和组织品性的修炼场。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-value">11%<span class="kpi-unit">→0</span></div>
+    <div class="kpi-label">中心静脉感染归零</div>
+    <div class="kpi-note">约翰·霍普金斯医院<br>清单革命：15个月避免<br>45起感染与8例死亡</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">36<span class="kpi-unit">%↓</span></div>
+    <div class="kpi-label">术后并发症下降</div>
+    <div class="kpi-note">8家试点医院<br>4000名病人参与<br>死亡率下降47个百分点</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">160<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">组合市值增长</div>
+    <div class="kpi-note">一张投资清单<br>让投资家旗下<br>投资组合市值增长160%</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">70<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">学习来自复盘自己</div>
+    <div class="kpi-note">柳传志："向书本学、<br>向别人学只占30%，<br>剩下70%都是向自己学"</div>
+  </div>
+</div>
+
+<!-- Section 01: 避免犯同样的错误 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">错误阻断</div>
+    <div class="section-title t-01"><strong>复盘的首要价值：避免犯同样的错误</strong></div>
+    <div class="section-desc">人不会被同一块石头绊倒两次——复盘让我们从失败中提取经验，在源头规避风险，建立自我警示机制。基思·法拉奇与总裁助理玛丽的交手是经典案例：第一回合他通过尊重与闲聊赢得玛丽支持；第二回合却犯了致命错误——向总裁告状，导致关系恶化如噩梦。复盘后他彻底改变了做法：让玛丽挑选新助理，并告诉新助理"对玛丽唯命是从"——从此避免再度踏入同样的办公室政治陷阱。</div>
+    <div class="case-quote">
+      "如果阿九复盘了2008年撞墙事件，未来的中秋节他一定会控制饕餮的欲望，从源头规避胃部不适晕倒的可能性。即使不小心又吃撑了，他也会小心避免着凉，甚至干脆坐在地上——这样即使晕倒了，重心低也不会造成伤害。"
+    </div>
+  </div>
+</div>
+
+<!-- Section 02: 固化流程 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">流程固化</div>
+    <div class="section-title t-02"><strong>复盘的核心产出：固化流程与清单</strong></div>
+    <div class="section-desc">飞机起飞前的检查清单是复盘固化流程的典范——无数次飞行经验被提炼为固定动作清单，保证安全起飞。《清单革命》揭示：小小的清单让约翰·霍普金斯中心静脉感染率从11%降至零，15个月避免45起感染和8例死亡，节省200万美元。8家试点医院使用清单后，4000名病人术后严重并发症下降36个百分点，死亡率下降47个百分点。华为引入IBM系统时，任正非提出"先僵化，后优化，再固化"——这是复盘驱动组织进步的经典方法论。</div>
+    <div class="flow-row">
+      <div class="flow-step">📐<br>先僵化</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔧<br>后优化</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅<br>再固化<br>→ 共享经验</div>
+    </div>
+    <div class="case-quote">"没有时间和精力将事情一次就做对，却有时间和精力重复一次次做同一件事情。"<br>——IBM给华为的咨询忠告</div>
+  </div>
+</div>
+
+<!-- Section 03: 从蒙着打到瞄着打 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">方向校准</div>
+    <div class="section-title t-03"><strong>从"蒙着打"变成"瞄着打"：复盘校准方向</strong></div>
+    <div class="section-desc">复盘让我们在做事过程中随时审视进展，看看是否偏离了原来设定的方向。柳传志常说"退出画面看画"，就是要经常跳出来分析局部与整体的关系。联想2008年以1亿美元卖掉联想手机回归核心，2009年又以2亿美元买回——看似亏本买卖，实则是两次复盘后的战略校准。周鸿祎复盘3721与CNNIC、百度的大战，痛彻认识到"不是竞争对手打败了自己，而是用户打败了自己"——竞争的本质不是打击对手，而是赢得用户。而那位只知道打电话的秘书，则是最典型的将手段当做目标的案例。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🔫</div>
+        <div class="dual-text">
+          <h4>蒙着打：盲目开枪</h4>
+          <p>无计划、无步骤、无准星。随性而为，走一步看一步，容易偏离目标而不自知。手段替代目标而不察。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>瞄着打：精准射击</h4>
+          <p>有计划、有步骤、有准星、有效果。边做边复盘，不断反思过程，及时纠偏校准，让成败对未来更有价值。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 04: 看清问题背后的问题 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">根因探寻</div>
+    <div class="section-title t-04"><strong>看清问题背后的问题：复盘触及本质</strong></div>
+    <div class="section-desc">TCL并购汤姆逊彩电业务的失败，表面原因众多：对彩电技术趋势判断失误、不了解法国解聘政策、文化难以融合、没有改进运作习惯。但复盘追问到底发现——这些表面问题并非真正的问题。TCL请了摩根斯坦利和波士顿做咨询，这些"用脚后跟都能想到"的显性问题为什么都没注意到？<strong>真正的答案是：李东生此次并购的"发心不对"——他的目的是成为全球第一、把竞争对手踩在脚下，而不是为消费者提供更好的产品。</strong>乔布斯评价微软zune失败时说"他们不像我们这样热爱音乐和艺术"——动机决定一切。发心不对，后面的一切就都错了。</div>
+    <div class="alert-box">
+      <div class="alert-title">⚠️ 复盘的核心追问</div>
+      表面原因 → 为什么没被预见到？→ 更深层动机是什么？<br>
+      李东生后来说："不要被机会所左右，失去机会比做错事更好一些"——这是复盘后最沉痛的总结。
+    </div>
+  </div>
+</div>
+
+<!-- Section 05: 发现新知与提升品性 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">知识产生</div>
+    <div class="section-title t-05"><strong>发现新知识与新思路，认清自我提升品性</strong></div>
+    <div class="section-desc">美国陆军复盘无数次作战计划的失效，创造"指挥官意图"（CI）概念——只说目标和最终理想状态，不规定细节，因为"你可能失去执行原定计划的能力，但永远不能失去执行最终意图的责任"。<strong>一个人的知识分三类——基因知识（本能）、文化知识（潜移默化）和原子知识（主动习得）。后者只有三个途径：亲身经历、观察他人、学习总结，而这三种都是复盘。</strong>柳传志说："向书本学、向别人学只占30%，剩下70%都是向自己学。向自己学的关键，就是复盘。"万通从1992年起坚持每年反省日，冯仑说："每次反省都觉得自己真不行，还有这么多事没做好——反省后知差距、知方向、知动力、知努力。"</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">🧬</div>
+        <div class="section-title" style="font-size:14px;margin-bottom:4px;">基因知识</div>
+        <div class="data-sm">千百年进化内化的本能<br>生来就会，无需学习<br>知冷知热，趋利避害</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">🏛️</div>
+        <div class="section-title" style="font-size:14px;margin-bottom:4px;">文化知识</div>
+        <div class="data-sm">耳濡目染潜移默化<br>环境所教，群体演进<br>筷子刀叉，孝悌忠信</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big b">🔬</div>
+        <div class="section-title" style="font-size:14px;margin-bottom:4px;">原子知识</div>
+        <div class="data-sm">主动获得·个体分立<br>亲身经历+观察他人+学习总结<br><strong>= 三种途径都是复盘</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">复盘是个人和组织能力提升的加速器，是看清问题的透视镜，是发现答案的探测针，是新知识和新认识的发生机，是高傲自满的终结者，是错误想法和做法的纠偏仪。每进行一次复盘，都是对自己思维的一次训练。三思而后行——一个习惯复盘的个人和企业，品性会更加低调和踏实，避免浮躁和冒进带来的危害。精通复盘，就是掌握了自己成长的最强大引擎。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  陈中 著 · 机械工业出版社 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

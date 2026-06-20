@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘对过去的事情做思维演练 · 第5章「复盘的两种方法」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px;
+    width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+  }
+  .icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+  .icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.7;
+  }
+  .alert-box .alert-title { font-weight: bold; margin-bottom: 4px; color: #dc2626; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 36px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 返回目录 -->
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html" target="_blank">← 返回章节目录</a></div>
+
+<!-- 语言切换 -->
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch005-info-en.html">中文 / English</a>
+</div>
+
+<!-- 标题 -->
+<h1>复盘对过去的事情做思维演练 · 第5章「复盘的两种方法」</h1>
+<p class="subtitle">
+  <span style="display:block; margin-bottom:6px; font-weight:bold; color:#dc2626; font-size:12px; letter-spacing:1px;">
+    SCQA · 情境 &rarr; 冲突 &rarr; 问题 &rarr; 回答
+  </span>
+  复盘有两种方法：情境重现法如电影回放般客观还原，关键点法在信息海洋中抓住主要矛盾。
+  但当照相机式记忆不可得、复盘他人或时间跨度太长时，情境重现便无从施展。
+  如何在不同场景中选对方法？答案在于三场重现与三类关键点法的灵活组合。
+</p>
+<div class="divider"></div>
+
+<!-- 章节概述 -->
+<div class="chapter-overview">
+  <p><strong style="color:#dc2626;">复盘的两种方法——情境重现法和关键点法——并非对立的选项，而是复盘者工具箱中互为补充的利器。</strong>初学复盘，最好用情境重现法，建立对信息场、思维场、情绪场的全面感知；精通之后，关键点法成为主要工具，情境重现法降为补充。两种方法的切换，取决于能否完整获取信息、是否参与者共享情境、事件时间跨度与信息密度——永远选取信息有效性最高的那一种。</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-value">2<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">复盘方法</div>
+    <div class="kpi-note">情境重现法 + 关键点法<br>初学→精通，主次互换</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">"场"构成情境</div>
+    <div class="kpi-note">信息场 · 思维场 · 情绪场<br>空间"场"+时间"流"</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">关键点子方法</div>
+    <div class="kpi-note">正向 · 逆向 · 疑问法<br>时间/内容/存疑驱动</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">8<span class="kpi-unit">部分</span></div>
+    <div class="kpi-label">《决议》关键节点</div>
+    <div class="kpi-note">建国前28年→文革→转折<br>正向关键点法典范</div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 01: 情境重现法——三场框架与直接叙述 ===== -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心方法</div>
+    <div class="section-title t-01">情境重现法：重现三场，完整的复盘不止于"做了什么"</div>
+    <div class="section-desc">
+      情境不是"背景"，也不是"环境"，而是信息场（有什么）、思维场（是什么）与情绪场（为什么）
+      在时间和空间维度上的交织。仅仅叙述"我做了什么"，只是一份工作总结——没有三场的重现，
+      复盘就失去了理解行为和从中学习的根基。对信息场的复盘厘清事实，对思维场的复盘判断方法，
+      对情绪场的复盘认识自己和他人。
+    </div>
+    <div class="flow-row">
+      <div class="flow-step">信息场<br>客观事实</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">思维场<br>主观判断</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">情绪场<br>内心状态</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">直接叙述<br>自然流程</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">完整复盘<br>可学习</div>
+    </div>
+
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">要真实</div>
+        <div class="data-sm">完整呈现复盘事件<br>对应信息场<br>真实·全面·完整</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">要超脱</div>
+        <div class="data-sm">站在自身之外看复盘<br>对应思维场<br>袒露所思所想</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">要虚心</div>
+        <div class="data-sm">放空自己进行复盘<br>对应情绪场<br>旁观者视角</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 02: 关键点法总览 ===== -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">关键框架</div>
+    <div class="section-title t-02">关键点法：三种子方法，跳出信息海洋抓住牛鼻子</div>
+    <div class="section-desc">
+      当无法或不必重现全部情境时，关键点法让我们一开始就抓住主要矛盾。
+      关键点法建立在数学"完全覆盖"理论之上——每个流程节点即一个小集合，
+      通过对小集合的复盘，实现对事件大集合的完全覆盖。三种子方法各有侧重：
+    </div>
+    <div class="icon-grid">
+      <div class="icon-card">
+        <div class="ic">⏩</div>
+        <strong>正向关键点法</strong>
+        沿时间或事件内容<br>寻找里程碑节点<br>逐段复盘
+      </div>
+      <div class="icon-card">
+        <div class="ic">⏪</div>
+        <strong>逆向关键点法</strong>
+        先确定关键成功因素<br>反推分析成败<br>弥补强化短板
+      </div>
+      <div class="icon-card">
+        <div class="ic">❓</div>
+        <strong>疑问法</strong>
+        对存疑处提出问题<br>均匀分布全流程<br>挖逻辑找原因
+      </div>
+      <div class="icon-card">
+        <div class="ic">🧩</div>
+        <strong>完全覆盖</strong>
+        各节点子集并集<br>等于全集，互不相交<br>保证不遗漏
+      </div>
+    </div>
+    <div class="alert-box">
+      <div class="alert-title">⚠ 关键提醒</div>
+      关键点法在初学阶段应作为情境重现法的补充使用。过早依赖关键点法而跳过情境重现的完整训练，容易遗漏隐匿在细节中的关键信息——三种场的感知力必须通过情境重现的训练来建立。
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 03: 正向关键点法 ===== -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">正向实践</div>
+    <div class="section-title t-03">正向关键点法：沿时间与内容节点，里程碑驱动逐段复盘</div>
+    <div class="section-desc">
+      正向关键点法顺着时间或事件的流变找关键节点（里程碑时刻或里程碑事件），围绕每个节点重现和思考。
+      《关于建国以来党的若干历史问题的决议》是最经典的范例——面对中共60年浩瀚历史，
+      邓小平提出"对历史问题，还是要粗一点、概括一点"，将60年划分为清晰的时间关节点，
+      避免叙述性写法，以论断性语言对各时间段进行回顾与评价。
+    </div>
+    <div class="case-quote">
+      "要避免叙述性的写法，要写得集中一些。对重要问题要加以论断，论断性的语言要多些，当然要准确。"
+      <br>——邓小平谈《决议》起草
+    </div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">建国前</div>
+        <div class="data-sm">新民主主义革命<br>28年历史回顾<br>话不要太多</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">建国后</div>
+        <div class="data-sm">基本完成社会主义改造7年<br>全面建设社会主义10年<br>"文革"10年</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">历史转折</div>
+        <div class="data-sm">十一届三中全会以来<br>毛泽东历史地位与思想<br>社会主义现代化道路</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 04: 逆向关键点法与疑问法 ===== -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">实战应用</div>
+    <div class="section-title t-04">逆向关键点法与疑问法：从成功因素反推、从存疑处追问</div>
+    <div class="section-desc">
+      逆向法先界定关键成功因素，然后复盘哪些做得好的、哪些不好、哪些最终决定了成败，
+      最终实现弥补和强化。疑问法以"为什么"为引子，均匀分布问题、逐层挖掘逻辑——正是联想复盘戴尔崛起、图书编辑复盘两本书销量差距的共同方法论。
+    </div>
+
+    <!-- 逆向法：联想 vs 戴尔 -->
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>联想复盘戴尔崛起</h4>
+          <p><strong>关键发现：</strong>直销vs分销只是表象，真正比拼的是流程效率与客户群把握。<br>
+          <strong>行动：</strong>①战略收缩为专业化 ②库存压缩（15→7天）③组织扁平化（7大区→18区）④组建电话销售+大客户部，双模式作战。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text">
+          <h4>图书编辑复盘销量差距</h4>
+          <p><strong>关键成功三因素：</strong>书本身质量（开头/目录/主题聚焦）、宣传推广力度（网络广告+连载）、发行铺货程度（码堆摆放vs竖放）。对比复盘后，平均销量提升2倍以上。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 疑问法——三成功因素 -->
+    <div class="flow-row">
+      <div class="flow-step">提出疑问<br>针对结果</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">对比信息<br>收集数据</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">挖出逻辑<br>找成败因</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">完善认知<br>能力提升</div>
+    </div>
+
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">📖 书本身</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">目录用摘要式代替条目式；开头要集中抓人而非分散；主题聚焦、减少冗余信息分散读者注意力</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">📣 宣传推广</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">仅靠常规连载和书评不够——需要在当当等主流平台投放广告、设置专属页面</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">🚚 发行铺货</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">渠道共通，但重点书的码堆摆放vs普通竖放决定了前5分钟的读者接触机会</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 05: 两种方法的互补与选择 ===== -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">方法选择</div>
+    <div class="section-title t-05">情境重现法 vs 关键点法：何时用哪一种？</div>
+    <div class="section-desc">
+      两种方法不是非此即彼的对立选项，而是复盘工具箱中互为补充的利器。选择标准取决于能否完整获取信息、参与者是否共享情境、事件时间跨度与信息密度——永远选取信息有效性最高的那一种。初学必须用情境重现法打好基础，精通后才以关键点法为主。
+    </div>
+
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🎬</div>
+        <div class="dual-text">
+          <h4>用情境重现法</h4>
+          <p>
+            ✅ 刚开始复盘的新手<br>
+            ✅ 有照相机式记忆或音视频记录<br>
+            ✅ 复盘自己亲身参与的事件<br>
+            ✅ 事件短、信息量适中<br>
+            ✅ 需要认识自己和他人情绪时<br>
+            方式：直接叙述，按自然流程还原三场
+          </p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>用关键点法</h4>
+          <p>
+            ✅ 熟悉复盘后的进阶者<br>
+            ✅ 复盘他人——不掌握全信息<br>
+            ✅ 事件跨度长、信息过多<br>
+            ✅ 只需找出问题、提出改正措施<br>
+            ✅ 三场中的信息场、思维场已明确<br>
+            方式：正向/逆向/疑问法灵活组合
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLUF 核心结论 -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">
+    <strong>复盘的关键不在总结行为，而在重现三场（信息场、思维场、情绪场）并抓住关键矛盾。</strong>
+    初学必须通过情境重现法建立对三种场的完整感知力，用直接叙述保证信息的真实、全面、完整；
+    精通之后，以关键点法（正向、逆向、疑问）高效复盘，情境重现法降为补充。
+    两者的选择标准只有一个——选取信息有效性最高的那一种。无论用哪种方法，复盘的目的永远在行动上而非情绪上：从过去的经历中学习，找到正确的做法，摸清事情的规律。
+  </div>
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+  陈中 著 · 机械工业出版社 · 第5章「复盘的两种方法」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

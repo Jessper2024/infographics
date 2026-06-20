@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘对过去的事情做思维演练 · 第4章「复盘中的三种角色」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px;
+    width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+  }
+  .icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+  .icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.7;
+  }
+  .alert-box .alert-title { font-weight: bold; margin-bottom: 4px; color: #dc2626; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 36px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- back-catalog -->
+  <div class="back-catalog">
+    <a href="复盘对过去的事情做思维演练-catalog.html" class="back-catalog-btn">📚 返回目录</a>
+  </div>
+
+  <!-- lang-switch -->
+  <div class="lang-switch">
+    <a href="复盘对过去的事情做思维演练-ch004-info-en.html" target="_blank" class="lang-btn">🌐 English</a>
+  </div>
+
+  <!-- h1 -->
+  <h1>复盘对过去的事情做思维演练 · 第4章「复盘中的三种角色」</h1>
+
+  <!-- subtitle -->
+  <div class="subtitle">引导人管流程、设问人挖本质、叙述人建基础——三角协同驱动深度复盘</div>
+
+  <!-- divider -->
+  <div class="divider"></div>
+
+  <!-- chapter-overview -->
+  <div class="chapter-overview">
+    <p>复盘需要三种职能由人承担：引导保证流程不偏、设问引发思考获得结论、叙述还原情境消除迷思。<strong>三种角色在团队复盘中须明确区分，角色定位的清晰与否，直接决定了复盘能否得出有价值的结论。</strong>本章逐一拆解引导人、设问人、叙述人的职责边界、操作技巧与常见陷阱，构建角色协同的复盘三角。</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-row">
+    <div class="kpi-card c01">
+      <div class="kpi-value">3</div>
+      <div class="kpi-label">核心角色</div>
+      <div class="kpi-note">引导人 · 设问人 · 叙述人</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">3</div>
+      <div class="kpi-label">追问层级</div>
+      <div class="kpi-note">信息层 → 思维层 → 假设层</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">2</div>
+      <div class="kpi-label">关键边界</div>
+      <div class="kpi-note">引导≠主导 · 问≠解释</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">10+</div>
+      <div class="kpi-label">引导话术</div>
+      <div class="kpi-note">开启 · 深入 · 结束话题的标准句式</div>
+    </div>
+  </div>
+
+  <!-- Section 1: 引导人 -->
+  <div class="section section-01">
+    <div class="section-num num-01">01</div>
+    <div class="section-body">
+      <span class="tag tag-01">流程权威</span>
+      <div class="section-title t-01">引导人：既在复盘中，又在复盘外</div>
+      <div class="section-desc">
+        <strong>引导人的核心作用是维护正常的讨论氛围，保证复盘按照既定流程顺利进行。</strong>其职能定位要求做到"既在复盘中"——随时把握逻辑方向，了解复盘所处阶段；"又在复盘外"——不受任何观点影响，只关注流程是否在合适框架内运行。
+      </div>
+      <!-- 双卡对比：引导 vs 主导 -->
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">🧭</div>
+          <div class="dual-text">
+            <h4>引导（Facilitate）</h4>
+            <p>顺着思维逻辑的方向引领，顺势而为。<br>如同总理记者招待会上的主持人——负责流程、点名提问，不表达自己的观点。</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">🎯</div>
+          <div class="dual-text">
+            <h4>主导（Dominate）</h4>
+            <p>决定思维逻辑的方向，促使其发生。<br>如同招待会上的总理——是内容的主角，回答提问、阐述观点，决定讨论的实质走向。</p>
+          </div>
+        </div>
+      </div>
+      <!-- 三个核心原则 -->
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">①</div>
+          <div class="data-sm"><strong>不对观点做评判</strong><br>保持中立客观，面对各种观点做到"无视"。只有在讨论偏离方向时，才有资格终止纠偏。</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">②</div>
+          <div class="data-sm"><strong>谁可担任引导人</strong><br>职位高者具天然优势，但可让渡。一旦被确定，任何人不得越俎代庖决定流程。</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">③</div>
+          <div class="data-sm"><strong>防止角色错位</strong><br>高位引导人最易将"程序权威"与"观点权威"混淆，沦为"裁判员兼运动员"。</div>
+        </div>
+      </div>
+      <div class="case-quote">
+        "好的引导人，话语都踩在思维逻辑发展的节点上，无形之中暗合逻辑发展的顺序，让一切不着痕迹又恰到好处。"
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: 设问人 -->
+  <div class="section section-02">
+    <div class="section-num num-02">02</div>
+    <div class="section-body">
+      <span class="tag tag-02">深度追问</span>
+      <div class="section-title t-02">设问人：好的问题揭示了一半答案</div>
+      <div class="section-desc">
+        <strong>设问人通过问题引导思考、探索本质、发现规律，是复盘能否成功的关键。</strong>核心要求：问问题而不是给解释；用疑问句而非反问句；用问题引导逻辑，让结论在问答交锋中自然呈现。
+      </div>
+      <!-- 流程图：三层追问递进 -->
+      <div class="flow-row">
+        <div class="flow-step">🔍 信息层<br><span style="font-size:11px;font-weight:normal">事实是否遗漏？<br>多用开放式问题</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">🧠 思维层<br><span style="font-size:11px;font-weight:normal">逻辑是否通畅？<br>判断信息与逻辑的关系</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step end">💡 假设层<br><span style="font-size:11px;font-weight:normal">底层公理是否正确？<br>多用封闭式问题</span></div>
+      </div>
+      <!-- Toyota 5Why 示例 -->
+      <div class="case-quote">
+        <strong>丰田「5Why」分析法案例：</strong>机器停了→超负荷断保险丝→轴承润滑不够→润滑泵吸不上油→轮轴耗损→<strong>未安装过滤器混进杂质</strong>。安装过滤器解决根本问题。
+      </div>
+      <!-- 疑问题vs反问句 -->
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">❓</div>
+          <div class="dual-text">
+            <h4>疑问句（请教属性）</h4>
+            <p>开放、不确定，带有商量口吻。<br>"除了现在的解释，有没有更好的解释？"<br>将回答主动权交给对方。</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">❗</div>
+          <div class="dual-text">
+            <h4>反问句（挑战属性）</h4>
+            <p>观点明确，带有质问口吻。<br>"你真的认为要下雨了吗？"<br>规定了回答方式，容易引发对立。</p>
+          </div>
+        </div>
+      </div>
+      <div class="alert-box" style="margin-top:12px">
+        <div class="alert-title">⚠️ 两种要避免的倾向</div>
+        ① 担心自己出丑——怕问题太幼稚→损失新的看待角度<br>
+        ② 担心别人出丑——怕问题太尖锐→问无关紧要的问题，甚至替叙述人解释→<strong>制止方法：罚款50元或集体哄笑</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: 叙述人 -->
+  <div class="section section-03">
+    <div class="section-num num-03">03</div>
+    <div class="section-body">
+      <span class="tag tag-03">事实基础</span>
+      <div class="section-title t-03">叙述人：复盘的基础，成长的获益者</div>
+      <div class="section-desc">
+        <strong>复盘的进程和内容都建立在叙述人的叙述和回答之上。</strong>叙述人是事件当事人，除了主要负责人外，叙述人是从复盘中获得最大提高的人。其态度直接决定复盘氛围——超脱、客观、真实、虚心是四项核心要求。
+      </div>
+      <!-- 四项核心要求 -->
+      <div class="icon-grid">
+        <div class="icon-card">
+          <div class="ic">🔭</div>
+          <strong>超脱</strong>站在自身之外看复盘，<br>用另一个人的眼光审视做事中的自己
+        </div>
+        <div class="icon-card">
+          <div class="ic">👁️</div>
+          <strong>客观</strong>如实观照，不附加推理，<br>避免情绪干扰。看山是山，看水是水
+        </div>
+        <div class="icon-card">
+          <div class="ic">📋</div>
+          <strong>真实</strong>实事求是是叙述第一要求。<br>怕幼稚→隐藏→造假，起点错则结局错
+        </div>
+        <div class="icon-card">
+          <div class="ic">🫙</div>
+          <strong>虚心</strong>放空自己，不猜测动机。<br>克服"承诺一致"心理，为挑战性问题叫好
+        </div>
+      </div>
+      <!-- 三条信息标准 -->
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">真实</div>
+          <div class="data-sm">信息性质要求<br>如实反映实际，无人为加工</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">全面+完整</div>
+          <div class="data-sm">信息分类方式<br>横向各维度覆盖，纵向有始有终</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">细节</div>
+          <div class="data-sm">信息呈现手法<br>最末梢的事件信息，让叙述可信可触摸</div>
+        </div>
+      </div>
+      <div class="case-quote">
+        "魔鬼隐藏在细节之中。" —— 西方谚语<br>
+        "细节决定成败。" —— 中国智慧<br>
+        <strong>叙述合格三标准：</strong>真实（性质）· 全面与完整（分类）· 细节（呈现）
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: 角色边界与转化 -->
+  <div class="section section-04">
+    <div class="section-num num-04">04</div>
+    <div class="section-body">
+      <span class="tag tag-04">角色边界</span>
+      <div class="section-title t-04">三种角色的分配与动态转化</div>
+      <div class="section-desc">
+        <strong>在不同复盘类型中，三种角色的分配模式截然不同——自我复盘"三位一体"、团队复盘"明确区分"、复盘他人"可灵活变换"。</strong>设问人和叙述人的身份在复盘过程中可动态转换，但引导人必须始终由一人稳定担任。
+      </div>
+      <!-- 三种复盘模式中的角色分配 -->
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">🙋</div>
+          <div class="data-sm"><strong>自我复盘</strong><br>三位一体<br>引导·设问·叙述由同一人承担</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">👥</div>
+          <div class="data-sm"><strong>团队复盘</strong><br>明确区分<br>引导人固定，设问与叙述可转化</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">🔍</div>
+          <div class="data-sm"><strong>复盘他人</strong><br>按信息分工<br>根据收集信息分工灵活担任角色</div>
+        </div>
+      </div>
+      <!-- 角色转换流程 -->
+      <div class="flow-row" style="margin-top:14px">
+        <div class="flow-step">🪑 引导人<br><span style="font-size:11px;font-weight:normal">始终稳定<br>程序权威</span></div>
+        <div class="flow-arrow">↔</div>
+        <div class="flow-step">❓ 设问人<br><span style="font-size:11px;font-weight:normal">可转化为叙述人<br>提出自己的问题</span></div>
+        <div class="flow-arrow">↔</div>
+        <div class="flow-step end">📖 叙述人<br><span style="font-size:11px;font-weight:normal">有疑问可转为设问人<br>求得其他人解答</span></div>
+      </div>
+      <div class="alert-box" style="margin-top:12px">
+        <div class="alert-title">⚠️ 召集人/主导人角色</div>
+        团队复盘还有一位召集人（复盘主导人）。<strong>主导人在复盘前负责召集，在复盘中承担引导角色</strong>——除非他指定他人担任引导。即使是主导人，担任引导时也必须符合引导的规定性。
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: 三角协同 -->
+  <div class="section section-05">
+    <div class="section-num num-05">05</div>
+    <div class="section-body">
+      <span class="tag tag-05">三角协同</span>
+      <div class="section-title t-05">引导 × 设问 × 叙述：三角驱动复盘引擎</div>
+      <div class="section-desc">
+        <strong>引导人保证方向不偏、设问人挖掘深层规律、叙述人提供事实土壤——三者形成不可分割的复盘三角。</strong>任何一角缺失或错位，复盘都将退化为自由漫谈或批判大会，失去得出真知的可能。
+      </div>
+      <!-- 三角关系示意 -->
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">🪑 → ❓</div>
+          <div class="data-sm"><strong>引导激活设问</strong><br>引导人开启议题，邀请设问人深入追问，把控讨论不偏离航道</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">❓ → 📖</div>
+          <div class="data-sm"><strong>设问驱动叙述</strong><br>设问人的问题迫使叙述人直面信息盲区，从信息穿越思维直抵假设</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">📖 → 🪑</div>
+          <div class="data-sm"><strong>叙述支撑引导</strong><br>叙述人提供的真实全面信息，是引导人判断流程节点和结论质量的依据</div>
+        </div>
+      </div>
+      <div class="case-quote" style="margin-top:12px">
+        <strong>柳传志的实践：</strong>"在联想并购IBM PC事件中，我虽然没参加谈判，但一个重要作用就是<strong>不断地向谈判人员提各种问题</strong>——通过问题了解信息、敦促思考、形成预案。正是这样的询问，成就了中国企业海外并购最成功的案例。"<br><br>
+        <strong>本书核心结论：</strong>复盘就是要坦诚、不要装。没弄明白的地方要弄明白，不能揣着糊涂装明白——对自己有害，对团队有害，对成长有害。
+      </div>
+    </div>
+  </div>
+
+  <!-- takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">💡 本章要点</div>
+    <div class="takeaway-text">
+      复盘的成功取决于三种角色的清晰分工与有效协同：<strong>引导人做流程的权威而非观点的裁判</strong>，负责"开始、深入、结束"的节奏把控；<strong>设问人用疑问而非反问的三层追问</strong>（信息→思维→假设），像丰田5Why一样挖出本质；<strong>叙述人以超脱客观的态度真实完整地提供细节</strong>，做复盘的事实基础。三者各司其职、动态转化，方能将"自由漫谈"升级为"有结论的深度复盘"——<strong>复盘三角稳固之日，即团队学习真正落地之时。</strong>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    陈中 著 · 机械工业出版社 · 仅供学习参考
+  </div>
+
+</div>
+</body>
+</html>

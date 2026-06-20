@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrospective · Chapter 6: The Content of Retrospectives</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal;}
+* {margin:0;padding:0;box-sizing:border-box;}
+body {background:#f5f1eb;font-family: 'FZXPYZS', 'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display: flex;justify-content: center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px;}
+.container {max-width: 880px;width:100%;}
+.back-catalog{text-align:right;margin-bottom:4px;}
+.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s;}
+.back-catalog-btn:hover{opacity:.75;}
+.lang-switch{text-align:right;margin-bottom:16px;}
+.lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:0.03em;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity 0.15s;}
+.lang-btn:hover{opacity:0.75;}
+h1 {font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC',serif;font-size: 36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px;}
+.subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto;}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px;}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif;}
+.chapter-overview p{margin:0;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0;}
+.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center;}
+.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px;}
+.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px;}
+.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px;}
+.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center;}
+.kpi-card.c01{border-left:3px solid #dc2626;}
+.kpi-card.c01 .kpi-value{color:#dc2626;}
+.kpi-card.c02{border-left:3px solid #ea580c;}
+.kpi-card.c02 .kpi-value{color:#ea580c;}
+.kpi-card.c03{border-left:3px solid #ca8a04;}
+.kpi-card.c03 .kpi-value{color:#ca8a04;}
+.kpi-card.c04{border-left:3px solid #4f46e5;}
+.kpi-card.c04 .kpi-value{color:#4f46e5;}
+.section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent;}
+.section-01{border-left-color:#dc2626;}
+.section-02{border-left-color:#ea580c;}
+.section-03{border-left-color:#ca8a04;}
+.section-04{border-left-color:#4f46e5;}
+.section-05{border-left-color:#db2777;}
+.section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;}
+.num-01{background:#fef2f2;color:#dc2626;}
+.num-02{background:#fff7ed;color:#ea580c;}
+.num-03{background:#fefce8;color:#ca8a04;}
+.num-04{background:#eef2ff;color:#4f46e5;}
+.num-05{background:#fdf2f8;color:#db2777;}
+.section-body{flex:1;}
+.tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;}
+.tag-01{background:#fef2f2;color:#dc2626;}
+.tag-02{background:#fff7ed;color:#ea580c;}
+.tag-03{background:#fefce8;color:#ca8a04;}
+.tag-04{background:#eef2ff;color:#4f46e5;}
+.tag-05{background:#fdf2f8;color:#db2777;}
+.section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;}
+.t-01{color:#dc2626;}
+.t-02{color:#ea580c;}
+.t-03{color:#ca8a04;}
+.t-04{color:#4f46e5;}
+.t-05{color:#db2777;}
+.section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px;}
+.flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold;}
+.flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold;}
+.flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b;}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px;}
+.dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start;}
+.dual-card.a{background:#fef2f2;border:1px solid #fecaca;}
+.dual-card.b{background:#f0fdf4;border:1px solid #bbf7d0;}
+.dual-icon{font-size:24px;flex-shrink:0;line-height:1;}
+.dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;}
+.dual-text p{font-size:12px;color:#777;line-height:1.6;}
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px;}
+.data-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid;}
+.data-card.dc1{background:#fef2f2;border-color:#fecaca;}
+.data-card.dc2{background:#fff7ed;border-color:#fed7aa;}
+.data-card.dc3{background:#fefce8;border-color:#fde68a;}
+.data-big{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:28px;font-weight:700;margin-bottom:6px;}
+.data-big.r{color:#dc2626;}
+.data-big.o{color:#ea580c;}
+.data-big.g{color:#ca8a04;}
+.data-sm{font-size:12px;color:#888;line-height:1.6;}
+.case-quote{background:#f8f6f3;border-left:3px solid #ca8a04;border-radius:8px;padding:14px 18px;margin-top:10px;font-size:13px;color:#555;line-height:1.8;font-style:italic;}
+.icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;}
+.icon-card{background:#f8f6f3;border-radius:10px;padding:14px 10px;text-align:center;font-size:13px;color:#555;line-height:1.6;border:1px solid #e8e0d5;}
+.icon-card .ic{font-size:24px;margin-bottom:4px;}
+.icon-card strong{display:block;font-size:12px;color:#1a1a1a;}
+.alert-box{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px 18px;margin-top:10px;font-size:13px;color:#991b1b;line-height:1.7;}
+.alert-box .alert-title{font-weight:bold;margin-bottom:4px;color:#dc2626;}
+.takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626;}
+.takeaway-label{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold;}
+.takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;}
+.footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8;}
+@media(max-width:768px){
+  body{padding:20px 12px 40px;}
+  .sidebar{display:none;}
+  .section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px;}
+  .section-01{border-top-color:#dc2626;}
+  .section-02{border-top-color:#ea580c;}
+  .section-03{border-top-color:#ca8a04;}
+  .section-04{border-top-color:#4f46e5;}
+  .section-05{border-top-color:#db2777;}
+  .dual-grid,.data-row,.icon-grid{grid-template-columns:1fr;}
+  .flow-row{flex-direction:column;}
+  .flow-arrow{transform:rotate(90deg);}
+  .container{padding:0 8px;}
+  h1{font-size:36px;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .kpi-value{font-size:34px;}
+}
+@media(max-width:400px){
+  .kpi-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 1. Back to catalog -->
+<div class="back-catalog">
+  <a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html">← Chapter Catalog</a>
+</div>
+
+<!-- 2. Language switch -->
+<div class="lang-switch">
+  <a class="lang-btn" href="复盘对过去的事情做思维演练-ch006-info-zh.html" target="_blank">中文 / English</a>
+</div>
+
+<!-- 3. Title H1 -->
+<h1>Retrospective · Chapter 6: The Content of Retrospectives</h1>
+
+<!-- 4. Subtitle -->
+<p class="subtitle">What should you discuss in a retrospective? Three core questions: What is the current situation, how did we decide, and let us re-examine our assumptions — from facts to logic to foundations, building a complete retrospective framework.</p>
+
+<!-- 5. Divider -->
+<div class="divider"></div>
+
+<!-- 6. Chapter overview -->
+<div class="chapter-overview">
+  <p>This chapter opens with a failed sales retrospective at Company H. It reveals why most organizational retrospectives become hollow rituals — <strong>they do not focus on the core content of the retrospective</strong>. The author proposes three progressive layers: <strong>①Facts</strong> (What is the current situation — pure information, no opinions), <strong>②Decision logic</strong> (How did we decide — decision form → rationale → execution), <strong>③Foundations</strong> (Re-examine assumptions — motivation integrity and understanding of the essence). These three questions form a pyramid-style framework, supported by practical checklist tools.</p>
+</div>
+
+<!-- 7. KPI cards -->
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Core Retrospective Questions</div>
+    <div class="kpi-note">Situation → Decision → Assumptions<br>Three-layer progressive framework</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">≠</div>
+    <div class="kpi-label">Facts vs. Opinions</div>
+    <div class="kpi-note">Facts need no debate<br>Opinions vary by person</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">✓</div>
+    <div class="kpi-label">Checklist Tool</div>
+    <div class="kpi-note">Avoid missing key points<br>Track progress and time</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">基石</div>
+    <div class="kpi-label">Deepest Layer</div>
+    <div class="kpi-note">Doing the right thing matters more<br>than doing things right</div>
+  </div>
+</div>
+
+<!-- 8. Content sections ×5 -->
+<!-- Section 01: What is the current situation — pure facts -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <span class="tag tag-01">FACTS</span>
+    <h2 class="section-title t-01">What Is the Current Situation — Pure Facts, Zero Opinions</h2>
+    <p class="section-desc"><strong>The first question demands pure facts. Provide information only, with no opinions mixed in.</strong> Progress, completion status, participants, and obstacles — all answered as information, not decorated judgments. If you missed the target, say so directly. Do not twist logic by claiming partial success from another angle. Facts form the foundation for all subsequent discussion. A weak foundation wastes everything.</p>
+
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">📊</div>
+        <div class="dual-text">
+          <h4>✅ Fact</h4>
+          <p>Sales reached 500,000 yuan; I left the office at 7 PM; this is an apple.</p>
+          <p style="color:#dc2626;font-weight:bold;margin-top:4px;">No debate needed — just dig deeper</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">💬</div>
+        <div class="dual-text">
+          <h4>❌ Opinion</h4>
+          <p>"We only hit 500K, but we built the team"; "I work very hard"; "This apple tastes great."</p>
+          <p style="color:#166534;font-weight:bold;margin-top:4px;">Standards differ — easy to spark debate</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-row" style="margin-top:14px;">
+      <div class="flow-step">Review original goals</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Present current results</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Compare goals vs. results</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Determine current position</div>
+    </div>
+
+    <div class="case-quote">
+      <strong>⚡ Key Principle:</strong> When debate arises at the "current situation" stage, you are stating opinions, not facts. Withdraw from the debate immediately and return to pure information. Facts do not cause arguments — I left at 7 PM, and the attendance record proves it.
+    </div>
+  </div>
+</div>
+
+<!-- Section 02: How did we decide — decision form and mindset -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <span class="tag tag-02">DECISION FORM</span>
+    <h2 class="section-title t-02">How Did We Decide — Examining the Form and Mindset Behind the Decision</h2>
+    <p class="section-desc"><strong>"How was this decided" is the button for self-growth. It points to the decision form and the individual's mindset within it.</strong> Retrospectives do more than find causes. They explore different possibilities and the boundaries of success and failure through reasoning. This leads to personal growth. Once you grow your own abilities, finding causes and methods becomes natural — this is where retrospectives surpass ordinary reviews.</p>
+
+    <div class="icon-grid">
+      <div class="icon-card">
+        <div class="ic">🔍</div>
+        <strong>Self-driven vs. Imposed</strong>
+        Did you think it through yourself<br>or receive a top-down mandate?
+      </div>
+      <div class="icon-card">
+        <div class="ic">👥</div>
+        <strong>One voice vs. Discussion</strong>
+        Did you hold a thorough discussion?<br>Did others speak freely?
+      </div>
+      <div class="icon-card">
+        <div class="ic">👂</div>
+        <strong>Listen vs. Rebut</strong>
+        Did you absorb valuable input<br>or rebut minor inaccuracies?
+      </div>
+      <div class="icon-card">
+        <div class="ic">🎯</div>
+        <strong>Execute vs. Prove</strong>
+        Was the goal to do it well<br>or to prove you were right?
+      </div>
+    </div>
+
+    <div class="case-quote" style="margin-top:14px;">
+      <strong>💡 Deeper Value:</strong> By reviewing these aspects, you can recognize your own character and dig into your inner self. After repeated reviews, your character improves and your mind opens. You unite more people and achieve greater things. In the opening case, this dimension was completely absent.
+    </div>
+  </div>
+</div>
+
+<!-- Section 03: How did we decide — the rationale behind it -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <span class="tag tag-03">DECISION RATIONALE</span>
+    <h2 class="section-title t-03">How Did We Decide — Scrutinizing the Evidence and Logic</h2>
+    <p class="section-desc"><strong>"What was this decision based on" points to the logic and evidence chain behind the decision.</strong> What evidence supported the decision at the time? Does it still hold? Is the evidence itself sound? By reviewing the evidence, you decide whether to persist or pivot — if the evidence still stands, wait for results to come; if the evidence has changed, adjust your goals and methods.</p>
+
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">Evidence Holds</div>
+        <div class="data-sm">Logic still valid<br>→ <strong>Stay the course</strong><br>Let time deliver results</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">Evidence Changed</div>
+        <div class="data-sm">New evidence appears<br>Old evidence flawed<br>→ <strong>Adjust goals and methods</strong></div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">Dig Deeper</div>
+        <div class="data-sm">Why go nationwide?<br>Why a 10M target?<br>→ <strong>Question the root purpose</strong></div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <div class="alert-title">⚠️ Classic Case: TCL Acquires Thomson</div>
+      The evidence supporting the acquisition — Thomson's European network and TV technology advantage — did not exist. New obstacles also emerged (difficult layoffs, different working methods). After years of losses, TCL liquidated the European subsidiary. Evidence review is the basic audit before any action.
+    </div>
+  </div>
+</div>
+
+<!-- Section 04: How did we decide — how was execution -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <span class="tag tag-04">EXECUTION</span>
+    <h2 class="section-title t-04">How Did We Decide — Reviewing Execution: Go Beyond the Surface</h2>
+    <p class="section-desc"><strong>Execution review must not stop at "what we did" or "where we fell short." Use the original execution plan as the reference frame.</strong> Late shipments, poor communication, weak promotion — these are the easiest things to notice. But real execution review asks: What were the original execution rules? Did we follow the plan strictly? What surprises and new situations appeared?</p>
+
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">⚡</div>
+        <div class="dual-text">
+          <h4>Common Mistake: Surface Attribution</h4>
+          <p>"Too few products," "not enough promotion," "late delivery" — these name the problem but do not trace the cause or the rules. Issues get raised again and again, yet nothing changes.</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>Right Approach: Check Against the Rules</h4>
+          <p>If the rule said "submit shipping list one week early" → ask when the list was submitted → was it late submission or late warehouse action → should the process change?</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:14px;font-size:14px;color:#4f46e5;line-height:1.8;background:#eef2ff;border-radius:8px;padding:12px 16px;"><strong>With execution rules in place, the retrospective goes beyond finding causes and problems. It can explore solutions and implementation.</strong> This is the true goal — upgrading from "knowing what is wrong" to "knowing how to fix it and who owns it."</p>
+  </div>
+</div>
+
+<!-- Section 05: Re-examine our assumptions — the foundation -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <span class="tag tag-05">ASSUMPTIONS</span>
+    <h2 class="section-title t-05">Re-examine Our Assumptions — The Foundation of Retrospective</h2>
+    <p class="section-desc"><strong>If the foundation is wrong, no matter how brilliant the logic or how perfect the execution, you may still reach the wrong result.</strong> Assumptions include two aspects: <strong>①Motivation review</strong> — pursue "public good" (act for everyone) and more importantly "righteousness" (align with the true nature of the matter); <strong>②Essence understanding</strong> — your grasp of the essence shapes your strategy. "Doing the right thing" matters more than "doing things right."</p>
+
+    <div class="icon-grid">
+      <div class="icon-card">
+        <div class="ic">⚖️</div>
+        <strong>Public Good</strong>
+        Act from a selfless heart<br>Consider everyone's interest<br>not just your own
+      </div>
+      <div class="icon-card">
+        <div class="ic">🧭</div>
+        <strong>Righteousness</strong>
+        Align with the true nature<br>Build a company to serve customers<br>not to become "world No.1"
+      </div>
+      <div class="icon-card">
+        <div class="ic">🔬</div>
+        <strong>Essence Understanding</strong>
+        How does McDonald's really profit?<br>Why did iPod succeed?<br>Redefine the essence of things
+      </div>
+      <div class="icon-card">
+        <div class="ic">🚫</div>
+        <strong>Cost of Impure Motives</strong>
+        TCL acquisition losses<br>Internet firms' phone failures<br>"Wrong intentions lead to wrong paths"
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <div class="alert-title">⚠️ Classic Case: Internet Companies Making Phones</div>
+      In 2012, NetEase dissolved its phone division, Shanda's hardware lead resigned, and the 360 phone drew a lukewarm response. Kai-Fu Lee commented: <strong>"They pursued embedding their own services, not serving user needs."</strong> From the start, the intentions were wrong, and the path naturally went astray. In everything you do, motives must be pure and understanding must be sound.
+    </div>
+  </div>
+</div>
+
+<!-- 9. Takeaway card -->
+<div class="takeaway">
+  <div class="takeaway-label">▎KEY TAKEAWAY</div>
+  <p class="takeaway-text">The three questions of retrospective content form a complete pyramid framework: <strong>Facts are the foundation</strong> (What is the current situation → pure information), <strong>Logic is the body</strong> (How did we decide → decision form / rationale / execution), <strong>Assumptions are the root</strong> (Re-examine thinking → motivation integrity and essence understanding). All three are essential, and their order cannot be reversed. Combined with checklist tools, any retrospective becomes systematic and actionable — upgrading from "knowing what is wrong" to "knowing how to fix it."<br><br><strong>The core value of retrospectives beyond ordinary reviews: explore different possibilities through reasoning and achieve personal growth. Once you grow your own abilities, finding causes and methods becomes natural.</strong></p>
+</div>
+
+<!-- 10. Footer -->
+<div class="footer">
+  By Chen Zhong · China Machine Press · For study reference only
+</div>
+
+</div>
+</body>
+</html>

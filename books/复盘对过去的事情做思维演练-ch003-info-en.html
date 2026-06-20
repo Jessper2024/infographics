@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FuPan: Mental Rehearsal of the Past · Chapter 3 "Three Types of FuPan"</title>
+<style>
+@font-face {
+  font-family: 'FZXPYZS';
+  src: url('../方正屏显雅宋简体.TTF') format('truetype');
+  font-weight: normal; font-style: normal;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #f5f1eb;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+  display: flex; justify-content: center; align-items: flex-start;
+  min-height: 100vh; padding: 40px 20px 60px;
+}
+.container { max-width: 880px; width: 100%; }
+
+.back-catalog { text-align: right; margin-bottom: 4px; }
+.back-catalog-btn {
+  display: inline-block; padding: 5px 14px; border-radius: 8px;
+  font-size: 12px; text-decoration: none; letter-spacing: .02em;
+  background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+  transition: opacity .15s;
+}
+.back-catalog-btn:hover { opacity: .75; }
+
+.lang-switch { text-align: right; margin-bottom: 16px; }
+.lang-btn {
+  display: inline-block; padding: 6px 16px; border-radius: 8px;
+  font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+  transition: opacity 0.15s;
+}
+.lang-btn:hover { opacity: 0.75; }
+
+h1 {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 36px; color: #1a1a1a; text-align: center;
+  line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+  letter-spacing: 1.5px;
+}
+.subtitle {
+  text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+  max-width: 640px; margin-left: auto; margin-right: auto;
+}
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, #dc2626, #ea580c);
+  margin: 0 auto 28px; border-radius: 2px;
+}
+
+.chapter-overview {
+  background: #f8f6f3; border-left: 3px solid #4f46e5;
+  border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+  font-size: 14px; color: #555; line-height: 1.8;
+  font-family: 'FZXPYZS', 'PingFang SC', serif;
+}
+.chapter-overview p { margin: 0; }
+
+.kpi-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin: 24px 0;
+}
+.kpi-card {
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 24px 20px 18px; text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex; flex-direction: column; align-items: center;
+}
+.kpi-value {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 42px; font-weight: bold; color: #1a1a1a;
+  line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+}
+.kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+.kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+.kpi-note {
+  font-size: 11px; color: #bbb; line-height: 1.6;
+  border-top: 1px solid #f0ebe0; padding-top: 10px;
+  width: 100%; text-align: center;
+}
+.kpi-card.c01 { border-left: 3px solid #dc2626; }
+.kpi-card.c01 .kpi-value { color: #dc2626; }
+.kpi-card.c02 { border-left: 3px solid #ea580c; }
+.kpi-card.c02 .kpi-value { color: #ea580c; }
+.kpi-card.c03 { border-left: 3px solid #ca8a04; }
+.kpi-card.c03 .kpi-value { color: #ca8a04; }
+.kpi-card.c04 { border-left: 3px solid #4f46e5; }
+.kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+.section {
+  background: #ffffff; border-radius: 14px;
+  margin-bottom: 18px; padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex; gap: 20px; align-items: flex-start;
+  border-left: 4px solid transparent;
+}
+.section-01 { border-left-color: #dc2626; }
+.section-02 { border-left-color: #ea580c; }
+.section-03 { border-left-color: #ca8a04; }
+.section-04 { border-left-color: #4f46e5; }
+.section-05 { border-left-color: #db2777; }
+
+.section-num {
+  flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: bold; margin-top: 2px;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.num-01 { background: #fef2f2; color: #dc2626; }
+.num-02 { background: #fff7ed; color: #ea580c; }
+.num-03 { background: #fefce8; color: #ca8a04; }
+.num-04 { background: #eef2ff; color: #4f46e5; }
+.num-05 { background: #fdf2f8; color: #db2777; }
+
+.section-body { flex: 1; }
+.tag {
+  display: inline-block; font-size: 11px; font-weight: bold;
+  padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+  letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.tag-01 { background: #fef2f2; color: #dc2626; }
+.tag-02 { background: #fff7ed; color: #ea580c; }
+.tag-03 { background: #fefce8; color: #ca8a04; }
+.tag-04 { background: #eef2ff; color: #4f46e5; }
+.tag-05 { background: #fdf2f8; color: #db2777; }
+
+.section-title {
+  font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+.t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+.t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+.t-05 { color: #db2777; }
+
+.section-desc {
+  font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+}
+
+.flow-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-top: 6px;
+}
+.flow-step {
+  background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+  padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+  font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+}
+.flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+.flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+.dual-card {
+  border-radius: 12px; padding: 18px 20px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+.dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+.dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+.dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+.data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+.data-card {
+  border-radius: 12px; padding: 18px 14px; text-align: center;
+  border: 1px solid;
+}
+.data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+.data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+.data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+.data-big {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 28px; font-weight: 700; margin-bottom: 6px;
+}
+.data-big.r { color: #dc2626; }
+.data-big.o { color: #ea580c; }
+.data-big.g { color: #ca8a04; }
+.data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+.case-quote {
+  background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+  padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+  font-style: italic;
+}
+
+.icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+.icon-card {
+  background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+  font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+}
+.icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+.icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+.alert-box {
+  background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+  padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.7;
+}
+.alert-box .alert-title { font-weight: bold; margin-bottom: 4px; color: #dc2626; }
+
+.takeaway {
+  background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+  padding: 24px 32px; margin-bottom: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  border-left: 4px solid #dc2626;
+}
+.takeaway-label {
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+  font-weight: bold;
+}
+.takeaway-text {
+  font-size: 16px; color: #1a1a1a; line-height: 1.9;
+  font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+}
+
+.footer {
+  text-align: center; margin-top: 32px; padding-top: 20px;
+  border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+  .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+  .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+  .section-05 { border-top-color: #db2777; }
+  .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+  .container { padding: 0 8px; }
+  h1 { font-size: 36px; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .kpi-value { font-size: 34px; }
+}
+@media (max-width: 400px) {
+  .kpi-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Back to catalog -->
+  <div class="back-catalog">
+    <a href="复盘对过去的事情做思维演练-catalog.html" class="back-catalog-btn" target="_blank">← Back to Catalog</a>
+  </div>
+
+  <!-- Language switch -->
+  <div class="lang-switch">
+    <a href="复盘对过去的事情做思维演练-ch003-info-zh.html" class="lang-btn" target="_blank">中文版</a>
+  </div>
+
+  <!-- Title -->
+  <h1>FuPan: Mental Rehearsal of the Past · Chapter 3 "Three Types of FuPan"</h1>
+  <div class="subtitle">Self-Review · Team Review · Reviewing Others — Three Paths, One Goal: Growth</div>
+  <div class="divider"></div>
+
+  <!-- SCQA -->
+  <div class="chapter-overview">
+    <p><strong>S Situation:</strong> FuPan (after-action review) is a core methodology for continuous growth, yet most people only review their own actions.<br>
+    <strong>C Complication:</strong> Reviewing solely from a personal perspective risks self-deception and superficiality, making it hard to uncover deep patterns.<br>
+    <strong>Q Question:</strong> How can we systematically leverage different types of FuPan to maximize learning outcomes?<br>
+    <strong>A Answer:</strong> Master the three types — <strong>Self-Review, Team Review, and Reviewing Others</strong> — each with unique strengths, to build a complete review system.</p>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-row">
+    <div class="kpi-card c01">
+      <div class="kpi-value">3</div>
+      <div class="kpi-label">Types of FuPan</div>
+      <div class="kpi-note">Self · Team · Others</div>
+    </div>
+    <div class="kpi-card c02">
+      <div class="kpi-value">8<span class="kpi-unit">-step</span></div>
+      <div class="kpi-label">Team Review Process</div>
+      <div class="kpi-note">From goal review to archiving</div>
+    </div>
+    <div class="kpi-card c03">
+      <div class="kpi-value">3</div>
+      <div class="kpi-label">Team Roles</div>
+      <div class="kpi-note">Facilitator · Questioner · Narrator</div>
+    </div>
+    <div class="kpi-card c04">
+      <div class="kpi-value">5</div>
+      <div class="kpi-label">Lenovo's "5 Pursuits"</div>
+      <div class="kpi-note">Truth · Substance · Learning · Introspection · Principles</div>
+    </div>
+  </div>
+
+  <!-- Section 1: Overview of Three Types -->
+  <div class="section section-01">
+    <div class="section-num num-01">01</div>
+    <div class="section-body">
+      <div class="tag tag-01">MECE FRAMEWORK</div>
+      <div class="section-title t-01">Overview of the Three Types</div>
+      <div class="section-desc">
+        Based on who participates, FuPan divides into <strong>Self-Review</strong> and <strong>Team Review</strong>. Additionally, we can review what others have done — <strong>Reviewing Others</strong>. These three types are mutually exclusive and collectively exhaustive, forming a complete FuPan system.
+      </div>
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">Self-Review</div>
+          <div class="data-sm">Anytime, anywhere<br>Convenient tool for personal growth<br>Thought follows mind freely</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">Team Review</div>
+          <div class="data-sm">Multi-person collaboration<br>Facilitator and members grow together<br>Seeking truth and knowledge</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">Review Others</div>
+          <div class="data-sm">Learning from others' stones<br>Zero-cost growth opportunity<br>Includes benchmarking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Self-Review -->
+  <div class="section section-02">
+    <div class="section-num num-02">02</div>
+    <div class="section-body">
+      <div class="tag tag-02">CORE STRENGTH</div>
+      <div class="section-title t-02">Self-Review: Free-Flowing, Anytime</div>
+      <div class="section-desc">
+        Self-Review is the simplest and most actionable form of FuPan, unconstrained by time, space, or progress. <strong>A flash of thought, a recollection, a reflection, a comparison, a conclusion — all can be a review.</strong> With expert guidance, it can transcend your own level and yield unexpected gains.
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">Flash</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Recall</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Reflect</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Compare</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step end">Conclude</div>
+      </div>
+      <div class="dual-grid" style="margin-top: 14px;">
+        <div class="dual-card a">
+          <div class="dual-icon">⚠️</div>
+          <div class="dual-text">
+            <h4>Common Pitfall: No Records</h4>
+            <p>Fleeting insights vanish without a trace. Without writing it down, the same mistakes repeat. Document conclusions and thought processes immediately.</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">✅</div>
+          <div class="dual-text">
+            <h4>Key Requirement: Real Application</h4>
+            <p>Without application, patterns remain mere knowledge, not value. Lenovo advocates "live and breathe with FuPan."</p>
+          </div>
+        </div>
+      </div>
+      <div class="alert-box" style="margin-top: 14px;">
+        <div class="alert-title">⚠️ The Biggest Trap: Self-Deception</div>
+        Authentic self-review must be "selfless." Kodak knew the digital era had arrived but clung to film profits, delaying transformation until bankruptcy. Emptying yourself is the only way to find the true root cause.
+      </div>
+      <div class="case-quote">
+        "Through FuPan, summarize lessons — especially failures. Be thorough, spare no feelings, think it through clearly." — Liu Chuanzhi, Lenovo
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Team Review -->
+  <div class="section section-03">
+    <div class="section-num num-03">03</div>
+    <div class="section-body">
+      <div class="tag tag-03">COLLABORATIVE DEEP-DIVE</div>
+      <div class="section-title t-03">Team Review: Collective Inquiry, Truth-Seeking</div>
+      <div class="section-desc">
+        Team Review is a discussion forum, not a lecture. Participants must contribute their wisdom to arrive at conclusions close to truth. It should occur at <strong>project milestones, key junctures, or when major questions arise</strong> — not at random.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">🤐</div>
+          <div class="dual-text">
+            <h4>Extreme 1: Collective Silence</h4>
+            <p>No one meets the facilitator's gaze. Cultural norms like "the nail that sticks out gets hammered" turn discussions into monologues.</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">🔥</div>
+          <div class="dual-text">
+            <h4>Extreme 2: Blame Game</h4>
+            <p>When assigning responsibility, everyone interrupts to defend themselves. Right vs. wrong becomes a character trial; factions shield allies.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flow-row" style="margin-top: 14px;">
+        <div class="flow-step">Review Goals</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Compare Results</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Narrate Process</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Self-Analysis</div>
+      </div>
+      <div class="flow-row" style="margin-top: 6px;">
+        <div class="flow-step">Group Inquiry</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Summarize Patterns</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Case Evidence</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step end">Archive</div>
+      </div>
+      <div class="icon-grid" style="margin-top: 14px;">
+        <div class="icon-card">
+          <div class="ic">🧭</div>
+          <strong>Facilitator</strong>Keeps review on track
+        </div>
+        <div class="icon-card">
+          <div class="ic">❓</div>
+          <strong>Questioner</strong>Guides deep thinking
+        </div>
+        <div class="icon-card">
+          <div class="ic">📖</div>
+          <strong>Narrator</strong>Reconstructs events
+        </div>
+        <div class="icon-card">
+          <div class="ic">🛡️</div>
+          <strong>Safe Space</strong>Focus on facts, not people
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Reviewing Others -->
+  <div class="section section-04">
+    <div class="section-num num-04">04</div>
+    <div class="section-body">
+      <div class="tag tag-04">LEARNING FROM OTHERS</div>
+      <div class="section-title t-04">Reviewing Others: Sharpen Your Blade with Their Stone</div>
+      <div class="section-desc">
+        Reviewing Others is the most cost-effective growth method — others spend their resources "rehearsing" in front of you, and you gain experience at zero cost. It comes in two forms: <strong>pure review</strong> and <strong>comparative review</strong>. Benchmarking is the most powerful variant.
+      </div>
+      <div class="data-row">
+        <div class="data-card dc1">
+          <div class="data-big r">Follow</div>
+          <div class="data-sm">Default for the weaker<br>Direct imitation of rivals<br>e.g., Heqizheng copying Wanglaoji</div>
+        </div>
+        <div class="data-card dc2">
+          <div class="data-big o">Borrow</div>
+          <div class="data-sm">For branded companies<br>Extract different concepts<br>e.g., Qunhao's "Urban Hunting Wear"</div>
+        </div>
+        <div class="data-card dc3">
+          <div class="data-big g">Initiative</div>
+          <div class="data-sm">For resource-rich players<br>Master patterns, seize control<br>e.g., Lenovo, Galanz</div>
+        </div>
+      </div>
+      <div class="case-quote" style="margin-top: 14px;">
+        Through comparative review, Lenovo discovered Moore's Law market dynamics, slashed prices in one step, launched sub-¥10,000 PCs, and became China's #1 PC brand — fundamentally reshaping the market.
+      </div>
+      <div class="alert-box" style="margin-top: 10px;">
+        <div class="alert-title">⚠️ Natural Limitation: Insufficient Information</div>
+        Reviewing Others cannot use the "scenario replay" method. Instead, apply the <strong>critical point method</strong> — identify key moments, gather data, reconstruct logic, and cross-verify to reduce error risk.
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Five Pitfalls & Five Pursuits -->
+  <div class="section section-05">
+    <div class="section-num num-05">05</div>
+    <div class="section-body">
+      <div class="tag tag-05">BEST PRACTICES</div>
+      <div class="section-title t-05">Five Pitfalls → Five Pursuits</div>
+      <div class="section-desc">
+        Regardless of FuPan type, avoiding pitfalls and building culture are essential. Lenovo's <strong>5 pitfalls</strong> and <strong>"5 Pursuits"</strong> are the critical safeguards for successful reviews.
+      </div>
+      <div class="dual-grid">
+        <div class="dual-card a">
+          <div class="dual-icon">🚫</div>
+          <div class="dual-text">
+            <h4>Five Pitfalls</h4>
+            <p>① Self-deception, lacking ruthless self-analysis<br>② Going through the motions<br>③ Turning review into a blame session<br>④ Emphasizing external factors, deflecting responsibility<br>⑤ Rushing to conclusions</p>
+          </div>
+        </div>
+        <div class="dual-card b">
+          <div class="dual-icon">✨</div>
+          <div class="dual-text">
+            <h4>Five Pursuits</h4>
+            <p>Truth: Seeking facts from reality<br>Substance: Focus on content and root causes<br>Learning: Emphasize improvement<br>Introspection: Self-reflection and analysis<br>Principles: Grasp essence and patterns</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">BLUF · KEY TAKEAWAY</div>
+    <div class="takeaway-text">
+      FuPan has <strong>three types: Self-Review, Team Review, and Reviewing Others</strong>, each suited to different scenarios and complementary to one another. Self-Review demands <strong>honest recording and application</strong>. Team Review requires <strong>a healthy culture and clear role division</strong>. Reviewing Others means <strong>grasping underlying patterns, not surface imitation</strong>. Only by combining all three can you build a complete FuPan system that transforms experience into genuine capability.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Chen Zhong · China Machine Press · For Study Reference Only
+  </div>
+
+</div>
+</body>
+</html>

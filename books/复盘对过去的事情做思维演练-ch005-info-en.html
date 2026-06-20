@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fupan · Chapter 5「Two Methods of Fupan」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px;
+    width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+  }
+  .icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+  .icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.7;
+  }
+  .alert-box .alert-title { font-weight: bold; margin-bottom: 4px; color: #dc2626; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 36px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Back to catalog -->
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html" target="_blank">← Back to Chapter Index</a></div>
+
+<!-- Language switch -->
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch005-info-zh.html">中文 / English</a>
+</div>
+
+<!-- Title -->
+<h1>Fupan · Chapter 5「Two Methods of Fupan」</h1>
+<p class="subtitle">
+  <span style="display:block; margin-bottom:6px; font-weight:bold; color:#dc2626; font-size:12px; letter-spacing:1px;">
+    SCQA · Situation &rarr; Complication &rarr; Question &rarr; Answer
+  </span>
+  Fupan has two methods: Scenario Reconstruction restores events like a movie replay for objectivity; the Key Point Method cuts through the ocean of information to seize the main contradiction.
+  But when photographic memory is unavailable, when reviewing others, or when time spans are too long, scenario reconstruction becomes impossible.
+  How to choose the right method for each context? The answer lies in flexibly combining the Three Fields with the three Key Point sub-methods.
+</p>
+<div class="divider"></div>
+
+<!-- Chapter overview -->
+<div class="chapter-overview">
+  <p><strong style="color:#dc2626;">The two methods of fupan—Scenario Reconstruction and Key Point Method—are not opposing options but complementary tools in the reviewer's toolbox.</strong> Beginners should start with Scenario Reconstruction to build full awareness of the Information Field, Thinking Field, and Emotion Field. Once proficient, the Key Point Method becomes primary and Scenario Reconstruction becomes supplementary. The switch depends on whether you can obtain complete information, whether participants share the context, and the time span vs. information density—always choose the one with the highest information validity.</p>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-value">2</div>
+    <div class="kpi-label">Methods</div>
+    <div class="kpi-note">Scenario Reconstruction<br>+ Key Point Method<br>Beginner → Pro, roles swap</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3</div>
+    <div class="kpi-label">Fields of Context</div>
+    <div class="kpi-note">Information · Thinking · Emotion<br>Spatial "field" + Temporal "flow"</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3</div>
+    <div class="kpi-label">KPM Sub-methods</div>
+    <div class="kpi-note">Forward · Reverse · Questioning<br>Time / Content / Doubt-driven</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">8</div>
+    <div class="kpi-label">Resolution Sections</div>
+    <div class="kpi-note">Pre-1949 → Cultural Revolution<br>→ Historical Turning Point<br>Classic forward KPM example</div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 01: Scenario Reconstruction — Three Fields & Direct Narrative ===== -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Core Method</div>
+    <div class="section-title t-01">Scenario Reconstruction: Restore the Three Fields — Complete Fupan Goes Beyond "What I Did"</div>
+    <div class="section-desc">
+      Context is not merely "background" or "environment" — it is the interweaving of the Information Field (what exists),
+      Thinking Field (what it means), and Emotion Field (why it happened) across both spatial and temporal dimensions.
+      Simply recounting "what I did" is only a work summary — without reconstructing the Three Fields,
+      fupan loses its foundation for understanding behavior and learning from it.
+    </div>
+    <div class="flow-row">
+      <div class="flow-step">Information<br>Field</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Thinking<br>Field</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Emotion<br>Field</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Direct<br>Narrative</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Complete<br>Fupan</div>
+    </div>
+
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">Be Real</div>
+        <div class="data-sm">Present events fully<br>Corresponds to Info Field<br>Real · Complete · Whole</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">Detach</div>
+        <div class="data-sm">View from outside yourself<br>Corresponds to Thinking Field<br>Reveal your inner thoughts</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">Stay Humble</div>
+        <div class="data-sm">Empty yourself before review<br>Corresponds to Emotion Field<br>Bystander perspective</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 02: Key Point Method Overview ===== -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Key Framework</div>
+    <div class="section-title t-02">Key Point Method: Three Sub-methods to Escape the Information Deluge</div>
+    <div class="section-desc">
+      When you cannot or need not reconstruct the full scenario, the Key Point Method lets you seize the main contradiction from the start.
+      It rests on the mathematical concept of "complete coverage" — each process node is a subset; by reviewing each subset,
+      you achieve full coverage of the event. Three sub-methods each have a distinct focus:
+    </div>
+    <div class="icon-grid">
+      <div class="icon-card">
+        <div class="ic">⏩</div>
+        <strong>Forward KPM</strong>
+        Follow time or event content<br>Identify milestone nodes<br>Review segment by segment
+      </div>
+      <div class="icon-card">
+        <div class="ic">⏪</div>
+        <strong>Reverse KPM</strong>
+        Define critical success factors<br>Reverse-engineer success/failure<br>Reinforce weaknesses
+      </div>
+      <div class="icon-card">
+        <div class="ic">❓</div>
+        <strong>Questioning</strong>
+        Raise questions about doubts<br>Distribute evenly across process<br>Excavate logic, find root causes
+      </div>
+      <div class="icon-card">
+        <div class="ic">🧩</div>
+        <strong>Complete Coverage</strong>
+        Union of node subsets<br>Equals the full set, no overlap<br>Ensures nothing is missed
+      </div>
+    </div>
+    <div class="alert-box">
+      <div class="alert-title">⚠ Important Note</div>
+      Beginners must use the Key Point Method only as a supplement to Scenario Reconstruction. Relying on KPM too early, without the foundational training of full scenario review, risks missing key information hidden in details. The ability to perceive the Three Fields must be built through Scenario Reconstruction practice first.
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 03: Forward KPM ===== -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Forward Practice</div>
+    <div class="section-title t-03">Forward KPM: Milestone-Driven Review Along Time and Content Nodes</div>
+    <div class="section-desc">
+      Forward KPM traces the flow of time or event evolution to identify key nodes (milestone moments or milestone events), then reconstructs and reflects around each node.
+      The "Resolution on Certain Questions in the History of the Party" is the definitive exemplar — facing 60 years of CPC history,
+      Deng Xiaoping proposed "keep it rough, keep it general," compressing six decades into clearly delimited time nodes while
+      avoiding narrative writing in favor of judgment-based language.
+    </div>
+    <div class="case-quote">
+      "Avoid narrative style; write more concisely. Important issues should be asserted with judgmental language — precise judgmental language."
+      <br>— Deng Xiaoping on drafting the Resolution
+    </div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">Pre-1949</div>
+        <div class="data-sm">New Democratic Revolution<br>28 years of history<br>"Keep it brief"</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">Post-1949</div>
+        <div class="data-sm">Socialist transformation in 7 yrs<br>Full-scale socialist construction 10 yrs<br>"Cultural Revolution" 10 yrs</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">Turning Point</div>
+        <div class="data-sm">After 3rd Plenary Session<br>Mao Zedong's historical role<br>Path to socialist modernization</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 04: Reverse KPM & Questioning Method ===== -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Applied Practice</div>
+    <div class="section-title t-04">Reverse KPM &amp; Questioning: Reverse-Engineer from Success Factors, Pursue from Doubt</div>
+    <div class="section-desc">
+      Reverse KPM first defines critical success factors, then reviews what was done well, what wasn't, and which factors ultimately determined the outcome — leading to remediation and reinforcement.
+      The Questioning Method uses "why" as the starting point, distributing questions evenly and excavating logic layer by layer — the shared methodology behind Lenovo's fupan of Dell and the book editor's comparison of two competing titles.
+    </div>
+
+    <!-- Reverse: Lenovo vs. Dell -->
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>Lenovo's Fupan of Dell's Rise</h4>
+          <p><strong>Key Insight:</strong> Direct vs. distribution sales was merely superficial — the real competition was process efficiency and customer-base mastery.<br>
+          <strong>Actions:</strong> ① Strategic contraction to specialization ② Inventory compression (15→7 days) ③ Flattened organization (7→18 sales regions) ④ Created telesales + large-account teams: dual-mode combat.</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text">
+          <h4>Book Editor's Fupan: Sales Gap</h4>
+          <p><strong>3 Critical Success Factors:</strong> Book quality (opening/contents/focus), promotional intensity (online ads + serialization), and distribution display (stacked vs. spine-out). After comparative fupan, average sales more than tripled.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Questioning Method — success factors -->
+    <div class="flow-row">
+      <div class="flow-step">Raise Question<br>Focus on results</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Compare Data<br>Collect evidence</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Excavate Logic<br>Find root causes</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Refined<br>Capability</div>
+    </div>
+
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">📖 Book Quality</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Use excerpt-style contents instead of bullet-style; opening must grip immediately rather than ramble; a single focused theme avoids fragmenting reader attention</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">📣 Promotion</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Routine serialization and book reviews aren't enough — invest in ads on Dangdang and similar platforms with dedicated landing pages</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">🚚 Distribution</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Channels are shared, but stacked display for key titles vs. spine-out placement determines the critical first-5-minute reader encounter</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 05: Complementary Choice ===== -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Method Selection</div>
+    <div class="section-title t-05">Scenario Reconstruction vs. Key Point Method: When to Use Which?</div>
+    <div class="section-desc">
+      These two methods are not either-or options but complementary tools. The selection criteria depend on whether you can obtain complete information, whether participants share context, and the event's time span and information density — always choose the method with the highest information validity. Beginners must build a foundation with Scenario Reconstruction; only once proficient should the Key Point Method become primary.
+    </div>
+
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🎬</div>
+        <div class="dual-text">
+          <h4>Use Scenario Reconstruction</h4>
+          <p>
+            ✅ Beginners new to fupan<br>
+            ✅ Photographic memory or audio/video records available<br>
+            ✅ Reviewing events you personally experienced<br>
+            ✅ Short events with moderate information<br>
+            ✅ Need to understand oneself and others emotionally<br>
+            Technique: Direct narrative, restore the Three Fields chronologically
+          </p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>Use Key Point Method</h4>
+          <p>
+            ✅ Advanced practitioners, experienced with fupan<br>
+            ✅ Reviewing others — incomplete information access<br>
+            ✅ Long event spans, excessive information<br>
+            ✅ Only need to find problems and propose fixes<br>
+            ✅ Info Field and Thinking Field already clear<br>
+            Technique: Flexible combination of Forward/Reverse/Questioning
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLUF Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">
+    <strong>The essence of fupan is not to summarize behaviors but to reconstruct the Three Fields (Information, Thinking, Emotion) and seize the key contradiction.</strong>
+    Beginners must build complete perception of the Three Fields through Scenario Reconstruction, using direct narrative to ensure information is real, complete, and whole.
+    Once proficient, use the Key Point Method (Forward, Reverse, Questioning) for efficient fupan, with Scenario Reconstruction as a supplement.
+    The selection criterion is simple — always choose the method with the highest information validity. Whichever method you use, the purpose of fupan is always about action, not emotion: learn from past experience, find the right approach, and uncover the underlying laws.
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  By Chen Zhong &middot; China Machine Press &middot; Chapter 5「Two Methods of Fupan」&middot; Infographic &middot; For Study Reference Only
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘对过去的事情做思维演练 · 第8章「如何评判复盘结论是否到位」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-big.i { color: #4f46e5; }
+  .data-big.p { color: #db2777; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .case-quote {
+    background: #f8f6f3; border-left: 3px solid #ca8a04; border-radius: 8px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .icon-card {
+    background: #f8f6f3; border-radius: 10px; padding: 14px 10px; text-align: center;
+    font-size: 13px; color: #555; line-height: 1.6; border: 1px solid #e8e0d5;
+  }
+  .icon-card .ic { font-size: 24px; margin-bottom: 4px; }
+  .icon-card strong { display: block; font-size: 12px; color: #1a1a1a; }
+
+  .alert-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; margin-top: 10px; font-size: 13px; color: #991b1b; line-height: 1.7;
+  }
+  .alert-box .alert-title { font-weight: bold; margin-bottom: 4px; color: #dc2626; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a;
+    line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note {
+    font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center;
+  }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; }
+  .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; }
+  .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; }
+  .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; }
+  .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 768px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .icon-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 36px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 1. 返回目录 -->
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘对过去的事情做思维演练-catalog.html" target="_blank">← 返回章节目录</a></div>
+
+<!-- 2. 语言切换 -->
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘对过去的事情做思维演练-ch008-info-en.html">中文 / English</a>
+</div>
+
+<!-- 3. 标题 -->
+<h1>复盘对过去的事情做思维演练<br>第8章「如何评判复盘结论是否到位」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  复盘结论是否真正可靠？本章提出四条评判准则——偶发性归因零可信度、指向事而非指向人、≥3次连续Why追问、交叉验证降低系统风险——在复盘当场筑起一道质量防线。
+</p>
+
+<!-- 4. 章节概览 -->
+<div class="chapter-overview">
+  <p>复盘得出的结论是否可靠，必须在复盘的<strong>当时</strong>作出判断。实践固然是检验真理的唯一标准，但一旦进入实践阶段，复盘工作已经结束。本章提出的四条内在评判原则，构筑了复盘当场校验结论质量的防线：从杜绝偶发性归因，到区分指向人与指向事，再到3次以上连续追问，最后以交叉验证收尾——最终仍需回归实践不断修正，获得真知。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- 5. KPI 指标卡（红橙金靛 4色） -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">0<span class="kpi-unit">容忍</span></div>
+    <div class="kpi-label">偶发性归因可信度</div>
+    <div class="kpi-note">结论落脚于钉子/痔疮 → 不可信</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">归因方向</div>
+    <div class="kpi-note">指向人 = 岔路 · 指向事 = 正道</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">≥3<span class="kpi-unit">次</span></div>
+    <div class="kpi-label">连续Why追问</div>
+    <div class="kpi-note">不足三次 = 未触及根本原因</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">4D<span class="kpi-unit">验证</span></div>
+    <div class="kpi-label">交叉验证维度</div>
+    <div class="kpi-note">多时间·多角度·多来源·多事件</div>
+  </div>
+</div>
+
+<!-- Block 01: 偶发性因素的陷阱（红） -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">红线原则</div>
+    <div class="section-title t-01">偶发性因素：零可信度的复盘归因</div>
+    <div class="section-desc"><strong>将复盘的结论归结在偶发性因素上，一定是错误的。</strong>复盘的目标是总结规律性认识，而非将失败归咎于不可复现的偶然事件。拿破仑的"痔疮论"与民谣中的"钉子论"，它们都是事实，却承载不了帝国灭亡的责任。复盘必须上升到流程与制度层面，让钉子回到马掌工艺管控、让痔疮引出指挥权交接预案，否则只会选出替罪羊。</div>
+    <div class="flow-row">
+      <div class="flow-step">偶发事件<br>钉子 / 痔疮</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step" style="background:#fef2f2;border-color:#fecaca;color:#991b1b;">表面归因<br>← 错误终点</div>
+      <div class="flow-arrow">✕</div>
+      <div class="flow-step">穿透表面<br>追问「为什么」</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">流程 / 制度<br>→ 复盘正确终点</div>
+    </div>
+    <div class="case-quote">
+      「丢失一个钉子，坏了一只蹄铁；坏了一只蹄铁，折了一匹战马……输了一场战斗，亡了一个帝国。」—— 如果复盘结论停在钉子，那就永远找不到流程的缺陷。
+    </div>
+  </div>
+</div>
+
+<!-- Block 02: 指向人还是指向事（橙） -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">归因判别</div>
+    <div class="section-title t-02">指向人 vs 指向事：复盘的方向岔路口</div>
+    <div class="section-desc"><strong>指向人的结论难以作为规律指导实践；指向事，才能复盘到真正的规律。</strong>将迟到归因于"司机水平慢"或"楼上邻居吵闹"，属于外部归因——将事情变得简化乃至走向阴谋论。在团队复盘中，指向人的结论会破坏复盘本身的运作，让参与者从寻找规律转向寻找借口。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">👤</div>
+        <div class="dual-text">
+          <h4>指向人 · 外部归因</h4>
+          <p>「司机水平低」「邻居太吵」——不可控、不可预测。<strong>×</strong> 导向借口与阴谋论，破坏团队复盘信任。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">⚙️</div>
+        <div class="dual-text">
+          <h4>指向事 · 系统归因</h4>
+          <p>「提前半小时出门」「多设几个闹钟」——可控、可复制。<strong>✓</strong> 找到事物本质规律，指导后续实践。</p>
+        </div>
+      </div>
+    </div>
+    <div class="alert-box">
+      <div class="alert-title">⚠ 团队复盘警戒</div>
+      如果结论仅仅指向人，复盘很容易被参与者视为"公司政治"或"寻找借口"，而非寻找解决问题的方法——这将目光从发现规律上转移，走上岔路。
+    </div>
+  </div>
+</div>
+
+<!-- Block 03: 三次以上连续Why追问（金） -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">追问法则</div>
+    <div class="section-title t-03">≥3 次连续 Why / Why Not 追问：穿透信息迷雾</div>
+    <div class="section-desc"><strong>不足三次的追问，很可能意味着复盘没有触及真正的原因。</strong>人的认知有局限，想要一次得出结论，除非是天才，否则只能交给上帝。探寻问题背后的问题（QBQ），找出答案之后的答案，连续追问才能穿透表面现象直接抓住本质。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">W1</div>
+        <div class="data-sm"><strong>第一层追问</strong><br>为什么会断货？→<br>库房没入库</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">W2</div>
+        <div class="data-sm"><strong>第二层追问</strong><br>为什么没入库？→<br>厂家没做完</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">W3</div>
+        <div class="data-sm"><strong>第三层追问</strong><br>为什么做不完？→<br>制造费用太低，<br>工厂只空闲时才做</div>
+      </div>
+    </div>
+    <div class="data-row" style="margin-top:14px;">
+      <div class="data-card" style="background:#eef2ff;border-color:#c7d2fe;">
+        <div class="data-big i">W4</div>
+        <div class="data-sm"><strong>第四层追问</strong><br>为什么费用低？→<br>无预算、无标准流程</div>
+      </div>
+      <div class="data-card" style="background:#fdf2f8;border-color:#f9a8d4;">
+        <div class="data-big p">W5</div>
+        <div class="data-sm"><strong>第五层追问</strong><br>后续怎么办？→<br>加货单制度<br>投标选厂 + 预算备料</div>
+      </div>
+      <div class="data-card" style="background:#f0fdf4;border-color:#bbf7d0;">
+        <div class="data-big" style="color:#16a34a;">★</div>
+        <div class="data-sm"><strong>追问目的</strong><br>穿越信息迷雾<br>剥离表面抓本质<br>找到问题背后的答案</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Block 04: 交叉验证的必要性（靛） -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">确认方法</div>
+    <div class="section-title t-04">交叉验证：用多源证据链为结论加固</div>
+    <div class="section-desc"><strong>孤证不能算数，必须是证据链才能够作为判案的证据。</strong>用其他事件交叉验证复盘结论，可以有效避免结论只适用于特殊情况。怀疑老公出轨的妻子，不会仅凭一个暧昧短信就下定论——她会查通话记录、回想晚归事件、留意态度变化……越多的疑点交织成证据链，结论才越可信。</div>
+    <div class="icon-grid">
+      <div class="icon-card">
+        <div class="ic">📅</div>
+        <strong>时间交叉</strong>
+        回溯历史同期<br>事件进行对比
+      </div>
+      <div class="icon-card">
+        <div class="ic">👁️</div>
+        <strong>角度交叉</strong>
+        从不同视角<br>审视同一问题
+      </div>
+      <div class="icon-card">
+        <div class="ic">📊</div>
+        <strong>来源交叉</strong>
+        多方数据与证词<br>互相印证
+      </div>
+      <div class="icon-card">
+        <div class="ic">🔗</div>
+        <strong>事件交叉</strong>
+        用其他独立事件<br>验证结论通用性
+      </div>
+    </div>
+    <div class="case-quote">
+      一个怀疑老板不再信任自己的员工，会在一个不对劲的谈话后回想过往细节——不同事件浮现脑海，渐渐确信判断。交叉验证能有效降低系统风险，保证结论更接近真实。
+    </div>
+  </div>
+</div>
+
+<!-- Block 05: 从验证到实践——结论闭环（粉） -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">闭环检验</div>
+    <div class="section-title t-05">四条评判准则 + 实践修正 = 真知获得</div>
+    <div class="section-desc"><strong>得出结论并不是复盘的目的，复盘是为了对今后的实践进行指导。</strong>以上四条标准让结论更加可靠，但并不能确保结论必然可靠。最终，我们必须在实践中应用、根据应用结果不断修正提高，才能真正获得"真知"——正如实践是检验真理的唯一标准。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">①</div>
+        <div class="data-sm"><strong>杜绝偶发归因</strong><br>否→结论无效<br>是→继续验证</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">②</div>
+        <div class="data-sm"><strong>指向事非人</strong><br>否→结论无效<br>是→继续验证</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">③</div>
+        <div class="data-sm"><strong>≥3次追问</strong><br>否→继续深挖<br>是→继续验证</div>
+      </div>
+    </div>
+    <div class="data-row" style="margin-top:14px;">
+      <div class="data-card" style="background:#eef2ff;border-color:#c7d2fe;">
+        <div class="data-big i">④</div>
+        <div class="data-sm"><strong>交叉验证通过</strong><br>否→重新审视<br>是→可信结论出炉</div>
+      </div>
+      <div class="data-card" style="background:#fdf2f8;border-color:#f9a8d4;">
+        <div class="data-big p">⑤</div>
+        <div class="data-sm"><strong>实践修正</strong><br>应用结论 → 观察结果<br>→ 不断修正 → 获得真知</div>
+      </div>
+      <div class="data-card" style="background:#f0fdf4;border-color:#bbf7d0;">
+        <div class="data-big" style="color:#16a34a;">✓</div>
+        <div class="data-sm"><strong>复盘闭环</strong><br>内在4条评判<br>+ 外在实践验证<br>= 可靠方法论</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. 核心结论 -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论 (BLUF)</div>
+  <div class="takeaway-text"><strong>复盘结论的可靠性必须在复盘当时评判——四条防线缺一不可：</strong>一，杜绝偶发性归因，结论必须上升到流程与制度层面；二，指向事而非指向人，避开外部归因的陷阱；三，至少三次以上连续追问，穿透表象触及根因；四，多源交叉验证形成证据链，降低系统风险。但四条标准只是「更加可靠」而非「确保可靠」——最终还需要在实践中不断应用、修正，方能获得真正的规律性认识。</div>
+</div>
+
+<!-- 10. 页脚 -->
+<div class="footer">
+  陈中 著 · 机械工业出版社 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>
