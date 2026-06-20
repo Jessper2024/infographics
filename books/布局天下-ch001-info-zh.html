@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>布局天下 · 第1章「棋盘型军事地理格局」</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+
+  .lang-switch { text-align: right; margin-bottom: 12px; }
+  .lang-switch a { font-size: 13px; color: #4f46e5; text-decoration: none; margin-left: 16px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .lang-switch a:hover { color: #dc2626; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog a { font-size: 12px; color: #888; text-decoration: none; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .back-catalog a:hover { color: #dc2626; }
+
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 32px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.2px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+
+  .chapter-overview { background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555; line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi { background: #fff; border-radius: 12px; padding: 14px 10px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-num { font-family: 'FZXPYZS', serif; font-size: 26px; font-weight: bold; margin-bottom: 2px; }
+  .kpi-label { font-size: 12px; color: #888; line-height: 1.4; }
+  .kpi-01 .kpi-num { color: #dc2626; } .kpi-01 { border-top: 3px solid #dc2626; }
+  .kpi-02 .kpi-num { color: #ea580c; } .kpi-02 { border-top: 3px solid #ea580c; }
+  .kpi-03 .kpi-num { color: #ca8a04; } .kpi-03 { border-top: 3px solid #ca8a04; }
+  .kpi-04 .kpi-num { color: #4f46e5; } .kpi-04 { border-top: 3px solid #4f46e5; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; }
+  .section-desc p { margin-bottom: 10px; }
+  .section-desc p:last-child { margin-bottom: 0; }
+
+  .takeaway { background: #ffffff; border: 2px solid #dc2626; border-radius: 14px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .takeaway h3 { font-family: 'FZXPYZS', serif; font-size: 16px; color: #dc2626; margin-bottom: 12px; }
+  .takeaway p { font-size: 14px; color: #555; line-height: 1.9; }
+  .footer { text-align: center; font-size: 12px; color: #aaa; padding: 16px 0; font-family: 'FZXPYZS', serif; }
+</style>
+</head>
+<body><div class="container">
+<div class="back-catalog"><a href="布局天下-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch"><a href="布局天下-ch001-info-en.html">EN</a><span style="margin-left:12px;font-size:13px;color:#aaa">中文</span></div>
+<h1>布局天下 · 第1章<br>「棋盘型军事地理格局」</h1>
+<div class="subtitle">围棋盘上的九大战略要地，决定着历代王朝的兴衰成败</div>
+<div class="divider"></div>
+<div class="chapter-overview"><p>饶胜文以围棋为喻，将中国古代军事地理格局概括为一种棋盘型格局：关中、河北、东南、四川为四角，山西、山东、湖北、汉中为四边，中原为中央腹地。这九大地域在中国地势第二、三级阶梯上，以其山川险阻与江河流通，构成了历代战争中起决定性作用的战略舞台。山脉阻隔而贵有孔道，江河流通而贵有据点——这一棋盘型结构深刻塑造了中国两千年的统一与分裂、兴盛与衰亡。</p></div>
+<div class="kpi-row"><div class="kpi kpi-01"><div class="kpi-num">9</div><div class="kpi-label">战略要地</div></div><div class="kpi kpi-02"><div class="kpi-num">4角</div><div class="kpi-label">山川险固</div></div><div class="kpi kpi-03"><div class="kpi-num">4边</div><div class="kpi-label">争夺焦点</div></div><div class="kpi kpi-04"><div class="kpi-num">1心</div><div class="kpi-label">中原腹地</div></div></div>
+<div class="section section-01">
+  <div class="section-num num-01">1</div>
+  <div class="section-body">
+    <div class="tag tag-01">围棋之喻</div>
+    <div class="section-title t-01">棋盘上的九大地域</div>
+    <div class="section-desc"><p>古人以围棋比拟兵法。在这张不规则的棋盘上，关中、河北、东南、四川分处四角；山西、山东、湖北、汉中居于四边；中原为中央腹地。九大地域各有山川险阻可凭，江河流通可资，在历代战争中起着决定性作用。</p></div>
+  </div>
+</div><div class="section section-02">
+  <div class="section-num num-02">2</div>
+  <div class="section-body">
+    <div class="tag tag-02">四角之势</div>
+    <div class="section-title t-02">四角：进可攻退可守的根基之地</div>
+    <div class="section-desc"><p>关中「山河四塞，百二秦关」，南有秦岭，西有陇山，东有函谷，北有萧关，四面险固。河北依山傍海，燕山太行翼蔽，南面中原。东南以长江淮河为双屏障，「守江必先守淮」。四川盆地崇山峻岭环抱，三峡剑门为其门户。四角皆可建立根据地，积蓄力量，为进取天下打下基础。</p></div>
+  </div>
+</div><div class="section section-03">
+  <div class="section-num num-03">3</div>
+  <div class="section-body">
+    <div class="tag tag-03">四边之枢</div>
+    <div class="section-title t-03">四边：夹在两角间的战略纽带</div>
+    <div class="section-desc"><p>山西俯瞰三面，在整个北方地区居枢纽性地位。山东处黄河与大运河交汇，为南北交通咽喉。湖北居长江中游，「以天下言之则重在襄阳」。汉中夹在关中与四川之间，南北利害胶着而东西伸展广阔。四边既是联系纽带，也是角与角之间扩张的必争之地。</p></div>
+  </div>
+</div><div class="section section-04">
+  <div class="section-num num-04">4</div>
+  <div class="section-body">
+    <div class="tag tag-04">中原之核</div>
+    <div class="section-title t-04">中原：逐鹿问鼎的终极竞技场</div>
+    <div class="section-desc"><p>中原四通八达，乃四方辐辏之地。天下统一则形势集中于中原，天下分裂则形势由中原散于四方。进取天下，中原为必争之地；安定天下，中原为控御中枢。然而天下纷乱之初，中原四面受敌，据四角易而据中原难。历代统一大业，皆起于四角而决战于中原。</p></div>
+  </div>
+</div><div class="section section-05">
+  <div class="section-num num-05">5</div>
+  <div class="section-body">
+    <div class="tag tag-05">历史轨迹</div>
+    <div class="section-title t-05">从四角到中原：统一的经典路径</div>
+    <div class="section-desc"><p>秦、西汉、隋、唐以关中为基础统一天下；东汉由河北进取；明朝以东南统一全国。其路径皆为：先据一角，积累力量，向两翼扩展，最后进取中原。四川虽为天府，但从未有政权完成统一大业——「盆地心态」使其安于偏霸。四边之地的山西，则以其俯瞰三面的地利，屡屡倾覆中原政权。</p></div>
+  </div>
+</div>
+<div class="takeaway"><h3>📌 本章要点</h3><p>中国古代军事地理格局如同一张围棋盘，九大地域各具战略角色。四角为「根据地」——进可攻退可守；四边为「枢纽带」——扩张必先争夺；中原为「决胜场」——统一天下的最终舞台。理解这一棋盘型格局，便掌握了理解中国历代兴亡的地理密码。</p></div>
+<div class="footer">布局天下 · 饶胜文 · 解放军出版社 2006 · 第1章</div>
+</div></body>
+</html>

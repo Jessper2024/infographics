@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>布局天下 · 第5章续「统一的轨迹：关中模式与河北模式」</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+
+  .lang-switch { text-align: right; margin-bottom: 12px; }
+  .lang-switch a { font-size: 13px; color: #4f46e5; text-decoration: none; margin-left: 16px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .lang-switch a:hover { color: #dc2626; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog a { font-size: 12px; color: #888; text-decoration: none; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .back-catalog a:hover { color: #dc2626; }
+
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 32px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.2px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+
+  .chapter-overview { background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555; line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi { background: #fff; border-radius: 12px; padding: 14px 10px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-num { font-family: 'FZXPYZS', serif; font-size: 26px; font-weight: bold; margin-bottom: 2px; }
+  .kpi-label { font-size: 12px; color: #888; line-height: 1.4; }
+  .kpi-01 .kpi-num { color: #dc2626; } .kpi-01 { border-top: 3px solid #dc2626; }
+  .kpi-02 .kpi-num { color: #ea580c; } .kpi-02 { border-top: 3px solid #ea580c; }
+  .kpi-03 .kpi-num { color: #ca8a04; } .kpi-03 { border-top: 3px solid #ca8a04; }
+  .kpi-04 .kpi-num { color: #4f46e5; } .kpi-04 { border-top: 3px solid #4f46e5; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; }
+  .section-desc p { margin-bottom: 10px; }
+  .section-desc p:last-child { margin-bottom: 0; }
+
+  .takeaway { background: #ffffff; border: 2px solid #dc2626; border-radius: 14px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .takeaway h3 { font-family: 'FZXPYZS', serif; font-size: 16px; color: #dc2626; margin-bottom: 12px; }
+  .takeaway p { font-size: 14px; color: #555; line-height: 1.9; }
+  .footer { text-align: center; font-size: 12px; color: #aaa; padding: 16px 0; font-family: 'FZXPYZS', serif; }
+</style>
+</head>
+<body><div class="container">
+<div class="back-catalog"><a href="布局天下-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch"><a href="布局天下-ch007-info-en.html">EN</a><span style="margin-left:12px;font-size:13px;color:#aaa">中文</span></div>
+<h1>布局天下 · 第5章续<br>「统一的轨迹：关中模式与河北模式」</h1>
+<div class="subtitle">从四角经四边汇于中原——中国历史上由分趋合的两种基本地理轨迹</div>
+<div class="divider"></div>
+<div class="chapter-overview"><p>由乱趋治、由分趋合的过程，在地理上呈现出清晰的轨迹：在普遍的动荡和混乱中往往先澄淀出局部的秩序，再经由这些局部的秩序而趋向全面秩序的建立和统一局面的形成。四角山川险固之地（关中、河北、东南、四川）最容易首先建立起稳固的根据地，积累力量后进取天下。本章提出两种统一的「地理模式」：关中模式——「阻三面而守，独以一面东制诸侯」，如巨鹰舒展两翼席卷中原；河北模式——以九边长城镇北、运河纵贯通南，形成「以东南之粮，养西北之兵」的格局。分裂类型不同，统一轨迹也随之而异：土崩型分裂经历三分→二分→统一的简化过程；瓦解型混乱则直接从四角之地沉淀出力量中心，由局部的秩序外扩以统合全局。</p></div>
+<div class="kpi-row"><div class="kpi kpi-01"><div class="kpi-num">关中模式</div><div class="kpi-label">阻三面·独东制</div></div><div class="kpi kpi-02"><div class="kpi-num">河北模式</div><div class="kpi-label">长城+运河纵横</div></div><div class="kpi kpi-03"><div class="kpi-num">三分→二分</div><div class="kpi-label">土崩型统一路径</div></div><div class="kpi kpi-04"><div class="kpi-num">四角崛起</div><div class="kpi-label">瓦解型统一路径</div></div></div>
+<div class="section section-01">
+  <div class="section-num num-01">1</div>
+  <div class="section-body">
+    <div class="tag tag-01">统一轨迹</div>
+    <div class="section-title t-01">由分趋合的普遍规律：澄淀局部秩序→统合全局</div>
+    <div class="section-desc"><p>从分裂到重建统一的过程，在地理上依稀呈现出这样的轨迹：在普遍的动荡和混乱中先澄淀出局部的秩序，再经由这些局部的秩序而趋向全面秩序的建立。中国历史上的三次长时期的分裂，最终都以二分型对抗的格局作为统一的前夕——秦汉前夕的东西对峙、隋唐前夕的南北对峙、元明清前夕的南北对峙。而在二分对抗中，地理优势在西方（对东方）和北方（对南方）。无论是秦统六国还是历代北统南，都印证了这一点。北方兼并南方的统一战争中，均从上游（巴蜀、荆襄）打开局面：西晋王濬下益州、杜预下荆襄；隋朝杨素下益州、杨俊下汉水；蒙古攻克襄阳而取上游之势。</p></div>
+  </div>
+</div><div class="section section-02">
+  <div class="section-num num-02">2</div>
+  <div class="section-body">
+    <div class="tag tag-02">关中模式</div>
+    <div class="section-title t-02">关中模式：巨鹰舒展两翼，席卷中原</div>
+    <div class="section-desc"><p>以关中为基础完成的统一有其独特特点，饶胜文称之为「关中模式」。张良概括其格局为：「阻三面而守，独以一面东制诸侯；诸侯安定，河、漕挽天下，西给京师；诸侯有变，顺流而下，足以委输。」在这一格局中有两条关键轴线：一条是中国地势第二级阶梯东部边缘的山地险阻——北起燕山，循太行、经嵩山、方城山、接桐柏山至大别山，作为「东制诸侯」的军事防御线，居庸、紫荆、倒马、井陉、滏口、天井、虎牢、伊阙诸关塞均位于此线。另一条是黄河-渭河一线，作为东西部的交通运输线，转输东部财赋以供给关中。关中犹如一只巨鹰：左翼席卷山西，右翼席卷汉中、巴蜀，两翼展开，即足以包卷中原，进取天下。秦、西汉、隋、唐均以关中为基础统一天下并以关中为统治天下的基础。</p></div>
+  </div>
+</div><div class="section section-03">
+  <div class="section-num num-03">3</div>
+  <div class="section-body">
+    <div class="tag tag-03">河北模式</div>
+    <div class="section-title t-03">河北模式：长城横亘、运河纵贯——政治重心的东移</div>
+    <div class="section-desc"><p>河北模式是中国封建社会后期统一格局的关键。对于中原汉人建立的明朝而言，其格局可画出两条长线在北京附近成交汇之形：一条是作为军事防御线的「九边」长城一线——东起辽东，西经山西联结甘陕，屏护北方农耕区与游牧区的接触带；另一条是作为经济运输线的京杭运河一线——北起幽燕，南经山东联络江南，纵贯东部大平原。从而形成「以东南之粮，养西北之兵」的格局，将政治军事需要与经济供给完好兼顾。对于元、清这样的塞外少数民族政权，运河一线在河北北部后继续向北延伸，以确保中原与塞外联系的稳固——他们的根基在塞外，形势不利时还能确保退回塞外。</p></div>
+  </div>
+</div><div class="section section-04">
+  <div class="section-num num-04">4</div>
+  <div class="section-body">
+    <div class="tag tag-04">四角基础</div>
+    <div class="section-title t-04">统一的共同起点：四角是力量中心</div>
+    <div class="section-desc"><p>在天下纷乱之初的混乱局面中，先据四角山川险固之地者往往能建立起局部的秩序和稳固的根据地，积累力量，为日后进取天下打下基础。秦亡后刘邦以关中为基础统一天下；王莽败亡后刘秀以河北为基础统一天下；隋亡后李渊以关中为基础统一天下；元亡后朱元璋以东南为基础统一天下。但值得注意的是：秦、西汉和隋、唐统一天下和统治天下的基础重合（均在关中），而东汉虽以河北为基础统一天下，政治重心却在河南；明朝虽以东南为基础统一天下，政治重心不久即移至河北。统一的基础与统治的基础并非总是一致。</p></div>
+  </div>
+</div><div class="section section-05">
+  <div class="section-num num-05">5</div>
+  <div class="section-body">
+    <div class="tag tag-05">轨迹对比</div>
+    <div class="section-title t-05">土崩与瓦解的统一轨迹对比</div>
+    <div class="section-desc"><p>分裂的类型不同，统一的轨迹也随之而异。土崩型分裂的统一路径：复杂的四分五裂→较简单的三足鼎立→二分对抗→统一。三国鼎立归为西晋与孙吴的对峙，六次三足鼎立均终结于南北对峙，而南北对峙又以北方兼并南方完成统一。瓦解型分裂的统一路径：混乱中先据四角山川险固之地建立局部秩序→形成力量中心→对周围地区辐射控制力→最终由某一力量中心统合全局。关中政权通常控制陇西、河西；河北政权控制华北平原并延伸至辽西；四川通常并于东南。两种轨迹虽然路径不同，但都是在棋盘型地理格局的框架内演变，无不印证着「从四角经四边汇于中原」的根本规律。</p></div>
+  </div>
+</div>
+<div class="takeaway"><h3>📌 本章要点</h3><p>中国由分趋合的轨迹体现了地理格局的深层逻辑。关中模式如巨鹰展翼——左翼山西、右翼巴蜀，两翼展开席卷中原，以山地关隘「东制诸侯」，以黄河-渭河漕运天下。河北模式则呈现长城-运河的十字交汇——长城横亘御北，运河纵贯通南，以东南之财赋支撑西北之军事。无论是土崩型（三分→二分→统一）还是瓦解型（四角据守→逐鹿中原→统合全局），统一的地理规律始终如一：四角是力量的摇篮，中原是问鼎的终极舞台。统一的基础与统治的基础未必重合——关中曾经同时承担了这两种基础，而元明清以后的政治重心则逐步东移，在河北找到了新的均衡。</p></div>
+<div class="footer">布局天下 · 饶胜文 · 解放军出版社 2006 · 第5章 统一的轨迹</div>
+</div></body>
+</html>

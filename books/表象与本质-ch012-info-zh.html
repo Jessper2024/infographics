@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 第8章「惊天动地的类比」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .chapter-card { margin-top: 10px; border-radius: 10px; padding: 14px 16px; background: #fafaf7; border: 1px solid #e8e0d5; }
+  .chapter-card h5 { font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 14px; margin-bottom: 6px; font-weight: bold; }
+  .chapter-card h5.c01 { color: #dc2626; } .chapter-card h5.c02 { color: #ea580c; }
+  .chapter-card h5.c03 { color: #ca8a04; } .chapter-card h5.c04 { color: #4f46e5; } .chapter-card h5.c05 { color: #db2777; }
+  .chapter-card p { font-size: 12px; color: #777; line-height: 1.7; margin: 0; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="表象与本质-ch012-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 第8章「惊天动地的类比」</h1>
+<p class="subtitle">当类比进入数学与物理学的最深处——从三次方程的解法到爱因斯坦的光量子假说，伟大的科学突破无一不是由类比引导的。本章戳破"数学是纯逻辑堡垒"的迷思，证明在最精确的学科中，类比依然是思维的核心向导。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>第7章展示了数学新手如何依赖朴素类比避免在抽象世界里摔跤，以及朴素类比如何终生困住非数学人士。本章翻转镜头：专业数学家和物理学家的头脑中，类比扮演什么角色？有人认为类比思维在数学家的专业活动中能起任何作用是异想天开。毕竟数学通常被视为严谨和逻辑的顶峰。但正如庞加莱所言："谁认为数学家总是一路向前、一步一步，却对所要达到的目标没有任何清晰的认识？为了抵达目的，必须对正确路径作出猜测。为此他们需要一个向导，这个向导主要是类比。"本章通过一组震撼人心的科学史案例——从三次方程到爱因斯坦——证明：在人类最严谨的思想领域，类比始终是思考之源、思维之火。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">庞加莱<span class="kpi-unit"></span></div>
+    <div class="kpi-label">数学家的向导</div>
+    <div class="kpi-note">"这个向导主要是类比"<br>最伟大的数学家公开承认<br>类比是科学创造的核心</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">二次<span class="kpi-unit">→三次</span></div>
+    <div class="kpi-label">不可抗拒的类比</div>
+    <div class="kpi-note">从二次方程解法的平方根<br>自然滑向三次方程的立方根<br>这种滑动本身就是类比</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1905<span class="kpi-unit">年</span></div>
+    <div class="kpi-label">爱因斯坦奇迹年</div>
+    <div class="kpi-note">光量子假说：将光与气体<br>进行类比——辐射能量与<br>物质能量共享概念框架</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">范畴<span class="kpi-unit">精修</span></div>
+    <div class="kpi-label">专家与新手之别</div>
+    <div class="kpi-note">专家与新手一样依赖类比<br>差别在于专家不断精修<br>自己的范畴系统</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">破迷思</div>
+    <div class="section-title t-01">数学之美——纯逻辑的堡垒还是类比的舞台？</div>
+    <div class="section-desc">对某些人来说，认为类比思维在数学家的专业活动中能起到任何作用是一种不着边际的想象。毕竟，在所有智能领域中，数学通常被看作严谨和逻辑的顶峰。一篇数学论文看上去像一座用纯逻辑构建的壁垒森严的坚不可摧的城堡。但这个印象不是空穴来风——因为大部分数学家都希望把自己打扮成这个样子。标准的看法是，在数学里面，直觉、预感、模棱两可和含糊所占据的位置比在其他学科中要少得多。然而，这不过是在数学和其他任何人类活动中同样适用的偏见而已。伟大的法国数学家庞加莱深刻思考过科学创造的性质，他给出了如下评论——这句话是全章的核心引言。</div>
+    <div class="chapter-card">
+      <h5 class="c01">庞加莱的名言</h5>
+      <p>"谁会认为，他们总是一路向前，一步一步，却对所要达到的目标没有任何清晰的认识？为了抵达目的，必须对正确路径作出猜测。为此，他们需要一个向导。这个向导主要是类比。"这段话关于数学思考的评论一语中的。当庞加莱说数学家需要一个"向导"时，他所指的正是类比——在陌生和已知之间搭建桥梁的认知能力。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">历史案例</div>
+    <div class="section-title t-02">从二次到三次——一个不可抗拒的类比滑动了1500年</div>
+    <div class="section-desc">16世纪早期，欧洲数学家试图解决形如 ax³+bx²+cx+d=0 的三次方程。此前1500年间，人们已经熟知形如 ax²+bx+c=0 的二次方程的解法——其核心是一个平方根，即 b²-4ac 的平方根。对此类鲜为人知的事情感兴趣的少数人会自然而然地想到：某种大体一致的东西是否也适用于三次方程？任何严肃的数学家都会猜测，这两个方程形式如此相似，它们之间必然存在某种暗含的联系。具体来说，解三次方程的一般公式，其核心部分应该包含一个与 b²-4ac 相似的数的立方根，且这个数应包含该三次方程的4个系数 a、b、c 和 d。这种从"二"滑向"三"的类比是不可抗拒的——就像第3章中描述的"我也是"类比那样不可抗拒。</div>
+    <div class="flow-row">
+      <div class="flow-step">二次方程<br>ax²+bx+c=0<br>解含√(b²-4ac)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">类比滑动<br>"三之于二<br>犹如二之于一"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">三次方程<br>ax³+bx²+cx+d=0<br>解含∛(某个量)</div>
+    </div>
+    <div class="dual-grid" style="margin-top:14px;">
+      <div class="dual-card a">
+        <div class="dual-icon">🔢</div>
+        <div class="dual-text">
+          <h4>微观类比滑动</h4>
+          <p>从"二向三滑动两次，再从三向四滑动一次"——这个滑动本身就是微型类比："4之于3类似于3之于2。"没有这类在数学中俯拾皆是、似乎无关紧要的概念滑动，任何进步都是不可能的。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>数学家也是普通人</h4>
+          <p>数学家，甚至最杰出的数学家，也是普通人。不需要任何有意识的思维过程，他们自然而然地预期这里存在类比——这就是"我也是"在数学领域的体现。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">物理学案例</div>
+    <div class="section-title t-03">爱因斯坦与光量子——类比重塑物理学</div>
+    <div class="section-desc">1905年，爱因斯坦提出了一个石破天惊的假说：光是由粒子组成的——即光量子（光子）。这个想法如此激进，以至于许多物理学家花了数十年才接受。但爱因斯坦是如何得到这个想法的？关键的一步是一个类比。爱因斯坦注意到，描述辐射能量随频率分布的数学公式与描述气体分子能量分布的公式在形式上惊人地相似。这两个公式之间的类比如此强烈，以至于他推断：如果气体由粒子（分子）组成，那么辐射也应该由粒子（光量子）组成。这就是典型的"惊天动地的类比"：从两个不同领域的数学结构间的形式相似性中，推导出一个关于物理世界本质的革命性结论。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">气体</div>
+        <div class="data-sm">分子组成<br>能量分布公式<br>粒子性确定无疑</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">形式类比</div>
+        <div class="data-sm">两个公式<br>惊人的结构相似<br>暗示深层的物理统一</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">辐射</div>
+        <div class="data-sm">也应由粒子组成<br>光量子假说诞生<br>量子革命的序幕</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">范畴精修</div>
+    <div class="section-title t-04">从朴素类比到高级类比——专家的范畴精修之旅</div>
+    <div class="section-desc">第7章与第8章构成了一组深刻对比。第7章描绘了朴素类比如何终生困住非数学人士——那些简单化的、基于表面相似性的类比（如"除法就是均分"）在非专业人士脑中常驻不散，将他们带入死胡同。第8章则展示了专家如何超越朴素类比：专业数学家和物理学家同样依赖类比，但他们的关键区别在于——他们不断"精修"自己的范畴系统，用更精确、更丰富的概念替换最初的朴素概念。这个过程不是抛弃类比，而是不断升级类比的品质。从"除法=均分"的朴素类比，到理解除法是一类更广泛的逆运算，再到在抽象代数中重新定义"除法"——每一步精修都是通过新的类比完成的。专家与新手一样依赖类比，但专家拥有更精良的范畴装备。</div>
+    <div class="flow-row">
+      <div class="flow-step">朴素类比<br>除法=均分</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">范畴精修<br>除法=逆运算</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">进一步精修<br>抽象代数中<br>的除法</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">专家范畴<br>精良装备</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">贯穿全书</div>
+    <div class="section-title t-05">从第1章到第8章——类比是贯穿始终的主线</div>
+    <div class="section-desc">回顾全书八章，一条清晰的主线浮现：第1-2章从词语和短语的浮现展示类比的基础角色；第3-4章揭示类比无处不在且支撑着抽象思维；第5-6章构成类比操纵的双向图景——类比操纵我们，我们也操纵类比；第7-8章形成朴素到高级的递进——从自发无意识的朴素类比，到经过范畴精修的高级类比，在人类认知的最高殿堂中同样居于核心。正如爱因斯坦将气体分子运动与辐射能量进行类比所证明的——在两个看似截然不同的领域之间发现深刻的联系，这是人类思维最崇高的成就。而这一成就，正是由类比完成的。这就是为什么书名宣称：类比，是思考之源、思维之火。</div>
+    <div class="list-block">
+      <div class="list-item"><div class="list-num ln01">1</div><div>第1-2章：词语和短语如何通过类比浮现——范畴化即为作类比。</div></div>
+      <div class="list-item"><div class="list-num ln02">2</div><div>第3-4章：类比无处不在，支撑抽象阶梯上的灵活滑动。</div></div>
+      <div class="list-item"><div class="list-num ln03">3</div><div>第5-6章：类比的双向操纵——被动与主动的完整图景。</div></div>
+      <div class="list-item"><div class="list-num ln04">4</div><div>第7-8章：从朴素类比到惊天动地的高级类比——同一机制贯穿所有层次。</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">在最严谨的人类思想领域——数学和物理学中，类比不是可有可无的辅助工具，而是思维的核心向导。庞加莱说类比是数学家的"向导"，爱因斯坦用类比发现光量子——这些"惊天动地的类比"与三岁小孩说"我把香蕉的衣服脱了"背后的认知机制完全相同。差别不在于是否使用类比，而在于范畴系统的精良程度：专家和小孩一样依赖类比，但专家的范畴系统经过数十年不断精修，能将类比建立在更深层、更精确的概念结构之上。这就是全书的最终信息：从最平凡的日常认知到最伟大的科学突破，类比是贯穿始终的统一力量——思考之源、思维之火。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》第8章信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

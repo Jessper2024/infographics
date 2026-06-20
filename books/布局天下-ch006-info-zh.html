@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>布局天下 · 第5章续「分裂的类型：土崩与瓦解」</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+
+  .lang-switch { text-align: right; margin-bottom: 12px; }
+  .lang-switch a { font-size: 13px; color: #4f46e5; text-decoration: none; margin-left: 16px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .lang-switch a:hover { color: #dc2626; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog a { font-size: 12px; color: #888; text-decoration: none; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .back-catalog a:hover { color: #dc2626; }
+
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 32px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.2px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+
+  .chapter-overview { background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555; line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi { background: #fff; border-radius: 12px; padding: 14px 10px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-num { font-family: 'FZXPYZS', serif; font-size: 26px; font-weight: bold; margin-bottom: 2px; }
+  .kpi-label { font-size: 12px; color: #888; line-height: 1.4; }
+  .kpi-01 .kpi-num { color: #dc2626; } .kpi-01 { border-top: 3px solid #dc2626; }
+  .kpi-02 .kpi-num { color: #ea580c; } .kpi-02 { border-top: 3px solid #ea580c; }
+  .kpi-03 .kpi-num { color: #ca8a04; } .kpi-03 { border-top: 3px solid #ca8a04; }
+  .kpi-04 .kpi-num { color: #4f46e5; } .kpi-04 { border-top: 3px solid #4f46e5; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; }
+  .section-desc p { margin-bottom: 10px; }
+  .section-desc p:last-child { margin-bottom: 0; }
+
+  .takeaway { background: #ffffff; border: 2px solid #dc2626; border-radius: 14px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .takeaway h3 { font-family: 'FZXPYZS', serif; font-size: 16px; color: #dc2626; margin-bottom: 12px; }
+  .takeaway p { font-size: 14px; color: #555; line-height: 1.9; }
+  .footer { text-align: center; font-size: 12px; color: #aaa; padding: 16px 0; font-family: 'FZXPYZS', serif; }
+</style>
+</head>
+<body><div class="container">
+<div class="back-catalog"><a href="布局天下-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch"><a href="布局天下-ch006-info-en.html">EN</a><span style="margin-left:12px;font-size:13px;color:#aaa">中文</span></div>
+<h1>布局天下 · 第5章续<br>「分裂的类型：土崩与瓦解」</h1>
+<div class="subtitle">王夫之的洞见——王朝衰亡的两种形态，与地理格局中的四种分裂类型</div>
+<div class="divider"></div>
+<div class="chapter-overview"><p>王夫之将王朝衰亡分为两种形式：瓦解与土崩。瓦解意味着全面的混乱和无序——专制程度高、权力结构单一的王朝（秦、新、隋、元），一旦最高统治层与最下层之间的直接矛盾爆发，连局部秩序也无法维持，但其重建统一通常也较快。土崩则是整体的秩序崩溃后尚有局部秩序保存——专制程度较弱、存在中间势力的王朝（东汉、西晋、唐、宋），衰亡持续的时间更长，且容易与地理离心力结合形成分裂割据。基于此，本章进而从地理角度剖析分裂的四种类型：南北对峙、东西之争、三足鼎立与四分五裂，揭示中国棋盘型地理格局如何塑造不同的分裂态势。</p></div>
+<div class="kpi-row"><div class="kpi kpi-01"><div class="kpi-num">瓦解</div><div class="kpi-label">全面混乱·快速重建</div></div><div class="kpi kpi-02"><div class="kpi-num">土崩</div><div class="kpi-label">局部秩序·漫长重建</div></div><div class="kpi kpi-03"><div class="kpi-num">三分</div><div class="kpi-label">关中·河北·江南</div></div><div class="kpi kpi-04"><div class="kpi-num">四分</div><div class="kpi-label">四角分峙格局</div></div></div>
+<div class="section section-01">
+  <div class="section-num num-01">1</div>
+  <div class="section-body">
+    <div class="tag tag-01">王夫之论</div>
+    <div class="section-title t-01">瓦解与土崩：王朝衰亡的两种形态</div>
+    <div class="section-desc"><p>王夫之论王朝衰亡：「土崩、瓦解，其亡也均，而势以异。瓦解者，无以施其补葺，而坐视其尽；土崩者，或欲支之而不能也。」瓦解代表全面的混乱和无序——秦、新、隋、元的灭亡属于此类。这些朝代专制程度较高，权力结构单一，缺少与皇权分享利益的中间阶层，在最高层与最下层之间制造了最直接的矛盾。「民困而主不恤，下怨而上不知，俗已乱而政不修。」一旦统治削弱，稍有导火线，矛盾普遍爆发，连局部秩序也无法维持。但瓦解型的混乱持续时间通常较短，重建统一也较快。</p></div>
+  </div>
+</div><div class="section section-02">
+  <div class="section-num num-02">2</div>
+  <div class="section-body">
+    <div class="tag tag-02">土崩之迹</div>
+    <div class="section-title t-02">土崩型衰亡：中间势力与地理离心力的结合</div>
+    <div class="section-desc"><p>土崩型王朝（东汉、西晋、唐、宋）的统治秩序中存在与皇权分享权力的中间势力——东汉的州牧刺史、西晋的宗室藩王、唐后期的藩镇。这些中间势力既是削弱皇权的力量，也是维系皇权的缓冲器。整体秩序解体后，这些中间势力尚可维持或建立局部秩序。「政治上的离心力与地理上的离心力结合在一起，遂使土崩型的局面易于趋向分裂的局面。」东汉末的军阀割据演变为三国鼎立，西晋的衰乱演变为南北朝长期对峙，唐末藩镇演化为五代十国。「土崩者，必数百年而继以瓦解，瓦解已尽而天下始宁。」</p></div>
+  </div>
+</div><div class="section section-03">
+  <div class="section-num num-03">3</div>
+  <div class="section-body">
+    <div class="tag tag-03">南北对峙</div>
+    <div class="section-title t-03">二分型之一：南北对峙——地理分界的军事逻辑</div>
+    <div class="section-desc"><p>南北对峙以淮河至秦岭一线为分界。北方少数民族以游牧骑射为业，长于骑兵野战，宜秋冬作战；南方汉人以农耕为业，长于水战和守城战，宜春夏作战。南北双方在黄淮一带各有天时地利之半——利于南方者不利于北方，利于北方者不利于南方，易于陷入拉锯式角逐。淮河以南的密集水网足以缓冲北方铁骑的冲击力；淮河以北河流冬季封冻、雨季较短，不足以阻挡北方铁骑。作为中国地理南北分界线的淮河，不期而然间也成了南北军事对抗的分界线。西晋与孙吴的对峙、南北朝对峙、金与南宋对峙、蒙古与南宋对峙，均循此模式。</p></div>
+  </div>
+</div><div class="section section-04">
+  <div class="section-num num-04">4</div>
+  <div class="section-body">
+    <div class="tag tag-04">东西之争</div>
+    <div class="section-title t-04">二分型之二：东西之争——地势高下的优劣势</div>
+    <div class="section-desc"><p>东西之争在中国地势第二级阶梯与第三级阶梯之间展开，以第二级阶梯东部边缘为对抗前沿——北起幽燕，循太行山南下，经嵩山、方城山、接桐柏山、大别山至鄂西。关键隘口包括居庸关、飞狐口、紫荆关、倒马关、井陉关、滏口、天井关、成皋等。东西之争中西方居地势之利：关中地势较高，若能控制成皋一线，即取得非常有利的攻势态势；东方控制成皋至多只能取得较好的守势态势。故历史上的东西之争以西方胜利者居多——秦统一六国、刘邦灭项羽，均是西方压倒东方。不过东西之争通常只是一种临时状态，既不持久，也不稳定。</p></div>
+  </div>
+</div><div class="section section-05">
+  <div class="section-num num-05">5</div>
+  <div class="section-body">
+    <div class="tag tag-05">三分与四分</div>
+    <div class="section-title t-05">三足鼎立与四分五裂：棋盘型格局的裂变</div>
+    <div class="section-desc"><p>最典型的三足鼎立是关中、河北与江南三者之间的鼎立——关中地利较优，河北实力稍胜，江南则有长江天险，三者构成大体的均衡。魏晋南北朝时期出现过六次三足鼎立，最终皆归为南北对峙。在三分基础上，若四川出现单独割据政权，便成天下四分——关中、河北、东南和四川四角分峙。历史上战国七雄也属广泛分裂类型：秦据关中、齐据山东、楚据方城汉水、燕据河北北部——四雄背靠边角，有稳固后方；韩赵魏三晋居中，合则强，分则弱。</p></div>
+  </div>
+</div>
+<div class="takeaway"><h3>📌 本章要点</h3><p>王朝衰亡的两种形态——瓦解与土崩——其根源在于社会权力结构的差异。专制程度越高、权力越集中的王朝，覆灭时越接近瓦解（全面混乱但重建较快）；存在中间势力的王朝则趋向土崩（局部秩序存续但分裂持久）。政治离心力与地理离心力的结合，使土崩型局面衍生出四种分裂类型：南北对峙是淮河至秦岭地理分界的军事体现，东西之争是地势高下的优劣势对决，三足鼎立（关中-河北-江南）是地理格局中最均衡的三分态势，而四角分峙则是棋盘型地图的自然裂变。分裂的类型不同，统一的轨迹亦随之而异——这为理解中国历史的分合韵律提供了地理学的钥匙。</p></div>
+<div class="footer">布局天下 · 饶胜文 · 解放军出版社 2006 · 第5章 分裂的类型</div>
+</div></body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout of the World · Chapter 1「The Chessboard Pattern of Military Geography」</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+
+  .lang-switch { text-align: right; margin-bottom: 12px; }
+  .lang-switch a { font-size: 13px; color: #4f46e5; text-decoration: none; margin-left: 16px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .lang-switch a:hover { color: #dc2626; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog a { font-size: 12px; color: #888; text-decoration: none; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .back-catalog a:hover { color: #dc2626; }
+
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 32px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.2px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+
+  .chapter-overview { background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555; line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi { background: #fff; border-radius: 12px; padding: 14px 10px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-num { font-family: 'FZXPYZS', serif; font-size: 26px; font-weight: bold; margin-bottom: 2px; }
+  .kpi-label { font-size: 12px; color: #888; line-height: 1.4; }
+  .kpi-01 .kpi-num { color: #dc2626; } .kpi-01 { border-top: 3px solid #dc2626; }
+  .kpi-02 .kpi-num { color: #ea580c; } .kpi-02 { border-top: 3px solid #ea580c; }
+  .kpi-03 .kpi-num { color: #ca8a04; } .kpi-03 { border-top: 3px solid #ca8a04; }
+  .kpi-04 .kpi-num { color: #4f46e5; } .kpi-04 { border-top: 3px solid #4f46e5; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; }
+  .section-desc p { margin-bottom: 10px; }
+  .section-desc p:last-child { margin-bottom: 0; }
+
+  .takeaway { background: #ffffff; border: 2px solid #dc2626; border-radius: 14px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .takeaway h3 { font-family: 'FZXPYZS', serif; font-size: 16px; color: #dc2626; margin-bottom: 12px; }
+  .takeaway p { font-size: 14px; color: #555; line-height: 1.9; }
+  .footer { text-align: center; font-size: 12px; color: #aaa; padding: 16px 0; font-family: 'FZXPYZS', serif; }
+</style>
+</head>
+<body><div class="container">
+<div class="back-catalog"><a href="布局天下-catalog.html">← Catalog</a></div>
+<div class="lang-switch"><span style="margin-right:12px;font-size:13px;color:#aaa">EN</span><a href="布局天下-ch001-info-zh.html">中文</a></div>
+<h1>Layout of the World · Chapter 1<br>「The Chessboard Pattern of Military Geography」</h1>
+<div class="subtitle">Nine strategic regions on China's topographical chessboard determined the rise and fall of dynasties</div>
+<div class="divider"></div>
+<div class="chapter-overview"><p>Rao Shengwen uses the game of Go as a metaphor for China's ancient military geography. On this irregular chessboard, Guanzhong, Hebei, the Southeast, and Sichuan occupy the four corners; Shanxi, Shandong, Hubei, and Hanzhong sit on the four sides; and the Central Plains form the heartland. Mountains block while rivers connect — these nine regions, distributed across China's second and third topographic tiers, constituted the decisive strategic stage throughout two millennia of unification and fragmentation.</p></div>
+<div class="kpi-row"><div class="kpi kpi-01"><div class="kpi-num">9</div><div class="kpi-label">Strategic Regions</div></div><div class="kpi kpi-02"><div class="kpi-num">4 Corners</div><div class="kpi-label">Fortress Bastions</div></div><div class="kpi kpi-03"><div class="kpi-num">4 Sides</div><div class="kpi-label">Contested Belts</div></div><div class="kpi kpi-04"><div class="kpi-num">1 Center</div><div class="kpi-label">Ultimate Prize</div></div></div>
+<div class="section section-01">
+  <div class="section-num num-01">1</div>
+  <div class="section-body">
+    <div class="tag tag-01">Go Analogy</div>
+    <div class="section-title t-01">Nine Regions on the Chessboard</div>
+    <div class="section-desc"><p>Ancient strategists likened warfare to Go. On this irregular board, Guanzhong, Hebei, the Southeast, and Sichuan form the four corners; Shanxi, Shandong, Hubei, and Hanzhong the four sides; and the Central Plains the heartland. Each region boasts mountain barriers and river arteries, playing decisive roles across dynastic history.</p></div>
+  </div>
+</div><div class="section section-02">
+  <div class="section-num num-02">2</div>
+  <div class="section-body">
+    <div class="tag tag-02">Four Corners</div>
+    <div class="section-title t-02">Corners: Fortress Bastions for Building Power</div>
+    <div class="section-desc"><p>Guanzhong — "a hundred passes and two Qin," shielded by Qinling, Longshan, Hangu Pass, and Xiao Pass. Hebei — embraced by sea and mountains, with Yanshan and Taihang as wings. The Southeast — defended by the Yangtze-Huaihe dual barrier. Sichuan — a basin ringed by towering peaks, accessible only through the Three Gorges and Sword Gate. These four corners served as bases for accumulating strength before contesting the empire.</p></div>
+  </div>
+</div><div class="section section-03">
+  <div class="section-num num-03">3</div>
+  <div class="section-body">
+    <div class="tag tag-03">Four Sides</div>
+    <div class="section-title t-03">Sides: Strategic Corridors Between Corners</div>
+    <div class="section-desc"><p>Shanxi overlooks three directions from its commanding plateau. Shandong commands the junction of the Yellow River and Grand Canal. Hubei anchors the middle Yangtze — "judging by the realm, Xiangyang is paramount." Hanzhong, wedged between Guanzhong and Sichuan, is a pivot where north-south interests clash. The four sides are both corridors and contested belts essential for expansion.</p></div>
+  </div>
+</div><div class="section section-04">
+  <div class="section-num num-04">4</div>
+  <div class="section-body">
+    <div class="tag tag-04">Central Plains</div>
+    <div class="section-title t-04">The Central Plains: Ultimate Arena of Struggle</div>
+    <div class="section-desc"><p>The Central Plains connect all directions — when the realm is united, power concentrates here; when fragmented, it disperses. It is the arena where "deer are hunted" and the tripod contested. Yet in times of chaos, holding the exposed center proves harder than holding the corners. All unification dynasties arose from corners before converging on the Central Plains.</p></div>
+  </div>
+</div><div class="section section-05">
+  <div class="section-num num-05">5</div>
+  <div class="section-body">
+    <div class="tag tag-05">Historical Arc</div>
+    <div class="section-title t-05">From Corners to Center: The Classic Path</div>
+    <div class="section-desc"><p>Qin, Han, Sui, and Tang unified from Guanzhong; Eastern Han from Hebei; the Ming from the Southeast. The path: seize a corner, build strength, expand to both wings, then contest the Central Plains. Sichuan, despite its natural wealth, never produced a unifying dynasty — its "basin mentality" encouraged complacency. Shanxi, perched above the plains, repeatedly toppled Central Plains regimes.</p></div>
+  </div>
+</div>
+<div class="takeaway"><h3>📌 Key Takeaways</h3><p>China's ancient military geography resembled a Go board: four corners as fortress bases, four sides as pivotal corridors, and the Central Plains as the decisive arena. Understanding this chessboard pattern unlocks the geographic logic behind two millennia of dynastic rise and fall.</p></div>
+<div class="footer">Layout of the World · Rao Shengwen · PLA Press 2006 · Chapter 1</div>
+</div></body>
+</html>

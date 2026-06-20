@@ -2,105 +2,325 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>财务新人如何读懂数据语言 · 第3章「「财务眼」让你变得更犀利」</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财务新人如何读懂数据语言 · 第3章「"财务眼"让你变得更犀利」</title>
 <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    @font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-    body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:48px 16px 60px;font-family:'FZXPYZS','PingFang SC','Microsoft YaHei','Hiragino Sans GB',serif;color:#333;line-height:1.8}
-    .container{width:100%;max-width:880px}
-    .back-catalog{text-align:left;margin-bottom:12px}
-    .back-catalog a{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;transition:color .15s}
-    .back-catalog a:hover{color:#dc2626}
-    .lang-switch{text-align:right;margin-bottom:8px}
-    .lang-switch a{font-size:13px;color:#888;text-decoration:none;padding:4px 10px;border:1px solid #d4c8b8;border-radius:12px;margin-left:6px;font-family:'FZXPYZS','PingFang SC',serif;transition:all .15s}
-    .lang-switch a:hover{color:#dc2626;border-color:#dc2626}
-    .lang-switch a.active{color:#fff;background:#4f46e5;border-color:#4f46e5}
-    .header{text-align:center;margin-bottom:32px}
-    .header h1{font-size:24px;color:#1a1a1a;font-family:'FZXPYZS','PingFang SC',serif;font-weight:400;letter-spacing:.03em;margin-bottom:8px}
-    .header .subtitle{font-size:15px;color:#888;font-family:'FZXPYZS','PingFang SC',serif}
-    .divider{width:60px;height:3px;background:#d4c8b8;margin:20px auto 28px;border-radius:2px}
-    .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:0 0 28px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
-    .chapter-overview p{margin:0}
-    .kpi-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
-    .kpi-card{flex:1;min-width:180px;background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.05);text-align:center}
-    .kpi-card .kpi-label{font-size:13px;color:#888;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-value{font-size:22px;font-weight:700;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-desc{font-size:12px;color:#999;line-height:1.5}
-    .section{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #4f46e5}
-    .section .section-title{font-size:16px;font-weight:700;margin-bottom:10px;font-family:'FZXPYZS','PingFang SC',serif;color:#1a1a1a}
-    .section .section-body{font-size:14px;color:#555;line-height:1.85}
-    .takeaway{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:28px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #dc2626}
-    .takeaway .takeaway-label{font-size:12px;color:#dc2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
-    .takeaway .takeaway-text{font-size:14px;color:#333;line-height:1.85}
-    .footer{text-align:center;padding:28px 0 0;border-top:1px solid #e8e0d5;margin-top:12px;font-size:12px;color:#bbb;font-family:'FZXPYZS','PingFang SC',serif}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; margin: 0 auto; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: #fff; border-radius: 12px; padding: 18px 14px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid #e8e0d5;
+    display: flex; flex-direction: column; justify-content: center; min-height: 96px;
+  }
+  .kpi-card.c01 { border-top: 3px solid #dc2626; }
+  .kpi-card.c02 { border-top: 3px solid #ea580c; }
+  .kpi-card.c03 { border-top: 3px solid #ca8a04; }
+  .kpi-card.c04 { border-top: 3px solid #4f46e5; }
+  .kpi-val {
+    font-size: 32px; font-weight: bold; color: #1a1a1a; line-height: 1;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    margin-bottom: 6px;
+  }
+  .kpi-label {
+    font-size: 12px; color: #999; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+  .section-highlight {
+    background: #fef2f2; border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; color: #991b1b; line-height: 1.6;
+    margin-top: 6px; border: 1px solid #fecaca;
+  }
+  .highlight-orange { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+  .highlight-gold { background: #fefce8; border-color: #fde68a; color: #92400e; }
+  .highlight-indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .highlight-pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+  .dual-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+  .dual-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.pink { background: #fdf2f8; border: 1px solid #f9a8d4; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-step.indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .flow-step.pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .point-list { list-style: none; padding: 0; margin: 10px 0 0; }
+  .point-list li {
+    padding: 6px 0; font-size: 13px; color: #555; line-height: 1.7;
+    border-bottom: 1px solid #f3f0e8; display: flex; gap: 8px;
+  }
+  .point-list li:last-child { border-bottom: none; }
+  .point-bullet { flex-shrink: 0; font-size: 14px; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    h1 { font-size: 26px; }
+  }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="back-catalog">
-    <a href="财务新人如何读懂数据语言-catalog.html">← 返回章节目录</a>
+<div class="back-catalog"><a class="back-catalog-btn" href="财务新人如何读懂数据语言-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="财务新人如何读懂数据语言-ch003-info-en.html">English / 中文</a>
+</div>
+
+<h1>财务新人如何读懂数据语言 · 第3章「"财务眼"让你变得更犀利」</h1>
+<p class="subtitle"><span style="display:block;margin-bottom:6px;font-family:FZXPYZS,serif;letter-spacing:2px;font-size:11px;color:#dc2626;">SCQA · 情境 → 冲突 → 问题 → 回答</span>学生提问："有些老板将个人开支放到公司账里走，怎么看？"表面上是税务合规问题，但若不先问"是什么样的老板"，就无法给出正确回答。这背后的思维工具是什么？答案是用"财务眼"——先判别是公众公司还是私人公司，两者的财务管理逻辑完全不同。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>每一门学科都教会我们用一只独特的"眼"看世界。财务的"眼"看的是钱与资本：先判别是公众公司还是私人公司。公众公司拿了公众的钱，必须通过三张报表述职；而私人公司玩的是自己的钱，税务申报是首要目标。同样的经济行为——比如老板报销——在两种公司架构下，其财务动机和财富效应截然不同。</p>
+</div>
+<div class="kpi-row">
+      <div class="kpi-card c01">
+        <div class="kpi-val">200万</div>
+        <div class="kpi-label">可抵扣费用
+老板报销额度</div>
+      </div>
+      <div class="kpi-card c02">
+        <div class="kpi-val">150万</div>
+        <div class="kpi-label">净利润增加
+走账vs不走账</div>
+      </div>
+      <div class="kpi-card c03">
+        <div class="kpi-val">1.5亿</div>
+        <div class="kpi-label">市值放大
+P/E=100×利润</div>
+      </div>
+      <div class="kpi-card c04">
+        <div class="kpi-val">6000万</div>
+        <div class="kpi-label">股东财富增量
+持股40%效应</div>
+      </div>
+    </div>
+<!-- 01: 核心框架 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心框架</div>
+    <div class="section-title t-01">公众公司 vs 私人公司：两种截然不同的财务逻辑</div>
+    <div class="section-desc">用"财务眼"看一个公司的经济行为，第一步就是判定它的资本来源。公众公司——拿了公众的钱去挣钱，必须给投资人一个交代。这个交代有两种形式：现金分红和述职报告。述职报告对应三张基本报表——现金流量表（钱用到哪）、利润盈亏表（经营绩效）、资产负债表（公司健康度）。私人公司——玩的是自己的钱，简单实用即可，税务申报是首要目标。</div>
+<div class="dual-grid">
+      <div class="dual-card red">
+        <div class="dual-icon">🏛️</div>
+        <div class="dual-text"><h4>公众公司</h4><p>拿了公众的钱→必须述职。三张报表交代：钱用到哪（现金流）、经营绩效（利润）、公司健康度（资产负债）。</p></div>
+      </div>
+      <div class="dual-card red">
+        <div class="dual-icon">🏠</div>
+        <div class="dual-text"><h4>私人公司</h4><p>玩自己的钱→税务申报是首要目标。什么简单实用就怎么来，不需要向公众提供标准化财务报告。</p></div>
+      </div>
+    </div>
   </div>
-  <div class="lang-switch">
-    <a href="财务新人如何读懂数据语言-ch003-info-en.html">EN</a>
+</div>
+<!-- 02: 价值杠杆 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">价值杠杆</div>
+    <div class="section-title t-02">P/E Ratio（市盈率）：1元利润撬动百元市值</div>
+    <div class="section-desc">上市公司兑现盈利预期的承诺对股价有积极影响，这种影响通过市盈率（P/E Ratio）放大。在中国A股，中小企业的市盈率过百是稀松平常的事。1元钱的利润可以撬动10元乃至好几百元的市值放大。这就是为什么有些上市公司宁愿放弃税务抵扣的现金好处，也要保住利润数字——利润→市值→股东财富的传导链条，远比省税更有吸引力。</div>
+<div class="flow-row"><div class="flow-step">📈<br>净利润
++150万</div><div class="flow-arrow">→</div><div class="flow-step indigo">✖️<br>P/E=100
+杠杆放大</div><div class="flow-arrow">→</div><div class="flow-step">💰<br>市值
++1.5亿</div><div class="flow-arrow">→</div><div class="flow-step end">👤<br>股东财富
++6000万(40%)</div></div>
   </div>
-  <div class="header">
-    <h1>财务新人如何读懂数据语言 · 第3章「「财务眼」让你变得更犀利」</h1>
-    <div class="subtitle">用公众公司 vs 私人公司的视角看透一切经济行为</div>
-  </div>
-  <div class="divider"></div>
-  <div class="chapter-overview">
-    <p>从一个学生提问「老板个人开支走公司账」切入，作者展示了财务眼的核心视角——先判定是公众公司还是私人公司。通过200万可抵税费用的对比案例，揭示了市盈率杠杆的惊人放大效应：上市公司的150万净利润增加，在100倍市盈率下可带来1.5亿市值增长，大股东财富溢出可达6000万，远超走公司账的个人收益。这一视角同样适用于业务伙伴选择和职业跳槽决策。</p>
-  </div>
-  <div class="kpi-row">
-    <div class="kpi-card">
-      <div class="kpi-label">市盈率杠杆</div>
-      <div class="kpi-value" style="color:#dc2626">100x</div>
-      <div class="kpi-desc">150万净利润→1.5亿市值增长</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">税务节约vs市值增长</div>
-      <div class="kpi-value" style="color:#ea580c">50万 vs 1.5亿</div>
-      <div class="kpi-desc">走公司账省税远不及市值放大</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">大股东财富溢出</div>
-      <div class="kpi-value" style="color:#d97706">6000万</div>
-      <div class="kpi-desc">40%持股下个人财富增长（完全市场效率）</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">市场效率折扣</div>
-      <div class="kpi-value" style="color:#4f46e5">10%→600万</div>
-      <div class="kpi-desc">即使市场效率仅10%，财富溢出仍远超报销收益</div>
+</div>
+<!-- 03: 数字推演 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">数字推演</div>
+    <div class="section-title t-03">走账 vs 不走账：200万费用的财富效应对比</div>
+    <div class="section-desc">假设200万费用具备税前列支条件。私人公司走公司账：获得50万税务节约+200万个人报销收益，合计250万。上市公司不走公司账：个人少报销200万、多交税50万，但净利润增加150万。P/E=100→市值增加1.5亿，持股40%→个人财富增量6000万。即使市场效率只有10%，也有600万——远超走账收益。数字一目了然：上市公司的财富杠杆远非私人公司可比。</div>
+<div class="dual-grid">
+      <div class="dual-card gold">
+        <div class="dual-icon">🏠</div>
+        <div class="dual-text"><h4>私人公司：走公司账</h4><p>税务节约50万 + 个人报销200万 = 合计250万。直接落袋为安，简单实用。</p></div>
+      </div>
+      <div class="dual-card gold">
+        <div class="dual-icon">🏛️</div>
+        <div class="dual-text"><h4>上市公司：不走公司账</h4><p>放弃250万现金→净利润+150万→P/E×100=市值+1.5亿→持股40%=个人财富+6000万。杠杆效应惊人。</p></div>
+      </div>
     </div>
   </div>
-  <div class="section" style="border-left-color:#dc2626">
-      <div class="section-title">公众公司 vs 私人公司：财务眼的根本区分</div>
-      <div class="section-body">每一门学科都教会我们一只独特的「眼」看世界。财务的视角：先判定一个公司是公众公司还是私人公司。驱动这只眼的逻辑是钱、是资本。公众公司拿了公众的钱去挣钱，必须给股民一个交代——现金分红和述职报告二者并行不悖。私人公司则完全是另一套逻辑。</div>
-    </div>
-<div class="section" style="border-left-color:#ea580c">
-      <div class="section-title">三张报表的述职逻辑</div>
-      <div class="section-body">述职报告的内容对应三张基本财务报表：现金流量表回答「钱用到哪里去了」，利润盈亏表回答「经营绩效怎么样」，资产负债表回答「公司现在是否健康运行」。财务做账的严格分类与技术处理规范，正是为了让述职报告符合统一标准，不至于随便忽悠投资者。有些公司放着税务抵扣的现金好处不要，也要图面子上更好看的利润——因为上市公司有述职的需要。</div>
-    </div>
-<div class="section" style="border-left-color:#d97706">
-      <div class="section-title">市盈率：1元利润撬动百元市值</div>
-      <div class="section-body">上市公司兑现盈利预期的承诺对股价的积极影响，通过P/E Ratio（市盈率）杠杆放大市值。1元钱的利润可以撬动10元乃至好几百元的市值放大。在中国A股，中小企业的市盈率过百是稀松平常的事。这意味着，与其把费用走公司账省税，不如把利润留在公司——每一元多出来的利润，在市场上能放大100倍。</div>
-    </div>
-<div class="section" style="border-left-color:#4f46e5">
-      <div class="section-title">业务层面：用财务眼选合作伙伴</div>
-      <div class="section-body">在展开业务时，遇到合作伙伴、客户或供应商的选择，先判别是否是上市公司。若是，研读其财报获取关键信息：最大股东是谁？高管年薪在什么水准？哪块业务最挣钱（看分部报告）？这些信息可以帮助你的业务决策，至少让你知道和你谈判的是什么级别的对手。财务眼让你在商业博弈中占据信息优势。</div>
-    </div>
-<div class="section" style="border-left-color:#db2777">
-      <div class="section-title">个人层面：用财务眼做职业选择</div>
-      <div class="section-body">择业或跳槽时，同样用「是否是上市公司」这只眼去判别。学财务会计或持有CPA/ACCA证书，去私人公司是大材小用——私人公司做账的目的是税务申报而非财务审计。上市公司特别是市值500亿以上的，管理制度健全、功能部门职业化操作规范。私人公司玩的是自己的钱，什么简单实用就怎么来。选对舞台，才能发挥你的专业价值。</div>
-    </div>
-  <div class="takeaway">
-    <div class="takeaway-label">核心启示</div>
-    <div class="takeaway-text">财务眼的第一问永远是「公众公司还是私人公司」——两种公司的财务管理逻辑完全不同。这个视角决定了你的业务判断、商业谈判策略和职业道路选择。</div>
+</div>
+<!-- 04: 公司应用 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">公司应用</div>
+    <div class="section-title t-04">用"财务眼"判别合作伙伴与竞争对手</div>
+    <div class="section-desc">在展开业务时，选择合作伙伴、客户或供应商之前，先判别对方是否是上市公司。若是，则研读其财报——最大股东是谁？高管年薪在什么水准（50万还是200万的VP，能看出是否行业牛人在管）？哪块业务最挣钱（看分部报告）？这些信息往大了说帮助业务决策，往小了说至少让你知道和什么级别的对手在谈判。</div>
+<ul class="point-list"><li><span class="point-bullet">👤</span>最大股东是谁？了解控制权和决策逻辑</li><li><span class="point-bullet">💼</span>高管年薪水平？50万 vs 200万 VP → 判断管理层含金量</li><li><span class="point-bullet">📊</span>哪块业务最赚钱？分部报告揭示核心利润引擎</li><li><span class="point-bullet">🎯</span>综合：知道和什么级别的对手谈判，辅助业务决策</li></ul>
   </div>
-  <div class="footer">
-    <p>内容摘编自《财务新人如何读懂数据语言》· 钱自严 著 · 知乎「一小时」系列 · 信息图由 AI 辅助生成 · 仅供学习参考</p>
+</div>
+<!-- 05: 个人应用 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">个人应用</div>
+    <div class="section-title t-05">用"财务眼"做择业与跳槽决策</div>
+    <div class="section-desc">在择业或跳槽时，同样用"财务眼"去判别。学财务会计或考了CPA/ACCA的——去私人公司是大材小用，因为私人公司做账的目的是税务申报而非财务审计。不学财务的也可判断：上市公司（特别是市值500亿以上的），管理制度健全，功能部门职业化操作规范；私人公司，玩自己的钱，什么简单实用就怎么来。先判别，再选择。</div>
+<div class="dual-grid">
+      <div class="dual-card pink">
+        <div class="dual-icon">🏛️</div>
+        <div class="dual-text"><h4>上市公司（>500亿市值）</h4><p>管理制度健全，部门职业化操作规范。CPA/ACCA有发挥空间，是财务会计人才的最佳平台。</p></div>
+      </div>
+      <div class="dual-card pink">
+        <div class="dual-icon">🏠</div>
+        <div class="dual-text"><h4>私人公司</h4><p>做账为税务申报而非审计。简单实用至上。财务专才大材小用，但可能获得更广的实操面。</p></div>
+      </div>
+    </div>
   </div>
+</div>
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">"财务眼"的第一问永远是：上市公司还是非上市公司？两者的财务管理逻辑完全不同。同样的经济行为——费用报不报销、利润做不做高——在上市公司是市值+股东财富的杠杆游戏，在私人公司是税务+落袋为安的实用选择。用这把"眼"去判别合作伙伴、竞争对手和职业选择，你会变得比同行更犀利。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">来源：知乎·钱自严《财务新人如何读懂数据语言》第三章「"财务眼"让你变得更犀利」· 信息图 · 仅供学习参考</div>
+
 </div>
 </body>
 </html>

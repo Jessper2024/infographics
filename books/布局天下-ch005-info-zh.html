@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>布局天下 · 第5章「统一与分裂：政治与地理」</title>
+<style>
+  @font-face { font-family: 'FZXPYZS'; src: url('../方正屏显雅宋简体.TTF') format('truetype'); font-weight: normal; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f1eb; font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px 60px; }
+  .container { max-width: 880px; width: 100%; }
+
+  .lang-switch { text-align: right; margin-bottom: 12px; }
+  .lang-switch a { font-size: 13px; color: #4f46e5; text-decoration: none; margin-left: 16px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .lang-switch a:hover { color: #dc2626; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog a { font-size: 12px; color: #888; text-decoration: none; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .back-catalog a:hover { color: #dc2626; }
+
+  h1 { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 32px; color: #1a1a1a; text-align: center; line-height: 1.4; margin-bottom: 8px; font-weight: normal; letter-spacing: 1.2px; }
+  .subtitle { text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, #dc2626, #ea580c); margin: 0 auto 28px; border-radius: 2px; }
+
+  .chapter-overview { background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555; line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi { background: #fff; border-radius: 12px; padding: 14px 10px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .kpi-num { font-family: 'FZXPYZS', serif; font-size: 26px; font-weight: bold; margin-bottom: 2px; }
+  .kpi-label { font-size: 12px; color: #888; line-height: 1.4; }
+  .kpi-01 .kpi-num { color: #dc2626; } .kpi-01 { border-top: 3px solid #dc2626; }
+  .kpi-02 .kpi-num { color: #ea580c; } .kpi-02 { border-top: 3px solid #ea580c; }
+  .kpi-03 .kpi-num { color: #ca8a04; } .kpi-03 { border-top: 3px solid #ca8a04; }
+  .kpi-04 .kpi-num { color: #4f46e5; } .kpi-04 { border-top: 3px solid #4f46e5; }
+
+  .section { background: #ffffff; border-radius: 14px; margin-bottom: 18px; padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; border-left: 4px solid transparent; }
+  .section-01 { border-left-color: #dc2626; } .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; } .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: bold; margin-top: 2px; font-family: 'FZXPYZS', serif; }
+  .num-01 { background: #fef2f2; color: #dc2626; } .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; } .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 10px; border-radius: 10px; margin-bottom: 8px; letter-spacing: 1px; font-family: 'FZXPYZS', serif; }
+  .tag-01 { background: #fef2f2; color: #dc2626; } .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; } .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title { font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4; font-family: 'FZXPYZS', serif; }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; } .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+  .section-desc { font-size: 14px; color: #555; line-height: 1.9; }
+  .section-desc p { margin-bottom: 10px; }
+  .section-desc p:last-child { margin-bottom: 0; }
+
+  .takeaway { background: #ffffff; border: 2px solid #dc2626; border-radius: 14px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .takeaway h3 { font-family: 'FZXPYZS', serif; font-size: 16px; color: #dc2626; margin-bottom: 12px; }
+  .takeaway p { font-size: 14px; color: #555; line-height: 1.9; }
+  .footer { text-align: center; font-size: 12px; color: #aaa; padding: 16px 0; font-family: 'FZXPYZS', serif; }
+</style>
+</head>
+<body><div class="container">
+<div class="back-catalog"><a href="布局天下-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch"><a href="布局天下-ch005-info-en.html">EN</a><span style="margin-left:12px;font-size:13px;color:#aaa">中文</span></div>
+<h1>布局天下 · 第5章<br>「统一与分裂：政治与地理」</h1>
+<div class="subtitle">治则合，乱则分——天下大势的分合逻辑与地理的聚散之力</div>
+<div class="divider"></div>
+<div class="chapter-overview"><p>历史治乱更替，天下大势也随之分合变迁。「统一首先必须以社会政治方面的凝聚力、向心力为基础，其次才是地理上的经营措置；分裂也首先是社会政治方面出现离心力，然后地理上的离心力才显现出来。」本章从政治与地理的双重视角，揭示统一与分裂的深层逻辑：中国地理环境的整体统一性与局部独立性并存，地理因素究竟是促进联系还是助长离心，取决于王朝的政治整合程度与中央政权经营措置的得当与否。文章同时以秦楚之际为典型案例，剖析从旧的统治秩序解体到新的统一局面重建过程中，「问题重心」的根本转换——推翻旧秩序需要激化矛盾，建立新秩序则需要消弭矛盾，而能洞察这一转换者方可成就统一大业。</p></div>
+<div class="kpi-row"><div class="kpi kpi-01"><div class="kpi-num">凝聚力</div><div class="kpi-label">社会向心力优先</div></div><div class="kpi kpi-02"><div class="kpi-num">离心力</div><div class="kpi-label">政治+地理双驱动</div></div><div class="kpi kpi-03"><div class="kpi-num">问题转换</div><div class="kpi-label">激化→消弭矛盾</div></div><div class="kpi kpi-04"><div class="kpi-num">三次大一统</div><div class="kpi-label">秦汉/隋唐/元明清</div></div></div>
+<div class="section section-01">
+  <div class="section-num num-01">1</div>
+  <div class="section-body">
+    <div class="tag tag-01">治乱逻辑</div>
+    <div class="section-title t-01">政治凝聚力与地理离心力：统一与分裂的双重驱动</div>
+    <div class="section-desc"><p>历史治乱分合的演变有其自身逻辑，地理环境只是其中一个因素。统一首先必须以社会政治方面的凝聚力、向心力为基础，其次才是地理上的经营措置；分裂也首先是社会政治方面出现离心力，然后地理上的离心力才显现出来。中国地理的特点是整体统一性与局部独立性并存——既有促进联系的有利条件（长江黄河在东、西部之间的纽带作用），也有将各地域相对隔绝的天然屏障（太行山、秦岭、大别山）。地理因素究竟是发挥联系作用还是离心作用，取决于当时社会政治的整合程度与中央政权经营措置的得当与否。</p></div>
+  </div>
+</div><div class="section section-02">
+  <div class="section-num num-02">2</div>
+  <div class="section-body">
+    <div class="tag tag-02">王朝盛衰</div>
+    <div class="section-title t-02">王朝盛衰的聚散效应：从凝聚到离心</div>
+    <div class="section-desc"><p>当一个王朝强盛时，统治者往往能以包容天下的胸怀推行积极的政治、经济、军事、民族和文化政策，将地理中有利于统一的积极因素发挥出来，将潜在的离心力降至最低，统一局面得以维系。而王朝衰弱时，积累的弊病在潜移默化中酝酿广泛的矛盾，在积弊中滋长离心力，地理上的离心力也随之显现。当离心力增长到一定程度，就可能破坏统一，形成分裂的局面。在治与乱的更迭中，地理因素是在社会、政治等更为根本性的因素起作用的前提之下才发挥出来的。</p></div>
+  </div>
+</div><div class="section section-03">
+  <div class="section-num num-03">3</div>
+  <div class="section-body">
+    <div class="tag tag-03">两极阶段</div>
+    <div class="section-title t-03">问题的转换：从推翻旧秩序到重建新统一</div>
+    <div class="section-desc"><p>从旧统治秩序解体到新统一局面建立，天下的纷争可分为两个阶段：前一阶段矛盾趋向于激化，后一阶段矛盾趋向于消弭。推翻旧王朝时，首先起事者必须凭借普遍存在的矛盾、甚至推动矛盾的激化来扩大影响、获得支持。但旧王朝一旦最终灭亡，矛盾失去集中的焦点，问题核心便转换为：再无凭何资源来重新整合天下、消弭离心力？刘邦的案例揭示了这一转换的深刻意义——秦亡之后，刘邦入关约法三章，防止东方人与秦人矛盾进一步加剧，而项羽坑杀秦卒则加剧了矛盾。刘邦为义帝发丧，将项羽树为天下「共敌」，将复杂的分散矛盾加以简化，从而加快了统一进程。</p></div>
+  </div>
+</div><div class="section section-04">
+  <div class="section-num num-04">4</div>
+  <div class="section-body">
+    <div class="tag tag-04">楚汉权谋</div>
+    <div class="section-title t-04">刘邦的三次大手笔：为统一天下构建正当性</div>
+    <div class="section-desc"><p>刘邦在统一过程中有三处关键大手笔：其一，还定三秦的时机——在天下之势未定之时趁势东出，避免诸侯各安其地、分裂成定局；其二，为义帝发丧——利用一个死去的「共主」为自己「正名」，将项羽树为天下「共敌」，把自己统一天下的行动变成诸侯可以接受的义举，联合诸侯联军五十六万人；其三，采纳郦食其的地理战略——「收取荥阳，据敖仓之粟，塞成皋之险，杜太行之道，拒飞狐之口，守白马之津」，造成明朗的东西对峙态势，使「天下知所归」。而早在反秦之初，张耳、陈馀建议陈胜复立六国之后以树敌，在灭秦阶段合宜，但到了统一阶段郦食其再提复立六国时，张良即刻指出此议不可——因为形势与目的已截然不同。</p></div>
+  </div>
+</div><div class="section section-05">
+  <div class="section-num num-05">5</div>
+  <div class="section-body">
+    <div class="tag tag-05">天下大势</div>
+    <div class="section-title t-05">三次大分裂与三次大一统的历史韵律</div>
+    <div class="section-desc"><p>中国历史经历了三次长时期的分裂：春秋战国、魏晋南北朝、五代十国及宋夏辽金先后并存。在这三次大分裂之后，分别完成了三次大一统：秦汉、隋唐、元明清。每一次大分裂之后的统一都比以前的统一更深刻、更广泛，社会的整合程度也更高。「旧的统治秩序解体通常是社会矛盾激化的产物。要重建新的统治秩序，必须先整合各种社会矛盾，消弭各种政治上的离心力，才有可能消除地理上的离心力，结束分裂，重建统一。」那些率先起来反对旧王朝统治秩序的人，往往不能重建新的统一——陈胜、绿林赤眉、黄巾、刘渊、王薄、韩山童等，都是先行者而非终结者。</p></div>
+  </div>
+</div>
+<div class="takeaway"><h3>📌 本章要点</h3><p>统一与分裂的根本驱动力是社会政治的聚散，地理因素是在此基础上发挥作用的。王朝盛则凝聚力强、离心力被抑制；王朝衰则离心力滋长、地理离心力随之显现。从旧秩序解体到新统一重建，需要完成从「激化矛盾」到「消弭矛盾」的根本问题转换——能洞察并驾驭这一转换者方可成就统一大业。刘邦的成功，正在于他比项羽更早地理解了这一转换：从约法三章化解秦人仇恨，到为义帝发丧构建正当性，再到地理战略造成明朗态势，每一步都切中问题症结。中国历史的分合韵律，三次大分裂皆以更深更广的统一收束，展现了一种超越地理的政治整合力量。</p></div>
+<div class="footer">布局天下 · 饶胜文 · 解放军出版社 2006 · 第5章 政治与地理</div>
+</div></body>
+</html>

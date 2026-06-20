@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 参考文献 — 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="表象与本质-ch015-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 参考文献</h1>
+<p class="subtitle">一份跨越哲学、认知科学、语言学、数学史和物理学的学术版图——从柏拉图到维特根斯坦，从庞加莱到爱因斯坦，从拉科夫到金特纳，这些参考文献不是装饰，而是支撑全书每一处论点的思想基石。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>此部分汇集了全书引用的所有学术文献，按章节编排并附有作者的简要评述。总论部分列出了与全书各章节均相关的基石性著作：Fauconnier和Turner的《我们的思维方式》将概念映射置于认知中心；Holyoak和Thagard的《思维飞跃》以及Gentner等人编辑的选集已成为类比研究的标准参考书；Murphy的巨著《概念大全》是范畴化研究的权威资源；Lakoff和Johnson的《我们赖以生存的隐喻》则彻底改变了学界对隐喻与思维关系的认识。随后各章参考文献横跨概念发展、范畴化、类比推理、朴素物理学、朴素数学、科学发现中的类比等广泛议题，构成了当代认知科学中关于"类比与思维"研究的最完整文献目录之一。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">500+<span class="kpi-unit"></span></div>
+    <div class="kpi-label">参考文献条数</div>
+    <div class="kpi-note">覆盖总论+引言+8章+结语<br>每章独立编排<br>附有简要评述</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">8<span class="kpi-unit">大基石</span></div>
+    <div class="kpi-label">总论核心著作</div>
+    <div class="kpi-note">Fauconnier & Turner<br>Holyoak & Thagard<br>Gentner, Lakoff, Murphy等</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">10+<span class="kpi-unit">学科</span></div>
+    <div class="kpi-label">跨学科覆盖</div>
+    <div class="kpi-note">认知科学·心理学·语言学<br>哲学·数学·物理学<br>人工智能·教育学·文学</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1995<span class="kpi-unit">-2012</span></div>
+    <div class="kpi-label">核心著作年代</div>
+    <div class="kpi-note">FlowCon (1995)<br>The Way We Think (2002)<br>本书(2013)集大成</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">总论</div>
+    <div class="section-title t-01">认知科学中类比与范畴化研究的基石文献</div>
+    <div class="section-desc">总论部分的参考文献是理解全书理论框架的必读文献。Fauconnier和Turner的《我们的思维方式：概念整合与心智的隐藏复杂性》（2002）将概念映射放在认知的中心——这与本书的核心主张如出一辙，但使用了不同的术语体系（"概念整合"而非"类比"）。Holyoak和Thagard的《思维飞跃》（1995）从多学科视角系统阐述了类比在人类推理中的作用，已成为该领域的标准参考书。Gentner、Holyoak和Kokinov编辑的《类比的思维：来自认知科学的视角》（2001）汇集了该领域最前沿的研究。Hofstadter与流动类比研究小组的《流动概念与创造性类比》（1995）则是本书作者的前期研究成果，为本书奠定了方法论和理论基础。Murphy的《概念大全》（2002）是关于范畴化的权威综述。Lakoff和Johnson的《我们赖以生存的隐喻》（1980）革命性地证明了隐喻不是修辞装饰而是思维的基本方式。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">Way We Think</div>
+        <div class="data-sm">Fauconnier & Turner<br>概念整合理论<br>认知的中心是映射</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">Mental Leaps</div>
+        <div class="data-sm">Holyoak & Thagard<br>类比推理的系统阐述<br>类比研究的标准参考</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">FlowCon</div>
+        <div class="data-sm">Hofstadter & FARG<br>流动类比·创造性类比<br>本书方法论的直接前身</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">引言+第1-3章</div>
+    <div class="section-title t-02">类比的基础：概念、词语与隐秘的思维机制</div>
+    <div class="section-desc">引言和前两章的参考文献侧重类比作为一种思维模式的哲学基础与认知科学证据。Alberic、Bachelard、Bartha、Bouveresse等人从哲学视角审视了类比的可靠性。Anderson的论文强调范畴化的适应性价值——为什么人类需要将不断变化的世界简化为稳定的范畴。Tversky、Medin、Goldstone和Gentner的系列论文探讨了相似性的心理本质——当人们判断两个事物"相似"时，大脑中实际发生着什么？第1-2章的参考文献则空前广泛：Carey、Gelman、Keil、Pinker等人的发展心理学研究揭示儿童如何通过类比建立最初的概念；Barsalou、Glucksberg、Medin等人的实验探索了成人范畴化的心理机制；Boroditsky、Lakoff与Turner的工作将隐喻研究从修辞学解放出来、重新定位为认知科学的核心议题。第3章的注释覆盖了类比无处不在的实验证据——从日常对话中"我也是"的自动触发，到复杂情境下记忆的无意识唤醒。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🧒</div>
+        <div class="dual-text">
+          <h4>发展心理学视角</h4>
+          <p>Carey、Gelman、Keil、Pinker等人揭示：儿童的概念习得过程本质上是一系列类比——每一次将新物体归入"狗"或"椅子"的范畴，都是一次类比跳跃。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🧠</div>
+        <div class="dual-text">
+          <h4>成人范畴化的心理机制</h4>
+          <p>Barsalou的理想点理论、Medin的背景依赖理论、Goldstone的相似性互动激活模型——这些实验研究为"范畴化=作类比"提供了精密证据。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">第4-6章</div>
+    <div class="section-title t-03">抽象过程、类比操纵与创造性思维——实验与计算模型</div>
+    <div class="section-desc">中间三章的参考文献集中在抽象思维的心理机制、类比对思维的无意识操纵以及类比的计算建模。第4章覆盖抽象阶梯的认知科学基础——人们如何在不同抽象层次之间灵活滑动。第5章的参考文献尤为引人入胜：Maslow的"如果你手中只有一把锤子，所有东西看起来都像钉子"——这条著名的"工具定律"本质上是关于朴素类比如何限制思维的心理学洞见。Khong对越南战争中"慕尼黑类比"和"多米诺骨牌类比"的政治学分析，则是类比在真实历史决策中发挥作用的经典案例研究。第6章引入了类比的计算建模视角：Holyoak和Thagard的《思维飞跃》不仅是类比的理论著作，也包含了早期的计算模型；Gentner、Rattermann和Forbus的研究则揭示了儿童类比能力的发展轨迹。</div>
+    <div class="dual-grid">
+      <div class="dual-card c">
+        <div class="dual-icon">🔨</div>
+        <div class="dual-text">
+          <h4>锤子定律</h4>
+          <p>Maslow (1966): "如果你手中只有一把锤子，所有东西看起来都像钉子。"——当你的范畴库过于匮乏，每一个新事物都被迫归入你仅有的几个范畴。</p>
+        </div>
+      </div>
+      <div class="dual-card d">
+        <div class="dual-icon">🎮</div>
+        <div class="dual-text">
+          <h4>计算模型</h4>
+          <p>Hofstadter & FARG的Copycat、Metacat等程序是本书作者团队的计算研究——试图在计算机中模拟人类作类比的过程。这些模型为"类比是思维核心"提供了计算层面的证据。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">第7-8章</div>
+    <div class="section-title t-04">朴素类比与惊天动地的类比——从教育到科学革命</div>
+    <div class="section-desc">后两章的参考文献是全书最具历史纵深感的学术集合。第7章追踪了朴素类比在数学教育中的历史沿革：Recorde（1557）——等号的发明者——将其描述为"两条平行线，因为没有比它们更相等的东西了"，这本身就是一个朴素类比。Bezout（1833）的数学教科书中将除法定义为"一个数除以另一个数就是求这个数包含多少个另一个数"——这种朴素定义影响了此后近两个世纪的数学教育。第8章则追踪了科学史上最伟大的类比时刻：爱因斯坦1905年的光量子论文——将辐射能量的分布与气体分子的能量分布进行类比，推导出光是由粒子组成的革命性结论。Hoffmann的权威传记详细记录了爱因斯坦的思考过程——"带着对宇宙统一的直觉"。庞加莱、乌拉姆的引文提供了数学家关于类比在专业数学思维中角色的第一人称证言。</div>
+    <div class="list-block">
+      <div class="list-item"><div class="list-num ln01">1</div><div>朴素类比的历史轨迹：Recorde (1557) → Bezout (1833) → 当今课堂——"除法=均分"的类比穿越了450年，至今仍在世界各地的教室里回响。</div></div>
+      <div class="list-item"><div class="list-num ln02">2</div><div>科学革命的类比时刻：爱因斯坦 (1905) 通过辐射↔气体的形式类比发现了光量子——"一种如此具有概括性的原则"。</div></div>
+      <div class="list-item"><div class="list-num ln03">3</div><div>数学家的第一人称证言：庞加莱 (1911) "向导主要是类比"；乌拉姆 (1976) "好的数学家看到类比，伟大的数学家看到类比之间的类比"。</div></div>
+      <div class="list-item"><div class="list-num ln04">4</div><div>朴素与高级的统一：同一个认知机制既生成困住大众的朴素偏见，也催生改变世界的科学发现。</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">结语</div>
+    <div class="section-title t-05">范畴化=作类比——全书主题的文献收束</div>
+    <div class="section-desc">结语的参考文献精炼地收束了全书主题。Spalding和Murphy (1996) 关于"范畴让人们把新鲜事物当熟悉的事物那样对待"的论述，与Gick和Holyoak (1983) 关于"类比让我们把新事物看成熟悉的事物"的论述形成了精确的平行结构。波利亚 (1957) 断言"类比贯穿我们的思维"，奥本海默 (1956) 宣称"面对新鲜事物，我们不可避免地将它与熟悉的事物进行比较"——一位数学家和一位物理学家，用各自的语言表述了同一个核心洞见。柏拉图在《智者篇》中的古老比喻——要像优秀的屠夫那样"顺着关节切割"——被结语赋予了新的含义：思维的自然"关节"并不存在于范畴化与作类比之间。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🔗</div>
+        <div class="dual-text">
+          <h4>平行论述</h4>
+          <p>Spalding & Murphy → "范畴让人以旧视新"。Gick & Holyoak → "类比让人以旧视新"。不同的术语，完全相同的功能描述——范畴化与作类比在文献中已被独立描述为同一件事。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🔪</div>
+        <div class="dual-text">
+          <h4>柏拉图的屠夫</h4>
+          <p>Plato (1950): 要像优秀的屠夫那样"顺着关节切割"。结语揭示：在范畴化与作类比之间，不存在一条自然的"关节"——它们本是同一个过程。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">这500余条参考文献不是装饰性的学术陈设，而是建构全书论点的思想砖石。它们共同勾勒出一条跨越两千五百年的学术轨迹：从柏拉图对相似性的哲学反思，到维特根斯坦"家族相似性"对范畴边界的重划，再到爱因斯坦通过类比发现光量子——最后在21世纪的认知科学实验室中被精密实验所验证。阅读这份参考文献目录，就如同检阅一支"隐喻的大军"——每个条目都是一位为"类比是认知的核心"这一命题作证的学者。它们共同证明：这不是两个作者的异想天开，而是人类最优秀头脑数百年来持续积累的集体洞见。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》参考文献信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

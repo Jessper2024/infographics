@@ -2,105 +2,311 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>财务新人如何读懂数据语言 · 第2章「未来的会计长什么样」</title>
 <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    @font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-    body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:48px 16px 60px;font-family:'FZXPYZS','PingFang SC','Microsoft YaHei','Hiragino Sans GB',serif;color:#333;line-height:1.8}
-    .container{width:100%;max-width:880px}
-    .back-catalog{text-align:left;margin-bottom:12px}
-    .back-catalog a{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;transition:color .15s}
-    .back-catalog a:hover{color:#dc2626}
-    .lang-switch{text-align:right;margin-bottom:8px}
-    .lang-switch a{font-size:13px;color:#888;text-decoration:none;padding:4px 10px;border:1px solid #d4c8b8;border-radius:12px;margin-left:6px;font-family:'FZXPYZS','PingFang SC',serif;transition:all .15s}
-    .lang-switch a:hover{color:#dc2626;border-color:#dc2626}
-    .lang-switch a.active{color:#fff;background:#4f46e5;border-color:#4f46e5}
-    .header{text-align:center;margin-bottom:32px}
-    .header h1{font-size:24px;color:#1a1a1a;font-family:'FZXPYZS','PingFang SC',serif;font-weight:400;letter-spacing:.03em;margin-bottom:8px}
-    .header .subtitle{font-size:15px;color:#888;font-family:'FZXPYZS','PingFang SC',serif}
-    .divider{width:60px;height:3px;background:#d4c8b8;margin:20px auto 28px;border-radius:2px}
-    .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:0 0 28px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
-    .chapter-overview p{margin:0}
-    .kpi-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
-    .kpi-card{flex:1;min-width:180px;background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.05);text-align:center}
-    .kpi-card .kpi-label{font-size:13px;color:#888;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-value{font-size:22px;font-weight:700;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-desc{font-size:12px;color:#999;line-height:1.5}
-    .section{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #4f46e5}
-    .section .section-title{font-size:16px;font-weight:700;margin-bottom:10px;font-family:'FZXPYZS','PingFang SC',serif;color:#1a1a1a}
-    .section .section-body{font-size:14px;color:#555;line-height:1.85}
-    .takeaway{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:28px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #dc2626}
-    .takeaway .takeaway-label{font-size:12px;color:#dc2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
-    .takeaway .takeaway-text{font-size:14px;color:#333;line-height:1.85}
-    .footer{text-align:center;padding:28px 0 0;border-top:1px solid #e8e0d5;margin-top:12px;font-size:12px;color:#bbb;font-family:'FZXPYZS','PingFang SC',serif}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; margin: 0 auto; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: #fff; border-radius: 12px; padding: 18px 14px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid #e8e0d5;
+    display: flex; flex-direction: column; justify-content: center; min-height: 96px;
+  }
+  .kpi-card.c01 { border-top: 3px solid #dc2626; }
+  .kpi-card.c02 { border-top: 3px solid #ea580c; }
+  .kpi-card.c03 { border-top: 3px solid #ca8a04; }
+  .kpi-card.c04 { border-top: 3px solid #4f46e5; }
+  .kpi-val {
+    font-size: 32px; font-weight: bold; color: #1a1a1a; line-height: 1;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    margin-bottom: 6px;
+  }
+  .kpi-label {
+    font-size: 12px; color: #999; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+  .section-highlight {
+    background: #fef2f2; border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; color: #991b1b; line-height: 1.6;
+    margin-top: 6px; border: 1px solid #fecaca;
+  }
+  .highlight-orange { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+  .highlight-gold { background: #fefce8; border-color: #fde68a; color: #92400e; }
+  .highlight-indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .highlight-pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+  .dual-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+  .dual-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.pink { background: #fdf2f8; border: 1px solid #f9a8d4; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-step.indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .flow-step.pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .point-list { list-style: none; padding: 0; margin: 10px 0 0; }
+  .point-list li {
+    padding: 6px 0; font-size: 13px; color: #555; line-height: 1.7;
+    border-bottom: 1px solid #f3f0e8; display: flex; gap: 8px;
+  }
+  .point-list li:last-child { border-bottom: none; }
+  .point-bullet { flex-shrink: 0; font-size: 14px; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    h1 { font-size: 26px; }
+  }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="back-catalog">
-    <a href="财务新人如何读懂数据语言-catalog.html">← 返回章节目录</a>
+<div class="back-catalog"><a class="back-catalog-btn" href="财务新人如何读懂数据语言-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="财务新人如何读懂数据语言-ch002-info-en.html">English / 中文</a>
+</div>
+
+<h1>财务新人如何读懂数据语言 · 第2章「未来的会计长什么样」</h1>
+<p class="subtitle"><span style="display:block;margin-bottom:6px;font-family:FZXPYZS,serif;letter-spacing:2px;font-size:11px;color:#dc2626;">SCQA · 情境 → 冲突 → 问题 → 回答</span>浙大供应链国际班的作业是一道开放式题——未来技术飞速发展会对财务会计带来哪些变化与冲击？当今技术进步之快令人目眩，而传统会计体系似乎原封未动。未来的会计究竟长什么样？来自浙大学生的多元化思考，揭示了六大趋势。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>这是一道没有标准答案的题。浙大学生给出了远比预期多样化的精彩回应：从虚拟货币到多头组织，从历史成本到实时报告，涵盖了六大未来趋势。每个趋势都在挑战财会学科的基本假设——会计主体、历史成本、资产定义、财报周期。文章提醒："大事机警，小事机灵"——当 Google 机器都能写诗了，每个从业人员都要对未来保持机警。</p>
+</div>
+<div class="kpi-row">
+      <div class="kpi-card c01">
+        <div class="kpi-val">6</div>
+        <div class="kpi-label">大未来趋势
+全面冲击会计</div>
+      </div>
+      <div class="kpi-card c02">
+        <div class="kpi-val">虚实</div>
+        <div class="kpi-label">虚拟货币冲击
+二套账本可能</div>
+      </div>
+      <div class="kpi-card c03">
+        <div class="kpi-val">实时</div>
+        <div class="kpi-label">从年报→实时
+传感器+MES联网</div>
+      </div>
+      <div class="kpi-card c04">
+        <div class="kpi-val">多头</div>
+        <div class="kpi-label">微组织聚合
+瓦解会计主体假设</div>
+      </div>
+    </div>
+<!-- 01: 货币变革 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">货币变革</div>
+    <div class="section-title t-01">虚拟货币：从真实货币到虚实双重估值</div>
+    <div class="section-desc">财务记账以真实货币为计量单位。随着虚拟货币投入使用，一个经营组织是否会出现"虚""实"二套账本？当比特币、央行数字货币和各类代币成为日常交易媒介，传统的货币计量基础将面临根本性挑战。估值体系可能从单一货币计量的确定性，走向虚实并行的双重维度。</div>
+<div class="section-highlight">💡 核心问题：货币的计量基准被颠覆后，账本体系如何兼容"虚实"双重估值？</div>
   </div>
-  <div class="lang-switch">
-    <a href="财务新人如何读懂数据语言-ch002-info-en.html">EN</a>
+</div>
+<!-- 02: 组织变革 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">组织变革</div>
+    <div class="section-title t-02">多头组织：会计主体假设的瓦解</div>
+    <div class="section-desc">传统财务以法人作为会计实体。但未来组织将出现多头聚合——项目甲时，微组织A与B结合；项目结束后，A又与另一个组织结合。日本的阿米巴模式、海尔的微组织创业，都是这种趋势的先声。考核单位的多变与融合，将瓦解"会计主体"这一财务会计的基本假设。</div>
+<div class="flow-row"><div class="flow-step">🏢<br>传统法人
+会计实体</div><div class="flow-arrow">→</div><div class="flow-step">🔀<br>微组织A+B
+项目聚合</div><div class="flow-arrow">→</div><div class="flow-step">🔄<br>项目结束
+重新组合</div><div class="flow-arrow">→</div><div class="flow-step end">💥<br>会计主体
+假设瓦解</div></div>
   </div>
-  <div class="header">
-    <h1>财务新人如何读懂数据语言 · 第2章「未来的会计长什么样」</h1>
-    <div class="subtitle">浙大学生眼中的六大技术趋势对财务会计的冲击</div>
-  </div>
-  <div class="divider"></div>
-  <div class="chapter-overview">
-    <p>作者在浙大财务课程中以一道开放式作业——「未来技术对财务会计的冲击」——收集了学生的多元思考。归纳出六大趋势：虚拟货币催生虚实双账本、多头组织瓦解会计主体假设、历史成本转向实时成本、数据取代实物成为核心资产、财报周期从季报走向实时日报、非货币交易弱化货币功能。核心警示：当机器能写诗时，财务人不能只做报告的白领。</p>
-  </div>
-  <div class="kpi-row">
-    <div class="kpi-card">
-      <div class="kpi-label">虚拟货币采纳</div>
-      <div class="kpi-value" style="color:#dc2626">虚实双账本</div>
-      <div class="kpi-desc">经营组织估值出现虚实两套标准</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">实时财报频率</div>
-      <div class="kpi-value" style="color:#ea580c">日报/实时</div>
-      <div class="kpi-desc">传感器+MES让每分钟生成财报成为可能</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">数据资产估值</div>
-      <div class="kpi-value" style="color:#d97706">超越实物</div>
-      <div class="kpi-desc">客户注册信息比免费手机更有价值</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">非货币交易占比</div>
-      <div class="kpi-value" style="color:#4f46e5">持续上升</div>
-      <div class="kpi-desc">物流公司以免费送货换取用户信息</div>
+</div>
+<!-- 03: 成本变革 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">成本变革</div>
+    <div class="section-title t-03">从历史成本到现时成本：物联网的信息革命</div>
+    <div class="section-desc">目前绝大多数资产以历史成本计价——一台五万元的机器，入账价值是购买时点的价值。未来市场信息越来越实时化，当信息成本趋近于零时，现时成本将替代历史成本。物联网的普及让每一件物品都能享有实时联网的比较价值——传统的历史成本原则将被彻底改写。</div>
+<div class="dual-grid">
+      <div class="dual-card gold">
+        <div class="dual-icon">📜</div>
+        <div class="dual-text"><h4>历史成本</h4><p>以购入时点计价，信息滞后。传统会计假设信息获取成本高，但这一前提正在消失。</p></div>
+      </div>
+      <div class="dual-card gold">
+        <div class="dual-icon">🌐</div>
+        <div class="dual-text"><h4>现时成本</h4><p>物联网让每件物品拥有实时联网比较价值。信息成本趋零→现时成本成为可能。</p></div>
+      </div>
     </div>
   </div>
-  <div class="section" style="border-left-color:#dc2626">
-      <div class="section-title">虚拟货币与多头组织</div>
-      <div class="section-body">虚拟货币的投入使用使经营组织的估值出现了「虚」「实」二套账本的可能。同时，未来的组织以项目为单位多头聚合——A与B组合做项目甲，结束后A又与C结合。日本的阿米巴、海尔的微组织创业模式，将瓦解以法人为单位的会计主体假设。考核单位的多变与融合，对财务会计的根本假设提出挑战。</div>
-    </div>
-<div class="section" style="border-left-color:#ea580c">
-      <div class="section-title">从历史成本到实时成本</div>
-      <div class="section-body">财务中绝大多数资产以历史购买时点的成本计价。随着物联网普及，每件物品都能享有实时联网的比较价值，信息成本趋近于零时，现时成本（Current Cost）将替代历史成本（Historical Cost）。一台五万元的机器，其价值不再是购买那一刻定格，而是随市场实时波动。</div>
-    </div>
-<div class="section" style="border-left-color:#d97706">
-      <div class="section-title">数据即资产：颠覆资产定义</div>
-      <div class="section-body">送产品以获得用户资料的营运模式将颠覆以实物为唯一资产的标准。一个营运商的手机价值可能为零，而免费手机换来的用户注册信息反倒被估值为有价资产。在「数据贵过石油」的时代，客户数据的资产化表达是迟早的事——这是对会计学「资产」概念的根本性重新定义。</div>
-    </div>
-<div class="section" style="border-left-color:#4f46e5">
-      <div class="section-title">实时财报革命</div>
-      <div class="section-body">传统财务报告从年报→季报→月报，尺度都不够大。当传感器成本低到可忽略，每台机器、每个操作个体通过MES联网时，每分钟完工的成品、每道工序的成本都可以实时反映。有些公司总裁办公室已有超大屏幕滚动显示每一时点的成品数量和出货金额。技术已具备，缺的只是大家认同的新规范——每分钟生成一份财务报告不再是科幻。</div>
-    </div>
-<div class="section" style="border-left-color:#db2777">
-      <div class="section-title">非货币交易时代的来临</div>
-      <div class="section-body">未来将有越来越多「没有价、但有值」的东西。淘宝网客户评价无法用现金估值，但绝对是值钱的信息。物物交换将大行其道，货币的交易媒介功能大大弱化。一家物流公司以免费送货获取用户信息，双方完成交易时并未用到钱。货币不再是唯一的交易媒介，这对以货币为计量单位的财务会计学科构成根本性挑战。</div>
-    </div>
-  <div class="takeaway">
-    <div class="takeaway-label">核心启示</div>
-    <div class="takeaway-text">「大事机警，小事机灵」——每个财务从业者都必须对未来技术趋势保持机警。当Google机器都能写诗了，未来会计绝不是只会坐在电脑前做报告的职业白领。</div>
+</div>
+<!-- 04: 资产变革 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">资产变革</div>
+    <div class="section-title t-04">资产定义的颠覆：数据贵过石油</div>
+    <div class="section-desc">送产品以获取用户资料的营运模式正颠覆以实物作为资产的唯一参照标准。一台手机价值可能为零，而用免费手机换来的用户注册信息反倒被估值为有价资产。在"数据贵过石油"的时代，客户数据的资产表达将是迟早的事——资产的定义从有形实物延伸到无形数据。</div>
+<ul class="point-list"><li><span class="point-bullet">📱</span>手机价值可能为零 → 免费获取用户数据</li><li><span class="point-bullet">📋</span>用户注册信息 → 被估值为有价资产</li><li><span class="point-bullet">🛢️</span>数据贵过石油 → 客户数据迟早成为资产负债表项目</li><li><span class="point-bullet">💎</span>资产定义从有形实物延伸到无形数据资产</li></ul>
   </div>
-  <div class="footer">
-    <p>内容摘编自《财务新人如何读懂数据语言》· 钱自严 著 · 知乎「一小时」系列 · 信息图由 AI 辅助生成 · 仅供学习参考</p>
+</div>
+<!-- 05: 周期变革 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">周期变革</div>
+    <div class="section-title t-05">从年报到实时报告：传感器+MES的革命</div>
+    <div class="section-desc">传统财务报告从年报到季报再到月报，尺度都不够大。当传感器成本低到忽略不计，每台机器、每个操作个体都通过 MES 联网时，每分钟完工的成品、每道工序的成本结算都可以实时反映。每天甚至每分钟都可以生成一份新财务报告。技术已就绪，缺的只是行业认同的新规范——当大家都习惯用周报、日报来衡量，新的会计标准将应运而生。</div>
+<div class="flow-row"><div class="flow-step">📅<br>年报·季报
+月报</div><div class="flow-arrow">→</div><div class="flow-step indigo">📡<br>传感器+MES
+实时联网</div><div class="flow-arrow">→</div><div class="flow-step pink">⚡<br>每分钟
+成本结算</div><div class="flow-arrow">→</div><div class="flow-step end">📊<br>日报·分钟报
+新标准</div></div>
   </div>
+</div>
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">"大事机警，小事机灵"——每个财务从业人员都要对未来保持机警感。虚拟货币、多头组织、现时成本、数据资产、实时报告、非货币交易——六大趋势正从六个基本面改写会计学科。当 Google 机器都能写诗了，我们还能只做电脑跟前编整财务报告的职业白领吗？未来会计长什么样不能断言，但肯定不是只会做报告的旧模样。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">来源：知乎·钱自严《财务新人如何读懂数据语言》第二章「未来的会计长什么样」· 信息图 · 仅供学习参考</div>
+
 </div>
 </body>
 </html>

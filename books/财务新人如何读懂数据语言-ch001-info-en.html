@@ -2,105 +2,312 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Financial Data Language for Beginners · Ch.1 "Can You Think Foresightedly?"</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Finance Newcomers Can Understand the Language of Data · Chapter 1: "Can You Think Ahead?"</title>
 <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    @font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-    body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:48px 16px 60px;font-family:'FZXPYZS','PingFang SC','Microsoft YaHei','Hiragino Sans GB',serif;color:#333;line-height:1.8}
-    .container{width:100%;max-width:880px}
-    .back-catalog{text-align:left;margin-bottom:12px}
-    .back-catalog a{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;transition:color .15s}
-    .back-catalog a:hover{color:#dc2626}
-    .lang-switch{text-align:right;margin-bottom:8px}
-    .lang-switch a{font-size:13px;color:#888;text-decoration:none;padding:4px 10px;border:1px solid #d4c8b8;border-radius:12px;margin-left:6px;font-family:'FZXPYZS','PingFang SC',serif;transition:all .15s}
-    .lang-switch a:hover{color:#dc2626;border-color:#dc2626}
-    .lang-switch a.active{color:#fff;background:#4f46e5;border-color:#4f46e5}
-    .header{text-align:center;margin-bottom:32px}
-    .header h1{font-size:24px;color:#1a1a1a;font-family:'FZXPYZS','PingFang SC',serif;font-weight:400;letter-spacing:.03em;margin-bottom:8px}
-    .header .subtitle{font-size:15px;color:#888;font-family:'FZXPYZS','PingFang SC',serif}
-    .divider{width:60px;height:3px;background:#d4c8b8;margin:20px auto 28px;border-radius:2px}
-    .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:0 0 28px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
-    .chapter-overview p{margin:0}
-    .kpi-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
-    .kpi-card{flex:1;min-width:180px;background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.05);text-align:center}
-    .kpi-card .kpi-label{font-size:13px;color:#888;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-value{font-size:22px;font-weight:700;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-desc{font-size:12px;color:#999;line-height:1.5}
-    .section{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #4f46e5}
-    .section .section-title{font-size:16px;font-weight:700;margin-bottom:10px;font-family:'FZXPYZS','PingFang SC',serif;color:#1a1a1a}
-    .section .section-body{font-size:14px;color:#555;line-height:1.85}
-    .takeaway{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:28px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #dc2626}
-    .takeaway .takeaway-label{font-size:12px;color:#dc2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
-    .takeaway .takeaway-text{font-size:14px;color:#333;line-height:1.85}
-    .footer{text-align:center;padding:28px 0 0;border-top:1px solid #e8e0d5;margin-top:12px;font-size:12px;color:#bbb;font-family:'FZXPYZS','PingFang SC',serif}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; margin: 0 auto; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: #fff; border-radius: 12px; padding: 18px 14px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid #e8e0d5;
+    display: flex; flex-direction: column; justify-content: center; min-height: 96px;
+  }
+  .kpi-card.c01 { border-top: 3px solid #dc2626; }
+  .kpi-card.c02 { border-top: 3px solid #ea580c; }
+  .kpi-card.c03 { border-top: 3px solid #ca8a04; }
+  .kpi-card.c04 { border-top: 3px solid #4f46e5; }
+  .kpi-val {
+    font-size: 32px; font-weight: bold; color: #1a1a1a; line-height: 1;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    margin-bottom: 6px;
+  }
+  .kpi-label {
+    font-size: 12px; color: #999; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+  .section-highlight {
+    background: #fef2f2; border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; color: #991b1b; line-height: 1.6;
+    margin-top: 6px; border: 1px solid #fecaca;
+  }
+  .highlight-orange { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+  .highlight-gold { background: #fefce8; border-color: #fde68a; color: #92400e; }
+  .highlight-indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .highlight-pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+  .dual-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+  .dual-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.pink { background: #fdf2f8; border: 1px solid #f9a8d4; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-step.indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .flow-step.pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .point-list { list-style: none; padding: 0; margin: 10px 0 0; }
+  .point-list li {
+    padding: 6px 0; font-size: 13px; color: #555; line-height: 1.7;
+    border-bottom: 1px solid #f3f0e8; display: flex; gap: 8px;
+  }
+  .point-list li:last-child { border-bottom: none; }
+  .point-bullet { flex-shrink: 0; font-size: 14px; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    h1 { font-size: 26px; }
+  }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="back-catalog">
-    <a href="财务新人如何读懂数据语言-catalog.html">← Back to Catalog</a>
+<div class="back-catalog"><a class="back-catalog-btn" href="财务新人如何读懂数据语言-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="财务新人如何读懂数据语言-ch001-info-zh.html">中文 / English</a>
+</div>
+
+<h1>How Finance Newcomers Can Understand the Language of Data · Chapter 1<br>"Can You Think Ahead?"</h1>
+<p class="subtitle"><span style="display:block;margin-bottom:6px;font-family:FZXPYZS,serif;letter-spacing:2px;font-size:11px;color:#dc2626;">SCQA · Situation → Complication → Question → Answer</span>An intern wants to quit and apply to grad school — she believes stronger professional knowledge requires a master's degree. But has she really thought through whether a degree equals competitiveness? How can forward-looking thinking guide major life decisions? Professor Sorenson's VT (Validity Test) and ST (Soundness Test) two-dimensional model provides a clear path.</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Forward-looking thinking requires two-dimensional validation: VT tests whether "the result necessarily follows when the assumption holds," while ST tests whether "the assumption itself is valid." Both tests must stand before a decision merits further consideration. The author applied this model to the intern's graduate-school decision — revealing that companies need ability, not knowledge.</p>
+</div>
+<div class="kpi-row">
+      <div class="kpi-card c01">
+        <div class="kpi-val">2</div>
+        <div class="kpi-label">Dimensional Tests
+VT + ST</div>
+      </div>
+      <div class="kpi-card c02">
+        <div class="kpi-val">1hr</div>
+        <div class="kpi-label">Deep Conversation
+Career Coaching</div>
+      </div>
+      <div class="kpi-card c03">
+        <div class="kpi-val">211</div>
+        <div class="kpi-label">Top Univ. Degree
+Already Qualified</div>
+      </div>
+      <div class="kpi-card c04">
+        <div class="kpi-val">Yes & No</div>
+        <div class="kpi-label">VT Core Answer
+Context Matters</div>
+      </div>
+    </div>
+<!-- 01: Thinking Framework -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Thinking Framework</div>
+    <div class="section-title t-01">VT Validity Test: Does A Necessarily Lead to B?</div>
+    <div class="section-desc">The core question of the VT test: When assumption A holds, does result B necessarily follow? Take the semiconductor case — does production capacity increase (A) necessarily improve gross margins (B)? The answer is "yes and no": when existing facilities can accommodate new equipment, yes; but when a new factory is needed, doubling capacity doubles costs, so margins may not improve. This "Yes and No" captures the essence of VT.</div>
+<div class="section-highlight">💡 The essence of VT: "Yes and No" — context determines whether the causal chain holds; there is no universal cause-and-effect.</div>
   </div>
-  <div class="lang-switch">
-    <a href="财务新人如何读懂数据语言-ch001-info-zh.html">中文</a>
+</div>
+<!-- 02: Thinking Validation -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Thinking Validation</div>
+    <div class="section-title t-02">ST Soundness Test: Is Assumption A Actually True?</div>
+    <div class="section-desc">The ST test examines whether the assumption itself is true. Returning to the capacity investment example — "Can capacity really be increased as planned?" The answer: not necessarily. Your competitors are making the same upgrades. The game-theory result: either nobody invests, or everyone invests. Everyone investing means a price war, where margins fall instead of rise. ST demands we look beyond our own plans and examine the external competitive landscape.</div>
+<div class="section-highlight highlight-orange">💡 The essence of ST: Don't just see what you want to see — game theory teaches us that a decision everyone makes can be the worst decision.</div>
   </div>
-  <div class="header">
-    <h1>Financial Data Language for Beginners · Ch.1 "Can You Think Foresightedly?"</h1>
-    <div class="subtitle">Applying Stanford's VT-ST Framework to Personal Career Decisions</div>
-  </div>
-  <div class="divider"></div>
-  <div class="chapter-overview">
-    <p>Through a conversation with an intern planning to quit for graduate school, the author introduces Stanford Business School's VT-ST two-dimensional testing framework. VT (Validity Test) examines whether A→B necessarily holds: does more knowledge inevitably lead to greater competitiveness? ST (Soundness Test) examines whether A is true: can graduate education actually deliver practical knowledge? Both tests reveal that workplace experience builds comprehensive capabilities far better than further study—a conclusion that most students never reach through foresightful thinking.</p>
-  </div>
-  <div class="kpi-row">
-    <div class="kpi-card">
-      <div class="kpi-label">VT Pass Rate</div>
-      <div class="kpi-value" style="color:#dc2626">0%</div>
-      <div class="kpi-desc">Grad school → competitiveness chain broken</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">ST Pass Rate</div>
-      <div class="kpi-value" style="color:#ea580c">0%</div>
-      <div class="kpi-desc">Academic knowledge ≠ practical capability</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">Employer Demand</div>
-      <div class="kpi-value" style="color:#d97706">Skill>Knowledge</div>
-      <div class="kpi-desc">Communication, agility, hands-on capability</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">Foresight Coverage</div>
-      <div class="kpi-value" style="color:#4f46e5">Missing</div>
-      <div class="kpi-desc">Most students never apply strategic thinking to life</div>
+</div>
+<!-- 03: Case Study -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Case Study</div>
+    <div class="section-title t-03">The Semiconductor Case: Two-Dimensional Testing of Capacity Investment</div>
+    <div class="section-desc">Professor Sorenson's classic case demonstrates how VT+ST test a strategic decision in parallel. Investing in capacity to improve margins seems self-evident, but dual testing reveals: from the VT perspective, economies of scale only work within existing facility limits; from the ST perspective, competitor behavior severely undercuts the true effect of capacity expansion. Both tests are indispensable — only combined can they produce a reliable forward-looking assessment.</div>
+<div class="dual-grid">
+      <div class="dual-card gold">
+        <div class="dual-icon">🔬</div>
+        <div class="dual-text"><h4>VT: Validity Test</h4><p>Capacity ↑ → Margin ↑? YES within existing facilities; NO when building new plants. The boundary conditions of scale determine the outcome.</p></div>
+      </div>
+      <div class="dual-card gold">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text"><h4>ST: Soundness Test</h4><p>Can capacity really be increased? Competitors upgrade too. Game-theory result: either nobody invests, or everyone does. Everyone → price war → margins fall.</p></div>
+      </div>
     </div>
   </div>
-  <div class="section" style="border-left-color:#dc2626">
-      <div class="section-title">The VT-ST Two-Dimensional Framework</div>
-      <div class="section-body">Professor Sorensen's two tests for strategic decisions: VT (Validity) checks whether "if A holds, does B necessarily follow?" ST (Soundness) checks whether "A itself is true." Only if both pass should a proposal be seriously considered. Example: semiconductor capacity investment—VT: does more capacity necessarily increase margins? Depends on existing facility space. ST: can you actually increase capacity? Competitors may expand simultaneously, triggering price wars.</div>
+</div>
+<!-- 04: Career Analysis -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Career Analysis</div>
+    <div class="section-title t-04">Deconstructing the Grad-School Decision with VT+ST</div>
+    <div class="section-desc">The author applied the same model to analyze the intern's career decision. VT — Does grad school (A) lead to competitiveness (B)? Companies need comprehensive abilities (communication, adaptability, analytical skills), not textbook knowledge. Since the market demands practical capability, further isolating oneself in school fails the VT test. ST — Does grad school truly improve professional knowledge? Universities teach structural dead knowledge; companies need living knowledge connected to legal, accounting and business operations. Application outweighs concepts.</div>
+<div class="dual-grid">
+      <div class="dual-card indigo">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text"><h4>VT: Grad School → Competitiveness?</h4><p>NO. Companies need abilities (communication, adaptability, analysis), not knowledge. Schools cannot cultivate real-world capability — VT fails.</p></div>
+      </div>
+      <div class="dual-card indigo">
+        <div class="dual-icon">🏢</div>
+        <div class="dual-text"><h4>ST: Does Grad School Boost Expertise?</h4><p>Universities teach structural dead knowledge; companies need living knowledge linking legal, accounting & business. Application > concepts. ST is also questionable.</p></div>
+      </div>
     </div>
-<div class="section" style="border-left-color:#ea580c">
-      <div class="section-title">VT: Does Knowledge Bring Competitiveness?</div>
-      <div class="section-body">Does grad school → enhance knowledge → greater competitiveness hold logically? The author argues companies need capability, not just knowledge. Level-8 English doesn't guarantee leading a cross-border meeting—it also requires communication skills, adaptability, and hands-on experience. The workplace is a better learning environment than university—what's missing is practical ability, not theory.</div>
-    </div>
-<div class="section" style="border-left-color:#d97706">
-      <div class="section-title">ST: Can Grad School Deliver Practical Knowledge?</div>
-      <div class="section-body">Universities still teach structured, static knowledge. Companies need dynamic, practice-linked knowledge—integrated with legal, accounting, and business contexts. Application trumps concepts. Studying internal control theory endlessly is less useful than examining how a company configures USB permissions in online banking. Both test rounds: the intern's choice couldn't withstand scrutiny.</div>
-    </div>
-<div class="section" style="border-left-color:#4f46e5">
-      <div class="section-title">Knowledge vs. Capability: What Employers Need</div>
-      <div class="section-body">Competitiveness is market-determined, specifically by employers. Left-column positional knowledge is just the baseline. Right-column comprehensive abilities—communication, decision-making under pressure, cross-departmental collaboration—determine career trajectory. A graduate with zero experience is better off learning on the job than returning to school that shields them from reality.</div>
-    </div>
-<div class="section" style="border-left-color:#db2777">
-      <div class="section-title">Foresight in Practice: VT-ST for Life Decisions</div>
-      <div class="section-body">The author laments: all the intern's roommates blindly chose grad school the same way. If university graduates never use strategic thinking to navigate their life direction, that's the real tragedy. Help one at a time—the hope is that the VT-ST toolkit empowers more people to think foresightedly and make life decisions that withstand rigorous scrutiny.</div>
-    </div>
-  <div class="takeaway">
-    <div class="takeaway-label">KEY TAKEAWAY</div>
-    <div class="takeaway-text">Apply the VT-ST framework to every major decision—both validity and soundness tests are essential. Replace "everyone does it" path dependency with foresightful thinking that navigates your life direction.</div>
   </div>
-  <div class="footer">
-    <p>Content adapted from "Financial Data Language for Beginners" by Qian Ziyan · Zhihu "One Hour" Series · Infographic AI-generated · For educational reference only</p>
+</div>
+<!-- 05: Core Insight -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Core Insight</div>
+    <div class="section-title t-05">Companies Need Ability, Not Knowledge</div>
+    <div class="section-desc">English Proficiency Level 8 doesn't mean you can represent a department at a multinational conference — behind that lies communication skills and adaptability. Universities still teach structural dead knowledge; companies need living knowledge connected to real practice: legal, accounting, and business operations. Studying internal control theory endlessly is less useful than understanding how your company configures USB permissions in online banking. The real tragedy: most university graduates cannot use forward-looking thinking to navigate their own life direction.</div>
+<ul class="point-list"><li><span class="point-bullet">📖</span>English Level 8 ≠ Leading multinational meetings (needs communication + adaptability)</li><li><span class="point-bullet">🎓</span>University structural knowledge → Company needs legal + accounting + business living knowledge</li><li><span class="point-bullet">💻</span>Internal control theory ≠ Understanding USB permission settings in online banking</li><li><span class="point-bullet">🏢</span>The company is the best learning environment — building comprehensive abilities beats the classroom</li></ul>
   </div>
+</div>
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Forward-looking thinking = VT (Validity) + ST (Soundness), neither test can be skipped. VT verifies if the causation is necessary; ST tests if the assumption holds. All major life decisions — grad school, job changes, investments — can be tested with this two-dimensional model. Remember: companies need ability, not knowledge; application outweighs concepts.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">Source: Zhihu · Qian Ziyan "How Finance Newcomers Can Understand the Language of Data" Chapter 1 "Can You Think Ahead?" · Infographic · For Learning Reference Only</div>
+
 </div>
 </body>
 </html>

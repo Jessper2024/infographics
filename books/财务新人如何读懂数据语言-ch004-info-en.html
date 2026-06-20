@@ -2,105 +2,302 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Financial Data Language for Beginners · Ch.4 "Conceptual Thinking or Data Thinking?"</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Finance Newcomers Can Understand the Language of Data · Chapter 4: "Conceptual Thinking or Data Thinking?"</title>
 <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    @font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-    body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:48px 16px 60px;font-family:'FZXPYZS','PingFang SC','Microsoft YaHei','Hiragino Sans GB',serif;color:#333;line-height:1.8}
-    .container{width:100%;max-width:880px}
-    .back-catalog{text-align:left;margin-bottom:12px}
-    .back-catalog a{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;transition:color .15s}
-    .back-catalog a:hover{color:#dc2626}
-    .lang-switch{text-align:right;margin-bottom:8px}
-    .lang-switch a{font-size:13px;color:#888;text-decoration:none;padding:4px 10px;border:1px solid #d4c8b8;border-radius:12px;margin-left:6px;font-family:'FZXPYZS','PingFang SC',serif;transition:all .15s}
-    .lang-switch a:hover{color:#dc2626;border-color:#dc2626}
-    .lang-switch a.active{color:#fff;background:#4f46e5;border-color:#4f46e5}
-    .header{text-align:center;margin-bottom:32px}
-    .header h1{font-size:24px;color:#1a1a1a;font-family:'FZXPYZS','PingFang SC',serif;font-weight:400;letter-spacing:.03em;margin-bottom:8px}
-    .header .subtitle{font-size:15px;color:#888;font-family:'FZXPYZS','PingFang SC',serif}
-    .divider{width:60px;height:3px;background:#d4c8b8;margin:20px auto 28px;border-radius:2px}
-    .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:0 0 28px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
-    .chapter-overview p{margin:0}
-    .kpi-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
-    .kpi-card{flex:1;min-width:180px;background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.05);text-align:center}
-    .kpi-card .kpi-label{font-size:13px;color:#888;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-value{font-size:22px;font-weight:700;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-desc{font-size:12px;color:#999;line-height:1.5}
-    .section{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #4f46e5}
-    .section .section-title{font-size:16px;font-weight:700;margin-bottom:10px;font-family:'FZXPYZS','PingFang SC',serif;color:#1a1a1a}
-    .section .section-body{font-size:14px;color:#555;line-height:1.85}
-    .takeaway{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:28px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #dc2626}
-    .takeaway .takeaway-label{font-size:12px;color:#dc2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
-    .takeaway .takeaway-text{font-size:14px;color:#333;line-height:1.85}
-    .footer{text-align:center;padding:28px 0 0;border-top:1px solid #e8e0d5;margin-top:12px;font-size:12px;color:#bbb;font-family:'FZXPYZS','PingFang SC',serif}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; margin: 0 auto; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: #fff; border-radius: 12px; padding: 18px 14px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid #e8e0d5;
+    display: flex; flex-direction: column; justify-content: center; min-height: 96px;
+  }
+  .kpi-card.c01 { border-top: 3px solid #dc2626; }
+  .kpi-card.c02 { border-top: 3px solid #ea580c; }
+  .kpi-card.c03 { border-top: 3px solid #ca8a04; }
+  .kpi-card.c04 { border-top: 3px solid #4f46e5; }
+  .kpi-val {
+    font-size: 32px; font-weight: bold; color: #1a1a1a; line-height: 1;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    margin-bottom: 6px;
+  }
+  .kpi-label {
+    font-size: 12px; color: #999; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+  .section-highlight {
+    background: #fef2f2; border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; color: #991b1b; line-height: 1.6;
+    margin-top: 6px; border: 1px solid #fecaca;
+  }
+  .highlight-orange { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+  .highlight-gold { background: #fefce8; border-color: #fde68a; color: #92400e; }
+  .highlight-indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .highlight-pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+  .dual-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+  .dual-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.pink { background: #fdf2f8; border: 1px solid #f9a8d4; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-step.indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .flow-step.pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .point-list { list-style: none; padding: 0; margin: 10px 0 0; }
+  .point-list li {
+    padding: 6px 0; font-size: 13px; color: #555; line-height: 1.7;
+    border-bottom: 1px solid #f3f0e8; display: flex; gap: 8px;
+  }
+  .point-list li:last-child { border-bottom: none; }
+  .point-bullet { flex-shrink: 0; font-size: 14px; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    h1 { font-size: 26px; }
+  }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="back-catalog">
-    <a href="财务新人如何读懂数据语言-catalog.html">← Back to Catalog</a>
+<div class="back-catalog"><a class="back-catalog-btn" href="财务新人如何读懂数据语言-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="财务新人如何读懂数据语言-ch004-info-zh.html">中文 / English</a>
+</div>
+
+<h1>How Finance Newcomers Can Understand the Language of Data · Chapter 4<br>"Conceptual Thinking or Data Thinking?"</h1>
+<p class="subtitle"><span style="display:block;margin-bottom:6px;font-family:FZXPYZS,serif;letter-spacing:2px;font-size:11px;color:#dc2626;">SCQA · Situation → Complication → Question → Answer</span>Twenty-five people enter a room. Do you think the probability that at least two share the same birthday (month and day) is above or below 50%? Your intuition says: impossible! But mathematics tells us — with just 23 people, the probability exceeds 50%. Why is our intuition so unreliable? Answer: the brain processes information in batches using conceptual thinking, but real decisions require data thinking to verify.</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>The birthday paradox is a classic case of conceptual thinking vs data thinking. To conserve energy, our brains offload familiar information to the hindbrain's intuition system for batch processing, and only send new information to the forebrain's rational system. The various deposited concepts — like "same birthdays among 25 people? impossible!" — are products of intuitive thinking. The real error is extending intuitive thinking indefinitely as eternal truth. The "Materiality Level" principle is exactly the tool that uses data to help establish conceptual boundaries.</p>
+</div>
+<div class="kpi-row">
+      <div class="kpi-card c01">
+        <div class="kpi-val">23</div>
+        <div class="kpi-label">Threshold
+>50% Same Birthday</div>
+      </div>
+      <div class="kpi-card c02">
+        <div class="kpi-val">.507</div>
+        <div class="kpi-label">23-Person Prob
+1−0.493=0.507</div>
+      </div>
+      <div class="kpi-card c03">
+        <div class="kpi-val">41→90%</div>
+        <div class="kpi-label">41-Person Prob
+Same Bday >90%</div>
+      </div>
+      <div class="kpi-card c04">
+        <div class="kpi-val">99.99996%</div>
+        <div class="kpi-label">100-Person Prob
+Near Certainty</div>
+      </div>
+    </div>
+<!-- 01: Core Paradox -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Core Paradox</div>
+    <div class="section-title t-01">The Birthday Paradox: Breaking 50% at Just 23 People</div>
+    <div class="section-desc">Our intuition tells us: among 365 days, 25 people having more than a 50% chance of shared birthdays — definitely impossible! But statistics says: >50%. The threshold is only 23 people. At 41 people, probability already exceeds 90%; at 100 people, probability reaches 99.99996%. The author tested this in a ZJU class: a class of exactly 23 had two people both born on November 15 — one was absent, perfectly verifying the precision of the threshold value.</div>
+<div class="section-highlight">💡 23-person threshold: one fewer drops below 50% — verified in a real ZJU classroom. The defeat of intuition by numbers is a textbook-level case study.</div>
   </div>
-  <div class="lang-switch">
-    <a href="财务新人如何读懂数据语言-ch004-info-zh.html">中文</a>
+</div>
+<!-- 02: Mathematical Proof -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Mathematical Proof</div>
+    <div class="section-title t-02">The Probability Formula: An Elegant Mathematical Derivation</div>
+    <div class="section-desc">First calculate the probability that all birthdays are different: 1 person = 365/365; 2 people = 364/365; 3 people = 363/365... n people = (365−n+1)/365. Multiply cumulatively, then probability of at least two sharing a birthday = 1−cumulative product. When n=23: 1−0.493 = 0.507; when n=100: probability of no shared birthdays is only 0.0000004, sharing probability = 0.9999996. The formula elegantly reveals: combinatorial diversity far exceeds intuition's linear imagination — 23 people already have 253 pairwise combinations.</div>
+<div class="flow-row"><div class="flow-step">📐<br>Formula
+1−∏(365−i)/365</div><div class="flow-arrow">→</div><div class="flow-step indigo">🔢<br>n=23
+1−0.493</div><div class="flow-arrow">→</div><div class="flow-step">✅<br>=0.507
+>50%!</div><div class="flow-arrow">→</div><div class="flow-step end">💯<br>n=100
+99.99996%</div></div>
   </div>
-  <div class="header">
-    <h1>Financial Data Language for Beginners · Ch.4 "Conceptual Thinking or Data Thinking?"</h1>
-    <div class="subtitle">The Birthday Paradox, Intuition Traps, and Data-Driven Decision Making</div>
+</div>
+<!-- 03: Cognitive Mechanism -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Cognitive Mechanism</div>
+    <div class="section-title t-03">The Brain's Energy-Saving Mode: Forebrain Reason vs Hindbrain Intuition</div>
+    <div class="section-desc">The human brain processes vast amounts of information daily. To conserve energy, it offloads previously processed information (especially what has formed certain cognitions) to the hindbrain's intuition system for batch processing. Only fresh information goes to the forebrain's rational CPU. In the birthday problem, we fixate birthday diversity at 365 and naturally assume 25 people must be a small probability — that's conceptualized thinking. Similar concept traps abound: patriotism≈justice, material abundance≈civilization, truth≈trustworthy... The real error of intuitive thinking: extending it indefinitely as eternal truth.</div>
+<ul class="point-list"><li><span class="point-bullet">🧠</span>Forebrain (rational CPU): processes fresh information, high energy cost — the brain's "precision computing engine"</li><li><span class="point-bullet">💤</span>Hindbrain (intuition system): batch processes familiar information, low energy cost — the brain's "energy-saving batch mode"</li><li><span class="point-bullet">⚠️</span>Concept traps: patriotism≈justice, material abundance≈civilization, truth≈trustworthy — excessive extension of intuitive thinking</li><li><span class="point-bullet">❌</span>The key error: not intuitive thinking itself, but extending it indefinitely as eternal truth</li></ul>
   </div>
-  <div class="divider"></div>
-  <div class="chapter-overview">
-    <p>Opening with the birthday paradox—probability of at least two people sharing a birthday among 25 exceeds 50%, defying most intuition. The author reveals the brain's cognitive mechanism: the prefrontal cortex processes novel information rationally, while the hindbrain batch-processes familiar patterns intuitively—concepts are the sediment of intuition. Two practical approaches: convert conceptual judgments into data-driven ones, and use the Materiality Level principle to establish acceptable thresholds—all financial estimates are about choosing the lesser of two evils.</p>
+</div>
+<!-- 04: Application 1 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Application 1</div>
+    <div class="section-title t-04">Transform Conceptual Thinking into Data Thinking for Decision-Making</div>
+    <div class="section-desc">When making decisions, wherever "good" or "bad" can be expressed with data, use data. Case: localizing imported materials — conceptually it's of course a good thing. But when we track the high defect rates from cheap materials and quantify various quality costs like rework and order cancellations, we discover: the "good concept" of using local materials requires other conditions to be in place. Deciding without quantification is like judging birthday probability by intuition — seems reasonable, but is actually dangerous.</div>
+<div class="section-highlight highlight-indigo">💡 Localizing imported materials: conceptually good → data tracking → high defect rate + rework costs + order cancellations → "good" requires conditions. No quantification = intuiting probability.</div>
   </div>
-  <div class="kpi-row">
-    <div class="kpi-card">
-      <div class="kpi-label">Intuition Error Rate</div>
-      <div class="kpi-value" style="color:#dc2626">>50%</div>
-      <div class="kpi-desc">Birthday paradox: 23-person threshold, 50.7% probability</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">Concept→Data Conversion</div>
-      <div class="kpi-value" style="color:#ea580c">Quantify</div>
-      <div class="kpi-desc">Local material: cheap→high scrap→quantify total cost</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">Materiality Threshold</div>
-      <div class="kpi-value" style="color:#d97706">0.02%</div>
-      <div class="kpi-desc">Overtime estimation: error tolerance = 0.02%, precision unnecessary</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">Data-Driven Accuracy</div>
-      <div class="kpi-value" style="color:#4f46e5">Beyond Intuition</div>
-      <div class="kpi-desc">Every 'good'/'bad' judgment needs data backing</div>
-    </div>
+</div>
+<!-- 05: Application 2 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Application 2</div>
+    <div class="section-title t-05">Materiality Level: Using Data to Establish Conceptual Boundaries</div>
+    <div class="section-desc">The financial concept of Materiality Level is exactly the paradigm of using "data" to help establish "conceptual" boundaries. Some things aren't optimal, but because they fall within a tolerable threshold, we let them be. Case: the last day's overtime pay — for a company with tens of thousands of employees, there's no need to spend two extra days calculating exact values; use the average of the previous 29 days instead. As long as: error tolerance ratio = estimation error 20% × days error 1/30 × overtime as % of salary 30% × salary as % of total cost 10% = 0.02% — completely within acceptable range. Choose the lesser of two evils.</div>
+<div class="flow-row"><div class="flow-step">📏<br>20% Est. Error
+× 1/30 Days Error</div><div class="flow-arrow">→</div><div class="flow-step indigo">✖️<br>× 30% OT Ratio
+× 10% Salary Ratio</div><div class="flow-arrow">→</div><div class="flow-step pink">📊<br>= 0.02%
+Error Tolerance</div><div class="flow-arrow">→</div><div class="flow-step end">✅<br>Acceptable
+Within Threshold</div></div>
   </div>
-  <div class="section" style="border-left-color:#dc2626">
-      <div class="section-title">The Birthday Paradox: When Intuition Betrays You</div>
-      <div class="section-body">Probability of at least two sharing a birthday among 25 people exceeds 50%—your intuition says impossible, right? Yet mathematically: 23 people reaches the 50.7% threshold, 41 hits 90%, 100 reaches 99.99996%. The author verified this in a Zhejiang University class of 23 students: two shared the November 15 birthday. This classic paradox reveals a brutal truth: our intuition is terribly unreliable with numbers, especially blind to combinatorial diversity.</div>
-    </div>
-<div class="section" style="border-left-color:#ea580c">
-      <div class="section-title">The Brain's Intuitive Thinking Mechanism</div>
-      <div class="section-body">The brain processes vast information daily. To save energy, it offloads previously processed, cognitively-settled information to the hindbrain. The prefrontal cortex only handles novel information (rational thinking), while the hindbrain batch-processes familiar patterns (intuitive thinking). This is how concepts sediment. When we conceptualize 365 birthday possibilities, a group of 25 naturally feels like a low-probability event—that's the intuition trap.</div>
-    </div>
-<div class="section" style="border-left-color:#d97706">
-      <div class="section-title">From Conceptual to Data Thinking</div>
-      <div class="section-body">Notions like "patriotism equals justice," "material wealth brings spiritual civilization," "truth is always trustworthy" are all products of intuitive thinking. The real error is extending intuitive thinking indefinitely as eternal truth. When making decisions, quantify "good" and "bad" with data whenever possible. Example: localizing imported materials—conceptually great, but after quantifying higher scrap rates, rework, and order cancellations, we find "good" is conditional on other factors being met.</div>
-    </div>
-<div class="section" style="border-left-color:#4f46e5">
-      <div class="section-title">Materiality Principle: Establishing Acceptable Thresholds</div>
-      <div class="section-body">Accounting's Materiality Level is an effective tool for using data to establish concepts. Some things, known to be suboptimal or even adverse, are tolerated because they fall within acceptable thresholds. All financial estimates are of this nature—a balance of choosing the lesser evil. Last day's overtime doesn't need precise calculation; using the prior 29-day average suffices because the 0.02% error is well within acceptable tolerance. Precision has a cost.</div>
-    </div>
-<div class="section" style="border-left-color:#db2777">
-      <div class="section-title">Data Thinking in Practice</div>
-      <div class="section-body">Two core methodologies: (1) Convert conceptual thinking to data thinking—every "good" or "bad" judgment should be quantified with data when possible; (2) Establish acceptable materiality thresholds—precision has a cost, use the Materiality Principle to decide where precision matters and where estimation suffices. The financial professional's expertise lies precisely in knowing when to seek precision and when to accept trade-offs—data is the tool, judgment is the wisdom.</div>
-    </div>
-  <div class="takeaway">
-    <div class="takeaway-label">KEY TAKEAWAY</div>
-    <div class="takeaway-text">Use data, not concepts, to make decisions—quantify every "good" and "bad." Apply the Materiality Principle to establish acceptable precision thresholds: precision has a cost, and knowing when to trade off is the financial professional's true wisdom.</div>
-  </div>
-  <div class="footer">
-    <p>Content adapted from "Financial Data Language for Beginners" by Qian Ziyan · Zhihu "One Hour" Series · Infographic AI-generated · For educational reference only</p>
-  </div>
+</div>
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Our intuition is often unreliable when facing numbers. Conceptual thinking is the brain's energy-saving mode, but when making decisions, we must switch to data thinking — verify with numbers, bound with thresholds, manage error with Materiality Level. Remember: the real danger is not intuitive thinking itself, but treating it as eternal truth. Test concepts with data, replace "I feel" with calculation, and you'll make more precise judgments than 99% of people.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">Source: Zhihu · Qian Ziyan "How Finance Newcomers Can Understand the Language of Data" Chapter 4 "Conceptual Thinking or Data Thinking?" · Infographic · For Learning Reference Only</div>
+
 </div>
 </body>
 </html>

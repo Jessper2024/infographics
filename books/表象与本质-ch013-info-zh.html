@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 结语「范畴化和作类比就是一回事儿」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .chapter-card { margin-top: 10px; border-radius: 10px; padding: 14px 16px; background: #fafaf7; border: 1px solid #e8e0d5; }
+  .chapter-card h5 { font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 14px; margin-bottom: 6px; font-weight: bold; }
+  .chapter-card h5.c01 { color: #dc2626; } .chapter-card h5.c02 { color: #ea580c; }
+  .chapter-card h5.c03 { color: #ca8a04; } .chapter-card h5.c04 { color: #4f46e5; } .chapter-card h5.c05 { color: #db2777; }
+  .chapter-card p { font-size: 12px; color: #777; line-height: 1.7; margin: 0; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="表象与本质-ch013-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 结语「范畴化和作类比就是一回事儿」</h1>
+<p class="subtitle">凯蒂与安娜的对话——两位好友激烈辩论认知的核心究竟是什么。凯蒂坚称范畴化与作类比在九个层面上存在根本区别，安娜则逐一反驳。这场对话彻底展开探讨了思维的本质：我们如何感知世界、形成概念、理解与交流——最终揭示，范畴化与作类比不过是同一枚硬币的两面。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本书用一段对话作结束。凯蒂和安娜辩论认知的核心是什么。凯蒂认为是范畴化担任着认知内核的角色，相信范畴化在许多方面和作类比不同。安娜则认为作类比位于认知的内核，尽最大努力表明作类比和范畴化是同样的东西。凯蒂提出范畴化与作类比在九个层面上存在明显区别：范畴化是永恒的必需而作类比是难得的奢侈、范畴化是常规而作类比是创新、范畴化是无意识而作类比是有意识的、范畴化是自动而作类比是自主的、范畴化青睐相似而作类比偏爱不同……安娜逐一反驳每一个论点。讨论涉及如何感知世界、如何形成概念、如何理解、如何交流，最终彻底展开探讨了思维的本质到底是什么。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">凯蒂 vs 安娜<span class="kpi-unit"></span></div>
+    <div class="kpi-label">两位辩手</div>
+    <div class="kpi-note">凯蒂主张范畴化是认知核心<br>安娜主张作类比是认知核心<br>通过对话，二人渐趋一致</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">9<span class="kpi-unit">个区别</span></div>
+    <div class="kpi-label">凯蒂提出的维度</div>
+    <div class="kpi-note">范畴化与作类比在九个层面<br>上被凯蒂认为不同<br>安娜逐一驳斥</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">同一<span class="kpi-unit">枚硬币</span></div>
+    <div class="kpi-label">最终揭示的真相</div>
+    <div class="kpi-note">范畴化与作类比不是两种<br>不同的心智活动<br>而是同一过程的两面</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">庞加莱<span class="kpi-unit"></span></div>
+    <div class="kpi-label">数学家的证言</div>
+    <div class="kpi-note">"数学是把同样的名称赋予<br>不同事物的艺术"<br>范畴化本身就是创新</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">凯蒂的立场</div>
+    <div class="section-title t-01">范畴化是永恒的必需，作类比是难得的奢侈</div>
+    <div class="section-desc">凯蒂率先开火："在思维过程中，没有任何事情比把事物和情境归入已知范畴更普遍、更基础。我们周围的一切永远在变，假如不把它们分类，环境就会是一片混沌。类比是稀有的心智事件——如果说范畴化是认知的土豆和牛肉，作类比则是充满异国情调的香料，可有可无。"安娜反驳道："每当你面对一个从未见过的台阶、门把手或淋浴头，你都在不作类比——将新事物与旧经验联系起来。如果类比让我们以旧视新，它们就和范畴化一样普遍。类比不是认知皇冠上的宝石，它们是包括宝石在内的整个皇冠！"</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🥔</div>
+        <div class="dual-text">
+          <h4>凯蒂：认知的土豆牛肉 vs 异国香料</h4>
+          <p>范畴化是生存必需品，每时每刻都在发生。作类比虽然有灵感火花，却只是认知的奢侈品——人可以不作类比而安度一生。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">👑</div>
+        <div class="dual-text">
+          <h4>安娜：类比就是皇冠本身</h4>
+          <p>你走台阶、扭门把手、翻开杂志——每一次都在将新事物与旧经验类比。类比不是皇冠上的宝石，它们是包括宝石在内的整个皇冠。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">核心交锋</div>
+    <div class="section-title t-02">范畴化是常规而作类比是创新？两个方向都有反例</div>
+    <div class="section-desc">凯蒂承认类比无处不在，但坚持二者的区别在创新性上："类比可以极具创造力，而范畴化从未有过创新——它只是在利用事先获得的知识。"安娜笑道："你也太低估范畴化了！当我说'数学是一场游戏''数学是一种语言''数学是一门艺术'——这些不正是多少具有创意的范畴化吗？庞加莱把数学描绘成'把同样的名称赋予不同事物的艺术'——即发现不寻常的微妙新类别的艺术。与此相反，你走的每一个台阶、扭的每一个门把手，那些类比就像洗碗水一样索然无味。所以，有大量无趣的类比，也有大量有创意的范畴化。"</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">创新类比</div>
+        <div class="data-sm">爱因斯坦的光量子<br>阿基米德的皇冠<br>庞加莱的向导</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">平淡类比</div>
+        <div class="data-sm">走台阶·拧门把手<br>翻杂志·按门铃<br>像呼吸般习以为常</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">创新范畴化</div>
+        <div class="data-sm">"数学是艺术"<br>"60岁是新的40岁"<br>"他们的另一辆车是自行车"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">意识与控制</div>
+    <div class="section-title t-03">无意识vs有意识？自动vs自主？边界同样模糊</div>
+    <div class="section-desc">凯蒂又提出两个区别：范畴化是无意识的（不透明的），类比是有意识的（你可以在心智中看到太阳系和原子的画面）；范畴化是自动而不可压抑的（你无法阻止自己看到桌子），类比则需要深思熟虑。安娜再次反驳：第5章和第7章中满是人们察觉不到自己正在使用类比的事例——朴素类比如"除法就是均分"深藏于几乎每个人内心，却将人引向错误。反过来说，天文学家有意识地辩论冥王星是否属于行星，法庭有意识地裁决被告"有罪"还是"无罪"——这些都是有意识的范畴化。</div>
+    <div class="flow-row">
+      <div class="flow-step">无意识类比<br>玛戈的故事唤醒<br>你心底的记忆</div>
+      <div class="flow-arrow">⇄</div>
+      <div class="flow-step">有意识范畴化<br>天文学家决定<br>冥王星还是行星吗？</div>
+      <div class="flow-arrow">⇄</div>
+      <div class="flow-step">自动类比<br>看着婚礼，忍不住<br>想象自己结婚</div>
+      <div class="flow-arrow">⇄</div>
+      <div class="flow-step end">自主范畴化<br>法庭判决<br>有罪还是无罪？</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">相似与差异</div>
+    <div class="section-title t-04">范畴化青睐相似而作类比偏爱不同？左右手的故事</div>
+    <div class="section-desc">凯蒂提出最后一个区别："某物越接近范畴的中心，分类越容易——相似是范畴化的关键。但类比的质量恰恰取决于被比较情境之间的差异有多大。类比的力量源于穿透表面差异、揭示深层共性。"安娜用一个绝妙的例子回应："你右手的拇指和左手的拇指相似吗？"凯蒂答："当然相似。"安娜追问："它们是一模一样吗？"凯蒂："不完全——一只右手一只左手，但确实极其相似。"安娜："所以，当你将右手拇指归类为'拇指'时，你同时看到了相似（它们都是拇指）和差异（一左一右）。范畴化和作类比在这一点上没有任何分别——两者都需要同时处理相似性和差异性。"</div>
+    <div class="dual-grid">
+      <div class="dual-card c">
+        <div class="dual-icon">✋</div>
+        <div class="dual-text">
+          <h4>范畴化中的相似与差异</h4>
+          <p>将右手拇指归入"拇指"范畴时，你既看到了它与左手拇指的相似，也看到了左右之别。范畴化从不要求完全相同。</p>
+        </div>
+      </div>
+      <div class="dual-card d">
+        <div class="dual-icon">🔗</div>
+        <div class="dual-text">
+          <h4>作类比中的相似与差异</h4>
+          <p>太阳系与原子模型的类比，既依赖两者的深层结构相似，也依赖于它们表面上的巨大差异——这恰好赋予了类比力量。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">全书收束</div>
+    <div class="section-title t-05">范畴化与作类比——同一枚硬币的两面</div>
+    <div class="section-desc">安娜的最终陈述击中了要害："凯蒂，你提出的每一处区别，我都找到了反例。但问题不在于谁赢谁输——而在于我们理解了什么。柏拉图在《智者篇》中说，要像优秀的屠夫那样'顺着关节切割'——但思维不是牛肉，范畴化与作类比之间不存在一条清晰的关节。它们确实是同一回事。每一个范畴化行为都是一个类比行为——你将一个新事物与一个已知范畴的成员进行比较，判断它是否'足够相似'以归属于该范畴。这本身就是一个类比判断。反过来，每一个类比行为都在创造或激活一个范畴——当你将原子比作太阳系，你就在创造一个同时容纳两者的新范畴。这就是全书的最终答案：范畴化和作类比原本就是一回事儿，它们都是人类认知的核心。"</div>
+    <div class="list-block">
+      <div class="list-item"><div class="list-num ln01">1</div><div>凯蒂的九个区别：必需vs奢侈、常规vs创新、无意识vs有意识、自动vs自主、相似vs差异——被安娜逐一以反例瓦解。</div></div>
+      <div class="list-item"><div class="list-num ln02">2</div><div>核心洞察：每一个范畴化都包含一个类比判断，每一个类比都在创造或激活一个范畴。</div></div>
+      <div class="list-item"><div class="list-num ln03">3</div><div>哲学家柏拉图早有预见：思维的自然"关节"并不存在于范畴化与作类比之间。</div></div>
+      <div class="list-item"><div class="list-num ln04">4</div><div>全书的主题闭环：从第1章的词语浮现到结语的对话——类比是思考之源、思维之火。</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">经过全书八章及这场辩论，一个统一的图景浮现：范畴化就是作类比，作类比就是范畴化。每当我们将一个新事物归入一个已知范畴——无论是识别一把椅子、理解一个比喻还是判断一个人是否可靠——我们都在进行类比，将新事物与范畴中的已知成员进行比较，判断它们是否"足够相似"。反过来，每当我们在两个看似不同的事物之间发现深层联系——无论是原子与太阳系、光与气体还是人生与旅行——我们都在创造一个同时容纳两者的新范畴。两种看似截然不同的认知活动，不过是同一基本心智机制的两种表现。这本书的全部论据最终汇聚于此：类比是人类认知的核心——它是思考之源、思维之火。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》结语信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

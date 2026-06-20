@@ -2,105 +2,312 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>财务新人如何读懂数据语言 · 第1章「你会前瞻性思考吗」</title>
 <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    @font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-    body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:48px 16px 60px;font-family:'FZXPYZS','PingFang SC','Microsoft YaHei','Hiragino Sans GB',serif;color:#333;line-height:1.8}
-    .container{width:100%;max-width:880px}
-    .back-catalog{text-align:left;margin-bottom:12px}
-    .back-catalog a{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;transition:color .15s}
-    .back-catalog a:hover{color:#dc2626}
-    .lang-switch{text-align:right;margin-bottom:8px}
-    .lang-switch a{font-size:13px;color:#888;text-decoration:none;padding:4px 10px;border:1px solid #d4c8b8;border-radius:12px;margin-left:6px;font-family:'FZXPYZS','PingFang SC',serif;transition:all .15s}
-    .lang-switch a:hover{color:#dc2626;border-color:#dc2626}
-    .lang-switch a.active{color:#fff;background:#4f46e5;border-color:#4f46e5}
-    .header{text-align:center;margin-bottom:32px}
-    .header h1{font-size:24px;color:#1a1a1a;font-family:'FZXPYZS','PingFang SC',serif;font-weight:400;letter-spacing:.03em;margin-bottom:8px}
-    .header .subtitle{font-size:15px;color:#888;font-family:'FZXPYZS','PingFang SC',serif}
-    .divider{width:60px;height:3px;background:#d4c8b8;margin:20px auto 28px;border-radius:2px}
-    .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:0 0 28px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
-    .chapter-overview p{margin:0}
-    .kpi-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
-    .kpi-card{flex:1;min-width:180px;background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.05);text-align:center}
-    .kpi-card .kpi-label{font-size:13px;color:#888;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-value{font-size:22px;font-weight:700;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
-    .kpi-card .kpi-desc{font-size:12px;color:#999;line-height:1.5}
-    .section{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #4f46e5}
-    .section .section-title{font-size:16px;font-weight:700;margin-bottom:10px;font-family:'FZXPYZS','PingFang SC',serif;color:#1a1a1a}
-    .section .section-body{font-size:14px;color:#555;line-height:1.85}
-    .takeaway{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:28px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:4px solid #dc2626}
-    .takeaway .takeaway-label{font-size:12px;color:#dc2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
-    .takeaway .takeaway-text{font-size:14px;color:#333;line-height:1.85}
-    .footer{text-align:center;padding:28px 0 0;border-top:1px solid #e8e0d5;margin-top:12px;font-size:12px;color:#bbb;font-family:'FZXPYZS','PingFang SC',serif}
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; margin: 0 auto; }
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: #fff; border-radius: 12px; padding: 18px 14px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid #e8e0d5;
+    display: flex; flex-direction: column; justify-content: center; min-height: 96px;
+  }
+  .kpi-card.c01 { border-top: 3px solid #dc2626; }
+  .kpi-card.c02 { border-top: 3px solid #ea580c; }
+  .kpi-card.c03 { border-top: 3px solid #ca8a04; }
+  .kpi-card.c04 { border-top: 3px solid #4f46e5; }
+  .kpi-val {
+    font-size: 32px; font-weight: bold; color: #1a1a1a; line-height: 1;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    margin-bottom: 6px;
+  }
+  .kpi-label {
+    font-size: 12px; color: #999; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+  .section-highlight {
+    background: #fef2f2; border-radius: 8px; padding: 10px 14px;
+    font-size: 13px; color: #991b1b; line-height: 1.6;
+    margin-top: 6px; border: 1px solid #fecaca;
+  }
+  .highlight-orange { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+  .highlight-gold { background: #fefce8; border-color: #fde68a; color: #92400e; }
+  .highlight-indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .highlight-pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.red { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.orange { background: #fff7ed; border: 1px solid #fed7aa; }
+  .dual-card.gold { background: #fefce8; border: 1px solid #fde68a; }
+  .dual-card.indigo { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.pink { background: #fdf2f8; border: 1px solid #f9a8d4; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-step.indigo { background: #eef2ff; border-color: #c7d2fe; color: #3730a3; }
+  .flow-step.pink { background: #fdf2f8; border-color: #f9a8d4; color: #831843; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+  .point-list { list-style: none; padding: 0; margin: 10px 0 0; }
+  .point-list li {
+    padding: 6px 0; font-size: 13px; color: #555; line-height: 1.7;
+    border-bottom: 1px solid #f3f0e8; display: flex; gap: 8px;
+  }
+  .point-list li:last-child { border-bottom: none; }
+  .point-bullet { flex-shrink: 0; font-size: 14px; }
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .dual-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    h1 { font-size: 26px; }
+  }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="back-catalog">
-    <a href="财务新人如何读懂数据语言-catalog.html">← 返回章节目录</a>
+<div class="back-catalog"><a class="back-catalog-btn" href="财务新人如何读懂数据语言-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="财务新人如何读懂数据语言-ch001-info-en.html">English / 中文</a>
+</div>
+
+<h1>财务新人如何读懂数据语言 · 第1章「你会前瞻性思考吗」</h1>
+<p class="subtitle"><span style="display:block;margin-bottom:6px;font-family:FZXPYZS,serif;letter-spacing:2px;font-size:11px;color:#dc2626;">SCQA · 情境 → 冲突 → 问题 → 回答</span>实习生想辞职考研——她觉得专业知识不够扎实，需要读研提升竞争力。但她没有思考过：读研真的等于竞争力吗？如何用前瞻性思考做出正确的人生决策？索伦森教授提出的 VT（可靠性假设测试）与 ST（真实性假设测试）二维思考模型，给出了清晰的路径。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>前瞻性思考需要两个维度的检验：VT 测试验证"假设成立时结果是否必然发生"，ST 测试验证"假设本身是否成立"。两个测试必须同时站稳，决策才值得推进。作者用这套模型帮实习生分析了考研决策——结果发现，企业需要的是能力而非知识，读研的假设经不起推敲。</p>
+</div>
+<div class="kpi-row">
+      <div class="kpi-card c01">
+        <div class="kpi-val">2</div>
+        <div class="kpi-label">维测试模型
+VT + ST</div>
+      </div>
+      <div class="kpi-card c02">
+        <div class="kpi-val">1h</div>
+        <div class="kpi-label">深度谈话
+职业辅导</div>
+      </div>
+      <div class="kpi-card c03">
+        <div class="kpi-val">211</div>
+        <div class="kpi-label">名校本科文凭
+已有敲门砖</div>
+      </div>
+      <div class="kpi-card c04">
+        <div class="kpi-val">Yes & No</div>
+        <div class="kpi-label">VT核心答案
+条件决定结果</div>
+      </div>
+    </div>
+<!-- 01: 思考框架 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">思考框架</div>
+    <div class="section-title t-01">VT 可靠性假设测试：A→B 是否必然？</div>
+    <div class="section-desc">VT 测试检验的核心问题是：当假设 A 成立时，结果 B 是否必然发生？以半导体案例为例——产能提升（A）是否必然带来毛利上升（B）？答案是"是，也不是"：当现有设施能容纳时，是的；但当需要新建工厂时，产能翻倍，成本复原，毛利未必改善。这个"Yes and No"揭示了 VT 测试的精髓。</div>
+<div class="section-highlight">💡 VT的精髓："Yes and No"——条件决定结果是否成立，没有放之四海而皆准的因果关系。</div>
   </div>
-  <div class="lang-switch">
-    <a href="财务新人如何读懂数据语言-ch001-info-en.html">EN</a>
+</div>
+<!-- 02: 思考验证 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">思考验证</div>
+    <div class="section-title t-02">ST 真实性假设测试：A 本身是否成立？</div>
+    <div class="section-desc">ST 测试检验假设本身是否真实。以产能投资为例——"产能真的能如愿提升吗？"答案是：不一定。你的对手也在做同样的产能升级，博弈结果要么都不投，要么一起投。一起投的结果是价格战，毛利不升反降。ST 要求我们不只看自己想看的，更要审视外部环境和竞争动态。</div>
+<div class="section-highlight highlight-orange">💡 ST的精髓：不要只看自己想看的——博弈论告诉我们，人人都做的决策可能是最差的决策。</div>
   </div>
-  <div class="header">
-    <h1>财务新人如何读懂数据语言 · 第1章「你会前瞻性思考吗」</h1>
-    <div class="subtitle">斯坦福 VT-ST 二维测试法在个人职业决策中的应用</div>
-  </div>
-  <div class="divider"></div>
-  <div class="chapter-overview">
-    <p>作者通过与一位想离职考研的实习生对话，引入斯坦福商学院索伦森教授的二维测试法（VT-ST），并用这套框架系统分析了「读研是否提升竞争力」这一决策。VT（可靠性测试）检验A→B是否必然成立：专业知识能否必然带来竞争力？ST（真实性测试）检验A是否成立：研究生教育能否真正提升实务知识？两轮测试揭示了一个令人遗憾的现实——大多数学生从未用前瞻性思考审视自己的人生方向。</p>
-  </div>
-  <div class="kpi-row">
-    <div class="kpi-card">
-      <div class="kpi-label">VT通过率</div>
-      <div class="kpi-value" style="color:#dc2626">0%</div>
-      <div class="kpi-desc">读研→竞争力逻辑链断裂</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">ST通过率</div>
-      <div class="kpi-value" style="color:#ea580c">0%</div>
-      <div class="kpi-desc">研究生知识≠企业所需的实务能力</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">企业需求</div>
-      <div class="kpi-value" style="color:#d97706">能力>知识</div>
-      <div class="kpi-desc">沟通、应变、实务综合能力优先</div>
-    </div>
-<div class="kpi-card">
-      <div class="kpi-label">前瞻思考覆盖率</div>
-      <div class="kpi-value" style="color:#4f46e5">缺失</div>
-      <div class="kpi-desc">多数大学生从未用VT-ST审视人生方向</div>
+</div>
+<!-- 03: 案例演示 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">案例演示</div>
+    <div class="section-title t-03">半导体案例：产能投资的二维测试</div>
+    <div class="section-desc">索伦森教授的经典案例展示了 VT+ST 如何并行检验一项战略决策。产能投资提升毛利似乎天经地义，但经过双测试后发现：VT 方面，产能规模效应只在现有设施范围内有效；ST 方面，竞争对手行为使产能提升的真实效果大打折扣。两个测试缺一不可，组合使用才能做出可靠的前瞻性判断。</div>
+<div class="dual-grid">
+      <div class="dual-card gold">
+        <div class="dual-icon">🔬</div>
+        <div class="dual-text"><h4>VT：可靠性测试</h4><p>产能提升→毛利上升？在现有设施内容纳时YES；新建工厂时NO。规模效应的边界条件决定结果。</p></div>
+      </div>
+      <div class="dual-card gold">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text"><h4>ST：真实性测试</h4><p>产能真的能如愿提升吗？对手也在升级，博弈结果：要么都不投，要么一起投。一起投→价格战→毛利反降。</p></div>
+      </div>
     </div>
   </div>
-  <div class="section" style="border-left-color:#dc2626">
-      <div class="section-title">二维测试法 VT-ST 框架</div>
-      <div class="section-body">索伦森教授提出战略决策的两个测试：VT（可靠性）检验「A成立是否必然得到B」，ST（真实性）检验「A本身是否真实成立」。两个测试都通过，方案才值得进一步考虑。以半导体产能投资为例：VT——产能提升是否必然带来毛利上升？答案取决于现有设施能否容纳。ST——产能是否真能如愿提升？竞争对手可能同时扩产，导致价格战使毛利不升反降。</div>
+</div>
+<!-- 04: 职业分析 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">职业分析</div>
+    <div class="section-title t-04">用 VT+ST 拆解考研决策</div>
+    <div class="section-desc">作者用同一个模型帮实习生做了职业分析。VT——读研（A）能否带来竞争力（B）？企业需要的是综合能力（沟通力、应变力、分析能力），而非书本知识。既然市场缺的是实战能力，再去学校封闭自己，VT 测试无法通过。ST——读研真的能提升专业知识？大学教的是结构性死知识，企业需要的是与法务、账务、商务关联的活知识。运用比概念更重要。</div>
+<div class="dual-grid">
+      <div class="dual-card indigo">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text"><h4>VT：读研→竞争力？</h4><p>NO。企业需要能力（沟通、应变、分析），不是知识。学校无法培养实战能力，VT 测试不通过。</p></div>
+      </div>
+      <div class="dual-card indigo">
+        <div class="dual-icon">🏢</div>
+        <div class="dual-text"><h4>ST：读研能提升专业知识？</h4><p>大学教结构性死知识；企业需法务+账务+商务的活知识。运用比概念更重要，ST 测试同样存疑。</p></div>
+      </div>
     </div>
-<div class="section" style="border-left-color:#ea580c">
-      <div class="section-title">VT：可靠性测试 — 知识带来竞争力吗</div>
-      <div class="section-body">读研→提升专业知识→增强竞争力，这一逻辑链经得起检验吗？作者指出：企业需要的是能力而非知识。英语八级未必能代表部门参加跨国会议，因为背后还需要沟通能力、应变能力和实战经验。企业比起大学来是一个更好的学习场所——因为需求侧缺的是实战能力，而非书本知识。</div>
-    </div>
-<div class="section" style="border-left-color:#d97706">
-      <div class="section-title">ST：真实性测试 — 研究生能提升实务知识吗</div>
-      <div class="section-body">大学教的依然是结构性的死知识，而企业需要的是与实务关联的活知识——与法务、账务和商务相关联的综合知识。运用比概念更重要。内控理论学得再多，不如研究一下公司是怎么在网银中设置USB使用权限的。两轮测试结果：实习生的选择经不起推敲。</div>
-    </div>
-<div class="section" style="border-left-color:#4f46e5">
-      <div class="section-title">知识 vs 能力：企业真正要什么</div>
-      <div class="section-body">人才竞争力的竞争要素是市场决定的，具体由企业说了算。左侧的岗位专业知识只是基础，右侧的综合能力——沟通协调、应变决策、跨部门协作——才是决定职场高度的关键。一个没有任何经历的应届生，与其回到继续屏蔽自己的学校，不如在企业中边干边学。</div>
-    </div>
-<div class="section" style="border-left-color:#db2777">
-      <div class="section-title">前瞻思考实践：用 VT-ST 把脉人生</div>
-      <div class="section-body">作者感叹：实习生的舍友都是这样稀里糊涂考研的。如果高校培养的学生大都不会用前瞻性思考把脉自己的人生方向，这才是真正令人遗憾的。不管怎么说，能帮一个是一个——希望这套VT-ST 工具能帮助更多人有效地进行前瞻性思考，做出经得起推敲的人生决策。</div>
-    </div>
-  <div class="takeaway">
-    <div class="takeaway-label">核心启示</div>
-    <div class="takeaway-text">用VT-ST二维测试框架检验每一个重大决策——可靠性测试和真实性测试缺一不可。代替「大家都这么做」的路径依赖，让前瞻性思考成为人生的导航仪。</div>
   </div>
-  <div class="footer">
-    <p>内容摘编自《财务新人如何读懂数据语言》· 钱自严 著 · 知乎「一小时」系列 · 信息图由 AI 辅助生成 · 仅供学习参考</p>
+</div>
+<!-- 05: 核心洞察 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">核心洞察</div>
+    <div class="section-title t-05">企业需要的是能力，而非知识</div>
+    <div class="section-desc">英语八级不等于能代表部门参加跨国会议——背后还需要沟通能力与应变能力。大学里教的依然是结构性的死知识，企业需要的是能与实务关联的活知识：与法务、账务、商务相关的综合知识。比如内控理论学得再多，不如研究一下公司如何在网银中设置 USB 使用权限。真正的遗憾是：高校培养的学生大都不会用前瞻性思考把脉自己的人生方向。</div>
+<ul class="point-list"><li><span class="point-bullet">📖</span>英语八级 ≠ 能参加跨国会议（需要沟通能力+应变能力）</li><li><span class="point-bullet">🎓</span>大学教的是结构性死知识 → 企业需要法务+账务+商务的活知识</li><li><span class="point-bullet">💻</span>内控理论再多 ≠ 理解网银USB权限设置</li><li><span class="point-bullet">🏢</span>企业是最好的学习场所——培养综合能力远胜课堂</li></ul>
   </div>
+</div>
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">前瞻性思考 = VT（可靠性）+ ST（真实性），两个测试一个都不能少。VT 验证因果是否必然，ST 检验假设是否成立。人生的重大决策——考研、跳槽、投资——都可以用这套二维模型去推敲。记住：企业需要的是能力，不是知识；运用比概念更重要。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">来源：知乎·钱自严《财务新人如何读懂数据语言》第一章「你会前瞻性思考吗」· 信息图 · 仅供学习参考</div>
+
 </div>
 </body>
 </html>
