@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格的要素 · 全书</title>
+<style>
+@font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.danger { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.safe { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.info { background: #eff6ff; border: 1px solid #bfdbfe; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .risk-bars { margin-top: 10px; }
+  .risk-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .risk-label { font-size: 13px; color: #555; width: 110px; flex-shrink: 0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .risk-meter { flex: 1; height: 10px; background: #eef2ff; border-radius: 5px; overflow: hidden; }
+  .risk-fill { height: 100%; border-radius: 5px; background: #4f46e5; }
+  .risk-val { font-size: 13px; font-weight: bold; color: #4f46e5; width: 72px; text-align: right; flex-shrink: 0; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .rule-list { margin-top: 10px; }
+  .rule-item {
+    display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px;
+    padding: 12px 16px; border-radius: 10px; background: #fffbeb;
+    border: 1px solid #fde68a;
+  }
+  .rule-num {
+    flex-shrink: 0; font-weight: bold; font-size: 14px; color: #ca8a04;
+    min-width: 40px; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .rule-
+  .rule-body strong { color: #78350f; }
+
+  .quote-block {
+    background: #f8f6f3; border-left: 3px solid #ea580c; border-radius: 8px;
+    padding: 16px 20px; margin-top: 12px; font-size: 14px; color: #666;
+    line-height: 1.8; font-style: italic;
+  }
+
+  .checklist { margin-top: 10px; }
+  .check-item {
+    display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px;
+    font-size: 13px; color: #555; line-height: 1.7;
+  }
+  .check-icon { flex-shrink: 0; font-size: 16px; }
+
+  .tip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .tip-card {
+    border-radius: 10px; padding: 14px 16px; font-size: 13px; line-height: 1.7;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .tip-card.t-red { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+  .tip-card.t-green { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+  .tip-icon { font-size: 18px; flex-shrink: 0; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .tip-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+  h1 { font-size: 26px; }
+    .risk-row { flex-wrap: wrap; }
+    .risk-label { width: 100%; }
+    .risk-val { width: auto; }
+    .kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}
+    .rule-item { flex-direction: column; }
+  }
+  @media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
+.book-wrapper{max-width:1260px;width:100%;display:flex;gap:32px;padding:48px 20px 60px;align-items:flex-start;min-height:100vh}
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:48px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);max-height:calc(100vh - 96px);overflow-y:auto;z-index:10}
+.sidebar h3{font-size:16px;color:#1a1a1a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8e0d5;font-family:'FZXPYZS',serif;font-weight:normal}
+.sidebar-nav{display:flex;flex-direction:column;gap:2px}
+.sidebar-nav a{display:block;padding:5px 0;font-size:13px;color:#4f46e5;text-decoration:none;border-bottom:1px solid #f0ece6;transition:color .15s;line-height:1.6}
+.sidebar-nav a:hover{color:#dc2626}
+.main-content{flex:1;min-width:0;max-width:880px}
+.book-header{text-align:center;margin-bottom:32px}
+.book-header h1{font-size:28px;color:#1a1a1a;margin-bottom:8px;font-weight:normal}
+.chapter-title{font-size:22px;color:#1a1a1a;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5}
+.chapter-divider{margin:32px auto 48px;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px;user-select:none}
+.book-footer{text-align:center;padding-top:24px;border-top:1px solid #e8e0d5;color:#bbb;font-size:14px;line-height:1.8;margin-top:48px}
+.book-footer a{color:#888;text-decoration:none}
+.back-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;margin-bottom:12px}
+.catalog-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+@media(max-width:768px){.sidebar{display:none}.book-wrapper{display:block;padding:24px 12px 40px}}
+</style>
+</head>
+<body>
+<div class="book-wrapper">
+  <aside class="sidebar">
+    <h3>📖 目录</h3>
+    <nav class="sidebar-nav">
+      <a href="#ch001">第1章 · 英语用法的基本规则</a>
+      <a href="#ch002">第2章 · 英语写作的基本原则</a>
+      <a href="#ch003">第3章 · 书写格式方面的几点注意事项</a>
+      <a href="#ch004">第4章 · 常被误用的词语和表达方式</a>
+      <a href="#ch005">第5章 · 常被误用的词语和表达方式</a>
+      <a href="#ch006">第6章 · 拼写</a>
+      <a href="#ch007">第7章 · 第二章和第三章的练习</a>
+      <a href="#ch008">第8章 · 老人与海</a>
+      <a href="#ch009">第9章 · 篇章要以段落为单位</a>
+      <a href="#ch010">第10章 · 以一个主题句开始段落</a>
+      <a href="#ch011">第11章 · 使用主动语态</a>
+      <a href="#ch012">第12章 · 用肯定形式来陈述</a>
+      <a href="#ch013">第13章 · 使用清晰、明确、具体的语言</a>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <a class="back-btn" href="../目录.html">← 总目录</a>
+      <a class="catalog-btn" target="_blank" href="风格的要素-catalog.html">章节目录</a>
+    </div>
+    <div class="book-header"><h1>风格的要素</h1></div>
+    <div id="ch001" class="chapter-title">第1章 · 英语用法的基本规则</div>
+    <div class="chapter-overview">
+  <p>本章是《风格的要素》全书的核心起点，由康奈尔大学教授威廉·斯特伦克于1918年提出7条英语用法基本规则，涵盖名词所有格、逗号使用（并列项、插入语、独立分句）、句子完整性以及分词短语的逻辑主语一致。这些规则至今仍是全球英语写作教学的基石——掌握它们，也就掌握了清晰写作的最低必要规范。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">7<span class="kpi-unit"> 条</span></div>
+    <div class="kpi-label">基本规则</div>
+    <div class="kpi-note">覆盖所有格、逗号、分号<br>分词短语等核心用法</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">4<span class="kpi-unit"> 类</span></div>
+    <div class="kpi-label">逗号规则</div>
+    <div class="kpi-note">规则2-5集中处理逗号<br>并列、插入、连词、分句</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1918<span class="kpi-unit"> 年</span></div>
+    <div class="kpi-label">首次出版</div>
+    <div class="kpi-note">康奈尔大学教授斯特伦克<br>为课堂使用而编写</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit"> 大</span></div>
+    <div class="kpi-label">权威背书</div>
+    <div class="kpi-note">美国政府印刷局<br>牛津大学出版社均采用</div>
+  </div>
+</div>
+
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">规则1-2</div>
+    <div class="section-title t-01">名词所有格与并列项逗号</div>
+    <div class="section-desc">英语中最基础的标点用法，看似简单，却屡屡出错。单数名词的所有格通过在词尾加<strong>'s</strong>构成；三个或三个以上的并列项之间，除最后两个用连词连接外，其余均须用逗号隔开——美国政府印刷局和牛津大学出版社均遵循此法。</div>
+    <div class="dual-grid">
+      <div class="dual-card danger">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>常见错误</h4>
+          <p>以-es或-is结尾的古专有名词仅加撇号：Jesus'（耶稣的）。但Achilles' heel宜改写为the heel of Achilles，避免歧义。代词所有格its, hers, theirs不加撇号。</p>
+        </div>
+      </div>
+      <div class="dual-card safe">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>正确范例</h4>
+          <p>Charles's friend · Burns's poems · red, white, and blue · gold, silver, or copper · He opened the letter, read it, and made a note of its contents.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">规则3</div>
+    <div class="section-title t-02">插入语前后用逗号分开</div>
+    <div class="section-desc">插入语如同句子中的"旁白"——对句子流畅性干扰微乎其微时，可以省略逗号；但绝不能只省略一个而留下另一个。日期中的年份、缩写etc.与jr.、非限制性定语从句、以及句首的短语或从句，均视为插入语。</div>
+    <div class="rule-list">
+      <div class="rule-item">
+        <div class="rule-num">①</div>
+        <div class="rule-body"><strong>日期格式：</strong>February to July, 1916 · Monday, November 11, 1918——年份和星期后的月日都要用逗号包围。</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">②</div>
+        <div class="rule-body"><strong>非限制性定语从句：</strong>The audience, which had at first been indifferent, became more interested.——which从句补充信息而非限定范围。</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">③</div>
+        <div class="rule-body"><strong>句首成分：</strong>Partly by hard fighting, partly by diplomatic skill, they enlarged their dominions...——当短语或从句位于主句前，用逗号隔开。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">规则4-5</div>
+    <div class="section-title t-03">连词前逗号与独立分句的分号</div>
+    <div class="section-desc"><strong>规则4：</strong>在引导并列分句的连词（and, but, for, or, nor, while）前加逗号。<strong>规则5：</strong>勿用逗号连接独立分句——两个语法结构完整的句子之间若不用连词，应用分号或句号。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">松散句（逗号+连词）</div>
+        <div class="confusion-arrow">→ 适用于 →</div>
+        <div class="confusion-right">The early records have disappeared, <strong>and</strong> the story can no longer be reconstructed. 偶尔使用可让文章轻松自然。</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">分号句（无连词）</div>
+        <div class="confusion-arrow">→ 更佳 →</div>
+        <div class="confusion-right">Stevenson's romances are entertaining<strong>;</strong> they are full of exciting adventures. 更简洁有力，表明因果关系。</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">副词引导例外</div>
+        <div class="confusion-arrow">→ 注意 →</div>
+        <div class="confusion-right">若第二分句由副词（accordingly, besides, therefore, thus）引导，<strong>仍需使用分号</strong>，而非逗号。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">规则6-7</div>
+    <div class="section-title t-04">句子完整性与分词短语主语一致</div>
+    <div class="section-desc"><strong>规则6：勿将句子一分为二。</strong>能用逗号则不用句号，除非是刻意强调的单词或短语。<strong>规则7：句首分词短语的逻辑主语须与主句主语一致。</strong>这是英语写作中最常被违反的规则之一——违反时句意往往荒唐可笑。</div>
+    <div class="tip-grid">
+      <div class="tip-card t-red">
+        <div class="tip-icon">❌</div>
+        <div><strong>规则6 错误：</strong>I met them on a Cunard liner. Coming home from Liverpool. → 句号应改为逗号。两句实为一句。</div>
+      </div>
+      <div class="tip-card t-green">
+        <div class="tip-icon">✅</div>
+        <div><strong>规则6 正确：</strong>Again and again he called out. No reply. → 刻意强调时，单词或短语可独立成句，但须有合理依据。</div>
+      </div>
+      <div class="tip-card t-red">
+        <div class="tip-icon">❌</div>
+        <div><strong>规则7 错误：</strong>Being in a dilapidated condition, I was able to buy the house very cheap. → 主语I破旧不堪？荒唐！</div>
+      </div>
+      <div class="tip-card t-green">
+        <div class="tip-icon">✅</div>
+        <div><strong>规则7 正确：</strong>Walking slowly down the road, he saw a woman accompanied by two children. → walking的主语是he。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">核心要领</div>
+    <div class="section-title t-05">标点运用：从规则到直觉</div>
+    <div class="section-desc">斯特伦克强调：<strong>规则3、4、5、6涵盖了最重要的标点符号使用规则，应完全掌握、熟练运用，直到得心应手。</strong>标点的本质不是装饰，而是意义的结构性表达——逗号划分层次，分号定义边界，句号完结思想。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📝</div>
+        <div class="data-name">逗号 = 分层</div>
+        <div class="data-sm">并列项分隔<br>插入语包围<br>连词前预告</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔗</div>
+        <div class="data-name">分号 = 边界</div>
+        <div class="data-sm">独立分句间<br>因果关系<br>无连词更简洁</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">✅</div>
+        <div class="data-name">句号 = 完结</div>
+        <div class="data-sm">完整思想终结<br>勿一分为二<br>强调时才例外</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">斯特伦克的7条基本规则建构了英语标点与语法的骨架：从名词所有格到并列项逗号，从插入语分隔到连词前逗号，从分号连接独立分句到分词短语的主语一致——每一条都是消除歧义、建立清晰表达的精确工具。标点不是装饰，是意义的结构。掌握规则3至6，也就掌握了英文明晰写作的最低必要规范。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch002" class="chapter-title">第2章 · 英语写作的基本原则</div>
+    <div class="chapter-overview">
+  <p>本章是《风格的要素》中篇幅最长、内容最丰富的一章，涵盖11条写作基本原则（规则8至18）：段落组织（一段一主题、主题句）、主动语态优先、肯定形式陈述、使用具体明确的语言、删除不必要的词、避免连续松散句、平行结构保持形式一致、相关词语就近放置、概述中坚持一种时态，以及将强调词置于句末。每一条都直指英文明晰写作的核心。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">11<span class="kpi-unit"> 条</span></div>
+    <div class="kpi-label">写作原则</div>
+    <div class="kpi-note">规则8至18<br>覆盖段落、语态、简洁、句式</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit"> 条</span></div>
+    <div class="kpi-label">简洁原则</div>
+    <div class="kpi-note">规则11、13、17<br>肯定陈述·删赘词·一种时态</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit"> 条</span></div>
+    <div class="kpi-label">句式原则</div>
+    <div class="kpi-note">规则14、15、16、18<br>句式·平行·词序·强调</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit"> 条</span></div>
+    <div class="kpi-label">段落原则</div>
+    <div class="kpi-note">规则8、9<br>一段一主题·主题句呼应</div>
+  </div>
+</div>
+
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">规则8-9</div>
+    <div class="section-title t-01">段落组织：一段一主题，主题句呼应</div>
+    <div class="section-desc">段落是写作的基本建筑单位。<strong>规则8：</strong>篇章以段落为单位，一段一主题——这是为了方便读者阅读，每段起首即暗示新论述的展开。<strong>规则9：</strong>以一个主题句开始段落，并在结尾处首尾呼应——让读者一开始就知道本段目的，读完仍不忘。</div>
+    <div class="flow-row">
+      <div class="flow-step">📌<br>主题句<br>段首点明</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📝<br>解释论证<br>展开/例证</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄<br>结尾呼应<br>强调/升华</div>
+    </div>
+    <div class="quote-block" style="margin-top:12px;">
+      史蒂文森《徒步旅行》范例：① 主题句："要想好好享受徒步旅行，就应该独自行走。" → ② 否定对立观点 → ③ 以三个原因支撑 → ④-⑨ 逐步深化至"进入一种了然的平静"。
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">规则10-11</div>
+    <div class="section-title t-02">主动语态与肯定陈述：为文字注入力量</div>
+    <div class="section-desc"><strong>规则10：使用主动语态。</strong>主动语态通常比被动语态更直接、更有力——"Dead leaves covered the ground" 远胜 "There were a great number of dead leaves lying on the ground." <strong>规则11：用肯定形式陈述。</strong>读者不满足于被告知"不是什么"，而更想知道"是什么"。哪怕否定意义，也最好用肯定形式表达：not honest → dishonest。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">被动语态</div>
+        <div class="confusion-arrow">→ 改为 →</div>
+        <div class="confusion-right">There were a great number of dead leaves → <strong>Dead leaves covered the ground.</strong></div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">否定表述</div>
+        <div class="confusion-arrow">→ 改为 →</div>
+        <div class="confusion-right">He was not very often on time → <strong>He usually came late.</strong></div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">双重被动</div>
+        <div class="confusion-arrow">→ 切忌 →</div>
+        <div class="confusion-right">Gold was not allowed to be exported → <strong>It was forbidden to export gold.</strong> 避免一个被动语态直接依存于另一个。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">规则12-13</div>
+    <div class="section-title t-03">清晰具体与删减赘词：简洁即力量</div>
+    <div class="section-desc"><strong>规则12：</strong>使用清晰、明确、具体的语言——"He grinned as he pocketed the coin" 远胜 "He showed satisfaction as he took possession of his well-earned reward." <strong>规则13：删掉不必要的词。</strong>生动有力的英文写作应是简练的——一幅画中不应有多余的线条，一个句子中不应有多余的词语。</div>
+    <div class="rule-list">
+      <div class="rule-item">
+        <div class="rule-num">✂️</div>
+        <div class="rule-body"><strong>删：</strong>the question as to whether → <strong>whether</strong> · he is a man who → <strong>he</strong> · owing to the fact that → <strong>since/because</strong></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">✂️</div>
+        <div class="rule-body"><strong>删：</strong>the fact that —— 不管出现在什么句子中，都应删除。I was unaware of the fact that → <strong>I was unaware that</strong></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">✂️</div>
+        <div class="rule-body"><strong>删：</strong>who is, which was → 冗余。His brother, who is a member of the same firm → <strong>His brother, a member of the same firm</strong></div>
+      </div>
+    </div>
+    <div class="quote-block" style="margin-top:10px;">
+      斯宾塞《款色哲学》："我们不是泛泛思考，而是具象思考——使用具体词汇，立刻引出适当意象，既省时省力，又印象深刻。"
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">规则14-15</div>
+    <div class="section-title t-04">句式多样与平行结构：避免单调，保持对称</div>
+    <div class="section-desc"><strong>规则14：避免连续使用松散句。</strong>松散句由两个并列分句组成，以连词或关系词连接——连续使用会让文章单调乏味。应穿插简单句、分号句、圆周句（掉尾句）。<strong>规则15：用相似的形式表达并列的意思。</strong>平行结构原则要求内容和功能相似的成分，外在形式也应相似。</div>
+    <div class="dual-grid">
+      <div class="dual-card danger">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>松散句陷阱</h4>
+          <p>连续使用and, but, so, while, who, which连接分句 → 节奏单一、韵律单调、表达无力。应刻意变换句式。</p>
+        </div>
+      </div>
+      <div class="dual-card safe">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>平行结构范例</h4>
+          <p>Both...and应跟同等结构：It was both a long ceremony and very tedious → <strong>The ceremony was both long and tedious.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">规则16-18</div>
+    <div class="section-title t-05">词序、时态与句末强调</div>
+    <div class="section-desc"><strong>规则16：将相关词放在一起。</strong>主语和谓语不应用可移至句首的短语隔开；关系代词应紧跟先行词；修饰词应尽量靠近所修饰的词。<strong>规则17：在概述中坚持一种时态。</strong>概述戏剧情节用一般现在时，不要来回切换。<strong>规则18：将需要强调的词置于句末。</strong>句末是整个句子的"皇位"。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📍</div>
+        <div class="data-name">词序原则</div>
+        <div class="data-sm">主语+动词不隔开<br>关系词紧跟先行词<br>修饰词靠近被修饰词</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⏳</div>
+        <div class="data-name">时态一致</div>
+        <div class="data-sm">概述用一般现在时<br>先前动作用现在完成时<br>一用到底，不变换</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⭐</div>
+        <div class="data-name">句末强调</div>
+        <div class="data-sm">最突出的词放句末<br>句首次之<br>掉尾句制造悬念</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">《风格的要素》的11条写作原则编织了一张清晰写作的网络：从段落组织（一段一主题、主题句呼应）到语态选择（主动优于被动）、从陈述方式（肯定优于否定）到语言质感（具体优于抽象、简洁优于冗余）、从句式安排（避免松散单调、保持平行对称）到词序与强调（相关词就近、重点词置末）——每一条都是让文字从"可读"迈向"有力"的关键一步。写得好，就是不浪费读者的任何一秒。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch003" class="chapter-title">第3章 · 书写格式方面的几点注意事项</div>
+    <div class="chapter-overview">
+  <p>本章虽篇幅最短，却覆盖了正式写作中不可忽视的7类格式规范：标题间距与起始行、数字写法（用阿拉伯数字而非全拼）、圆括号内外的标点位置、正式引语与诗歌引用的格式差异、参考书目缩写与脚注惯例、单词音节划分的通用规则，以及文学作品书名的斜体与首字母大写要求。这些细则决定了文章在专业读者眼中的第一印象。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">7<span class="kpi-unit"> 类</span></div>
+    <div class="kpi-label">格式事项</div>
+    <div class="kpi-note">标题·数字·括号<br>引语·书目·音节·书名</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit"> 种</span></div>
+    <div class="kpi-label">引语格式</div>
+    <div class="kpi-note">正式引语（冒号+引号）<br>行内引语（逗号+引号）<br>诗句引语（居中，无引号）</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit"> 条</span></div>
+    <div class="kpi-label">音节划分规则</div>
+    <div class="kpi-note">按构造·在元音后<br>双写字母中间·-ed不切分</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit"> 种</span></div>
+    <div class="kpi-label">书名处理</div>
+    <div class="kpi-note">斜体+首字母大写<br>所有格前省去A/The</div>
+  </div>
+</div>
+
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">标题与数字</div>
+    <div class="section-title t-01">标题间距与数字书写规范</div>
+    <div class="section-desc">文稿标题下方应空出一行或与之相当的间隔；后续页面若使用横格纸，从第一行开始书写。<strong>不要将日期或序号全用英文字母拼写</strong>——使用阿拉伯数字或罗马符号更为合适。</div>
+    <div class="dual-grid">
+      <div class="dual-card danger">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>避免</h4>
+          <p>August ninth, nineteen eighteen · Rule Three · Chapter Twelve — 全拼既不经济也不专业。</p>
+        </div>
+      </div>
+      <div class="dual-card safe">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>推荐</h4>
+          <p>August 9, 1918 · Rule 3 · Chapter XII · 352nd Infantry — 阿拉伯数字清晰简明。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">圆括号</div>
+    <div class="section-title t-02">圆括号内外的标点位置</div>
+    <div class="section-desc"><strong>句子的标点放在后括号的后面</strong>，如同括号内容不存在。括号内的内容作为独立成分加标点：句末句号省略，但问号或感叹号保留。当括号内是完全独立的词组或句子时，句末句号放在后括号的前面。</div>
+    <div class="rule-list">
+      <div class="rule-item">
+        <div class="rule-num">①</div>
+        <div class="rule-body"><strong>行内括号：</strong>I went to his house yesterday (my third attempt to see him), but he had left town. —— 逗号放在后括号之后。</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">②</div>
+        <div class="rule-body"><strong>含标点括号：</strong>He declares (and why should we doubt his good faith?) that he is now certain of success. —— 问号保留在括号内。</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">③</div>
+        <div class="rule-body"><strong>独立括号句：</strong>(A completely independent phrase or sentence follows this pattern.) —— 句号放在后括号之前。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">引语</div>
+    <div class="section-title t-03">三种引语格式及其适用场景</div>
+    <div class="section-desc">引语格式因语法功能而异：<strong>正式书面引语</strong>由冒号引出并置于引号内；<strong>行内同位语引语</strong>前加逗号并加引号；<strong>诗歌引语</strong>另起一行居中，不置于引号内。由that引导的间接引语、谚语和熟知的文学短语均不用引号。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">正式引语</div>
+        <div class="confusion-arrow">→ 格式 →</div>
+        <div class="confusion-right">冒号 + 引号：The provision of the Constitution is: "No tax or duty shall be laid on articles exported from any state."</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">行内引语</div>
+        <div class="confusion-arrow">→ 格式 →</div>
+        <div class="confusion-right">逗号 + 引号：I recall the maxim of La Rochefoucauld, "Gratitude is a lively sense of benefits to come."</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">诗歌引语</div>
+        <div class="confusion-arrow">→ 格式 →</div>
+        <div class="confusion-right">另起一段居中，<strong>不</strong>用引号：Bliss was it in that dawn to be alive, / But to be young was very heaven!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">参考书目</div>
+    <div class="section-title t-04">学术写作中的参考书目标注</div>
+    <div class="section-desc">在学术写作中，频繁出现的书名可缩写，但在最后的<strong>参考书目</strong>中应按字母顺序排列全称。通常加括号或脚注标注，省略act、scene、line、book、volume、page等词——除非仅指其中一个。采用标准缩写格式。</div>
+    <div class="checklist">
+      <div class="check-item"><div class="check-icon">📌</div><div><strong>缩写范例：</strong>In the second scene of the third act → <strong>In III. ii</strong>（或直接在句中加括号插入III. ii）</div></div>
+      <div class="check-item"><div class="check-icon">📌</div><div><strong>引注格式：</strong>After the killing of Polonius, Hamlet is placed under guard <strong>(IV. ii. 14)</strong>——幕·场·行。</div></div>
+      <div class="check-item"><div class="check-icon">📌</div><div><strong>圣经引注：</strong>2 Samuel i: 17-27 —— 书·章·节。</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">音节与书名</div>
+    <div class="section-title t-05">单词音节划分与书名格式</div>
+    <div class="section-desc"><strong>音节划分四条要则：</strong>按单词构造划分（know-ledge而非knowl-edge）；在元音后划分（edi-ble）；在双写字母中间划分（Apen-nines），但词尾双写除外（tell-ing）；以-ed结尾且e不发音时不切分-ed。<strong>书名格式：</strong>采用斜体加首字母大写，所有格前省去书名开头的A或The。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">✂️</div>
+        <div class="data-name">音节划分</div>
+        <div class="data-sm">按构造 + 元音后<br>双写字母中间<br>不切分不发音-ed</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📖</div>
+        <div class="data-name">书名格式</div>
+        <div class="data-sm">斜体 + 首字母大写<br>所有格前省A/The<br>如Dickens's Tale of Two Cities</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📚</div>
+        <div class="data-name">辅音切分</div>
+        <div class="data-sm">for-tune · pic-ture<br>illus-tration · indus-try<br>参考精良图书实例</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">书写格式虽是"细枝末节"，却承载着专业写作的门面——7类规范覆盖标题、数字、括号、引语、书目、音节与书名。每一条都是对读者时间的尊重：正确的格式让读者专注于内容而非分心于错误。正如斯特伦克所暗示：格式规范不需要创造力，只需要纪律——而纪律，正是好写作的底色。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch004" class="chapter-title">第4章 · 常被误用的词语和表达方式</div>
+    <div class="chapter-overview">
+  <p>本章是全书最长的实用参考章节，以字母顺序排列了40余组常被误用的词语和表达方式，涵盖语法搭配错误（different than → different from, like I did → as I did）、冗余表达清理（the fact that、character、nature、system）、口语化滥用（fix、get、kind of）、词义混淆（affect/effect, compare to/with, less/fewer）以及陈词滥调的规避（factor、feature、interesting）。斯特伦克的忠告贯穿始终：发现误用时，不应简单替换一两个词，而应完全重写句子。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">42<span class="kpi-unit">+</span></div>
+    <div class="kpi-label">易错条目</div>
+    <div class="kpi-note">按字母顺序排列<br>从All right到Would</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit"> 类</span></div>
+    <div class="kpi-label">严重程度</div>
+    <div class="kpi-note">完全不可接受<br>有争议但不推荐<br>本身没错但用错场合</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1<span class="kpi-unit"> 条</span></div>
+    <div class="kpi-label">核心忠告</div>
+    <div class="kpi-note">发现误用时<br>完全重写句子<br>而非简单换词</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">8<span class="kpi-unit"> 组</span></div>
+    <div class="kpi-label">冗余表达</div>
+    <div class="kpi-note">character · nature · system<br>case · factor · feature<br>he is a man who · the fact that</div>
+  </div>
+</div>
+
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">语法错误</div>
+    <div class="section-title t-01">语法搭配的常见陷阱</div>
+    <div class="section-desc">这类错误直接违反英语语法规范，一经使用即暴露作者的语言功底不足——从比较结构混淆到代词数不一致，从主格宾格混用到关系词错选。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">❌ Different than</div>
+        <div class="confusion-arrow">→ ✅ →</div>
+        <div class="confusion-right"><strong>different from</strong> / other than / unlike</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">❌ He thought like I did</div>
+        <div class="confusion-arrow">→ ✅ →</div>
+        <div class="confusion-right"><strong>as I did</strong> (like follows nouns/pronouns; as introduces phrases/clauses)</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">❌ He had less men</div>
+        <div class="confusion-arrow">→ ✅ →</div>
+        <div class="confusion-right"><strong>fewer men</strong> (less = amount, fewer = number)</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">❌ One of the ablest men that has</div>
+        <div class="confusion-arrow">→ ✅ →</div>
+        <div class="confusion-right"><strong>men that have</strong> (relative pronoun refers to plural "men")</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">❌ Do you mind me asking</div>
+        <div class="confusion-arrow">→ ✅ →</div>
+        <div class="confusion-right"><strong>my asking</strong> (gerund takes possessive, not objective case)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">冗余表达</div>
+    <div class="section-title t-02">删除空洞无物的赘词</div>
+    <div class="section-desc">这些词本身没有错，但在大多数语境中不增添任何新信息——它们的存在让句子变长、变弱、变模糊。斯特伦克的解决方案简单而激进：直接删除。</div>
+    <div class="rule-list">
+      <div class="rule-item">
+        <div class="rule-num">✂️</div>
+        <div class="rule-body"><strong>character：</strong>acts of a hostile character → <strong>hostile acts</strong>（充满敌意的行为）</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">✂️</div>
+        <div class="rule-body"><strong>nature：</strong>acts of a hostile nature → <strong>hostile acts</strong>；nature与character一样常为冗余</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">✂️</div>
+        <div class="rule-body"><strong>case：</strong>In many cases, the rooms were poorly ventilated → <strong>Many of the rooms were poorly ventilated</strong></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">✂️</div>
+        <div class="rule-body"><strong>system：</strong>Dayton has adopted the commission system of government → <strong>government by commission</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">口语化滥用</div>
+    <div class="section-title t-03">从口语到书面语的词汇降级</div>
+    <div class="section-desc">许多在日常口语中自然的表达——fix, get, kind of, sort of, most (替代almost), can (替代may)——进入书面语后显得随意甚至错误。写作中应坚持这些词的<strong>字面意义</strong>，而非其口语化扩展。</div>
+    <div class="tip-grid">
+      <div class="tip-card t-red">
+        <div class="tip-icon">❌</div>
+        <div><strong>Fix：</strong>不要用fix替代arrange, prepare, mend。书面语中fix仅表示"使固定"（fasten, make firm）。</div>
+      </div>
+      <div class="tip-card t-green">
+        <div class="tip-icon">✅</div>
+        <div><strong>Get：</strong>书面语中不要用have got替代have。过去分词用got而非gotten。</div>
+      </div>
+      <div class="tip-card t-red">
+        <div class="tip-icon">❌</div>
+        <div><strong>Kind of / Sort of：</strong>不要用kind of替代rather（修饰形容词）或something like（修饰名词）。仅用其字面义：Amber is a kind of fossil resin.</div>
+      </div>
+      <div class="tip-card t-green">
+        <div class="tip-icon">✅</div>
+        <div><strong>Can：</strong>can意为"能够"（able），不能替代may（许可）。Most不能替代almost。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">词义混淆</div>
+    <div class="section-title t-04">形近词与近义词的精确边界</div>
+    <div class="section-desc">英语中大量成对的词语因读音或拼写相近而被混淆——它们之间的差异微妙但根本。掌握这些边界，是写作精度从"对"到"准"的阶梯。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Affect · Effect</div>
+        <div class="confusion-arrow">→ 分辨 →</div>
+        <div class="confusion-right"><strong>affect</strong>（动词）= 影响；<strong>effect</strong>（名词）= 结果，（动词）= 实现、导致。不要混淆。</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Compare to · with</div>
+        <div class="confusion-arrow">→ 分辨 →</div>
+        <div class="confusion-right"><strong>compare to</strong> = 不同类事物的相似类比（人生如戏）；<strong>compare with</strong> = 同类事物的差异比较（国会vs议会）。</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Due to · Owing to</div>
+        <div class="confusion-arrow">→ 分辨 →</div>
+        <div class="confusion-right"><strong>due to</strong> 用于谓语或名词修饰语（This invention is due to Edison）；不严谨的状语用法用owing to/because of替代。</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">While · Although</div>
+        <div class="confusion-arrow">→ 分辨 →</div>
+        <div class="confusion-right"><strong>while</strong> 字面义为"正值……之时"。若用while替代although或and/but，读者会期待时间关系而产生歧义。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">陈词滥调</div>
+    <div class="section-title t-05">规避空洞的陈词与机械强调</div>
+    <div class="section-desc">factor、feature、interesting、certainly、very——这些词本身没有错，但因为被过度使用而变得空洞。用它们不是精确描述，而是偷懒。最危险的是：它们让作者<strong>感觉</strong>自己在表达，而实际上什么也没说。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🚫</div>
+        <div class="data-name">Factor/Feature</div>
+        <div class="data-sm">不增添任何新信息<br>应删除或换为<br>直接的表达</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🚫</div>
+        <div class="data-name">Interesting</div>
+        <div class="data-sm">不要用作导入语<br>让内容本身有趣<br>而非你声称它有趣</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🚫</div>
+        <div class="data-name">Very/Certainly</div>
+        <div class="data-sm">very慎用——用有<br>强烈色彩的词替代<br>certainly同理</div>
+      </div>
+    </div>
+    <div class="quote-block" style="margin-top:10px;">
+      斯特伦克的核心忠告贯穿全章：遇到误用时，<strong>完全重写句子</strong>——不要只替换一两个词，而是重新组织整个表达。这是从"纠错"到"重写"的思维跃迁。
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">42+个易错条目编织了一张精确写作的防护网——从语法搭配的硬伤（different than, like I did, less/fewer）到冗余表达的减法（character, nature, case, system），从口语化降级（fix, get, kind of）到词义混淆的精微边界（affect/effect, compare to/with），再到陈词滥调的警觉（factor, feature, interesting, very）。斯特伦克给出的不是"替换词表"，而是一套完整的方法论：发现误用，就完全重写句子——精准写作从来不靠修补，而靠重构。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch005" class="chapter-title">第5章 · 常被误用的词语和表达方式</div>
+    <div class="chapter-overview">
+  <p>本章是《风格的要素》中最具实用价值的一章。斯特伦克按字母顺序逐一辨析了英文写作中常见的误用——总计涵盖约60个条目，从All right到Worth while。他将错误分为三类：①完全不能接受的用法（如like替代as、Different than）；②虽有人支持但一般不建议的用法（如分裂不定式）；③本身没错但常被用错地方的词汇（如case, factor, feature）。最关键的修复策略是：不要简单替换一个词，而应重写整个句子——这正是规则12"使用清晰具体语言"和规则13"删掉不必要的词"在实战中的延伸应用。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">~60<span class="kpi-unit">条</span></div>
+    <div class="kpi-label">辨析条目总数</div>
+    <div class="kpi-note">从All right到Worth while</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">级</span></div>
+    <div class="kpi-label">错误严重程度</div>
+    <div class="kpi-note">完全禁止·谨慎使用·常见误用</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1<span class="kpi-unit">条铁律</span></div>
+    <div class="kpi-label">修复原则</div>
+    <div class="kpi-note">重写句子，非简单替换一词</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">大名著</span></div>
+    <div class="kpi-label">参考权威</div>
+    <div class="kpi-note">牛津简明词典·Word·Quiller-Couch</div>
+  </div>
+</div>
+
+<!-- 01: 结构性冗余词 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">冗余词</div>
+    <div class="section-title t-01">删掉Case、Character、Nature、Factor、Feature——它们不带来任何新信息</div>
+    <div class="section-desc"><strong>许多词汇是纯粹的结构性冗余，删掉后句子反而更有力。</strong>Case的定义是"某事发生的情况"，但在"In many cases, the rooms were poorly ventilated"中，删掉"in many cases"后变成"Many of the rooms were poorly ventilated"，意思不变却更简洁。Character常用于"acts of a hostile character"，应直接改作"hostile acts"。Nature同样如此——"acts of a hostile nature"就是"hostile acts"。Factor和Feature更被称为"陈旧的词汇"，Heavy artillery has become an increasingly important factor → Heavy artillery has played a constantly larger part。System也常被滥用：Dayton has adopted the commission system of government → Dayton has adopted government by commission。</div>
+    <div class="flow-row">
+      <div class="flow-step">Case<br>"In many cases" → 删掉</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Character/Nature<br>"hostile acts" 代替啰嗦短语</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Factor/Feature<br>用更直接、更地道的词替换</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">System/Student body<br>"students" 即可，无需"群体"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 混淆词对 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">混淆辨析</div>
+    <div class="section-title t-02">Less/Fewer、Like/As、Compare to/with——成对易混淆词的正确用法</div>
+    <div class="section-desc"><strong>英文中有大量成对词汇，它们的细微差别决定了句子的准确性。</strong>Less指"量更少"，Fewer指"数更少"：His troubles are less than mine（麻烦没有我的大）vs. His troubles are fewer than mine（麻烦没有我的多）。Like用于名词和代词前，As用于短语和从句前：不是"He thought like I did"而是"He thought as I did"。Compare to指不同类事物的相似性类比（人生可比作一场朝圣），Compare with指同类事物的差异性比较（美国国会可与英国议会相比较）。Effect（名词=结果，动词=导致）不能与Affect（动词=影响）混淆。Data是复数——These data were tabulated。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Less 误用 / Like 误用</h4>
+          <p>He had less men — 应改为 fewer men。He thought like I did — 应改为 as I did。Different than — 绝不允许，用 different from。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>Compare to vs with / Effect vs Affect</h4>
+          <p>人生可比作一场朝圣(compare to)；美国国会可与英国议会相比较(compare with)。Effect是结果，Affect是影响。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 语法错误 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">语法陷阱</div>
+    <div class="section-title t-03">分裂不定式、分词与动名词、Whom误用——三类顽固的语法错误</div>
+    <div class="section-desc"><strong>自14世纪起就有人在分裂不定式，但严谨的作者应尽量避免。</strong>"to diligently inquire"应改为"to inquire diligently"。更隐蔽的错误是将动名词前的分词误用："Do you mind me asking a question?"应改为"Do you mind my asking a question"——这里需要所有格，因为"接受的可能性"是提问这个动作的可能性，而不是"我"的可能性。When作"当……时"时不能用while替代：While the temperature reaches 90 degrees in the daytime, the nights are often chilly 是不对的。Whom常被误用来替代who做后面动词的主语：His brother, whom he said would send him the money...应改为who he said。</div>
+    <div class="flow-row">
+      <div class="flow-step">分裂不定式<br>to + 副词 + verb → verb + 副词</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">分词/动名词<br>mind me asking → mind my asking</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">While误用<br>用分号替代不当的while连接</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Whom误用<br>作主语时用who，不用whom</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 俗套表达 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">俗套陷阱</div>
+    <div class="section-title t-04">One of the most、Interesting、He is a man who——让文章索然无味的俗套表达</div>
+    <div class="section-desc"><strong>避免在文章或段落开头使用"One of the most..."这样的表达——句子本身没错，但表达俗套且无力。</strong>"He is a man who is very ambitious"是典型的冗余表达，直接说"He is very ambitious"即可。同理"Spain is a country which I have always wanted to visit"应改为"I have always wanted to visit Spain"。用Interesting做导入语是最糟糕的习惯："An interesting story is told of..."——你应该让他人觉得内容有趣，而不是你自己声称它有趣，直接讲故事，不要铺垫。Along these lines、Worth while、Respective/Respectively等也应尽量不用或完全摒弃。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>需完全避免的表达</h4>
+          <p>One of the most...开头、An interesting story is told of...（直接讲故事！）、along these lines、He is a man who...</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>正确做法</h4>
+          <p>简洁直接陈述：I have always wanted to visit Spain。重写啰嗦结构。用具体描述替代含糊的"Worth while"。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 滥用强调 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">滥用词</div>
+    <div class="section-title t-05">Very、Certainly、So、Literal——滥用强调词只会削弱而非增强表达</div>
+    <div class="section-desc"><strong>慎用Very！若想要表示强调，使用本身就具有强烈色彩的词汇。</strong>斯特伦克对Very只用了一个字的评价："慎用！"一些作者滥用Certainly来强调每一句话，这种习性在口语中影响不好，在写作中更糟。书面语中应避免用So来加强语气（so good, so warm）。Litteral/literally常被误用在夸张比喻中——"a literal flood of abuse"和"literally dead with fatigue"都不是字面意思。Most不能用于替换almost——"most everybody"应改为"almost everybody"。同样，But作连词时过多使用会导致松散句泛滥——"一个but接着一个but"是最蹩脚的用法。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🛑</div>
+        <div class="data-name">Very</div>
+        <div class="data-sm">"慎用！"——用本身就有强烈色彩的词替代。不要very good，找一个本身就表达"极好"的词。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🛑</div>
+        <div class="data-name">Certainly</div>
+        <div class="data-sm">"滥用certainly强调每一句话"是坏习惯。在口语中影响不好，在写作中影响更糟。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🛑</div>
+        <div class="data-name">Literal/Most/But</div>
+        <div class="data-sm">Literal不可用于夸张。Most≠almost。But避免连续使用。精简句式，增强力量。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">英语写作的精准不在于知道哪些词"可以"用，而在于知道哪些词"不该"用。删掉case/character/nature/factor/feature/system等填充词，分清less/fewer、like/as、compare to/with，修复分裂不定式，摒弃One of the most这种俗套开头，停止用very和certainly无谓强调。最关键的一件事：当你发现句子出了问题，正确地做法是完全重写，而不是替换其中的一个词——这正是规则12和规则13在实战中的延伸。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch006" class="chapter-title">第6章 · 拼写</div>
+    <div class="chapter-overview">
+  <p>这是全书最短的一章，却抓住了英文拼写的根本原理。斯特伦克阐明三个层次：①拼写的本质逻辑——英语单词的拼写取决于约定俗成，而非权威规定；②过度简化为什么会失败——tho之所以不如though，不是因为"错误"，而是因为读者读完though不需要拼写意识，读tho却要脑补缺失字母；③实操指南——一个56词的常错列表加上三条规则（双写辅音、连字符、分写复合词），构成了写作者最基本的拼写工具包。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">56<span class="kpi-unit">词</span></div>
+    <div class="kpi-label">常被拼错词汇</div>
+    <div class="kpi-note">从accidentally到villain</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">条</span></div>
+    <div class="kpi-label">核心拼写规则</div>
+    <div class="kpi-note">双写辅音·连字符·分写</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1<span class="kpi-unit">条原理</span></div>
+    <div class="kpi-label">拼写本质</div>
+    <div class="kpi-note">约定俗成，非权威决定</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">0<span class="kpi-unit">例外</span></div>
+    <div class="kpi-label">简化拼写被认可</div>
+    <div class="kpi-note">仅有rime=rhyme是例外</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">拼写本质</div>
+    <div class="section-title t-01">拼写取决于约定俗成，而非任何权威的规定</div>
+    <div class="section-desc"><strong>英语单词的拼写并非一成不变，也并非取决于权威，而是取决于约定俗成。</strong>如今大部分单词的拼写形式都已统一。在任一时期，总有一小部分单词拥有不止一种拼写形式——其中一种会逐渐受到偏爱，被冷落的则慢慢过时，最终被摒弃。新的拼写形式（大多是简化拼写）不时被创造出来，有的被认可，有的则逐渐被淘汰。这个过程完全是自发的、民主的、来自语言使用者的集体选择。</div>
+    <div class="flow-row">
+      <div class="flow-step">拼写变体出现<br>多种形式并存</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">约定俗成<br>一种形式被偏爱</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">冷落淘汰<br>其他形式被遗忘</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">新简化尝试<br>被认可或淘汰</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">简化陷阱</div>
+    <div class="section-title t-02">过于简化的拼写不被接受——不是因为错，而是因为它分散读者注意力</div>
+    <div class="section-desc"><strong>不易被接受或过于简化的拼写形式会引起读者的不悦，这是人们不接纳它们的真实理由。</strong>斯特伦克用一个精妙的例子揭示真相：当读到though时，读者不假思索地理解其意，完全不会去想拼写是否复杂；而读到tho时，读者还要脑补缺失的字母，造成注意力分散，使阅读效果大打折扣。简化拼写的失败，不在于"拼写规则"本身，而在于认知心理学——它增加了读者的认知负荷。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🚫</div>
+        <div class="dual-text">
+          <h4>tho（过度简化）</h4>
+          <p>读者需脑补缺失的字母，注意力被分散，阅读被中断。拼写的目的不是"简单"，而是"不打扰"。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>though（约定拼写）</h4>
+          <p>读者不假思索地理解其意，不会去想拼写是否复杂。阅读流畅，无认知阻力。这才是好拼写的标准。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">常错词表</div>
+    <div class="section-title t-03">56个高频率拼错词——从accidentally到villain的完整防错清单</div>
+    <div class="section-desc"><strong>斯特伦克列出的56个常被拼错单词覆盖了英语写作中最常见的陷阱。</strong>这些词大致可分为几类：①双写字母类（accidentally, occurred, disappoint, dissipate）；②ie/ei混淆类（believe, deceive, siege, seize, relieve）；③静默字母类（fascinate, rhythm, privilege, undoubtedly）；④易混词缀类（preceding, pursue, repetition, separate, similar）；⑤人名专有类（Philip, playwright的wright非write）；⑥常见功能词（until, too, tries, led/lead的过去式）。记住这些词，能避免绝大多数拼写错误。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔤</div>
+        <div class="data-name">ie/ei 混淆</div>
+        <div class="data-sm">believe, deceive, siege, seize, relieve, mischief, achieve, receive — 注意believe是ie，seize是ei</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔤</div>
+        <div class="data-name">双写字母陷阱</div>
+        <div class="data-sm">accidentally, occurred, disappoint, dissipate, embarrass, parallel — 双写辅音的位置是高频错误区</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔤</div>
+        <div class="data-name">静默&易混词缀</div>
+        <div class="data-sm">rhythm(h后y), privilege(无d), separate(非seperate), precede(非proceed), pursue(非pursue)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">双写规则</div>
+    <div class="section-title t-04">短元音+单辅音：加-ed或-ing前需双写词尾辅音</div>
+    <div class="section-desc"><strong>当一个发短元音且重读的元音字母后面只跟着一个辅音字母（除了v），应先双写词尾的辅音字母，再加-ed或-ing。</strong>例如：planned（plan→planned），letting（let→letting），beginning（begin→beginning）。唯一的例外是coming（come→coming，因为词尾的e已去掉）。这条规则非常简洁，但许多写作者因不重视而频繁犯错。将它内化成肌肉记忆，能避免writing→write→错写成writting这类错误。</div>
+    <div class="flow-row">
+      <div class="flow-step">短元音+单辅音<br>plan · let · begin</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">双写辅音<br>plan→planned · let→letting</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">特殊情况<br>come→coming(去e)<br>v不打双写</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">检查<br>planed✗ planned✓</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">连字符规则</div>
+    <div class="section-title t-05">连字符与分写规则：to-day需连字符，any one写成两个词</div>
+    <div class="section-desc"><strong>写to-day, to-night, to-morrow时，中间应加连字符（together除外）。</strong>将any one、every one、some one、some time（如果意为"以前"则写成sometime）写成两个单词。这两条规则看起来简单，却是当时英语写作的正式标准——它们提醒我们：拼写规则随时代演变。今天的to-day已写成today，但any one vs anyone的区分依然重要。关键是理解规则背后的逻辑：连字符和空格不是装饰，而是为读者消除歧义的工具。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>需连字符（传统）</h4>
+          <p>to-day · to-night · to-morrow。注意together例外，不分开。连字符是消除视觉歧义的工具。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>分写两个词</h4>
+          <p>any one · every one · some one · some time（"一段时间"）。但sometime（"从前"）连写。分词vs合词取决于语义。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">拼写不服务于"正确性"，而服务于"不打扰"。though优于tho不是因为"规则"正确，而是因为though让读者不假思索地理解内容，而tho打断阅读，增加认知负担。记住56个高频错词的拼写、掌握双写辅音规则、理解连字符与分写规律——这些不是无聊的琐事，而是让你的文字"隐形"的基本功：好的拼写不会让读者注意到你，只会让读者专注于你的思想。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch007" class="chapter-title">第7章 · 第二章和第三章的练习</div>
+    <div class="chapter-overview">
+  <p>本章是《风格的要素》的实践检验场。25道练习分为四个层次：①标点正解（练习1-2）——给两段无标点的历史文献段落（一段关于法国大革命，一段关于拜伦《哈罗德游记》）添加正确标点，这是对规则2-7的直接考察；②词义辨析（练习3）——对比柯勒律治《古舟子咏》1798年版与1800年版的文字变化，体会标点和选词如何改变意味；③标点纠错（练习4-8）——识别并纠正5个段落中的错误标点；④句子改错（练习9-25）——识别并改正17个句子中的语法、结构或风格错误。这些练习覆盖了前面两章全部18条规则的实际应用。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">25<span class="kpi-unit">题</span></div>
+    <div class="kpi-label">练习总数</div>
+    <div class="kpi-note">2标点+1词义+5纠错+17改错</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">18<span class="kpi-unit">条</span></div>
+    <div class="kpi-label">覆盖规则</div>
+    <div class="kpi-note">Ch2语法+Ch3写作 全部考查</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit">类</span></div>
+    <div class="kpi-label">题型维度</div>
+    <div class="kpi-note">标点·词义·纠错·改错</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit">篇经典</span></div>
+    <div class="kpi-label">历史文献选段</div>
+    <div class="kpi-note">法国大革命·拜伦游记</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">标点正解</div>
+    <div class="section-title t-01">为历史文献添加标点：法国大革命与拜伦的标点实战</div>
+    <div class="section-desc"><strong>练习1和练习2给出两段无标点的长文，要求添加正确的标点符号，这是对第2章规则2-7的综合考查。</strong>练习1是一段关于法国大革命的史实叙述——1788年国王顾问的警告、三级会议的召开、巴黎围攻巴士底狱；练习2是拜伦的首次大陆巡游与《恰尔德·哈罗德游记》的诞生。这两段需要综合运用逗号分割并列项（规则2）、逗号分隔插入语（规则3）、连词前加逗号引导并列分句（规则4）、不以逗号连接独立分句（规则5）、勿将句子一分为二（规则6）等全部标点规则。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📜</div>
+        <div class="dual-text">
+          <h4>练习1 法国大革命</h4>
+          <p>从\"In 1788 the King's advisers warned him\"到\"principal supplies of arms and munitions in Paris\"，综合考查逗号、分号、关系从句标点。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📜</div>
+        <div class="dual-text">
+          <h4>练习2 拜伦首次巡游</h4>
+          <p>从\"On his first continental tour\"到\"he awoke and found himself famous\"，考查插入语、同位语、引语标点。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">词义辨析</div>
+    <div class="section-title t-02">柯勒律治两个版本的差异：标点和选词如何改变诗歌意味</div>
+    <div class="section-desc"><strong>练习3是唯一一道词义辨析题。</strong>斯特伦克给出柯勒律治《抒情歌谣集》中《古舟子咏》的两个版本：1798年版的\"God save thee, ancyent Marinere! From the fiends that plague thee thus—\"与1800年版的\"God save thee, ancient Mariner! From the fiends, that plague thee thus!\"。两个版本只有四个微小差异——ancyent → ancient、Marinere → Mariner、逗号插入、破折号改为感叹号——但这四个变化从根本上改变了诗句的调性、节奏和情感：从口语化的古英语变成更正式的现代发音，从一句连接变为两句独立呼喊。这道题展示了规则12（使用具体语言）和规则17（坚持一种时态/风格）背后的全部哲学：微小的语言选择会产生巨大的效果差异。</div>
+    <div class="flow-row">
+      <div class="flow-step">1798版<br>ancyent Marinere<br>无逗号·破折号</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">1800版<br>ancient Mariner<br>加逗号·感叹号</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">效果差异<br>古语/口语→现代/正式</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">规则映射<br>选词(规则12)+风格一致(规则17)</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">标点纠错</div>
+    <div class="section-title t-03">5道标点纠错题：非限制性定语从句、逗号误用、句子断错</div>
+    <div class="section-desc"><strong>练习4-8要求识别并解释错误的标点符号、然后给出正确改法，覆盖了标点使用中最顽固的几类错误。</strong>练习4：\"This course is intended for Freshmen, who in the opinion of the Department are not qualified for military drill\"——who引导的是限制性定语从句（仅指那些不合格的新生），不应加逗号。练习5：广告语标点的滥用。练习6：《国家》杂志诗人的段落，逗号连接了独立分句（违反规则5）。练习7：碎片句——\"A long and narrow passage...\"被错误地独立成句（违反规则6）。练习8：逗号导致逻辑误解——\"largely because\"前面的逗号误导了因果关系归属。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📝</div>
+        <div class="data-name">限制性从句误标</div>
+        <div class="data-sm">练习4/8：who/that后不合理逗号改变了从句性质，使得句子含义发生不应有的变化。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📝</div>
+        <div class="data-name">逗号连接独立句</div>
+        <div class="data-sm">练习6：用逗号连接两个独立句子结构，违反规则5\"勿用逗号连接独立分句\"。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📝</div>
+        <div class="data-name">碎片句</div>
+        <div class="data-sm">练习7：将名词短语错误独立成句，违反规则6\"勿将句子一分为二\"。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">句子改错·语法</div>
+    <div class="section-title t-04">悬挂分词、修饰错位、主语飘移——前8道改错题聚焦语法结构问题</div>
+    <div class="section-desc"><strong>练习9-16集中考查第2章的核心语法规则，尤其是规则7（分词主语一致）、规则16（相关词放在一起）、规则4-6（分句连接）。</strong>练习9：\"During childhood his mother had died\"——\"during childhood\"修饰的是\"had died\"，不是\"his mother\"，但这个位置造成逻辑混乱。练习11：\"My farm consisted of... having given a hundred pounds...\"——现在分词短语的逻辑主语应是\"I\"，不是\"My farm\"（规则7，悬挂分词）。练习12-13：同样的分词主语不一致问题。练习14：\"had several long and intimate conversations during the tedious weeks of the conference with his British colleague\"——\"with his British colleague\"放错位置，应紧贴\"conversations\"（规则16，将相关词放在一起）。</div>
+    <div class="flow-row">
+      <div class="flow-step">悬挂分词<br>During childhood his mother died — who was a child?</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">修饰错位<br>conversations... with his British colleague — too far apart</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">分词主语<br>Having given... my farm — 主语不是主语</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">主语飘移<br>Pale and swooning... they carried — 谁苍白昏厥？</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">句子改错·风格</div>
+    <div class="section-title t-05">冗余、含糊、被动语态——后9道改错题针对第3章的写作原则</div>
+    <div class="section-desc"><strong>练习17-25深入考查第3章的写作原则，尤其是规则10（主动语态）、规则12（具体语言）、规则13（删掉不必要的词）、规则14（避免连续松散句）、规则18（强调词置句末）。</strong>练习17是一段描写\"生火\"的松散句连载，三个以\"Fire\"、\"Happily\"、\"Of these\"开头的句子构成典型的松散句结构（违反规则14）。练习22：\"Not only had the writer... but by royalty also\"——but后面的结构不平行（违反规则15）。练习24：\"Earnings from other sources are of such a favorable character as to enable a splendid showing to be made by the company\"——这是规则13的\"教科书级反面案例\"：character是冗余词，a splendid showing是含糊表达，被动语态使句子臃肿不堪。练习25：\"the status of affairs is such as to make it impossible to predict...\"——同样是含糊与啰嗦的双重反例。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>松散句 & 平行失衡</h4>
+          <p>练习17：\"Fire, therefore... Happily... Of these...\"三句松散串联，按规则14应重组为掉尾句。练习22：not only... but by royalty also 结构不平等。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>冗余词 & 被动语态</h4>
+          <p>练习24/25是规则13+规则10的反面教材：character、favorable、splendid showing、status of affairs——删掉这些冗余，改用主动语态，句子立即清晰。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">25道练习证明了一条真理：英语写作的优劣不是\"知不知道\"的问题，而是\"用不用得出来\"的问题。第二章的7条语法规则和第三章的11条写作原则全部浓缩在这些练习中——标点符号的每一个逗号、分号、破折号都是一次微型的逻辑判断；每一个悬挂分词的修正都是一次对\"主语清晰\"原则的践行；每一个冗余词的删除都是规则13的力量展示。斯特伦克的练习不是为了让读者\"做对\"，而是为了让读者在做错、分析错、改正错的过程中，将规则转化为肌肉记忆。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch008" class="chapter-title">第8章 · 老人与海</div>
+    <div class="chapter-overview">
+  <p>《老人与海》是海明威普利策奖和诺贝尔文学奖的双料获奖之作，也是他写作哲学——「冰山原则」——的极致体现。在这部中篇中，海明威用最简洁的英文句子（全书平均句长仅14词）构建了文学史上最宏大的隐喻之一：一个被称作salao（最倒霉的人）的老渔夫，在第85天钓到一条比他的船还大的马林鱼，经过三天三夜的搏斗，却在返回途中被鲨鱼将鱼肉啃食殆尽，只带回一副18英尺长的骨架。海明威通过这部作品证明：①伟大的文学作品不需要复杂的句法——简洁就是力量；②人类的尊严不在于赢得什么，而在于承受失去之后继续活着的能力；③人与自然的对抗不是征服关系，而是一种带着尊重的共生搏斗。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">84<span class="kpi-unit">天</span></div>
+    <div class="kpi-label">连续无鱼</div>
+    <div class="kpi-note">他被叫做salao——最倒霉的人</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">天</span></div>
+    <div class="kpi-label">海上搏斗</div>
+    <div class="kpi-note">与马林鱼从正午斗到正午再到正午</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">~18<span class="kpi-unit">英尺</span></div>
+    <div class="kpi-label">马林鱼长度</div>
+    <div class="kpi-note">比他12英尺的小船还要长出6英尺</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">~14<span class="kpi-unit">词/句</span></div>
+    <div class="kpi-label">全书平均句长</div>
+    <div class="kpi-note">海明威「冰山原则」的数字证据</div>
+  </div>
+</div>
+
+<!-- 01: 人物与起点 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">人物基石</div>
+    <div class="section-title t-01">圣地亚哥与马诺林：在陆地上，老与少之间，故事的一切情感已经搭建完毕</div>
+    <div class="section-desc"><strong>小说全部的情感张力，在海明威前三页就设定了——两个男人的一顿啤酒，一个关于撒丁鱼和棒球的对话，就完成了一部英雄史诗的全部铺垫。</strong>老人圣地亚哥，瘦削憔悴，后颈刻满深深的皱纹，双手布满被鱼线割出的老茧——这些伤口古老如无鱼的沙漠。但只有他的眼睛除外，它们如海一般颜色，充满愉悦、不可战胜。男孩马诺林五岁就跟老人出海学捕鱼——"I remember everything from when we first went together." 他的父母说他跟老人是salao，命令他去别的船。但他每天仍来帮老人扛卷绳、渔叉和打着面粉袋补丁的船帆——那补丁累累的帆，看起来像永败之旗。There was no cast net, no pot of yellow rice and fish. But they went through this fiction every day.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">👴</div>
+        <div class="dual-text">
+          <h4>老人 圣地亚哥</h4>
+          <p>Everything about him was old except his eyes and they were the same color as the sea and were cheerful and undefeated. 他梦见年轻时在非洲海滩上看到的狮子。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">👦</div>
+        <div class="dual-text">
+          <h4>男孩 马诺林</h4>
+          <p>"I would like to go. If I cannot fish with you, I would like to serve in some way." 他每天为老人带来食物、咖啡和希望——虚构的渔网和虚构的黄米饭不过是爱的仪式。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 出海与钩鱼 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">出海与钩鱼</div>
+    <div class="section-title t-02">第85天：独自驶向深海，在600英尺的深蓝中钩住一生之鱼</div>
+    <div class="section-desc"><strong>海明威用精确到令人窒息的技术细节构建了这一天的全部仪式。</strong>老人在黑暗中独自划出港口，"leaving the smell of the land behind and rowing out into the clean early morning smell of the ocean." 他将四条钓线精准地放在40、75、100和125英寻的深度——"Others let them drift with the current and sometimes they were at sixty fathoms when the fishermen thought they were at a hundred. But, he thought, I keep them with precision. Only I have no luck any more. But who knows? Maybe today." 然后他感觉到那轻轻的试探——"He felt the light delicate pulling and then a harder pull when a sardine's head must have been more difficult to break from the hook." 然后是巨大的重量——"he felt something hard and unbelievably heavy."</div>
+    <div class="flow-row">
+      <div class="flow-step">破晓出海<br>黑暗中独自划出港口</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">四条钓线<br>40/75/100/125英寻</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">轻微试探<br>He felt the delicate pulling</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">巨大重量<br>"unbelievably heavy"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 人与鱼的搏斗 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">人鱼搏斗</div>
+    <div class="section-title t-03">三天三夜：背上勒着钓线，右手抽筋，左手血淋淋，却从不说我会输</div>
+    <div class="section-desc"><strong>这场搏斗的核心矛盾不是征服，而是一种带着深刻敬意的共生关系——"Fish, I'll stay with you until I am dead."</strong>第一天：鱼拖着船往西北方移去，四小时后仍在游，老人用一条面粉袋衬垫横跨肩膀的钓线。"I can do nothing with him and he can do nothing with me," he thought. 老人右手被钓线割破，左手抽筋，生吃金枪鱼和飞鱼。他自言自语——自从男孩离开后，他就在海上自言自语，"since there was no one that they could annoy." 第二天夜里鱼终于浮出水面，"two feet longer than the skiff"——比他12英尺的小船还长。老人用渔叉杀死了它，绑在船侧。这不仅是捕鱼，这是一场两个同等对手之间的角斗："I have never seen a greater, or more beautiful, or a calmer or more noble thing than you, brother."</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🩸</div>
+        <div class="dual-text">
+          <h4>肉体的极限</h4>
+          <p>左手连续抽筋数小时。右手被钓线割到见骨。生吃金枪鱼和飞鱼。三天未眠。"Pain does not matter to a man."</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🐟</div>
+        <div class="dual-text">
+          <h4>灵魂的对话</h4>
+          <p>"Fish, I love you and respect you very much. But I will kill you dead before this day ends." 对手是兄弟，不是敌人。杀死鱼不是征服，而是完成一条鱼和一个渔夫之间命定的契约。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 鲨鱼与失去 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">鲨鱼劫掠</div>
+    <div class="section-title t-04">一条接一条的鲨鱼——用刀、用浆、用舵把，杀死鲨鱼但保不住鱼——这是人类命运最残酷的隐喻</div>
+    <div class="section-desc"><strong>从第一条灰鲭鲨（Mako）到最后的加拉诺鲨，鲨鱼的攻击序列构成了全书最黑暗的段落。</strong>第一条Mako鲨鱼从深处升起——"built as a sword fish except for his huge jaws… everything about him was beautiful except his jaws"。老人用渔叉刺入它的脑中，但也失去了渔叉。他只能用刀绑在桨上做新武器。第二条、第三条——他在黑暗中击退了一波又一波的鲨鱼，"fought them with the club and the tiller and the short knife until he could not see." 但每次一条鲨鱼被杀死，都会带走40磅鱼肉。当他最终看见哈瓦那的灯火时，那条18英尺的马林鱼只剩下一副骨架——"the old man saw the fish was gone now and the sharks still came." 他说出了那句为人类尊严重新定义的话："But man is not made for defeat. A man can be destroyed but not defeated."</div>
+    <div class="flow-row">
+      <div class="flow-step">第一条鲨鱼<br>Mako·渔叉刺入脑中<br>失去渔叉，失去40磅肉</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">刀绑在桨上<br>连续杀死多条鲨鱼<br>刀折断</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">舵把和短棍<br>"fought until he could not see"<br>鱼肉被吃光</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">只剩骨架<br>"A man can be destroyed<br>but not defeated."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 归航与意义 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">归航与意义</div>
+    <div class="section-title t-05">扛着桅杆爬上山顶，回棚屋睡去——他又梦见了狮子</div>
+    <div class="section-desc"><strong>小说的结尾不是胜利的欢呼，不是永久的失去——而是人类在最彻底的失败之后，依然能够重新开始的平静。</strong>老人深夜里扛着桅杆——像扛着十字架——艰难地走回他的棚屋。"He started to climb again and at the top he fell and lay for some time with the mast across his shoulder." 早上，男孩马诺林找到了他，看到他那被鲨鱼割烂的双手，哭了。游客们在咖啡店指着那副"大鲨鱼的美丽白骨"——他们不知道那是一条马林鱼。男孩为老人带来了咖啡，说："现在我们又可以一起捕鱼了。"老人睡着了。在他梦里，狮子又出现在非洲的海滩上。海明威用结尾三个词结束了现代文学史上最宏伟的隐喻：The old man was dreaming about the lions. ——不是关于鱼，不是关于失败，不是关于胜利。是关于年轻时见过的那些狮子。一切都可以失去，但不会失去的是做梦的能力。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⛪</div>
+        <div class="data-name">十字架意象</div>
+        <div class="data-sm">老人扛桅杆上山三次跌倒——"he fell and lay for some time with the mast across his shoulder" — 海明威的基督受难隐喻。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🦴</div>
+        <div class="data-name">被误解的胜利</div>
+        <div class="data-sm">游客们惊叹"大鲨鱼的骨架"——他们不知道真相，不知道代价，不知道什么是真正的伟大。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🦁</div>
+        <div class="data-name">永恒之梦</div>
+        <div class="data-sm">"The old man was dreaming about the lions." 不是鱼，不是鲨鱼——是狮子。青春和力量从未死去。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">《老人与海》的终极力量不在其故事——一个老人捕获一条大鱼然后失去了它——而在于海明威用最简洁的语言回答了人类最根本的问题：当一切都被夺走之后，人还剩下什么？答案是：做梦的能力。"A man can be destroyed but not defeated"不是一句口号，而是海明威用整部小说的结构证明的定理：你可以失去渔叉、刀子、鱼肉、一切看得见的东西，但在棚屋里睡去后，狮子仍会出现在梦中。海明威的「冰山原则」在语言上的体现是每句14词的平均句长，在文学上的体现则是：这部小说只说出了水面上的八分之一，剩下的七分之八——关于孤独、尊严、衰老、人与自然的共生——全部留给了每个读者自己去发现。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch009" class="chapter-title">第9章 · 篇章要以段落为单位</div>
+    <div class="chapter-overview">
+  <p>这是全书第三章——英语写作的基本原则——的第一条规则，也是斯特伦克关于"篇章组织"的核心教义。规则8建立了一个三层决策框架：①何时不需要分段——主题范围窄、篇幅简短时，一段即可；②何时需要分段——一个大主题需细分为若干小主题时，每个小主题自成一段；③如何决定段落的数量——取决于小主题展开的幅度，斯特伦克给出了诗歌品评（7段）、小说分析（4段）、历史事件（3段）三个具体模板。此外，他还特别强调了三个例外：过渡句可独段、词典式条目可独段、对话中每换一人须另起一段。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">段落数量模板</div>
+    <div class="kpi-note">诗歌·小说·历史事件</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">个例外</span></div>
+    <div class="kpi-label">单句成段场景</div>
+    <div class="kpi-note">过渡句·词典条目·对话</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">7<span class="kpi-unit">段</span></div>
+    <div class="kpi-label">诗歌品评标准结构</div>
+    <div class="kpi-note">最复杂的模板案例</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">条原则</span></div>
+    <div class="kpi-label">分段根本目的</div>
+    <div class="kpi-note">方便读者，非方便作者</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心原则</div>
+    <div class="section-title t-01">一段一主题：分段的唯一目的是为读者建立清晰的导航系统</div>
+    <div class="section-desc"><strong>分段服务于读者，而非作者。</strong>斯特伦克开门见山地阐明：每段的开始都向读者发出一个信号——新的论述即将展开。这是一个纯粹的读者体验原则。段落不是作者随意换行的产物，而是一个有意识的设计：每个主题单元自成一段，让读者的注意力可以在段落之间有序切换。作者在写作时已经熟悉自己的思路，但读者是第一次接触这些内容；分段就是作者为读者画的地图，告诉他们"这里是一个新话题的起点"。</div>
+    <div class="flow-row">
+      <div class="flow-step">大主题<br>需要细分</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">拆分为<br>若干小主题</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">每个小主题<br>自成一段</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">段落开头<br>提示新论述</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">何时不分段</div>
+    <div class="section-title t-02">主题窄、篇幅短时不必分段——用一段写完，然后检验是否比分段更好</div>
+    <div class="section-desc"><strong>分段不是越多越好。</strong>如果主题范围较窄，或者只想简要陈述，就不必细分。无论是一篇简短描述、一部文学作品概要、一个事件简介、一次行动大纲，还是一个简单想法的阐述——所有这些，最好用一个自然段写成。关键步骤是<strong>写完之后再检验</strong>：回头看看，一段写完的效果是否比分几段更好？如果答案是否定的，就应该重新分段。这个"写完再检验"的习惯将分段决策从事先的猜测变成了事后的验证，大大提高了决策质量。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>一段写完的场景</h4>
+          <p>简短描述、文学作品概要、事件简介、行动大纲、简单想法阐述。写完后检验是否比分段更好。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📐</div>
+        <div class="dual-text">
+          <h4>需要分段的场景</h4>
+          <p>大主题→多个小主题。分析一本书、一部小说、一个历史事件。模板指导分段数量。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">分段模板</div>
+    <div class="section-title t-03">三种经典分段模板：从2段到7段的递进式结构示范</div>
+    <div class="section-desc"><strong>斯特伦克提供了三个具体可复用的分段模板，覆盖从简单到复杂的分析场景。</strong>①书本/诗歌简短介绍（2段）：A.作品简介→B.批判性评价。②诗歌品评（7段）：A.写作和出版→B.诗型与韵律→C.主题→D.表现手法→E.显著特征→F.诗人气质风格→G.与其他作品的关系。③小说分析（4段）：A.背景→B.情节→C.人物→D.目的。④历史事件（3段）：A.缘起→B.经过→C.后果。他特别指出：在实际写作中，作者可能发现有必要将其中某些小标题再细分。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📖</div>
+        <div class="data-name">书本简评（2段）</div>
+        <div class="data-sm">A. 作品简介 → B. 批判性评价。最简单的两段式结构。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🎭</div>
+        <div class="data-name">诗歌品评（7段）</div>
+        <div class="data-sm">从出版背景到与其他作品的关系，覆盖诗歌分析的完整维度。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">📚</div>
+        <div class="data-name">小说分析（4段）</div>
+        <div class="data-sm">背景·情节·人物·目的。历史事件为3段：缘起·经过·后果。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">三个例外</div>
+    <div class="section-title t-04">单句成段的三种例外场景：过渡句、词典条目、对话换人</div>
+    <div class="section-desc"><strong>通常单句不能独立成段，但有三类例外。</strong>①过渡句：在说明文或议论文中，用以指出各部分之间的关系，常以单句成段的方式出现。②词典式条目：教材、指南或其他参考性著作中，许多主题都是一带而过，每条单独成段。③对话换人：在对话中，每一次说话——哪怕只有一个单词——也必须单独成段；每换一人说话，就另起一段。当既有对话又有叙述时，斯特伦克建议从印刷精良的小说作品中学习如何运用这条规则。</div>
+    <div class="flow-row">
+      <div class="flow-step">过渡句<br>说明文/议论文</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">词典式条目<br>教材/指南</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">对话换人<br>每换一人另起段</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">参考印刷精良<br>的小说学习</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">细分艺术</div>
+    <div class="section-title t-05">模板不是枷锁：在实际写作中发现有必要时，将小标题再细分</div>
+    <div class="section-desc"><strong>斯特伦克的模板是起点，不是终点。</strong>他特别提醒：当真正写一个主题时，作者可能会发现有必要将模板中的某个小标题再进行细分。例如在诗歌品评中，C段（主题）和D段（表现手法）的内容随具体诗歌而变化——C段可能需阐明诗歌的创作背景（情境）、点明主题、概述其发展深化；如果诗歌为第三人称叙事，则C段仅需对情节做简单概述。D段则应阐明诗歌的中心思想并分析其表现方式。这意味着段落设计需要根据内容的具体情况灵活调整，而不是机械套用模板。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>C段（主题）灵活调整</h4>
+          <p>阐明创作背景→点明主题→概述发展。第三人称叙事时仅需情节概述。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>D段（表现手法）灵活调整</h4>
+          <p>阐明中心思想+分析表现方式，或指出叙事诗主要强调的要点。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">分段不是格式惯例，而是读者体验的基础设施。斯特伦克的法则简洁而深刻：每段一个独立主题单元，每段的开头向读者宣告"新话题开始"。无论是一段写完的简短评述，还是七段展开的深度诗歌品评，分段的原则恒定不变——它服务于读者，帮助读者在陌生的内容中建立有序的认知导航。当你不确定如何分段时，用斯特伦克的三个模板作为起点，然后在写作中灵活调整。好的分段让读者忘记段落的"存在"，只专注于你的思想。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch010" class="chapter-title">第10章 · 以一个主题句开始段落</div>
+    <div class="chapter-overview">
+  <p>这是全书论证最详尽的规则之一。斯特伦克不满足于仅仅说"使用主题句"——他构建了一个完整的段落内部组织框架：①结构的黄金三段——主题句→展开论证→结论呼应；②五大展开方法——重申主题、定义术语、否定对立、举例说明、检验论证；③过渡的艺术——有时一个单词（again/therefore/for the same reason）就足以建立段落与上文的联系，有时需要整段的过渡性引导；④两大经典解剖——对史蒂文森9句段落和莱基6句段落的逐句分析，揭示了主题句如何在实践中被扩展、论证和强化。规则还区分了议论文/说明文（需主题句）与记叙文/描写文（可能有隐含主题或无需主题句）的不同应用场景。</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">步</span></div>
+    <div class="kpi-label">三段式结构</div>
+    <div class="kpi-note">主题句→展开→结论</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">展开方法</div>
+    <div class="kpi-note">重申·定义·否定·举例·检验</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">2<span class="kpi-unit">篇</span></div>
+    <div class="kpi-label">经典解剖案例</div>
+    <div class="kpi-note">史蒂文森·莱基</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">9<span class="kpi-unit">句</span></div>
+    <div class="kpi-label">史蒂文森段落</div>
+    <div class="kpi-note">逐句分析示范</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">2<span class="kpi-unit">种文体</span></div>
+    <div class="kpi-label">应用差异</div>
+    <div class="kpi-note">议论文/记叙文</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">三段式</div>
+    <div class="section-title t-01">经典三段式：主题句 → 解释论证 → 结论呼应，形成完整的逻辑闭环</div>
+    <div class="section-desc"><strong>最关键的段落写作——尤其在说明文和议论文中——应遵循三段式结构。</strong>①主题句出现在段首或段首附近，让读者在开始阅读时就清楚段落的目的；②随后的句子解释、论证或展开主题句中的观点；③最后一句要么强调主题句中的观点，要么说明某个重要结论。要注意<strong>严禁段尾跑题或以无关紧要的细节收尾</strong>——结尾必须是主题的强化，而不是注意力的分散。这一结构保证了读者在段落前后都能准确地知道你的核心论点。</div>
+    <div class="flow-row">
+      <div class="flow-step">① 主题句<br>段首或段首附近<br>预告段落目的</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">② 展开论证<br>解释·论证·展开<br>主题句中的观点</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③ 结论句<br>强调主题观点<br>或说明重要结论</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⚠️禁止<br>段尾跑题或<br>无关细节收尾</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">五大方法</div>
+    <div class="section-title t-02">展开主题句的五种武器：重申、定义、否定、举例、检验</div>
+    <div class="section-desc"><strong>作者可以根据写作意图，通过五种不同方式将整个段落与主题句联系起来。</strong>①重申主题——用不同的话再说一遍，强化记忆；②定义术语——对主题句中的关键概念进行精确界定；③否定对立——通过驳斥相反观点来使主题的含义更清晰；④举例说明——用具体案例让抽象的原则落地；⑤检验论证——通过逻辑检验来证明主题的正确性。在长段落中，作者可以同时使用这几种方法。斯特伦克随后用史蒂文森和莱基的两个段落展示了这五种方法在实践中的组合使用。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔄</div>
+        <div class="data-name">重申+定义</div>
+        <div class="data-sm">换种方式再说一遍主题，同时准确定义关键术语，让读者从多个角度理解核心观点。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⚔️</div>
+        <div class="data-name">否定+举例</div>
+        <div class="data-sm">通过驳斥相反观点强化立场，再用具体案例将抽象原则转化为可感知的内容。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔬</div>
+        <div class="data-name">检验论证</div>
+        <div class="data-sm">通过逻辑检验证明主题的正确性——展现主题的内涵与推论来进一步阐明。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">经典逐句解剖</div>
+    <div class="section-title t-03">史蒂文森9句段落逐句解剖：从主题句到升华结论的完整示范</div>
+    <div class="section-desc"><strong>斯特伦克选取史蒂文森《徒步旅行》中的一个经典段落，逐句展示了三段式结构如何运作。</strong>句①是主题句"Now, to be properly enjoyed, a walking tour should be gone upon alone."。句②通过否定对立观点（结伴而行失去本质）使主题句含义更清楚——展开方法之"否定"。句③以简略形式重申主题句并列举三个原因——展开方法之"重申"+"检验"。句④-⑤表明第四个原因并换种方式重申——展开方法之"重申"。句⑥-⑦借黑兹利特的话表明相同原因——展开方法之"举例"。句⑧以释义法重述——展开方法之"重申"。句⑨以强调和升华的语言表明第四个原因，得出一个强有力的结论——完美实现了"结论呼应"的目标。</div>
+    <div class="quote-block">
+      "Now, to be properly enjoyed, a walking tour should be gone upon alone."<br>—— 主题句，预告整个段落的核心论点
+      <div class="attribution">— Robert Louis Stevenson, Walking Tours</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">第二解剖案例</div>
+    <div class="section-title t-04">莱基6句段落解剖：主题句→定义→扩展→对比→补充→结论</div>
+    <div class="section-desc"><strong>莱基的段落展示了另一种展开模式。</strong>句①"18世纪出现了一种截然不同的历史观"——主题句。句②更清晰地表达主题句的含义，定义新的历史观——展开方法之"定义"。句③扩展定义——展开方法之"定义+举例"。句④通过对比来阐释定义（they sought rather to write a history of peoples than a history of kings）——展开方法之"否定+对比"。句⑤补充定义：新历史观的又一要素（因果关系链）——展开方法之"重申"。句⑥结论：新历史观带来的一个重要影响——完美的结论呼应。此案例证明：同一套三段式框架，可以在不同的主题和风格中产生完全不同的文字节奏。</div>
+    <div class="quote-block">
+      "It was chiefly in the eighteenth century that a very different conception of history grew up."<br>—— 主题句，将时间、方向、变化全部压缩在一句之中
+      <div class="attribution">— Lecky, The Political Value of History</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">过渡与文体区别</div>
+    <div class="section-title t-05">过渡的艺术 + 记叙/描写文体中主题句的灵活应用</div>
+    <div class="section-desc"><strong>段落之间的联系同样需要设计。</strong>如果段落属于全文的一部分，就要点明它与上文的关系。有时仅靠主题句中的一个单词或短语即可：again（此外）、therefore（因此）、for the same reason（基于相同原因）。但有时在主题句之前使用一个或多个引导句或过渡句更佳；如果需要多个此类句子，最好将过渡句独立成段。<strong>在记叙文和描写文中，规则更灵活。</strong>有时段落以一个精炼的概括句开始以统摄细节（如"The breeze served us admirably"），但更常见的是起始句直接点明主题并预示发展方向（如"He picked up the heavy lamp from the table and began to explore"）。生动的叙事段落经常没有主题句——分段仅为修辞停顿。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>议论文/说明文：须有主题句</h4>
+          <p>三段式结构严格适用。主题句+展开+结论。过渡词建立段落间的逻辑链。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>记叙文/描写文：灵活处理</h4>
+          <p>可用概括句统摄细节，也可直接叙事。短段落常无主题句，仅为修辞停顿。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">主题句不是写作公式中的一项可选项——它是读者阅读体验的"预告系统"。斯特伦克提供的不是一条死规矩，而是一套完整的段落工程学：三段式结构定义了段落内部的逻辑流动；五种展开方法提供了丰富论证的工具箱；两个逐句解剖案例展示了理论如何转换为实践。最关键的一点：无论你的段落是9句还是6句、是议论文还是记叙文，读者进入段落时需要知道"这里要说什么"，出去时需要确认"刚才说了什么"。做到这两点，你的段落就不只是文字的堆砌，而是一次逻辑完整的理性旅程。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch011" class="chapter-title">第11章 · 使用主动语态</div>
+    <div class="chapter-overview">
+  <p>这是全书最常被引用的规则之一，也是最容易被误解的规则之一。斯特伦克的论证分为五个层次：①主动语态的直接优势——更直接、更有力、更简练，以\"I shall always remember my first visit to Boston\"对比\"My first visit to Boston will always be remembered by me\"。②过度删除by me的危险——去掉施动者后句意可能变得模糊。③被动语态的合法场景——当段落关注的是被动主语（如\"The dramatists of the Restoration are little esteemed today\"），被动语态更合适。④两个常见错误——双重被动结构（如\"Gold was not allowed to be exported\"→\"It was forbidden to export gold\"）和名词化被动浪费（如\"A survey of this region was made in 1900\"→\"This region was surveyed in 1900\"）。⑤主动化改造的魔力——用主动动词替换\"there is\"和\"could be heard\"等平庸表达，可将苍白无力的文字变得生动有力。</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">组</span></div>
+    <div class="kpi-label">对比例句</div>
+    <div class="kpi-note">主动 vs 被动</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">2<span class="kpi-unit">种</span></div>
+    <div class="kpi-label">被动误用类型</div>
+    <div class="kpi-note">双重被动·名词化</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4<span class="kpi-unit">组</span></div>
+    <div class="kpi-label">主动化改造案例</div>
+    <div class="kpi-note">there is→主动动词</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">条原则</span></div>
+    <div class="kpi-label">合法被动场景</div>
+    <div class="kpi-note">依主语需要而定</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">∞</div>
+    <div class="kpi-label">适用文体范围</div>
+    <div class="kpi-note">叙事·描写·说明·议论</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心对比</div>
+    <div class="section-title t-01">主动语态更直接、更有力、更简练——三组例句一目了然</div>
+    <div class="section-desc"><strong>主动语态通常比被动语态更直接、更简洁。</strong>斯特伦克以最简单的例子阐明：\"I shall always remember my first visit to Boston\"远优于\"My first visit to Boston will always be remembered by me\"。后者不像前者那样直接、有力、简练。如果想让句子简练而去掉by me——\"My first visit to Boston will always be remembered\"——句意立即变得模糊：被谁记住？作者本人？未提及的其他人？还是全世界？这个案例完美地揭示了被动语态的核心风险：信息密度下降，歧义度上升。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>主动：I shall always remember my first visit to Boston.</h4>
+          <p>直接·有力·简练。主语清晰（I），动作明确（remember），宾语明确（visit）。一句话讲清楚谁做了什么。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>被动：My first visit to Boston will always be remembered by me.</h4>
+          <p>冗长·间接·无力。如果删去by me，句意模糊。这是被动语态三大弊病的典型示范。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">合法被动</div>
+    <div class="section-title t-02">被动语态自有其用武之地——关键看段落需要哪个词做主语</div>
+    <div class="section-desc"><strong>这条规则绝不是要彻底摒弃被动语态。</strong>斯特伦克明确强调：被动语态在英语中也是常用的，有时甚至是必要的。他给出了一个关键测试标准——看段落需要哪个特定词做主语。例如\"The dramatists of the Restoration are little esteemed today\"适用被动，因为段落描写的是王政复辟时期的剧作家；而\"Modern readers have little esteem for the dramatists of the Restoration\"适用主动，因为段落描写的是当代读者的品位。两种语态，正确的选择不是由\"规则\"决定，而是由<strong>语境与焦点</strong>决定。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>被动合适：焦点是剧作家</h4>
+          <p>\"The dramatists of the Restoration are little esteemed today.\"——段落描写剧作家，被动语态将焦点放在他们身上。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>主动合适：焦点是读者</h4>
+          <p>\"Modern readers have little esteem for the dramatists of the Restoration.\"——段落描写读者品位，主动语态更恰当。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">两种陷阱</div>
+    <div class="section-title t-03">双重被动和名词化被动：两种最常犯的被动语态错误</div>
+    <div class="section-desc"><strong>斯特伦克指出两种尤为糟糕的被动误用。</strong>①双重被动结构——一个被动语态直接依存于另一个被动语态。如\"Gold was not allowed to be exported\"→应改为\"It was forbidden to export gold\"。又如\"He has been proved to have been seen entering the building\"→应改为\"It has been proved that he was seen to enter the building\"。问题在于：与第二个被动语态相关的词却做了第一个被动语态的主语，导致逻辑链条扭曲。②名词化被动浪费——用一个表达整个行为的名词做被动结构的主语，使后续动词成为空洞的形式填空。如\"A survey of this region was made in 1900\"→\"This region was surveyed in 1900\"；\"Mobilization of the army was rapidly effected\"→\"The army was rapidly mobilized\"。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔗</div>
+        <div class="data-name">双重被动</div>
+        <div class="data-sm">Gold was not allowed to be exported. → It was forbidden to export gold. 逻辑主语链被扭曲。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📦</div>
+        <div class="data-name">名词化浪费</div>
+        <div class="data-sm">A survey...was made → This region was surveyed. 空洞的make/effect/obtain充当谓语。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">✅</div>
+        <div class="data-name">例外：有实义的谓语</div>
+        <div class="data-sm">The export of gold was prohibited. 中，prohibited本身就表达了export未表达的含义，所以可接受。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">主动化魔法</div>
+    <div class="section-title t-04">用主动动词替换平庸表达，让苍白文字焕发生命力</div>
+    <div class="section-desc"><strong>主动语态的力量不仅适用于叙事，也适用于所有文体。</strong>斯特伦克提供了四组主动化改造案例——通过用主动动词替换there is、could be heard等平庸表达，可以使苍白无力的描写或说明变得生动活泼、強有力。\"There were a great number of dead leaves lying on the ground\"→\"Dead leaves covered the ground\"。\"The sound of a guitar somewhere in the house could be heard\"→\"Somewhere in the house a guitar hummed sleepily\"。\"The reason that he left college was that his health became impaired\"→\"Failing health compelled him to leave college\"。每一次改造，都让句子从静态描述变为动态事件。</div>
+    <div class="flow-row">
+      <div class="flow-step">There were leaves<br>lying on the ground</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Dead leaves<br>covered the ground</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">The reason was<br>that health became impaired</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Failing health<br>compelled him to leave</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">适用文体</div>
+    <div class="section-title t-05">主动语态适用于所有文体——叙事、描写、说明、议论</div>
+    <div class="section-desc"><strong>主动语态的优势并不局限于某一类文体。</strong>斯特伦克特别强调：这一点不仅适用于侧重情节描写的记叙文，也适用于其他各类文体。\"Dead leaves covered the ground\"胜过\"There were a great number of dead leaves lying on the ground\"——这是描写文中的主动化。\"Failing health compelled him to leave college\"胜过\"The reason that he left college was that his health became impaired\"——这是说明文中的主动化。\"He soon repented his words\"胜过\"It was not long before he was very sorry that he had said what he had\"——这是议论文中的主动化。无论你的写作目的是什么，主动动词都是你的最佳盟友。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📖</div>
+        <div class="dual-text">
+          <h4>记叙文/描写文</h4>
+          <p>Dead leaves covered the ground. / A guitar hummed sleepily. 主动动词让画面动起来。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>议论文/说明文</h4>
+          <p>Failing health compelled him to leave college. / He soon repented his words. 主动动词让论证更有力。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">主动语态不只是一个语法选择——它是一种思维习惯。当你默认使用主动语态时，你被强制回答三个问题：谁做的？做了什么？对谁做的？这三个问题的答案就是你的句子。斯特伦克的建议不是\"永远不用被动\"，而是\"默认用主动，只在有明确理由时才用被动\"。那个明确理由只有一个：当你的段落焦点恰好是被动句的主语时。其余情况——尤其是双重被动和名词化被动——都应彻底避免。用主动动词替换there is和could be heard，你会发现文字从静态描述变成了动态叙事。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch012" class="chapter-title">第12章 · 用肯定形式来陈述</div>
+    <div class="chapter-overview">
+  <p>规则11是对语言心理学的深刻观察，而非一条简单的语法规则。斯特伦克构建了五个递进层次：①Not的正确用法——只用于表达否认和对立，不应成为含糊其辞的避难所。②三组经典对比——从"He was not very often on time"→"He usually came late"到对《驯悍记》评论的从含糊到明确的改写，展示肯定形式释放的表达力。③读者心理学的核心洞察——读者并不满足于被告知"不是什么"；他们渴望知道"是什么"。④否定转肯定的具体技法——提供5组否定→肯定词汇转换表（not honest→dishonest, did not remember→forgot）。⑤否定与肯定对照使用的特殊力量——"Not charity, but simple justice"比单纯肯定更有力，因为对比创造了张力。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">组</span></div>
+    <div class="kpi-label">对比例句</div>
+    <div class="kpi-note">否定→肯定改写</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit">对</span></div>
+    <div class="kpi-label">否定→肯定转换表</div>
+    <div class="kpi-note">not honest→dishonest等</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">1<span class="kpi-unit">条洞察</span></div>
+    <div class="kpi-label">读者心理学原理</div>
+    <div class="kpi-note">人更想知道"是什么"</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2<span class="kpi-unit">种用法</span></div>
+    <div class="kpi-label">Not的两种正确用法</div>
+    <div class="kpi-note">否认·对立对照</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心原则</div>
+    <div class="section-title t-01">Not是表达否认的工具，不是回避表达的借口——读者要的是"是什么"</div>
+    <div class="section-desc"><strong>陈述要明确表达观点，避免单调乏味、苍白无力、犹豫不决、模棱两可的语言。</strong>斯特伦克给not划定了明确的边界：not是用来表达否认或对立的，不要把它用于闪躲回避、含糊其辞的表述中。当一个作者写"not important"而非"trifling"，写"did not remember"而非"forgot"，他实际上是在向读者呈现一道填空题而非一个完整的陈述。读者必须自行脑补"不是什么"背后的"是什么"——这增加了认知负担，降低了表达效率。<strong>无论读者是有意识还是无意识，他们并不满足于被告知"不是什么"；他们更想知道"是什么"。</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">作者写<br>"not important"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">读者脑补<br>"那是什么？"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">认知负担↑<br>表达效率↓</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">正确做法<br>直接写"trifling"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">三组对比</div>
+    <div class="section-title t-02">从含糊到肯定的三组经典改写：肯定形式释放的表达力量</div>
+    <div class="section-desc"><strong>斯特伦克通过三组对比揭示肯定形式的巨大优势。</strong>①"他经常不准时"（He was not very often on time）→"他经常迟到"（He usually came late）：一个否定、模糊、需要读者反向推论的表述，与一个肯定、明确、一步到位的表述之间的对比。②"他不认为学拉丁语有多大用处"→"他认为学拉丁语无用"：前者绕了一个双重否定的弯，后者直接给结论。③最精彩的案例——《驯悍记》的评论从一段含糊的否定（"莎士比亚没能将凯瑟琳刻画成令人赞赏的人物……"）被改写为三个肯定句："凯瑟琳不令人喜爱。比安卡无足轻重。"这个案例证明：肯定形式不仅是语言技巧，更是一种思维态度——作者需要明确地知道自己想说什么。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>否定/含糊</h4>
+          <p>He was not very often on time. / He did not think that studying Latin was much use. 读者需反向推论，效率低。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>肯定/明确</h4>
+          <p>He usually came late. / He thought the study of Latin useless. 一步到位，不给读者增加认知负担。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">词汇转换</div>
+    <div class="section-title t-03">否定转肯定的词汇替换表：即使否定意义也用肯定词汇来表达</div>
+    <div class="section-desc"><strong>斯特伦克给出了5组否定→肯定的直接词汇转换：</strong>not honest→dishonest、not important→trifling、did not remember→forgot、did not pay any attention to→ignored、did not have much confidence in→distrusted。这个转换表揭示了一个惊人事实：英语中几乎每一个"not+X"表达都有对应的肯定词汇——而这些肯定词汇总是更简洁、更有力。斯特伦克的建议是：除非你是在故意建立"否定vs肯定"的对比效果，否则一律用肯定表达。因为每当你写"not honest"，你实际上让读者多读了一个词，并且多了一个"反向解码"的步骤。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🔄</div>
+        <div class="data-name">not honest → dishonest</div>
+        <div class="data-sm">2词→1词。not important→trifling。did not remember→forgot。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🔄</div>
+        <div class="data-name">did not pay attention → ignored</div>
+        <div class="data-sm">4词→1词。did not have much confidence in→distrusted。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔄</div>
+        <div class="data-name">规律：not+X → 同义肯定词</div>
+        <div class="data-sm">肯定词总是更简洁。规则：除非在建立对比效果，否则一律用肯定。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">特殊技巧</div>
+    <div class="section-title t-04">否定与肯定对照的力量：Not charity, but simple justice——对比创造张力</div>
+    <div class="section-desc"><strong>否定并非在所有情况下都是坏事。当否定与肯定形成明确对照时，表达效果反而更强。</strong>斯特伦克指出："Not charity, but simple justice"（不求仁慈，但求公正）比单纯的"simple justice"更有力。同样，"Not that I loved Caesar less, but Rome the more"（并非不爱恺撒，而是爱罗马更甚）这种否定→肯定的对比结构创造了语言的戏剧张力。这正是not的正确用法：不是回避，不是含糊，而是<strong>明确地建立对立</strong>。当你在说"not A"时，读者需要知道你所排除的究竟是什么，而"but B"立刻给出了正面答案。另外，not以外的否定词（never等）通常语气更为强烈——"The sun never sets upon the British flag"比"The sun does not set"更有力量。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>not 用于回避（错）</h4>
+          <p>"He was not very often on time."——not掩盖了作者的真实意思。读者不知道"他到底几点到"。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>not 用于对照（对）</h4>
+          <p>"Not charity, but simple justice."——not明确排除一项，立刻给出正面答案。对比创造张力。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">实操清单</div>
+    <div class="section-title t-05">写作自查清单：五个问题帮你根除否定依赖</div>
+    <div class="section-desc"><strong>将规则11转化为可操作的写作习惯。</strong>①我的句子中有"not"吗？→如果有，检查它是用于否认/对立，还是用于回避/含糊。②如果是后者，这句话的肯定表达是什么？→直接写出肯定版本。③能否用一个肯定词汇替换"not+X"？→查词汇转换表。④我的否定是否服务于一个明确的对比？→如果是，保留并确保"but"后的肯定部分清晰有力。⑤如果用never等其他否定词替代not，语气是否更强烈？→考虑用更强的否定词建立戏剧张力。这五个问题构成一个快速过滤系统，帮助你从"不敢说是什么"的写作习惯中走出来。</div>
+    <div class="flow-row">
+      <div class="flow-step">① 查not<br>是回避还是对立？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">② 写肯定版<br>直接写出肯定表达</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">③ 找肯定词<br>not+X→同义词</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">④ 查对比<br>not A but B</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">⑤ 升级否定<br>never等更强否定词</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">规则11不是关于"not"的禁令——它是关于表达勇气的一课。斯特伦克的核心洞察是心理学层面的：当读者读到"他不是经常准时"，他们的反应不是接受这个信息，而是在问"那他到底什么时候到的？"——你的not变成了读者的填空题。解决之道极其简单：直接说出"他经常迟到"。当你用"ignored"替代"did not pay any attention to"，用"forgot"替代"did not remember"，每个词语的替换都是"模糊→明确"的思维跃迁。唯一的例外——也是这条规则最优雅的部分——是当你故意用"not A, but B"来创造对比张力时。那时，否定是为肯定服务，而不是逃避肯定的借口。</div>
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch013" class="chapter-title">第13章 · 使用清晰、明确、具体的语言</div>
+    <div class="chapter-overview">
+  <p>规则12是斯特伦克"写作三原则"（规则10：主动语态、规则11：肯定形式、规则12：具体语言）的集大成之作。它构建了四个递进层次：①三组经典对比——用"一段天气恼人的时期"vs"一个星期，天天下雨"等案例直观展示具体语言的力量。②斯特伦克与普遍共识——援引"研究过写作技巧的人有一个共识：引起并吸引住读者注意力的最可靠方法，就是要做到明确、具体、言之有物"，将规则提升到写作研究的核心位置。③五大经典作家的示范——布朗宁、笛福、斯威夫特、霍桑、赫里克五人的片段展示了从"灵魂的宇宙"到"粗糙的石雕"等多层次的具体化技巧。④写作实验——如果这些大师的作品改用笼统、含糊、抽象的语言重新表述，你会发现"最引人入胜的文字可能变得平铺直叙"。这是一条可以通过自行实验来验证的规则。</p>
+</div>
+
+<div class="kpi-row cols-5">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">对</span></div>
+    <div class="kpi-label">基本对比</div>
+    <div class="kpi-note">笼统vs具体</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">5<span class="kpi-unit">位</span></div>
+    <div class="kpi-label">经典作家示范</div>
+    <div class="kpi-note">布朗宁·笛福·斯威夫特等</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">个</span></div>
+    <div class="kpi-label">递进原则</div>
+    <div class="kpi-note">明确·清晰·具体</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">∞</div>
+    <div class="kpi-label">自行实验验证</div>
+    <div class="kpi-note">改写大师文字→立即对比</div>
+  </div>
+  <div class="kpi-card c05">
+    <div class="kpi-value">1<span class="kpi-unit">共识</span></div>
+    <div class="kpi-label">写作研究共识</div>
+    <div class="kpi-note">吸引注意力最可靠方法</div>
+  </div>
+</div>
+
+<!-- 01 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">三组对比</div>
+    <div class="section-title t-01">笼统vs具体的经典对决：好文字不是被"理解"的，而是被"看见"的</div>
+    <div class="section-desc"><strong>斯特伦克以三组对比揭示具体性是写作的最高原则。</strong>①"A period of unfavorable weather set in"（一段天气恼人的时期到来了）vs "It rained every day for a week"（一个星期，天天下雨）：前者是一句无法在读者脑海中产生画面的抽象陈述；后者是一幅可以被看见、被记住的具体画面。②"He showed satisfaction as he took possession of his well-earned reward"（当拿得应得的报酬时，他表现得很满意）vs "He grinned as he pocketed the coin"（当把钱装进口袋时，他咧着嘴笑）：前者是笼统的情绪标签；后者是一个可见的动作和表情。③"There is a general agreement among those who have enjoyed the experience that surf-riding is productive of great exhilaration"→"All who have tried surf-riding agree that it is most exhilarating"。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>笼统、抽象、含糊</h4>
+          <p>"A period of unfavorable weather set in." → 读者看不到任何东西，只能自己去猜。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>清晰、明确、具体</h4>
+          <p>"It rained every day for a week." → 读者立刻看到了画面：连续七天的雨。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">三大原则</div>
+    <div class="section-title t-02">明确胜过笼统、清晰胜过含糊、具体胜过抽象——三重递进原则</div>
+    <div class="section-desc"><strong>斯特伦克提出了一个三重递进标准。</strong>①明确（definite）：你的语言指定了具体对象，而非泛指一切——"He grinned"明确指出了一个动作，而"He showed satisfaction"可以指出一千种不同的行为。②清晰（specific）：你的语言选择了一个具体的例子，而非停留在概念层面——"pocketed the coin"是一个清晰、有细节的动作，而"took possession of his well-earned reward"是一串没有画面的概念。③具体（concrete）：你的语言表达了可以被感官接收到的内容——"grinned"和"pocketed"都是可见的、可被记录的，而"satisfaction"和"possession"属于不可见的抽象状态。这三重递进构成了写作的"具体化金字塔"：明确→清晰→具体。</div>
+    <div class="flow-row">
+      <div class="flow-step">明确 Definite<br>指定具体对象<br>而非泛指一切</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">清晰 Specific<br>选择具体例子<br>而非概念层面</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">具体 Concrete<br>感官可感知<br>可见可记录</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">三层递进<br>构成写作的<br>"具体化金字塔"</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">写作共识</div>
+    <div class="section-title t-03">写作研究的普遍共识：引起并吸引住读者注意力的最可靠方法，就是言之有物</div>
+    <div class="section-desc"><strong>斯特伦克将具体性置于写作技巧体系中的最高位置。</strong>他引用了写作研究领域的一个普遍共识："引起并吸引住读者注意力的最可靠方法，就是要做到明确、具体、言之有物。"这不是一条可选的风格建议——这是写作的底层逻辑。如果主动语态让你的句子更直接、肯定形式让你的表达更鲜明，那么具体性就是让读者真正"看见"你在说什么的唯一方法。值得深入理解的是，这三大作家——布朗宁（"灵魂的宇宙"）、笛福（"粗糙的石雕"）、斯威夫特——他们的文字之所以伟大，不是因为使用了某种特殊的修辞技巧，而是因为他们的每一个词都让读者可以看到、听到、触摸到他们所描述的世界。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📚</div>
+        <div class="data-name">最可靠的注意力方法</div>
+        <div class="data-sm">明确+具体+言之有物——这是写作研究反复验证的结论，不是个人偏好。</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🎯</div>
+        <div class="data-name">底层逻辑，非可选风格</div>
+        <div class="data-sm">主动语态让你更直接，肯定形式让你更鲜明，具体性让你被读者"看见"。</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🔬</div>
+        <div class="data-name">自行实验验证</div>
+        <div class="data-sm">将大师的文字改写为笼统抽象的表达，对比阅读——差异立现。这是无需权威认证的自明真理。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">经典示范</div>
+    <div class="section-title t-04">五大经典作家示范：从宇宙级到生活级的具体化谱系</div>
+    <div class="section-desc"><strong>斯特伦克援引五位经典作家，展示具体性在不同尺度上的运用。</strong>布朗宁（Browning）的"灵魂的宇宙"——这是哲学层面的具体化，将抽象的灵魂体验描绘为一个清晰可见的宇宙。笛福（Defoe）的"粗糙的石雕"——将人物形象压缩为一尊具体的石雕，简洁至极却令人难忘。斯威夫特（Swift）的讽刺描写——以极度具体的细节让荒诞变得可信。霍桑（Hawthorne）的氛围描写——用精确的感官细节（光线、声音、气味）构建情感氛围。赫里克（Herrick）的抒情诗——用一朵花、一滴露珠等微小而具体的事物承载宏大情感。五位作家覆盖了从宇宙到生活的全尺度，共同证明了一个真理：无关主题大小，具体性是唯一能让文字抵达读者大脑的通道。</div>
+    <div class="flow-row">
+      <div class="flow-step">布朗宁<br>宇宙级具体<br>灵魂成为宇宙</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">笛福<br>人物压缩<br>人物成为石雕</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">斯威夫特<br>讽刺实证<br>细节让荒诞可信</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">霍桑<br>氛围构建<br>感官细节造情感</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">赫里克<br>微小承载宏大<br>花与露珠的情感</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">实操方法</div>
+    <div class="section-title t-05">将笼统语言转化为具体语言的四大实操方法</div>
+    <div class="section-desc"><strong>如何将写作从笼统提升到具体？</strong>①替换抽象名词为具体名词："unfavorable weather"→"rain every day"；"satisfaction"→"grin"；"reward"→"coin"。②用动作替代状态："took possession of"→"pocketed"；"showed satisfaction"→"grinned"。③选择可被感官感知的细节：不是"天气恼人"，而是"下雨"；不是"报酬"，而是"硬币"；不是"兴奋体验"，而是"冲浪"。④自行实验：选取你最喜欢的作家段落，用笼统、含糊、抽象的语言重新表述它——然后对比原文和改写版，你会发现"最引人入胜的文字可能变得平铺直叙"。这第四步是最重要的，因为它把你从"信徒"变成了"证伪者"。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text">
+          <h4>替换抽象名词 → 具体名词</h4>
+          <p>unfavorable weather→rain / satisfaction→grin / reward→coin / exhilaration→exhilarating</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔬</div>
+        <div class="dual-text">
+          <h4>自行实验：改写→对比</h4>
+          <p>取大师段落→改写为笼统表述→对比阅读。无需权威认证，差异立现。这是最有力的学习方式。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">具体性是写作三原则的皇冠——主动语态给你力量，肯定形式给你清晰，具体语言给你生命。斯特伦克的规则12不仅是一条规则，而是对整个写作研究最核心结论的总结："引起并吸引住读者注意力的最可靠方法，就是要做到明确、具体、言之有物。"如果你只记得一条写作原则，就记住这一条。因为主动和肯定的缺失可以用编辑来补救，而具体性的缺失——用"一段天气恼人的时期"代替"一个星期，天天下雨"——意味着你从一开始就没有给读者提供任何可以看见、听见或触摸的内容。用具体的词汇，让你的文字成为读者的感官体验，而不仅仅是概念传输。</div>
+</div>
+
+    <footer class="book-footer">
+      <p>全书共 13 章 · <a href="../目录.html">返回总目录</a> · <a href="风格的要素-catalog.html">章节目录</a></p>
+    </footer>
+  </main>
+</div>
+</body>
+</html>
