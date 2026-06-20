@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python报表自动化 · 第1章「认识自动化报表」</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .risk-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .risk-label{font-size:13px;color:#555;width:120px;flex-shrink:0;font-family:'FZXPYZS','PingFang SC',serif}
+  .risk-meter{flex:1;height:10px;background:#eef2ff;border-radius:5px;overflow:hidden}
+  .risk-fill{height:100%;border-radius:5px;background:#4f46e5}
+  .risk-val{font-size:13px;font-weight:bold;color:#4f46e5;width:80px;text-align:right;flex-shrink:0}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}.risk-row{flex-wrap:wrap}.risk-label{width:100%}.risk-val{width:auto}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch001-info-en.html">中文 / English</a>
+</div>
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第1章「认识自动化报表」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  Excel作为日常工作核心工具，通过工作簿→Sheet→单元格→元素的层次结构管理数据，每次制作报表都需手动重复操作。但手动制表效率低、易出错，无法满足高频报表需求。如何将重复的人工报表工作转化为自动化流程？答案在于五步自动化流程（拆解→找代码→组合→验证→调用），并选择合适的Python库（推荐Pandas+openpyxl）代替手工操作。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是全书的基础框架。首先剖析Excel的底层组成：工作簿包含多个Sheet，每个Sheet由单元格构成，单元格可设置字体、对齐、条件格式等元素。然后介绍了制作自动化报表的五步通用流程——这个流程与工具无关，是方法论层面的抽象。最后梳理了Python操作Excel的八大库（win32com、xlrd、xlwt、xlutils、xlsxwriter、xlwings、openpyxl、Pandas），分析各自的优劣，并确定了本书的技术栈：Pandas负责数据处理，openpyxl负责格式样式设置。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">5步</div>
+    <div class="kpi-label">自动化报表<br>标准流程</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">8+</div>
+    <div class="kpi-label">Python Excel<br>可选库</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2个</div>
+    <div class="kpi-label">推荐核心库<br>Pandas+openpyxl</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">N个</div>
+    <div class="kpi-label">单元格元素<br>字体/对齐/格式</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心原理</div>
+    <div class="section-title t-01">Excel基本组成：工作簿→Sheet→单元格元素</div>
+    <div class="section-desc">Excel文件的核心结构是一个层级体系：一个工作簿（Workbook）包含多个Sheet，每个Sheet由若干单元格组成，每个单元格又可设置字体、对齐方式、条件格式等属性。本书按照Excel功能区模块编排，依次覆盖这些元素的Python自动化操作。</div>
+    <div class="flow-row">
+      <div class="flow-step">📗 工作簿<br><small>Workbook</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📄 Sheet<br><small>多个独立表</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔲 单元格<br><small>Cell</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🎨 元素<br><small>字体·对齐·格式</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">方法框架</div>
+    <div class="section-title t-02">自动化报表五步流程：拆解→找代码→组合→验证→调用</div>
+    <div class="section-desc">报表自动化的本质是用计算机代替人工。第一步「步骤拆解」是方法论核心——与具体工具无关，例如第一步永远是收集数据。第二步「找对应代码」为每一步匹配Python实现。第三步「组合代码」将零散代码组装为完整脚本。第四步「验证结果」确保输出正确。第五步「等待调用」在需要时一键执行。</div>
+    <div class="flow-row">
+      <div class="flow-step">1️⃣ 步骤拆解<br><small>抽象方法论</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">2️⃣ 找对应代码<br><small>匹配实现</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">3️⃣ 组合代码<br><small>组装脚本</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">4️⃣ 验证结果<br><small>确保正确</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">5️⃣ 等待调用<br><small>一键执行</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">工具选择</div>
+    <div class="section-title t-03">Python操作Excel的八大库：各有优劣</div>
+    <div class="section-desc">Python生态中有八个主流Excel库。win32com模拟鼠标操作但仅限Windows；xlrd/xlwt/xlutils负责基础读写；xlsxwriter擅长样式和图表但不可读已有文件；xlwings交互性强但格式功能不全面；openpyxl各项功能中规中矩、文档齐全；Pandas是数据处理神器。实际工作中往往需要多个库组合使用。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🐼</div>
+        <div class="dual-text"><h4>Pandas · 数据处理</h4><p>读取、清洗、聚合、分析——Python数据处理的事实标准，几乎所有数据分析任务都离不开它。</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text"><h4>openpyxl · 格式设置</h4><p>字体、颜色、边框、对齐、条件格式——格式设置功能全面，代码清晰易懂，与Pandas完美互补。</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">技术选型</div>
+    <div class="section-title t-04">本书技术栈：Pandas + openpyxl 黄金组合</div>
+    <div class="section-desc">对Excel的常规操作分两类：数据处理和格式样式设置。数据处理必选Pandas，格式设置需找一个功能全面且代码好理解的库——openpyxl是最佳搭档。本书所有案例都基于这一组合，读者也应了解其他库以备特殊场景。</div>
+    <div class="risk-row">
+      <div class="risk-label">🐼 Pandas</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+      <div class="risk-val">数据处理</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">📝 openpyxl</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+      <div class="risk-val">格式样式</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">🖱️ win32com</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:40%"></div></div>
+      <div class="risk-val">仅Windows</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">✈️ xlwings</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:55%"></div></div>
+      <div class="risk-val">交互性强</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">学习路径</div>
+    <div class="section-title t-05">从Excel思维到Python思维的范式转换</div>
+    <div class="section-desc">本书最大特色是「对比学习法」：每个Python操作都从Excel的对应操作讲起。读者不需要从零学编程——你已会用Excel，只需要知道同一件事在Python里怎么写。这种对比降低了认知门槛，让报表自动化的学习曲线变得平滑。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📗</div>
+        <div class="data-name">Excel操作</div>
+        <div class="data-sm">已知的界面操作<br>功能区点击拖拽<br>作为理解起点</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">↔️</div>
+        <div class="data-name">对比学习</div>
+        <div class="data-sm">每个Excel操作<br>对应Python代码<br>降低学习门槛</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🐍</div>
+        <div class="data-name">Python代码</div>
+        <div class="data-sm">自动化执行<br>批量处理<br>可重复调用</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">实现报表自动化不是「学一门新语言」，而是将你已掌握的Excel思维翻译成Python代码。五步流程提供方法论框架，Pandas+openpyxl提供技术实现——两者结合，任何重复性报表工作都可以转化为一键执行的自动化脚本。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第1章「认识自动化报表」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

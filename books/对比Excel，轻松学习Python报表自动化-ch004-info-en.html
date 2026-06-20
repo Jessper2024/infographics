@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare with Excel, Easily Learn Python Report Automation · Ch.4 "Cell Selection & Font Settings with Python"</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch004-info-zh.html">中文 / EN</a>
+</div>
+
+<h1>Compare with Excel, Easily Learn Python Report Automation · Ch.4 "Cell Selection & Font Settings with Python"</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Situation → Complication → Question → Answer</span>
+  Setting font formatting in Excel—font type, size, bold, color, background fill, borders—requires just a few clicks in the ribbon. But when you have hundreds of cells needing uniform formatting, or must repeat the same formatting daily for fixed ranges, manual operation becomes inefficient and error-prone. How can Python automate Excel cell formatting? This chapter systematically covers cell selection (single/row/col/range), font settings (Font() with 8 parameters), cell fill (PatternFill() solid and patterns), and border settings (Border() 4 sides + diagonals), culminating in a batch formatting case study that ties everything together.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter focuses on the Python implementation of Excel's "Font" group in the "Home" tab. It first introduces multiple cell selection methods: direct coordinate (ws['A1']) or row/col numbering (ws.cell()) for single cells; row number, column letter, or range for multiple cells. It then dives into Font()'s 8 parameters: name, size, bold, italic, vertAlign, underline, strike, and color (ARGB format). Next it covers PatternFill() for cell fill—fill_type='solid' being the most common—and Border() for setting line style and color on all four sides and diagonals. Finally, a batch formatting case demonstrates iterating over multiple rows and columns to uniformly format all cells.</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">8 Params</div>
+    <div class="kpi-label">Font() Settings<br>Name/Size/Color/etc.</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3 Scopes</div>
+    <div class="kpi-label">Selection Ranges<br>Cell/Row-Col/Range</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5 Sides</div>
+    <div class="kpi-label">Border Control<br>4 Sides + Diagonal</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">Batch Format<br>Iterate & Apply</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Selection</div>
+    <div class="section-title t-01">Cell Selection: Single, Rows, Columns & Ranges</div>
+    <div class="section-desc">Selecting cells is the prerequisite for formatting. Single cells: ws['A1'] (direct) or ws.cell(row=1,column=1) (numbered). Multiple rows: ws[5:10] slices; multiple columns: ws['C:E'] ranges; areas: ws['A1:C5']. These map directly to Excel mouse drag selections, making the learning curve gentle.</div>
+    <div class="flow-row">
+      <div class="flow-step">📍 Single<br><small>ws['A1']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📏 Row<br><small>ws[10]</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📐 Columns<br><small>ws['C:E']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔲 Range<br><small>ws['A1:C5']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🎯 Multi<br><small>Any combination</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Font Settings</div>
+    <div class="section-title t-02">Font() Function: 8 Parameters for Complete Font Control</div>
+    <div class="section-desc">Font(name, size, bold, italic, vertAlign, underline, strike, color) is the core of openpyxl font formatting. color uses ARGB format (e.g., 'FFFF0000' for red). In practice, multiple settings are applied simultaneously: Font(name='Calibri', size=12, bold=True, color='FFFFFFFF'). Usage: cell.font = Font(param1=val1, param2=val2, ...).</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">🔤</div>
+        <div class="cmp-name">name & size</div>
+        <div class="cmp-note">Font family & size<br>e.g. 'Calibri', 12<br>Maps to ribbon dropdowns</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">𝐁 𝐼</div>
+        <div class="cmp-name">bold & italic</div>
+        <div class="cmp-note">True / False<br>Maps to B / I buttons<br>In the ribbon</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🎨</div>
+        <div class="cmp-name">underline, strike, color</div>
+        <div class="cmp-note">Underline · Strikethrough<br>Color in ARGB format<br>e.g. 'FFFF0000' = red</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Cell Fill</div>
+    <div class="section-title t-03">PatternFill(): Solid Colors & Pattern Fills</div>
+    <div class="section-desc">PatternFill(fill_type, start_color, end_color) controls cell background. Most common is solid fill: fill_type='solid', fgColor specifies the color. Pattern fills overlay a pattern on the background color (end_color). Usage: cell.fill = PatternFill(fill_type='solid', fgColor='FFFF00').</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🟨</div>
+        <div class="dual-text"><h4>Solid Fill (Most Common)</h4><p>fill_type='solid'<br>fgColor specifies color<br>e.g. yellow 'FFFF00'<br>orange 'FFA500'</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔲</div>
+        <div class="dual-text"><h4>Pattern Fill</h4><p>Multiple pattern styles<br>start_color = pattern color<br>end_color = background<br>Useful for annotations</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Border Settings</div>
+    <div class="section-title t-04">Border(): Four-Side Line Styles & Diagonals</div>
+    <div class="section-desc">Border(left, right, top, bottom, diagonal) configures cell borders. Each side uses Side(style, color) for line style (thin/double/dashed/etc.) and color. Diagonals require additional diagonalDown (top-left→bottom-right) and diagonalUp (bottom-left→top-right) parameters. Common practice: outer border = thin, header = medium, inner grid = hair.</div>
+    <div class="code-block">from openpyxl.styles import Border, Side
+
+thin_border = Border(
+    left=Side(style='thin', color='000000'),
+    right=Side(style='thin', color='000000'),
+    top=Side(style='thin', color='000000'),
+    bottom=Side(style='thin', color='000000')
+)
+cell.border = thin_border</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Batch Practice</div>
+    <div class="section-title t-05">Iterative Batch Formatting: Apply Uniform Styles Once</div>
+    <div class="section-desc">In real scenarios, you rarely format a single cell. Use for loops to iterate over all cells in a range, uniformly applying font, fill, and border settings—this is the real value of report automation. Iterate by row (for row in ws[range]) or by column (for col in ws[range]), or limit to a specific area (e.g., B3:C5 only). Write once, reuse forever.</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🔤</div>
+        <div class="data-name">Uniform Font</div>
+        <div class="data-sm">Calibri 12pt<br>White text<br>All cells</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🟧</div>
+        <div class="data-name">Uniform Fill</div>
+        <div class="data-sm">Orange background<br>PatternFill solid<br>Consistent look</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">Uniform Border</div>
+        <div class="data-sm">Thin black lines<br>Professional finish<br>Clean presentation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Excel formatting—fonts, fills, borders—maps to three core Python functions: Font(), PatternFill(), Border(). Their parameters directly mirror the Excel ribbon buttons, minimizing the learning curve. The real power is in batch operations: one for loop iterating over all cells, applying uniform formatting, making visual presentation as automated as data processing. This is the core value of Python report automation—eliminating all repetitive work.</div>
+</div>
+
+<div class="footer">
+  Source: Zhang Junhong "Compare with Excel, Easily Learn Python Report Automation" Ch.4 "Cell Selection & Font Settings with Python" · Infographic · For Learning Purposes Only
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zen and the Art of Motorcycle Maintenance · A Night in the Canyon</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+    border: 1px solid;
+  }
+  .dual-card.a { background: #fef2f2; border-color: #fecaca; }
+  .dual-card.b { background: #fff7ed; border-color: #fed7aa; }
+  .dual-card.c { background: #eef2ff; border-color: #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border-color: #fbcfe8; }
+
+  .dual-icon { font-size: 28px; flex-shrink: 0; line-height: 1.2; }
+  .dual-text h4 { font-size: 15px; margin-bottom: 6px; color: #1a1a1a;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 13px; color: #555; line-height: 1.7; }
+
+  .flow-row {
+    display: flex; gap: 14px; align-items: center; margin-top: 14px;
+    justify-content: center;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 12px 18px; text-align: center; font-size: 13px;
+    color: #9a3412; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    line-height: 1.6; min-width: 120px;
+  }
+  .flow-step.end {
+    background: #fef2f2; border-color: #fecaca; color: #991b1b;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; font-weight: bold; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a; line-height: 1.1;
+    margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note { font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center; }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; } .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; } .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; } .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; } .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .takeaway {
+    background: #ffffff; border-radius: 14px;
+    padding: 28px 32px; margin-top: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border: 1px solid #e8e0d5;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 16px; font-weight: bold; color: #dc2626; margin-bottom: 12px;
+  }
+  .takeaway-text {
+    font-size: 15px; color: #555; line-height: 2.0;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 14px; border-bottom: 1px solid #f0ebe0;
+  }
+  .confusion-row:last-child { border-bottom: none; }
+  .confusion-left {
+    font-weight: bold; color: #1a1a1a; font-size: 14px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    min-width: 110px;
+  }
+  .confusion-arrow { color: #ca8a04; font-size: 14px; flex-shrink: 0; }
+  .confusion-right { color: #555; font-size: 13px; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px; }
+  .data-card {
+    background: #faf9f6; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 16px; text-align: center;
+  }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: bold; margin-bottom: 6px;
+  }
+  .d1 .data-big { color: #dc2626; } .d2 .data-big { color: #ea580c; }
+  .d3 .data-big { color: #4f46e5; }
+  .data-name { font-size: 14px; color: #1a1a1a; margin-bottom: 6px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center;
+      border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="禅与摩托车维修艺术-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="禅与摩托车维修艺术-ch14-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Zen and the Art of Motorcycle Maintenance · A Night in the Canyon</h1>
+<p class="subtitle">The philosophy of art in a barbecue manual — when the split between reason and feeling is stitched back together by canyon firelight</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Arriving at the DeWeese home deep in a canyon — a grey house beside an enormous iron abstract sculpture. Poets, painters, sculptors, and novelists gather around the fire with wine and trout. In the evening wind, the narrator delivers an impromptu lecture on barbecue assembly instructions: assembling a grill is a lost branch of sculpture; the true standard of machine maintenance is "peace of mind"; the separation of art and science is unnatural. DeWeese asks: Sounds like art. He answers: It is art.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">50<span class="kpi-unit">ft</span></div>
+    <div class="kpi-label">Canyon Drop</div>
+    <div class="kpi-note">From porch to river<br>50-foot vertical drop</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">20<span class="kpi-unit">yrs</span></div>
+    <div class="kpi-label">Thought Span</div>
+    <div class="kpi-note">Behind the barbecue manual<br>20 years of contemplation</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">kinds</span></div>
+    <div class="kpi-label">Guests Present</div>
+    <div class="kpi-note">Painter · Novelist · Sculptor<br>Cross-discipline dialogue</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">line</span></div>
+    <div class="kpi-label">Best Manual</div>
+    <div class="kpi-note">Assembly of Japanese bicycle<br>requires peace of mind</div>
+  </div>
+</div>
+
+<!-- 01: Arrival -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Arrival</div>
+    <div class="section-title t-01">The Grey House in the Canyon: Sculpture, Painters, and Trout</div>
+    <div class="section-desc">Through dusty valleys and alfalfa fields, at the edge of pine forests, an enormous iron abstract sculpture appears. Beneath it sits DeWeese, beer in hand, waving. The porch floorboards have gaps wide enough to see the ground fifty feet below and the rushing stream. Jenny brings a tray of beer in lieu of handshakes; a neighbor has sent trout for dinner. This is where deep green pines meet light green meadow.</div>
+        <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>Key Events</h4>
+          <p>Key point A</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>Core Response</h4>
+          <p>Key point B</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 02: Dialogue -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Dialogue</div>
+    <div class="section-title t-02">Philosophy of a Barbecue Manual: The Artistry in Technical Writing</div>
+    <div class="section-desc">DeWeese shows the narrator a barbecue assembly manual, hoping for a professional assessment. The critique is sharp: you must flip back and forth between context and diagrams, a fragmented grammar comfortable to engineers but paralyzing to artists. Science deals with discrete parts; DeWeese needs things that are connected from the start. What is missing is "artistic coherence" — the very thing engineers neglect most.</div>
+        <div class="flow-row">
+      <div class="flow-step">Rhetoric has no logic</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Textbook treats rhetoric as reason</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Direct observation is the only way</div>
+    </div>
+  </div>
+</div>
+<!-- 03: Insight -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Insight</div>
+    <div class="section-title t-03">Peace of Mind: The True Standard of Machine Maintenance</div>
+    <div class="section-desc">The only test of a machine is how it makes you feel. If the sound is smooth, it is fine; if the sound is wrong, something is wrong — unless either you or the machine has changed. Testing the machine is a test of you as well. The quality of maintenance depends on having an attitude of peace of mind. In factories, no machine goes online without a thorough check, even if running well.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Phaedrus</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Minister</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Deacons</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Threaten budget cuts</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Professor</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Under pressure</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 04: Mending -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Mending</div>
+    <div class="section-title t-04">Art and Science Were Never Truly Separate</div>
+    <div class="section-desc">Separating art and science is utterly unnatural — they have been apart too long. Assembling a barbecue grill is a lost branch of sculpture. Centuries of mistaken knowledge divisions have kept them apart, making their reunion seem absurd. What must be transcended is not just art and science, but the opposition between reason and feeling. The solution is not to abandon reason but to expand it.</div>
+        <div class="dual-grid">
+      <div class="dual-card c">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>Surface</h4>
+          <p>Fanatically believes in reason</p>
+        </div>
+      </div>
+      <div class="dual-card d">
+        <div class="dual-icon">🧠</div>
+        <div class="dual-text">
+          <h4>Depth</h4>
+          <p>Lacks faith in reason (cause and effect)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 05: Vision -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Vision</div>
+    <div class="section-title t-05">A Columbus-Scale Discovery: Expanding the Roots of Knowledge</div>
+    <div class="section-desc">At 2 AM, wind howling through the canyon. The narrator reflects: landing on the moon produced no fundamental change in thought — it was just a branch of Columbus's discovery. A truly unprecedented discovery requires an entirely new direction: entering the realm beyond reason. Current reason is like the medieval belief in a flat earth: reach the edge and fall into the abyss of madness. The fear of madness mirrors the medieval fear of the world's edge.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">考古学家</div>
+        <div class="data-name">Archaeologist</div>
+        <div class="data-sm">Opening tombs sealed for millennia — fragments of memory and others' accounts</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">《少数人的教会》</div>
+        <div class="data-name">"Church of the Few"</div>
+        <div class="data-sm">Mail-ordered reproduction from New York — the spirit of reason in semi-abstract lines</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">这扇窗户</div>
+        <div class="data-name">This Window</div>
+        <div class="data-sm">Where he went mad — looking across at the Madison Range</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">A barbecue manual and a late-night canyon conversation reconnect art and science after three centuries of separation. The true standard of machine maintenance is not the steps in a manual but the mechanic's inner "peace of mind." To transcend the opposition of reason and feeling is not to abandon reason but to expand it — as Newton once did for calculus, pushing the foundations of knowledge one inch wider.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">Source: Robert M. Pirsig, "Zen and the Art of Motorcycle Maintenance" Chapter 14 "A Night in the Canyon" · Infographic · For educational reference only</div>
+
+</div>
+</body>
+</html>

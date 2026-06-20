@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python报表自动化 · 第2章「Python基础知识」</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch002-info-en.html">中文 / English</a>
+</div>
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第2章「Python基础知识」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  Python作为一门语法简单、库丰富的胶水语言，是报表自动化的实现工具。但从未接触过编程的Excel用户面对Python环境安装、Jupyter Notebook操作、变量、数据类型、数据结构、循环、函数等概念时往往无所适从。如何在最短时间内掌握报表自动化所需的Python核心知识？本章聚焦于后续操作必需的Python基础——从Anaconda安装到函数与库的调用，每个知识点都配备代码示例，够用即可，不求面面俱到。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是为Python零基础的Excel用户准备的入门速成。从Anaconda的下载安装（Windows和Mac双系统教程）开始，介绍了Jupyter Notebook这一数据分析主流IDE的基本操作。随后系统地讲解了Python核心语法：数的类型、变量与标识符、print输出与格式化、缩进与注释。深入讨论了字符串的九种操作（连接、复制、长度、查找、索引、分隔、删除），以及三种核心数据结构——列表（list）、字典（dict）和元组（tuple）的创建与操作。最后覆盖运算符、循环语句（for/while）、条件语句（if/elif/else）、函数（普通函数与匿名函数lambda），以及列表生成式和map()等高级特性。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">核心数据结构<br>列表/字典/元组</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">9种</div>
+    <div class="kpi-label">字符串操作<br>连接·查找·索引</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">循环方式<br>for / while</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">可复用函数<br>def + lambda</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">环境搭建</div>
+    <div class="section-title t-01">Anaconda安装与Jupyter Notebook入门</div>
+    <div class="section-desc">Anaconda自带常用Python库，免去手动安装的麻烦，是初学者的最佳选择。安装后即可使用Jupyter Notebook——它支持Code模式编写代码、Markdown模式撰写分析报告，是数据分析领域的首选IDE。基本操作：新建文件、运行代码（Ctrl+Enter）、重命名、保存、导入本地文件。</div>
+    <div class="flow-row">
+      <div class="flow-step">📥 下载<br>Anaconda</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚙️ 安装<br>双系统教程</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🚀 启动<br>Jupyter</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📝 新建<br>Notebook</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">▶️ 运行<br>第一段代码</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">基本概念</div>
+    <div class="section-title t-02">变量、数据类型、输出与缩进</div>
+    <div class="section-desc">Python中「数」分整数（int）和浮点数（float），「字符串」（str）用引号括起。变量是可以存放各类数据的容器，命名需以字母或下划线开头。print()函数用于输出，str.format()方法实现灵活格式化（.2f保留小数、.2%百分比）。Python用缩进识别代码块（通常4空格），#号表示单行注释。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📦</div>
+        <div class="dual-text"><h4>变量 = 容器</h4><p>存放各种数据，通过变量名访问。命名规则：字母/下划线开头，区分大小写，不能是关键字。</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🖨️</div>
+        <div class="dual-text"><h4>print() 输出</h4><p>str.format() 实现一对一/多对多填充、浮点数精度控制(.2f)、百分数格式化(.2%)。</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">数据处理</div>
+    <div class="section-title t-03">字符串操作与三大数据结构</div>
+    <div class="section-desc">字符串支持九种操作：用+连接、用*复制、len()测长、in/find()查找、[]索引获取、[:]切片区间、split()分隔、strip()去首尾空格。列表（list）可变有序，支持append/insert/pop/remove/sort等增删改查。字典（dict）是键值对结构，用keys()/values()/items()遍历。元组（tuple）与列表类似但不可修改，两者可通过list()/tuple()互转。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">📋</div>
+        <div class="cmp-name">列表 list</div>
+        <div class="cmp-note">可变有序集合<br>append/pop/sort<br>支持切片索引</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">📖</div>
+        <div class="cmp-name">字典 dict</div>
+        <div class="cmp-note">键值对结构<br>key:value 映射<br>keys/values/items</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🔒</div>
+        <div class="cmp-name">元组 tuple</div>
+        <div class="cmp-note">不可修改序列<br>与list可互转<br>zip()打包元组</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">控制流</div>
+    <div class="section-title t-04">循环、条件语句与函数</div>
+    <div class="section-desc">for循环遍历序列中每个元素执行操作，while在条件满足时持续循环（注意避免死循环）。if/elif/else构成条件判断链：先判断if，不满足则逐个判断elif，都不满足执行else。函数用def定义，可带参数和return返回值，通过函数名重复调用。匿名函数lambda更简洁：lambda arg: expression，适合简单的一行操作。</div>
+    <div class="code-block"># for循环 — 遍历必修课
+for course in ["Excel","SQL","Python","统计学"]:
+    print(f"学习{course}")
+
+# 匿名函数 — 两数相乘
+multiply = lambda x, y: x * y
+print(multiply(3, 4))  # 输出: 12
+
+# 条件判断
+if score >= 60:
+    print("及格")
+elif score >= 80:
+    print("优秀")
+else:
+    print("不及格")</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">高级特性</div>
+    <div class="section-title t-05">列表生成式、map()与库管理</div>
+    <div class="section-desc">列表生成式用一行代码替代多层for循环：[x**2 for x in list]，数据量大时性能优势明显。map(function, args)对序列每个元素执行函数操作，结果可用list()转化。库是跨程序可调用的函数集合，pip install xxx安装、pip uninstall xxx卸载。本书主要使用openpyxl库，需在Anaconda Prompt（Windows）或终端（Mac）中安装。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">⚡</div>
+        <div class="data-name">列表生成式</div>
+        <div class="data-sm">一行代码替代<br>多层for循环<br>大数据量更快</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🗺️</div>
+        <div class="data-name">map()函数</div>
+        <div class="data-sm">对序列逐元素<br>执行统一操作<br>list()转化结果</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📚</div>
+        <div class="data-name">库管理</div>
+        <div class="data-sm">pip install 安装<br>pip uninstall 卸载<br>import 导入调用</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Python的语法并不复杂——它被设计为「可执行的伪代码」。本章覆盖的变量、数据结构、循环、条件、函数、库等六大模块，已构成报表自动化所需的全部编程基础。掌握这些，后面的章节本质上只是学习openpyxl库的API。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第2章「Python基础知识」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

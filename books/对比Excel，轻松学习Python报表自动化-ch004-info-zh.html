@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python报表自动化 · 第4章「用Python实现单元格选择和字体设置」</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch004-info-en.html">中文 / English</a>
+</div>
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第4章「用Python实现单元格选择和字体设置」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  在Excel中设置字体格式——选字体、调大小、加粗、变色、填充底色、加边框——只需在功能区点击几个按钮。但当你有数百个单元格需要统一格式、或每天都要对固定区域重复相同格式设置时，手工操作就变得低效易错。如何用Python实现Excel单元格的格式自动化？本章系统讲解了单元格选择（单格/行列/区域）、字体设置（Font()函数的8大参数）、单元格填充（PatternFill()纯色与图案）、以及边框线设置（Border()四边+对角线），最后通过一个批量格式化实战案例将这些知识点串联起来。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章聚焦于Excel「开始」选项卡中「字体」组的Python实现。首先介绍了单元格的多种选择方式：直接指明坐标（ws['A1']）或行列编号（ws.cell()）选择单格；通过行号、列号、范围选择多个单元格。然后深入Font()函数的8个参数：name（字体类型）、size（大小）、bold（加粗）、italic（斜体）、vertAlign（垂直对齐）、underline（下划线类型）、strike（删除线）、color（ARGB颜色值）。接着讲解了PatternFill()实现单元格填充——fill_type='solid'纯色填充是最常用场景，以及Border()设置四边边框线的线型与颜色。最后通过一个批量格式化案例展示了如何遍历多行多列，统一设置所有单元格的格式。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">8个</div>
+    <div class="kpi-label">Font()参数<br>字体/大小/颜色等</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">选择范围<br>单格/行列/区域</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5边</div>
+    <div class="kpi-label">Border设置<br>四边+对角线</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">批量格式<br>遍历整表统一设置</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">选择方法</div>
+    <div class="section-title t-01">单元格选择：单格、行列与区域</div>
+    <div class="section-desc">选择单元格是格式设置的前置步骤。单个单元格有两种写法：ws['A1']直接坐标、ws.cell(row=1,column=1)行列编号。多行用ws[5:10]切片，多列用ws['C:E']范围，区域用ws['A1:C5']。这些选择方式与Excel鼠标拖拽选区一一对应，学习曲线平缓。</div>
+    <div class="flow-row">
+      <div class="flow-step">📍 单格<br><small>ws['A1']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📏 单行<br><small>ws[10]</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📐 多列<br><small>ws['C:E']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔲 区域<br><small>ws['A1:C5']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🎯 多行多列<br><small>自由组合</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">字体设置</div>
+    <div class="section-title t-02">Font()函数：八大参数全面掌控字体样式</div>
+    <div class="section-desc">Font(name, size, bold, italic, vertAlign, underline, strike, color)是openpyxl字体设置的核心。color使用ARGB格式的颜色值（如'FFFF0000'红色）。实际工作中常对同一单元格进行多项设置：Font(name='微软雅黑', size=12, bold=True, color='FFFFFFFF')。设置方式：cell.font = Font(参数1=值1, 参数2=值2, ...)。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">🔤</div>
+        <div class="cmp-name">name & size</div>
+        <div class="cmp-note">字体类型与字号<br>如'微软雅黑', 12<br>对应功能区下拉</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">𝐁 𝐼</div>
+        <div class="cmp-name">bold & italic</div>
+        <div class="cmp-note">加粗与斜体<br>True / False<br>对应 B / I 按钮</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🎨</div>
+        <div class="cmp-name">underline, strike, color</div>
+        <div class="cmp-note">下划线 · 删除线 · 颜色<br>color用ARGB格式<br>如'FFFF0000'红色</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">填充设置</div>
+    <div class="section-title t-03">PatternFill()：纯色与图案填充</div>
+    <div class="section-desc">PatternFill(fill_type, start_color, end_color)控制单元格填充。最常用的是纯色填充：fill_type='solid'，start_color指定颜色。图案填充时pattern样式覆盖在背景色（end_color）之上。设置方式：cell.fill = PatternFill(fill_type='solid', fgColor='FFFF00')。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🟨</div>
+        <div class="dual-text"><h4>纯色填充（最常用）</h4><p>fill_type='solid'<br>fgColor 指定颜色<br>例：黄色 'FFFF00'<br>橙色 'FFA500'</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔲</div>
+        <div class="dual-text"><h4>图案填充</h4><p>多种 pattern 样式可选<br>start_color = 图案色<br>end_color = 背景色<br>常用灰色图案标注</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">边框设置</div>
+    <div class="section-title t-04">Border()：四边线型与对角线设置</div>
+    <div class="section-desc">Border(left, right, top, bottom, diagonal)配置单元格边框。每边用Side(style, color)指定线型（thin/double/dashed等）和颜色。对角线需额外设置diagonalDown（左上→右下）和diagonalUp（左下→右上）。常见场景：只设外边框用thin细线，表头用medium中等线，内部线用hair极细线。</div>
+    <div class="code-block">from openpyxl.styles import Border, Side
+
+thin_border = Border(
+    left=Side(style='thin', color='000000'),
+    right=Side(style='thin', color='000000'),
+    top=Side(style='thin', color='000000'),
+    bottom=Side(style='thin', color='000000')
+)
+cell.border = thin_border</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">批量实战</div>
+    <div class="section-title t-05">遍历式批量格式化：一劳永逸的格式统一方案</div>
+    <div class="section-desc">实际场景中极少只格式化一个单元格。通过for循环遍历指定区域的所有单元格，统一设置字体、填充、边框，才是报表自动化的真实价值。可以按行遍历（for row in ws[range]），也可以按列遍历（for col in ws[range]），也可以限定区域（如只格式化B3:C5）。一次编写，永久复用。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🔤</div>
+        <div class="data-name">字体统一</div>
+        <div class="data-sm">微软雅黑 12号<br>白色字体<br>所有单元格</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🟧</div>
+        <div class="data-name">填充统一</div>
+        <div class="data-sm">橙色背景<br>PatternFill solid<br>统一视觉风格</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">边框统一</div>
+        <div class="data-sm">thin 细线边框<br>黑色边线<br>专业外观</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Excel的格式设置——字体、填充、边框——在Python中对应三个核心函数：Font()、PatternFill()、Border()。它们的参数直接映射Excel功能区按钮，学习成本低。真正的威力在于批量操作：一个for循环遍历所有单元格，统一应用格式，让报表的视觉效果和数据处理一样自动化。这就是Python报表自动化的核心价值——取代一切重复性工作。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第4章「用Python实现单元格选择和字体设置」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

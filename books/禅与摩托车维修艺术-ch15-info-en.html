@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zen and the Art of Motorcycle Maintenance · The Seed Crystal</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+    border: 1px solid;
+  }
+  .dual-card.a { background: #fef2f2; border-color: #fecaca; }
+  .dual-card.b { background: #fff7ed; border-color: #fed7aa; }
+  .dual-card.c { background: #eef2ff; border-color: #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border-color: #fbcfe8; }
+
+  .dual-icon { font-size: 28px; flex-shrink: 0; line-height: 1.2; }
+  .dual-text h4 { font-size: 15px; margin-bottom: 6px; color: #1a1a1a;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 13px; color: #555; line-height: 1.7; }
+
+  .flow-row {
+    display: flex; gap: 14px; align-items: center; margin-top: 14px;
+    justify-content: center;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 12px 18px; text-align: center; font-size: 13px;
+    color: #9a3412; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    line-height: 1.6; min-width: 120px;
+  }
+  .flow-step.end {
+    background: #fef2f2; border-color: #fecaca; color: #991b1b;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; font-weight: bold; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a; line-height: 1.1;
+    margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note { font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center; }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; } .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; } .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; } .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; } .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .takeaway {
+    background: #ffffff; border-radius: 14px;
+    padding: 28px 32px; margin-top: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border: 1px solid #e8e0d5;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 16px; font-weight: bold; color: #dc2626; margin-bottom: 12px;
+  }
+  .takeaway-text {
+    font-size: 15px; color: #555; line-height: 2.0;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 14px; border-bottom: 1px solid #f0ebe0;
+  }
+  .confusion-row:last-child { border-bottom: none; }
+  .confusion-left {
+    font-weight: bold; color: #1a1a1a; font-size: 14px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    min-width: 110px;
+  }
+  .confusion-arrow { color: #ca8a04; font-size: 14px; flex-shrink: 0; }
+  .confusion-right { color: #555; font-size: 13px; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px; }
+  .data-card {
+    background: #faf9f6; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 16px; text-align: center;
+  }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: bold; margin-bottom: 6px;
+  }
+  .d1 .data-big { color: #dc2626; } .d2 .data-big { color: #ea580c; }
+  .d3 .data-big { color: #4f46e5; }
+  .data-name { font-size: 14px; color: #1a1a1a; margin-bottom: 6px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center;
+      border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="禅与摩托车维修艺术-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="禅与摩托车维修艺术-ch15-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Zen and the Art of Motorcycle Maintenance · The Seed Crystal</h1>
+<p class="subtitle">A catalytic moment and a twenty-year explosion — how Phaedrus was transformed by the question "What is Quality?"</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>After saying goodbye to John and Sylvia, the narrator and Chris return to the campus. In an empty classroom, Phaedrus's spirit emerges. It all began with a passing remark from an elderly professor: "I hope you are teaching Quality this semester." The sentence fell like a seed crystal into a supersaturated solution — instantly, crystallization filled the entire vessel. Phaedrus sat by the radiator for four hours, then until 3 AM, finally admitting: he had no idea what Quality meant. This was the beginning of a long quest.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">4<span class="kpi-unit">hrs</span></div>
+    <div class="kpi-label">Initial Trance</div>
+    <div class="kpi-note">Sat by radiator<br>Lost track of time</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">3<span class="kpi-unit">AM</span></div>
+    <div class="kpi-label">Admission</div>
+    <div class="kpi-note">Admitted he did not know<br>what Quality meant</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">350<span class="kpi-unit">words</span></div>
+    <div class="kpi-label">Student Prompt</div>
+    <div class="kpi-note">Written on blackboard<br>What does Quality mean?</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">1<span class="kpi-unit">sentence</span></div>
+    <div class="kpi-label">Seed Crystal</div>
+    <div class="kpi-note">"I hope you're teaching<br>Quality this semester"</div>
+  </div>
+</div>
+
+<!-- 01: Farewell -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Farewell</div>
+    <div class="section-title t-01">John and Sylvia Depart: Friends Are Not Characters</div>
+    <div class="section-desc">After a last beer in a Bozeman bar, Sylvia looks back three times. Fear and worry fill her eyes — concern for Chris and the narrator. He has deliberately kept distance: "They are my friends, not characters in a book. I don't want to be treated as an object." Memories of Phaedrus teaching surface: so nervous he nearly vomited, hated standing before students, a violation of his solitary nature.</div>
+        <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>Key Events</h4>
+          <p>思薇雅三次回头张望·酒吧告别·叙述者保持距离</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>Core Response</h4>
+          <p>「他们是我的朋友，并不是书中的人物」——斐德洛教书的紧张回忆浮现</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 02: Context -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Context</div>
+    <div class="section-title t-02">The Rhetoric Dilemma: The Least Analyzable Subject</div>
+    <div class="section-desc">Phaedrus teaches rhetoric and writing, only to discover the subject is "hopeless, devoid of logic" to one trained in method and experiment. Rules are discovered after writing, not followed before it — writers simply write what feels right, then revise. But how do you teach what cannot be pre-planned? The textbook treats rhetoric as a branch of reason rather than a mysterious art — and this is the root of the problem.</div>
+        <div class="flow-row">
+      <div class="flow-step">Rhetoric has no logic</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Textbook treats rhetoric as reason</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Direct observation is the only way</div>
+    </div>
+  </div>
+</div>
+<!-- 03: Trigger -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Trigger</div>
+    <div class="section-title t-03">The Seed Crystal Moment: One Sentence Unleashed Everything</div>
+    <div class="section-desc">Professor Sarah pauses on her way past: "I hope you are teaching Quality this semester." Phaedrus nods. Then he thinks for four hours, until 3 AM, finally admitting: he does not know what Quality means. Like a seed crystal dropped into a supersaturated solution — instantly, crystallization fills the entire vessel. "You could almost see it growing — it produced an enormous, intricate, complex structure of thought, as if by magic."</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Phaedrus</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Minister</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Deacons</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Threaten budget cuts</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Professor</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Under pressure</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 04: Quest -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Quest</div>
+    <div class="section-title t-04">The Paradox of Quality: You Know It Yet Cannot Define It</div>
+    <div class="section-desc">Quality — you know what it is, yet you do not know what it is. This is self-contradictory. If some things are better than others, they are of higher quality. But try to explain Quality without mentioning the thing that possesses it, and explanation becomes impossible. If you cannot say what Quality is, how do you know it exists? Pragmatically, if you do not know what it is, it does not exist — and yet it does. Thought circles, finding no exit.</div>
+        <div class="dual-grid">
+      <div class="dual-card c">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>Surface</h4>
+          <p>Fanatically believes in reason</p>
+        </div>
+      </div>
+      <div class="dual-card d">
+        <div class="dual-icon">🧠</div>
+        <div class="dual-text">
+          <h4>Depth</h4>
+          <p>Lacks faith in reason (cause and effect)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 05: Echo -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Echo</div>
+    <div class="section-title t-05">The Church of the Few: A Spiritual Reflection on the Wall</div>
+    <div class="section-desc">Leaving the classroom, the narrator discovers a painting on the wall — a reproduction Phaedrus ordered from New York, titled "The Church of the Few." Semi-abstract lines depict a Gothic church and prairie; color and texture reflect his "Church of Reason" mentality. DeWeese frowned at it, knowing it was merely a print. Yet this painting marks Phaedrus's office, beside this window, at this very spot — where he once went mad.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">考古学家</div>
+        <div class="data-name">Archaeologist</div>
+        <div class="data-sm">Opening tombs sealed for millennia — fragments of memory and others' accounts</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">《少数人的教会》</div>
+        <div class="data-name">"Church of the Few"</div>
+        <div class="data-sm">Mail-ordered reproduction from New York — the spirit of reason in semi-abstract lines</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">这扇窗户</div>
+        <div class="data-name">This Window</div>
+        <div class="data-sm">Where he went mad — looking across at the Madison Range</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">A seed crystal — a casual greeting — dropped into Phaedrus's supersaturated mental solution, instantly crystallizing an enormous philosophical system that would consume the rest of his life. Quality: you know it yet cannot define it; it does not exist within the framework of practical logic, yet it is real in everyone's judgment. This paradox drove Phaedrus onto his path of inquiry: not inventing new answers, but expanding reason itself to accommodate beauty, value, and the meaning of life.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">Source: Robert M. Pirsig, "Zen and the Art of Motorcycle Maintenance" Chapter 15 "The Seed Crystal" · Infographic · For educational reference only</div>
+
+</div>
+</body>
+</html>

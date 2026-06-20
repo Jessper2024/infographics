@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zen and the Art of Motorcycle Maintenance · The Church of Reason</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+    border: 1px solid;
+  }
+  .dual-card.a { background: #fef2f2; border-color: #fecaca; }
+  .dual-card.b { background: #fff7ed; border-color: #fed7aa; }
+  .dual-card.c { background: #eef2ff; border-color: #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border-color: #fbcfe8; }
+
+  .dual-icon { font-size: 28px; flex-shrink: 0; line-height: 1.2; }
+  .dual-text h4 { font-size: 15px; margin-bottom: 6px; color: #1a1a1a;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 13px; color: #555; line-height: 1.7; }
+
+  .flow-row {
+    display: flex; gap: 14px; align-items: center; margin-top: 14px;
+    justify-content: center;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 12px 18px; text-align: center; font-size: 13px;
+    color: #9a3412; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    line-height: 1.6; min-width: 120px;
+  }
+  .flow-step.end {
+    background: #fef2f2; border-color: #fecaca; color: #991b1b;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; font-weight: bold; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; margin: 24px 0;
+  }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 20px 18px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .kpi-value {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: bold; color: #1a1a1a; line-height: 1.1;
+    margin-bottom: 6px; letter-spacing: -0.5px;
+  }
+  .kpi-unit { font-size: 18px; font-weight: normal; color: #888; margin-left: 2px; }
+  .kpi-label { font-size: 13px; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .kpi-note { font-size: 11px; color: #bbb; line-height: 1.6;
+    border-top: 1px solid #f0ebe0; padding-top: 10px; width: 100%; text-align: center; }
+  .kpi-card.c01 { border-left: 3px solid #dc2626; } .kpi-card.c01 .kpi-value { color: #dc2626; }
+  .kpi-card.c02 { border-left: 3px solid #ea580c; } .kpi-card.c02 .kpi-value { color: #ea580c; }
+  .kpi-card.c03 { border-left: 3px solid #ca8a04; } .kpi-card.c03 .kpi-value { color: #ca8a04; }
+  .kpi-card.c04 { border-left: 3px solid #4f46e5; } .kpi-card.c04 .kpi-value { color: #4f46e5; }
+
+  .takeaway {
+    background: #ffffff; border-radius: 14px;
+    padding: 28px 32px; margin-top: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border: 1px solid #e8e0d5;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 16px; font-weight: bold; color: #dc2626; margin-bottom: 12px;
+  }
+  .takeaway-text {
+    font-size: 15px; color: #555; line-height: 2.0;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 14px; border-bottom: 1px solid #f0ebe0;
+  }
+  .confusion-row:last-child { border-bottom: none; }
+  .confusion-left {
+    font-weight: bold; color: #1a1a1a; font-size: 14px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    min-width: 110px;
+  }
+  .confusion-arrow { color: #ca8a04; font-size: 14px; flex-shrink: 0; }
+  .confusion-right { color: #555; font-size: 13px; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px; }
+  .data-card {
+    background: #faf9f6; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 16px; text-align: center;
+  }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: bold; margin-bottom: 6px;
+  }
+  .d1 .data-big { color: #dc2626; } .d2 .data-big { color: #ea580c; }
+  .d3 .data-big { color: #4f46e5; }
+  .data-name { font-size: 14px; color: #1a1a1a; margin-bottom: 6px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center;
+      border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row, .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+  .back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="禅与摩托车维修艺术-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="禅与摩托车维修艺术-ch13-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Zen and the Art of Motorcycle Maintenance · The Church of Reason</h1>
+<p class="subtitle">A true university is not within brick walls — Phaedrus's rational defense and fanatical faith in Bozeman</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Returning to the campus in Bozeman, Montana, Phaedrus delivers his legendary "Church of Reason" lecture. A true university is not brick walls and buildings, but the rational thought passed down through centuries. Facing political interference and administrative suppression from the state government, Phaedrus defends truth with the stance of a clergyman — a professor's primary mission is to serve truth, not those in power. His lack of faith in reason, combined with a fanatical drive to defend it, becomes the key to understanding his entire philosophy.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">2<span class="kpi-unit">letters</span></div>
+    <div class="kpi-label">Appeals Filed</div>
+    <div class="kpi-note">To accreditation board<br>Public call for investigation</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">$8K</div>
+    <div class="kpi-label">Penalty Per Fail</div>
+    <div class="kpi-note">State law: $8K fine<br>for each failing student</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">50<span class="kpi-unit">names</span></div>
+    <div class="kpi-label">Blacklist</div>
+    <div class="kpi-note">Governor's list<br>of targeted professors</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">15K</div>
+    <div class="kpi-label">Town Population</div>
+    <div class="kpi-note">Neither town nor city<br>Island of reason</div>
+  </div>
+</div>
+
+<!-- 01: Campus Politics -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Campus Politics</div>
+    <div class="section-title t-01">The Montana Storm: Political Interference vs Academic Freedom</div>
+    <div class="section-desc">A far-right uprising sweeps Montana. A nationally known professor is banned from speaking on campus; all public statements must pass PR review. The state legislature passes a law fining schools $8,000 per failing student — essentially mandating that everyone passes. The governor produces a 50-name blacklist and seeks to fire the university president. Budgets are slashed, the English department cut in half. Phaedrus teaches there, his class advocating for academic freedom.</div>
+        <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>Key Events</h4>
+          <p>极右派暴动·教授被禁演说·$8000不及格罚金·50人黑名单</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>Core Response</h4>
+          <p>斐德洛致信评鉴委员会·班上学生力主学术自由·公开呼吁调查</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 02: Core Idea -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Core Idea</div>
+    <div class="section-title t-02">The Church of Reason: A True University Cannot Be Blockaded</div>
+    <div class="section-desc">Phaedrus opens with a news story: a church turned into a bar, electric beer sign where the cross once hung. The priest's response — the building is not holy; deconsecrated, it's just bricks. A true university cannot be blockaded by police, requires no legal sanctions, classes don't stop when accreditation is lost. The real university is a world of mind, of rational thought itself, existing in no particular location.</div>
+        <div class="flow-row">
+      <div class="flow-step">Rhetoric has no logic</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Textbook treats rhetoric as reason</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">Direct observation is the only way</div>
+    </div>
+  </div>
+</div>
+<!-- 03: Deep Structure -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Deep Structure</div>
+    <div class="section-title t-03">Church and University: Why Professors Must Not Bow to Deacons</div>
+    <div class="section-desc">Phaedrus extends the church analogy: those who fund church buildings may think they serve the congregation, but a minister's primary goal is to serve God, not the congregation. When deacons threaten to cut funds over sermon content, a true minister acts as if he hasn't heard. Likewise, a professor's primary mission is to serve truth — against pressure from legislators and donors, loyalty to truth must remain paramount.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">Phaedrus</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Minister</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Deacons</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Threaten budget cuts</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Professor</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Under pressure</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 04: Paradox -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Paradox</div>
+    <div class="section-title t-04">Root of Zeal: Fanaticism Arises from Lack of Faith</div>
+    <div class="section-desc">Phaedrus lacks confidence in laboratory reason yet fanatically believes in the Church of Reason — cause and effect, not opposites. Complete faith produces no fanaticism (no one is excited that the sun will rise). His zeal stems from distrust of reason. This explains his burning drive, day and night, and his profound identification with the failing students at the back of the classroom.</div>
+        <div class="dual-grid">
+      <div class="dual-card c">
+        <div class="dual-icon">🔍</div>
+        <div class="dual-text">
+          <h4>Surface</h4>
+          <p>Fanatically believes in reason</p>
+        </div>
+      </div>
+      <div class="dual-card d">
+        <div class="dual-icon">🧠</div>
+        <div class="dual-text">
+          <h4>Depth</h4>
+          <p>Lacks faith in reason (cause and effect)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 05: Archaeology -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Archaeology</div>
+    <div class="section-title t-05">The Grave-Digger's Anxiety: Reconstructing Thought from Fragments</div>
+    <div class="section-desc">The narrator feels like an archaeologist opening a tomb sealed for millennia. Most of Phaedrus's work has been lost — only scattered notes and fragments remain. Some graves are better left unopened. Yet his defense of reason in the 1950s is needed more than ever in the chaotic 70s, when reason itself is under the most violent attack in centuries.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">考古学家</div>
+        <div class="data-name">Archaeologist</div>
+        <div class="data-sm">Opening tombs sealed for millennia — fragments of memory and others' accounts</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">《少数人的教会》</div>
+        <div class="data-name">"Church of the Few"</div>
+        <div class="data-sm">Mail-ordered reproduction from New York — the spirit of reason in semi-abstract lines</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">这扇窗户</div>
+        <div class="data-name">This Window</div>
+        <div class="data-sm">Where he went mad — looking across at the Madison Range</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">True education does not reside in brick walls or grade points, but in the transmission of truth. Through the "Church of Reason," Phaedrus reveals the university's essence: a world of mind and the inheritance of rational thought. His fanaticism for reason stems from his distrust of it — a paradox that unlocks his entire quest. In an era when reason was under siege, his defense was not for authority, but for the dignity of human thought.</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">Source: Robert M. Pirsig, "Zen and the Art of Motorcycle Maintenance" Chapter 13 "The Church of Reason" · Infographic · For educational reference only</div>
+
+</div>
+</body>
+</html>

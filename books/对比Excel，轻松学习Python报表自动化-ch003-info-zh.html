@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python报表自动化 · 第3章「用Python对报表进行基本操作」</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .risk-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .risk-label{font-size:13px;color:#555;width:120px;flex-shrink:0;font-family:'FZXPYZS','PingFang SC',serif}
+  .risk-meter{flex:1;height:10px;background:#eef2ff;border-radius:5px;overflow:hidden}
+  .risk-fill{height:100%;border-radius:5px;background:#4f46e5}
+  .risk-val{font-size:13px;font-weight:bold;color:#4f46e5;width:80px;text-align:right;flex-shrink:0}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}.risk-row{flex-wrap:wrap}.risk-label{width:100%}.risk-val{width:auto}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch003-info-en.html">中文 / English</a>
+</div>
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第3章「用Python对报表进行基本操作」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  日常工作需要频繁地打开、创建、写入Excel文件，并对Sheet进行管理。手工操作虽简单，但当成百上千个文件需要处理时就变得不可能。如何用Python替代这些基础的Excel操作？本章对比讲解了load_workbook()/read_excel()两种读取方式，Workbook()创建工作簿，append()写入数据，以及Sheet的创建、重命名、复制与删除——每个操作都配有Excel界面对照和Python代码，让读者直观理解映射关系。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章从最基础的Excel文件操作入手，建立Excel界面操作与Python代码之间的映射。首先对比了openpyxl的load_workbook()和Pandas的read_excel()两种读取方式——前者一次性加载所有Sheet，后者仅读取指定Sheet但结果显示更直观。然后介绍了如何创建新工作簿并插入数据：支持单元格赋值（ws['A1']=value）、整行赋值（append()）、多行赋值（for循环+append()）。还解决了一个常见痛点：Pandas与openpyxl之间的数据格式转换，通过dataframe_to_rows()函数实现两个库的无缝衔接。最后覆盖了Sheet管理：create_sheet()新建、title属性重命名与标签颜色、copy_worksheet()复制、以及删除操作。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">读取方式<br>openpyxl/Pandas</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">写入方式<br>单元格/行/多行</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">4项</div>
+    <div class="kpi-label">Sheet操作<br>增/改/复/删</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">1桥</div>
+    <div class="kpi-label">库间转换<br>dataframe_to_rows</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">文件读取</div>
+    <div class="section-title t-01">打开工作簿：load_workbook() vs read_excel()</div>
+    <div class="section-desc">openpyxl的load_workbook()一次性将工作簿所有Sheet导入Python，但不会实时显示数据。Pandas的read_excel()可将数据直接展示在界面上，但一次只能读取一个Sheet（默认第一个，可用sheet_name参数指定）。核心区别：load_workbook适用于需要操作多个Sheet的场景，read_excel适合快速查看和数据分析。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📂</div>
+        <div class="dual-text"><h4>load_workbook()</h4><p>openpyxl库函数<br>一次性读取所有Sheet<br>数据不实时显示<br>适合格式设置操作</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🐼</div>
+        <div class="dual-text"><h4>read_excel()</h4><p>Pandas库函数<br>一次读取一个Sheet<br>数据实时显示<br>适合数据分析处理</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">文件创建</div>
+    <div class="section-title t-02">创建工作簿与三种数据写入方式</div>
+    <div class="section-desc">Workbook()声明新工作簿，wb.save(path)保存到本地。数据写入有三种粒度：单格赋值（ws['A1']=1 或 ws.cell(row=1,column=1).value=1）、整行赋值（ws.append([1,2,3])一次性插入一行）、多行赋值（for循环+append()批量插入），灵活适配不同数据规模。</div>
+    <div class="flow-row">
+      <div class="flow-step">📝 Workbook()<br><small>声明工作簿</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">✏️ ws['A1']=1<br><small>单格赋值</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📋 append()<br><small>整行插入</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄 for+append<br><small>批量多行</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">💾 wb.save()<br><small>保存文件</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">库间桥接</div>
+    <div class="section-title t-03">Pandas与openpyxl之间的数据转换</div>
+    <div class="section-desc">实际工作中常需混用Pandas和openpyxl：先用Pandas处理数据，再用openpyxl设置格式。dataframe_to_rows()是连接两个库的桥梁：将DataFrame转化为逐行数据，参数index控制是否保留索引列，header控制是否保留列名。然后用openpyxl的append()将转换后的数据逐行写入工作簿。</div>
+    <div class="code-block"># Pandas读取 → openpyxl写入<br>from openpyxl.utils.dataframe import dataframe_to_rows<br><br>df = pd.read_excel("dataset.xlsx")<br>wb = Workbook()<br>ws = wb.active<br><br>for row in dataframe_to_rows(df, index=False, header=True):<br>    ws.append(row)<br><br>wb.save("output.xlsx")</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Sheet管理</div>
+    <div class="section-title t-04">新建、重命名、复制与删除Sheet</div>
+    <div class="section-desc">create_sheet()新建Sheet，可指定title标题和index位置。copy_worksheet(source)复制已有Sheet的内容到新Sheet。ws.title='新名'实现重命名，ws.sheet_properties.tabColor设置标签颜色。wb.remove(sheet)可删除指定Sheet。wb.sheetnames属性获取工作簿中所有Sheet名称列表。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">➕</div>
+        <div class="cmp-name">新建 Sheet</div>
+        <div class="cmp-note">create_sheet()<br>可指定title和index<br>默认排在最后</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">✏️</div>
+        <div class="cmp-name">重命名 & 颜色</div>
+        <div class="cmp-note">ws.title = "新名"<br>tabColor设标签色<br>sheetnames查看全部</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">📋</div>
+        <div class="cmp-name">复制 & 删除</div>
+        <div class="cmp-note">copy_worksheet()<br>wb.remove(ws)<br>del wb[name]</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">实战应用</div>
+    <div class="section-title t-05">从零创建一张完整报表</div>
+    <div class="section-desc">将这些基础操作串联起来，就能从零创建一张完整报表：先创建工作簿，用append()写入表头和数据行，再根据需要新建多个Sheet并命名，最后保存。这看似简单，但当你需要每天生成一份日报时，这段代码的价值就体现出来了——一次编写，永久复用。</div>
+    <div class="risk-row">
+      <div class="risk-label">📝 创建</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+      <div class="risk-val">Workbook()</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">📊 写入</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+      <div class="risk-val">append()</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">📑 管理</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:80%"></div></div>
+      <div class="risk-val">Sheet操作</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">💾 保存</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+      <div class="risk-val">wb.save()</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Python操作Excel文件的基础API并不复杂——load_workbook()打开、Workbook()创建、append()写入、save()保存。真正的价值在于将这些简单操作组合成自动化流程，让一个脚本替代成百上千次手工点选。掌握dataframe_to_rows()，就能在Pandas和openpyxl之间自由切换。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第3章「用Python对报表进行基本操作」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

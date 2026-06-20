@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare with Excel, Easily Learn Python Report Automation · Ch.3 "Basic Excel Operations with Python"</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .risk-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .risk-label{font-size:13px;color:#555;width:120px;flex-shrink:0;font-family:'FZXPYZS','PingFang SC',serif}
+  .risk-meter{flex:1;height:10px;background:#eef2ff;border-radius:5px;overflow:hidden}
+  .risk-fill{height:100%;border-radius:5px;background:#4f46e5}
+  .risk-val{font-size:13px;font-weight:bold;color:#4f46e5;width:80px;text-align:right;flex-shrink:0}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}.risk-row{flex-wrap:wrap}.risk-label{width:100%}.risk-val{width:auto}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch003-info-zh.html">中文 / EN</a>
+</div>
+
+<h1>Compare with Excel, Easily Learn Python Report Automation · Ch.3 "Basic Excel Operations with Python"</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Situation → Complication → Question → Answer</span>
+  Daily work involves frequently opening, creating, writing Excel files, and managing sheets. Manual operations are simple but become impossible with hundreds of files. How can Python replace these basic Excel operations? This chapter compares load_workbook() vs read_excel() for reading, Workbook() for creation, append() for writing data, and sheet management—creation, renaming, copying, and deletion—each with Excel UI comparison and Python code for intuitive mapping.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter starts with the most basic Excel file operations, building the mapping between Excel UI actions and Python code. It first compares two reading methods: openpyxl's load_workbook() loads all sheets at once but doesn't display data, while Pandas' read_excel() shows data immediately but reads one sheet at a time. It then covers creating workbooks and writing data in three granularities: cell assignment (ws['A1']=value), row insertion (append()), and multi-row insertion (for loop + append()). It also solves a common pain point: data format conversion between Pandas and openpyxl via dataframe_to_rows(). Finally it covers sheet management: create_sheet(), renaming, tab coloring, copy_worksheet(), and deletion.</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2 Ways</div>
+    <div class="kpi-label">Reading Methods<br>openpyxl / Pandas</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3 Ways</div>
+    <div class="kpi-label">Writing Methods<br>Cell / Row / Multi</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">4 Ops</div>
+    <div class="kpi-label">Sheet Management<br>Add / Rename / Copy / Delete</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">1 Bridge</div>
+    <div class="kpi-label">Library Conversion<br>dataframe_to_rows</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">File Reading</div>
+    <div class="section-title t-01">Opening Workbooks: load_workbook() vs read_excel()</div>
+    <div class="section-desc">load_workbook() from openpyxl imports all sheets at once but doesn't render data. read_excel() from Pandas displays data immediately but reads only one sheet per call (defaults to first; use sheet_name parameter for others). Key distinction: load_workbook suits multi-sheet operations; read_excel suits quick data viewing and analysis.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📂</div>
+        <div class="dual-text"><h4>load_workbook()</h4><p>openpyxl function<br>All sheets at once<br>No live display<br>Best for formatting</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🐼</div>
+        <div class="dual-text"><h4>read_excel()</h4><p>Pandas function<br>One sheet at a time<br>Live data display<br>Best for analysis</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">File Creation</div>
+    <div class="section-title t-02">Creating Workbooks & Three Data Writing Methods</div>
+    <div class="section-desc">Workbook() declares a new workbook; wb.save(path) saves locally. Three writing granularities: single cell (ws['A1']=1 or ws.cell(row,col).value=1), row insertion (ws.append([1,2,3])), and multi-row insertion (for loop + append()). These flexibly adapt to different data scales.</div>
+    <div class="flow-row">
+      <div class="flow-step">📝 Workbook()<br><small>Declare</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">✏️ ws['A1']=1<br><small>Single cell</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📋 append()<br><small>Row insert</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄 for+append<br><small>Multi-row</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">💾 wb.save()<br><small>Save file</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Library Bridge</div>
+    <div class="section-title t-03">Data Conversion Between Pandas & openpyxl</div>
+    <div class="section-desc">Real projects often mix Pandas and openpyxl: process data with Pandas, format with openpyxl. dataframe_to_rows() is the bridge: it converts a DataFrame into row-by-row data. Parameters: index controls whether the index column is kept; header controls column names. Then use openpyxl's append() to write converted rows into the workbook.</div>
+    <div class="code-block"># Pandas read → openpyxl write
+from openpyxl.utils.dataframe import dataframe_to_rows
+
+df = pd.read_excel("dataset.xlsx")
+wb = Workbook()
+ws = wb.active
+
+for row in dataframe_to_rows(df, index=False, header=True):
+    ws.append(row)
+
+wb.save("output.xlsx")</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Sheet Management</div>
+    <div class="section-title t-04">Create, Rename, Copy & Delete Sheets</div>
+    <div class="section-desc">create_sheet() adds a new sheet (specify title and index position). copy_worksheet(source) duplicates an existing sheet. ws.title = 'NewName' renames; ws.sheet_properties.tabColor sets tab color. wb.remove(ws) or del wb[name] deletes a sheet. wb.sheetnames returns a list of all sheet names in the workbook.</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">➕</div>
+        <div class="cmp-name">Create Sheet</div>
+        <div class="cmp-note">create_sheet()<br>Set title & index<br>Appended at end by default</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">✏️</div>
+        <div class="cmp-name">Rename & Color</div>
+        <div class="cmp-note">ws.title = "New"<br>tabColor for tab<br>sheetnames to list all</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">📋</div>
+        <div class="cmp-name">Copy & Delete</div>
+        <div class="cmp-note">copy_worksheet()<br>wb.remove(ws)<br>del wb[name]</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Practical</div>
+    <div class="section-title t-05">Building a Complete Report from Scratch</div>
+    <div class="section-desc">Chain these basic operations to build a complete report from scratch: create a workbook, write headers and data rows with append(), create and name additional sheets as needed, then save. It seems simple, but when you need to generate a daily report every day, this code's value becomes clear—write once, reuse forever.</div>
+    <div class="risk-row">
+      <div class="risk-label">📝 Create</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+      <div class="risk-val">Workbook()</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">📊 Write</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+      <div class="risk-val">append()</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">📑 Manage</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:80%"></div></div>
+      <div class="risk-val">Sheets</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">💾 Save</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+      <div class="risk-val">wb.save()</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The basic Python API for Excel file operations isn't complicated: load_workbook() to open, Workbook() to create, append() to write, save() to persist. The real value lies in combining these simple operations into automated workflows, replacing hundreds of manual clicks with a single script. Master dataframe_to_rows() to seamlessly switch between Pandas and openpyxl.</div>
+</div>
+
+<div class="footer">
+  Source: Zhang Junhong "Compare with Excel, Easily Learn Python Report Automation" Ch.3 "Basic Excel Operations with Python" · Infographic · For Learning Purposes Only
+</div>
+
+</div>
+</body>
+</html>
