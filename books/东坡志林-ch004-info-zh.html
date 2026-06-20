@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>东坡志林 · 第四章「古今人物与治道洞见」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #3730a3; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #4f46e5; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .quote-block {
+    background: #f8f6f3; border-radius: 12px; padding: 18px 22px;
+    margin-top: 10px; border: 1px solid #e8e0d5;
+  }
+  .quote-text {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 15px; color: #1a1a1a; line-height: 1.9; font-style: italic;
+    margin-bottom: 6px;
+  }
+  .quote-source { font-size: 12px; color: #aaa; text-align: right; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 28px; }
+  .kpi-card {
+    background: #ffffff; border-radius: 12px; padding: 18px 14px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-top: 3px solid transparent;
+  }
+  .kpi-card.c01 { border-top-color: #dc2626; }
+  .kpi-card.c02 { border-top-color: #ea580c; }
+  .kpi-card.c03 { border-top-color: #ca8a04; }
+  .kpi-card.c04 { border-top-color: #4f46e5; }
+  .kpi-num { font-size: 28px; font-weight: bold; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .kpi-num.c01 { color: #dc2626; } .kpi-num.c02 { color: #ea580c; }
+  .kpi-num.c03 { color: #ca8a04; } .kpi-num.c04 { color: #4f46e5; }
+  .kpi-label { font-size: 12px; color: #888; line-height: 1.5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .kpi-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="东坡志林-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="东坡志林-ch004-info-en.html">中文 / English</a>
+</div>
+
+<h1>东坡志林 · 第四章「古今人物与治道洞见」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  苏轼不只是一个文人，更是一位深具史识的思想者。他纵论古今——从武王伐纣到秦废封建，从司马迁的“两大罪”到范增的悲剧，从八蜡之礼到八阵图之谜，从尧舜之治到寒食节的三国童谣。一个饱读史书的人如何在千年兴衰中提炼出治国安邦的智慧？答案在于他以“人情”为尺度——不以道德审判古人，而是以常人之心理解历史中的每一个抉择。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章汇集苏轼纵论古今人物的诸多短文：怀古（广武叹、涂巷小儿听说三国语）、祭祀（八蜡三代之戏礼）、兵略（匈奴全兵、八阵图）、人物（从尧舜之事到王济王恺、刘凝之沈麟士等数十位历史人物点评）以及论古（武王非圣人、秦废封建、论范增、司马迁二大罪等）。苏轼论史不蹈袭前人——他对“武王非圣人”的质疑、对秦废封建制的独到分析，对司马迁著史动机的尖锐批评，无不展现了一个独立思想者的锋芒。他深知：读史不是为了评判古人，而是理解人性在权力面前的永恒困境。</p>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-num c01">30+</div>
+    <div class="kpi-label">位历史人物<br>被苏轼逐一点评</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-num c02">7</div>
+    <div class="kpi-label">篇论古文<br>武王·范增·封建</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-num c03">2</div>
+    <div class="kpi-label">篇兵略<br>匈奴全兵·八阵图</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-num c04">百世</div>
+    <div class="kpi-label">不斩<br>君子小人之泽</div>
+  </div>
+</div>
+
+<!-- 01: 怀古与史观 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">怀古之思</div>
+    <div class="section-title t-01">"时无英雄，使竖子成其名"——阮籍千古之谜的东坡解答</div>
+    <div class="section-desc">阮籍登广武城叹"时无英雄，使竖子成其名"，这句千古名言到底在骂谁？友人史经臣认为是骂"沛公"刘邦，李白也持此说。苏轼独出卓见：阮籍伤的是当时没有刘邦项羽这样的英雄，"竖子"指魏晋间人——阮籍虽放荡，本有意于世事，何至于骂刘邦为竖子？苏轼还从涂巷小儿听三国故事的反应中得出深刻判断：闻刘备败则颦蹙有出涕者，闻曹操败即喜唱快——"以是知君子小人之泽，百世不斩"。民间朴素的是非判断，是历史正义最可靠的晴雨表。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">史经臣误解</div>
+        <div class="confusion-arrow">→ 苏轼纠正 →</div>
+        <div class="confusion-right">阮籍非骂刘邦，伤时无英雄</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">李白误解</div>
+        <div class="confusion-arrow">→ 苏轼纠偏 →</div>
+        <div class="confusion-right">"沉湎呼竖子，狂言非至公"</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">涂巷小儿</div>
+        <div class="confusion-arrow">→ 朴素正义 →</div>
+        <div class="confusion-right">"君子小人之泽，百世不斩"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 兵略与礼制 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">兵略礼制</div>
+    <div class="section-title t-02">诸葛八阵图与古礼之思——苏轼的军事与人类学眼光</div>
+    <div class="section-desc">苏轼实地考察了诸葛亮的八阵图遗迹——鱼腹平沙之上，垒石八行，"自山上俯视，百余丈凡八行，为六十四蕝，蕝正圜，不见凹凸处，如日中盖影"。他走近看，都是卵石"漫漫不可辨"，甚为奇怪。此般实地勘察精神在宋代文人中极为罕见。而在《八蜡三代之戏礼》中，苏轼揭示了上古祭祀的本质是"戏礼"——岁末聚戏乃人情所不免，"猫虎之尸，谁当为之？非倡优而谁！"他把庙堂上的神圣礼乐还原为人间的戏剧，这是超前的人类学眼光。</div>
+    <div class="flow-row">
+      <div class="flow-step">桓温见八阵图<br>称"常山蛇势"</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">苏轼亲登山顶<br>俯瞰全景</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">百余丈·六十四蕝<br>卵石漫漫不可辨</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">实地勘察<br>宋代罕见</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 人物评点 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">人物月旦</div>
+    <div class="section-title t-03">"尧舜之事"与"柳宗元敢为诞妄"——苏轼眼中的历史人物群像</div>
+    <div class="section-desc">苏轼评论人物不循旧说。《尧舜之事》质疑尧舜禅让的神话——"尧将逊位，让于虞舜"，孔安国注"尧知子丹朱不肖，故有禅位之志"，苏轼反问：尧舜之际岂有人臣敢接受天子禅位？此等事皆后世撰述。《孔子诛少正卯》指出此说不合圣人气象。《跋李主词》中赞李后主亡国后的词作"天人之际"。《论范增》独辟蹊径：范增应该在项羽杀宋义时就离开，不必等到鸿门宴后——"增之去，当于羽杀卿子冠军时也"。苏轼的史观是：不看成败，不循定论，只从人之常情出发。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">👑</div>
+        <div class="dual-text">
+          <h4>尧舜禅让：质疑神话</h4>
+          <p>苏轼认为尧舜禅让的传说中有不合理之处——人臣岂能坦然接受天子禅位？他敢于挑战被儒学奉为圭臬的圣王叙事。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🗡️</div>
+        <div class="dual-text">
+          <h4>范增之去：应早于鸿门</h4>
+          <p>"增之去，当于羽杀卿子冠军时也"——苏轼认为范增在看到项羽擅杀宋义时就该离开，而非等到鸿门宴。识人须在第一时间。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 论古 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">史论卓识</div>
+    <div class="section-title t-04">"秦废封建"与"司马迁二大罪"——苏轼的史论锋芒</div>
+    <div class="section-desc">在《论古》系列中，苏轼展现了他最犀利的史论思维。《秦废封建》分析了秦始皇废除封建制改为郡县制的历史必然性，指出这并不是秦始皇的个人创造，而是历史演进的必然结果。《司马迁二大罪》则大胆批评了司马迁著史的动机——他认为司马迁将个人不幸投射于历史书写，对商鞅、蒙恬等人的评价有失公允。《武王非圣人》更是直接挑战儒家正统叙事，指出武王"载文王木主以伐纣"不合礼法。苏轼的史论始终以"人情"为尺度——不以成败论英雄，不以道德绑架古人。</div>
+    <div class="quote-block">
+      <div class="quote-text">"圣人不能为时，亦不失时。时非圣人之所能为也，能不失时而已。"</div>
+      <div class="quote-source">—— 《秦废封建》</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 百世不斩 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">民间正义</div>
+    <div class="section-title t-05">历史的最终裁判：民心与常识</div>
+    <div class="section-desc">苏轼论史最独到之处在于他以"民间视角"作为历史评判的根本尺度。《涂巷小儿听说三国语》记录了最朴素的历史判断——连不识字的小儿听说刘备败即流泪、听说曹操败即拍手称快。苏轼由此得出："君子小人之泽，百世不斩。"千百年来官方史书可以美化篡改，但民间口碑中的是非判断，犹如深埋地下的暗流，时间越长越清明。他在《贺下不贺上》中也以同样逻辑论述：从政者最可贵的是功成身退、"释肩而去"时的内心无愧——这比任何官方褒奖都更真实。苏轼的史观最终落脚点是：历史正义不在庙堂，在人心。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">👂</div>
+        <div class="dual-text">
+          <h4>民间口碑：百世不斩的正义</h4>
+          <p>儿童听三国故事的反应——闻刘备败则流泪、闻曹操败则欢呼——是任何官方史书都无法篡改的朴素正义。民心才是历史的最终裁判者。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">⚖️</div>
+        <div class="dual-text">
+          <h4>"人情"尺度：苏轼史论的核心方法</h4>
+          <p>不以成败论英雄，不以道德绑架古人，只用人之常情理解每一个历史抉择——这是苏轼超越绝大多数史论家的根本原因。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">苏轼的历史洞见之所以超越时代，在于他始终以"人情"为判断准绳。<strong>他不相信圣王神话（质疑尧舜禅让），不盲从官方叙事（批评司马迁著史动机），不迷信军事传奇（亲自攀登八阵图遗址），而是在最朴素的人情与常识中寻找历史的真相。</strong>"君子小人之泽，百世不斩"——这句话是他历史观的核心：真正的历史正义不写在正史中，而流淌在市井童谣、民间口碑里。八百年后的今天，"闻刘备败而流泪、闻曹操败而欢呼"的民间情感格局依然未变——这便是苏轼所说的"百世不斩"。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《东坡志林》第四章信息图 · 苏轼（宋）著 · 万卷出版公司 2016 · 基于卷一「怀古」、卷二「祭祀」「兵略」、卷四「人物」、卷五「论古」内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

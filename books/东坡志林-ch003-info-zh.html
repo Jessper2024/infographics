@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>东坡志林 · 第三章「人世交游与方外之思」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .quote-block {
+    background: #f8f6f3; border-radius: 12px; padding: 18px 22px;
+    margin-top: 10px; border: 1px solid #e8e0d5;
+  }
+  .quote-text {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 15px; color: #1a1a1a; line-height: 1.9; font-style: italic;
+    margin-bottom: 6px;
+  }
+  .quote-source { font-size: 12px; color: #aaa; text-align: right; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 28px; }
+  .kpi-card {
+    background: #ffffff; border-radius: 12px; padding: 18px 14px; text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); border-top: 3px solid transparent;
+  }
+  .kpi-card.c01 { border-top-color: #dc2626; }
+  .kpi-card.c02 { border-top-color: #ea580c; }
+  .kpi-card.c03 { border-top-color: #ca8a04; }
+  .kpi-card.c04 { border-top-color: #4f46e5; }
+  .kpi-num { font-size: 28px; font-weight: bold; margin-bottom: 4px; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .kpi-num.c01 { color: #dc2626; } .kpi-num.c02 { color: #ea580c; }
+  .kpi-num.c03 { color: #ca8a04; } .kpi-num.c04 { color: #4f46e5; }
+  .kpi-label { font-size: 12px; color: #888; line-height: 1.5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .kpi-row { grid-template-columns: 1fr; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="东坡志林-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="东坡志林-ch003-info-en.html">中文 / English</a>
+</div>
+
+<h1>东坡志林 · 第三章「人世交游与方外之思」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;color:#dc2626;font-weight:bold;font-size:12px;letter-spacing:2px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  苏轼一生交游遍天下——从朝廷重臣到方外僧道，从至交好友到仅一面之缘的乡野隐士。他既写下了“别石塔”的禅机妙语，也记录了与僧道谈论佛法的深夜对谈。一个身处官场却心向山林的人，如何在出世与入世之间找到平衡？答案在于他以一颗赤子之心对待所有人——对朋友真挚深情，对佛道真诚叩问，对世事直言不讳。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章汇集苏轼关于送别（别子开、别王子直、别石塔、别姜君、别文甫子辩）、时事（唐村老人言、记告讦事）、致仕（请广陵、买田求归、贺下不贺上）、隐逸（书杨朴事、白云居士）、佛教（读坛经、改观音咒、诵经帖、袁宏论佛说）和道释（赠邵道士、书李若之事、记道人戏语）等内容。苏轼的交游圈子横跨朝野、僧俗两端，他对每一段关系都投注了真挚的情感，对佛道的探究也从不流于空谈——他改《观音咒》的慈悲为怀、“两家总没事”的诙谐，正是他学佛而不迂腐的明证。</p>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-num c01">6</div>
+    <div class="kpi-label">篇送别文<br>深情而不伤感</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-num c02">5</div>
+    <div class="kpi-label">篇佛教论<br>读坛经·改观音咒</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-num c03">4</div>
+    <div class="kpi-label">篇道释笔记<br>赠道士·布气之法</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-num c04">3</div>
+    <div class="kpi-label">归田之梦<br>买田求归而未遂</div>
+  </div>
+</div>
+
+<!-- 01: 深情送别 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">人间别离</div>
+    <div class="section-title t-01">"仆登夏隩尾高邱以望之"——苏轼的深情送别</div>
+    <div class="section-desc">苏轼写了六篇送别短文，每一篇都以不同的笔调写出了深情。别文甫子辩时，他送友人至江边，"微风细雨，叶舟横江而去"，自己"登夏隩尾高邱以望之，仿佛见舟及武昌，步乃还"——这份目送到天边的深情令人动容。别王子直时，处士王原不远千里来访儋耳，"留七十日而去"，苏轼感念不已。最妙的是《别石塔》——石塔与东坡告别，塔说"若无缝，何以容世间蝼蚁？"借佛塔喻人世，诙谐中藏大悲悯。</div>
+    <div class="quote-block">
+      <div class="quote-text">"仆送之江上，微风细雨，叶舟横江而去。仆登夏隩尾高邱以望之，仿佛见舟及武昌，步乃还。尔后遂相往来，及今四周岁，相过殆百数。"</div>
+      <div class="quote-source">—— 《别文甫子辩》</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 时事与告讦 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">世事洞明</div>
+    <div class="section-title t-02">"贫富之不齐，自古已然，虽天公不能齐也"——村老的政治智慧</div>
+    <div class="section-desc">《唐村老人言》记录了儋耳进士黎子云讲述的一番对话：七十余岁的村民允从问"宰相何苦以青苗钱困我？"子云解释青苗法旨在均贫富，老人笑道：贫富不均自古如此，就像"器物有厚薄"，把厚处磨得与薄处一样，厚处未动薄处先穿了。这则对话是对王安石新法的最朴素批判。《记告讦事》则记录了匿名举报引发的司法困境，苏轼借苏子容之口表达了对告讦之风的不满——"此情虽极轻，而告讦之风不可长"。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">👴</div>
+        <div class="dual-text">
+          <h4>唐村老人：民间的清醒</h4>
+          <p>\\\"贫富之不齐，虽天公不能齐也\\\"——七十岁村老一句话，戳破了青苗法的理想主义泡沫。\\\"负薪能谈王道\\\"，苏轼对民间智慧深怀敬意。</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">⚖️</div>
+        <div class="dual-text">
+          <h4>告讦之风：苏轼的法治观</h4>
+          <p>匿名举报虽有助于破案，但苏轼认同\\\"告讦之风不可长\\\"——程序正义比结果正义更重要，这是超前八百年的法治理念。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 退隐之思 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">致仕归田</div>
+    <div class="section-title t-03">"贺下不贺上"——苏轼对功名的清醒认识</div>
+    <div class="section-desc">苏轼在《贺下不贺上》中写道：世人祝贺升官，而他认为"贺下不贺上"才是通语——祝贺退隐比祝贺升迁更有意义。"士人历官一任，得外无官谤，中无所愧于心，释肩而去，如大热远行，虽未到家，得清凉馆舍，一解衣漱濯，已足乐矣。"他见欧阳修想辞官归于田园的迫切心情，感慨君子欲退之难。他自己也曾多次计划买田归隐——在广陵、在京口、在眉山——但始终未能如愿。"今有田矣，不归无乃食言于神也耶？"</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⛰️</div>
+        <div class="data-name">请广陵</div>
+        <div class="data-sm">暂与子由相别<br>筑室种果于眉<br>以须子由之归而老焉</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🌊</div>
+        <div class="data-name">买田求归</div>
+        <div class="data-sm">浮玉老师欲为买田京口<br>"有田不归如江水"<br>终未能如愿</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🎉</div>
+        <div class="data-name">贺下不贺上</div>
+        <div class="data-sm">祝贺退隐而非升迁<br>"释肩而去"是最大快乐<br>君子欲退其难如此</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 佛禅智慧 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">佛禅之思</div>
+    <div class="section-title t-04">"念彼观音力，两家总没事"——苏轼的实用佛学</div>
+    <div class="section-desc">苏轼学佛不迂腐，他读《坛经》后以眼喻解"法报化三身"：见是法身、能见是报身、所见是化身，把高深的佛理化为可理解的比喻。更妙的是他大胆改写《观音经》——原经文说"咒咀诸毒药，所欲害身者，念彼观音力，还著于本人"（诅咒反弹给施咒者），苏轼批评这不合观音慈悲之心，改为"念彼观音力，两家总没事"——与其让诅咒反弹，不如让双方平安无事。他还以轻松笔触写下"东坡食肉诵经"的诙谐故事，学佛而不拘泥于形式。</div>
+    <div class="quote-block">
+      <div class="quote-text">"观音，慈悲者也。今人遭咒咀，念观音之力而使还著于本人，则岂观音之心哉？今改之曰：'念彼观音力，两家总没事。'"</div>
+      <div class="quote-source">—— 《改观音咒》</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 道释与隐逸 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">方外之交</div>
+    <div class="section-title t-05">杨朴之妻与苏轼之妻——隐逸精神的两面</div>
+    <div class="section-desc">苏轼被拘时，家人痛哭送别，他引用杨朴典故化解悲伤：杨朴被宋真宗征召，自言不会作诗，但妾赠诗云"今日捉将官里去，这回断送老头皮"，真宗大笑放归。苏轼对家人说"独不能如杨子云处士妻作诗送我乎？"家人不觉失笑。这则轶事意味深长——隐逸不是避世，而是在最危难时仍能以幽默化解恐惧。苏轼还记录了多位道人异士：能以气为人治病的李若之、卖"赌钱不输方"却只写"但止乞头"的相国寺道人——方外之人的智慧常在最朴素的言语中。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🏔️</div>
+        <div class="dual-text">
+          <h4>杨朴之隐：幽默是最后的防线</h4>
+          <p>被朝廷征召时以妾诗化解，真宗大笑放归。苏轼被捕时也以此典故让家人破涕为笑——在最黑暗的时刻，幽默是精神的最后堡垒。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎲</div>
+        <div class="dual-text">
+          <h4>道人戏语：智慧藏在玩笑中</h4>
+          <p>\\\"赌钱不输方\\\"卖千金，打开只有三个字\\\"但止乞头\\\"（不赌便是赢）。道人的戏语得了千金，却未尝欺骗——智慧往往如此简单直接。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">苏轼的交游与方外之思折射出他灵魂的两面：<strong>一面对人世深情款款——送别时目送友舟至天边，另一面对方外真诚叩问——改观音咒、读坛经、访道人，从不盲从教条。</strong>他的"贺下不贺上"是对功名利禄的最清醒审视，他对"告讦之风"的警惕远超出时代局限。而"念彼观音力，两家总没事"这八个字，最能代表东坡的思维方式——慈悲不应是诅咒反弹，而应是双方的平安。他从佛道中汲取智慧，却从不丢失自己的判断，这才是真正的"学佛而不为佛缚"。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  《东坡志林》第三章信息图 · 苏轼（宋）著 · 万卷出版公司 2016 · 基于卷一「送别」及卷二「时事」「致仕」「隐逸」「佛教」「道释」内容提炼 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>
