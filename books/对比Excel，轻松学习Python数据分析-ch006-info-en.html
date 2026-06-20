@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第6章「菜品挑选——数据选择」</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:24px auto 32px;border-radius:1px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch006-info-zh.html">中文</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第6章「菜品挑选——数据选择」</h1>
+    <div class="subtitle">Data Filtering · Precise Targeting of Data</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="chapter-overview"><p>This chapter focuses on precise data selection and filtering, using "picking ingredients" as a metaphor. It systematically covers column selection, row selection, and combined row-and-column selection. Through Excel-Python comparisons, it details four indexing methods—nominal (loc), positional (iloc), boolean, and slice indexing—and their combinations, covering all data extraction scenarios from single-column selection to conditional cross-section filtering.</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">4</div><div class="kpi-label">索引方式</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">3</div><div class="kpi-label">选择类别</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">6</div><div class="kpi-label">组合选择</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">工具对比</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">Column Selection</div></div>
+    <div class="section-body">
+<p>The first dimension of data selection, covering <span class="hl">single column, multiple columns, and consecutive columns</span>:</p><ul><li><span class="hl">Nominal indexing:</span> df['col_name'] for single, df[['col1','col2']] for multiple</li><li><span class="hl">Positional indexing:</span> df.iloc[:, [0,2]] selects by column position (0-indexed)</li><li><span class="hl">Slice indexing:</span> df.iloc[:, 0:3] selects consecutive columns, left-inclusive right-exclusive</li></ul><p>In Excel, simply mouse-select or Ctrl+click. In Python: <span class="hl">use names for nominal, use iloc for positional/slice</span>.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">Row Selection</div></div>
+    <div class="section-body">
+<p>Select specified row data, supporting <span class="hl">single row, multiple rows, consecutive rows, and conditional filtering</span>:</p><ul><li><span class="hl">Nominal (loc):</span> df.loc[['A1','A2']] select by row index name</li><li><span class="hl">Positional (iloc):</span> df.iloc[[0,2]] select by row position</li><li><span class="hl">Consecutive rows:</span> df.iloc[0:3] slice to get consecutive rows</li><li><span class="hl">Conditional (boolean):</span> df[df['age']<200] filter rows meeting condition; supports multi-condition (&, |)</li></ul><p>Excel row selection relies on filter functionality. Python's <span class="hl">boolean indexing</span> is the most flexible row selection method.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">Combined Row-Column Selection</div></div>
+    <div class="section-body">
+<p>Select <span class="hl">intersection</span> of rows and columns simultaneously, with five combination patterns:</p><ul><li><span class="hl">Nominal+Nominal (loc):</span> df.loc[['row_names'], ['col_names']]</li><li><span class="hl">Positional+Positional (iloc):</span> df.iloc[[row_pos], [col_pos]]</li><li><span class="hl">Boolean+Nominal:</span> df[df['condition']][['col_names']] — filter rows then select columns</li><li><span class="hl">Slice+Slice (iloc):</span> df.iloc[0:2, 1:3] — both rows and columns by interval</li><li><span class="hl">Cross indexing (ix):</span> mix nominal and slice indexing (gradually deprecated)</li></ul><p>Core principle: <span class="hl">use loc for names, iloc for positions</span> — the indexing method determines the accessor.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">Index Method Summary</div></div>
+    <div class="section-body">
+<p>Python's four core indexing mechanisms for data selection:</p><ul><li><span class="hl">Nominal indexing:</span> pass row/column names, use loc method — intuitive for known-name scenarios</li><li><span class="hl">Positional indexing:</span> pass row/column position numbers (0-based), use iloc method — suitable for batch processing</li><li><span class="hl">Boolean indexing:</span> pass logical conditions, returns matching rows — most flexible, supports complex filtering</li><li><span class="hl">Slice indexing:</span> pass position intervals (start:end), use iloc method — suitable for contiguous region selection</li></ul><p>These four methods form Python's data selection foundation; <span class="hl">any combination covers all data extraction scenarios</span>.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">Tool Comparison Highlights</div></div>
+    <div class="section-body">
+<p>Key differences between Excel and Python for data selection:</p><ul><li>Excel relies on <span class="hl">mouse operations + filter functionality</span>, suitable for ad-hoc data exploration</li><li>Python uses <span class="hl">code-based selection</span>, suitable for automated, reproducible data processing workflows</li><li>Python's boolean indexing enables <span class="hl">multi-condition combined filtering</span>, far exceeding Excel's filter flexibility</li><li>Combined row-column selection has <span class="hl">five patterns</span> in Python, while Excel can only do it by mouse drag</li></ul>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 Chapter Overview</div>
+    <p>Data selection is the key skill of "precise targeting." By mastering four methods—loc (by name), iloc (by position), boolean indexing (by condition), and slice indexing (by range)—and their combinations, you can quickly extract target data in any analytical scenario. Excel mouse operations suit exploration, while Python code-based selection suits automated production; together they form a complete data selection capability.</p>
+  </div>
+
+  <div class="footer">
+    <span>Source: Zhang Junhong, "Excel vs Python for Data Analysis"</span>
+    <span>Infographic generated by AI · For reference and learning purposes only</span>
+  </div>
+</div>
+</body>
+</html>

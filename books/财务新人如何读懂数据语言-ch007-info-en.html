@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Finance Newcomers Read Data Language · Ch7 "How Many Dollars Did You Earn?"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.accounting { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.economic { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    background: #f8f6f3; border: 1px solid #e8e0d5;
+  }
+  .data-big { font-size: 28px; margin-bottom: 6px; color: #1a1a1a; }
+  .data-name { font-size: 15px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+
+  .math-box {
+    background: #faf9f7; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 20px; margin-top: 10px; text-align: center;
+  }
+  .math-line { font-size: 15px; color: #1a1a1a; line-height: 2.0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .math-result { font-size: 18px; font-weight: bold; color: #dc2626; margin-top: 6px; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="shuju-yuyan-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="shuju-yuyan-ch007-info-zh.html">中文 / English</a>
+</div>
+
+<h1>How Finance Newcomers Read Data Language · Ch7 "How Many Dollars Did You Earn?"</h1>
+<p class="subtitle">
+  SCQA · Situation → Conflict → Question → Answer<br>
+  Buy a chicken for $8, sell for $9, buy again for $10, sell for $11—earned $2 or lost $4?<br>
+  A Citibank interview question reveals the fundamental divide between accounting profit and economic profit: earning less = losing.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Neil Shen faced a classic Citibank interview question: buy a chicken for $8, sell for $9, buy again for $10, sell for $11—how much did you earn? The ordinary answer is $2. Shen's answer: "lost $4"—exactly what the investment bank wanted. This chapter reveals two profit views behind two answers: accounting profit records past historical transactions, while economic profit introduces opportunity cost to compare relative outcomes. From EVA assessments and NPV investment decisions to budget allocation comparisons, the financier's eye looks backward, the investor's eye looks forward.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">+2<span class="kpi-unit">USD</span></div>
+    <div class="kpi-label">Accounting Profit</div>
+    <div class="kpi-note">(9−8)+(11−10)=2<br>Records history · Stays true to trades</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">−4<span class="kpi-unit">USD</span></div>
+    <div class="kpi-label">Economic Profit</div>
+    <div class="kpi-note">Max opportunity 6 − actual 2<br>Earning less = losing · Forward-looking</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">6<span class="kpi-unit">USD</span></div>
+    <div class="kpi-label">Max Opportunity</div>
+    <div class="kpi-note">Theoretical ceiling of two trades<br>(11−8) × 2 = $6</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">EVA<span class="kpi-unit"></span></div>
+    <div class="kpi-label">Performance Metric</div>
+    <div class="kpi-note">Accounting profit − cost of capital<br>Only passing grade if beating bank yield</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Profit · Two Views</div>
+    <div class="section-title t-01">Accounting Profit vs. Economic Profit: Two Answers for One Trade</div>
+    <div class="section-desc">Round 1: buy at 8, sell at 9 → earn 1. Round 2: buy at 10, sell at 11 → earn 1. Total: +$2—this is accounting profit, faithfully recording actual transactions by bookkeeping rules. But from the single-trade maximum opportunity view: 11−8 = $3, twice = $6. Against the possible $6, only $2 was earned—the $4 shortfall is a loss. This is economic profit, incorporating opportunity cost for comparison.</div>
+    <div class="dual-grid">
+      <div class="dual-card accounting">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>Accounting Profit</h4>
+          <p>8→9 earn 1 + 10→11 earn 1 = <strong>+$2</strong>. Faithful to history, records actual trades. The correct answer for a general ledger accountant.</p>
+        </div>
+      </div>
+      <div class="dual-card economic">
+        <div class="dual-icon">🔮</div>
+        <div class="dual-text">
+          <h4>Economic Profit</h4>
+          <p>Max opportunity (11−8)×2 = $6, actual $2 → <strong>−$4 lost</strong>. Incorporates opportunity cost. The investment banker's correct answer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Core · Opportunity Cost</div>
+    <div class="section-title t-02">Why Earning Less Equals Losing: How Opportunity Cost Disrupts Financial Thinking</div>
+    <div class="section-desc">Accounting profit only accounts for the past—it introduces no more relevant comparison benchmark: opportunity cost. Like a child scoring 90% seems fine, until you learn the class average is 95%. Similarly, evaluating economic performance requires comparing absolute profit against relative cost. In daily decisions, we naturally use opportunity cost thinking—weighing Apartment A vs. Apartment B. But in the financial world, accounting profit frameworks often make us forget this.</div>
+    <div class="math-box">
+      <div class="math-line">Absolute profit: $2 (seems decent)</div>
+      <div class="math-line">Opportunity loss: 6 − 2 = $4 (max possible − actual)</div>
+      <div class="math-result">Conclusion: Earning $4 less = Losing $4</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Evaluation · From Absolute to Relative</div>
+    <div class="section-title t-03">The Performance Evaluation Revolution: How EVA &amp; ROCE Replace Accounting Profit</div>
+    <div class="section-desc">At the highest management level, more companies now use EVA (Economic Value Added) or ROCE (Return on Capital Employed) instead of accounting profit. Simply, EVA = accounting profit minus cost of capital. If earnings don't even beat bank fixed-income returns, management is underperforming. NPV is also embedded with cost of capital in every project investment decision—this is economic profit thinking in practice.</div>
+    <div class="flow-row">
+      <div class="flow-step">Accounting<br>Profit</div>
+      <div class="flow-arrow">−</div>
+      <div class="flow-step">Cost of<br>Capital</div>
+      <div class="flow-arrow">=</div>
+      <div class="flow-step end">EVA<br>Value Added</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Budget · Relative Choice</div>
+    <div class="section-title t-04">Economic Profit Thinking in Budget Allocation: Which One?</div>
+    <div class="section-desc">In a resource-constrained world, every company operates within limits. Engineering proposes a new process doubling output; production proposes automation halving labor—budget only covers one. Both have positive NPVs, so choose the one with higher NPV. If numbers are close, pick automation: with labor costs rising double digits annually, labor-replacing investment yields accelerating returns. This is forward-looking relative comparison.</div>
+    <div class="dual-grid">
+      <div class="dual-card accounting">
+        <div class="dual-icon">🏭</div>
+        <div class="dual-text">
+          <h4>Engineering Proposal</h4>
+          <p>New process doubles unit output. NPV positive. But can the market absorb doubled output? Demand-side uncertainty exists.</p>
+        </div>
+      </div>
+      <div class="dual-card economic">
+        <div class="dual-icon">🤖</div>
+        <div class="dual-text">
+          <h4>Production Proposal</h4>
+          <p>Automation halves labor. NPV positive. Labor costs rising double-digits annually → automation brings accelerating returns.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Mindset · Forward-Looking</div>
+    <div class="section-title t-05">The Investor's Eye Looks Forward: The Storytelling CFO</div>
+    <div class="section-desc">The fundamental difference between financiers and investors: the former looks back, the latter looks forward. The essence of finance is pre-packaging and withdrawing future cash earnings. From this angle, a CFO who can't tell stories is mediocre. Don't despise the "art of spin"—the highest realm for a financial professional is: selective spin. Having mastered the skill of spin, choose not to spin. This is the cognitive freedom gained from upgrading accounting profit thinking to economic profit thinking.</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📖</div>
+        <div class="data-name">Financier's View</div>
+        <div class="data-sm">Loyal to historical records<br>Accounts for what happened<br>Absolute profit</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🔭</div>
+        <div class="data-name">Investor's View</div>
+        <div class="data-sm">Eyes on opportunity<br>Relative comparison &amp; choice<br>Forward-looking judgment</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🎯</div>
+        <div class="data-name">Highest Realm</div>
+        <div class="data-sm">Selective storytelling<br>After understanding financial essence<br>Choose not to spin</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The same trade: accounting profit earns $2, economic profit loses $4—the gap lies in whether opportunity cost is introduced. Accounting profit records the past; economic profit focuses on relative outcomes. From EVA assessments to NPV investment decisions, from budget allocation to forward-looking judgment, finance professionals must learn to see the future with an investor's eye. The essence of finance is pre-packaging future cash earnings—the ability to tell stories, to selectively spin, is the highest realm of a financial professional.</div>
+</div>
+
+<div class="footer">
+  Source: Qian Ziyan, <em>How Finance Newcomers Read Data Language</em>, Ch7 "How Many Dollars Did You Earn?" · Infographic · For learning reference only
+</div>
+
+</div>
+</body>
+</html>

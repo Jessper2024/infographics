@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第2章 熟悉锅——Python基础知识</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:#c0b8a8;margin:24px auto 32px;border-radius:1px}
+.splash{background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%);border-radius:14px;padding:28px 32px;margin-bottom:36px;color:#fff}
+.splash .ov-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;opacity:.85;margin-bottom:10px}
+.splash .ov-question{font-size:18px;margin-bottom:12px;line-height:1.6}
+.splash .ov-answer{font-size:14px;line-height:1.8;opacity:.92}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch002-info-en.html">EN</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第2章「熟悉锅——Python基础知识」</h1>
+    <div class="subtitle">实践篇 · 工欲善其事，必先利其器</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="splash">
+    <div class="ov-label">🐍 本章概览</div>
+    <div class="ov-question">如何从零搭建Python数据分析环境？需要掌握哪些核心编程基础？</div>
+    <div class="ov-answer">本章以"熟悉锅"为比喻，带领读者完成Python数据分析的环境搭建与语言入门。从Anaconda安装与Jupyter Notebook使用开始，系统覆盖Python七大数据类型（数字、字符串、列表、字典、元组、集合、布尔值）的操作方法，再到四类运算符、三种循环与条件控制流、函数定义与匿名函数，最后介绍列表生成式和map等高级特性。这是全书"实践篇"的工具基石。</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">7</div><div class="kpi-label">核心数据类型</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">4</div><div class="kpi-label">运算符类型</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">3</div><div class="kpi-label">控制流结构</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">函数类型</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">Python简介与环境搭建</div></div>
+    <div class="section-body">
+      <p><span class="hl">Python是一门语法简单、库丰富的胶水语言，2018年超越Java成为编程语言排行第一。</span>本书选择Anaconda发行版作为入门环境，原因是它自带常用库，无需手动安装，对初学者极其友好。</p>
+      <ul>
+        <li><span class="hl">Anaconda安装流程</span>：确认系统位数 → 官网下载 → 选择Python 3版本 → 双击安装 → 默认路径即可</li>
+        <li><span class="hl">IDE vs IDLE</span>：IDE（集成开发环境）包含编辑器+编译器+调试器；Jupyter Notebook是数据分析领域最常用的IDE</li>
+        <li><span class="hl">Jupyter Notebook核心操作</span>：新建Python 3文件、运行代码（Ctrl+Enter）、重命名（File>Rename）、保存/另存为（Download as）、导入文件（Upload）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">Jupyter Notebook进阶：Markdown与目录</div></div>
+    <div class="section-body">
+      <p><span class="hl">Jupyter Notebook不仅是代码编辑器，更是数据分析的交互式笔记本。</span>两大进阶功能极大提升工作效率：</p>
+      <ul>
+        <li><span class="hl">Markdown模式</span>：将代码框切换到Markdown模式后变成文本框，支持Markdown语法。数据分析时可直接在代码间写下分析结论，实现"代码+文档"一体化</li>
+        <li><span class="hl">目录功能</span>：非自带，需通过Anaconda Prompt执行 pip install 安装。安装后可通过目录快速跳转到不同代码段，类似书籍目录和毕业论文目录</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">七大数据类型与操作</div></div>
+    <div class="section-body">
+      <p><span class="hl">Python的七种核心数据类型覆盖了数据分析中所有常见的数据组织形式：</span></p>
+      <ul>
+        <li><span class="hl">数字</span> — 整数(int)、浮点数(float)。支持加减乘除、乘方(* *)、取整(//)、取余(%)</li>
+        <li><span class="hl">字符串</span> — 连接(+)、复制(*)、长度(len)、查找(in/find)、索引(普通/切片)、分隔(split)、去空格(strip)</li>
+        <li><span class="hl">列表</span> — 有序可变集合。新建、复制(*)、合并(+或extend)、插入(append/insert)、计数(count)、位置(index)、索引、删除(pop/remove)、排序(sort)</li>
+        <li><span class="hl">字典</span> — 键值对结构{key:value}。键必须唯一。keys()/values()/items()三个核心方法</li>
+        <li><span class="hl">元组</span> — 有序不可变集合，用小括号。与列表可互转(list()/tuple())。zip()函数将多个可迭代对象打包成元组</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">运算符与流程控制</div></div>
+    <div class="section-body">
+      <p><span class="hl">四类运算符与三种控制流是Python程序逻辑的核心：</span></p>
+      <ul>
+        <li><span class="hl">算术运算符</span>：+、-、*、/、* *（乘方）、//（整除）、%（取余）</li>
+        <li><span class="hl">比较运算符</span>：==、!=、>、<、>=、<=，返回True/False</li>
+        <li><span class="hl">逻辑运算符</span>：and（与）、or（或）、not（非）</li>
+        <li><span class="hl">for循环</span> — 遍历序列（列表/字符串），逐个执行。如：依次学习Excel→SQL→Python→统计学</li>
+        <li><span class="hl">while循环</span> — 条件满足时持续执行。如：学习时间＜7周→继续学；≥7周→找工
+作</li>
+        <li><span class="hl">条件语句</span> — if/else/elif。多条件判断时elif语句逐级判断，最多执行一个分支</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">函数与高级特性</div></div>
+    <div class="section-body">
+      <p><span class="hl">函数是一段可重复使用的程序。掌握普通函数与匿名函数两种形式，以及列表生成式和map等高级特性：</span></p>
+      <ul>
+        <li><span class="hl">普通函数</span>：def 函数名(参数): + 语句块 + return。形参在定义时声明，实参在调用时传递</li>
+        <li><span class="hl">匿名函数(lambda)</span>：lambda arg1,arg2: expression。比普通函数简洁，常用于简单操作（如两数相加→ lambda x,y: x+y）</li>
+        <li><span class="hl">列表生成式</span>：一行代码替代嵌套for循环。如 [x*y for x in listA for y in listB]，数据量大时显著提升速度</li>
+        <li><span class="hl">map函数</span>：map(function, args)，对序列每个元素执行function操作。结果需for遍历或list()转换才能显示</li>
+        <li><span class="hl">模块</span>：升级版函数，跨程序可调用。数据分析三大核心模块：NumPy、Pandas、matplotlib。import 模块名 或 from 模块 import 函数</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心结论</div>
+    <p>Python基础是数据分析的"锅"——锅不好，再好的食材也做不出好菜。本章构建的Python知识体系（环境搭建→数据类型→控制流→函数→高级特性）将在后续每一章中反复使用。记住：数据分析师不需要成为Python全栈工程师，掌握与数据处理直接相关的基础知识就足够开启分析之旅。Anaconda + Jupyter Notebook = 数据分析师的最佳开发环境组合。</p>
+  </div>
+
+  <div class="footer">
+    <span>《对比Excel，轻松学习Python数据分析》 · 张俊红 著</span>
+    <span>电子工业出版社 · 入职数据分析师系列</span>
+  </div>
+</div>
+</body>
+</html>

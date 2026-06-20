@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 第7章「朴素类比」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .chapter-card { margin-top: 10px; border-radius: 10px; padding: 14px 16px; background: #fafaf7; border: 1px solid #e8e0d5; }
+  .chapter-card h5 { font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 14px; margin-bottom: 6px; font-weight: bold; }
+  .chapter-card h5.c01 { color: #dc2626; } .chapter-card h5.c02 { color: #ea580c; }
+  .chapter-card h5.c03 { color: #ca8a04; } .chapter-card h5.c04 { color: #4f46e5; } .chapter-card h5.c05 { color: #db2777; }
+  .chapter-card p { font-size: 12px; color: #777; line-height: 1.7; margin: 0; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="表象与本质-ch011-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 第7章「朴素类比」</h1>
+<p class="subtitle">三件逸事，贯穿一生——从四岁小孩到退休教授，朴素类比作为一种自发、无意识、自动的认知行为，在人的整个生命历程中如出一辙。它将陌生概念与已有知识悄然联结，虽常出错，却是人类理解世界的默认方式。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章通过三件逸事揭示朴素类比（naive analogy）的本质。小蒂姆看到爸爸用剃须膏和剃须刀刮胡子——他借助"糖在热水中溶化"的经验，得出剃须膏把胡子溶化了的结论。珍妮特收到邻居说"看到titmice在树上"的消息——她不知道titmice是山雀而非老鼠，脑海中浮现的是老鼠在树上跑来跑去。亚历山大教授让要去德国的同事"把电邮地址寄给我"——他把电邮地址类比为物理住址。四岁小孩、年轻成年人和老教授——跨越巨大的年龄鸿沟，所体验的认知现象却是相同的。朴素类比是自动的、无意识的、未经刻意思考的——它直接指向结论而不考虑其他选项，不产生不确定性或疑虑。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">件</span></div>
+    <div class="kpi-label">三件逸事</div>
+    <div class="kpi-note">四岁提姆→珍妮特→八十岁教授<br>同一认知现象贯穿一生</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">自发<span class="kpi-unit">自动</span></div>
+    <div class="kpi-label">无意识行为</div>
+    <div class="kpi-note">你不认为自己是在作类比<br>类比自动发生、直接指向结论</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">终生<span class="kpi-unit">不散</span></div>
+    <div class="kpi-label">朴素类比常驻脑中</div>
+    <div class="kpi-note">数学物理中的朴素类比<br>在非专业人士脑中常驻一生</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">默认<span class="kpi-unit">模式</span></div>
+    <div class="kpi-label">理解世界的方式</div>
+    <div class="kpi-note">朴素类比是人类认知的默认模式<br>虽常出错，却是不可或缺的</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">逸事之一</div>
+    <div class="section-title t-01">小蒂姆的剃须膏——溶化与刮除的错位类比</div>
+    <div class="section-desc">四岁的小蒂姆看爸爸刮胡子。他观察到爸爸把脸弄湿、抹上剃须膏、使用剃须刀，然后清洗。剃须刀看上去和剪子或小刀很不一样——他根本想不到人们能用它来刮东西。另一方面，小蒂姆非常清楚某些物质可以在另一些物质里溶解——糖在热水里溶化。所以，他完全相信是剃须膏把爸爸的胡子溶化了，剃须刀的唯一作用是把完成任务的剃须膏刮掉。这里发生了典型的朴素类比：剃须膏→溶化剂（源自糖在热水中溶化的经验），剃须刀→刮除工具。两个类比都没有被意识到——它们自发地、无意识地完成了对陌生情境的理解。</div>
+    <div class="flow-row">
+      <div class="flow-step">已知经验<br>糖在热水<br>中溶化</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">朴素类比<br>剃须膏<br>= 溶化剂</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">结论<br>剃须膏溶化<br>了胡子</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">逸事之二</div>
+    <div class="section-title t-02">珍妮特的titmice——老鼠在树上？</div>
+    <div class="section-desc">珍妮特从邻居那里收到一条信息："今天早晨真让我高兴，我看见一群小老鼠（titmice）在鹅掌楸树上饱餐昆虫。"珍妮特被这条信息搞得一头雾水。她满脑子是老鼠在树上跑来跑去的形象——她从未见过这种景象。当她读到最后就更摸不着头脑了：老鼠和小鸟在树枝上和平共处了？她突然意识到：titmice不是小老鼠，而是像山雀一样的小鸟。珍妮特的朴素类比将陌生的英语单词"titmice"映射到最熟悉的范畴"老鼠"——tit=体型小，mice=老鼠类。这个类比是如此自然而不被察觉，以至于她花了好几分钟才意识到自己上当了。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🐭</div>
+        <div class="dual-text">
+          <h4>朴素类比：老鼠</h4>
+          <p>titmice → 小型啮齿类动物<br>在树上跑的老鼠形象<br>自动映射、不加怀疑</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🐦</div>
+        <div class="dual-text">
+          <h4>真相：山雀</h4>
+          <p>titmice = 山雀科小鸟<br>在树上吃昆虫<br>恍然大悟后的概念重构</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">逸事之三</div>
+    <div class="section-title t-03">亚历山大教授的"电邮地址"——八旬老人的朴素类比</div>
+    <div class="section-desc">亚历山大教授正在和一位年轻同事道别。同事要去德国一个月。老教授说："到了以后，把你的电邮地址寄给我，好吗？"看到同事脸上疑惑的表情，教授一拍脑门："我这是说什么呢？你的电邮地址根本不变嘛。"这里，教授把"电邮地址"朴素地类比为"住址"——在他最熟悉的范畴系统里，"地址"意味着一个物理位置，而物理位置会随着人的移动而改变。这个朴素类比是如此根深蒂固，以至于没有经过任何有意识的思考就从嘴里冒了出来。八旬老人与四岁小孩——认知现象完全相同。</div>
+    <div class="chapter-card">
+      <h5 class="c03">年龄跨度的事实</h5>
+      <p>小蒂姆（4岁）与珍妮特（30岁左右）之间的年龄差距，和珍妮特与亚历山大教授（80岁左右）之间的年龄差距大体一样。但尽管他们之间存在巨大的年龄差异，小孩、年轻成年人和老者所体验的认知现象却是相同的——他们都受到类比的诱惑，上了当。朴素类比是贯穿人类一生的基本认知机制。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">深层机制</div>
+    <div class="section-title t-04">朴素类比的本质——自发、无意识、默认的认知模式</div>
+    <div class="section-desc">朴素类比的意思是：一个陌生的概念（剃须膏、titmice、电邮地址）通过貌似自然的类比与已有知识联系在了一起，使这个陌生概念变得可信——尽管它是不准确的。这种类比的过程是自发的、无意识的、自动的。你不会认为自己在作类比。这与人们对类比的普遍理解形成了鲜明对比：标准类比的过程是构建情境之间的映射，经由刻意思考完成。朴素类比直接指向结论，而不考虑其他选择，不产生任何不确定的结论或疑虑。在认知心理学文献中，这种现象有各种各样的术语：先入概念、自然推理、朴素推理、朴素理论、朴素观念、习惯模型、概念隐喻、误解、另类概念等——它们的共同核心就是朴素类比。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">自发自动</div>
+        <div class="data-sm">朴素类比不经有意识触发<br>大脑自动在庞大范畴系统<br>中完成映射</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">直接结论</div>
+        <div class="data-sm">不产生不确定性或疑虑<br>不经过比较和筛选<br>直接指向一个解释</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">假定典型</div>
+        <div class="data-sm">朴素类比假定在与<br>选定范畴的典型成员打交道<br>可能忽略非典型甚至非成员</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">与全书连接</div>
+    <div class="section-title t-05">朴素类比与第5-6章——自发与刻意的两极</div>
+    <div class="section-desc">第5章讨论了"范畴障眼法"——无意间让不恰当的范畴影响认知。第7章的朴素类比正是第5章所讨论现象的微观版：三件逸事中的主角都上了类比的当，在不经意间出了错。第6章展示了人们如何主动运用漫画类比来分享强烈感受。朴素类比位于第5章（被类比操纵）和第6章（主动操纵类比）之间：它既不是被\"操纵\"（没有人主动误导），也不是主动创造（没有经过刻意构思），而是人类认知的默认状态——大脑在缺乏专业知识的情况下，自动将新事物映射到最熟悉的范畴。朴素类比是认知的基础层，是所有更复杂的类比操作得以建立的地基。</div>
+    <div class="list-block">
+      <div class="list-item"><div class="list-num ln01">1</div><div>朴素类比是第5章"范畴障眼法"在微观认知层面的具体表现——被范畴自动归类，未经审查。</div></div>
+      <div class="list-item"><div class="list-num ln02">2</div><div>不同于第6章的漫画类比——后者经过精心挑选和刻意虚构，前者是自动发生的默认映射。</div></div>
+      <div class="list-item"><div class="list-num ln03">3</div><div>朴素类比的普遍性证明：类比是人类认知的默认模式，不是偶尔启用的高级功能。</div></div>
+      <div class="list-item"><div class="list-num ln04">4</div><div>第8章将展示——即便是顶尖科学家，也需要超越朴素类比，但不意味着朴素类比可以被消除。</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">朴素类比是人类认知的默认模式。跨越四岁到八十岁的巨大年龄差异，三个人的认知体验却如出一辙——他们都受了类比的诱惑，在无意识中出了错。朴素类比与标准类比形成鲜明对照：前者自发、无意识、自动进行，直接指向结论而不产生任何疑虑；后者则经过刻意思考和情境间的精细映射。朴素类比的普遍性揭示了一个深刻事实：人类在绝大多数时候并非在\"做\"类比——类比在\"做\"我们。这是理解全书中"范畴化即为作类比\"这一核心命题的关键：大脑最基础的认知操作就是朴素类比，而一切更复杂的思维形式都是从这块地基上建立起来的。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》第7章信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

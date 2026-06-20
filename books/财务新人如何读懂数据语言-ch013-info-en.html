@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read the Language of Data · Chapters 13~16「Accounting Profit / Financial Freedom / T-Accounts / Rule of 72」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 32px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.2px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.8;
+    font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-value { font-size: 34px; font-weight: bold; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; }
+  .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; }
+  .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.d1 { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.d2 { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 14px 12px; text-align: center; flex: 1; min-width: 70px;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow {
+    font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold;
+  }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .grid-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .grid-card { border-radius: 12px; padding: 16px; text-align: center; border: 1px solid; }
+  .grid-card.g1 { background: #fef2f2; border-color: #fecaca; }
+  .grid-card.g2 { background: #fff7ed; border-color: #fed7aa; }
+  .grid-card.g3 { background: #fefce8; border-color: #fde68a; }
+  .grid-card.g4 { background: #eef2ff; border-color: #c7d2fe; }
+  .grid-card.g5 { background: #fdf2f8; border-color: #f9a8d4; }
+  .grid-icon { font-size: 28px; margin-bottom: 6px; }
+  .grid-name { font-size: 15px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .grid-desc { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center; border: 1px solid;
+  }
+  .data-card.d1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.d2 { background: #fefce8; border-color: #fde68a; }
+  .data-card.d3 { background: #eef2ff; border-color: #c7d2fe; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .data-sm { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right { flex: 1; font-size: 13px; color: #713f12; line-height: 1.5; }
+
+  .formula-card {
+    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 12px;
+    padding: 18px 22px; margin-top: 10px; text-align: center;
+  }
+  .formula-text { font-size: 20px; color: #4338ca; line-height: 1.5; font-weight: bold; }
+  .formula-note { font-size: 12px; color: #6366f1; margin-top: 6px; line-height: 1.5; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: 0.02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity 0.15s;
+  }
+  .back-catalog-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .grid-3col { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; } .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; } h1 { font-size: 24px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) { .kpi-row.cols-4 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="caiwu-xinren-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="财务新人如何读懂数据语言-ch013~ch016-info-zh.html">中文 / EN</a>
+</div>
+
+<h1>How to Read the Language of Data · Ch13~16 「Accounting Profit · Financial Freedom · T-Accounts · Rule of 72」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">Accounting Profit · Economic Profit · Opportunity Cost · Financial Freedom · Compound Interest</span>
+  Someone buys a chicken for $8 and sells it for $9, then buys it back at $10 and sells for $11 — did they earn $2 or lose $4? These four chapters start from a Citibank interview question to reveal the leap from "recording the past" to "envisioning the future" in financial thinking, ultimately arriving at cognitive freedom beyond the numbers.
+</p>
+<div class="divider"></div>
+
+<div class="chapter-overview">
+  <p>Chapters 13–16 (Book Chapters 7–10) represent the closing sweep of the book — from methodology to practical tools, from mental models to cultivated intuition. Chapter 13 uses the Citibank chicken-buying interview question to expose the fundamental divide between accounting profit and economic profit. Chapter 14 draws on Sapiens' idea that "studying history is about gaining freedom" to reveal three liberations in financial cognition: the right need not be persisted with, the wrong need not be corrected, and numbers should not be worshipped. Chapter 15 demonstrates T-accounts through a father-son property-flipping case, showing how complex business transactions can be visualized. Chapter 16 presents the "Rule of 72" — taught by an NTU professor — as a supercharged mental-arithmetic shortcut for compound interest, useful for both sales forecasting and instant NPV sanity checks.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01"><div class="kpi-value">6<span class="kpi-unit"> USD</span></div><div class="kpi-label">Max Profit Opportunity</div><div class="kpi-note">11−8=3, twice is 6</div></div>
+  <div class="kpi-card c02"><div class="kpi-value">2<span class="kpi-unit"> USD</span></div><div class="kpi-label">Accounting Profit</div><div class="kpi-note">Profit actually earned</div></div>
+  <div class="kpi-card c03"><div class="kpi-value">3<span class="kpi-unit"> Freedoms</span></div><div class="kpi-label">Cognitive Liberation</div><div class="kpi-note">From numerical cages</div></div>
+  <div class="kpi-card c04"><div class="kpi-value">72<span class="kpi-unit"> Rule</span></div><div class="kpi-label">Doubling Constant</div><div class="kpi-note">72 ÷ rate = years to double</div></div>
+</div>
+
+<!-- Section 01: Accounting Profit vs Economic Profit -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Chapter 13</div>
+    <div class="section-title t-01">Two Worlds in One Interview Question: Accounting Profit vs Economic Profit</div>
+    <div class="section-desc">The Citibank interview question: buy a chicken for $8, sell at $9; buy back at $10, sell at $11. Profit or loss? Neil Shen (沈南鹏), later founder of Sequoia Capital China, answered "lost $4" — exactly what the investment-bank chiefs wanted to hear. <strong>Earning $2 is accounting profit — faithful to historical records. Losing $4 is economic profit — introducing opportunity cost for comparison.</strong> The single best trade was 11−8 = $3; doing it twice yields $6 maximum. Actually earning only $2 means missing out on $4 relative to the best possible outcome. Less earned equals loss. Both answers are correct — one reflects bookkeeping, the other economic choice.</div>
+    <div class="dual-grid">
+      <div class="dual-card d1">
+        <div class="dual-icon">📒</div>
+        <div class="dual-text">
+          <h4>Accounting Profit · $2</h4>
+          <p>8→9: +1 | 10→11: +1<br>Two rounds: 1+1 = $2<br>Absolute profit faithful to history</p>
+        </div>
+      </div>
+      <div class="dual-card d2">
+        <div class="dual-icon">🔭</div>
+        <div class="dual-text">
+          <h4>Economic Profit · −$4</h4>
+          <p>Max opportunity: 11−8=$3, ×2=$6<br>Actual $2 vs potential $6<br>Relative profit with opportunity cost</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 02: Three-Layer Application of Opportunity Cost -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Chapter 13 · Applications</div>
+    <div class="section-title t-02">Three Layers of Opportunity Cost: Evaluation, Review, and Budgeting</div>
+    <div class="section-desc">From the $8 chicken story to real-world management decisions, opportunity-cost thinking spans three levels. <strong>Performance Evaluation:</strong> Replace accounting profit with EVA (Economic Value Added) for top management — if earnings don't beat risk-free bank returns, management has underperformed. <strong>Project Review:</strong> Use NPV (Net Present Value) to weigh investments, embedding the cost of capital in discounting. <strong>Budget Allocation:</strong> $1M budget; Engineering proposes doubling output vs Manufacturing proposes halving labor — both NPV-positive, which wins? Automation replacing workers delivers accelerated compounding returns as labor costs rise annually. The only difference: <strong>accountants look backward, investors look forward.</strong></div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📊</div>
+        <div class="data-name">EVA</div>
+        <div class="data-sm">Economic Value Added<br>Profit − Cost of Capital<br>Top management KPI</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">💹</div>
+        <div class="data-name">NPV</div>
+        <div class="data-sm">Net Present Value<br>Embedded cost-of-capital<br>Project investment decisions</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚖️</div>
+        <div class="data-name">Budgeting</div>
+        <div class="data-sm">Whose NPV is larger?<br>Labor costs rising double-digits<br>Automation wins the race</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 03: Alternative Financial Freedom -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Chapter 14</div>
+    <div class="section-title t-03">Alternative Financial Freedom: Studying Finance Is About Gaining Freedom</div>
+    <div class="section-desc">Harari wrote in Sapiens that "studying history is about gaining freedom" — by the same logic, <strong>studying finance is about gaining freedom.</strong> The author unpacks this freedom across three dimensions:</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">The Right May Not Need Persisting</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">A bottleneck workstation produces 100K units/month. Product A: +20% margin, Product B: +15% — both profitable. Client offers Product C at +30% but consumes half the capacity. B is profitable yet should be dropped. GE CEO Jack Welch sold profitable divisions outside the top 3 — breaking the cage of "profitable so keep it"</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">The Wrong May Not Need Correcting</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">A departing employee's meal card has a few hundred yuan overpaid; a dozen executives spent half an hour discussing it — their collective salary already exceeds the issue itself. February depreciation treated the same as 31-day months — because designing a correction system costs more. When fixing costs > error costs, leave it alone</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">Do Not Worship Numbers</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">In a DCF valuation, changing the perpetual growth rate from 3% to 5% shifts the answer from one billion to ten billion. Which company grows at X% perpetually? That's not a finance question — it's a philosophical question only God can answer. Dinner with the founder trumps a spreadsheet</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 04: T-Accounts -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Chapter 15</div>
+    <div class="section-title t-04">T-Accounts: The Visualization Tool That Draws Out Complex Transactions</div>
+    <div class="section-desc">T-accounts are the visual version of double-entry bookkeeping — converting complex business transactions into professional financial language. <strong>Core steps:</strong> List all relevant accounts → record each transaction sequentially (subdivide into 1a, 1b) → ensure debits equal credits horizontally → after all transactions, the net change after offsetting reveals the income-statement impact. The book illustrates with a property-flipping case: Father Wang starts with $100K, buys 100㎡ at $5K/㎡ (borrowing $400K), flips it at $8K/㎡ to his son (who puts $160K down + $640K mortgage), son defaults and the bank repossesses — <strong>step-by-step T-accounts reveal every party's gain or loss at a glance.</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">📝 List<br>Accounts</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔢 Journal<br>1a,1b…</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚖️ Debit<br>= Credit</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📊 Net<br>Change</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅ P&L<br>Clear at a Glance</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 05: Rule of 72 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Chapter 16</div>
+    <div class="section-title t-05">The Rule of 72: A Supercharged Mental Arithmetic Shortcut for Compound Interest</div>
+    <div class="section-desc">A handy shortcut taught by an NTU Singapore professor: <strong>72 ÷ annual return rate = years to double your principal.</strong> 4% → 18 years; 9% → 8 years; S&P 500 averaging ~7% → roughly 10 years to double. <strong>Reverse application:</strong> Want to double in 3 years? Annual growth must exceed 24%. <strong>Instant sanity check:</strong> When doing NPV, if WACC = 18%, the present value of year-4 cash flow is roughly halved — any significant deviation signals a calculation error. Such mental arithmetic often leaves subordinates wide-eyed: "Boss is a genius!"</div>
+    <div class="formula-card">
+      <div class="formula-text">72 ÷ Annual Rate of Return = Years to Double</div>
+      <div class="formula-note">4%×18=72 · 7%×10≈72 · 9%×8=72 · 12%×6=72 · 18%×4=72</div>
+    </div>
+    <div class="grid-3col" style="margin-top: 14px;">
+      <div class="grid-card g2">
+        <div class="grid-icon">📈</div>
+        <div class="grid-name">Forward Forecast</div>
+        <div class="grid-desc">12% growth → 6 years<br>Sales volume doubles</div>
+      </div>
+      <div class="grid-card g4">
+        <div class="grid-icon">🎯</div>
+        <div class="grid-name">Reverse Derivation</div>
+        <div class="grid-desc">Want to double in 3 yrs →<br>annual growth ≥ 24%</div>
+      </div>
+      <div class="grid-card g1">
+        <div class="grid-icon">⚡</div>
+        <div class="grid-name">Instant Check</div>
+        <div class="grid-desc">WACC = 18% →<br>Year-4 PV ≈ halved</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The evolution of financial thinking: from accounting profit that records the past, to economic profit that introduces opportunity cost, to cognitive freedom that transcends the numbers themselves. Accounting profit is loyal to history but only explains what happened — true investors always look forward. The essence of finance is packaging future cash flows into present value. Yet one layer beyond forward thinking is even more important: "do not worship numbers." Every DCF valuation model rests on fragile assumptions. The real purpose of studying finance is gaining the freedom to choose — the right need not be persisted with, the wrong need not be corrected, and clear judgment must operate beyond the cage of digits. T-accounts are the mental scaffolding; the Rule of 72 is the mental weapon. Tools serve decisions; decisions serve freedom.</div>
+</div>
+
+<div class="footer">
+  Source: Qian Ziyan (钱自严), How to Read the Language of Data, Chapters 13–16 (Book Ch7–10) · Zhihu "One Hour" Series · For educational reference only
+</div>
+
+</div>
+</body>
+</html>

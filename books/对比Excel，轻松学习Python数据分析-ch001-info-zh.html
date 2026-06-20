@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第1章 数据分析基础</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:#c0b8a8;margin:24px auto 32px;border-radius:1px}
+.splash{background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%);border-radius:14px;padding:28px 32px;margin-bottom:36px;color:#fff}
+.splash .ov-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;opacity:.85;margin-bottom:10px}
+.splash .ov-question{font-size:18px;margin-bottom:12px;line-height:1.6}
+.splash .ov-answer{font-size:14px;line-height:1.8;opacity:.92}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch001-info-en.html">EN</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第1章「数据分析基础」</h1>
+    <div class="subtitle">入门篇 · 建立数据分析的整体认知框架</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="splash">
+    <div class="ov-label">📊 本章概览</div>
+    <div class="ov-question">数据分析到底是什么？它为什么重要？分析什么指标？流程如何？</div>
+    <div class="ov-answer">本章构建数据分析的完整认知框架，从定义出发，揭示其三大核心作用——现状分析、原因分析和预测分析。系统梳理六大分析指标维度（概览、对比、集中趋势、离散程度、相关性），并给出标准九步流程。最后对比Excel与Python两种工具的实现方式，为全书奠定方法论基础。</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">3</div><div class="kpi-label">核心作用</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">6</div><div class="kpi-label">分析指标维度</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">9</div><div class="kpi-label">标准流程步骤</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">主力工具</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">数据分析的定义与本质</div></div>
+    <div class="section-body">
+      <p><span class="hl">数据分析是利用合适工具，在统计学理论支撑下，对数据进行预处理，结合业务分析数据，</span>帮助业务部门监控、定位、分析、解决问题，从而高效决策、提高经营效率、发现业务机会点。</p>
+      <p>核心关键词：<span class="hl">工具 + 统计学 + 预处理 + 业务分析 → 高效决策 + 竞争优势</span>。数据分析的本质是将隐藏在大量数据背后的信息提炼出来，代替拍脑袋、靠经验的决策方式。</p>
+      <ul>
+        <li>啤酒与尿布：基于历史购买数据发现关联，实现搭配销售提高客单价</li>
+        <li>谷歌流感趋势：通过关键词检索量异常预测流感爆发（思路值得借鉴）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">三大分析作用</div></div>
+    <div class="section-body">
+      <p><span class="hl">数据分析在企业日常经营中有三大核心作用：</span></p>
+      <ul>
+        <li><span class="hl">现状分析</span> — 告诉你业务过去发生了什么。通过KPI（订单数、新增用户、活跃率、留存率等）的同比/环比变化，了解整体运营趋势和各项业务构成。载体：日报、周报、月报。</li>
+        <li><span class="hl">原因分析</span> — 告诉你某一现状为什么会存在。通过专题分析找原因：某商品销量为何突然大增？哪个区域表现突出？层层下钻找到问题根源。</li>
+        <li><span class="hl">预测分析</span> — 告诉你未来可能发生什么。基于历史规律预测趋势，为制订季度/年度经营目标提供决策依据。例如：台风来临前多备面包。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">六类分析指标</div></div>
+    <div class="section-body">
+      <p><span class="hl">数据分析的重点在"分析"，不在工具。六个维度构成完整的指标体系：</span></p>
+      <ul>
+        <li><span class="hl">总体概览指标</span> — 统计绝对数，反映整体规模。如：日销售额60万、订单量2万、购买人数1.5万</li>
+        <li><span class="hl">对比性指标</span> — 同比（同期对比）、环比（相邻对比）、差值。衡量变化方向和幅度</li>
+        <li><span class="hl">集中趋势指标</span> — 一般水平。数值平均（普通/加权）和位置平均（中位数/众数）</li>
+        <li><span class="hl">离散程度指标</span> — 数据波动。全距（极差）、四分位数、方差、标准差</li>
+        <li><span class="hl">相关性指标</span> — 变量间关系，用相关系数 r ∈ [-1,1] 衡量。|r| 越大越相关，正负号代表方向</li>
+        <li><span class="hl">⚠️ 相关关系 ≠ 因果关系</span> — 啤酒和尿布是相关，流感与关键词检索是因果，务必区分</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">九步常规流程</div></div>
+    <div class="section-body">
+      <p><span class="hl">数据分析遵循"熟悉工具→明确目的→获取数据→熟悉数据→处理数据→分析数据→得出结论→验证结论→展示结论"九步标准流程。</span></p>
+      <ul>
+        <li><span class="hl">① 熟悉工具</span> — 工欲善其事，必先利其器</li>
+        <li><span class="hl">② 明确目的</span> — 希望通过数据分析得出什么结论？</li>
+        <li><span class="hl">③ 获取数据</span> — 明确指标、时间段、数据来源、提取方式</li>
+        <li><span class="hl">④ 熟悉数据</span> — 数据量、数据类型、是否满足需求（与③双向循环）</li>
+        <li><span class="hl">⑤ 处理数据</span> — 处理异常/重复/缺失/测试数据</li>
+        <li><span class="hl">⑥ 分析数据</span> — 围绕指标，使用下钻法层层定位</li>
+        <li><span class="hl">⑦ 得出结论</span> — 从分析中提炼结论</li>
+        <li><span class="hl">⑧ 验证结论</span> — 与实际业务对照，用行动验证</li>
+        <li><span class="hl">⑨ 展示结论</span> — 数据可视化呈现，分享给相关人员</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">工具对比：Excel vs Python</div></div>
+    <div class="section-body">
+      <p><span class="hl">同一个操作可以用不同工具实现——Excel通过鼠标点选，Python通过代码。两者都是数据分析工具。</span></p>
+      <p>以"导入外部数据"为例：</p>
+      <ul>
+        <li><span class="hl">Excel</span> — 菜单栏：数据 → 根据文件格式选择对应选项 → 鼠标点选完成</li>
+        <li><span class="hl">Python</span> — 编写代码：根据文件格式选择 read_excel() / read_csv() / read_table() 等函数</li>
+      </ul>
+      <p>全书编排思路：<span class="hl">针对数据分析的每一个操作，分别用Excel和Python对比实现，</span>让读者在熟悉的Excel思维下平滑过渡到Python编程。</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心结论</div>
+    <p>数据分析不是工具之争，而是方法论的掌握。理解"3大作用 + 6类指标 + 9步流程"这个框架，就掌握了数据分析的通用语言。Excel和Python只是这套框架的两种实施工具——前者通过鼠标操作降低门槛，后者通过代码编程提升效率和可复现性。全书后续章节将围绕"熟悉工具→获取数据→处理数据→分析数据→展示结论"这条主线，逐一进行Excel与Python的对比实现。</p>
+  </div>
+
+  <div class="footer">
+    <span>《对比Excel，轻松学习Python数据分析》 · 张俊红 著</span>
+    <span>电子工业出版社 · 入职数据分析师系列</span>
+  </div>
+</div>
+</body>
+</html>

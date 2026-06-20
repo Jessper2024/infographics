@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第7章「切配菜品——数值操作」</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:24px auto 32px;border-radius:1px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch007-info-zh.html">中文</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第7章「切配菜品——数值操作」</h1>
+    <div class="subtitle">Data Processing · Replace, Sort, Count, Search, Transform</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="chapter-overview"><p>Using "cutting and preparing ingredients" as a metaphor, this chapter systematically covers core data processing operations: value replacement (1-to-1/many-to-1/many-to-many), sorting (single/multi-column, with missing values), ranking (average/first/min/max), deletion (column/row/conditional), counting (value_counts), unique values (unique), searching (isin), binning (cut/qcut), row/column insertion (insert), transpose (.T), index reshaping (stack/unstack), wide-to-long conversion (melt/pivot), and apply/applymap functions—13 operations covering most daily data processing needs.</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">13</div><div class="kpi-label">核心操作</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">3</div><div class="kpi-label">替换方式</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">4</div><div class="kpi-label">排名方法</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">切分方法</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">Value Replacement & Sorting</div></div>
+    <div class="section-body">
+<p>Value replacement is a common data cleaning tool, with <span class="hl">three replacement modes</span>:</p><ul><li><span class="hl">1-to-1 replacement:</span> replace(A, B) replaces A with B (Excel uses Ctrl+H)</li><li><span class="hl">Many-to-1 replacement:</span> replace([A,B], C) replaces multiple values with one (Excel needs OR+IF functions)</li><li><span class="hl">Many-to-many replacement:</span> replace({"A":"a","B":"b"}) dictionary-style batch replacement (Excel needs multiple IF nesting)</li></ul><p><span class="hl">Value sorting</span> uses sort_values(), supporting single/multi-column sorting, ascending/descending, and missing value position control (na_position). Excel uses the Sort & Filter menu.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">Value Ranking & Deletion</div></div>
+    <div class="section-body">
+<p><span class="hl">Ranking (rank())</span> adds a ranking column; the method parameter controls duplicate handling:</p><ul><li>average: average rank for duplicates (corresponds to Excel RANK.AVG)</li><li>first: rank by order of appearance</li><li>min: best rank for duplicates (corresponds to Excel RANK.EQ)</li><li>max: worst rank for duplicates</li></ul><p><span class="hl">Value deletion (drop())</span> supports deleting columns (axis=1), rows (axis=0), and conditional deletion (filter to keep non-matching rows as new data source).</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">Counting, Unique Values & Search</div></div>
+    <div class="section-body">
+<p>Three high-frequency query operations, each with clear tool mapping:</p><ul><li><span class="hl">Value counting:</span> Excel uses COUNTIF(); Python uses value_counts(); normalize=True for proportions</li><li><span class="hl">Unique value extraction:</span> Excel copies → remove duplicates; Python uses unique() method in one step</li><li><span class="hl">Value search:</span> Excel uses Find dialog (Ctrl+F); Python uses isin() method, supporting single and multiple value search</li></ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">Binning & Row/Column Operations</div></div>
+    <div class="section-body">
+<p><span class="hl">Binning</span> divides continuous values into groups — Excel requires multiple IF nesting; Python uses cut() (specify bins) and qcut() (specify number of groups, auto-equal-size).</p><p><span class="hl">Row/column insertion:</span> Excel right-click insert; Python uses insert() to specify position and column name.</p><p><span class="hl">Transpose:</span> Excel Paste Special → Transpose; Python uses .T method.</p><p><span class="hl">Index reshaping:</span> stack() converts tabular data to tree form (column index becomes row index), unstack() does the reverse — a Python-exclusive advanced feature.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">Wide-Long Conversion & Apply Functions</div></div>
+    <div class="section-body">
+<p><span class="hl">Wide-long conversion</span> is a core data restructuring operation:</p><ul><li><span class="hl">Wide → Long:</span> stack() (requires setting index first) or melt() (id_vars keeps unchanged columns, var_name/value_name set new column names)</li><li><span class="hl">Long → Wide:</span> pivot table pivot(), setting row index, column index, and value column</li></ul><p><span class="hl">apply() and applymap():</span> Execute the same function on DataFrame row/column elements, used with lambda anonymous functions. apply for columns/rows, applymap for each element — advanced Pandas batch data processing features.</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 Chapter Overview</div>
+    <p>Value operations are the "knife skills" of data analysis. From replacement and sorting to wide-to-long conversion, 13 operations cover the vast majority of daily data processing needs. The key distinctions: replace for cleaning, sort_values for ordering, rank for ranking, drop for deletion, melt/stack for reshaping. In Python, most operations require just one line of code—far more efficient than Excel's nested functions, which is Python data analysis's core advantage.</p>
+  </div>
+
+  <div class="footer">
+    <span>Source: Zhang Junhong, "Excel vs Python for Data Analysis"</span>
+    <span>Infographic generated by AI · For reference and learning purposes only</span>
+  </div>
+</div>
+</body>
+</html>

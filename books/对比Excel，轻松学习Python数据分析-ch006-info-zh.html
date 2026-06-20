@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第6章「菜品挑选——数据选择」</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:24px auto 32px;border-radius:1px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch006-info-en.html">EN</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第6章「菜品挑选——数据选择」</h1>
+    <div class="subtitle">数据筛选篇 · 精准定位目标数据</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="chapter-overview"><p>本章聚焦数据的精准选择与筛选，以"菜品挑选"为类比，系统讲解列选择、行选择、行列同时选择三大类别。通过Excel与Python的双工具对比，详细介绍普通索引（loc）、位置索引（iloc）、布尔索引、切片索引四种索引方式及其组合应用，涵盖单列/多列选择、单行/多行选择、条件筛选、行列交叉定位等全部数据选取场景，构建完整的数据选择方法论。</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">4</div><div class="kpi-label">索引方式</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">3</div><div class="kpi-label">选择类别</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">6</div><div class="kpi-label">组合选择</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">工具对比</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">列选择</div></div>
+    <div class="section-body">
+<p>数据选择的第一维度，分为<span class="hl">单列选择、多列选择、连续列选择</span>三种场景：</p>
+<ul>
+  <li><span class="hl">普通索引：</span>df['列名'] 选单列，df[['列1','列2']] 选多列</li>
+  <li><span class="hl">位置索引：</span>df.iloc[:, [0,2]] 按列位置选取（从0计数）</li>
+  <li><span class="hl">切片索引：</span>df.iloc[:, 0:3] 选连续列，左闭右开区间</li>
+</ul>
+<p>Excel中直接用鼠标选中或Ctrl多选即可。Python中<span class="hl">普通索引用列名，位置/切片索引用iloc</span>。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">行选择</div></div>
+    <div class="section-body">
+<p>选择指定行数据，同样支持<span class="hl">单行、多行、连续行和条件筛选</span>：</p>
+<ul>
+  <li><span class="hl">普通索引（loc）：</span>df.loc[['A1','A2']] 按行索引名选取</li>
+  <li><span class="hl">位置索引（iloc）：</span>df.iloc[[0,2]] 按行位置选取</li>
+  <li><span class="hl">连续行选择：</span>df.iloc[0:3] 切片方式取连续行</li>
+  <li><span class="hl">条件筛选（布尔索引）：</span>df[df['年龄']<200] 选出满足条件的行，支持多条件组合（&、|）</li>
+</ul>
+<p>Excel中行选择依赖筛选功能，条件筛选尤其常用。Python的<span class="hl">布尔索引</span>是最灵活的行选择方式。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">行列同时选择</div></div>
+    <div class="section-body">
+<p>同时选择行和列的<span class="hl">交叉区域</span>数据，有五种组合方式：</p>
+<ul>
+  <li><span class="hl">普通+普通（loc）：</span>df.loc[['行名'], ['列名']]</li>
+  <li><span class="hl">位置+位置（iloc）：</span>df.iloc[[行位], [列位]]</li>
+  <li><span class="hl">布尔+普通：</span>df[df['条件']][['列名']] 先用条件筛行再选列</li>
+  <li><span class="hl">切片+切片（iloc）：</span>df.iloc[0:2, 1:3] 行列均用区间</li>
+  <li><span class="hl">交叉索引（ix）：</span>行列混合使用普通索引和切片索引（已逐步弃用）</li>
+</ul>
+<p>核心原则：<span class="hl">看用什么索引方式决定用loc还是iloc</span>，名→loc，位→iloc。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">索引方式总结</div></div>
+    <div class="section-body">
+<p>Python数据选择的四种核心索引机制：</p>
+<ul>
+  <li><span class="hl">普通索引：</span>传入行列索引名称，使用loc方法——直观，适合已知名称的场景</li>
+  <li><span class="hl">位置索引：</span>传入行列位置序号（从0开始），使用iloc方法——适合批量处理</li>
+  <li><span class="hl">布尔索引：</span>传入逻辑判断条件，返回满足条件的行——最灵活，支持复杂筛选</li>
+  <li><span class="hl">切片索引：</span>传入位置区间（start:end），使用iloc方法——适合连续区域选取</li>
+</ul>
+<p>这四种索引方式构成Python数据选择的基础，<span class="hl">任意组合即可应对所有数据选取场景</span>。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">工具对比要点</div></div>
+    <div class="section-body">
+<p>Excel与Python在数据选择上的核心差异：</p>
+<ul>
+  <li>Excel依赖<span class="hl">鼠标操作+筛选功能</span>，适合临时性的数据探索</li>
+  <li>Python通过<span class="hl">代码化选择</span>，适合自动化、可复现的数据处理流程</li>
+  <li>Python的布尔索引能实现<span class="hl">多条件组合筛选</span>，远超Excel筛选的灵活度</li>
+  <li>行列同时选择在Python中有<span class="hl">五种组合方式</span>，而Excel只能通过鼠标拖曳</li>
+</ul>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 本章概览</div>
+    <p>数据选择是"精准定位"的关键技能。掌握loc（名）、iloc（位）、布尔索引（条件）、切片索引（区间）四种方式及其组合，就能在任何数据分析场景中快速提取目标数据。Excel的鼠标操作适合探索，Python的代码化选择适合自动化生产，二者互补构成完整的数据选择能力。</p>
+  </div>
+
+  <div class="footer">
+    <span>数据来源：张俊红《对比Excel，轻松学习Python数据分析》</span>
+    <span>信息图由 AI 生成 · 仅供参考学习</span>
+  </div>
+</div>
+</body>
+</html>

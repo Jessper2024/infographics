@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第3章 Pandas数据结构</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:#c0b8a8;margin:24px auto 32px;border-radius:1px}
+.splash{background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%);border-radius:14px;padding:28px 32px;margin-bottom:36px;color:#fff}
+.splash .ov-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;opacity:.85;margin-bottom:10px}
+.splash .ov-question{font-size:18px;margin-bottom:12px;line-height:1.6}
+.splash .ov-answer{font-size:14px;line-height:1.8;opacity:.92}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch003-info-en.html">EN</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第3章「Pandas数据结构」</h1>
+    <div class="subtitle">实践篇 · 从Excel单元格到Python数据结构的思维跃迁</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="splash">
+    <div class="ov-label">📦 本章概览</div>
+    <div class="ov-question">Python用什么结构来承载Excel表格数据？Series和DataFrame分别是什么？</div>
+    <div class="ov-answer">本章是实践篇的起点，正式进入数据分析过程。核心讲解Pandas的两大数据结构——Series（一维，带索引的数组）和DataFrame（二维，带行索引和列索引的表格型结构）。Series对应Excel的一列数据，DataFrame对应Excel的整张工作表。通过对比Excel的数据展示方式，建立从电子表格到Python数据结构的认知映射，为后续各章的数据操作打下基础。同时约定pd/np/plt三大模块别名。</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">2</div><div class="kpi-label">核心数据结构</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">4</div><div class="kpi-label">Series创建方式</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">5</div><div class="kpi-label">DataFrame创建方式</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">3</div><div class="kpi-label">模块别名</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">从Excel到Pandas的思维转换</div></div>
+    <div class="section-body">
+      <p><span class="hl">第3章标志着从\"学工具\"到\"用工具\"的转折点。</span>从此章起，每一章都围绕数据分析流程中某个具体操作，对比Excel和Python的实现方式。</p>
+      <ul>
+        <li><span class="hl">三大模块约定</span>：Pandas → pd，NumPy → np，matplotlib.pyplot → plt。全书统一使用别名，一个程序只需导入一次</li>
+        <li><span class="hl">Excel思维 → Pandas思维</span>：Excel的一列 ≈ Series；Excel的一张工作表 ≈ DataFrame。行索引 + 列索引确定唯一值，与Excel的行号列号概念完全对应</li>
+        <li><span class="hl">关键差异</span>：Excel行/列索引计入行列数（含表头），Python的shape方法不计索引</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">Series：一维带标签数组</div></div>
+    <div class="section-body">
+      <p><span class="hl\">Series由一组数据（值）和一组相关数据标签（索引）组成，类似于带行号的单列。</span></p>
+      <ul>
+        <li><span class="hl">创建Series — pd.Series()</span>：
+          <br>① 传入列表 → 默认索引从0开始
+          <br>② 传入列表 + index参数 → 自定义数据标签
+          <br>③ 传入字典 → key为数据标签，value为数据值</li>
+        <li><span class="hl">获取索引</span>：series.index 方法</li>
+        <li><span class="hl">获取值</span>：series.values 方法</li>
+        <li><span class="hl">Excel类比</span>：Series就相当于Excel中的某一列（不含列名），左侧的索引对应行号</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">DataFrame：二维表格型结构</div></div>
+    <div class="section-body">
+      <p><span class="hl">DataFrame由一组数据与一对索引（行索引和列索引）组成，是最核心的表格型数据结构。</span>之所以叫\"表格型\"，是因为它的数据形式与Excel的数据存储形式高度相似。</p>
+      <ul>
+        <li><span class="hl">创建DataFrame — pd.DataFrame()</span>：
+          <br>① 传入单一列表 → 单列数据，默认行列索引
+          <br>② 传入嵌套列表 → 多列数据（每层嵌套为一列）
+          <br>③ 传入嵌套列表 + columns参数 → 自定义列索引
+          <br>④ 传入嵌套列表 + index参数 → 自定义行索引
+          <br>⑤ 传入字典 → key为列索引，value为各列数据</li>
+        <li><span class="hl">Excel类比</span>：DataFrame ≈ 一张完整的Excel工作表，行索引=行号，列索引=列名（表头）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">DataFrame的行列索引与值获取</div></div>
+    <div class="section-body">
+      <p><span class="hl">掌握DataFrame的行列索引获取是后续数据选择操作的前提：</span></p>
+      <ul>
+        <li><span class="hl">获取列索引</span>：df.columns — 返回所有列名。类似查看Excel的表头行</li>
+        <li><span class="hl">获取行索引</span>：df.index — 返回所有行标签。类似查看Excel的行号列</li>
+        <li><span class="hl">获取值</span>：df.values — 以数组形式返回DataFrame中的纯数据（不含索引）。这是第6章\"数据选择\"的基础</li>
+      </ul>
+      <p>理解行索引和列索引是后续所有数据操作的基础——<span class="hl">无论是数据选择（第6章）、数值替换（第7章）、数据运算（第8章），还是多表拼接（第11章），本质上都是在行列索引的坐标系中定位和操作数据。</span></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">模块导入与全书编码约定</div></div>
+    <div class="section-body">
+      <p><span class="hl">三个核心模块的导入是全书所有Python代码的前置条件：</span></p>
+      <ul>
+        <li><span class="hl">import pandas as pd</span> — Pandas是全书最核心模块，几乎每章必用</li>
+        <li><span class="hl">import numpy as np</span> — NumPy是数值计算基础，Pandas基于NumPy构建</li>
+        <li><span class="hl">import matplotlib.pyplot as plt</span> — matplotlib用于数据可视化（第13章）</li>
+      </ul>
+      <p>代码示例中，<span class="hl">pd.Series()、pd.DataFrame()、pd.read_excel() 等写法中的\"pd\"就是Pandas的别名。</span>使用as起别名是为了书写方便——这也是Python社区的通用惯例。</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心结论</div>
+    <p>Series和DataFrame是Pandas的两块基石。如果你理解Excel的行列概念，就很容易理解Pandas数据结构——Series = 一列数据 + 行索引，DataFrame = 多列数据 + 行索引 + 列索引。本章虽然短，但它是后续所有操作（导入、清洗、选择、运算、分组、拼接、可视化）的\"语法基础\"。记住：pd/np/plt 三个别名一旦导入，全书代码都可复用——这就是Python模块化的力量。</p>
+  </div>
+
+  <div class="footer">
+    <span>《对比Excel，轻松学习Python数据分析》 · 张俊红 著</span>
+    <span>电子工业出版社 · 入职数据分析师系列</span>
+  </div>
+</div>
+</body>
+</html>

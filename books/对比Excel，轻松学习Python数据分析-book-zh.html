@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 全书</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:#c0b8a8;margin:24px auto 32px;border-radius:1px}
+.splash{background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%);border-radius:14px;padding:28px 32px;margin-bottom:36px;color:#fff}
+.splash .ov-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;opacity:.85;margin-bottom:10px}
+.splash .ov-question{font-size:18px;margin-bottom:12px;line-height:1.6}
+.splash .ov-answer{font-size:14px;line-height:1.8;opacity:.92}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
+.book-wrapper{max-width:1260px;width:100%;display:flex;gap:32px;padding:48px 20px 60px;align-items:flex-start;min-height:100vh}
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:48px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);max-height:calc(100vh - 96px);overflow-y:auto;z-index:10}
+.sidebar h3{font-size:16px;color:#1a1a1a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8e0d5;font-family:'FZXPYZS',serif;font-weight:normal}
+.sidebar-nav{display:flex;flex-direction:column;gap:2px}
+.sidebar-nav a{display:block;padding:5px 0;font-size:13px;color:#4f46e5;text-decoration:none;border-bottom:1px solid #f0ece6;transition:color .15s;line-height:1.6}
+.sidebar-nav a:hover{color:#dc2626}
+.main-content{flex:1;min-width:0;max-width:880px}
+.book-header{text-align:center;margin-bottom:32px}
+.book-header h1{font-size:28px;color:#1a1a1a;margin-bottom:8px;font-weight:normal}
+.chapter-title{font-size:22px;color:#1a1a1a;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5}
+.chapter-divider{margin:32px auto 48px;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px;user-select:none}
+.book-footer{text-align:center;padding-top:24px;border-top:1px solid #e8e0d5;color:#bbb;font-size:14px;line-height:1.8;margin-top:48px}
+.book-footer a{color:#888;text-decoration:none}
+.back-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;margin-bottom:12px}
+.catalog-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+@media(max-width:768px){.sidebar{display:none}.book-wrapper{display:block;padding:24px 12px 40px}}
+</style>
+</head>
+<body>
+<div class="book-wrapper">
+  <aside class="sidebar">
+    <h3>📖 目录</h3>
+    <nav class="sidebar-nav">
+      <a href="#ch001">第1章 · 数据分析基础</a>
+      <a href="#ch002">第2章 · 熟悉锅——Python基础知识</a>
+      <a href="#ch003">第3章 · Pandas数据结构</a>
+      <a href="#ch004">第4章 · 准备食材——获取数据源</a>
+      <a href="#ch005">第5章 · 淘米洗菜——数据预处理</a>
+      <a href="#ch006">第6章 · 菜品挑选——数据选择</a>
+      <a href="#ch007">第7章 · 切配菜品——数值操作</a>
+      <a href="#ch008">第8章 · 开始烹调——数据运算</a>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <a class="back-btn" href="../目录.html">← 总目录</a>
+      <a class="catalog-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-catalog.html">章节目录</a>
+    </div>
+    <div class="book-header"><h1>对比Excel，轻松学习Python数据分析</h1></div>
+    <div id="ch001" class="chapter-title">第1章 · 数据分析基础</div>
+    
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch002" class="chapter-title">第2章 · 熟悉锅——Python基础知识</div>
+    
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch003" class="chapter-title">第3章 · Pandas数据结构</div>
+    
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch004" class="chapter-title">第4章 · 准备食材——获取数据源</div>
+    
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch005" class="chapter-title">第5章 · 淘米洗菜——数据预处理</div>
+    <div class="chapter-overview"><p>本章系统讲解数据分析前的数据预处理全流程，涵盖缺失值、重复值、异常值三大问题。通过Excel与Python对比，演示缺失值的查看（info/isnull）、删除（dropna）与填充（fillna），重复值的去重（drop_duplicates），异常值的检测（箱形图/3σ）与处理。同时介绍数据类型转换（astype）和索引设置（set_index/reset_index）等规范操作，为后续分析奠定干净的数据基础。</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">3</div><div class="kpi-label">核心问题类型</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">5</div><div class="kpi-label">索引操作</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">3</div><div class="kpi-label">缺失处理方式</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">工具对比</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">缺失值处理</div></div>
+    <div class="section-body">
+<p><span class="hl">缺失值是数据分析中最常见的问题之一。</span>主要有三种处理策略：</p>
+<ul>
+  <li><span class="hl">缺失值查看：</span>Excel用计数对比 + 定位条件（Ctrl+G）；Python用 info() 和 isnull() 方法快速定位</li>
+  <li><span class="hl">缺失值删除：</span>Excel用定位条件 → 删除整行；Python用 dropna()（默认删除含NaN行），how='all' 仅删全空行</li>
+  <li><span class="hl">缺失值填充：</span>Excel用定位条件 + Ctrl+Enter 批量填充；Python用 fillna() 支持全局填充、按列填充、向前/向后填充</li>
+</ul>
+<p>原则：<span class="hl">缺失比例不超过30%时尽量填充而非删除</span>，数据是宝贵的。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">重复值处理</div></div>
+    <div class="section-body">
+<p>重复数据指多条记录完全相同，通常做<span class="hl">删除处理</span>。</p>
+<ul>
+  <li><span class="hl">Excel：</span>数据 → 数据工具 → 删除重复值，可全字段判断或指定字段去重，默认保留第一条</li>
+  <li><span class="hl">Python：</span>drop_duplicates() 方法，支持按指定列去重（subset参数），keep='first'/'last'/False 控制保留策略</li>
+</ul>
+<p>典型场景：按唯一识别码去重统计客户数量，<span class="hl">去重前需先对时间升序排列</span>确保保留较早记录。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">异常值检测与处理</div></div>
+    <div class="section-body">
+<p>异常值是相比正常数据<span class="hl">过高或过低</span>的数据。三种检测方法：</p>
+<ul>
+  <li><span class="hl">业务经验法：</span>根据业务规则划定正常范围</li>
+  <li><span class="hl">箱形图法：</span>大于上边缘或小于下边缘的点为异常值</li>
+  <li><span class="hl">3σ原则：</span>数据服从正态分布时，与均值偏差超过3倍标准差即为异常</li>
+</ul>
+<p>处理方式：最常用<span class="hl">删除</span>，也可当作缺失值填充，或单独研究异常原因。Python用过滤法删除异常值（df[df['年龄']<200]），用 replace() 填充替换。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">数据类型转换</div></div>
+    <div class="section-body">
+<p>不同数据类型可做的事不同，<span class="hl">必须转换为目标类型</span>后再分析。</p>
+<ul>
+  <li><span class="hl">Excel：</span>选中列 → 数字菜单栏下拉选择目标类型即可转换</li>
+  <li><span class="hl">Python：</span>astype() 方法转换，如 df['年龄'].astype('float')；Pandas主要有6种数据类型（int/float/object/string/bool/datetime）</li>
+</ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">索引设置</div></div>
+    <div class="section-body">
+<p>索引是查找数据的依据，就像<span class="hl">冰箱分区存放食材</span>一样便于快速定位。</p>
+<ul>
+  <li><span class="hl">添加索引：</span>Excel插入行/列；Python通过 columns 和 index 参数设置</li>
+  <li><span class="hl">重新设置索引：</span>Excel拖拽列到首位；Python用 set_index()，支持层次化索引（多列组合）</li>
+  <li><span class="hl">重命名索引：</span>Excel直接改字段名；Python用 rename()</li>
+  <li><span class="hl">重置索引：</span>Python用 reset_index() 将层次化索引转回普通列，常用于分组和透视表</li>
+</ul>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 本章概览</div>
+    <p>数据预处理是分析工作的基石。脏数据会导致"垃圾进，垃圾出"。掌握缺失值填充/删除、重复值去重、异常值检测这三大核心操作，以及数据类型转换和索引设置两项规范操作，就能让数据从"菜市场原料"变成"厨房净菜"，为后续分析做好准备。</p>
+  </div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch006" class="chapter-title">第6章 · 菜品挑选——数据选择</div>
+    <div class="chapter-overview"><p>本章聚焦数据的精准选择与筛选，以"菜品挑选"为类比，系统讲解列选择、行选择、行列同时选择三大类别。通过Excel与Python的双工具对比，详细介绍普通索引（loc）、位置索引（iloc）、布尔索引、切片索引四种索引方式及其组合应用，涵盖单列/多列选择、单行/多行选择、条件筛选、行列交叉定位等全部数据选取场景，构建完整的数据选择方法论。</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">4</div><div class="kpi-label">索引方式</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">3</div><div class="kpi-label">选择类别</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">6</div><div class="kpi-label">组合选择</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">工具对比</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">列选择</div></div>
+    <div class="section-body">
+<p>数据选择的第一维度，分为<span class="hl">单列选择、多列选择、连续列选择</span>三种场景：</p>
+<ul>
+  <li><span class="hl">普通索引：</span>df['列名'] 选单列，df[['列1','列2']] 选多列</li>
+  <li><span class="hl">位置索引：</span>df.iloc[:, [0,2]] 按列位置选取（从0计数）</li>
+  <li><span class="hl">切片索引：</span>df.iloc[:, 0:3] 选连续列，左闭右开区间</li>
+</ul>
+<p>Excel中直接用鼠标选中或Ctrl多选即可。Python中<span class="hl">普通索引用列名，位置/切片索引用iloc</span>。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">行选择</div></div>
+    <div class="section-body">
+<p>选择指定行数据，同样支持<span class="hl">单行、多行、连续行和条件筛选</span>：</p>
+<ul>
+  <li><span class="hl">普通索引（loc）：</span>df.loc[['A1','A2']] 按行索引名选取</li>
+  <li><span class="hl">位置索引（iloc）：</span>df.iloc[[0,2]] 按行位置选取</li>
+  <li><span class="hl">连续行选择：</span>df.iloc[0:3] 切片方式取连续行</li>
+  <li><span class="hl">条件筛选（布尔索引）：</span>df[df['年龄']<200] 选出满足条件的行，支持多条件组合（&、|）</li>
+</ul>
+<p>Excel中行选择依赖筛选功能，条件筛选尤其常用。Python的<span class="hl">布尔索引</span>是最灵活的行选择方式。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">行列同时选择</div></div>
+    <div class="section-body">
+<p>同时选择行和列的<span class="hl">交叉区域</span>数据，有五种组合方式：</p>
+<ul>
+  <li><span class="hl">普通+普通（loc）：</span>df.loc[['行名'], ['列名']]</li>
+  <li><span class="hl">位置+位置（iloc）：</span>df.iloc[[行位], [列位]]</li>
+  <li><span class="hl">布尔+普通：</span>df[df['条件']][['列名']] 先用条件筛行再选列</li>
+  <li><span class="hl">切片+切片（iloc）：</span>df.iloc[0:2, 1:3] 行列均用区间</li>
+  <li><span class="hl">交叉索引（ix）：</span>行列混合使用普通索引和切片索引（已逐步弃用）</li>
+</ul>
+<p>核心原则：<span class="hl">看用什么索引方式决定用loc还是iloc</span>，名→loc，位→iloc。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">索引方式总结</div></div>
+    <div class="section-body">
+<p>Python数据选择的四种核心索引机制：</p>
+<ul>
+  <li><span class="hl">普通索引：</span>传入行列索引名称，使用loc方法——直观，适合已知名称的场景</li>
+  <li><span class="hl">位置索引：</span>传入行列位置序号（从0开始），使用iloc方法——适合批量处理</li>
+  <li><span class="hl">布尔索引：</span>传入逻辑判断条件，返回满足条件的行——最灵活，支持复杂筛选</li>
+  <li><span class="hl">切片索引：</span>传入位置区间（start:end），使用iloc方法——适合连续区域选取</li>
+</ul>
+<p>这四种索引方式构成Python数据选择的基础，<span class="hl">任意组合即可应对所有数据选取场景</span>。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">工具对比要点</div></div>
+    <div class="section-body">
+<p>Excel与Python在数据选择上的核心差异：</p>
+<ul>
+  <li>Excel依赖<span class="hl">鼠标操作+筛选功能</span>，适合临时性的数据探索</li>
+  <li>Python通过<span class="hl">代码化选择</span>，适合自动化、可复现的数据处理流程</li>
+  <li>Python的布尔索引能实现<span class="hl">多条件组合筛选</span>，远超Excel筛选的灵活度</li>
+  <li>行列同时选择在Python中有<span class="hl">五种组合方式</span>，而Excel只能通过鼠标拖曳</li>
+</ul>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 本章概览</div>
+    <p>数据选择是"精准定位"的关键技能。掌握loc（名）、iloc（位）、布尔索引（条件）、切片索引（区间）四种方式及其组合，就能在任何数据分析场景中快速提取目标数据。Excel的鼠标操作适合探索，Python的代码化选择适合自动化生产，二者互补构成完整的数据选择能力。</p>
+  </div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch007" class="chapter-title">第7章 · 切配菜品——数值操作</div>
+    <div class="chapter-overview"><p>本章以"切配菜品"为隐喻，系统讲解数据处理的核心操作集合。涵盖数值替换（一对一/多对一/多对多）、数值排序（单列/多列/含缺失值）、数值排名（average/first/min/max）、数值删除（列/行/条件删除）、数值计数（value_counts）、唯一值获取（unique）、数值查找（isin）、区间切分（cut/qcut）、行列插入（insert）、行列互换（.T）、索引重塑（stack/unstack）、长宽表转换（melt/pivot）以及apply/applymap函数等13种操作，全面覆盖日常数据加工需求。</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">13</div><div class="kpi-label">核心操作</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">3</div><div class="kpi-label">替换方式</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">4</div><div class="kpi-label">排名方法</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">切分方法</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">数值替换与排序</div></div>
+    <div class="section-body">
+<p>数值替换是数据清洗的常用手段，<span class="hl">三种替换模式</span>：</p>
+<ul>
+  <li><span class="hl">一对一替换：</span>replace(A, B) 将A替换成B（Excel用Ctrl+H）</li>
+  <li><span class="hl">多对一替换：</span>replace([A,B], C) 将多个值替换为同一值（Excel需OR+IF函数）</li>
+  <li><span class="hl">多对多替换：</span>replace({"A":"a","B":"b"}) 字典形式批量替换（Excel需多层IF嵌套）</li>
+</ul>
+<p><span class="hl">数值排序</span>用sort_values()，支持单列/多列排序、升序/降序、缺失值位置设置（na_position），Excel则用排序和筛选菜单。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">数值排名与删除</div></div>
+    <div class="section-body">
+<p><span class="hl">排名（rank()）</span>新增排名列，method参数控制重复值处理：</p>
+<ul>
+  <li>average：重复值取平均排名（对应Excel RANK.AVG）</li>
+  <li>first：按出现顺序排名</li>
+  <li>min：重复值取最佳排名（对应Excel RANK.EQ）</li>
+  <li>max：重复值取最差排名</li>
+</ul>
+<p><span class="hl">数值删除（drop()）</span>支持删除列（axis=1）、删除行（axis=0）、条件删除（筛选保留不满足条件的行作为新数据源）。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">计数、唯一值与查找</div></div>
+    <div class="section-body">
+<p>三个高频查询操作，各有明确的工具对应：</p>
+<ul>
+  <li><span class="hl">数值计数：</span>Excel用COUNTIF()；Python用value_counts()，normalize=True查看占比</li>
+  <li><span class="hl">唯一值获取：</span>Excel复制→删除重复项；Python用unique()方法一键获取</li>
+  <li><span class="hl">数值查找：</span>Excel用查找对话框（Ctrl+F）；Python用isin()方法，支持单值和多值同时查找</li>
+</ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">区间切分与行列操作</div></div>
+    <div class="section-body">
+<p><span class="hl">区间切分</span>将连续值分为若干组——Excel需多层IF嵌套，Python用cut()（指定区间）和qcut()（指定份数，自动等分）。</p>
+<p><span class="hl">行列插入：</span>Excel右键插入；Python用insert()指定位置和列名。</p>
+<p><span class="hl">行列互换（转置）：</span>Excel选择性粘贴→转置；Python用.T方法。</p>
+<p><span class="hl">索引重塑：</span>stack()将表格型数据转为树形（列索引变行索引），unstack()反向操作。这是Python独有的高级特性。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">长宽表转换与应用函数</div></div>
+    <div class="section-body">
+<p><span class="hl">长宽表转换</span>是数据重构的核心操作：</p>
+<ul>
+  <li><span class="hl">宽→长：</span>stack()（需先设置索引）或 melt()（id_vars保持不变的列，var_name/value_name设置新列名）</li>
+  <li><span class="hl">长→宽：</span>数据透视表 pivot()，设置行索引、列索引和值列</li>
+</ul>
+<p><span class="hl">apply()与applymap()：</span>对DataFrame行列元素执行相同函数操作，配合lambda匿名函数使用。apply用于column/row，applymap用于每个元素，是Pandas批量数据处理的高级功能。</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 本章概览</div>
+    <p>数值操作是数据分析的"刀工"环节。从替换、排序到长宽表转换，13种操作覆盖了日常数据加工的绝大多数需求。关键要区分：replace处理清洗、sort_values处理排序、rank处理排名、drop处理删除、melt/stack处理重塑。Python中大部分操作都只需一行代码，远比Excel的函数嵌套高效，这正是Python数据分析的核心优势所在。</p>
+  </div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch008" class="chapter-title">第8章 · 开始烹调——数据运算</div>
+    <div class="chapter-overview"><p>本章进入数据分析的核心环节——数据运算，对应第1章所列各类分析指标的具体计算方法。系统讲解四大运算类别：算术运算（加减乘除）、比较运算（大于/等于/小于）、汇总运算（count/sum/mean/max/min/median/mode/var/std/quantile共10个统计函数）、相关性运算（corr相关系数）。每个运算均通过Excel与Python双工具对比演示，构建从基础运算到高级统计的完整计算能力。</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">4</div><div class="kpi-label">运算类别</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">10</div><div class="kpi-label">汇总函数</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">3</div><div class="kpi-label">离散度指标</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">1</div><div class="kpi-label">相关性指标</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">算术运算与比较运算</div></div>
+    <div class="section-body">
+<p><span class="hl">算术运算</span>是数据分析最基础的运算，Python中数值类型列可直接运算：</p>
+<ul>
+  <li>列与列：df['A'] + df['B']（加减乘除均支持，对应元素运算）</li>
+  <li>列与常数：df['A'] + 10（整列统一加减乘除）</li>
+</ul>
+<p><span class="hl">比较运算</span>返回布尔值用于数据筛选：</p>
+<ul>
+  <li>大于、等于、小于等标准比较运算符（>、>=、==、!=、<、<=）</li>
+  <li>结果用作布尔索引条件，是数据筛选的核心机制</li>
+</ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">集中趋势指标</div></div>
+    <div class="section-body">
+<p>汇总运算中反映数据<span class="hl">中心位置</span>的四个核心指标：</p>
+<ul>
+  <li><span class="hl">均值（mean）：</span>算术平均值，反映一般水平，<span class="hl">受极值影响大</span></li>
+  <li><span class="hl">中位数（median）：</span>排序后中间位置的值，<span class="hl">不受极值影响</span>，在反映数据分布上比均值更有代表性</li>
+  <li><span class="hl">众数（mode）：</span>出现次数最多的值，反映最常见的水平</li>
+  <li><span class="hl">分位数（quantile）：</span>比中位数更精细的位置指标，包括四分之一、四分之二（即中位数）、四分之三分位数</li>
+</ul>
+<p>Python中直接调用对应函数，参数axis=0（默认）按列计算，axis=1按行计算。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">离散程度指标</div></div>
+    <div class="section-body">
+<p>衡量数据<span class="hl">波动幅度</span>的指标，与集中趋势指标互补使用：</p>
+<ul>
+  <li><span class="hl">方差（var）：</span>衡量数据离散程度的基础指标，值越大波动越大</li>
+  <li><span class="hl">标准差（std）：</span>方差的平方根，与原始数据同单位，更直观</li>
+  <li><span class="hl">极差：</span>max() - min()，即最大值与最小值之差</li>
+</ul>
+<p>方差和标准差常与均值配合使用：<span class="hl">均值反映水平，标准差反映稳定性</span>。例如两组数据均值相同但标准差不同，说明稳定性差异很大。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">计数与求和运算</div></div>
+    <div class="section-body">
+<p>最基本的汇总运算，也是使用频率最高的两个函数：</p>
+<ul>
+  <li><span class="hl">非空计数（count）：</span>计算非空值个数，Excel用counta()（非空）和count()（数字）区分，Python用count()统一处理</li>
+  <li><span class="hl">求和（sum）：</span>计算区域数值总和，Python的sum()默认按列求和，axis=1按行求和</li>
+  <li><span class="hl">最大值/最小值（max/min）：</span>返回区域中的极值，常用于异常值初步探查</li>
+</ul>
+<p>count()是数据质量检查的第一步，<span class="hl">非空个数与总行数的差值即为缺失数量</span>。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">相关性运算</div></div>
+    <div class="section-body">
+<p><span class="hl">相关性</span>衡量两个变量之间的关联程度，是后续深入分析的基础：</p>
+<ul>
+  <li><span class="hl">皮尔逊相关系数：</span>最常用，取值范围[-1,1]，正值正相关，负值负相关，0无线性关系</li>
+  <li><span class="hl">Excel：</span>CORREL()函数，指定两个区域即可</li>
+  <li><span class="hl">Python：</span>corr()方法，对两列调用返回单一值；对整个DataFrame调用返回各字段两两之间的相关系数矩阵</li>
+</ul>
+<p>相关系数矩阵是<span class="hl">多变量分析的重要基础</span>，能快速发现变量间的隐藏关系，是"啤酒与尿布"这类关联分析的数学支撑。</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 本章概览</div>
+    <p>数据运算是将原始数据转化为分析结论的关键一步。从简单的算术运算到复杂的相关性分析，10种汇总函数构成了数据分析师的"计算工具箱"。记住：均值看水平、标准差看稳定、中位数抗极值、相关性看关联。Python中一行代码即可完成Excel中需要多步操作的统计计算，这正是Python数据分析效率革命的核心体现。</p>
+  </div>
+
+    <footer class="book-footer">
+      <p>全书共 8 章 · <a href="../目录.html">返回总目录</a> · <a href="对比Excel，轻松学习Python数据分析-catalog.html">章节目录</a></p>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

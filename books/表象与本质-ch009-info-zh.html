@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 第5章「类比如何操纵我们」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .chapter-card { margin-top: 10px; border-radius: 10px; padding: 14px 16px; background: #fafaf7; border: 1px solid #e8e0d5; }
+  .chapter-card h5 { font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 14px; margin-bottom: 6px; font-weight: bold; }
+  .chapter-card h5.c01 { color: #dc2626; } .chapter-card h5.c02 { color: #ea580c; }
+  .chapter-card h5.c03 { color: #ca8a04; } .chapter-card h5.c04 { color: #4f46e5; } .chapter-card h5.c05 { color: #db2777; }
+  .chapter-card p { font-size: 12px; color: #777; line-height: 1.7; margin: 0; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="表象与本质-ch009-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 第5章「类比如何操纵我们」</h1>
+<p class="subtitle">范畴即感官——类比在认知中无处不在的操纵力。从不起眼的口误到改变历史的重大决策，类比不是被动浮现的标签，而是主动主导一切的认知力量。本章也是全书核心论点的缩影。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章论证类比在两个方面"操纵"着我们：一方面，类比常常不被察觉地入侵脑海、占领核心——它们偷偷摸摸却又无处不在；另一方面，类比胁迫思维随波逐流，左右着我们对情境的理解和结论的得出。范畴即是感官，它们延伸了生理感官，让我们得以用抽象方式接触外部世界。本章涵盖所有类型的类比——从无意识的插科打诨到改变历史进程的重大决策——是全书论点的集大成缩影。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">双重<span class="kpi-unit">操纵</span></div>
+    <div class="kpi-label">类比的两面</div>
+    <div class="kpi-note">暗中入侵 + 胁迫思维，类比不只是浮现，它要主导一切</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">感官<span class="kpi-unit">延伸</span></div>
+    <div class="kpi-label">范畴即感官</div>
+    <div class="kpi-note">范畴延伸生理感官，让我们用抽象方式接触世界</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">口误<span class="kpi-unit">密码</span></div>
+    <div class="kpi-label">最不起眼的窗口</div>
+    <div class="kpi-note">口误揭示了分类压力下类比的无意识运作</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">着迷<span class="kpi-unit">漩涡</span></div>
+    <div class="kpi-label">阿喀琉斯之踵</div>
+    <div class="kpi-note">着迷时类比不请自来，既可能荒谬也可能催生伟大灵感</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">双重操纵</div>
+    <div class="section-title t-01">类比从两个方面"操纵"着我们</div>
+    <div class="section-desc">类比是否可能拥有操纵我们的能力，把我们玩弄于股掌之间？当然如此。一方面，我们经常察觉不到类比的存在——这帮家伙偷偷摸摸地入侵我们的脑海，并占领核心。另一方面，类比胁迫我们，迫使思维随波逐流。类比影响着我们对情境的理解，并左右着我们所作的结论。类比不只是现身而已，它要主导一切。"操纵"一词有贬义，但类比的操纵并不总是有害的。被类比或哄着、或催着、甚至是逼着，当然有糟糕的结果。但大多时候类比带来的都是积极正面的影响。事实上，对情境的理解和该情境激发的类比（或是范畴）密不可分。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">👻</div>
+        <div class="dual-text">
+          <h4>暗中入侵</h4>
+          <p>类比偷偷摸摸地侵入脑海，不被察觉。它们像不速之客一样占据认知核心，我们甚至意识不到它们的存在。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>胁迫思维</h4>
+          <p>类比迫使思维随波逐流，影响我们的感知、推理和决定。一个简单的类比就能左右我们对情境的看法。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">口误密码</div>
+    <div class="section-title t-02">口误——分类压力下类比的无意识运作</div>
+    <div class="section-desc">在类比操纵我们的众多方式当中，最不起眼的也许就是人类的口误所揭示的那种。口误是人们在脑子糊涂时吐出来的胡言乱语，但其根源是不断分类而产生的压力。这一现象不仅局限于语言，行为也常常背离心之所向。当两个概念共享同一个词汇或行为标签时，分类的压力产生混淆——一个人本想做一件事，却做了另一件表面相似的事。口误是窥视大脑内部类比机制的一扇最小却最清晰的窗口。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">口误</div>
+        <div class="data-sm">分类压力下的语言混淆<br>两个概念共享词汇标签<br>大脑在压力下选错范畴</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">行为失误</div>
+        <div class="data-sm">分类压力不仅限于语言<br>行为也常背离心之所向<br>如把盐当作糖加入咖啡</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">窥视窗口</div>
+        <div class="data-sm">口误是最小却最清晰的<br>窥视大脑类比机制的窗口<br>揭示无意识分类的本质</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">漫无目的</div>
+    <div class="section-title t-03">漫无目的的类比——类比无处不在，永无止境</div>
+    <div class="section-desc">离开口误的世界之后，我们考察那些身不由己被创造出来且无明确目的的类比。这些类比常常没头没尾，而且很快就被忘得一干二净。尽管这些类比本身无足轻重，但对我们而言却极为重要——因为这说明类比无处不在，即便在毫无目的的时候，它也没有止境。类比是大脑的默认模式：在没有任务要完成、没有决策要做出的时候，类比仍在自发地运作。</div>
+    <div class="chapter-card">
+      <h5 class="c03">核心洞察</h5>
+      <p>类比是大脑的默认运作模式。人脑每时每刻都在无意识地将当下情境与过往经验进行类比匹配，无论多么微小、多么无目的。漫无目的的类比（如闲聊中的即兴比喻、思维的自由联想）证明了类比不是一项偶尔调用的技能，而是认知的持续背景活动——就像心跳之于生命。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">着迷漩涡</div>
+    <div class="section-title t-04">着迷——类比的阿喀琉斯之踵与灵感的源泉</div>
+    <div class="section-desc">当一个人深深沉浸在某个活动中，或被某个极不寻常的事迷住时，这强烈的兴趣会使大量的类比不请自来，涌入脑中。而且，是那些绝不会在其他地方产生的类比。这一现象就像是类比的阿喀琉斯之踵：着迷时到处都会看到有关迷恋事物的类比，发生在生活的每一个角落，日夜不停。每一件很微小的事都可能对应上迷恋事物的一部分。这种不可抗拒的冲动大多时候产生无深度的联系，但时不时地，由类比引来的联系就会成为人类思维奇迹的神来之笔。这正是伟大灵感的源泉——专注与类比互相催化。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>阿喀琉斯之踵</h4>
+          <p>着迷使人看到大量不请自来的类比，可能对情境产生荒谬的理解，并最终作出十分糟糕的决定。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">💡</div>
+        <div class="dual-text">
+          <h4>灵感催化剂</h4>
+          <p>着迷时容易作出不同寻常的类比，这正是伟大灵感的源泉。专注与类比互相催化，创造奇迹。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">跨越时间</div>
+    <div class="section-title t-05">跨越时间的类比——历史进程的隐形推手</div>
+    <div class="section-desc">有一群类比不仅是在背地里帮忙作决定，它们甚至还跨越了时间。在类比操纵我们的众多方式之中，这也许是最吸引人的一种。当人们面对新情境时，脑海中激活的旧范畴不仅帮助理解当下，也决定了接下来的行动方向。一个不恰当的范畴引发的类比作用于某个情境时，可能在无意间让自己陷入深深的困惑。历史的重大转折——从战争决策到经济危机——背后往往是那些跨越时间、横亘在决策者脑中的类比在起决定性作用。本章的讨论凝聚了全书的所有线索：从最不起眼的口误到足以改变历史进程的重大决策。</div>
+    <div class="flow-row">
+      <div class="flow-step">过去<br>经验</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">当下<br>范畴激活</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">类比<br>匹配</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">决策<br>行动</div>
+    </div>
+    <div class="chapter-card" style="margin-top:14px;">
+      <h5 class="c05">全书缩影</h5>
+      <p>本章涵盖所有类型的类比：从无意识的插科打诨到改变历史进程的重大决策。在这两极之间，是那些在日常生活中被唤醒的范畴，能帮助应对生活中各种普通的事情。这正是全书核心论点的集大成展示——类比是人类认知中无处不在且不可抗拒的力量。</p>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">类比不只是被动浮现的认知标签——它主动操纵着我们的思维。范畴即是感官：它们延伸了生理感官，让我们得以用抽象方式接触外部世界。从口误中的无意识分类到着迷状态下的灵感迸发，从漫无目的的即兴比喻到跨越时间的重大决策——类比在每一个认知层次上主导着一切。本章是全书论点的集大成缩影，它表明：类比不是偶尔使用的思维技巧，而是人类认知的持续性基础架构。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》第5章信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

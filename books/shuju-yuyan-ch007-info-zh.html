@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财务新人如何读懂数据语言 · 第7章「究竟赚了几美元」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.active { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.passive { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.accounting { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.economic { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.warning { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.insight { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    background: #f8f6f3; border: 1px solid #e8e0d5;
+  }
+  .data-big { font-size: 28px; margin-bottom: 6px; color: #1a1a1a; }
+  .data-name { font-size: 15px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+
+  .dialogue-box {
+    background: #faf9f7; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 20px; margin-top: 10px;
+  }
+  .dialogue-line {
+    font-size: 13px; color: #555; line-height: 2.0; margin-bottom: 6px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .dialogue-line .speaker { font-weight: bold; color: #1a1a1a; margin-right: 6px; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .math-box {
+    background: #faf9f7; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 18px 20px; margin-top: 10px; text-align: center;
+  }
+  .math-line { font-size: 15px; color: #1a1a1a; line-height: 2.0; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .math-result { font-size: 18px; font-weight: bold; color: #dc2626; margin-top: 6px; }
+
+  .quote-box {
+    background: #faf9f7; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 20px 24px; margin-top: 10px;
+  }
+  .quote-text {
+    font-size: 15px; color: #1a1a1a; line-height: 2.0; font-style: italic;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .quote-author { font-size: 12px; color: #888; margin-top: 8px; text-align: right; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="shuju-yuyan-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="shuju-yuyan-ch007-info-en.html">中文 / English</a>
+</div>
+
+<h1>财务新人如何读懂数据语言 · 第7章「究竟赚了几美元」</h1>
+<p class="subtitle">
+  SCQA · 情境 → 冲突 → 问题 → 回答<br>
+  8美元买鸡、9美元卖、10美元买、11美元卖——是赚了2美元，还是亏了4美元？<br>
+  一道花旗银行面试题，揭开了会计利润与经济利润的根本分野：少赚，等于亏。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>沈南鹏在花旗银行面试中被问了一道经典题：8美元买鸡、9美元卖、10美元再买、11美元再卖，赚了多少？普通答案是2美元，而沈南鹏的回答是「亏了4美元」——这正是投行想要的答案。本章揭示两种答案背后的两种利润观：会计利润记录过去的历史交易，经济利润引入机会成本来比较相对效果。从EVA考核、NPV投资决策到预算分配中的相对选择，财务者的眼睛看过去，投资者的眼睛看未来。</p>
+</div>
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">+2<span class="kpi-unit">美元</span></div>
+    <div class="kpi-label">会计利润</div>
+    <div class="kpi-note">(9-8)+(11-10)=2<br>记录历史·忠于交易</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">-4<span class="kpi-unit">美元</span></div>
+    <div class="kpi-label">经济利润</div>
+    <div class="kpi-note">最大机会6美元-实际2美元<br>少赚=亏损·着眼未来</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">6<span class="kpi-unit">美元</span></div>
+    <div class="kpi-label">最大盈利机会</div>
+    <div class="kpi-note">两次交易的理论上限<br>(11-8)×2=6美元</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">EVA<span class="kpi-unit"></span></div>
+    <div class="kpi-label">经济附加值考核</div>
+    <div class="kpi-note">会计利润-资金成本<br>跑赢银行才算达标</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">利润 · 两种视角</div>
+    <div class="section-title t-01">会计利润 vs 经济利润：同一笔交易的两种答案</div>
+    <div class="section-desc">第一轮8买9卖赚1美元，第二轮10买11卖赚1美元，合计赚2美元——这是会计利润，按财务记账规则忠实记录发生的交易。但如果从单次交易的最大盈利机会来看，11-8=3美元，两次可赚6美元。比起可能赚到的6美元，实际只赚了2美元，少赚4美元就是亏损——这是经济利润，引入了机会成本进行比较。</div>
+    <div class="dual-grid">
+      <div class="dual-card accounting">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>会计利润 Accounting Profit</h4>
+          <p>8→9赚1 + 10→11赚1 = <strong>+2美元</strong>。忠于历史、记录实际发生的交易。总账会计的正确答案。</p>
+        </div>
+      </div>
+      <div class="dual-card economic">
+        <div class="dual-icon">🔮</div>
+        <div class="dual-text">
+          <h4>经济利润 Economic Profit</h4>
+          <p>最大机会(11-8)×2=6美元，实际2美元 → <strong>亏4美元</strong>。引入机会成本，投行家的正确答案。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">核心 · 机会成本</div>
+    <div class="section-title t-02">为什么少赚就是亏：机会成本如何颠覆财务认知</div>
+    <div class="section-desc">会计利润只交代过去——它没有引入一个更有相关性的比较基准：机会成本。就像孩子考了90分似乎不错，但得知全班平均是95分后就开始皱眉。同样，评价一个经济交易的效果必须把绝对利润与相对成本相比较。在日常决策中我们天然使用机会成本思考——买房时在A楼盘与B楼盘之间权衡。但到了财务世界里，会计利润的框架常常让我们忘记这一点。</div>
+    <div class="math-box">
+      <div class="math-line">绝对利润：2美元（看似不错）</div>
+      <div class="math-line">机会损失：6 − 2 = 4美元（最大可能 − 实际所得）</div>
+      <div class="math-result">结论：少赚4美元 = 亏损4美元</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">考核 · 从绝对到相对</div>
+    <div class="section-title t-03">业绩考评革命：EVA 和 ROCE 如何取代会计利润</div>
+    <div class="section-desc">在最高管理层考核层面，越来越多公司不再用会计利润，而是用EVA（经济附加值）或ROCE（已动用资本回报率）。简单来讲，EVA就是会计利润扣除资金成本后的净值。如果赚来的钱还没跑赢银行固定收益，这样的管理层是不达标的。NPV（净现金现值）也在每个项目投资决策中嵌入资金成本——这就是经济利润思维在实践中的落地。</div>
+    <div class="flow-row">
+      <div class="flow-step">会计<br>利润</div>
+      <div class="flow-arrow">−</div>
+      <div class="flow-step">资金<br>成本</div>
+      <div class="flow-arrow">=</div>
+      <div class="flow-step end">EVA<br>经济附加值</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">预算 · 相对比较</div>
+    <div class="section-title t-04">预算分配中的经济利润思维：选哪个？</div>
+    <div class="section-desc">在资源受限的世界里，每个公司都在一定限制下运作。工程部提出翻倍产出的新工艺，生产部提出减半劳动力的自动化设备——预算只够投一个。两个都有正的NPV，所以要选NPV更大的那个。如果数字接近，优先投自动化设备：因为人力资本每年双位数增长，替代人力的投资将带来加速回报的增值效应。这就是前瞻性的相对比较。</div>
+    <div class="dual-grid">
+      <div class="dual-card accounting">
+        <div class="dual-icon">🏭</div>
+        <div class="dual-text">
+          <h4>工程部方案</h4>
+          <p>新工艺将单位产出翻倍。NPV为正。但产出翻倍后市场能否消化？存在需求端不确定性。</p>
+        </div>
+      </div>
+      <div class="dual-card economic">
+        <div class="dual-icon">🤖</div>
+        <div class="dual-text">
+          <h4>生产部方案</h4>
+          <p>自动化设备减半劳动力。NPV为正。人力成本年增两位数 → 替代人力带来加速回报。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">思维 · 前瞻性</div>
+    <div class="section-title t-05">投资家的眼睛看未来：会讲故事的 CFO</div>
+    <div class="section-desc">财务者与投资者的根本区别：前者看过去，后者看未来。金融的本质是将未来可能实现的现金收益提前打包提款。从这个角度看，一个不会讲故事的CFO是平庸的。不要鄙视「忽悠」——财经专业人士的最高境界是：有选择地忽悠。在获得了忽悠的本领之后，选择不忽悠。这就是把会计利润思维升级为经济利润思维之后获得的认知自由。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📖</div>
+        <div class="data-name">财务者视角</div>
+        <div class="data-sm">忠于历史记录<br>交代过去发生的<br>绝对利润</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🔭</div>
+        <div class="data-name">投资者视角</div>
+        <div class="data-sm">着眼于机会<br>相对比较与选择<br>前瞻性判断</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🎯</div>
+        <div class="data-name">最高境界</div>
+        <div class="data-sm">有选择地忽悠<br>通透财务本质后<br>选择不忽悠</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">同一笔交易，会计利润赚2美元，经济利润亏4美元——差距在于是否引入机会成本。会计利润记录过去，经济利润着眼于相对效果。从EVA考核到NPV投资决策，从预算分配到前瞻性判断，财务人必须学会用投资者的眼睛看未来。金融的本质就是提前打包未来的现金收益——会讲故事、有选择地忽悠，是财经专业人士的最高境界。</div>
+</div>
+
+<div class="footer">
+来源：钱自严《财务新人如何读懂数据语言》第七章「究竟赚了几美元」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

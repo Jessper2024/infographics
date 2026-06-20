@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第5章「淘米洗菜——数据预处理」</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:24px auto 32px;border-radius:1px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch005-info-zh.html">中文</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第5章「淘米洗菜——数据预处理」</h1>
+    <div class="subtitle">Data Preparation · Cleaning Dirty Data, Standardizing Formats, Building Indexes</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="chapter-overview"><p>This chapter systematically covers the complete data preprocessing workflow before analysis, addressing three major issues: missing values, duplicate values, and outliers. Through side-by-side Excel vs. Python comparisons, it demonstrates viewing missing values (info/isnull), deletion (dropna), and filling (fillna); deduplication (drop_duplicates); outlier detection (box plots/3σ rule) and handling. It also covers data type conversion (astype) and index management (set_index/reset_index), laying a clean data foundation for subsequent analysis.</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">3</div><div class="kpi-label">核心问题类型</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">5</div><div class="kpi-label">索引操作</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">3</div><div class="kpi-label">缺失处理方式</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">工具对比</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">Missing Value Handling</div></div>
+    <div class="section-body">
+<p><span class="hl">Missing values are one of the most common data quality issues.</span> Three main processing strategies:</p><ul><li><span class="hl">View missing values:</span> Excel uses count comparison + Go To Special (Ctrl+G); Python uses info() and isnull() methods for quick detection</li><li><span class="hl">Delete missing values:</span> Excel uses Go To Special → Delete entire row; Python uses dropna() (default deletes rows with NaN), how='all' only deletes fully empty rows</li><li><span class="hl">Fill missing values:</span> Excel uses Go To Special + Ctrl+Enter for batch fill; Python uses fillna() supporting global fill, column-specific fill, forward/backward fill</li></ul><p>Principle: <span class="hl">Fill rather than delete when missing rate is below 30%</span> — data is valuable.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">Duplicate Value Processing</div></div>
+    <div class="section-body">
+<p>Duplicate records refer to rows with identical data, typically handled by <span class="hl">deletion</span>.</p><ul><li><span class="hl">Excel:</span> Data → Data Tools → Remove Duplicates; can check all fields or specified fields; keeps first record by default</li><li><span class="hl">Python:</span> drop_duplicates() method; supports dedup by specified columns (subset parameter); keep='first'/'last'/False controls retention strategy</li></ul><p>Typical scenario: deduplicate by unique ID to count customers; <span class="hl">sort by time in ascending order before deduplication</span> to retain earliest records.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">Outlier Detection & Handling</div></div>
+    <div class="section-body">
+<p>Outliers are values <span class="hl">significantly higher or lower</span> than normal data. Three detection methods:</p><ul><li><span class="hl">Business experience:</span> define normal range based on domain rules</li><li><span class="hl">Box plot:</span> points above the upper fence or below the lower fence are outliers</li><li><span class="hl">3σ rule:</span> when data follows normal distribution, values deviating from the mean by more than 3 standard deviations are outliers</li></ul><p>Handling: most commonly <span class="hl">deletion</span>, or treat as missing values and fill, or investigate causes separately. Python uses filtering to delete outliers (df[df['age']<200]) and replace() for filling replacement.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">Data Type Conversion</div></div>
+    <div class="section-body">
+<p>Different data types enable different operations; <span class="hl">must convert to target type</span> before analysis.</p><ul><li><span class="hl">Excel:</span> Select column → Number format dropdown → choose target type</li><li><span class="hl">Python:</span> astype() method, e.g., df['age'].astype('float'); Pandas has 6 main data types (int/float/object/string/bool/datetime)</li></ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">Index Management</div></div>
+    <div class="section-body">
+<p>Indexes are the basis for data lookup, like <span class="hl">organizing food in refrigerator zones</span> for quick access.</p><ul><li><span class="hl">Add index:</span> Excel inserts rows/columns; Python sets columns and index parameters</li><li><span class="hl">Reset index:</span> Excel drags column to first position; Python uses set_index(), supports hierarchical indexing (multi-column combination)</li><li><span class="hl">Rename index:</span> Excel directly edits field names; Python uses rename()</li><li><span class="hl">Reset to default:</span> Python uses reset_index() to convert hierarchical index back to regular columns, commonly used in grouping and pivot tables</li></ul>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 Chapter Overview</div>
+    <p>Data preprocessing is the foundation of analytical work. Dirty data leads to "garbage in, garbage out." Mastering the three core operations—missing value filling/deletion, duplicate removal, and outlier detection—along with data type conversion and index management, transforms raw data from "market ingredients" into "kitchen-ready produce" for subsequent analysis.</p>
+  </div>
+
+  <div class="footer">
+    <span>Source: Zhang Junhong, "Excel vs Python for Data Analysis"</span>
+    <span>Infographic generated by AI · For reference and learning purposes only</span>
+  </div>
+</div>
+</body>
+</html>

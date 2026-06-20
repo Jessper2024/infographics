@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表象与本质 · 第6章「我们如何操纵类比」— 信息图</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .data-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 18px 14px; text-align: center;
+    border: 1px solid;
+  }
+  .data-card.dc1 { background: #fef2f2; border-color: #fecaca; }
+  .data-card.dc2 { background: #fff7ed; border-color: #fed7aa; }
+  .data-card.dc3 { background: #fefce8; border-color: #fde68a; }
+  .data-big {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700; margin-bottom: 6px;
+  }
+  .data-big.r { color: #dc2626; }
+  .data-big.o { color: #ea580c; }
+  .data-big.g { color: #ca8a04; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.a { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.b { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.c { background: #eef2ff; border: 1px solid #c7d2fe; }
+  .dual-card.d { background: #fdf2f8; border: 1px solid #fbcfe8; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .list-block { margin-top: 10px; }
+  .list-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #555; line-height: 1.6; }
+  .list-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .list-num.ln01 { background: #fef2f2; color: #dc2626; }
+  .list-num.ln02 { background: #fff7ed; color: #ea580c; }
+  .list-num.ln03 { background: #fefce8; color: #ca8a04; }
+  .list-num.ln04 { background: #eef2ff; color: #4f46e5; }
+
+  .chapter-card { margin-top: 10px; border-radius: 10px; padding: 14px 16px; background: #fafaf7; border: 1px solid #e8e0d5; }
+  .chapter-card h5 { font-family: 'FZXPYZS', 'PingFang SC', serif; font-size: 14px; margin-bottom: 6px; font-weight: bold; }
+  .chapter-card h5.c01 { color: #dc2626; } .chapter-card h5.c02 { color: #ea580c; }
+  .chapter-card h5.c03 { color: #ca8a04; } .chapter-card h5.c04 { color: #4f46e5; } .chapter-card h5.c05 { color: #db2777; }
+  .chapter-card p { font-size: 12px; color: #777; line-height: 1.7; margin: 0; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }@media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="表象与本质-catalog.html">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="表象与本质-ch010-info-en.html">EN</a>
+</div>
+
+<h1>表象与本质 · 第6章「我们如何操纵类比」</h1>
+<p class="subtitle">从被操纵者到主动使用者——人类不仅被类比操纵，更精于运用类比来交流、说服和分享感受。漫画类比是其中最具创造力的形式：人们虚构出截然不同的情境，却让听者无可避免地得出合乎心意的结论。</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>第5章展示了类比如何操纵我们；本章翻转视角，展示我们如何主动操纵类比。核心概念是\"漫画类比\"——一种极其常见的认知行为：人们虚构一个与原有情境截然不同的新情境，但从更深层次看二者\"如出一辙\"，共享同一概念框架。当人们渴望分享强烈感受而又担心平铺直叙过于乏味时，就会在庞大的范畴系统里精挑细选，编造出一个虚拟情境，希望能让听者感同身受。从日常交流的\"你觉得教皇信教吗？\"到政治辩论中的宏大比喻，漫画类比无处不在。本章通过一系列生动实例展示了这一普遍现象。</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">漫画<span class="kpi-unit">类比</span></div>
+    <div class="kpi-label">核心认知行为</div>
+    <div class="kpi-note">虚构截然不同的情境，共享概念框架，让听者得出合意的结论</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">木棍<span class="kpi-unit">→标枪</span></div>
+    <div class="kpi-label">标志性例子</div>
+    <div class="kpi-note">搅拌咖啡的小木棍类比划船用的标枪——文化退化的精妙比喻</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">4种<span class="kpi-unit">模式</span></div>
+    <div class="kpi-label">漫画类比类型</div>
+    <div class="kpi-note">\"想象X就像想象Y\"\"做X就像做Y\"\"接受X难道还要接受Y/Z\"等</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">感同<span class="kpi-unit">身受</span></div>
+    <div class="kpi-label">终极目的</div>
+    <div class="kpi-note">让听者感受到说话者心中的强烈情感，而非仅仅理解事实</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">开篇场景</div>
+    <div class="section-title t-01">搅拌咖啡的小木棍——漫画类比的诞生</div>
+    <div class="section-desc">桑德尔和侯世达在巴黎喝咖啡。侯世达怀念地说：\"在我是研究生的时候，美国也是这样，但现在不管去哪，咖啡都装在大纸杯或泡沫杯里，没有勺子，取而代之的是一根极细的小木棍或塑料棒。怎么就没人抱怨两句呢？唉，这就像是……一群游客来到湖边，想着租一条划艇，结果没有船桨，到手的却是标枪。你能想象这个吗？甚至没有人吭一声以示抗议。\"这就是一个典型的漫画类比——虚构一个与原有情境截然不同的新情境，但二者共享概念框架：在不知不觉中接受品质的退化。侯世达用\"标枪代替船桨\"的荒谬画面，让听者瞬间感受到他对咖啡文化退化的愤慨。</div>
+    <div class="flow-row">
+      <div class="flow-step">现实情境<br>咖啡搅拌棒<br>代替金属勺</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">强烈感受<br>对品质退化<br>的愤慨</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">虚构情境<br>标枪代替<br>船桨</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">听者感同<br>身受</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">漫画类比库</div>
+    <div class="section-title t-02">日常生活中的漫画类比——每个人都可运用</div>
+    <div class="section-desc">漫画类比大多源自人们对一个情境强烈且突然的反应，比如愤慨或是惊讶，有着许多种表现形式：\"想象X就像想象Y一样愚蠢\"\"做X就像做Y一样荒唐\"\"他们既然已经接受了X，难道还要接受Y和Z吗\"\"如果你相信X，就和相信Y一样\"\"假如X是真的，那Y就也是真的\"，等等。漫画类比往往拿各自领域内最显而易见的实体作类比——比如爱因斯坦、泰坦尼克号、密西西比河、喜马拉雅山、麦当劳；或者最不言自明的事实——比如地球是圆的、一个星期有七天、教皇信教等。普通人在日常对话中随时随地创作漫画类比，这证明类比操纵能力是人类认知的基本装备。</div>
+    <div class="data-row">
+      <div class="data-card dc1">
+        <div class="data-big r">你觉得教皇<br>信教吗？</div>
+        <div class="data-sm">回应\"你身上没带笔吧？\"<br>用最不言自明的事实<br>含蓄传达\"我当然带了\"</div>
+      </div>
+      <div class="data-card dc2">
+        <div class="data-big o">把保龄球<br>当足球踢</div>
+        <div class="data-sm">科学家形容在国内做科研<br>用错位的荒诞画面<br>传达深刻的不满与讽刺</div>
+      </div>
+      <div class="data-card dc3">
+        <div class="data-big g">长毛的牛<br>= 鹰？</div>
+        <div class="data-sm">回应德语\"乌龟=长壳的蟾蜍\"<br>用同类漫画类比反击<br>\"那鹰就是长毛的牛？\"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">类比说服</div>
+    <div class="section-title t-03">漫画类比的修辞力量——为何如此有效</div>
+    <div class="section-desc">漫画类比之所以有效，是因为它精准地瞄准了情境的主旨。通过夸张、扭曲、倒置或极端化原情境的某个特征，漫画类比剥离了所有无关细节，只留下核心的概念框架。听者不需要做复杂的推理——一旦被类比击中，结论就已经在脑中浮现了。但这也意味着漫画类比可能被滥用：编造一个牵强附会的类比，就好比创造了一个牵强的范畴，最终误导听者。漫画类比是思维的双刃剑：精准时胜过千言万语，偏颇时则沦为诡辩工具。</div>
+    <div class="dual-grid">
+      <div class="dual-card a">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>精准打击</h4>
+          <p>剥离无关细节，只留核心概念框架。听者瞬间被击中，不需复杂推理就已得出说话者想要的结论。</p>
+        </div>
+      </div>
+      <div class="dual-card b">
+        <div class="dual-icon">⚠️</div>
+        <div class="dual-text">
+          <h4>诡辩风险</h4>
+          <p>人们也可能凭空编造并不令人信服的漫画类比，就像创造牵强的范畴。瞄准主旨却仍然偏离，误导听者。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">场景库</div>
+    <div class="section-title t-04">漫画类比的丰富场景——从闲聊到政治</div>
+    <div class="section-desc">漫画类比出现在人类生活的每一个角落。朋友间的插科打诨、家庭餐桌上的调侃、学术讨论中的精妙比喻、法庭上的辩护修辞、政治辩论中的进攻武器——漫画类比无处不在。一个程序员说\"这代码就像用牙签搭埃菲尔铁塔\"，一个母亲说\"收拾你房间就像用茶匙舀干太平洋\"。无论是幽默还是愤怒，无论是嘲笑还是抗议，漫画类比都是人类表达强烈感受的首选工具。它的普遍性证明了人类并非被类比操纵的被动受害者——我们同样精于操纵类比来塑造他人的认知。</div>
+    <div class="list-block">
+      <div class="list-item"><div class="list-num ln01">1</div><div>\"在法国，连狗都说法语\"——一个旅行者的漫画类比，用一个荒谬的情境传达对异国文化的感受。</div></div>
+      <div class="list-item"><div class="list-num ln02">2</div><div>\"这就像让一个盲人来描述彩虹\"——用来形容某人试图解释他根本不理解的事物。</div></div>
+      <div class="list-item"><div class="list-num ln03">3</div><div>\"如果X是对的，那我就是拿破仑\"——极端的漫画类比，通过身份荒谬性来驳斥对方观点。</div></div>
+      <div class="list-item"><div class="list-num ln04">4</div><div>政治辩论中的历史类比（\"这是又一个慕尼黑协定\"）——将复杂现实简化为熟悉的叙事框架，深刻影响公共舆论。</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">第5-6章对仗</div>
+    <div class="section-title t-05">被动与主动——类比操纵的完整图景</div>
+    <div class="section-desc">第5章与第6章构成完美的对仗结构。第5章揭示类比如何在我们不知不觉中操纵思维——从口误到着迷，从漫无目的的联想到跨越时间的决策。第6章翻转硬币的另一面：我们如何有意识、有目的地运用类比——尤其是漫画类比这一极具创造力的交流工具。两章合在一起描绘了类比与人类关系的全景：类比既是支配我们的力量，也是我们支配世界的武器。这种双向关系正是理解类比在认知中核心地位的关键——我们既生活在由类比构成的海洋中，也在不断激荡这片海洋的波澜。</div>
+    <div class="chapter-card">
+      <h5 class="c05">两章对仗：被操纵 ↔ 操纵</h5>
+      <p><b>第5章「类比如何操纵我们」：</b>口误 → 漫无目的 → 着迷漩涡 → 跨越时间 → 类比暗中主宰我们。<br><b>第6章「我们如何操纵类比」：</b>漫画类比 → 情景虚构 → 概念框架共享 → 主动塑造他人认知。<br>二者共同揭示：人类既是被类比编织的网中物，也是织网者。</p>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">漫画类比是人类最具创造力的认知工具之一。通过虚构一个表面截然不同但深层概念框架相同的情境，我们能够绕过冗长的解释，让听者在瞬间感同身受。侯世达用\"标枪代替船桨\"来形容咖啡文化的退化——这个简单的类比比任何社会学分析都更有力地传达了愤慨与无奈。漫画类比的普遍性证明：人类并非只是被类比操纵的被动受害者；我们同样是操纵类比的大师。当我们渴望分享强烈的感受时，大脑就会在庞大的范畴系统中精挑细选，编织出一个又一个鲜活的虚拟情境——这正是语言创造力和认知灵活性的最高体现。</div>
+</div>
+
+<div class="footer">
+  《表象与本质》第6章信息图 · 侯世达 & 埃马纽埃尔·桑德尔 著 · 湛庐文化/浙江人民出版社 2018 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

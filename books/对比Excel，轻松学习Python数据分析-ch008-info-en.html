@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第8章「开始烹调——数据运算」</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:24px auto 32px;border-radius:1px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch008-info-zh.html">中文</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第8章「开始烹调——数据运算」</h1>
+    <div class="subtitle">Statistical Analysis · Computing and Applying Key Metrics</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="chapter-overview"><p>This chapter enters the core of data analysis—computing the specific indicators listed in Chapter 1. It systematically covers four categories: arithmetic operations (add/subtract/multiply/divide), comparison operations (greater/equal/less than), aggregation operations (10 statistical functions: count/sum/mean/max/min/median/mode/var/std/quantile), and correlation operations (corr coefficient). Each operation is demonstrated through Excel-Python comparisons, building complete computational capability from basic arithmetic to advanced statistics.</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">4</div><div class="kpi-label">运算类别</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">10</div><div class="kpi-label">汇总函数</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">3</div><div class="kpi-label">离散度指标</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">1</div><div class="kpi-label">相关性指标</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">Arithmetic & Comparison Operations</div></div>
+    <div class="section-body">
+<p><span class="hl">Arithmetic operations</span> are the most basic calculations in data analysis; in Python, numeric columns can be directly operated on:</p><ul><li>Column vs column: df['A'] + df['B'] (all four basic operations supported, element-wise)</li><li>Column vs constant: df['A'] + 10 (entire column uniformly add/subtract/multiply/divide)</li></ul><p><span class="hl">Comparison operations</span> return boolean values for data filtering:</p><ul><li>Standard comparison operators: >, >=, ==, !=, <, <=</li><li>Results serve as boolean index conditions — the core mechanism for data filtering</li></ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">Central Tendency Metrics</div></div>
+    <div class="section-body">
+<p>Four core metrics in aggregation operations reflecting <span class="hl">central tendency</span>:</p><ul><li><span class="hl">Mean (mean):</span> arithmetic average, reflects general level, <span class="hl">greatly affected by extreme values</span></li><li><span class="hl">Median (median):</span> middle value after sorting, <span class="hl">not affected by extreme values</span>, more representative of distribution than mean</li><li><span class="hl">Mode (mode):</span> most frequent value, reflects the most common level</li><li><span class="hl">Quantile (quantile):</span> finer position-based metric than median, including Q1 (25th), Q2 (50th=median), Q3 (75th) percentiles</li></ul><p>In Python, call corresponding functions directly; axis=0 (default) by column, axis=1 by row.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">Dispersion Metrics</div></div>
+    <div class="section-body">
+<p>Metrics measuring data <span class="hl">volatility</span>, complementary to central tendency metrics:</p><ul><li><span class="hl">Variance (var):</span> basic measure of data dispersion; larger values indicate greater volatility</li><li><span class="hl">Standard Deviation (std):</span> square root of variance; same units as original data, more intuitive</li><li><span class="hl">Range:</span> max() - min(), the difference between maximum and minimum values</li></ul><p>Variance and std are often used with mean: <span class="hl">mean reflects level, std reflects stability</span>. Two datasets with same mean but different std indicate very different stability.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">Count & Sum Operations</div></div>
+    <div class="section-body">
+<p>The most basic aggregation operations, also the most frequently used:</p><ul><li><span class="hl">Non-null count (count):</span> count non-empty values; Excel distinguishes counta() (non-empty) and count() (numeric); Python uses count() uniformly</li><li><span class="hl">Sum (sum):</span> calculate total of area values; Python's sum() defaults to column-wise, axis=1 for row-wise</li><li><span class="hl">Max/Min (max/min):</span> return extreme values in area; commonly used for initial outlier detection</li></ul><p>count() is the first step in data quality checking: <span class="hl">the difference between non-null count and total rows equals the number of missing values</span>.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">Correlation Analysis</div></div>
+    <div class="section-body">
+<p><span class="hl">Correlation</span> measures the degree of association between two variables, forming the basis for deeper analysis:</p><ul><li><span class="hl">Pearson correlation coefficient:</span> most commonly used; range [-1, 1]; positive = positive correlation, negative = negative correlation, 0 = no linear relationship</li><li><span class="hl">Excel:</span> CORREL() function, specify two ranges</li><li><span class="hl">Python:</span> corr() method; call on two columns for single value; call on entire DataFrame for pairwise correlation matrix across all fields</li></ul><p>The correlation matrix is <span class="hl">an important foundation for multivariate analysis</span>, quickly revealing hidden relationships between variables—the mathematical backbone of "beer & diapers" type association analysis.</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 Chapter Overview</div>
+    <p>Data operations are the crucial step in transforming raw data into analytical insights. From simple arithmetic to complex correlation analysis, 10 aggregation functions form a data analyst's "computational toolbox." Remember: mean for central tendency, standard deviation for stability, median to resist outliers, correlation for relationships. Python can complete in one line what requires multiple steps in Excel—this is the essence of Python's efficiency revolution in data analysis.</p>
+  </div>
+
+  <div class="footer">
+    <span>Source: Zhang Junhong, "Excel vs Python for Data Analysis"</span>
+    <span>Infographic generated by AI · For reference and learning purposes only</span>
+  </div>
+</div>
+</body>
+</html>

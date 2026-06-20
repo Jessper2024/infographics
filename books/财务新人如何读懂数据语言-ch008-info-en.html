@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Finance Newcomers Read Data Language · Ch8 "Alternative Financial Freedom"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.insight { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-card.warning { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    background: #f8f6f3; border: 1px solid #e8e0d5;
+  }
+  .data-big { font-size: 28px; margin-bottom: 6px; color: #1a1a1a; }
+  .data-name { font-size: 15px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #888; line-height: 1.6; }
+
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}
+
+  .quote-box {
+    background: #faf9f7; border: 1px solid #e8e0d5; border-radius: 12px;
+    padding: 20px 24px; margin-top: 10px;
+  }
+  .quote-text {
+    font-size: 15px; color: #1a1a1a; line-height: 2.0; font-style: italic;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .quote-author { font-size: 12px; color: #888; margin-top: 8px; text-align: right; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4 { grid-template-columns: 1fr; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="shuju-yuyan-catalog.html">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="shuju-yuyan-ch008-info-zh.html">中文 / English</a>
+</div>
+
+<h1>How Finance Newcomers Read Data Language · Ch8 "Alternative Financial Freedom"</h1>
+<p class="subtitle">
+  SCQA · Situation → Conflict → Question → Answer<br>
+  Studying history leads to freedom—breaking free from custom. Studying finance does the same:<br>
+  Break the shackles of numbers across three dimensions—right need not persist, wrong need not correct, numbers need not be worshipped.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>Inspired by Harari's <em>Sapiens</em> idea that "studying history liberates," this chapter proposes the core proposition: "studying finance liberates." Financial freedom isn't just monetary freedom—it's cognitive freedom, unfolding across three dimensions: right doesn't mean must-persist (e.g., Jack Welch selling profitable but non-top-3 business units); wrong doesn't mean must-correct (when the cost of correcting exceeds the error itself, like executives spending half an hour discussing a ¥2,000 meal card shortfall—their salary cost already far exceeds it); don't worship numbers (in DCF models, a 3% vs. 5% perpetual growth rate assumption can produce a 10× valuation gap—better to have dinner with the founder). Use tangible numbers to deconstruct a complex business world, and gain true freedom through clarity.</p>
+</div>
+
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">3<span class="kpi-unit">Paths</span></div>
+    <div class="kpi-label">Financial Freedom</div>
+    <div class="kpi-note">Right need not persist<br>Wrong need not correct<br>Numbers need not be worshipped</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">90<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">System Design Threshold</div>
+    <div class="kpi-note">A system solving 90% of problems<br>is already good enough<br>Don't chase 100% perfection</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">10<span class="kpi-unit">×</span></div>
+    <div class="kpi-label">Valuation Gap Range</div>
+    <div class="kpi-note">DCF model growth rate<br>3% → 5% assumption shift<br>can produce 10× gap</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">2-3<span class="kpi-unit">K</span></div>
+    <div class="kpi-label">Meal Card Case</div>
+    <div class="kpi-note">Monthly loss only ¥2-3K<br>Half-hour exec discussion<br>already cost more</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Freedom I · Right ≠ Persist</div>
+    <div class="section-title t-01">Right Doesn't Mean Must-Persist: Relative Choice Over Absolute Correctness</div>
+    <div class="section-desc">There is no absolutely correct in this world. "Right" must be discussed within a measurement system to be meaningful. A factory has 100K units monthly capacity. Product A contributes +20%, Product B +15%—both profitable. Now a client offers Product C at +30%, but it consumes half the capacity—would you persist with A and B just because they're profitable? Pure economic modeling compares relative choices, not sunk historical investment.</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">+20<span style="font-size:14px">%</span></div>
+        <div class="data-name">Product A</div>
+        <div class="data-sm">Margin contribution<br>Currently in production · profitable<br>May be dropped vs. optimum</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">+15<span style="font-size:14px">%</span></div>
+        <div class="data-name">Product B</div>
+        <div class="data-sm">Margin contribution<br>Currently in production · profitable<br>May be dropped vs. optimum</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">+30<span style="font-size:14px">%</span></div>
+        <div class="data-name">Product C (New)</div>
+        <div class="data-sm">Highest margin contribution<br>But occupies half capacity<br>Relative optimum choice</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Case · Welch's Resolve</div>
+    <div class="section-title t-02">Jack Welch: The Courage to "Sell It Even Though It's Profitable"</div>
+    <div class="section-desc">Jack Welch's most distinctive move as GE CEO: selling "business units that are very profitable but not top-3 in their industry." If such a simple rule were easy to execute, there wouldn't be just one Jack Welch in decades. It's so hard because most managers can't escape the "sell it even though it's profitable" mental cage—historical investment and vested interest prevent the clear decision an outsider would instantly see.</div>
+    <div class="quote-box">
+      <div class="quote-text">"Sell business units that are very profitable but not top-3 in their industry."</div>
+      <div class="quote-author">— Jack Welch, Former GE CEO</div>
+    </div>
+    <div class="dual-grid">
+      <div class="dual-card warning">
+        <div class="dual-icon">🔒</div>
+        <div class="dual-text">
+          <h4>Ordinary: Locked by "Profitable"</h4>
+          <p>Unit is profitable → can't let go → tied-up resources → miss better opportunities → sink into mediocrity</p>
+        </div>
+      </div>
+      <div class="dual-card insight">
+        <div class="dual-icon">🔓</div>
+        <div class="dual-text">
+          <h4>Welch: Transcends "Profitable"</h4>
+          <p>Profitable but not top-3 → decisively sell → free resources → focus on champions → sustained excellence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Freedom II · Wrong ≠ Correct</div>
+    <div class="section-title t-03">Wrong Doesn't Mean Must-Correct: When Correction Costs Exceed the Error</div>
+    <div class="section-desc">There is no absolute right or wrong in finance. When the cost of correcting an error exceeds the cost of the error itself, such errors aren't worth correcting—otherwise you're a professional perfectionist. February's depreciation cost isn't treated differently from 31-day months—why? Because designing such a correction system would cost more. Many financial numbers are approximate estimates, and often we just look the other way.</div>
+    <div class="quote-box">
+      <div class="quote-text">"How much is this?" — "Two to three thousand a month." — "Let's stop here. The salary cost of a dozen executives discussing this for half an hour already far exceeds that amount."</div>
+      <div class="quote-author">— From a real discussion about departing employees' meal card balances</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">System · The 90% Rule</div>
+    <div class="section-title t-04">90% Is a Good System: Low-Cost Small-Probability Errors Should Be Let Go</div>
+    <div class="section-desc">A system that solves 90%+ of practical problems is basically a good system. Unless you're building airplanes, low-cost low-probability errors—let them go. It's part of life. The departing employee meal card shortfall is ¥2-3K per month; a dozen executives discussing it for half an hour already exceeds that in salary cost. Some suggested splitting payments in two, others proposed developing alert software—but a simple cost-benefit analysis stopped all proposals in their tracks.</div>
+    <div class="dual-grid">
+      <div class="dual-card warning">
+        <div class="dual-icon">💸</div>
+        <div class="dual-text">
+          <h4>Error Cost</h4>
+          <p>Departing employee meal card shortfall: <strong>¥2,000-3,000/month</strong>. Small amount, low frequency, limited impact—classic low-cost small-probability error.</p>
+        </div>
+      </div>
+      <div class="dual-card insight">
+        <div class="dual-icon">🧠</div>
+        <div class="dual-text">
+          <h4>Correction Cost</h4>
+          <p>Executives discussing for half an hour: <strong>salary cost far exceeds ¥3,000</strong>. Not to mention system and workflow costs of software development or split payments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Freedom III · Don't Worship Numbers</div>
+    <div class="section-title t-05">Don't Worship Numbers: The Philosophical Problem in DCF Models</div>
+    <div class="section-desc">Anyone with basic knowledge of financial reporting knows: financial numbers are the result of various assumptions and approximate estimates. A single percentage-point assumption change can produce completely reversed conclusions. In DCF models, assuming a perpetual growth rate of 3% vs. 5% can produce a 10× valuation gap—below bid price? Don't invest. Above? Invest. Such analysis is less valuable than dining with the founder or visiting key clients. Which company has X% perpetual compound growth? This is no longer a financial question—it's a philosophical question only God can answer.</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">3%</div>
+        <div class="data-name">Conservative</div>
+        <div class="data-sm">Perpetual growth 3%<br>Valuation below bid<br>→ Don't invest</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">5%</div>
+        <div class="data-name">Optimistic</div>
+        <div class="data-sm">Perpetual growth 5%<br>Valuation above bid<br>→ Invest</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🤝</div>
+        <div class="data-name">Better Approach</div>
+        <div class="data-sm">Dine with the founder<br>Visit a few key clients<br>Better than any DCF model</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The ultimate purpose of studying finance is not to trap yourself in a fortress of numbers, but to gain cognitive freedom through deep understanding. Three dimensions unlock it: right need not persist—replace absolute correctness with relative choice, like Welch selling profitable but non-top-3 units; wrong need not correct—when correction cost exceeds the error, 90% perfection is a good system; don't worship numbers—recognize that every financial conclusion rests on a pile of variable assumptions, and learn to find judgment anchors beyond the numbers. Use tangible numbers to deconstruct a complex business world, but never be imprisoned by them.</div>
+</div>
+
+<div class="footer">
+  Source: Qian Ziyan, <em>How Finance Newcomers Read Data Language</em>, Ch8 "Alternative Financial Freedom" · Infographic · For learning reference only
+</div>
+
+</div>
+</body>
+</html>

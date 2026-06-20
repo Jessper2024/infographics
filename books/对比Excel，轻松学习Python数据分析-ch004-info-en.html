@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Excel, Learn Python Data Analysis Easily · Chapter 4 Prepare Ingredients — Acquiring Data Sources</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:#c0b8a8;margin:24px auto 32px;border-radius:1px}
+.splash{background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%);border-radius:14px;padding:28px 32px;margin-bottom:36px;color:#fff}
+.splash .ov-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;opacity:.85;margin-bottom:10px}
+.splash .ov-question{font-size:18px;margin-bottom:12px;line-height:1.6}
+.splash .ov-answer{font-size:14px;line-height:1.8;opacity:.92}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← Back to Chapter Index</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch004-info-zh.html">中文</a></div>
+  <div class="header">
+    <h1>Compare Excel, Learn Python Data Analysis Easily · Chapter 4 "Prepare Ingredients — Acquiring Data Sources"</h1>
+    <div class="subtitle">Practice Section · No Ingredients, No Dish — Data Analysis Begins with Data Import</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="splash">
+    <div class="ov-label">🥬 Chapter Overview</div>
+    <div class="ov-question">How do you import various data formats in Python? What are the differences from Excel's point-and-click approach?</div>
+    <div class="ov-answer">Using the "prepare ingredients" metaphor, this chapter systematically covers data import operations. It addresses four file formats (.xlsx/.csv/.txt/.sql) and their corresponding Pandas functions—read_excel(), read_csv(), read_table(), read_sql(). Each format pairs Excel's click-based workflow with Python's code implementation, diving deep into critical parameters (sheet_name, index_col, header, usecols, sep, encoding, engine, nrows). The chapter concludes with creating new DataFrames from scratch and a 4-step data familiarization routine (head/shape/info/describe).</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">4</div><div class="kpi-label">File Formats Supported</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">5</div><div class="kpi-label">Core Import Functions</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">8+</div><div class="kpi-label">Key Parameters</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">4</div><div class="kpi-label">Data Exploration Methods</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">Importing .xlsx Files: From Double-Click to read_excel()</div></div>
+    <div class="section-body">
+      <p><span class="hl">In Excel: double-click to open. In Python: call read_excel().</span> Behind this seemingly simple step lies rich parameter control:</p>
+      <ul>
+        <li><span class="hl">Basic Import</span>: specify file path (Windows paths: use r prefix for escaping or replace \ with /)</li>
+        <li><span class="hl">sheet_name</span>: specify Sheet by name or order number (0-indexed). Defaults to first Sheet—solves multi-sheet workbook scenarios</li>
+        <li><span class="hl">index_col</span>: use a specific column (0-indexed) as the row index. e.g., use the "ID" column instead of default 0,1,2...</li>
+        <li><span class="hl">header</span>: specify which row serves as column index. Default header=0 (first row as headers); can set to other rows or None</li>
+        <li><span class="hl">usecols</span>: import only needed columns (single value or list). Dramatically improves efficiency when source tables have too many columns</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">Importing .csv Files: Separators, Encoding & Engines</div></div>
+    <div class="section-body">
+      <p><span class="hl">read_csv() is the most frequently used import function—.csv complexity far exceeds .xlsx:</span></p>
+      <ul>
+        <li><span class="hl">sep (Separator)</span>: defaults to comma. Other common separators: space, tab (\t). Mismatched separator = data fails to split correctly, all content squeezed into one cell</li>
+        <li><span class="hl">nrows (Row Count)</span>: for multi-hundred-megabyte files, read only the first N rows for preview—no need to import everything</li>
+        <li><span class="hl">encoding (Character Encoding)</span>: UTF-8 and gbk are the two most common encodings. Same file saved with different encodings requires different parameters—CSV UTF-8 uses default or utf-8-sig; CSV (comma-delimited) uses gbk</li>
+        <li><span class="hl">engine (Parser Engine)</span>: when file paths contain Chinese characters, switch from default C engine to Python engine. Pair with encoding adjustment to utf-8-sig or gbk</li>
+        <li><span class="hl">Row/Column Indexing & Column Selection</span>: same as .xlsx import (index_col, header, usecols)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">Importing .txt & SQL Files: Universal Functions & Database Connections</div></div>
+    <div class="section-body">
+      <p><span class="hl">read_table() is the universal function for importing delimiter-separated files into DataFrame; read_sql() bridges databases and Python:</span></p>
+      <ul>
+        <li><span class="hl">.txt File Import (read_table)</span>:
+          <br>Excel: Data → Get External Data → From Text → Choose delimiter → Finish (multi-step wizard)
+          <br>Python: read_table(path, sep='delimiter')—even comma-delimited requires explicit sep, unlike read_csv()
+          <br>read_table handles both .txt and .csv; parameters align with read_csv()</li>
+        <li><span class="hl">SQL File Import (read_sql)</span>:
+          <br>Excel: Data → From Other Sources → Choose database type → Configure connection
+          <br>Python two-step: ① pymysql.connect() establishes connection (pip install pymysql first) ② pd.read_sql(SQL query, con=connection_object). Supports index_col and columns parameters</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">Creating New Data & The 4-Step Data Familiarization Routine</div></div>
+    <div class="section-body">
+      <p><span class="hl">Beyond importing external data, sometimes you need to create DataFrames from scratch. Don't rush into analysis—use the 4-step routine to thoroughly understand your data first:</span></p>
+      <ul>
+        <li><span class="hl">Create New DataFrame</span>: pd.DataFrame() (covered in Ch.3). Pass lists/dictionaries to create. Used for testing, demos, or small-scale data construction</li>
+        <li><span class="hl">① head() — Preview First N Rows</span>:
+          <br>Excel: open file, full display, scroll for large tables
+          <br>Python: df.head(N), defaults to 5 rows. Quickly see what each column's data looks like</li>
+        <li><span class="hl">② shape — Get Table Dimensions</span>:
+          <br>Excel: select a column/row, check count in the bottom-right corner
+          <br>Python: df.shape → returns (rows, cols) tuple. Note: Python excludes index counts; Excel includes them</li>
+        <li><span class="hl">③ info() — Check Data Types</span>:
+          <br>Excel: select each column individually → check Number group in the ribbon
+          <br>Python: df.info() → outputs all columns' data types, non-null counts, and memory usage in one shot</li>
+        <li><span class="hl">④ describe() — Numerical Distribution Summary</span>:
+          <br>Excel: select column → bottom-right shows only average/count/sum
+          <br>Python: df.describe() → retrieves count/mean/std/min/25%/50%/75%/max for all numeric columns at once</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">Excel vs Python: Complete Import Operation Comparison</div></div>
+    <div class="section-body">
+      <p><span class="hl">Summary of Excel and Python import methods for all four formats:</span></p>
+      <ul>
+        <li><span class="hl">.xlsx</span>: Excel: double-click | Python: read_excel() + sheet_name/index_col/header/usecols</li>
+        <li><span class="hl">.csv</span>: Excel: double-click | Python: read_csv() + sep/encoding/engine/nrows/index_col/header/usecols</li>
+        <li><span class="hl">.txt</span>: Excel: multi-step wizard | Python: read_table() + sep (universal delimiter function)</li>
+        <li><span class="hl">SQL</span>: Excel: Data Connection Wizard | Python: pymysql.connect() + read_sql() (two-step)</li>
+      </ul>
+      <p><span class="hl">Core Pattern</span>: Excel operations = point-and-click/wizards (WYSIWYG, good for ad-hoc tasks); Python code = repeatable, automatable, handles large files (ideal for production). Both achieve the same goal—the choice depends on context.</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">💡 Key Takeaway</div>
+    <p>Data import is the "first station" on the data analysis assembly line. Mastering read_excel/read_csv/read_table/read_sql gives you the keys to unlock data from any source. It's not about memorizing every parameter—it's about understanding each parameter's "business scenario": usecols solves "too many columns," nrows solves "file too large," encoding solves Chinese character garbling, sep solves delimiter mismatches. After importing, always run the head→shape→info→describe routine—this is the shortest path to judging whether the data you've acquired can meet your analysis needs.</p>
+  </div>
+
+  <div class="footer">
+    <span>Compare Excel, Learn Python Data Analysis Easily · Zhang Junhong</span>
+    <span>Publishing House of Electronics Industry · Data Analyst Onboarding Series</span>
+  </div>
+</div>
+</body>
+</html>

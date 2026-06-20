@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Excel, Learn Python Data Analysis Easily · Chapter 3 Pandas Data Structures</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:#c0b8a8;margin:24px auto 32px;border-radius:1px}
+.splash{background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%);border-radius:14px;padding:28px 32px;margin-bottom:36px;color:#fff}
+.splash .ov-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;opacity:.85;margin-bottom:10px}
+.splash .ov-question{font-size:18px;margin-bottom:12px;line-height:1.6}
+.splash .ov-answer{font-size:14px;line-height:1.8;opacity:.92}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← Back to Chapter Index</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch003-info-zh.html">中文</a></div>
+  <div class="header">
+    <h1>Compare Excel, Learn Python Data Analysis Easily · Chapter 3 "Pandas Data Structures"</h1>
+    <div class="subtitle">Practice Section · From Excel Cells to Python Data Structures</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="splash">
+    <div class="ov-label">📦 Chapter Overview</div>
+    <div class="ov-question">What Python structures hold spreadsheet-like data? What exactly are Series and DataFrame?</div>
+    <div class="ov-answer">This chapter marks the starting point of the Practice section, officially entering the data analysis process. It focuses on Pandas' two core data structures—Series (one-dimensional indexed array) and DataFrame (two-dimensional tabular structure with row and column indices). A Series corresponds to a single column in Excel, while a DataFrame corresponds to an entire worksheet. By comparing with Excel's data presentation, this chapter builds the cognitive mapping from spreadsheets to Python data structures, laying the groundwork for all subsequent data operations. It also establishes the pd/np/plt module alias conventions.</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">2</div><div class="kpi-label">Core Data Structures</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">4</div><div class="kpi-label">Series Creation Methods</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">5</div><div class="kpi-label">DataFrame Creation Methods</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">3</div><div class="kpi-label">Module Aliases</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">Mental Shift: Excel to Pandas</div></div>
+    <div class="section-body">
+      <p><span class="hl">Chapter 3 marks the turning point from "learning tools" to "using tools."</span> From here onward, every chapter revolves around a specific data analysis operation, contrasting Excel and Python implementations.</p>
+      <ul>
+        <li><span class="hl">Three Module Conventions</span>: Pandas → pd, NumPy → np, matplotlib.pyplot → plt. Import once per program; aliases used throughout the book.</li>
+        <li><span class="hl">Excel → Pandas Mindset</span>: One Excel column ≈ one Series; one Excel worksheet ≈ one DataFrame. Row index + column index determine a unique value, mapping directly to Excel's row-number/column-name concept.</li>
+        <li><span class="hl">Key Difference</span>: Excel counts headers in row/column totals; Python's shape method excludes indices.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">Series: One-Dimensional Labeled Array</div></div>
+    <div class="section-body">
+      <p><span class="hl">A Series consists of one set of data (values) and one set of associated labels (index), analogous to a single column with row numbers.</span></p>
+      <ul>
+        <li><span class="hl">Creating a Series — pd.Series()</span>:
+          <br>① Pass a list → default index starting from 0
+          <br>② Pass a list + index parameter → custom data labels
+          <br>③ Pass a dictionary → keys become data labels, values become data values
+          <br>④ Can also pass a constant + index parameter</li>
+        <li><span class="hl">Get Index</span>: series.index</li>
+        <li><span class="hl">Get Values</span>: series.values</li>
+        <li><span class="hl">Excel Analogy</span>: A Series is like a single column in Excel (without the column name); the left-side indices correspond to row numbers.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">DataFrame: Two-Dimensional Tabular Structure</div></div>
+    <div class="section-body">
+      <p><span class="hl">DataFrame consists of data paired with two indices (row index and column index)—the most important tabular data structure.</span> It's called "tabular" precisely because its form closely resembles Excel's data storage format.</p>
+      <ul>
+        <li><span class="hl">Creating a DataFrame — pd.DataFrame()</span>:
+          <br>① Single list → one column, default row/column indices
+          <br>② Nested list → multiple columns (each nested list = one column)
+          <br>③ Nested list + columns parameter → custom column indices
+          <br>④ Nested list + index parameter → custom row indices
+          <br>⑤ Dictionary → keys as column indices, values as column data</li>
+        <li><span class="hl">Excel Analogy</span>: DataFrame ≈ a complete Excel worksheet. Row index = row numbers; column index = column headers.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">Accessing DataFrame Indices and Values</div></div>
+    <div class="section-body">
+      <p><span class="hl">Mastering DataFrame index access is the prerequisite for all subsequent data selection operations:</span></p>
+      <ul>
+        <li><span class="hl">Get Column Index</span>: df.columns — returns all column names. Like viewing Excel's header row.</li>
+        <li><span class="hl">Get Row Index</span>: df.index — returns all row labels. Like viewing Excel's row numbers.</li>
+        <li><span class="hl">Get Values</span>: df.values — returns DataFrame data as a plain array (excluding indices). This is the foundation for Chapter 6 "Data Selection."</li>
+      </ul>
+      <p>Understanding row and column indices underpins every subsequent data operation—<span class="hl">whether it's data selection (Ch.6), value replacement (Ch.7), arithmetic operations (Ch.8), or multi-table joins (Ch.11), the fundamental mechanism is always locating and manipulating data within the row/column coordinate system.</span></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">Module Imports & Book-Wide Coding Conventions</div></div>
+    <div class="section-body">
+      <p><span class="hl">Importing the three core modules is the universal prerequisite for all Python code in this book:</span></p>
+      <ul>
+        <li><span class="hl">import pandas as pd</span> — Pandas is the central module; used in virtually every chapter</li>
+        <li><span class="hl">import numpy as np</span> — NumPy provides numerical computing foundations; Pandas is built on NumPy</li>
+        <li><span class="hl">import matplotlib.pyplot as plt</span> — matplotlib handles data visualization (Chapter 13)</li>
+      </ul>
+      <p>In code examples, <span class="hl">the "pd" in pd.Series(), pd.DataFrame(), pd.read_excel(), etc., is exactly the Pandas alias.</span> Using as for aliasing is a universal Python community convention—adopted here for brevity and readability.</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">💡 Key Takeaway</div>
+    <p>Series and DataFrame are the two cornerstones of Pandas. If you understand Excel's row/column concept, Pandas data structures are easy to grasp—Series = one data column + row index, DataFrame = multiple data columns + row index + column index. Though short, this chapter provides the "grammar foundation" for all subsequent operations (importing, cleaning, selecting, computing, grouping, joining, visualizing). Remember: with pd/np/plt imported once, all the book's code becomes reusable—that's the power of Python's modularity.</p>
+  </div>
+
+  <div class="footer">
+    <span>Compare Excel, Learn Python Data Analysis Easily · Zhang Junhong</span>
+    <span>Publishing House of Electronics Industry · Data Analyst Onboarding Series</span>
+  </div>
+</div>
+</body>
+</html>

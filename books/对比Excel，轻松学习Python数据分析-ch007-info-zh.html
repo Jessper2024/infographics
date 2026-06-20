@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python数据分析 · 第7章「切配菜品——数值操作」</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;color:#1a1a1a;line-height:1.8;padding:40px 16px 60px}
+.container{max-width:880px;width:100%}
+.back-catalog{margin-bottom:24px}
+.back-catalog a{text-decoration:none;color:#4f46e5;font-size:14px;transition:color .15s}
+.back-catalog a:hover{color:#dc2626}
+.lang-switch{text-align:right;margin-bottom:8px}
+.lang-btn{display:inline-block;padding:6px 16px;border:1px solid #c0b8a8;border-radius:20px;font-size:13px;color:#666;text-decoration:none;transition:all .2s;font-family:'FZXPYZS','PingFang SC',sans-serif}
+.lang-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.header{text-align:center;margin-bottom:40px}
+.header h1{font-size:24px;font-weight:400;color:#1a1a1a;margin-bottom:10px;letter-spacing:.03em}
+.header .subtitle{font-size:15px;color:#888;font-weight:400}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:24px auto 32px;border-radius:1px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:180px;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card.c01{border-top:3px solid #dc2626}
+.kpi-card.c02{border-top:3px solid #ea580c}
+.kpi-card.c03{border-top:3px solid #ca8a04}
+.kpi-card.c04{border-top:3px solid #4f46e5}
+.kpi-num{font-size:32px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.kpi-label{font-size:12px;color:#888;letter-spacing:.03em}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;margin-bottom:14px;gap:10px}
+.section-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;flex-shrink:0}
+.section-num.s01{background:#dc2626}
+.section-num.s02{background:#ea580c}
+.section-num.s03{background:#ca8a04}
+.section-num.s04{background:#4f46e5}
+.section-num.s05{background:#db2777}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a}
+.section-body{background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:14px;line-height:1.9;color:#333}
+.section-body ul{list-style:none;padding:0}
+.section-body ul li{padding:6px 0;padding-left:18px;position:relative}
+.section-body ul li::before{content:'▸';position:absolute;left:0;color:inherit}
+.section-body .hl{font-weight:700;color:#dc2626}
+.section-body p{margin-bottom:8px}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:10px;padding:24px 28px;margin-bottom:36px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:700;letter-spacing:.06em;margin-bottom:8px;text-transform:uppercase}
+.takeaway p{font-size:15px;line-height:1.9;color:#333}
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid #e0d8cc;text-align:center;font-size:12px;color:#aaa;letter-spacing:.03em}
+.footer span{display:block;margin-bottom:2px}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .kpi-card{min-width:100%}
+  .container{max-width:100%;padding:0 12px}
+  .header h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="back-catalog"><a href="对比Excel，轻松学习Python数据分析-catalog.html">← 返回章节目录</a></div>
+  <div class="lang-switch"><a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python数据分析-ch007-info-en.html">EN</a></div>
+  <div class="header">
+    <h1>对比Excel，轻松学习Python数据分析 · 第7章「切配菜品——数值操作」</h1>
+    <div class="subtitle">数据加工篇 · 替换、排序、计数、查找、转换</div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="chapter-overview"><p>本章以"切配菜品"为隐喻，系统讲解数据处理的核心操作集合。涵盖数值替换（一对一/多对一/多对多）、数值排序（单列/多列/含缺失值）、数值排名（average/first/min/max）、数值删除（列/行/条件删除）、数值计数（value_counts）、唯一值获取（unique）、数值查找（isin）、区间切分（cut/qcut）、行列插入（insert）、行列互换（.T）、索引重塑（stack/unstack）、长宽表转换（melt/pivot）以及apply/applymap函数等13种操作，全面覆盖日常数据加工需求。</p></div>
+
+  <div class="kpi-row">
+    <div class="kpi-card c01"><div class="kpi-num">13</div><div class="kpi-label">核心操作</div></div>
+    <div class="kpi-card c02"><div class="kpi-num">3</div><div class="kpi-label">替换方式</div></div>
+    <div class="kpi-card c03"><div class="kpi-num">4</div><div class="kpi-label">排名方法</div></div>
+    <div class="kpi-card c04"><div class="kpi-num">2</div><div class="kpi-label">切分方法</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-num s01">1</div><div class="section-title">数值替换与排序</div></div>
+    <div class="section-body">
+<p>数值替换是数据清洗的常用手段，<span class="hl">三种替换模式</span>：</p>
+<ul>
+  <li><span class="hl">一对一替换：</span>replace(A, B) 将A替换成B（Excel用Ctrl+H）</li>
+  <li><span class="hl">多对一替换：</span>replace([A,B], C) 将多个值替换为同一值（Excel需OR+IF函数）</li>
+  <li><span class="hl">多对多替换：</span>replace({"A":"a","B":"b"}) 字典形式批量替换（Excel需多层IF嵌套）</li>
+</ul>
+<p><span class="hl">数值排序</span>用sort_values()，支持单列/多列排序、升序/降序、缺失值位置设置（na_position），Excel则用排序和筛选菜单。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s02">2</div><div class="section-title">数值排名与删除</div></div>
+    <div class="section-body">
+<p><span class="hl">排名（rank()）</span>新增排名列，method参数控制重复值处理：</p>
+<ul>
+  <li>average：重复值取平均排名（对应Excel RANK.AVG）</li>
+  <li>first：按出现顺序排名</li>
+  <li>min：重复值取最佳排名（对应Excel RANK.EQ）</li>
+  <li>max：重复值取最差排名</li>
+</ul>
+<p><span class="hl">数值删除（drop()）</span>支持删除列（axis=1）、删除行（axis=0）、条件删除（筛选保留不满足条件的行作为新数据源）。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s03">3</div><div class="section-title">计数、唯一值与查找</div></div>
+    <div class="section-body">
+<p>三个高频查询操作，各有明确的工具对应：</p>
+<ul>
+  <li><span class="hl">数值计数：</span>Excel用COUNTIF()；Python用value_counts()，normalize=True查看占比</li>
+  <li><span class="hl">唯一值获取：</span>Excel复制→删除重复项；Python用unique()方法一键获取</li>
+  <li><span class="hl">数值查找：</span>Excel用查找对话框（Ctrl+F）；Python用isin()方法，支持单值和多值同时查找</li>
+</ul>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s04">4</div><div class="section-title">区间切分与行列操作</div></div>
+    <div class="section-body">
+<p><span class="hl">区间切分</span>将连续值分为若干组——Excel需多层IF嵌套，Python用cut()（指定区间）和qcut()（指定份数，自动等分）。</p>
+<p><span class="hl">行列插入：</span>Excel右键插入；Python用insert()指定位置和列名。</p>
+<p><span class="hl">行列互换（转置）：</span>Excel选择性粘贴→转置；Python用.T方法。</p>
+<p><span class="hl">索引重塑：</span>stack()将表格型数据转为树形（列索引变行索引），unstack()反向操作。这是Python独有的高级特性。</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-num s05">5</div><div class="section-title">长宽表转换与应用函数</div></div>
+    <div class="section-body">
+<p><span class="hl">长宽表转换</span>是数据重构的核心操作：</p>
+<ul>
+  <li><span class="hl">宽→长：</span>stack()（需先设置索引）或 melt()（id_vars保持不变的列，var_name/value_name设置新列名）</li>
+  <li><span class="hl">长→宽：</span>数据透视表 pivot()，设置行索引、列索引和值列</li>
+</ul>
+<p><span class="hl">apply()与applymap()：</span>对DataFrame行列元素执行相同函数操作，配合lambda匿名函数使用。apply用于column/row，applymap用于每个元素，是Pandas批量数据处理的高级功能。</p>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-label">📊 本章概览</div>
+    <p>数值操作是数据分析的"刀工"环节。从替换、排序到长宽表转换，13种操作覆盖了日常数据加工的绝大多数需求。关键要区分：replace处理清洗、sort_values处理排序、rank处理排名、drop处理删除、melt/stack处理重塑。Python中大部分操作都只需一行代码，远比Excel的函数嵌套高效，这正是Python数据分析的核心优势所在。</p>
+  </div>
+
+  <div class="footer">
+    <span>数据来源：张俊红《对比Excel，轻松学习Python数据分析》</span>
+    <span>信息图由 AI 生成 · 仅供参考学习</span>
+  </div>
+</div>
+</body>
+</html>
