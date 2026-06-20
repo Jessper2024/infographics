@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Zen and the Art of Motorcycle Maintenance · Chapter 4 · Lists and Personality</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:32px 16px 60px;font-family:'FZXPYZS','PingFang SC','Hiragino Sans GB','Microsoft YaHei',serif;color:#555}
+.container{max-width:880px;width:100%}
+.catalog-link{text-align:right;margin-bottom:12px}
+.catalog-link a{font-size:13px;color:#888;text-decoration:none;transition:color .2s;padding:4px 10px;border:1px solid #d8d0c5;border-radius:20px;background:#fff}
+.catalog-link a:hover{color:#dc2626}
+.lang-switch{text-align:center;margin-bottom:24px}
+.lang-switch a{display:inline-block;padding:6px 18px;margin:0 4px;font-size:13px;border:1px solid #d8d0c5;border-radius:20px;background:#fff;color:#555;text-decoration:none;transition:all .2s}
+.lang-switch a.active{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.lang-switch a:hover:not(.active){border-color:#dc2626;color:#dc2626}
+.header{text-align:center;margin-bottom:28px}
+.header h1{font-size:28px;color:#1a1a1a;font-weight:400;line-height:1.4;margin-bottom:6px}
+.header .subtitle{font-size:14px;color:#888;margin-bottom:16px}
+.divider{width:60px;height:3px;background:linear-gradient(to right,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+.chapter-overview p{margin:0}
+.kpi-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.kpi-card{flex:1;min-width:140px;background:#fff;border-radius:14px;padding:16px 14px;text-align:center;box-shadow:0 1px 8px rgba(0,0,0,0.03);border-top:3px solid #ccc}
+.kpi-card .kpi-val{font-size:26px;font-weight:700;line-height:1.3}
+.kpi-card .kpi-label{font-size:12px;color:#888;margin-top:4px}
+.section{background:#fff;border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 1px 8px rgba(0,0,0,0.03);position:relative}
+.section .sec-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.section .sec-num{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.section .sec-tag{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;letter-spacing:.04em}
+.section .sec-title{font-size:18px;font-weight:700;line-height:1.3}
+.section .sec-body{font-size:14px;line-height:1.9;color:#555;margin-bottom:18px}
+.flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 0}
+.flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:8px 14px;font-size:13px;color:#9a3412;font-weight:600;text-align:center;white-space:nowrap}
+.flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.flow-arrow{color:#ea580c;font-size:18px;font-weight:bold}
+.dual-grid{display:flex;gap:14px}
+.dual-card{flex:1;border-radius:12px;padding:18px;font-size:13px;line-height:1.8;white-space:pre-line}
+.dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+.dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+.risk-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.risk-label{font-size:13px;color:#555;min-width:140px;font-weight:600}
+.risk-meter{flex:1;height:10px;background:#f3e8ff;border-radius:5px;overflow:hidden}
+.risk-fill{height:100%;background:#db2777;border-radius:5px}
+.risk-val{font-size:12px;color:#888;min-width:36px}
+.data-row{display:flex;gap:12px;flex-wrap:wrap}
+.data-card{flex:1;min-width:130px;border-radius:12px;padding:16px;text-align:center}
+.data-card .data-big{font-size:14px;font-weight:700;line-height:1.5}
+.data-card .data-sm{font-size:12px;color:#888;line-height:1.6;margin-top:4px}
+.quote-box{background:#fdf2f8;border:1px solid #fbcfe8;border-radius:12px;padding:18px 22px;font-size:14px;line-height:2;color:#9d174d;text-align:center}
+.takeaway{background:#fff;border-left:4px solid #db2777;border-radius:14px;padding:22px 28px;margin-top:22px;margin-bottom:22px;box-shadow:0 1px 8px rgba(0,0,0,0.03);font-size:14px;line-height:1.9;color:#555}
+.takeaway .ta-label{font-size:12px;color:#db2777;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.footer{text-align:center;font-size:13px;color:#bbb;padding:20px 0 10px;line-height:1.8}
+@media(max-width:640px){
+  .kpi-row{flex-direction:column}
+  .dual-grid{flex-direction:column}
+  .data-row{flex-direction:column}
+  .flow-row{flex-direction:column;align-items:stretch}
+}
+</style>
+</head><body>
+<div class="container">
+<div class="catalog-link">
+<a href="catalog.html">📖 返回目录</a>
+</div>
+<div class="lang-switch">
+<a href="禅与摩托车维修艺术-ch004-info-en.html" class="active">EN</a>
+<a href="禅与摩托车维修艺术-ch004-info-zh.html">中文</a>
+</div>
+<div class="header">
+<h1>Zen and the Art of Motorcycle Maintenance · Chapter 4 · Lists and Personality</h1>
+<div class="subtitle">Philosophy in a Packing List — When Objects Have Souls</div>
+</div>
+<div class="divider"></div>
+<div class="chapter-overview">
+<p>While everyone else sleeps, the narrator compiles a meticulous travel checklist in the morning chill — clothing, personal gear, camping equipment, motorcycle parts. Every item carries a story. The oil-stained old gloves have a sense of humor; the much-repaired motorcycle has its own voice and rhythm. True maintenance, it turns out, is about cultivating a machine's "personality."</p>
+</div>
+<div class="kpi-row">
+<div class="kpi-card" style="border-top-color:#dc2626">
+<div class="kpi-val" style="color:#dc2626">4</div>
+<div class="kpi-label">Categories</div>
+</div>
+<div class="kpi-card" style="border-top-color:#ea580c">
+<div class="kpi-val" style="color:#ea580c">13</div>
+<div class="kpi-label">Personal Items</div>
+</div>
+<div class="kpi-card" style="border-top-color:#ca8a04">
+<div class="kpi-val" style="color:#ca8a04">12</div>
+<div class="kpi-label">Camping Gear</div>
+</div>
+<div class="kpi-card" style="border-top-color:#4f46e5">
+<div class="kpi-val" style="color:#4f46e5">3</div>
+<div class="kpi-label">Books</div>
+</div>
+</div>
+<div class="section" style="border-left:4px solid #dc2626">
+<div class="sec-header">
+<div class="sec-num" style="background:#fef2f2;color:#dc2626">01</div>
+<span class="sec-tag" style="background:#fef2f2;color:#dc2626">Checklist</span>
+<span class="sec-title" style="color:#dc2626">The Dawn Packing List</span>
+</div>
+<div class="sec-body">"Every Chautauqua participant should keep a list." While others sleep, the narrator compiles a complete motorcycle travel checklist. From underwear to windshields, insect repellent to sunscreen, machete to Walden, spark plugs to molybdenum disulfide spray — categorized into clothing, personal gear, camping equipment, and motorcycle supplies. Every category radiates experience and care.</div>
+<div class="sec-viz"><div class="flow-row"><div class="flow-step">Clothing · 10</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Personal · 13</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Camping · 12</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step">Motorcycle · 10</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step end">All packed → Depart</div></div></div>
+</div>
+<div class="section" style="border-left:4px solid #ea580c">
+<div class="sec-header">
+<div class="sec-num" style="background:#fff7ed;color:#ea580c">02</div>
+<span class="sec-tag" style="background:#fff7ed;color:#ea580c">Soul</span>
+<span class="sec-title" style="color:#ea580c">The Humor of Old Leather Gloves</span>
+</div>
+<div class="sec-body">The leather gloves are worn, oil-stained, sweat-soaked, dust-caked, even mildewed. They cost three dollars and are patched beyond repair — yet the narrator finds humor in them. "Gloves do not merely need practicality; other things do not either." They cannot lie flat. They carry their own history. Spending time cleaning them is not a practical consideration but a philosophical stance.</div>
+<div class="sec-viz"><div class="dual-grid"><div class="dual-card yes">🧤 Old Gloves
+Oiled · Mildewed
+Patched beyond repair
+Have a story
+$3</div><div class="dual-card no">🧤 New Gloves
+Flawless
+No story
+Just a tool
+$30+</div></div></div>
+</div>
+<div class="section" style="border-left:4px solid #ca8a04">
+<div class="sec-header">
+<div class="sec-num" style="background:#fefce8;color:#ca8a04">03</div>
+<span class="sec-tag" style="background:#fefce8;color:#ca8a04">Personality</span>
+<span class="sec-title" style="color:#ca8a04">Every Motorcycle Has Its Own Voice</span>
+</div>
+<div class="sec-body">Same brand, same model year — yet they ride completely differently. Any experienced rider agrees: a machine that has traveled thousands of miles with you becomes irreplaceable. "You discover it has developed its own sound and rhythm — not worse, just different." This personality evolves — sometimes for the worse, often unexpectedly for the better. Cultivating that personality is the true purpose of maintenance.</div>
+<div class="sec-viz"><div class="data-row">
+<div class="data-card" style="border:1px solid #dc262630;background:#dc262608"><div class="data-big" style="color:#dc2626">Old Bike · Has Soul</div><div class="data-sm">Unique sound · Rhythm · Personality</div></div>
+<div class="data-card" style="border:1px solid #4f46e530;background:#4f46e508"><div class="data-big" style="color:#4f46e5">New Bike · A Stranger</div><div class="data-sm">May degrade or become companion · Depends on care</div></div>
+</div></div>
+</div>
+<div class="section" style="border-left:4px solid #4f46e5">
+<div class="sec-header">
+<div class="sec-num" style="background:#eef2ff;color:#4f46e5">04</div>
+<span class="sec-tag" style="background:#eef2ff;color:#4f46e5">Paradox</span>
+<span class="sec-title" style="color:#4f46e5">Those Who Value and Those Who Curse</span>
+</div>
+<div class="sec-body">Farmers drive into town to show off their new trucks and washing machines — they value technology, though they need it least. If all technology vanished tomorrow, they would survive. John and Sylvia curse technology — yet without it they couldn't survive a week. "To curse technology is sacrilege." Gratitude is not weakness; it is a reconciliation with the world.</div>
+<div class="sec-viz"><div class="risk-row"><div class="risk-label">Farmers · Value tech</div><div class="risk-meter"><div class="risk-fill" style="width:90%"></div></div><div class="risk-val">90%</div></div>
+<div class="risk-row"><div class="risk-label">Riders · Care for machines</div><div class="risk-meter"><div class="risk-fill" style="width:80%"></div></div><div class="risk-val">80%</div></div>
+<div class="risk-row"><div class="risk-label">Urbanites · Depend but curse</div><div class="risk-meter"><div class="risk-fill" style="width:30%"></div></div><div class="risk-val">30%</div></div>
+<div class="risk-row"><div class="risk-label">John & Sylvia · Flee in fear</div><div class="risk-meter"><div class="risk-fill" style="width:15%"></div></div><div class="risk-val">15%</div></div></div>
+</div>
+<div class="section" style="border-left:4px solid #db2777">
+<div class="sec-header">
+<div class="sec-num" style="background:#fdf2f8;color:#db2777">05</div>
+<span class="sec-tag" style="background:#fdf2f8;color:#db2777">Being</span>
+<span class="sec-title" style="color:#db2777">Being Present on the Open Road</span>
+</div>
+<div class="sec-body">Riding through sun-warmed prairie, Sylvia stretches out her arms and says: "Oh, it's so beautiful!" But when they try to photograph it, "once you frame it, all the beauty vanishes." The narrator reflects: "I don't want to own these prairies, or photograph them. I don't want to change them, or even stop or keep going. We just keep riding down the empty road." Being present, itself, is the deepest experience.</div>
+<div class="sec-viz"><div class="quote-box">"I don't want to own these prairies, or photograph them. I don't want to change them, or even stop or keep going. We just keep riding down the empty road."</div></div>
+</div>
+<div class="takeaway">
+<div class="ta-label">💡 Key Takeaway</div>
+<p>When old gloves become a companion rather than a tool, when a motorcycle develops a personality rather than remaining a machine — that is the magic created by caring. It brings warmth to the cold technological world.</p>
+</div>
+<div class="footer">
+Source: Robert M. Pirsig, Zen and the Art of Motorcycle Maintenance
+</div>
+</div><!-- .container -->
+</body></html>

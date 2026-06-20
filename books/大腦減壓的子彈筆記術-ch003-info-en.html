@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大腦減壓的子彈筆記術 · Chapter 3: Evolving "Tasks" into "Bullets"</title>
+<style>
+@font-face { font-family:'FZXPYZS'; src:url('../方正屏显雅宋简体.TTF') format('truetype'); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#f5f1eb; font-family:'FZXPYZS','PingFang SC','Noto Serif TC',serif;
+  color:#1a1a1a; display:flex; justify-content:center; align-items:flex-start;
+  min-height:100vh; padding:40px 16px 60px;
+}
+.container { width:100%; max-width:880px; }
+/* Header */
+.header { text-align:center; margin-bottom:28px; }
+.catalog-link { display:inline-block; font-size:13px; color:#4f46e5; text-decoration:none;
+  margin-bottom:12px; border-bottom:1px dashed #4f46e5; padding-bottom:2px; font-family:'FZXPYZS',serif; }
+.catalog-link:hover { color:#dc2626; border-color:#dc2626; }
+.lang-switch { position:absolute; top:20px; right:20px; }
+.lang-btn { display:inline-block; padding:6px 14px; font-size:13px; color:#4f46e5;
+  background:#fff; border:1px solid #e8e0d5; border-radius:20px; text-decoration:none;
+  font-family:'FZXPYZS',serif; cursor:pointer; transition:all .2s; }
+.lang-btn:hover { background:#eef2ff; border-color:#4f46e5; }
+.lang-btn.active { background:#4f46e5; color:#fff; border-color:#4f46e5; }
+h1 { font-size:26px; color:#1a1a1a; font-weight:normal; font-family:'FZXPYZS',serif;
+  letter-spacing:.04em; margin-bottom:6px; line-height:1.5; }
+.subtitle { font-size:14px; color:#888; font-family:'FZXPYZS',serif; }
+.divider { width:60px; height:3px; margin:16px auto 20px;
+  background:linear-gradient(90deg,#dc2626,#ea580c); border-radius:2px; }
+/* Overview */
+.overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:18px 22px; margin-bottom:24px; font-size:14px; color:#555; line-height:1.9;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.overview p { margin:0; }
+/* KPI row */
+.kpi-row { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; justify-content:center; }
+.kpi-card { flex:1; min-width:100px; background:#fff; border-radius:10px; padding:14px 12px;
+  text-align:center; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+.kpi-value { font-size:24px; font-weight:bold; font-family:'FZXPYZS',serif;
+  margin-bottom:4px; }
+.kpi-label { font-size:11px; color:#888; font-family:'FZXPYZS',serif; }
+/* Sections */
+.section { background:#fff; border-radius:14px; padding:22px 24px; margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); }
+.section-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.section-num { width:42px; height:42px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:13px; font-weight:bold; flex-shrink:0; font-family:'FZXPYZS',serif; }
+.section-tag { padding:3px 10px; border-radius:20px; font-size:11px; font-family:'FZXPYZS',serif; }
+.section-title { font-size:18px; font-weight:bold; margin-bottom:10px; font-family:'FZXPYZS',serif;
+  letter-spacing:.02em; }
+.section-desc { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+/* Flow */
+.flow-row { display:flex; align-items:center; gap:6px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+.flow-step { background:#fff7ed; border:1px solid #fed7aa; padding:8px 14px;
+  border-radius:8px; font-size:12px; color:#9a3412; font-family:'FZXPYZS',serif; text-align:center; max-width:140px; }
+.flow-step.end { background:#fef2f2; border-color:#fecaca; color:#991b1b; }
+.flow-arrow { color:#ea580c; font-size:16px; font-weight:bold; }
+/* Dual */
+.dual-grid { display:flex; gap:10px; margin-top:14px; }
+.dual-card { flex:1; border-radius:10px; padding:14px; font-size:12px; line-height:1.7; font-family:'FZXPYZS',serif; }
+.dual-card.yes { background:#f0fdf4; border:1px solid #bbf7d0; }
+.dual-card.no { background:#fef2f2; border:1px solid #fecaca; }
+.dual-label { font-size:13px; font-weight:bold; margin-bottom:6px; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+.dual-item { padding:2px 0; color:#555; }
+/* Data row */
+.data-row { display:flex; gap:10px; margin-top:14px; }
+.data-card { flex:1; background:#fff; border-radius:10px; padding:16px 10px;
+  text-align:center; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+.data-card.red { border-top:3px solid #dc2626; }
+.data-card.orange { border-top:3px solid #ea580c; }
+.data-card.green { border-top:3px solid #16a34a; }
+.data-big { font-size:18px; font-weight:bold; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+/* Takeaway */
+.takeaway { background:linear-gradient(135deg,#fef2f2,#fff7ed,#fefce8); border-radius:14px;
+  padding:22px 26px; margin-top:8px; margin-bottom:24px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); border:1px solid #fecaca; }
+.takeaway-label { font-size:13px; color:#dc2626; font-weight:bold; margin-bottom:8px;
+  font-family:'FZXPYZS',serif; letter-spacing:.06em; }
+.takeaway-text { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+/* Footer */
+.footer { text-align:center; font-size:12px; color:#bbb; padding-top:16px;
+  border-top:1px solid #e8e0d5; font-family:'FZXPYZS',serif; }
+.footer a { color:#bbb; text-decoration:none; }
+.footer a:hover { color:#888; }
+/* Chapter overview */
+.chapter-overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:16px 20px; margin:0 0 24px 0; font-size:14px; color:#555; line-height:1.8;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.chapter-overview p { margin:0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Layer 1: Catalog link -->
+  <a class="catalog-link" href="大腦減壓的子彈筆記術-catalog.html">← Back to Catalog</a>
+
+  <!-- Layer 2: Language switch -->
+  <div class="lang-switch">
+    <a class="lang-btn " href="大腦減壓的子彈筆記術-ch003-info-zh.html">中文</a>
+    <a class="lang-btn active" href="大腦減壓的子彈筆記術-ch003-info-en.html">EN</a>
+  </div>
+
+  <!-- Layer 3: Header -->
+  <div class="header">
+    <h1>大腦減壓的子彈筆記術 · Chapter 3: Evolving "Tasks" into "Bullets"</h1>
+    <!-- Layer 4: Subtitle -->
+    <div class="subtitle">One Task, One Note, One Bullet</div>
+    <!-- Layer 5: Divider -->
+    <div class="divider"></div>
+  </div>
+
+  <!-- Layer 6: Overview -->
+  <div class="chapter-overview">
+    <p>Most Bullet Journal approaches start with daily action lists — but this is precisely the root cause of the "impossible to-do list" vicious cycle. The author proposes a disruptive entry point: start building the system from "tasks" — not "actions." One task, one Evernote note, one bullet. Each note contains three core elements: a concrete outcome description, a decomposed next-action checklist, and integrated reference materials. Only by first focusing on "what outcome to achieve" can we decompose truly executable actions — avoiding busywork without completing anything of value. This chapter also introduces the "three-layer structure" for writing concise action descriptions quickly.</p>
+  </div>
+
+  <!-- Layer 7: KPI cards -->
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid #dc2626">
+  <div class="kpi-value" style="color:#dc2626">1</div>
+  <div class="kpi-label">Notes Per Task</div>
+</div><div class="kpi-card" style="border-top:3px solid #ea580c">
+  <div class="kpi-value" style="color:#ea580c">3</div>
+  <div class="kpi-label">Core Note Elements</div>
+</div><div class="kpi-card" style="border-top:3px solid #ca8a04">
+  <div class="kpi-value" style="color:#ca8a04">3</div>
+  <div class="kpi-label">Action Description Layers</div>
+</div><div class="kpi-card" style="border-top:3px solid #4f46e5">
+  <div class="kpi-value" style="color:#4f46e5">任务成果</div>
+  <div class="kpi-label">Management Focus</div>
+</div>
+  </div>
+
+  <!-- Layer 8: 5 Sections -->
+  
+    <div class="section" style="border-left:4px solid #dc2626">
+      <div class="section-header">
+        <div class="section-num" style="background:#fef2f2;color:#dc2626">01</div>
+        <div class="section-tag" style="background:#fef2f2;color:#dc2626">Disruptive Start</div>
+      </div>
+      <div class="section-title" style="color:#dc2626">Why Not Start with Action Lists?</div>
+      <div class="section-desc">Weekend: sweep the yard → assemble furniture → paint walls → organize bookshelves → watch TV. Did plenty of actions, completed nothing, feeling empty. This is the result of "seeing only actions, not task outcomes": actions are interconnected; a series of actions produces one valuable result. Starting from scattered actions leads to the SCRUM book example: do a bit here, a bit there, and no outcome truly emerges. Must lock onto valuable tasks first.</div>
+      <div class="flow-row"><div class="flow-step ">Weekend: sweep the yard → assemble furni…</div><div class="flow-arrow">→</div><div class="flow-step ">ture → paint walls → organize bookshelve…</div><div class="flow-arrow">→</div><div class="flow-step end">s → watch TV. Did plenty of actions, com…</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #ea580c">
+      <div class="section-header">
+        <div class="section-num" style="background:#fff7ed;color:#ea580c">02</div>
+        <div class="section-tag" style="background:#fff7ed;color:#ea580c">One Note</div>
+      </div>
+      <div class="section-title" style="color:#ea580c">One Task, One Note: Evernote's Core Principle</div>
+      <div class="section-desc">Put the task's outcome goal, action checklist, and all reference materials into the same note. Take the task "Spend quality time with wife and kids" as an example: clarify the desired outcome in the note → list specific actions (brunch restaurants, family outing spots, daily bonding activities) → compile all references (restaurant lists, outing locations, children's book lists). When I open this note, everything is there — no omissions, no chaos, no gaps.</div>
+      <div class="data-row"><div class="data-card red"><div class="data-big">核心</div></div><div class="data-card orange"><div class="data-big">聚焦</div></div><div class="data-card green"><div class="data-big">成果</div></div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #ca8a04">
+      <div class="section-header">
+        <div class="section-num" style="background:#fefce8;color:#ca8a04">03</div>
+        <div class="section-tag" style="background:#fefce8;color:#ca8a04">Decompose Actions</div>
+      </div>
+      <div class="section-title" style="color:#ca8a04">Practical Techniques for Decomposing Next Actions</div>
+      <div class="section-desc">Decomposing task notes has two key points: ① focus on one truly worthwhile task outcome; ② decompose into concrete "next-action checklists" — not vague "do something" but specific "open Evernote, create a new note, and write down three goals." Only concrete actions can be executed; vague ones will be procrastinated. For every task, ask yourself: "To achieve this outcome, what is the smallest first thing I can do right now?"</div>
+      <div class="dual-grid">
+  <div class="dual-card yes"><div class="dual-label">✅ Do</div><div class="dual-item">Decomposing task notes has two key points: ① focus on one truly worthwhile task outcome; ② decompose into concrete "next-action checklists" — not vague "do something" but specific "open Evernote, create a new note, and write down three goals." Only concrete actions can be executed; vague ones will be procrastinated. For every task, ask yourself: "To achieve this outcome, what is the smallest first thing I can do right now?"</div></div>
+  <div class="dual-card no"><div class="dual-label">❌ Don't</div><div class="dual-item">Decomposing task notes has two key points: ① focus on one truly worthwhile task outcome; ② decompose into concrete "next-action checklists" — not vague "do something" but specific "open Evernote, create a new note, and write down three goals." Only concrete actions can be executed; vague ones will be procrastinated. For every task, ask yourself: "To achieve this outcome, what is the smallest first thing I can do right now?"</div></div>
+</div>
+    </div>
+    <div class="section" style="border-left:4px solid #4f46e5">
+      <div class="section-header">
+        <div class="section-num" style="background:#eef2ff;color:#4f46e5">04</div>
+        <div class="section-tag" style="background:#eef2ff;color:#4f46e5">Action Description</div>
+      </div>
+      <div class="section-title" style="color:#4f46e5">Writing Concise, Effective Action Descriptions Quickly</div>
+      <div class="section-desc">The root of messy notes: you wrote a lot but missed the key points, can't understand what you wrote later. The solution is the "three-layer structure": ① Action Goal — what should this action produce? ② Execution Method — specifically how? ③ Completion Standard — what counts as done? Example: "Organize course outline (goal) → list five modules with three sub-topics each in Evernote (method) → outline usable by colleagues directly (standard)." Concise yet complete, crystal clear on review.</div>
+      <div class="flow-row"><div class="flow-step ">The root of messy notes: you wrote a lot…</div><div class="flow-arrow">→</div><div class="flow-step "> but missed the key points, can't unders…</div><div class="flow-arrow">→</div><div class="flow-step end">tand what you wrote later. The solution …</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #db2777">
+      <div class="section-header">
+        <div class="section-num" style="background:#fdf2f8;color:#db2777">05</div>
+        <div class="section-tag" style="background:#fdf2f8;color:#db2777">Focus on Task</div>
+      </div>
+      <div class="section-title" style="color:#db2777">Task Outcome as Core, Driving Better Actions</div>
+      <div class="section-desc">The essence of a task is creating a concrete outcome — assembled furniture, a cleaned space, a painted living room. When thinking in terms of "what outcome to achieve," actions are no longer isolated but directional; notes are no longer scattered data piles but unified task management centers. One Evernote task note is a complete "task universe" — outcome, actions, and references in one. Open and execute — no extra organizing needed.</div>
+      <div class="data-row"><div class="data-card red"><div class="data-big">核心</div></div><div class="data-card orange"><div class="data-big">聚焦</div></div><div class="data-card green"><div class="data-big">成果</div></div></div>
+    </div>
+
+  <!-- Layer 9: Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">💡 Key Takeaway</div>
+    <div class="takeaway-text">The real core of Bullet Journaling isn't drawing symbols or making lists — it's centering on "task outcomes" and integrating goals, actions, and references in one note. When you first clarify what to achieve, actions naturally become clear and executable — that's the magic of "tasks evolving into bullets."</div>
+  </div>
+
+  <!-- Layer 10: Footer -->
+  <div class="footer">
+    Source: 大腦減壓的子彈筆記術（Esor Huang, PlayPCesOR）· Ch.3 · 2026-06-20
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大腦減壓的子彈筆記術 · 第一章「时间管理如何真正有效？」</title>
+<style>
+@font-face { font-family:'FZXPYZS'; src:url('../方正屏显雅宋简体.TTF') format('truetype'); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#f5f1eb; font-family:'FZXPYZS','PingFang SC','Noto Serif TC',serif;
+  color:#1a1a1a; display:flex; justify-content:center; align-items:flex-start;
+  min-height:100vh; padding:40px 16px 60px;
+}
+.container { width:100%; max-width:880px; }
+/* Header */
+.header { text-align:center; margin-bottom:28px; }
+.catalog-link { display:inline-block; font-size:13px; color:#4f46e5; text-decoration:none;
+  margin-bottom:12px; border-bottom:1px dashed #4f46e5; padding-bottom:2px; font-family:'FZXPYZS',serif; }
+.catalog-link:hover { color:#dc2626; border-color:#dc2626; }
+.lang-switch { position:absolute; top:20px; right:20px; }
+.lang-btn { display:inline-block; padding:6px 14px; font-size:13px; color:#4f46e5;
+  background:#fff; border:1px solid #e8e0d5; border-radius:20px; text-decoration:none;
+  font-family:'FZXPYZS',serif; cursor:pointer; transition:all .2s; }
+.lang-btn:hover { background:#eef2ff; border-color:#4f46e5; }
+.lang-btn.active { background:#4f46e5; color:#fff; border-color:#4f46e5; }
+h1 { font-size:26px; color:#1a1a1a; font-weight:normal; font-family:'FZXPYZS',serif;
+  letter-spacing:.04em; margin-bottom:6px; line-height:1.5; }
+.subtitle { font-size:14px; color:#888; font-family:'FZXPYZS',serif; }
+.divider { width:60px; height:3px; margin:16px auto 20px;
+  background:linear-gradient(90deg,#dc2626,#ea580c); border-radius:2px; }
+/* Overview */
+.overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:18px 22px; margin-bottom:24px; font-size:14px; color:#555; line-height:1.9;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.overview p { margin:0; }
+/* KPI row */
+.kpi-row { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; justify-content:center; }
+.kpi-card { flex:1; min-width:100px; background:#fff; border-radius:10px; padding:14px 12px;
+  text-align:center; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+.kpi-value { font-size:24px; font-weight:bold; font-family:'FZXPYZS',serif;
+  margin-bottom:4px; }
+.kpi-label { font-size:11px; color:#888; font-family:'FZXPYZS',serif; }
+/* Sections */
+.section { background:#fff; border-radius:14px; padding:22px 24px; margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); }
+.section-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.section-num { width:42px; height:42px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:13px; font-weight:bold; flex-shrink:0; font-family:'FZXPYZS',serif; }
+.section-tag { padding:3px 10px; border-radius:20px; font-size:11px; font-family:'FZXPYZS',serif; }
+.section-title { font-size:18px; font-weight:bold; margin-bottom:10px; font-family:'FZXPYZS',serif;
+  letter-spacing:.02em; }
+.section-desc { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+/* Flow */
+.flow-row { display:flex; align-items:center; gap:6px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+.flow-step { background:#fff7ed; border:1px solid #fed7aa; padding:8px 14px;
+  border-radius:8px; font-size:12px; color:#9a3412; font-family:'FZXPYZS',serif; text-align:center; max-width:140px; }
+.flow-step.end { background:#fef2f2; border-color:#fecaca; color:#991b1b; }
+.flow-arrow { color:#ea580c; font-size:16px; font-weight:bold; }
+/* Dual */
+.dual-grid { display:flex; gap:10px; margin-top:14px; }
+.dual-card { flex:1; border-radius:10px; padding:14px; font-size:12px; line-height:1.7; font-family:'FZXPYZS',serif; }
+.dual-card.yes { background:#f0fdf4; border:1px solid #bbf7d0; }
+.dual-card.no { background:#fef2f2; border:1px solid #fecaca; }
+.dual-label { font-size:13px; font-weight:bold; margin-bottom:6px; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+.dual-item { padding:2px 0; color:#555; }
+/* Data row */
+.data-row { display:flex; gap:10px; margin-top:14px; }
+.data-card { flex:1; background:#fff; border-radius:10px; padding:16px 10px;
+  text-align:center; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+.data-card.red { border-top:3px solid #dc2626; }
+.data-card.orange { border-top:3px solid #ea580c; }
+.data-card.green { border-top:3px solid #16a34a; }
+.data-big { font-size:18px; font-weight:bold; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+/* Takeaway */
+.takeaway { background:linear-gradient(135deg,#fef2f2,#fff7ed,#fefce8); border-radius:14px;
+  padding:22px 26px; margin-top:8px; margin-bottom:24px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); border:1px solid #fecaca; }
+.takeaway-label { font-size:13px; color:#dc2626; font-weight:bold; margin-bottom:8px;
+  font-family:'FZXPYZS',serif; letter-spacing:.06em; }
+.takeaway-text { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+/* Footer */
+.footer { text-align:center; font-size:12px; color:#bbb; padding-top:16px;
+  border-top:1px solid #e8e0d5; font-family:'FZXPYZS',serif; }
+.footer a { color:#bbb; text-decoration:none; }
+.footer a:hover { color:#888; }
+/* Chapter overview */
+.chapter-overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:16px 20px; margin:0 0 24px 0; font-size:14px; color:#555; line-height:1.8;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.chapter-overview p { margin:0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Layer 1: Catalog link -->
+  <a class="catalog-link" href="大腦減壓的子彈筆記術-catalog.html">← 返回章节目录</a>
+
+  <!-- Layer 2: Language switch -->
+  <div class="lang-switch">
+    <a class="lang-btn active" href="大腦減壓的子彈筆記術-ch001-info-zh.html">中文</a>
+    <a class="lang-btn " href="大腦減壓的子彈筆記術-ch001-info-en.html">EN</a>
+  </div>
+
+  <!-- Layer 3: Header -->
+  <div class="header">
+    <h1>大腦減壓的子彈筆記術 · 第一章「时间管理如何真正有效？」</h1>
+    <!-- Layer 4: Subtitle -->
+    <div class="subtitle">不靠意志力，建立支持系统才是关键</div>
+    <!-- Layer 5: Divider -->
+    <div class="divider"></div>
+  </div>
+
+  <!-- Layer 6: Overview -->
+  <div class="chapter-overview">
+    <p>我们尝试了各种时间管理方法、工具和技巧，却总是回到杂乱、拖延和缺乏成就感的状态。问题的根源不在于工具本身，而在于我们只使用了表面技巧，没有建立完整的「支持系统」。就像浮潜不需要会游泳，只要有教练、设备和流程就能欣赏海底世界——时间管理也一样，我们需要一套让任何人（不需要意志力或热情）都能运作的系统。GTD创始人David Allen和整理女王近藤麻理惠都强调：只有100%实践完整系统，才能真正改变混乱状态。本章揭示子弹任务系统的三个核心目标：建立大脑减压系统、创造可积累的价值成果、让每个人都能依靠系统找到自己的节奏。</p>
+  </div>
+
+  <!-- Layer 7: KPI cards -->
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid #dc2626">
+  <div class="kpi-value" style="color:#dc2626">100%</div>
+  <div class="kpi-label">系统覆盖度</div>
+</div><div class="kpi-card" style="border-top:3px solid #ea580c">
+  <div class="kpi-value" style="color:#ea580c">3</div>
+  <div class="kpi-label">核心目标</div>
+</div><div class="kpi-card" style="border-top:3px solid #ca8a04">
+  <div class="kpi-value" style="color:#ca8a04">0</div>
+  <div class="kpi-label">依赖意志力</div>
+</div><div class="kpi-card" style="border-top:3px solid #4f46e5">
+  <div class="kpi-value" style="color:#4f46e5">缺系统</div>
+  <div class="kpi-label">方法失效根因</div>
+</div>
+  </div>
+
+  <!-- Layer 8: 5 Sections -->
+  
+    <div class="section" style="border-left:4px solid #dc2626">
+      <div class="section-header">
+        <div class="section-num" style="background:#fef2f2;color:#dc2626">01</div>
+        <div class="section-tag" style="background:#fef2f2;color:#dc2626">失效根源</div>
+      </div>
+      <div class="section-title" style="color:#dc2626">为什么所有方法最后都失效？</div>
+      <div class="section-desc">工作杂乱、分身乏术、重要紧急任务不断砸来，个人兴趣和家庭关系被舍弃——我们陷入恶性循环。关键在于：我们太想依靠「自己」解决问题，太依赖「工具和技巧」而非背后的完整系统。就像买了名笔不等于写出好书法，用了子弹符号不等于实践了子弹笔记方法。真正的核心是目录、索引、任务链接、目标拆解这些支持环节，而非表面符号。</div>
+      <div class="dual-grid">
+  <div class="dual-card yes"><div class="dual-label">✅ 正面</div><div class="dual-item">工作杂乱、分身乏术、重要紧急任务不断砸来，个人兴趣和家庭关系被舍弃——我们陷入恶性循环。关键在于：我们太想依靠「自己」解决问题，太依赖「工具和技巧」而非背后的完整系统。就像买了名笔不等于写出好书法，用了子弹符号不等于实践了子弹笔记方法。真正的核心是目录、索引、任务链接、目标拆解这些支持环节，而非表面符号。</div></div>
+  <div class="dual-card no"><div class="dual-label">❌ 反面</div><div class="dual-item">工作杂乱、分身乏术、重要紧急任务不断砸来，个人兴趣和家庭关系被舍弃——我们陷入恶性循环。关键在于：我们太想依靠「自己」解决问题，太依赖「工具和技巧」而非背后的完整系统。就像买了名笔不等于写出好书法，用了子弹符号不等于实践了子弹笔记方法。真正的核心是目录、索引、任务链接、目标拆解这些支持环节，而非表面符号。</div></div>
+</div>
+    </div>
+    <div class="section" style="border-left:4px solid #ea580c">
+      <div class="section-header">
+        <div class="section-num" style="background:#fff7ed;color:#ea580c">02</div>
+        <div class="section-tag" style="background:#fff7ed;color:#ea580c">系统类比</div>
+      </div>
+      <div class="section-title" style="color:#ea580c">浮潜的启示：依靠系统而非能力</div>
+      <div class="section-desc">想去浮潜但不会游泳？不需苦练泳技，只需教练教你整套操作流程、戴上浮潜设备，就能欣赏海底世界。时间管理同理：不依赖天性与能力，依靠「支持系统」让任何人都能获得效率与成就感。当你体会乐趣后，自然会精进技巧——系统是通往能力的阶梯，而非替代品。</div>
+      <div class="flow-row"><div class="flow-step ">想去浮潜但不会游泳？不需苦练泳技，只需教练教你整套操作流程、戴上浮潜设备，就能欣…</div><div class="flow-arrow">→</div><div class="flow-step ">赏海底世界。时间管理同理：不依赖天性与能力，依靠「支持系统」让任何人都能获得效率…</div><div class="flow-arrow">→</div><div class="flow-step end">与成就感。当你体会乐趣后，自然会精进技巧——系统是通往能力的阶梯，而非替代品。…</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #ca8a04">
+      <div class="section-header">
+        <div class="section-num" style="background:#fefce8;color:#ca8a04">03</div>
+        <div class="section-tag" style="background:#fefce8;color:#ca8a04">工具陷阱</div>
+      </div>
+      <div class="section-title" style="color:#ca8a04">子弹笔记为什么被误认为无效？</div>
+      <div class="section-desc">朋友实践子弹笔记后说「没用」——他只用了写行动清单和画符号的技巧，跳过了目录、索引、任务链接、目标拆解等核心环节。当行动清单变成「做不到的待办事项」堆积，人便再也不想打开它。不是方法无效，而是没有完整实践每一个关键环节——半调子的系统比没有系统更危险。</div>
+      <div class="dual-grid">
+  <div class="dual-card yes"><div class="dual-label">✅ 正面</div><div class="dual-item">朋友实践子弹笔记后说「没用」——他只用了写行动清单和画符号的技巧，跳过了目录、索引、任务链接、目标拆解等核心环节。当行动清单变成「做不到的待办事项」堆积，人便再也不想打开它。不是方法无效，而是没有完整实践每一个关键环节——半调子的系统比没有系统更危险。</div></div>
+  <div class="dual-card no"><div class="dual-label">❌ 反面</div><div class="dual-item">朋友实践子弹笔记后说「没用」——他只用了写行动清单和画符号的技巧，跳过了目录、索引、任务链接、目标拆解等核心环节。当行动清单变成「做不到的待办事项」堆积，人便再也不想打开它。不是方法无效，而是没有完整实践每一个关键环节——半调子的系统比没有系统更危险。</div></div>
+</div>
+    </div>
+    <div class="section" style="border-left:4px solid #4f46e5">
+      <div class="section-header">
+        <div class="section-num" style="background:#eef2ff;color:#4f46e5">04</div>
+        <div class="section-tag" style="background:#eef2ff;color:#4f46e5">完整系统</div>
+      </div>
+      <div class="section-title" style="color:#4f46e5">100%系统：GTD与近藤麻理惠的共同智慧</div>
+      <div class="section-desc">GTD创始人David Allen说：如果不是100%使用GTD系统，不如不要用——半调子方法反而更混乱。近藤麻理惠也说：只要彻底完成一次整理，就很难恢复混乱。两位大师的共识：只有完整实践系统每个环节，才能从根本解决问题。清空大脑→分类专案→设定目标→拆解行动，每个环节缺一不可。</div>
+      <div class="flow-row"><div class="flow-step ">GTD创始人David Allen说：如果不是100%使用GTD系统，不如不要用…</div><div class="flow-arrow">→</div><div class="flow-step ">——半调子方法反而更混乱。近藤麻理惠也说：只要彻底完成一次整理，就很难恢复混乱。…</div><div class="flow-arrow">→</div><div class="flow-step end">两位大师的共识：只有完整实践系统每个环节，才能从根本解决问题。清空大脑→分类专案…</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #db2777">
+      <div class="section-header">
+        <div class="section-num" style="background:#fdf2f8;color:#db2777">05</div>
+        <div class="section-tag" style="background:#fdf2f8;color:#db2777">三大目标</div>
+      </div>
+      <div class="section-title" style="color:#db2777">子弹任务系统的三个核心目标</div>
+      <div class="section-desc">目标一：建立一个让大脑减压的任务管理系统——不靠记忆力、不靠意志力。目标二：创造真正有价值、可积累的任务成果——不只是打勾完成，而是持续累积价值。目标三：让任何人都能依靠系统，逐步找到自己的热情与节奏——系统不是束缚，而是通向自由的桥梁。这三个目标是本书全部内容的纲领。</div>
+      <div class="data-row"><div class="data-card red"><div class="data-big">这三个目标</div></div></div>
+    </div>
+
+  <!-- Layer 9: Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心要点</div>
+    <div class="takeaway-text">时间管理的本质不是改变自己，而是建立一套完整的支持系统。当我们不再依靠意志力、不再追逐单个技巧，而是100%实践系统每一个环节时，大脑才能真正减压，成果才能真正积累。</div>
+  </div>
+
+  <!-- Layer 10: Footer -->
+  <div class="footer">
+    来源：大腦減壓的子彈筆記術（電腦玩物站長Esor）· 第一章 · 2026-06-20
+  </div>
+</div>
+</body>
+</html>

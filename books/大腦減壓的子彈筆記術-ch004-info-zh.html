@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大腦減壓的子彈筆記術 · 第四章「任务子弹「组织」成专案系统」</title>
+<style>
+@font-face { font-family:'FZXPYZS'; src:url('../方正屏显雅宋简体.TTF') format('truetype'); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#f5f1eb; font-family:'FZXPYZS','PingFang SC','Noto Serif TC',serif;
+  color:#1a1a1a; display:flex; justify-content:center; align-items:flex-start;
+  min-height:100vh; padding:40px 16px 60px;
+}
+.container { width:100%; max-width:880px; }
+/* Header */
+.header { text-align:center; margin-bottom:28px; }
+.catalog-link { display:inline-block; font-size:13px; color:#4f46e5; text-decoration:none;
+  margin-bottom:12px; border-bottom:1px dashed #4f46e5; padding-bottom:2px; font-family:'FZXPYZS',serif; }
+.catalog-link:hover { color:#dc2626; border-color:#dc2626; }
+.lang-switch { position:absolute; top:20px; right:20px; }
+.lang-btn { display:inline-block; padding:6px 14px; font-size:13px; color:#4f46e5;
+  background:#fff; border:1px solid #e8e0d5; border-radius:20px; text-decoration:none;
+  font-family:'FZXPYZS',serif; cursor:pointer; transition:all .2s; }
+.lang-btn:hover { background:#eef2ff; border-color:#4f46e5; }
+.lang-btn.active { background:#4f46e5; color:#fff; border-color:#4f46e5; }
+h1 { font-size:26px; color:#1a1a1a; font-weight:normal; font-family:'FZXPYZS',serif;
+  letter-spacing:.04em; margin-bottom:6px; line-height:1.5; }
+.subtitle { font-size:14px; color:#888; font-family:'FZXPYZS',serif; }
+.divider { width:60px; height:3px; margin:16px auto 20px;
+  background:linear-gradient(90deg,#dc2626,#ea580c); border-radius:2px; }
+/* Overview */
+.overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:18px 22px; margin-bottom:24px; font-size:14px; color:#555; line-height:1.9;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.overview p { margin:0; }
+/* KPI row */
+.kpi-row { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; justify-content:center; }
+.kpi-card { flex:1; min-width:100px; background:#fff; border-radius:10px; padding:14px 12px;
+  text-align:center; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+.kpi-value { font-size:24px; font-weight:bold; font-family:'FZXPYZS',serif;
+  margin-bottom:4px; }
+.kpi-label { font-size:11px; color:#888; font-family:'FZXPYZS',serif; }
+/* Sections */
+.section { background:#fff; border-radius:14px; padding:22px 24px; margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); }
+.section-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.section-num { width:42px; height:42px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:13px; font-weight:bold; flex-shrink:0; font-family:'FZXPYZS',serif; }
+.section-tag { padding:3px 10px; border-radius:20px; font-size:11px; font-family:'FZXPYZS',serif; }
+.section-title { font-size:18px; font-weight:bold; margin-bottom:10px; font-family:'FZXPYZS',serif;
+  letter-spacing:.02em; }
+.section-desc { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+/* Flow */
+.flow-row { display:flex; align-items:center; gap:6px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+.flow-step { background:#fff7ed; border:1px solid #fed7aa; padding:8px 14px;
+  border-radius:8px; font-size:12px; color:#9a3412; font-family:'FZXPYZS',serif; text-align:center; max-width:140px; }
+.flow-step.end { background:#fef2f2; border-color:#fecaca; color:#991b1b; }
+.flow-arrow { color:#ea580c; font-size:16px; font-weight:bold; }
+/* Dual */
+.dual-grid { display:flex; gap:10px; margin-top:14px; }
+.dual-card { flex:1; border-radius:10px; padding:14px; font-size:12px; line-height:1.7; font-family:'FZXPYZS',serif; }
+.dual-card.yes { background:#f0fdf4; border:1px solid #bbf7d0; }
+.dual-card.no { background:#fef2f2; border:1px solid #fecaca; }
+.dual-label { font-size:13px; font-weight:bold; margin-bottom:6px; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+.dual-item { padding:2px 0; color:#555; }
+/* Data row */
+.data-row { display:flex; gap:10px; margin-top:14px; }
+.data-card { flex:1; background:#fff; border-radius:10px; padding:16px 10px;
+  text-align:center; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+.data-card.red { border-top:3px solid #dc2626; }
+.data-card.orange { border-top:3px solid #ea580c; }
+.data-card.green { border-top:3px solid #16a34a; }
+.data-big { font-size:18px; font-weight:bold; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+/* Takeaway */
+.takeaway { background:linear-gradient(135deg,#fef2f2,#fff7ed,#fefce8); border-radius:14px;
+  padding:22px 26px; margin-top:8px; margin-bottom:24px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); border:1px solid #fecaca; }
+.takeaway-label { font-size:13px; color:#dc2626; font-weight:bold; margin-bottom:8px;
+  font-family:'FZXPYZS',serif; letter-spacing:.06em; }
+.takeaway-text { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+/* Footer */
+.footer { text-align:center; font-size:12px; color:#bbb; padding-top:16px;
+  border-top:1px solid #e8e0d5; font-family:'FZXPYZS',serif; }
+.footer a { color:#bbb; text-decoration:none; }
+.footer a:hover { color:#888; }
+/* Chapter overview */
+.chapter-overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:16px 20px; margin:0 0 24px 0; font-size:14px; color:#555; line-height:1.8;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.chapter-overview p { margin:0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Layer 1: Catalog link -->
+  <a class="catalog-link" href="大腦減壓的子彈筆記術-catalog.html">← 返回章节目录</a>
+
+  <!-- Layer 2: Language switch -->
+  <div class="lang-switch">
+    <a class="lang-btn active" href="大腦減壓的子彈筆記術-ch004-info-zh.html">中文</a>
+    <a class="lang-btn " href="大腦減壓的子彈筆記術-ch004-info-en.html">EN</a>
+  </div>
+
+  <!-- Layer 3: Header -->
+  <div class="header">
+    <h1>大腦減壓的子彈筆記術 · 第四章「任务子弹「组织」成专案系统」</h1>
+    <!-- Layer 4: Subtitle -->
+    <div class="subtitle">用标签+记事链接，从专案视野统揽全局</div>
+    <!-- Layer 5: Divider -->
+    <div class="divider"></div>
+  </div>
+
+  <!-- Layer 6: Overview -->
+  <div class="chapter-overview">
+    <p>掌握了以任务笔记为核心的管理方法后，本章向上提升到「专案视野」。仅管理任务层是不够的——任务数量依然庞大，必须从专案高度判断轻重缓急和取舍。作者提出使用Evernote两大功能即可构建完整专案系统：①「标签」实现多维度弹性分类——一个任务可同时属于多个专案，解决传统资料夹「一个萝卜一个坑」的困境；②「记事链接」创建每则专案的「主目录笔记」——就像一本书的目录+超链接，串联所有关联任务和资料。最终实现：上万则笔记收敛为约20则进行中的专案主目录笔记，每天只需管理五六则即可掌控全局。</p>
+  </div>
+
+  <!-- Layer 7: KPI cards -->
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid #dc2626">
+  <div class="kpi-value" style="color:#dc2626">2</div>
+  <div class="kpi-label">核心技术功能</div>
+</div><div class="kpi-card" style="border-top:3px solid #ea580c">
+  <div class="kpi-value" style="color:#ea580c">10000→20</div>
+  <div class="kpi-label">笔记收敛</div>
+</div><div class="kpi-card" style="border-top:3px solid #ca8a04">
+  <div class="kpi-value" style="color:#ca8a04">5-6则</div>
+  <div class="kpi-label">日常管理数</div>
+</div><div class="kpi-card" style="border-top:3px solid #4f46e5">
+  <div class="kpi-value" style="color:#4f46e5">专案层</div>
+  <div class="kpi-label">管理视野</div>
+</div>
+  </div>
+
+  <!-- Layer 8: 5 Sections -->
+  
+    <div class="section" style="border-left:4px solid #dc2626">
+      <div class="section-header">
+        <div class="section-num" style="background:#fef2f2;color:#dc2626">01</div>
+        <div class="section-tag" style="background:#fef2f2;color:#dc2626">专案视野</div>
+      </div>
+      <div class="section-title" style="color:#dc2626">为什么任务层管理还不够？</div>
+      <div class="section-desc">任务数量依然庞大——课程大纲、报名网页、设计主图、行政流程、功能测试……都是独立任务，但背后关联同一个专案：「开办Evernote子弹笔记课程」。育儿也一样：规划游戏室、亲子旅行、预防针时程、上幼儿园资料——背后是「育儿计划」。只有从专案视野管理，才能判断哪些任务优先、哪些可以暂缓，不被不在核心专案中的杂事干扰。</div>
+      <div class="flow-row"><div class="flow-step ">任务数量依然庞大——课程大纲、报名网页、设计主图、行政流程、功能测试……都是独立…</div><div class="flow-arrow">→</div><div class="flow-step ">任务，但背后关联同一个专案：「开办Evernote子弹笔记课程」。育儿也一样：规…</div><div class="flow-arrow">→</div><div class="flow-step end">划游戏室、亲子旅行、预防针时程、上幼儿园资料——背后是「育儿计划」。只有从专案视…</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #ea580c">
+      <div class="section-header">
+        <div class="section-num" style="background:#fff7ed;color:#ea580c">02</div>
+        <div class="section-tag" style="background:#fff7ed;color:#ea580c">标签分类</div>
+      </div>
+      <div class="section-title" style="color:#ea580c">Evernote标签：一个任务，多个专案</div>
+      <div class="section-desc">传统资料夹的致命缺陷：一个萝卜只能一个坑。吹风机放A浴室则B浴室不方便，任务笔记放「课程」专案则「写书」专案找不到——复制笔记又导致版本混乱。Evernote标签完美解决：同一则笔记打上「课程」和「新书」两个标签，两个专案都能看到它；修改笔记后两处同步更新。标签实现的是「多维度弹性分类」，而非僵化的目录结构。</div>
+      <div class="dual-grid">
+  <div class="dual-card yes"><div class="dual-label">✅ 正面</div><div class="dual-item">传统资料夹的致命缺陷：一个萝卜只能一个坑。吹风机放A浴室则B浴室不方便，任务笔记放「课程」专案则「写书」专案找不到——复制笔记又导致版本混乱。Evernote标签完美解决：同一则笔记打上「课程」和「新书」两个标签，两个专案都能看到它；修改笔记后两处同步更新。标签实现的是「多维度弹性分类」，而非僵化的目录结构。</div></div>
+  <div class="dual-card no"><div class="dual-label">❌ 反面</div><div class="dual-item">传统资料夹的致命缺陷：一个萝卜只能一个坑。吹风机放A浴室则B浴室不方便，任务笔记放「课程」专案则「写书」专案找不到——复制笔记又导致版本混乱。Evernote标签完美解决：同一则笔记打上「课程」和「新书」两个标签，两个专案都能看到它；修改笔记后两处同步更新。标签实现的是「多维度弹性分类」，而非僵化的目录结构。</div></div>
+</div>
+    </div>
+    <div class="section" style="border-left:4px solid #ca8a04">
+      <div class="section-header">
+        <div class="section-num" style="background:#fefce8;color:#ca8a04">03</div>
+        <div class="section-tag" style="background:#fefce8;color:#ca8a04">记事链接</div>
+      </div>
+      <div class="section-title" style="color:#ca8a04">专案主目录笔记：一本书的目录+超链接</div>
+      <div class="section-desc">标签把任务归类到专案，但还需要安排「流程顺序」。每个专案创建一则「主目录笔记」，用Evernote记事链接功能，将属于该专案的任务笔记按流程步骤链接进去。打开育儿专案目录笔记→看到「准备阶段→执行阶段→后续追踪」→点链接直达各步骤任务笔记。就像一本书有目录页和超链接，翻开目录即知全局。</div>
+      <div class="flow-row"><div class="flow-step ">标签把任务归类到专案，但还需要安排「流程顺序」。每个专案创建一则「主目录笔记」，…</div><div class="flow-arrow">→</div><div class="flow-step ">用Evernote记事链接功能，将属于该专案的任务笔记按流程步骤链接进去。打开育…</div><div class="flow-arrow">→</div><div class="flow-step end">儿专案目录笔记→看到「准备阶段→执行阶段→后续追踪」→点链接直达各步骤任务笔记。…</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #4f46e5">
+      <div class="section-header">
+        <div class="section-num" style="background:#eef2ff;color:#4f46e5">04</div>
+        <div class="section-tag" style="background:#eef2ff;color:#4f46e5">参考资料</div>
+      </div>
+      <div class="section-title" style="color:#4f46e5">专案参考资料的高效整合</div>
+      <div class="section-desc">参考资料笔记的处理逻辑相同：创建时打上相关专案标签→放入对应专案分类→打开专案目录笔记→将资料链接插入流程的对应位置。一则宝宝食谱资料笔记→打「育儿」标签→打开育儿主目录笔记→链接插入「日常照顾」环节。所有资料都有「归属」和「位置」，不再散落各处，用的时候精准定位。</div>
+      <div class="data-row"><div class="data-card red"><div class="data-big">核心</div></div><div class="data-card orange"><div class="data-big">聚焦</div></div><div class="data-card green"><div class="data-big">成果</div></div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #db2777">
+      <div class="section-header">
+        <div class="section-num" style="background:#fdf2f8;color:#db2777">05</div>
+        <div class="section-tag" style="background:#fdf2f8;color:#db2777">实战成果</div>
+      </div>
+      <div class="section-title" style="color:#db2777">一万则笔记 → 20则主目录的惊人收敛</div>
+      <div class="section-desc">十年Evernote使用积累上万则笔记，但经过标签→专案→主目录笔记三层收敛后：真正进行中的专案不过二三十个，每天只需在五六则专案主目录笔记中管理。这意味着系统帮你过滤了99.95%的噪音，你只需面对真正需要关注的核心。不是系统复杂，而是它替你承担了复杂度——你感受到的，是极致的简单。</div>
+      <div class="data-row"><div class="data-card red"><div class="data-big">99</div></div><div class="data-card orange"><div class="data-big">95%</div></div></div>
+    </div>
+
+  <!-- Layer 9: Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心要点</div>
+    <div class="takeaway-text">专案管理的精髓不在于「管得多」，而在于「管得少」。标签解决归属问题，记事链接解决流程问题，两者组合创造了从万到十的惊人收敛比例。你不需要管理所有笔记——只需要管理那几则专案主目录笔记，系统会帮你找到一切。</div>
+  </div>
+
+  <!-- Layer 10: Footer -->
+  <div class="footer">
+    来源：大腦減壓的子彈筆記術（電腦玩物站長Esor）· 第四章 · 2026-06-20
+  </div>
+</div>
+</body>
+</html>

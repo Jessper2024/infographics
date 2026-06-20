@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大腦減壓的子彈筆記術 · 第二章「应该创建怎么样的任务管理系统？」</title>
+<style>
+@font-face { font-family:'FZXPYZS'; src:url('../方正屏显雅宋简体.TTF') format('truetype'); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#f5f1eb; font-family:'FZXPYZS','PingFang SC','Noto Serif TC',serif;
+  color:#1a1a1a; display:flex; justify-content:center; align-items:flex-start;
+  min-height:100vh; padding:40px 16px 60px;
+}
+.container { width:100%; max-width:880px; }
+/* Header */
+.header { text-align:center; margin-bottom:28px; }
+.catalog-link { display:inline-block; font-size:13px; color:#4f46e5; text-decoration:none;
+  margin-bottom:12px; border-bottom:1px dashed #4f46e5; padding-bottom:2px; font-family:'FZXPYZS',serif; }
+.catalog-link:hover { color:#dc2626; border-color:#dc2626; }
+.lang-switch { position:absolute; top:20px; right:20px; }
+.lang-btn { display:inline-block; padding:6px 14px; font-size:13px; color:#4f46e5;
+  background:#fff; border:1px solid #e8e0d5; border-radius:20px; text-decoration:none;
+  font-family:'FZXPYZS',serif; cursor:pointer; transition:all .2s; }
+.lang-btn:hover { background:#eef2ff; border-color:#4f46e5; }
+.lang-btn.active { background:#4f46e5; color:#fff; border-color:#4f46e5; }
+h1 { font-size:26px; color:#1a1a1a; font-weight:normal; font-family:'FZXPYZS',serif;
+  letter-spacing:.04em; margin-bottom:6px; line-height:1.5; }
+.subtitle { font-size:14px; color:#888; font-family:'FZXPYZS',serif; }
+.divider { width:60px; height:3px; margin:16px auto 20px;
+  background:linear-gradient(90deg,#dc2626,#ea580c); border-radius:2px; }
+/* Overview */
+.overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:18px 22px; margin-bottom:24px; font-size:14px; color:#555; line-height:1.9;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.overview p { margin:0; }
+/* KPI row */
+.kpi-row { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; justify-content:center; }
+.kpi-card { flex:1; min-width:100px; background:#fff; border-radius:10px; padding:14px 12px;
+  text-align:center; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+.kpi-value { font-size:24px; font-weight:bold; font-family:'FZXPYZS',serif;
+  margin-bottom:4px; }
+.kpi-label { font-size:11px; color:#888; font-family:'FZXPYZS',serif; }
+/* Sections */
+.section { background:#fff; border-radius:14px; padding:22px 24px; margin-bottom:18px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); }
+.section-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.section-num { width:42px; height:42px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:13px; font-weight:bold; flex-shrink:0; font-family:'FZXPYZS',serif; }
+.section-tag { padding:3px 10px; border-radius:20px; font-size:11px; font-family:'FZXPYZS',serif; }
+.section-title { font-size:18px; font-weight:bold; margin-bottom:10px; font-family:'FZXPYZS',serif;
+  letter-spacing:.02em; }
+.section-desc { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+/* Flow */
+.flow-row { display:flex; align-items:center; gap:6px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+.flow-step { background:#fff7ed; border:1px solid #fed7aa; padding:8px 14px;
+  border-radius:8px; font-size:12px; color:#9a3412; font-family:'FZXPYZS',serif; text-align:center; max-width:140px; }
+.flow-step.end { background:#fef2f2; border-color:#fecaca; color:#991b1b; }
+.flow-arrow { color:#ea580c; font-size:16px; font-weight:bold; }
+/* Dual */
+.dual-grid { display:flex; gap:10px; margin-top:14px; }
+.dual-card { flex:1; border-radius:10px; padding:14px; font-size:12px; line-height:1.7; font-family:'FZXPYZS',serif; }
+.dual-card.yes { background:#f0fdf4; border:1px solid #bbf7d0; }
+.dual-card.no { background:#fef2f2; border:1px solid #fecaca; }
+.dual-label { font-size:13px; font-weight:bold; margin-bottom:6px; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+.dual-item { padding:2px 0; color:#555; }
+/* Data row */
+.data-row { display:flex; gap:10px; margin-top:14px; }
+.data-card { flex:1; background:#fff; border-radius:10px; padding:16px 10px;
+  text-align:center; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+.data-card.red { border-top:3px solid #dc2626; }
+.data-card.orange { border-top:3px solid #ea580c; }
+.data-card.green { border-top:3px solid #16a34a; }
+.data-big { font-size:18px; font-weight:bold; color:#1a1a1a; font-family:'FZXPYZS',serif; }
+/* Takeaway */
+.takeaway { background:linear-gradient(135deg,#fef2f2,#fff7ed,#fefce8); border-radius:14px;
+  padding:22px 26px; margin-top:8px; margin-bottom:24px;
+  box-shadow:0 1px 8px rgba(0,0,0,0.03); border:1px solid #fecaca; }
+.takeaway-label { font-size:13px; color:#dc2626; font-weight:bold; margin-bottom:8px;
+  font-family:'FZXPYZS',serif; letter-spacing:.06em; }
+.takeaway-text { font-size:14px; color:#555; line-height:1.9; font-family:'FZXPYZS',serif; }
+/* Footer */
+.footer { text-align:center; font-size:12px; color:#bbb; padding-top:16px;
+  border-top:1px solid #e8e0d5; font-family:'FZXPYZS',serif; }
+.footer a { color:#bbb; text-decoration:none; }
+.footer a:hover { color:#888; }
+/* Chapter overview */
+.chapter-overview { background:#f8f6f3; border-left:3px solid #4f46e5; border-radius:8px;
+  padding:16px 20px; margin:0 0 24px 0; font-size:14px; color:#555; line-height:1.8;
+  font-family:'FZXPYZS','PingFang SC',serif; }
+.chapter-overview p { margin:0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Layer 1: Catalog link -->
+  <a class="catalog-link" href="大腦減壓的子彈筆記術-catalog.html">← 返回章节目录</a>
+
+  <!-- Layer 2: Language switch -->
+  <div class="lang-switch">
+    <a class="lang-btn active" href="大腦減壓的子彈筆記術-ch002-info-zh.html">中文</a>
+    <a class="lang-btn " href="大腦減壓的子彈筆記術-ch002-info-en.html">EN</a>
+  </div>
+
+  <!-- Layer 3: Header -->
+  <div class="header">
+    <h1>大腦減壓的子彈筆記術 · 第二章「应该创建怎么样的任务管理系统？」</h1>
+    <!-- Layer 4: Subtitle -->
+    <div class="subtitle">以少驭多，从专案高度管理混乱</div>
+    <!-- Layer 5: Divider -->
+    <div class="divider"></div>
+  </div>
+
+  <!-- Layer 6: Overview -->
+  <div class="chapter-overview">
+    <p>设定好目标之后，接下来要设计系统的具体功能。本章提出子弹任务管理系统必须具备的四大核心功能：以少驭多（将100件杂事归纳为3个专案）、行动·任务·专案三层级整合、主动提示不遗漏的系统、以及当下最优选择机制。作者通过搬家+旅行+工作的真实案例说明，从「专案目标」的高度做判断，才能决定轻重缓急和取舍——而这一切，Evernote恰好是最合适的实现工具，因为它天然支持笔记链接、标签分类和跨平台同步。</p>
+  </div>
+
+  <!-- Layer 7: KPI cards -->
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid #dc2626">
+  <div class="kpi-value" style="color:#dc2626">4</div>
+  <div class="kpi-label">核心功能</div>
+</div><div class="kpi-card" style="border-top:3px solid #ea580c">
+  <div class="kpi-value" style="color:#ea580c">3</div>
+  <div class="kpi-label">管理层级</div>
+</div><div class="kpi-card" style="border-top:3px solid #ca8a04">
+  <div class="kpi-value" style="color:#ca8a04">100→3</div>
+  <div class="kpi-label">杂事收敛比</div>
+</div><div class="kpi-card" style="border-top:3px solid #4f46e5">
+  <div class="kpi-value" style="color:#4f46e5">100%</div>
+  <div class="kpi-label">系统依赖度</div>
+</div>
+  </div>
+
+  <!-- Layer 8: 5 Sections -->
+  
+    <div class="section" style="border-left:4px solid #dc2626">
+      <div class="section-header">
+        <div class="section-num" style="background:#fef2f2;color:#dc2626">01</div>
+        <div class="section-tag" style="background:#fef2f2;color:#dc2626">以少驭多</div>
+      </div>
+      <div class="section-title" style="color:#dc2626">告别待办清单的混乱循环</div>
+      <div class="section-desc">传统待办清单只是把杂事从大脑搬到纸上——混乱依然是混乱。就像整理房间时把所有东西塞进抽屉，看似整齐却很快恢复杂乱。以少驭多的核心：先将所有杂事归纳到少数专案目标上，100件杂事往往只关联3个专案——管理好3个专案，100件杂事自然受控。搬家+旅行+工作的真实案例证明了这一点。</div>
+      <div class="data-row"><div class="data-card red"><div class="data-big">纳到少数专案目标</div></div><div class="data-card orange"><div class="data-big">100</div></div><div class="data-card green"><div class="data-big">3</div></div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #ea580c">
+      <div class="section-header">
+        <div class="section-num" style="background:#fff7ed;color:#ea580c">02</div>
+        <div class="section-tag" style="background:#fff7ed;color:#ea580c">三层级</div>
+      </div>
+      <div class="section-title" style="color:#ea580c">行动→任务→专案：三级整合系统</div>
+      <div class="section-desc">行动往往相互关联，做完一个行动不等于完成一件事；任务由一系列关联行动组成，聚焦「具体成果」；专案将多个任务整合为更大目标。只有区分这三个层级，才能理解：列行动清单只是最底层，真正的管理应该在任务和专案层进行——这就是「以少驭多」的结构基础。</div>
+      <div class="flow-row"><div class="flow-step ">行动往往相互关联，做完一个行动不等于完成一件事；任务由一系列关联行动组成，聚焦「…</div><div class="flow-arrow">→</div><div class="flow-step ">具体成果」；专案将多个任务整合为更大目标。只有区分这三个层级，才能理解：列行动清…</div><div class="flow-arrow">→</div><div class="flow-step end">单只是最底层，真正的管理应该在任务和专案层进行——这就是「以少驭多」的结构基础。…</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #ca8a04">
+      <div class="section-header">
+        <div class="section-num" style="background:#fefce8;color:#ca8a04">03</div>
+        <div class="section-tag" style="background:#fefce8;color:#ca8a04">不遗漏</div>
+      </div>
+      <div class="section-title" style="color:#ca8a04">主动提示：系统告诉你该做什么</div>
+      <div class="section-desc">绝对不能靠大脑记忆——大脑不是用来记事情的。系统必须主动提示：什么时间该做什么、哪个环节不能漏掉。关键是设计「流程」而非「清单」：确认每个专案的必要步骤、建立前后顺序、设置检查点。当系统告诉你下一步时，你不需要思考「还有什么没做」——大脑才能真正减压。</div>
+      <div class="dual-grid">
+  <div class="dual-card yes"><div class="dual-label">✅ 正面</div><div class="dual-item">绝对不能靠大脑记忆——大脑不是用来记事情的。系统必须主动提示：什么时间该做什么、哪个环节不能漏掉。关键是设计「流程」而非「清单」：确认每个专案的必要步骤、建立前后顺序、设置检查点。当系统告诉你下一步时，你不需要思考「还有什么没做」——大脑才能真正减压。</div></div>
+  <div class="dual-card no"><div class="dual-label">❌ 反面</div><div class="dual-item">绝对不能靠大脑记忆——大脑不是用来记事情的。系统必须主动提示：什么时间该做什么、哪个环节不能漏掉。关键是设计「流程」而非「清单」：确认每个专案的必要步骤、建立前后顺序、设置检查点。当系统告诉你下一步时，你不需要思考「还有什么没做」——大脑才能真正减压。</div></div>
+</div>
+    </div>
+    <div class="section" style="border-left:4px solid #4f46e5">
+      <div class="section-header">
+        <div class="section-num" style="background:#eef2ff;color:#4f46e5">04</div>
+        <div class="section-tag" style="background:#eef2ff;color:#4f46e5">最优选择</div>
+      </div>
+      <div class="section-title" style="color:#4f46e5">当下做什么最有效率？</div>
+      <div class="section-desc">即使系统整理好了任务，最终仍要面对「做出选择」的人性难题。系统需要能排出优先权重：不是简单区分重要/紧急，而是在专案视野下判断——这个任务完成对哪个专案推进最大？我现在的精力和情境最适合做哪个？系统帮你准备好选项，你只需做最小的选择——这才是真正的「轻松管理」。</div>
+      <div class="flow-row"><div class="flow-step ">即使系统整理好了任务，最终仍要面对「做出选择」的人性难题。系统需要能排出优先权重…</div><div class="flow-arrow">→</div><div class="flow-step ">：不是简单区分重要/紧急，而是在专案视野下判断——这个任务完成对哪个专案推进最大…</div><div class="flow-arrow">→</div><div class="flow-step end">？我现在的精力和情境最适合做哪个？系统帮你准备好选项，你只需做最小的选择——这才…</div></div>
+    </div>
+    <div class="section" style="border-left:4px solid #db2777">
+      <div class="section-header">
+        <div class="section-num" style="background:#fdf2f8;color:#db2777">05</div>
+        <div class="section-tag" style="background:#fdf2f8;color:#db2777">工具选择</div>
+      </div>
+      <div class="section-title" style="color:#db2777">为什么是Evernote？</div>
+      <div class="section-desc">Evernote天然适合这套系统：笔记链接实现任务间关联、标签实现多维度分类（一个任务可同时属于多个专案）、跨平台同步保证随时随地管理。传统待办清单软件只管理「行动」，而Evernote的笔记本质让「任务成果」成为管理中心——这正是子弹任务系统与一般待办工具的根本区别。</div>
+      <div class="data-row"><div class="data-card red"><div class="data-big">核心</div></div><div class="data-card orange"><div class="data-big">聚焦</div></div><div class="data-card green"><div class="data-big">成果</div></div></div>
+    </div>
+
+  <!-- Layer 9: Takeaway -->
+  <div class="takeaway">
+    <div class="takeaway-label">💡 核心要点</div>
+    <div class="takeaway-text">好的任务管理系统不是把杂事列得更整齐，而是从根本上减少需要管理的事项。以少驭多、三级整合、主动提示、最优选择——这四个功能环环相扣，让系统替你承担记忆和判断的压力。</div>
+  </div>
+
+  <!-- Layer 10: Footer -->
+  <div class="footer">
+    来源：大腦減壓的子彈筆記術（電腦玩物站長Esor）· 第二章 · 2026-06-20
+  </div>
+</div>
+</body>
+</html>
