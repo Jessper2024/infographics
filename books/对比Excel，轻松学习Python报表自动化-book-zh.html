@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对比Excel，轻松学习Python报表自动化 · 全书阅读</title>
+<style>
+@font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .risk-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .risk-label{font-size:13px;color:#555;width:120px;flex-shrink:0;font-family:'FZXPYZS','PingFang SC',serif}
+  .risk-meter{flex:1;height:10px;background:#eef2ff;border-radius:5px;overflow:hidden}
+  .risk-fill{height:100%;border-radius:5px;background:#4f46e5}
+  .risk-val{font-size:13px;font-weight:bold;color:#4f46e5;width:80px;text-align:right;flex-shrink:0}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}.risk-row{flex-wrap:wrap}.risk-label{width:100%}.risk-val{width:auto}}
+body{background:#f5f1eb;display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
+.book-wrapper{max-width:1260px;width:100%;display:flex;gap:32px;padding:48px 20px 60px;align-items:flex-start;min-height:100vh}
+.sidebar{width:240px;flex-shrink:0;position:sticky;top:48px;background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);max-height:calc(100vh - 96px);overflow-y:auto;z-index:10}
+.sidebar h3{font-size:16px;color:#1a1a1a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8e0d5;font-family:'FZXPYZS',serif;font-weight:normal}
+.sidebar-nav{display:flex;flex-direction:column;gap:2px}
+.sidebar-nav a{display:block;padding:5px 0;font-size:13px;color:#4f46e5;text-decoration:none;border-bottom:1px solid #f0ece6;transition:color .15s;line-height:1.6}
+.sidebar-nav a:hover{color:#dc2626}
+.main-content{flex:1;min-width:0;max-width:880px}
+.book-header{text-align:center;margin-bottom:32px}
+.book-header h1{font-size:28px;color:#1a1a1a;margin-bottom:8px;font-weight:normal}
+.chapter-title{font-size:22px;color:#1a1a1a;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid #e8e0d5}
+.chapter-divider{margin:32px auto 48px;text-align:center;color:#ccc;font-size:24px;letter-spacing:16px;user-select:none}
+.book-footer{text-align:center;padding-top:24px;border-top:1px solid #e8e0d5;color:#bbb;font-size:14px;line-height:1.8;margin-top:48px}
+.book-footer a{color:#888;text-decoration:none}
+.back-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;margin-bottom:12px}
+.catalog-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+@media(max-width:768px){.sidebar{display:none}.book-wrapper{display:block;padding:24px 12px 40px}}
+</style></head>
+<body>
+<div class="book-wrapper">
+  <aside class="sidebar"><h3>📖 目录</h3><nav class="sidebar-nav">
+      <a href="#ch001">第1章 · 认识自动化报表</a>
+      <a href="#ch002">第2章 · Python基础知识</a>
+      <a href="#ch003">第3章 · 用Python对报表进行基本操作</a>
+      <a href="#ch004">第4章 · 用Python实现单元格选择和字体设置</a>
+      <a href="#ch005">第5章 · 用Python设置Excel对齐方式</a>
+      <a href="#ch006">第6章 · 用Python设置Excel数字、条件格式</a>
+      <a href="#ch007">第7章 · 用Python设置Excel单元格</a>
+      <a href="#ch008">第8章 · 用Python对Excel进行编辑</a>
+  </nav></aside>
+  <main class="main-content">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <a class="back-btn" href="../目录.html">← 总目录</a>
+      <a class="catalog-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-catalog.html">章节目录</a>
+    </div>
+    <div class="book-header"><h1>对比Excel，轻松学习Python报表自动化</h1></div>
+    <div id="ch001" class="chapter-title">第1章 · 认识自动化报表</div>
+    <div class="container">
+
+
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第1章「认识自动化报表」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  Excel作为日常工作核心工具，通过工作簿→Sheet→单元格→元素的层次结构管理数据，每次制作报表都需手动重复操作。但手动制表效率低、易出错，无法满足高频报表需求。如何将重复的人工报表工作转化为自动化流程？答案在于五步自动化流程（拆解→找代码→组合→验证→调用），并选择合适的Python库（推荐Pandas+openpyxl）代替手工操作。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是全书的基础框架。首先剖析Excel的底层组成：工作簿包含多个Sheet，每个Sheet由单元格构成，单元格可设置字体、对齐、条件格式等元素。然后介绍了制作自动化报表的五步通用流程——这个流程与工具无关，是方法论层面的抽象。最后梳理了Python操作Excel的八大库（win32com、xlrd、xlwt、xlutils、xlsxwriter、xlwings、openpyxl、Pandas），分析各自的优劣，并确定了本书的技术栈：Pandas负责数据处理，openpyxl负责格式样式设置。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">5步</div>
+    <div class="kpi-label">自动化报表<br>标准流程</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">8+</div>
+    <div class="kpi-label">Python Excel<br>可选库</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2个</div>
+    <div class="kpi-label">推荐核心库<br>Pandas+openpyxl</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">N个</div>
+    <div class="kpi-label">单元格元素<br>字体/对齐/格式</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心原理</div>
+    <div class="section-title t-01">Excel基本组成：工作簿→Sheet→单元格元素</div>
+    <div class="section-desc">Excel文件的核心结构是一个层级体系：一个工作簿（Workbook）包含多个Sheet，每个Sheet由若干单元格组成，每个单元格又可设置字体、对齐方式、条件格式等属性。本书按照Excel功能区模块编排，依次覆盖这些元素的Python自动化操作。</div>
+    <div class="flow-row">
+      <div class="flow-step">📗 工作簿<br><small>Workbook</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📄 Sheet<br><small>多个独立表</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔲 单元格<br><small>Cell</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🎨 元素<br><small>字体·对齐·格式</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">方法框架</div>
+    <div class="section-title t-02">自动化报表五步流程：拆解→找代码→组合→验证→调用</div>
+    <div class="section-desc">报表自动化的本质是用计算机代替人工。第一步「步骤拆解」是方法论核心——与具体工具无关，例如第一步永远是收集数据。第二步「找对应代码」为每一步匹配Python实现。第三步「组合代码」将零散代码组装为完整脚本。第四步「验证结果」确保输出正确。第五步「等待调用」在需要时一键执行。</div>
+    <div class="flow-row">
+      <div class="flow-step">1️⃣ 步骤拆解<br><small>抽象方法论</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">2️⃣ 找对应代码<br><small>匹配实现</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">3️⃣ 组合代码<br><small>组装脚本</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">4️⃣ 验证结果<br><small>确保正确</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">5️⃣ 等待调用<br><small>一键执行</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">工具选择</div>
+    <div class="section-title t-03">Python操作Excel的八大库：各有优劣</div>
+    <div class="section-desc">Python生态中有八个主流Excel库。win32com模拟鼠标操作但仅限Windows；xlrd/xlwt/xlutils负责基础读写；xlsxwriter擅长样式和图表但不可读已有文件；xlwings交互性强但格式功能不全面；openpyxl各项功能中规中矩、文档齐全；Pandas是数据处理神器。实际工作中往往需要多个库组合使用。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🐼</div>
+        <div class="dual-text"><h4>Pandas · 数据处理</h4><p>读取、清洗、聚合、分析——Python数据处理的事实标准，几乎所有数据分析任务都离不开它。</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text"><h4>openpyxl · 格式设置</h4><p>字体、颜色、边框、对齐、条件格式——格式设置功能全面，代码清晰易懂，与Pandas完美互补。</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">技术选型</div>
+    <div class="section-title t-04">本书技术栈：Pandas + openpyxl 黄金组合</div>
+    <div class="section-desc">对Excel的常规操作分两类：数据处理和格式样式设置。数据处理必选Pandas，格式设置需找一个功能全面且代码好理解的库——openpyxl是最佳搭档。本书所有案例都基于这一组合，读者也应了解其他库以备特殊场景。</div>
+    <div class="risk-row">
+      <div class="risk-label">🐼 Pandas</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+      <div class="risk-val">数据处理</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">📝 openpyxl</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:85%"></div></div>
+      <div class="risk-val">格式样式</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">🖱️ win32com</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:40%"></div></div>
+      <div class="risk-val">仅Windows</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">✈️ xlwings</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:55%"></div></div>
+      <div class="risk-val">交互性强</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">学习路径</div>
+    <div class="section-title t-05">从Excel思维到Python思维的范式转换</div>
+    <div class="section-desc">本书最大特色是「对比学习法」：每个Python操作都从Excel的对应操作讲起。读者不需要从零学编程——你已会用Excel，只需要知道同一件事在Python里怎么写。这种对比降低了认知门槛，让报表自动化的学习曲线变得平滑。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📗</div>
+        <div class="data-name">Excel操作</div>
+        <div class="data-sm">已知的界面操作<br>功能区点击拖拽<br>作为理解起点</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">↔️</div>
+        <div class="data-name">对比学习</div>
+        <div class="data-sm">每个Excel操作<br>对应Python代码<br>降低学习门槛</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🐍</div>
+        <div class="data-name">Python代码</div>
+        <div class="data-sm">自动化执行<br>批量处理<br>可重复调用</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">实现报表自动化不是「学一门新语言」，而是将你已掌握的Excel思维翻译成Python代码。五步流程提供方法论框架，Pandas+openpyxl提供技术实现——两者结合，任何重复性报表工作都可以转化为一键执行的自动化脚本。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第1章「认识自动化报表」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch002" class="chapter-title">第2章 · Python基础知识</div>
+    <div class="container">
+
+
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第2章「Python基础知识」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  Python作为一门语法简单、库丰富的胶水语言，是报表自动化的实现工具。但从未接触过编程的Excel用户面对Python环境安装、Jupyter Notebook操作、变量、数据类型、数据结构、循环、函数等概念时往往无所适从。如何在最短时间内掌握报表自动化所需的Python核心知识？本章聚焦于后续操作必需的Python基础——从Anaconda安装到函数与库的调用，每个知识点都配备代码示例，够用即可，不求面面俱到。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章是为Python零基础的Excel用户准备的入门速成。从Anaconda的下载安装（Windows和Mac双系统教程）开始，介绍了Jupyter Notebook这一数据分析主流IDE的基本操作。随后系统地讲解了Python核心语法：数的类型、变量与标识符、print输出与格式化、缩进与注释。深入讨论了字符串的九种操作（连接、复制、长度、查找、索引、分隔、删除），以及三种核心数据结构——列表（list）、字典（dict）和元组（tuple）的创建与操作。最后覆盖运算符、循环语句（for/while）、条件语句（if/elif/else）、函数（普通函数与匿名函数lambda），以及列表生成式和map()等高级特性。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">核心数据结构<br>列表/字典/元组</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">9种</div>
+    <div class="kpi-label">字符串操作<br>连接·查找·索引</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">循环方式<br>for / while</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">可复用函数<br>def + lambda</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">环境搭建</div>
+    <div class="section-title t-01">Anaconda安装与Jupyter Notebook入门</div>
+    <div class="section-desc">Anaconda自带常用Python库，免去手动安装的麻烦，是初学者的最佳选择。安装后即可使用Jupyter Notebook——它支持Code模式编写代码、Markdown模式撰写分析报告，是数据分析领域的首选IDE。基本操作：新建文件、运行代码（Ctrl+Enter）、重命名、保存、导入本地文件。</div>
+    <div class="flow-row">
+      <div class="flow-step">📥 下载<br>Anaconda</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚙️ 安装<br>双系统教程</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🚀 启动<br>Jupyter</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📝 新建<br>Notebook</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">▶️ 运行<br>第一段代码</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">基本概念</div>
+    <div class="section-title t-02">变量、数据类型、输出与缩进</div>
+    <div class="section-desc">Python中「数」分整数（int）和浮点数（float），「字符串」（str）用引号括起。变量是可以存放各类数据的容器，命名需以字母或下划线开头。print()函数用于输出，str.format()方法实现灵活格式化（.2f保留小数、.2%百分比）。Python用缩进识别代码块（通常4空格），#号表示单行注释。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📦</div>
+        <div class="dual-text"><h4>变量 = 容器</h4><p>存放各种数据，通过变量名访问。命名规则：字母/下划线开头，区分大小写，不能是关键字。</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🖨️</div>
+        <div class="dual-text"><h4>print() 输出</h4><p>str.format() 实现一对一/多对多填充、浮点数精度控制(.2f)、百分数格式化(.2%)。</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">数据处理</div>
+    <div class="section-title t-03">字符串操作与三大数据结构</div>
+    <div class="section-desc">字符串支持九种操作：用+连接、用*复制、len()测长、in/find()查找、[]索引获取、[:]切片区间、split()分隔、strip()去首尾空格。列表（list）可变有序，支持append/insert/pop/remove/sort等增删改查。字典（dict）是键值对结构，用keys()/values()/items()遍历。元组（tuple）与列表类似但不可修改，两者可通过list()/tuple()互转。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">📋</div>
+        <div class="cmp-name">列表 list</div>
+        <div class="cmp-note">可变有序集合<br>append/pop/sort<br>支持切片索引</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">📖</div>
+        <div class="cmp-name">字典 dict</div>
+        <div class="cmp-note">键值对结构<br>key:value 映射<br>keys/values/items</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🔒</div>
+        <div class="cmp-name">元组 tuple</div>
+        <div class="cmp-note">不可修改序列<br>与list可互转<br>zip()打包元组</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">控制流</div>
+    <div class="section-title t-04">循环、条件语句与函数</div>
+    <div class="section-desc">for循环遍历序列中每个元素执行操作，while在条件满足时持续循环（注意避免死循环）。if/elif/else构成条件判断链：先判断if，不满足则逐个判断elif，都不满足执行else。函数用def定义，可带参数和return返回值，通过函数名重复调用。匿名函数lambda更简洁：lambda arg: expression，适合简单的一行操作。</div>
+    <div class="code-block"># for循环 — 遍历必修课
+for course in ["Excel","SQL","Python","统计学"]:
+    print(f"学习{course}")
+
+# 匿名函数 — 两数相乘
+multiply = lambda x, y: x * y
+print(multiply(3, 4))  # 输出: 12
+
+# 条件判断
+if score >= 60:
+    print("及格")
+elif score >= 80:
+    print("优秀")
+else:
+    print("不及格")</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">高级特性</div>
+    <div class="section-title t-05">列表生成式、map()与库管理</div>
+    <div class="section-desc">列表生成式用一行代码替代多层for循环：[x**2 for x in list]，数据量大时性能优势明显。map(function, args)对序列每个元素执行函数操作，结果可用list()转化。库是跨程序可调用的函数集合，pip install xxx安装、pip uninstall xxx卸载。本书主要使用openpyxl库，需在Anaconda Prompt（Windows）或终端（Mac）中安装。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">⚡</div>
+        <div class="data-name">列表生成式</div>
+        <div class="data-sm">一行代码替代<br>多层for循环<br>大数据量更快</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🗺️</div>
+        <div class="data-name">map()函数</div>
+        <div class="data-sm">对序列逐元素<br>执行统一操作<br>list()转化结果</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📚</div>
+        <div class="data-name">库管理</div>
+        <div class="data-sm">pip install 安装<br>pip uninstall 卸载<br>import 导入调用</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Python的语法并不复杂——它被设计为「可执行的伪代码」。本章覆盖的变量、数据结构、循环、条件、函数、库等六大模块，已构成报表自动化所需的全部编程基础。掌握这些，后面的章节本质上只是学习openpyxl库的API。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第2章「Python基础知识」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch003" class="chapter-title">第3章 · 用Python对报表进行基本操作</div>
+    <div class="container">
+
+
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第3章「用Python对报表进行基本操作」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  日常工作需要频繁地打开、创建、写入Excel文件，并对Sheet进行管理。手工操作虽简单，但当成百上千个文件需要处理时就变得不可能。如何用Python替代这些基础的Excel操作？本章对比讲解了load_workbook()/read_excel()两种读取方式，Workbook()创建工作簿，append()写入数据，以及Sheet的创建、重命名、复制与删除——每个操作都配有Excel界面对照和Python代码，让读者直观理解映射关系。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章从最基础的Excel文件操作入手，建立Excel界面操作与Python代码之间的映射。首先对比了openpyxl的load_workbook()和Pandas的read_excel()两种读取方式——前者一次性加载所有Sheet，后者仅读取指定Sheet但结果显示更直观。然后介绍了如何创建新工作簿并插入数据：支持单元格赋值（ws['A1']=value）、整行赋值（append()）、多行赋值（for循环+append()）。还解决了一个常见痛点：Pandas与openpyxl之间的数据格式转换，通过dataframe_to_rows()函数实现两个库的无缝衔接。最后覆盖了Sheet管理：create_sheet()新建、title属性重命名与标签颜色、copy_worksheet()复制、以及删除操作。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">读取方式<br>openpyxl/Pandas</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">写入方式<br>单元格/行/多行</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">4项</div>
+    <div class="kpi-label">Sheet操作<br>增/改/复/删</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">1桥</div>
+    <div class="kpi-label">库间转换<br>dataframe_to_rows</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">文件读取</div>
+    <div class="section-title t-01">打开工作簿：load_workbook() vs read_excel()</div>
+    <div class="section-desc">openpyxl的load_workbook()一次性将工作簿所有Sheet导入Python，但不会实时显示数据。Pandas的read_excel()可将数据直接展示在界面上，但一次只能读取一个Sheet（默认第一个，可用sheet_name参数指定）。核心区别：load_workbook适用于需要操作多个Sheet的场景，read_excel适合快速查看和数据分析。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📂</div>
+        <div class="dual-text"><h4>load_workbook()</h4><p>openpyxl库函数<br>一次性读取所有Sheet<br>数据不实时显示<br>适合格式设置操作</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🐼</div>
+        <div class="dual-text"><h4>read_excel()</h4><p>Pandas库函数<br>一次读取一个Sheet<br>数据实时显示<br>适合数据分析处理</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">文件创建</div>
+    <div class="section-title t-02">创建工作簿与三种数据写入方式</div>
+    <div class="section-desc">Workbook()声明新工作簿，wb.save(path)保存到本地。数据写入有三种粒度：单格赋值（ws['A1']=1 或 ws.cell(row=1,column=1).value=1）、整行赋值（ws.append([1,2,3])一次性插入一行）、多行赋值（for循环+append()批量插入），灵活适配不同数据规模。</div>
+    <div class="flow-row">
+      <div class="flow-step">📝 Workbook()<br><small>声明工作簿</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">✏️ ws['A1']=1<br><small>单格赋值</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📋 append()<br><small>整行插入</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄 for+append<br><small>批量多行</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">💾 wb.save()<br><small>保存文件</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">库间桥接</div>
+    <div class="section-title t-03">Pandas与openpyxl之间的数据转换</div>
+    <div class="section-desc">实际工作中常需混用Pandas和openpyxl：先用Pandas处理数据，再用openpyxl设置格式。dataframe_to_rows()是连接两个库的桥梁：将DataFrame转化为逐行数据，参数index控制是否保留索引列，header控制是否保留列名。然后用openpyxl的append()将转换后的数据逐行写入工作簿。</div>
+    <div class="code-block"># Pandas读取 → openpyxl写入<br>from openpyxl.utils.dataframe import dataframe_to_rows<br><br>df = pd.read_excel("dataset.xlsx")<br>wb = Workbook()<br>ws = wb.active<br><br>for row in dataframe_to_rows(df, index=False, header=True):<br>    ws.append(row)<br><br>wb.save("output.xlsx")</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Sheet管理</div>
+    <div class="section-title t-04">新建、重命名、复制与删除Sheet</div>
+    <div class="section-desc">create_sheet()新建Sheet，可指定title标题和index位置。copy_worksheet(source)复制已有Sheet的内容到新Sheet。ws.title='新名'实现重命名，ws.sheet_properties.tabColor设置标签颜色。wb.remove(sheet)可删除指定Sheet。wb.sheetnames属性获取工作簿中所有Sheet名称列表。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">➕</div>
+        <div class="cmp-name">新建 Sheet</div>
+        <div class="cmp-note">create_sheet()<br>可指定title和index<br>默认排在最后</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">✏️</div>
+        <div class="cmp-name">重命名 & 颜色</div>
+        <div class="cmp-note">ws.title = "新名"<br>tabColor设标签色<br>sheetnames查看全部</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">📋</div>
+        <div class="cmp-name">复制 & 删除</div>
+        <div class="cmp-note">copy_worksheet()<br>wb.remove(ws)<br>del wb[name]</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">实战应用</div>
+    <div class="section-title t-05">从零创建一张完整报表</div>
+    <div class="section-desc">将这些基础操作串联起来，就能从零创建一张完整报表：先创建工作簿，用append()写入表头和数据行，再根据需要新建多个Sheet并命名，最后保存。这看似简单，但当你需要每天生成一份日报时，这段代码的价值就体现出来了——一次编写，永久复用。</div>
+    <div class="risk-row">
+      <div class="risk-label">📝 创建</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+      <div class="risk-val">Workbook()</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">📊 写入</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:95%"></div></div>
+      <div class="risk-val">append()</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">📑 管理</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:80%"></div></div>
+      <div class="risk-val">Sheet操作</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-label">💾 保存</div>
+      <div class="risk-meter"><div class="risk-fill" style="width:100%"></div></div>
+      <div class="risk-val">wb.save()</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Python操作Excel文件的基础API并不复杂——load_workbook()打开、Workbook()创建、append()写入、save()保存。真正的价值在于将这些简单操作组合成自动化流程，让一个脚本替代成百上千次手工点选。掌握dataframe_to_rows()，就能在Pandas和openpyxl之间自由切换。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第3章「用Python对报表进行基本操作」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch004" class="chapter-title">第4章 · 用Python实现单元格选择和字体设置</div>
+    <div class="container">
+
+
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第4章「用Python实现单元格选择和字体设置」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  在Excel中设置字体格式——选字体、调大小、加粗、变色、填充底色、加边框——只需在功能区点击几个按钮。但当你有数百个单元格需要统一格式、或每天都要对固定区域重复相同格式设置时，手工操作就变得低效易错。如何用Python实现Excel单元格的格式自动化？本章系统讲解了单元格选择（单格/行列/区域）、字体设置（Font()函数的8大参数）、单元格填充（PatternFill()纯色与图案）、以及边框线设置（Border()四边+对角线），最后通过一个批量格式化实战案例将这些知识点串联起来。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章聚焦于Excel「开始」选项卡中「字体」组的Python实现。首先介绍了单元格的多种选择方式：直接指明坐标（ws['A1']）或行列编号（ws.cell()）选择单格；通过行号、列号、范围选择多个单元格。然后深入Font()函数的8个参数：name（字体类型）、size（大小）、bold（加粗）、italic（斜体）、vertAlign（垂直对齐）、underline（下划线类型）、strike（删除线）、color（ARGB颜色值）。接着讲解了PatternFill()实现单元格填充——fill_type='solid'纯色填充是最常用场景，以及Border()设置四边边框线的线型与颜色。最后通过一个批量格式化案例展示了如何遍历多行多列，统一设置所有单元格的格式。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">8个</div>
+    <div class="kpi-label">Font()参数<br>字体/大小/颜色等</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">选择范围<br>单格/行列/区域</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5边</div>
+    <div class="kpi-label">Border设置<br>四边+对角线</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">批量格式<br>遍历整表统一设置</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">选择方法</div>
+    <div class="section-title t-01">单元格选择：单格、行列与区域</div>
+    <div class="section-desc">选择单元格是格式设置的前置步骤。单个单元格有两种写法：ws['A1']直接坐标、ws.cell(row=1,column=1)行列编号。多行用ws[5:10]切片，多列用ws['C:E']范围，区域用ws['A1:C5']。这些选择方式与Excel鼠标拖拽选区一一对应，学习曲线平缓。</div>
+    <div class="flow-row">
+      <div class="flow-step">📍 单格<br><small>ws['A1']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📏 单行<br><small>ws[10]</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📐 多列<br><small>ws['C:E']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔲 区域<br><small>ws['A1:C5']</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🎯 多行多列<br><small>自由组合</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">字体设置</div>
+    <div class="section-title t-02">Font()函数：八大参数全面掌控字体样式</div>
+    <div class="section-desc">Font(name, size, bold, italic, vertAlign, underline, strike, color)是openpyxl字体设置的核心。color使用ARGB格式的颜色值（如'FFFF0000'红色）。实际工作中常对同一单元格进行多项设置：Font(name='微软雅黑', size=12, bold=True, color='FFFFFFFF')。设置方式：cell.font = Font(参数1=值1, 参数2=值2, ...)。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">🔤</div>
+        <div class="cmp-name">name & size</div>
+        <div class="cmp-note">字体类型与字号<br>如'微软雅黑', 12<br>对应功能区下拉</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">𝐁 𝐼</div>
+        <div class="cmp-name">bold & italic</div>
+        <div class="cmp-note">加粗与斜体<br>True / False<br>对应 B / I 按钮</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🎨</div>
+        <div class="cmp-name">underline, strike, color</div>
+        <div class="cmp-note">下划线 · 删除线 · 颜色<br>color用ARGB格式<br>如'FFFF0000'红色</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">填充设置</div>
+    <div class="section-title t-03">PatternFill()：纯色与图案填充</div>
+    <div class="section-desc">PatternFill(fill_type, start_color, end_color)控制单元格填充。最常用的是纯色填充：fill_type='solid'，start_color指定颜色。图案填充时pattern样式覆盖在背景色（end_color）之上。设置方式：cell.fill = PatternFill(fill_type='solid', fgColor='FFFF00')。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🟨</div>
+        <div class="dual-text"><h4>纯色填充（最常用）</h4><p>fill_type='solid'<br>fgColor 指定颜色<br>例：黄色 'FFFF00'<br>橙色 'FFA500'</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔲</div>
+        <div class="dual-text"><h4>图案填充</h4><p>多种 pattern 样式可选<br>start_color = 图案色<br>end_color = 背景色<br>常用灰色图案标注</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">边框设置</div>
+    <div class="section-title t-04">Border()：四边线型与对角线设置</div>
+    <div class="section-desc">Border(left, right, top, bottom, diagonal)配置单元格边框。每边用Side(style, color)指定线型（thin/double/dashed等）和颜色。对角线需额外设置diagonalDown（左上→右下）和diagonalUp（左下→右上）。常见场景：只设外边框用thin细线，表头用medium中等线，内部线用hair极细线。</div>
+    <div class="code-block">from openpyxl.styles import Border, Side
+
+thin_border = Border(
+    left=Side(style='thin', color='000000'),
+    right=Side(style='thin', color='000000'),
+    top=Side(style='thin', color='000000'),
+    bottom=Side(style='thin', color='000000')
+)
+cell.border = thin_border</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">批量实战</div>
+    <div class="section-title t-05">遍历式批量格式化：一劳永逸的格式统一方案</div>
+    <div class="section-desc">实际场景中极少只格式化一个单元格。通过for循环遍历指定区域的所有单元格，统一设置字体、填充、边框，才是报表自动化的真实价值。可以按行遍历（for row in ws[range]），也可以按列遍历（for col in ws[range]），也可以限定区域（如只格式化B3:C5）。一次编写，永久复用。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🔤</div>
+        <div class="data-name">字体统一</div>
+        <div class="data-sm">微软雅黑 12号<br>白色字体<br>所有单元格</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🟧</div>
+        <div class="data-name">填充统一</div>
+        <div class="data-sm">橙色背景<br>PatternFill solid<br>统一视觉风格</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">边框统一</div>
+        <div class="data-sm">thin 细线边框<br>黑色边线<br>专业外观</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Excel的格式设置——字体、填充、边框——在Python中对应三个核心函数：Font()、PatternFill()、Border()。它们的参数直接映射Excel功能区按钮，学习成本低。真正的威力在于批量操作：一个for循环遍历所有单元格，统一应用格式，让报表的视觉效果和数据处理一样自动化。这就是Python报表自动化的核心价值——取代一切重复性工作。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第4章「用Python实现单元格选择和字体设置」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch005" class="chapter-title">第5章 · 用Python设置Excel对齐方式</div>
+    <div class="container">
+
+
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第5章「用Python设置Excel对齐方式」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  在Excel中调整对齐方式——左对齐、居中、右对齐、自动换行、合并单元格——只需在「开始」选项卡的「对齐方式」组点击几次按钮。但当你有数百行数据需要统一对齐、或每天生成的报表都要标准化排版时，手工调整就枯燥低效。如何用Python批量控制Excel单元格的对齐方式？本章系统讲解Alignment()函数的6大参数、9种水平/3种垂直对齐类型、合并/解除单元格、以及批量对齐的实战案例。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章聚焦于Excel「开始」选项卡中「对齐方式」组的Python实现。首先介绍Alignment()函数的6个核心参数：horizontal（水平对齐，支持left/center/right/justify/distributed/fill等9种）、vertical（垂直对齐，top/center/bottom）、text_rotation（文本旋转角度，0-360°）、wrap_text（自动换行）、shrink_to_fit（自适应缩小字号）、indent（缩进字符数）。然后讲解单元格合并/解除合并（merge_cells/unmerge_cells），以及合并后单元格通过top_left_cell进行样式设置的方法。最后通过一个批量设置对齐方式加合并标题行的综合案例，展示如何用for循环一次性完成整表标准化排版。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">6个</div>
+    <div class="kpi-label">Alignment()参数<br>水平/垂直/旋转/换行/缩进</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">9种</div>
+    <div class="kpi-label">水平对齐类型<br>居左/居中/居右等9种选择</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">3种</div>
+    <div class="kpi-label">垂直对齐类型<br>顶部/居中/底部对齐</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">批量对齐<br>遍历整表统一排版格式</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">核心函数</div>
+    <div class="section-title t-01">Alignment()：六参数掌控对齐全局</div>
+    <div class="section-desc">Alignment(horizontal, vertical, text_rotation, wrap_text, shrink_to_fit, indent) 是 openpyxl 对齐设置的核心。设置方式：cell.alignment = Alignment(参数1=值1, ...)。6个参数直接映射Excel功能区按钮，学习曲线平缓。horizontal和vertical是最常用的两个参数。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">↔️</div>
+        <div class="cmp-name">horizontal</div>
+        <div class="cmp-note">水平对齐<br>left/center/right<br>justify/distributed/fill</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">↕️</div>
+        <div class="cmp-name">vertical</div>
+        <div class="cmp-note">垂直对齐<br>top/center/bottom<br>上下方向控制</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🔄</div>
+        <div class="cmp-name">旋转·换行·缩进</div>
+        <div class="cmp-note">text_rotation (0-360°)<br>wrap_text (True/False)<br>indent (缩进字符数)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">水平对齐</div>
+    <div class="section-title t-02">水平方向对齐：9种类型从常规到特殊</div>
+    <div class="section-desc">horizontal参数支持9种对齐类型：left（左对齐）、center（居中）、right（右对齐）、justify（两端对齐，占满行靠两边界）、distributed（分散对齐，未满行自动调字间距占满）、fill（填满对齐，重复字符填充）、general（一般对齐）、centerContinuous、distributed。日常最常用的是left/center/right三种，分散对齐和填满对齐用于特殊排版需求。</div>
+    <div class="flow-row">
+      <div class="flow-step">⚫ 左对齐<br><small>left</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚫ 居中对齐<br><small>center</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚫ 右对齐<br><small>right</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📐 两端对齐<br><small>justify</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">📏 分散对齐<br><small>distributed</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">换行与旋转</div>
+    <div class="section-title t-03">自动换行、文本旋转与字号自适应</div>
+    <div class="section-desc">当文本长度超过列宽时，有三种处理方式：wrap_text=True自动换行让内容在单元格内多行显示；shrink_to_fit=True自动调小字体使内容适配单元格；text_rotation设置文本旋转角度（逆时针）。这三者在实际报表排版中非常实用，特别适合处理长文本标题和备注列。注意text_rotation与shrink_to_fit不能同时使用。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📝</div>
+        <div class="dual-text"><h4>自动换行（wrap_text=True）</h4><p>内容超列宽自动换行<br>保持字体大小不变<br>单元格高度自动增加<br>适合长文本备注列</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔎</div>
+        <div class="dual-text"><h4>自适应+旋转+缩进</h4><p>shrink_to_fit 缩小字体适配<br>text_rotation 旋转角度<br>indent 首行缩进字符数<br>各有独立适用场景</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">合并操作</div>
+    <div class="section-title t-04">单元格合并与解除：merge_cells / unmerge_cells</div>
+    <div class="section-desc">merge_cells('A2:D2')合并指定区域为一个大单元格，对应Excel「合并后居中」按钮。unmerge_cells('A2:D2')解除合并还原。合并后的单元格以左上角单元格（top_left_cell）为代表进行样式设置——字体、填充、对齐方式均作用于top_left_cell，保证合并区域样式一致性。</div>
+    <div class="code-block">from openpyxl.styles import Alignment, Font
+
+# 合并单元格
+ws.merge_cells('A2:D2')
+
+# 通过左上角单元格设置合并后样式
+top_left_cell = ws['A2']
+top_left_cell.alignment = Alignment(
+    horizontal='center', vertical='center')
+top_left_cell.font = Font(bold=True)
+
+# 解除合并
+ws.unmerge_cells('A2:D2')</div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">批量实战</div>
+    <div class="section-title t-05">批量设置对齐方式：整表标准化一个循环搞定</div>
+    <div class="section-desc">真实场景极少只格式化一个单元格。在字体格式化的for循环基础上增加alignment属性，一次性完成水平居中、垂直居中设置。配合标题行合并与加粗，一条for循环完成整表的对齐与排版统一。修改一次代码，永久适用于同类报表。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📐</div>
+        <div class="data-name">水平居中</div>
+        <div class="data-sm">遍历所有数据单元格<br>horizontal='center'<br>整列数据统一居中显示</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">垂直居中</div>
+        <div class="data-sm">遍历所有数据单元格<br>vertical='center'<br>行高统一视觉整洁</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🏷️</div>
+        <div class="data-name">标题行</div>
+        <div class="data-sm">merge_cells合并标题行<br>Font(bold=True)加粗<br>一次编写永久复用</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Excel的对齐方式——水平对齐、垂直对齐、自动换行、文本旋转、缩进、合并单元格——在Python中对应一个核心函数Alignment()和两个操作函数merge_cells()/unmerge_cells()。参数直接映射Excel功能区按钮，学习成本极低。真正的威力在于批量：一个for循环遍历所有数据单元格，统一设置alignment属性，配合标题行合并加粗，让报表排版和数据处理一样全自动化。这就是Python报表自动化的核心价值——取代一切重复、枯燥的工作。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第5章「用Python设置Excel对齐方式」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch006" class="chapter-title">第6章 · 用Python设置Excel数字、条件格式</div>
+    <div class="container">
+
+
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第6章「用Python设置Excel数字、条件格式」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  Excel的数字格式和条件格式是数据可视化的重要工具——将0.5显示为50%、将日期显示为年月日、将超标的单元格标红、给数据加上色阶或数据条。手工操作时，你要逐个选中区域、点击条件格式菜单、设置规则。但当报表每天更新且数据量庞大时，重复做这些事令人崩溃。如何用Python自动设置Excel的数字显示格式和条件格式？本章系统讲解number_format的9种数字格式、CellIsRule突出显示、DataBarRule数据条、ColorScaleRule色阶、IconSet图标集。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章分为两大板块：数字格式和条件格式。数字格式部分，number_format属性对应Excel「数字」组，覆盖常规、小数（0.00）、百分比（0.00%）、货币（¥#,##0）、科学计数（0.00E+00）、日期时间（yyyy-mm-dd h:mm:ss）等9种常用格式。条件格式部分包括四种类型：CellIsRule()用于突出显示满足条件的单元格（支持greaterThan/lessThan/between/equal等7种operator）；DataBarRule()用于数据条可视化（可自定义min/max类型和值、颜色、是否显示数值）；ColorScaleRule()用于色阶（支持双色和三色刻度）；IconSet()用于图标集（多类图标可选、可设反转和是否显示数值）。两部分共同构成Excel数据可视化的Python自动化方案。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">9种</div>
+    <div class="kpi-label">数字格式<br>常规/小数/百分比等</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">4类</div>
+    <div class="kpi-label">条件格式类型<br>高亮/数据条/色阶/图标</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">7种</div>
+    <div class="kpi-label">operator条件<br>大于/小于/介于/等于</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">5种</div>
+    <div class="kpi-label">图标集类型<br>三色旗/箭头/信号/圆等</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">数字格式</div>
+    <div class="section-title t-01">number_format：9种数字显示格式一键切换</div>
+    <div class="section-desc">number_format属性直接映射Excel「数字」组。常用格式：General（常规）、0.00（保留2位小数）、0.00%（百分比）、¥#,##0（货币）、0.00E+00（科学计数）、yyyy-mm-dd h:mm:ss（长日期时间）、yyyy-mm-dd（短日期）、h:mm:ss（时间）。设置方式：cell.number_format = '0.00'，一行代码替代Excel的手动点击。</div>
+    <div class="flow-row">
+      <div class="flow-step">🔢 常规<br><small>General</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📊 小数<br><small>0.00</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">% 百分比<br><small>0.00%</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">¥ 货币<br><small>¥#,##0</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">📅 日期时间<br><small>yyyy-mm-dd</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">突出显示</div>
+    <div class="section-title t-02">CellIsRule：按条件自动标记异常数据</div>
+    <div class="section-desc">conditional_formatting + CellIsRule(operator, formula, fill) 实现标准条件格式。operator支持greaterThan、lessThan、between、equal、notEqual等7种。formula指定阈值（between用列表[50,80]）。fill使用PatternFill填充颜色。常用于标记超过预算的支出、低于目标的KPI、区间内的合格数据。</div>
+    <div class="code-block">from openpyxl.formatting.rule import CellIsRule
+from openpyxl.styles import PatternFill
+
+# 大于50突出显示为红色
+ws.conditional_formatting.add('A1:A10',
+    CellIsRule(operator='greaterThan', formula=['50'],
+               fill=PatternFill(fill_type='solid', fgColor='FF0000')))
+
+# 介于50-80之间突出显示
+ws.conditional_formatting.add('B1:B10',
+    CellIsRule(operator='between', formula=['50','80'],
+               fill=PatternFill(fill_type='solid', fgColor='FFFF00')))</div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">数据条</div>
+    <div class="section-title t-03">DataBarRule：让数据大小一目了然</div>
+    <div class="section-desc">DataBarRule(start_type, start_value, end_type, end_value, color, showValue) 将数值以数据条形式展示。start_type/end_type可选min/max/num/percent/percentile/formula。color设置数据条颜色。showValue控制是否显示数字。同时作用于多列只需改区域范围如'A1:B10'。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📊</div>
+        <div class="dual-text"><h4>默认数据条</h4><p>start_type='min', end_type='max'<br>自动取最小值和最大值<br>同时显示数值和数据条<br>最简单实用的默认设置</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🎨</div>
+        <div class="dual-text"><h4>自定义数据条</h4><p>start_type='num', value=0<br>end_type='num', value=100<br>自定义颜色和范围<br>可隐藏数值仅显示条</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">色阶</div>
+    <div class="section-title t-04">ColorScaleRule：双色和三色渐变直观对比</div>
+    <div class="section-desc">ColorScaleRule(start_type, start_value, start_color, mid_type..., end_type...) 用颜色渐变展示数值大小分布。双色刻度只需start+end参数，三色刻度增加mid中间值。常用于热力图、成绩分布、温度变化等场景的快速可视化。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">🔴🟢</div>
+        <div class="cmp-name">双色刻度</div>
+        <div class="cmp-note">最小值 → 最大值<br>两种颜色渐变过渡<br>红→绿 / 蓝→白等</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">🔴🟡🟢</div>
+        <div class="cmp-name">三色刻度</div>
+        <div class="cmp-note">最小值 → 中间值 → 最大值<br>三色渐变过渡<br>红→黄→绿等经典方案</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">⚙️</div>
+        <div class="cmp-name">自定义阈值</div>
+        <div class="cmp-note">可设min/mid/max类型<br>可自定义每段颜色<br>可设具体阈值值</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">图标集</div>
+    <div class="section-title t-05">IconSet：用图标直观展示数据等级</div>
+    <div class="section-desc">IconSet(iconSet, percent, cfvo, showValue, reverse) 将数据映射为图标。iconSet指定图标类型（3Arrows/3Flags/3TrafficLights等），cfvo列表定义各等级阈值，showValue控制是否显示数值，reverse控制是否反转图标方向。如同手机信号格，让数据等级一目了然。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🏁</div>
+        <div class="data-name">三色旗</div>
+        <div class="data-sm">3Flags图标<br>分三个等级显示<br>展示具体数值</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">⬆️➡️⬇️</div>
+        <div class="data-name">三向箭头</div>
+        <div class="data-sm">3Arrows图标<br>分上升/水平/下降<br>可隐藏数值</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🚦</div>
+        <div class="data-name">红绿灯</div>
+        <div class="data-sm">3TrafficLights图标<br>支持4-5图标等级<br>可反转图标方向</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Excel的数字格式和条件格式是数据呈现的利器。Python中number_format属性覆盖常规、小数、百分比、货币、日期等9种常用数字格式。条件格式通过四种规则函数——CellIsRule（突出显示）、DataBarRule（数据条）、ColorScaleRule（色阶）、IconSet（图标集）——完整复现Excel条件格式的全部功能。它们的参数直接映射Excel对话框中的选项，学习路径清晰。批量应用只需将区域范围从'A1:A10'改为'A1:C20'，同一规则即可作用于多列数据。数字格式化与条件可视化全部自动化，报表的可读性和专业性大幅提升。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第6章「用Python设置Excel数字、条件格式」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch007" class="chapter-title">第7章 · 用Python设置Excel单元格</div>
+    <div class="container">
+
+
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第7章「用Python设置Excel单元格」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  Excel工作表的日常维护离不开插入行、删除行、调整行高列宽、隐藏行列。手工操作时，右键→插入→右键→删除→右键→行高→右键→列宽——重复无数次。当报表有几十个Sheet且每个都需要相同调整时，手工操作不仅耗时，还容易错删误改。如何用Python自动化管理Excel的单元格行列结构？本章讲解insert_rows/insert_cols、delete_rows/delete_cols、行高列宽设置（row_dimensions/column_dimensions）、行列隐藏（group组合），以及批量遍历设置整表的实战案例。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章聚焦于Excel「开始」选项卡「单元格」组的Python实现，涵盖四大操作：①插入行/列——insert_rows(m, n)和insert_cols(m, n)，m为位置，n为数量（默认1）；②删除行/列——delete_rows(m, n)和delete_cols(m, n)，参数含义相同，是插入的逆向操作；③行高/列宽设置——通过row_dimensions[row_num].height和column_dimensions[col_letter].width分别设置；④行列隐藏——通过column_dimensions.group和row_dimensions.group创建组合来实现（Python中无直接隐藏API，用组合方式更灵活，支持折叠/展开）。最后通过一个批量案例展示如何遍历多行多列统一设置行高列宽，实现整表格式标准化。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2+2</div>
+    <div class="kpi-label">增删函数<br>insert & delete<br>行/列各一对</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">尺寸属性<br>row_dimensions<br>column_dimensions</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">组合</div>
+    <div class="kpi-label">隐藏方式<br>group创建组合<br>可折叠/展开</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">批量遍历<br>整表多行多列<br>一次循环搞定</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">插入操作</div>
+    <div class="section-title t-01">insert_rows / insert_cols：动态扩展工作表结构</div>
+    <div class="section-desc">insert_rows(m, n)在第m行前插入n行，insert_cols(m, n)在第m列前插入n列。n默认值为1，可省略。这是Excel右键「插入」功能的Python等价操作。插入后原有数据自动移位，可复制原Sheet对比插入前后效果。适用于动态添加数据区域、预留空行、插入分隔行等场景。</div>
+    <div class="flow-row">
+      <div class="flow-step">📍 定位<br><small>指定m位置</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📥 插入行<br><small>insert_rows(m,n)</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📊 插入列<br><small>insert_cols(m,n)</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📋 数据移位<br><small>原数据自动下移</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅ 完成<br><small>可复制Sheet对比</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">删除操作</div>
+    <div class="section-title t-02">delete_rows / delete_cols：精准删除多余行列</div>
+    <div class="section-desc">delete_rows(m, n)从第m行开始删除n行，delete_cols(m, n)从第m列开始删除n列。n默认值为1，可不写。这是插入的逆向操作，对应Excel右键「删除」命令。用于清理空行、删除不需要的数据列、精简报表结构。注意：删除操作不可逆，执行前建议先备份原Sheet。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📥</div>
+        <div class="dual-text"><h4>插入（insert）</h4><p>insert_rows(m, n)<br>insert_cols(m, n)<br>在指定位置前插入<br>n默认=1可不写</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🗑️</div>
+        <div class="dual-text"><h4>删除（delete）</h4><p>delete_rows(m, n)<br>delete_cols(m, n)<br>从指定位置起删除<br>操作不可逆需谨慎</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">尺寸设置</div>
+    <div class="section-title t-03">行高与列宽：row_dimensions / column_dimensions</div>
+    <div class="section-desc">行高通过ws.row_dimensions[row_num].height设置，列宽通过ws.column_dimensions[col_letter].width设置。这与Excel右键「行高」「列宽」对话框完成相同的功能。调整其他行只需换行号数字，调整其他列只需换列字母即可，简单直观。</div>
+    <div class="code-block"># 设置第1行行高为40，第A列列宽为20
+ws.row_dimensions[1].height = 40
+ws.column_dimensions['A'].width = 20
+
+# 批量设置：遍历行号/列字母
+for r in [1, 2, 3]:
+    ws.row_dimensions[r].height = 40
+for c in ['A', 'B', 'C']:
+    ws.column_dimensions[c].width = 20</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">隐藏操作</div>
+    <div class="section-title t-04">行列隐藏：通过组合（group）实现可折叠区域</div>
+    <div class="section-desc">openpyxl中隐藏行列的方式是创建组合（group）而非直接的隐藏API。ws.row_dimensions.group(7, 10)隐藏第7-10行，ws.column_dimensions.group('D', 'F')隐藏D-F列。这种方式比单纯的隐藏更灵活——支持折叠/展开，用户可在Excel中手动展开查看。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">📁</div>
+        <div class="cmp-name">隐藏行</div>
+        <div class="cmp-note">row_dimensions.group<br>(7, 10)隐藏7-10行<br>修改起止参数即可</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">📂</div>
+        <div class="cmp-name">隐藏列</div>
+        <div class="cmp-note">column_dimensions.group<br>('D', 'F')隐藏D-F列<br>修改字母范围即可</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🔄</div>
+        <div class="cmp-name">折叠/展开</div>
+        <div class="cmp-note">group支持折叠展开<br>比简单隐藏更灵活<br>适合大量数据管理</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">批量实战</div>
+    <div class="section-title t-05">批量设置多行/列的行高列宽：遍历整表标准化</div>
+    <div class="section-desc">插入/删除行列通常是一次性操作，无需循环。但行高列宽往往需要整表统一设置。通过遍历行号或列号列表，在for循环中对每一行/列分别设置height/width，即可一次性完成整表的尺寸标准化。代码编写一次，永久适用于同类报表。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">批量行高</div>
+        <div class="data-sm">遍历行号列表<br>ws.row_dimensions[r].height<br>统一设行高为指定值</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📐</div>
+        <div class="data-name">批量列宽</div>
+        <div class="data-sm">遍历列字母列表<br>ws.column_dimensions[c].width<br>统一设列宽为指定值</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🔄</div>
+        <div class="data-name">插入/删除</div>
+        <div class="data-sm">一般一次性操作<br>无需遍历循环<br>直接指定位置和数量</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Excel的行列结构管理——插入、删除、调整行高列宽、隐藏——在Python中对应四对函数/属性：insert_rows/insert_cols、delete_rows/delete_cols、row_dimensions.height/column_dimensions.width、group组合隐藏。这些API直接映射Excel的右键菜单功能，学习曲线平缓。实际工作中，插入删除通常是一次性操作，而行高列宽则需要批量遍历整表设置。一个for循环遍历所有目标行列，统一设置height和width，让整个工作表的布局一步到位。Python让Excel的「体力活」变成了「智力活」。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第7章「用Python设置Excel单元格」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+    <div class="chapter-divider">· · ·</div>
+    <div id="ch008" class="chapter-title">第8章 · 用Python对Excel进行编辑</div>
+    <div class="container">
+
+
+
+<h1>对比Excel，轻松学习Python报表自动化 · 第8章「用Python对Excel进行编辑」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  Excel的「开始」选项卡「编辑」组提供排序、筛选、查找替换三大核心功能。手工操作时，选中列→点击排序→选升序/降序，或点击筛选→勾选条件——每个Sheet重复一遍。当数据每天更新、每次都要重新排序筛选时，这些重复操作就是生产力杀手。如何用Python自动完成Excel的排序与筛选？本章讲解用Pandas的sort_values()实现单列与多列排序、用Pandas条件表达式实现数字筛选与文本筛选、以及查找替换的概要介绍。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>本章聚焦于Excel「开始」选项卡「编辑」组的Python实现。核心要点：openpyxl的排序和筛选只会添加排序/筛选符号，不会真的改变数据顺序或过滤数据。真正的排序操作需使用Pandas库的sort_values(df, by=col, ascending=False)，支持单列排序和多列排序（列表传多列名，分别设升/降序）。筛选操作使用Pandas条件表达式（如df[df['col1']>2]实现数字筛选，df[df['col2']=='b']实现文本筛选），比Excel鼠标操作更灵活强大。查找替换在第9章详细讲解。本章展示了Python生态「组合使用」的核心思想——openpyxl处理Excel文件读写，Pandas处理数据分析逻辑。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">排序方向<br>升序 ascending=True<br>降序 ascending=False</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">多列</div>
+    <div class="kpi-label">多列排序<br>主关键字+次关键字<br>by=[col1, col2]</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2种</div>
+    <div class="kpi-label">筛选类型<br>数字筛选 &gt;/&lt;/=<br>文本筛选 ==/包含</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">Pandas</div>
+    <div class="kpi-label">核心库<br>sort_values+条件表达式<br>替代Excel筛选菜单</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">数据排序</div>
+    <div class="section-title t-01">sort_values()：单列与多列排序一步到位</div>
+    <div class="section-desc">openpyxl的排序操作只添加排序符号（即Excel界面的下拉箭头），不会真正重排数据。真正的排序需用Pandas的sort_values()：df.sort_values(by='col1', ascending=False)按col1降序。多列排序传列名列表：by=['col1','col2']，先按col1排，相同值再按col2排，可分别设升/降序。</div>
+    <div class="code-block">import pandas as pd
+
+# 单列排序：按col3降序
+df_sorted = df.sort_values(by='col3', ascending=False)
+
+# 多列排序：按col1降序，相同值按col2升序
+df_sorted = df.sort_values(
+    by=['col1', 'col2'],
+    ascending=[False, True])</div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">数据筛选</div>
+    <div class="section-title t-02">Pandas条件筛选：数字与文本双模式</div>
+    <div class="section-desc">openpyxl的筛选同样只添加筛选符号，不真正过滤数据。Pandas用条件表达式直接筛选：df[df['col1']>2]筛出大于2的行，df[df['col2']=='b']筛出等于b的行。Excel分为数字筛选和文本筛选两种模式，Pandas的条件表达式统一处理，且支持复杂组合条件（&、| 多条件联合）。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🔢</div>
+        <div class="dual-text"><h4>数字筛选</h4><p>df[df['col1'] > 2]<br>支持 > / < / >= / <= / ==<br>可组合多条件<br>如 (df['a']>2) & (df['a']<10)</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🔤</div>
+        <div class="dual-text"><h4>文本筛选</h4><p>df[df['col2'] == 'b']<br>支持 == / != / .str.contains()<br>.str.startswith() / .str.endswith()<br>比Excel筛选更灵活</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">完整流程</div>
+    <div class="section-title t-03">从Excel到排序结果：完整的数据处理链路</div>
+    <div class="section-desc">完整的数据排序筛选流程：①用pandas.read_excel()读取Excel数据到DataFrame；②用sort_values()按指定列排序（支持多列、混合升/降序）；③用条件表达式筛选目标数据；④用to_excel()将结果写回Excel或直接用于后续分析。这一链路将Excel一整套手工操作彻底自动化。</div>
+    <div class="flow-row">
+      <div class="flow-step">📂 读取<br><small>read_excel()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄 排序<br><small>sort_values()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔍 筛选<br><small>条件表达式</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">💾 写回<br><small>to_excel()</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅ 自动化<br><small>一次编写永久复用</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">对比分析</div>
+    <div class="section-title t-04">Excel vs Python 排序筛选对比</div>
+    <div class="section-desc">Excel的排序筛选是手动交互式操作——每次数据更新要重新点一遍，多列排序需弹窗设置。Python的排序筛选是代码驱动——数据变化时只需重新运行脚本，无需任何手动操作。Pandas的条件筛选远比Excel灵活：可组合任意复杂条件、可在排序前先筛选、可直接链式操作（筛选→排序→取top10）。</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">🖱️</div>
+        <div class="cmp-name">Excel方式</div>
+        <div class="cmp-note">选中列→点击排序<br>每次手动重复操作<br>多列需自定义排序弹窗</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">🐍</div>
+        <div class="cmp-name">Python方式</div>
+        <div class="cmp-note">sort_values()一次编码<br>数据更新自动重算<br>可批量处理多个Sheet</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🚀</div>
+        <div class="cmp-name">Python优势</div>
+        <div class="cmp-note">多列混合排序<br>排序+筛选链式操作<br>条件组合灵活无限</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">扩展</div>
+    <div class="section-title t-05">查找替换 + openpyxl + Pandas 生态组合</div>
+    <div class="section-desc">「编辑」组的查找和替换功能将在第9章详讲，与排序筛选共同构成数据处理三步曲。实际工作流：read_excel读取→条件筛选→sort_values排序→格式化（openpyxl）→查找替换→to_excel写回。Python生态中openpyxl+ Pandas组合使用，覆盖Excel全链路自动化。</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">🔍</div>
+        <div class="data-name">查找</div>
+        <div class="data-sm">定位特定数据<br>匹配单元格内容<br>第9章详细讲解</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">✏️</div>
+        <div class="data-name">替换</div>
+        <div class="data-sm">批量修改内容<br>正则匹配替换<br>第9章详细讲解</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🔗</div>
+        <div class="data-name">生态组合</div>
+        <div class="data-sm">openpyxl + Pandas<br>读写 + 分析 + 自动化<br>完整Excel自动化方案</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">Excel的排序与筛选在Python中需要借助Pandas库来实现真正的数据重排和过滤。openpyxl负责Excel文件读写，Pandas负责数据分析逻辑——这是Python生态「组合使用」思想的典型体现。sort_values()支持单列和多列排序，条件表达式（df[条件]）支持数字和文本两种筛选模式，比Excel的鼠标操作更灵活、更强大。排序、筛选、格式化、查找替换串联成完整工作流，一次编写脚本，每天运行即可——这就是Python报表自动化的最终形态。</div>
+</div>
+
+<div class="footer">
+  来源：张俊红《对比Excel，轻松学习Python报表自动化》第8章「用Python对Excel进行编辑」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+
+    <footer class="book-footer"><p>已生成 8 章内容 · <a href="../目录.html">返回总目录</a> · <a href="对比Excel，轻松学习Python报表自动化-catalog.html">章节目录</a></p></footer>
+  </main>
+</div>
+</body></html>

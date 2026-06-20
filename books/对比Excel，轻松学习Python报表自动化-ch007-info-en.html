@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel vs Python Report Automation · Chapter 7「Setting Excel Cells with Python」</title>
+<style>
+  @font-face {font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#f5f1eb;font-family:'PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px}
+  .container{max-width:880px;width:100%}
+  h1{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:36px;color:#1a1a1a;text-align:center;line-height:1.4;margin-bottom:8px;font-weight:normal;letter-spacing:1.5px}
+  .subtitle{text-align:center;font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:14px;color:#888;margin-bottom:24px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto}
+  .divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:0 auto 28px;border-radius:2px}
+  .chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}
+  .chapter-overview p{margin:0}
+  .kpi-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:18px}
+  .kpi-card{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:20px 14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .kpi-num{font-size:28px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .kpi-label{font-size:12px;color:#888;line-height:1.5;font-family:'FZXPYZS','PingFang SC',serif}
+  .section{background:#ffffff;border-radius:14px;margin-bottom:18px;padding:24px 28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:20px;align-items:flex-start;border-left:4px solid transparent}
+  .section-01{border-left-color:#dc2626}.section-02{border-left-color:#ea580c}.section-03{border-left-color:#ca8a04}.section-04{border-left-color:#4f46e5}.section-05{border-left-color:#db2777}
+  .section-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;margin-top:2px;font-family:'FZXPYZS','PingFang SC',serif}
+  .num-01{background:#fef2f2;color:#dc2626}.num-02{background:#fff7ed;color:#ea580c}.num-03{background:#fefce8;color:#ca8a04}.num-04{background:#eef2ff;color:#4f46e5}.num-05{background:#fdf2f8;color:#db2777}
+  .section-body{flex:1}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;padding:2px 10px;border-radius:10px;margin-bottom:8px;letter-spacing:1px;font-family:'FZXPYZS','PingFang SC',serif}
+  .tag-01{background:#fef2f2;color:#dc2626}.tag-02{background:#fff7ed;color:#ea580c}.tag-03{background:#fefce8;color:#ca8a04}.tag-04{background:#eef2ff;color:#4f46e5}.tag-05{background:#fdf2f8;color:#db2777}
+  .section-title{font-size:18px;margin-bottom:10px;font-weight:bold;line-height:1.4;font-family:'FZXPYZS','PingFang SC',serif}
+  .t-01{color:#dc2626}.t-02{color:#ea580c}.t-03{color:#ca8a04}.t-04{color:#4f46e5}.t-05{color:#db2777}
+  .section-desc{font-size:14px;color:#555;line-height:1.9;margin-bottom:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .flow-step{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;text-align:center;min-width:80px;flex:1;font-size:13px;color:#9a3412;line-height:1.5;font-weight:bold}
+  .flow-arrow{font-size:20px;color:#ea580c;flex-shrink:0;font-weight:bold}
+  .flow-step.end{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+  .dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  .dual-card{border-radius:12px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start}
+  .dual-card.yes{background:#f0fdf4;border:1px solid #bbf7d0}
+  .dual-card.no{background:#fef2f2;border:1px solid #fecaca}
+  .dual-icon{font-size:24px;flex-shrink:0;line-height:1}
+  .dual-text h4{font-size:14px;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .dual-text p{font-size:12px;color:#777;line-height:1.6}
+  .cmp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .cmp-card{border-radius:12px;padding:18px 14px;text-align:center;border:1px solid #e8e0d5}
+  .cmp-card.otc{background:#f0fdf4;border-color:#bbf7d0}.cmp-card.etf{background:#fff7ed;border-color:#fed7aa}.cmp-card.lof{background:#eef2ff;border-color:#c7d2fe}
+  .cmp-icon{font-size:28px;margin-bottom:6px}
+  .cmp-name{font-size:15px;font-weight:bold;color:#1a1a1a;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}
+  .cmp-note{font-size:12px;color:#666;line-height:1.6}
+  .code-block{background:#f4f0ea;border:1px solid #e8e0d5;border-radius:8px;padding:14px 18px;margin-top:10px;font-family:'SF Mono','Menlo','Consolas',monospace;font-size:12px;color:#555;line-height:1.7;overflow-x:auto;white-space:pre-wrap}
+  .data-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+  .data-card{border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #fce7f3;background:#fdf2f8}
+  .data-big{font-size:28px;margin-bottom:6px}
+  .data-name{font-size:15px;font-weight:bold;color:#831843;margin-bottom:6px;font-family:'FZXPYZS','PingFang SC',serif}
+  .data-sm{font-size:12px;color:#9d174d;line-height:1.6}
+  .takeaway{background:#ffffff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 32px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);border-left:4px solid #dc2626}
+  .takeaway-label{font-family:'FZXPYZS','PingFang SC',serif;font-size:12px;color:#dc2626;letter-spacing:2px;margin-bottom:6px;font-weight:bold}
+  .takeaway-text{font-size:16px;color:#1a1a1a;line-height:1.9;font-family:'FZXPYZS','PingFang SC',serif}
+  .footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid #e8e0d5;color:#bbb;font-size:13px;line-height:1.8}
+  .lang-switch{text-align:right;margin-bottom:16px}
+  .lang-btn{display:inline-block;padding:6px 16px;border-radius:8px;font-size:13px;text-decoration:none;letter-spacing:.03em;font-family:'FZXPYZS','PingFang SC',serif;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .lang-btn:hover{opacity:.75}
+  .back-catalog{text-align:right;margin-bottom:4px}
+  .back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}
+  .back-catalog-btn:hover{opacity:.75}
+  @media(max-width:640px){.section{flex-direction:column;align-items:center;text-align:center;border-left:none;border-top:4px solid transparent;padding-top:20px}.section-01{border-top-color:#dc2626}.section-02{border-top-color:#ea580c}.section-03{border-top-color:#ca8a04}.section-04{border-top-color:#4f46e5}.section-05{border-top-color:#db2777}.dual-grid,.data-row,.kpi-row,.cmp-grid{grid-template-columns:1fr}.flow-row{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.container{padding:0 8px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="对比Excel，轻松学习Python报表自动化-catalog.html">← Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="对比Excel，轻松学习Python报表自动化-ch007-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Excel vs Python Report Automation · Ch7「Setting Excel Cells with Python」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Situation → Complication → Question → Answer</span>
+  Daily Excel worksheet maintenance involves inserting rows, deleting rows, adjusting row heights/column widths, and hiding rows/columns. Manually, it's right-click → Insert → right-click → Delete → right-click → Row Height → right-click → Column Width—repeated endlessly. When you have dozens of sheets all needing the same adjustments, manual work is not only time-consuming but also prone to misfires. How do you automate Excel's cell row/column structure management with Python? This chapter covers insert_rows/insert_cols, delete_rows/delete_cols, row/column dimension settings, row/column hiding (via group), and a batch setup case study.
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>This chapter focuses on the Python implementation of Excel's Cells group on the Home tab, covering four operations: ① Insert rows/columns—insert_rows(m, n) and insert_cols(m, n), where m is the position and n is the count (default 1); ② Delete rows/columns—delete_rows(m, n) and delete_cols(m, n), the inverse of insertion with identical parameters; ③ Row height/column width—set via row_dimensions[row_num].height and column_dimensions[col_letter].width; ④ Row/column hiding—achieved through group combinations (column_dimensions.group and row_dimensions.group) since openpyxl has no direct hide API, with the group approach being more flexible as it supports collapse/expand. The chapter concludes with a batch case study showing how to iterate rows and columns for uniform height/width settings.</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-num">2+2</div>
+    <div class="kpi-label">Insert & Delete<br>row/col pairs</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">2</div>
+    <div class="kpi-label">Dimension Props<br>row & column</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">Group</div>
+    <div class="kpi-label">Hide Method<br>group → collapse/expand</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-num">∞</div>
+    <div class="kpi-label">Batch Iteration<br>table-wide one loop</div>
+  </div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Insert</div>
+    <div class="section-title t-01">insert_rows / insert_cols: Dynamically Expand Worksheet Structure</div>
+    <div class="section-desc">insert_rows(m, n) inserts n rows before row m; insert_cols(m, n) inserts n columns before column m. n defaults to 1 and can be omitted. This is the Python equivalent of Excel's right-click Insert command. Existing data automatically shifts. Ideal for adding data regions, reserving blank rows, or inserting separator rows.</div>
+    <div class="flow-row">
+      <div class="flow-step">📍 Locate<br><small>specify m position</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📥 Insert Row<br><small>insert_rows(m,n)</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📊 Insert Col<br><small>insert_cols(m,n)</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📋 Data Shift<br><small>auto-shift existing data</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅ Done<br><small>copy Sheet to compare</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Delete</div>
+    <div class="section-title t-02">delete_rows / delete_cols: Precisely Remove Excess Rows/Columns</div>
+    <div class="section-desc">delete_rows(m, n) deletes n rows starting from row m; delete_cols(m, n) deletes n columns starting from column m. n defaults to 1. This is the inverse of insertion, equivalent to Excel's right-click Delete command. Used to clean empty rows, remove unwanted data columns, and slim down report structure. Note: deletion is irreversible—back up the original sheet first.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">📥</div>
+        <div class="dual-text"><h4>Insert</h4><p>insert_rows(m, n)<br>insert_cols(m, n)<br>Insert before specified position<br>n=1 by default (can omit)</p></div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">🗑️</div>
+        <div class="dual-text"><h4>Delete</h4><p>delete_rows(m, n)<br>delete_cols(m, n)<br>Delete starting from position<br>Irreversible—proceed with care</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Dimensions</div>
+    <div class="section-title t-03">Row Height & Column Width: row_dimensions / column_dimensions</div>
+    <div class="section-desc">Row height: ws.row_dimensions[row_num].height; column width: ws.column_dimensions[col_letter].width. This matches Excel's right-click Row Height/Column Width dialog. Change the row number or column letter to adjust other rows/columns—simple and intuitive.</div>
+    <div class="code-block"># Set row 1 height to 40, column A width to 20
+ws.row_dimensions[1].height = 40
+ws.column_dimensions['A'].width = 20
+
+# Batch: iterate row numbers / column letters
+for r in [1, 2, 3]:
+    ws.row_dimensions[r].height = 40
+for c in ['A', 'B', 'C']:
+    ws.column_dimensions[c].width = 20</div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Hide</div>
+    <div class="section-title t-04">Row/Column Hiding: Collapsible Regions via Group</div>
+    <div class="section-desc">In openpyxl, rows/columns are hidden by creating groups rather than a direct hide API. ws.row_dimensions.group(7, 10) hides rows 7-10; ws.column_dimensions.group('D', 'F') hides columns D-F. This approach is more flexible than simple hiding—it supports collapse/expand, allowing users to manually reveal hidden data in Excel.</div>
+    <div class="cmp-grid">
+      <div class="cmp-card otc">
+        <div class="cmp-icon">📁</div>
+        <div class="cmp-name">Hide Rows</div>
+        <div class="cmp-note">row_dimensions.group<br>(7, 10) hides rows 7-10<br>Change start/end params</div>
+      </div>
+      <div class="cmp-card etf">
+        <div class="cmp-icon">📂</div>
+        <div class="cmp-name">Hide Columns</div>
+        <div class="cmp-note">column_dimensions.group<br>('D', 'F') hides D-F cols<br>Change letter range</div>
+      </div>
+      <div class="cmp-card lof">
+        <div class="cmp-icon">🔄</div>
+        <div class="cmp-name">Collapse/Expand</div>
+        <div class="cmp-note">Group supports toggle<br>More flexible than simple hide<br>Best for large data mgmt</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Batch Practice</div>
+    <div class="section-title t-05">Batch Row/Column Dimension Setup: Standardize Entire Table</div>
+    <div class="section-desc">Insert/delete operations are typically one-off actions, but row/column dimensions often need table-wide uniform settings. By iterating row numbers or column letters in a for loop, setting height/width for each row/column, you can standardize the entire table's dimensions in one pass. Write once, reuse forever.</div>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-big">📏</div>
+        <div class="data-name">Batch Row Height</div>
+        <div class="data-sm">Iterate row number list<br>ws.row_dimensions[r].height<br>Uniform height for all rows</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">📐</div>
+        <div class="data-name">Batch Column Width</div>
+        <div class="data-sm">Iterate column letter list<br>ws.column_dimensions[c].width<br>Uniform width for all columns</div>
+      </div>
+      <div class="data-card">
+        <div class="data-big">🔄</div>
+        <div class="data-name">Insert/Delete</div>
+        <div class="data-sm">Typically one-off operations<br>No loop needed<br>Direct position and count</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Excel's row/column structure management—insert, delete, row height, column width, hide—maps to four pairs of functions/properties in Python: insert_rows/insert_cols, delete_rows/delete_cols, row_dimensions.height/column_dimensions.width, and group-based hiding. These APIs directly mirror Excel's right-click menu functions with a flat learning curve. In practice, insert/delete are typically one-off operations while row/column dimensions require batch iteration across the table. One for loop across all target rows and columns, uniformly setting height and width, standardizes the entire worksheet layout in one go. Python turns Excel's "manual labor" into "intellectual work".</div>
+</div>
+
+<div class="footer">
+  Source: Zhang Junhong "Excel vs Python Report Automation" Chapter 7「Setting Excel Cells with Python」· Infographic · For learning reference only
+</div>
+
+</div>
+</body>
+</html>
