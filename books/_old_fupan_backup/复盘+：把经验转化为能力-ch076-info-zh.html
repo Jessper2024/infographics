@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘 · 第二十六章「自我复盘」</title>
+<style>
+
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── timeline ── */
+  .timeline { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .tl-item { display: flex; gap: 12px; align-items: baseline; font-size: 13px; line-height: 1.6; }
+  .tl-year { flex-shrink: 0; width: 52px; font-weight: bold; color: #ea580c; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .tl-text { color: #555; }
+
+  /* ── metaphor grid ── */
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .meta-item { background: #fefce8; border: 1px solid #fde047; border-radius: 10px; padding: 12px 14px; text-align: center; }
+  .meta-emoji { font-size: 22px; margin-bottom: 4px; }
+  .meta-word { font-size: 13px; font-weight: bold; color: #854d0e; font-family: 'FZXPYZS','PingFang SC',serif; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .meta-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html" target="_blank">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch076-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘 · 第二十六章「自我复盘」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  自我复盘是最简单、最具操作性的复盘方式——不受时空限制，一念即可回顾。然而正因为纯粹依靠自己、缺乏外界监督，自我复盘极易陷入得过且过与自我欺骗的两大陷阱。如何真正做到有效的自我复盘？关键在于：随时记录、立即应用、真诚无我、形成习惯。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>自我复盘「念随心转，收放自如」——一闪念、一回想、一反思、一对照、一总结，都可以是复盘。西奥迪尼通过复盘童子军卖巧克力的经历，发现了「拒绝—退让」策略；他的珠宝商朋友通过复盘怪异的销售事件，悟出「昂贵=优质」公式。但自我复盘最大的风险是自我欺骗：不能无情剖析自己，复盘就成了寻找借口的工具。</p>
+</div>
+
+
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-num c01">随时随地</div>
+    <div class="kpi-label">不受时空限制</div>
+    <div class="kpi-sublabel">一念一回想皆是复盘</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-num c02">立即记录</div>
+    <div class="kpi-label">好记性不如烂笔头</div>
+    <div class="kpi-sublabel">结论+思考过程+情景</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-num c03">2 个案例</div>
+    <div class="kpi-label">珠宝商 + 西奥迪尼</div>
+    <div class="kpi-sublabel">昂贵=优质 · 拒绝—退让</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-num c04">自我欺骗</div>
+    <div class="kpi-label">自我复盘最大障碍</div>
+    <div class="kpi-sublabel">无情剖析自己是关键</div>
+  </div>
+</div>
+
+<!-- 01: 基本特性 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">基本特性</div>
+    <div class="section-title t-01">随时随地，一念即复盘：自我复盘的独特优势</div>
+    <div class="section-desc">自我复盘是最简单、最具操作性的复盘方式。它不受时间和空间限制，也不受事情本身进展的约束——只要愿意，只要形成习惯，就可以随时、随地、随意地进行复盘。一闪念，一回想，一反思，一对照，一总结，都可以是复盘。借助高人指点，可以超越自己层次，在更高层面看待问题——正如围棋选手请高手复盘一样。</div>
+    <div class="flow-row">
+      <div class="flow-step">💭<br>一闪念</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🔙<br>一回想</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🤔<br>一反思</div><div class="flow-arrow">→</div>
+      <div class="flow-step">📊<br>一对照</div><div class="flow-arrow">→</div>
+      <div class="flow-step end">✅<br>一总结</div>
+    </div>
+    <div style="margin-top:10px;font-size:13px;color:#555;line-height:1.8;">⚡ 不受时空限制 | 🧠 不需外部资源 | 🔄 可随时启动 | 🎓 可借助高人指点</div>
+  </div>
+</div>
+
+<!-- 02: 经典案例 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">经典案例</div>
+    <div class="section-title t-02">珠宝商与「昂贵=优质」：怪异事件如何催生商业公式</div>
+    <div class="section-desc">西奥迪尼在《影响力》中讲述：珠宝商的绿松石滞销，她留字条降价50%。因误读字条，营业员以2倍价格卖光。复盘这件怪异事件后，她意识到人们在自动启用「昂贵=优质」公式。从此，面对滞销珠宝，她的策略不是降价而是大幅提价。</div>
+    <div class="dual-grid">
+      <div class="dual-card no"><div class="dual-icon">📝</div><div class="dual-text"><h4>事件：绿松石滞销</h4><p>字条写「降价50%」，误读为涨价，以2倍价格全部售罄——完全不合常理的销售事件。</p></div></div>
+      <div class="dual-card yes"><div class="dual-icon">💡</div><div class="dual-text"><h4>复盘结论：昂贵=优质</h4><p>品质不确定时，人们自动启用「昂贵=优质」的判断公式。此后主动运用这一公式获利。</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 经典案例2 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">经典案例2</div>
+    <div class="section-title t-03">西奥迪尼与「拒绝—退让」：从个人经历到科学验证</div>
+    <div class="section-desc">西奥迪尼复盘童子军卖巧克力事件：先被要求买5元杂技票（拒），再被要求买1元巧克力（买）。他发现第一个请求的让步触发了回报让步的义务。将此命名为「拒绝—退让」策略，通过实验验证其有效性——关键：第一个请求不能太极端，提出人须有诚意。</div>
+    <div class="quote-block">
+      「如果一个人对我们采取了某种行为，我们应该以类似行为去回报。这产生两个结果：我们有义务回报恩惠；如果他人作出让步，我们也有义务作出让步。」
+      <div class="quote-author">—— 罗伯特·西奥迪尼，《影响力》</div>
+    </div>
+    <div class="flow-row" style="margin-top:12px;">
+      <div class="flow-step">🎫<br>请求大<br>5元杂技票</div><div class="flow-arrow">→</div>
+      <div class="flow-step">❌<br>被拒绝</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🍫<br>让步小<br>1元巧克力</div><div class="flow-arrow">→</div>
+      <div class="flow-step end">✅<br>顺从购买<br>触发互惠</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 两大陷阱 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">两大陷阱</div>
+    <div class="section-title t-04">得过且过与自我欺骗：自我复盘的两大致命陷阱</div>
+    <div class="section-desc">自我复盘容易得过且过：结论得出后心里高兴就放下了，很快忘却，下次重犯。「好记性不如烂笔头」——复盘有收获第一件事是立刻记录。更大问题是自我欺骗：不能无情复盘自己。柯达发明了数码相机却因不愿放弃胶卷利益而破产——组织层面自我欺骗的惨痛教训。</div>
+    <div class="alert-box">
+      <div class="alert-title">⚠️ 警惕两大陷阱</div>
+      <p>陷阱一：得过且过——「想通了就放下了」，不记录不应用，下次照犯同样错误。<br>陷阱二：自我欺骗——「不成功都是别人和环境的错」，复盘沦为寻找借口的工具。</p>
+    </div>
+    <div class="risk-bars" style="margin-top:12px;">
+      <div class="risk-row"><div class="risk-label">得过且过</div><div class="risk-meter"><div class="risk-fill" style="background:#ea580c;width:65%"></div></div><div class="risk-val" style="color:#ea580c">高发</div></div>
+      <div class="risk-row"><div class="risk-label">自我欺骗</div><div class="risk-meter"><div class="risk-fill" style="background:#dc2626;width:80%"></div></div><div class="risk-val" style="color:#dc2626">致命</div></div>
+      <div class="risk-row"><div class="risk-label">立即记录</div><div class="risk-meter"><div class="risk-fill" style="background:#16a34a;width:90%"></div></div><div class="risk-val" style="color:#16a34a">破解</div></div>
+      <div class="risk-row"><div class="risk-label">真诚无我</div><div class="risk-meter"><div class="risk-fill" style="background:#4f46e5;width:95%"></div></div><div class="risk-val" style="color:#4f46e5">终极</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 习惯养成 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">习惯养成</div>
+    <div class="section-title t-05">「与复盘同呼吸共命运」：从记录到应用的习惯闭环</div>
+    <div class="section-desc">复盘中得出的规律如果不应用，就只是知识形态没有转变为价值——如同千辛万苦拿到倚天剑屠龙刀却束之高阁。联想的做法：员工一旦得出新观点就要添加到复盘文档中并应用于工作。这就是「与复盘同呼吸共命运」。复盘主要的不是程序，而是一种习惯。</div>
+    <div class="data-row">
+      <div class="data-card d1"><div class="data-big">📝</div><div class="data-name">记录</div><div class="data-sm">立刻记录<br>结论+推理过程</div></div>
+      <div class="data-card d2"><div class="data-big">⚡</div><div class="data-name">应用</div><div class="data-sm">付诸行动<br>知识→价值</div></div>
+      <div class="data-card d1"><div class="data-big">🔄</div><div class="data-name">循环</div><div class="data-sm">回顾+更新<br>持续迭代</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">自我复盘看似简单，实则关键——其成败取决于能否跨越两大陷阱：得过且过（不记录不应用）与自我欺骗（找借口而非找原因）。真诚的复盘必须是「无我」的：放空自己，找到问题的真正根源。当复盘成为习惯，像联想要求的「与复盘同呼吸共命运」时，任何时间、任何地点、任何事件，都是一个学习提高自己能力的机会。</div>
+</div>
+
+<div class="footer">
+  来源：陈中《复盘+：把经验转化为能力》第二十六章「自我复盘」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

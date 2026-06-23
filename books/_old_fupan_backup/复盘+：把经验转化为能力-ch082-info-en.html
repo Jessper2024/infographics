@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fupan — Ch.32 The Narrator</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  .container h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.att { background: #eef2ff; border: 1px solid #c7d2fe; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+
+  .quote-block {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
+    padding: 16px 20px; margin-top: 10px; font-size: 13px; color: #991b1b;
+    line-height: 1.8; font-style: italic;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}.kpi-card{border-radius:12px;padding:18px 14px;text-align:center}.kpi-card.c01{background:#fef2f2;border:1px solid #fecaca}.kpi-card.c02{background:#fff7ed;border:1px solid #fed7aa}.kpi-card.c03{background:#fefce8;border:1px solid #fde68a}.kpi-card.c04{background:#eef2ff;border:1px solid #c7d2fe}.kpi-val{font-size:26px;font-weight:bold;margin-bottom:4px;font-family:'FZXPYZS','PingFang SC',serif}.kpi-val.v01{color:#dc2626}.kpi-val.v02{color:#ea580c}.kpi-val.v03{color:#ca8a04}.kpi-val.v04{color:#4f46e5}.kpi-label{font-size:12px;color:#888;line-height:1.5}@media(max-width:640px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html" target="_blank">← Back to Catalog</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch082-info-zh.html">中文 / English</a>
+</div>
+
+<h1>Fupan · Ch.32 The Narrator (敘述人)</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · Situation → Complication → Question → Answer</span>
+  Fupan rests on the Narrator's account — but if the Narrator hides or fabricates out of fear, fupan is built on false information. <strong>How should the Narrator view fupan, recount events truthfully, and answer questioning with an open mind?</strong>
+  Through two attitudes (detachment + objectivity), three standards (truth + completeness + detail), and two requirements (receptivity + honesty).
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>The Narrator is the foundation of fupan. The entire process and content rest on the Narrator's account and answers. <strong>The Narrator is the person — besides the key leader — who gains the most from fupan.</strong> The Narrator's attitude directly determines the atmosphere — if they harbor reservations, no amount of Facilitator effort may achieve the fupan's goals.</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card c01"><div class="kpi-val v01">2</div><div class="kpi-label">Correct Attitudes<br>Detachment · Objectivity</div></div>
+  <div class="kpi-card c02"><div class="kpi-val v02">3</div><div class="kpi-label">Narration Standards<br>Truth · Completeness · Detail</div></div>
+  <div class="kpi-card c03"><div class="kpi-val v03">2</div><div class="kpi-label">Answer Requirements<br>Receptivity · Honesty</div></div>
+  <div class="kpi-card c04"><div class="kpi-val v04">1</div><div class="kpi-label">Biggest Obstacle<br>Fear</div></div>
+</div>
+
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">Core Attitude</div>
+    <div class="section-title t-01">Detachment: View the Fupan from Outside Yourself</div>
+    <div class="section-desc"><strong>Detachment means distinguishing the self observing in the fupan from the self who acted.</strong> See the participating self as if it were another person — using another person's eyes and perspective to examine the self who acted. This allows calm engagement, even ruthless self-dissection. Self-reflection is the present self dialoguing with the past self — the thinking self conversing with the acting self.</div>
+    <div class="dual-grid">
+      <div class="dual-card att">
+        <div class="dual-text">
+          <h4>🧘 Xunzi</h4>
+          <p style="font-size:13px;color:#555;line-height:1.6">I examine myself three times daily</p>
+        </div>
+      </div>
+      <div class="dual-card att">
+        <div class="dual-text">
+          <h4>🏛️ Socrates</h4>
+          <p style="font-size:13px;color:#555;line-height:1.6">The unexamined life is not worth living</p>
+        </div>
+      </div>
+    </div>
+    <div class="quote-block">"Team fupan has more people helping you examine — be grateful."</div>
+  </div>
+</div>
+
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">Core Attitude</div>
+    <div class="section-title t-02">Objectivity: Observe as Is, Add No Inference</div>
+    <div class="section-desc"><strong>Objectivity is the natural result of detachment.</strong> Standing from a "guest" perspective, like an outsider observing reality as it is — adding no inference, avoiding emotional interference. See the mountain as the mountain, see the water as the water — no concealment, no embellishment. With detachment and objectivity, situation recreation and iterative reasoning have a solid mindset foundation.</div>
+    <div class="flow-row">
+      <div class="flow-step">🧘<br>Detachment</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">👁️<br>Objectivity</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">📋<br>Situation<br>Recreation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔄<br>Iterative<br>Reasoning</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">💡<br>True<br>Conclusions</div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">Narration Criteria</div>
+    <div class="section-title t-03">Three Narration Standards: Truth, Completeness, Detail</div>
+    <div class="section-desc"><strong>Truth is the first requirement in narrating events.</strong> False information leads to opposite results — a wrong starting point determines a wrong ending. What obstructs truth is "fear" — fear that one's actions and thinking appear naive to others, fear of being judged incompetent. Beyond truth: comprehensiveness (cross-sectional, all aspects) and completeness (longitudinal, start to finish). Detail makes events fuller, narration more relatable and credible.</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">✅ Truth</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Requirement on information nature. Truthfulness and fact-seeking always paramount. Must not hide or fabricate out of fear. Detail makes truth even truer.</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">✅ Complete + Full</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Information classification method. Complete = cross-sectional, no aspect missed. Full = longitudinal, start to finish. Ensures no information gaps.</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">✅ Detail</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">Information presentation technique. Makes information more perceivable, more memorable. But must track logic between details — don't drown in the sea of details.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">Answering Attitude</div>
+    <div class="section-title t-04">Receptive Answers: Empty Yourself, Welcome Questions</div>
+    <div class="section-desc"><strong>Do not view questions as interrogation — view them as shared exploration.</strong> Never guess at others' motives — once you guess motives, you interpret words through a conspiracy lens and naturally enter self-defense mode, closing your mind and blocking information flow. The "commitment and consistency" psychological principle: anything involving our own choices and decisions becomes immune to criticism — the most likely response is immediate attack, defensiveness, and justification.</div>
+    <div class="quote-block">
+      "Lu Xun, On Human Nature: Even unnamed sores, when growing on a Chinese person, become 'red like peach blossoms; festering, sweet as cream.'"<br><br>
+      Celebrate challenging questions — the more challenging, the more they advance everyone's thinking and progress.
+    </div>
+  </div>
+</div>
+
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">Moral Requirement</div>
+    <div class="section-title t-05">Honesty Without Pretense: Roles Are Interchangeable</div>
+    <div class="section-desc"><strong>Be honest. Don't pretend. If you don't understand, figure it out — don't feign understanding.</strong> The roles of Questioner and Narrator are not fixed — the Narrator can also raise questions about industry information or assumptions, and the Questioner can respond with their knowledge. This yields more comprehensive and accurate understanding for everyone. What harms you, your team, and your growth is "feigning understanding while confused."</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🗣️</div>
+        <div class="data-name">Narrator</div>
+        <div class="data-sm">Recount events truthfully<br>Answer questions receptively<br>Be honest, don't hide<br>Can also ask questions</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">⇄</div>
+        <div class="data-name">Role Swap</div>
+        <div class="data-sm">Narrator can question<br>Questioner can answer<br>Explore industry info together<br>Verify assumptions together</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">❌</div>
+        <div class="data-name">No Pretense</div>
+        <div class="data-sm">Don't feign understanding<br>Don't guess others' motives<br>Don't defend for face<br>Harmful to self and team</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Core Takeaway</div>
+  <div class="takeaway-text">The Narrator is the foundation of fupan — without truthful, complete, and detailed narration, fupan is building on sand. Attitude determines everything: detach to view yourself, objectively observe as is. Narrate to three standards (truth, completeness, detail). Answer questions with an emptied mind, honestly without pretense. Overcome the greatest enemy — "fear" — because the true value of team fupan lies precisely in having more people to help you examine and grow.</div>
+</div>
+
+<div class="footer">
+  Source: Chen Zhong, Fupan · Ch.32 The Narrator · Infographic · For learning reference only
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘 · 第23章「发现新知识和新思路」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5; border-radius: 8px;
+    padding: 16px 20px; margin: 12px 0 24px; font-size: 14px; color: #555;
+    line-height: 1.8; font-family: 'FZXPYZS', 'PingFang SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* KPI */
+  .kpi-row { display: grid; gap: 14px; margin: 0 0 18px; }
+  .kpi-row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .kpi-card { border-radius: 12px; padding: 16px 14px; text-align: center; border: 1px solid; }
+  .kpi-card.c01 { background: #fef2f2; border-color: #fecaca; }
+  .kpi-card.c02 { background: #fff7ed; border-color: #fed7aa; }
+  .kpi-card.c03 { background: #fefce8; border-color: #fde68a; }
+  .kpi-card.c04 { background: #eef2ff; border-color: #c7d2fe; }
+  .kpi-card.c05 { background: #fdf2f8; border-color: #fbcfe8; }
+  .kpi-value { font-size: 34px; font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; color: #1a1a1a; line-height: 1.2; }
+  .kpi-unit { font-size: 13px; color: #888; font-weight: normal; }
+  .kpi-label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; font-family: 'FZXPYZS', 'PingFang SC', serif; }
+  .kpi-note { font-size: 11px; color: #aaa; margin-top: 3px; line-height: 1.4; }
+
+  /* Flow */
+  .flow-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .flow-step { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; text-align: center; min-width: 80px; flex: 1; font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold; }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Data row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card { border-radius: 12px; padding: 18px 16px; text-align: center; border: 1px solid #fce7f3; }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Dual grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card { border-radius: 12px; padding: 18px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Takeaway */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label { font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px; font-weight: bold; }
+  .takeaway-text { font-size: 16px; color: #1a1a1a; line-height: 1.9; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8; }
+
+  /* Lang */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn { display: inline-block; padding: 6px 16px; border-radius: 8px; font-size: 13px; text-decoration: none; letter-spacing: 0.03em; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; transition: opacity 0.15s; }
+  .lang-btn:hover { opacity: 0.75; }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn { display: inline-block; padding: 5px 14px; border-radius: 8px; font-size: 12px; text-decoration: none; letter-spacing: .02em; background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; transition: opacity .15s; }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 34px; }
+  }
+  @media (max-width: 400px) {
+    .kpi-row.cols-4, .kpi-row.cols-5 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html" target="_blank">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch073-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘 · 第23章「发现新知识和新思路」</h1>
+<p class="subtitle">
+  <span style="display:block;margin-bottom:6px;font-weight:bold;color:#dc2626;font-size:12px;letter-spacing:1px;">向书本学30% · 向自己学70% · 复盘就是悟道的过程</span>
+  美国陆军复盘计划常失败的事实，创造了「指挥官意图」——不规定细节，只锁定终局使命。
+  神农尝百草是复盘，科学实验是复盘，小孩子观察父母也是复盘。人类一切知识都是复盘的结果。
+  柳传志说：向自己学占70%，关键就是复盘。不复盘，你就只剩看书这一条腿走路。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p><strong>复盘是我们知识组成的重要来源，也是能力提升的核心方式。</strong>本章以美军「指挥官意图」（CI）概念的诞生为引，系统阐述了复盘的认知论意义：人类知识分三类（基因知识、文化知识、原子知识），原子知识的三个获取途径中，前两个都是复盘。看书和复盘是学习提高的仅有的两种方式，而柳传志的"70%向自己学"意味着复盘比看书更重要——因为自己"悟"到"觉"到的知识，记忆最深刻、理解最透彻、运用最融会贯通。</p>
+</div>
+
+<!-- KPI 指标卡 -->
+<div class="kpi-row cols-4">
+  <div class="kpi-card c01">
+    <div class="kpi-value">30<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">向书本/别人学</div>
+    <div class="kpi-note">柳传志：学习他人的30%</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-value">70<span class="kpi-unit">%</span></div>
+    <div class="kpi-label">向自己学（复盘）</div>
+    <div class="kpi-note">关键就是精通复盘</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-value">3<span class="kpi-unit">类</span></div>
+    <div class="kpi-label">人类知识分类</div>
+    <div class="kpi-note">基因·文化·原子知识</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-value">3<span class="kpi-unit">条途径</span></div>
+    <div class="kpi-label">原子知识获取路径</div>
+    <div class="kpi-note">亲身试错·观察别人·读书学习</div>
+  </div>
+</div>
+
+<!-- 01: 指挥官意图 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">新思路诞生</div>
+    <div class="section-title t-01">美国陆军复盘计划的失败→创造出「指挥官意图」：不规定细节，只锁定使命</div>
+    <div class="section-desc"><strong>美军曾经的计划系统极其详尽——从总统命令逐级下达到每个步兵的具体动作。</strong>计划的流程经过多年改进，反复沟通。但它有一个致命缺陷：计划到最后经常失效。20世纪80年代，美军复盘这个事实，修改了计划流程，创造了「指挥官意图」概念（CI）——出现在每一份命令书最上方，清晰说明计划的目标和最终理想状态。不规定具体细节，因为细节会因意料之外的事件而无效。但它确保："你永远都不会失去执行最终意图的责任。"</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📋</div>
+        <div class="dual-text">
+          <h4>旧模式：详尽计划（常失效）</h4>
+          <p>总统→参谋→上将→上校→上尉→步兵。每一步具体规定做什么、用什么设备、如何取军需品。细节越多越容易失效。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>新模式：指挥官意图（CI）</h4>
+          <p>只说目标："摧毁敌军士气"或"占领4305号山头并为侧翼通过提供掩护"。一个士兵在山上也得完成使命。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 三类知识 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">认知框架</div>
+    <div class="section-title t-02">人类知识的三层结构：基因知识、文化知识与原子知识</div>
+    <div class="section-desc"><strong>每个人的知识体系由三层构成：基因知识是本能，文化知识是环境烙印，原子知识才是主动习得的。</strong>基因知识：人类千百年进化内化的本能——闪躲拳头、远离火源、饿了找吃、渴了喝水。文化知识：所处文化氛围中耳濡目染——中国人用筷子、孝顺父母、见面握手。这两种都是无意识习得的。只有原子知识是我们通过个人努力主动获得的，也正是复盘发挥最大作用的领域。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">🧬</div>
+        <div class="data-name">基因知识</div>
+        <div class="data-sm">人类进化内化的本能知识：避害趋利、生存繁衍——生来就会，不需要学习，为生存保驾护航</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🏮</div>
+        <div class="data-name">文化知识</div>
+        <div class="data-sm">所处文化潜移默化的知识：语言、礼仪、价值观——无意识习得，由民族或群体演进而来</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚛️</div>
+        <div class="data-name">原子知识</div>
+        <div class="data-sm">个人主动习得的知识：通过亲身试错、观察别人、读书学习——这是复盘的主战场</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 三条途径 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">原子知识获取</div>
+    <div class="section-title t-03">原子知識的三条获取途径中，前两条都是复盘</div>
+    <div class="section-desc"><strong>原子知识的获取有三种途径，其中前两条本质上就是复盘。</strong>途径一：通过亲身实践，经历不同的事情，不断试错，总结而来——这是对自己经历的复盘。途径二：看别人做事，总结别人的成败，成为自己的经验——这是对他人经历的复盘。途径三：学习别人总结的经验，从书本上学，听培训讲课——这才是传统意义上的学习。三条途径中，两条都是复盘。这意味着复盘是获取个人知识的主要方式。</div>
+    <div class="flow-row">
+      <div class="flow-step">途径一<br>亲身试错<br>总结自己经历</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">途径二<br>观察别人<br>总结他人成败</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">途径三<br>读书学习<br>学习别人总结</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">实践<br>运用知识<br>解决问题</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 看书vs复盘 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">两种学习方式</div>
+    <div class="section-title t-04">看书和复盘是学习的两种方式——复盘更重要，因为自己悟到的才最深刻</div>
+    <div class="section-desc"><strong>柳传志说：我们向书本学、向别人学只占30%，剩下70%都是向自己学。</strong>向自己学的关键就是复盘。看书学习他人总结出来的知识和规律，固然形成知识体系和认识框架，但毕竟隔了一层——是别人的"悟"和"觉"。而复盘，自己得出经验教训，是自己"悟"到的、"觉"到的，记忆深刻、理解透彻。在今后的运用中才能融会贯通，实现最好的效果。神农尝百草是复盘，科学实验是复盘，小孩子观察父母也是复盘。书本上的知识，也不过是他人复盘得出的结论。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text">
+          <h4>看书（30%·学习他人）</h4>
+          <p>学习他人总结的知识和规律→形成知识框架→但"隔靴搔痒"——缺少自己亲身验证的深刻感。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🧘</div>
+        <div class="dual-text">
+          <h4>复盘（70%·向自己学）</h4>
+          <p>自己悟到觉到的经验教训→记忆深刻、理解透彻→运用时融会贯通。这是真正的"内化"。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 复盘即悟道 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">终极结论</div>
+    <div class="section-title t-05">复盘即悟道：不精通复盘，就只剩看书这一条腿——走不快也走不远</div>
+    <div class="section-desc"><strong>如果你希望自己的生命有所成绩，你首先要喜欢看书，其次要精通复盘。</strong>人类一切知识都是复盘的结果——神农尝百草、科学实验、小孩观察父母，都是通过事后总结发现规律。在读书少的今天，更要精通复盘，否则你没有任何一种帮助自己学习提高的途径。这就相当于是走路的两条腿都没有了，无法走路，更不要说走得快和远了。当然，如果只希望浑浑噩噩过一生，那就没有复盘什么事情了。</div>
+    <div class="flow-row">
+      <div class="flow-step">看书<br>学习他人复盘<br>的结论（30%）</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-step">复盘<br>自己悟道<br>得出经验（70%）</div>
+      <div class="flow-arrow">=</div>
+      <div class="flow-step">两条腿走路<br>知识+智慧<br>走得快走得远</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">生命的成绩<br>能力提升<br>应对未来挑战</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">人类一切知识都是复盘的结果——从神农尝百草到美军「指挥官意图」，无不如此。看书和复盘是学习的仅有的两种方式，而柳传志的"30% vs 70%"告诉我们：复盘远比看书重要。因为书本是别人复盘的结果，隔了一层；而你自己复盘得出的，是自己悟到觉到的，记忆最深刻，理解最透彻。不精通复盘，你就只剩看书这一条腿，走不快也走不远。复盘，就是你认识世界、提升自己、创造新知识的核心能力。</div>
+</div>
+
+<div class="footer">
+  《复盘+：把经验转化为能力》第23章信息图 · 基于「发现新知识和新思路」内容提炼 · 仅供学习参考
+</div>
+</div>
+</body>
+</html>

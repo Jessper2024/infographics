@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复盘 · 第二十七章「团队复盘」</title>
+<style>
+
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+  /* ── Header ── */
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Overview splash ── */
+  .splash {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 28px 32px; margin-bottom: 24px; color: #555;
+    font-size: 15px; line-height: 2.0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .splash strong { color: #dc2626; }
+  .splash .scqa-label { font-weight: bold; color: #dc2626; margin-right: 4px; font-size: 12px; letter-spacing: 1px; }
+
+  /* ── Section base ── */
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Dual comparison ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Flow diagram ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Data cards ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── timeline ── */
+  .timeline { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .tl-item { display: flex; gap: 12px; align-items: baseline; font-size: 13px; line-height: 1.6; }
+  .tl-year { flex-shrink: 0; width: 52px; font-weight: bold; color: #ea580c; font-family: 'FZXPYZS','PingFang SC',serif; }
+  .tl-text { color: #555; }
+
+  /* ── metaphor grid ── */
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .meta-item { background: #fefce8; border: 1px solid #fde047; border-radius: 10px; padding: 12px 14px; text-align: center; }
+  .meta-emoji { font-size: 22px; margin-bottom: 4px; }
+  .meta-word { font-size: 13px; font-weight: bold; color: #854d0e; font-family: 'FZXPYZS','PingFang SC',serif; }
+
+  /* ── Key Takeaway ── */
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Lang switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: 0.03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity 0.15s;
+  }
+  .lang-btn:hover { opacity: 0.75; }
+
+  @media (max-width: 640px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .meta-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 0 8px; }
+    h1 { font-size: 26px; }
+    @media(max-width:640px){.kpi-row,.kpi-row.cols-4{grid-template-columns:repeat(2,1fr)}.kpi-value{font-size:34px}}@media(max-width:400px){.kpi-row,.kpi-row.cols-4{grid-template-columns:1fr}}
+  }
+.back-catalog{text-align:right;margin-bottom:4px}.back-catalog-btn{display:inline-block;padding:5px 14px;border-radius:8px;font-size:12px;text-decoration:none;letter-spacing:.02em;background:#eef2ff;color:#4f46e5;border:1px solid #c7d2fe;transition:opacity .15s}.back-catalog-btn:hover{opacity:.75}.chapter-overview{background:#f8f6f3;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0 24px;font-size:14px;color:#555;line-height:1.8;font-family:'FZXPYZS','PingFang SC',serif}.chapter-overview p{margin:0}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:24px 0}.kpi-row.cols-4{grid-template-columns:repeat(4,1fr)}.kpi-card{background:#fff;border:1px solid #e8e0d5;border-radius:14px;padding:24px 20px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;align-items:center}.kpi-value{font-family:'FZXPYZS','PingFang SC','Noto Serif SC',serif;font-size:42px;font-weight:bold;color:#1a1a1a;line-height:1.1;margin-bottom:6px;letter-spacing:-0.5px}.kpi-unit{font-size:18px;font-weight:normal;color:#888;margin-left:2px}.kpi-label{font-size:13px;color:#888;margin-bottom:10px;letter-spacing:0.5px}.kpi-note{font-size:11px;color:#bbb;line-height:1.6;border-top:1px solid #f0ebe0;padding-top:10px;width:100%;text-align:center}.kpi-card.c01{border-left:3px solid #dc2626}.kpi-card.c01 .kpi-value{color:#dc2626}.kpi-card.c02{border-left:3px solid #ea580c}.kpi-card.c02 .kpi-value{color:#ea580c}.kpi-card.c03{border-left:3px solid #ca8a04}.kpi-card.c03 .kpi-value{color:#ca8a04}.kpi-card.c04{border-left:3px solid #4f46e5}.kpi-card.c04 .kpi-value{color:#4f46e5}.kpi-card.c05{border-left:3px solid #db2777}.kpi-card.c05 .kpi-value{color:#db2777}.kpi-row.cols-3{grid-template-columns:repeat(3,1fr)}
+
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="复盘+：把经验转化为能力-catalog.html" target="_blank">← 返回章节目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="复盘+：把经验转化为能力-ch077-info-en.html">中文 / English</a>
+</div>
+
+<h1>复盘 · 第二十七章「团队复盘」</h1>
+<p class="subtitle">
+  <span class="scqa-label" style="display:block;margin-bottom:6px;">SCQA · 情境 → 冲突 → 问题 → 回答</span>
+  团队复盘是多人参与的求真讨论会，需要场地、时间与人员协调。然而团队复盘常陷入两种极端——静默失语（无人发言）或推诿争斗（责任多米诺）。如何让团队复盘成为「胜利的大会、团结的大会」？答案在于三重关键：建立正面的复盘文化、明确三种角色（引导人·设问人·叙述人）、遵循清晰的8个步骤。
+</p>
+<div class="divider"></div>
+<div class="chapter-overview">
+  <p>团队复盘是讨论会而非宣讲会——需要每个人发挥聪明才智才能接近真相。但现实中，团队复盘常陷入静默（无人发言，目光躲闪）或闹哄哄的争论（责任推诿多米诺：销售→设计→财务→采购→俄罗斯矿山）。根本原因在于中国传统文化对自我表现的抑制、山头文化的影响，以及缺乏正常的辩论文化。一次失败的团队复盘，最大的责任在于企业的复盘文化。</p>
+</div>
+
+
+<div class="kpi-row">
+  <div class="kpi-card c01">
+    <div class="kpi-num c01">2 大极端</div>
+    <div class="kpi-label">静默失语 vs 推诿争斗</div>
+    <div class="kpi-sublabel">团队复盘最常见困境</div>
+  </div>
+  <div class="kpi-card c02">
+    <div class="kpi-num c02">3 种角色</div>
+    <div class="kpi-label">引导人·设问人·叙述人</div>
+    <div class="kpi-sublabel">明确分工确保复盘有效</div>
+  </div>
+  <div class="kpi-card c03">
+    <div class="kpi-num c03">8 个步骤</div>
+    <div class="kpi-label">回顾目标→…→复盘归档</div>
+    <div class="kpi-sublabel">联想复盘法细化流程</div>
+  </div>
+  <div class="kpi-card c04">
+    <div class="kpi-num c04">5 求原则</div>
+    <div class="kpi-label">求真·求实·求学</div>
+    <div class="kpi-sublabel">求内·求道</div>
+  </div>
+</div>
+
+<!-- 01: 时空约束 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">时空约束</div>
+    <div class="section-title t-01">团队复盘的时空成本：为何不能随时进行</div>
+    <div class="section-desc">团队复盘有人员要求（多人），因而带来场地要求（不受打扰的空间）和时间要求（协调各自工作安排）。不管是场地还是时间，背后都是成本。因此团队复盘不能也不应该随时随地进行，而应在项目结束之后、关键节点、或出现重大疑问时进行。团队复盘是讨论会而非宣讲会——需要每个人发挥聪明才智才能接近真相。</div>
+    <div class="dual-grid">
+      <div class="dual-card info"><div class="dual-icon">⏰</div><div class="dual-text"><h4>合适时机</h4><p>项目结束之后 / 关键节点 / 出现重大疑问时。不随时进行，确保充分准备和足够价值。</p></div></div>
+      <div class="dual-card yes"><div class="dual-icon">🎯</div><div class="dual-text"><h4>核心本质</h4><p>讨论会而非宣讲会。目标不是传达信息，而是集体发挥聪明才智，得出接近真相的认识。</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 静默困境 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">静默困境</div>
+    <div class="section-title t-02">为何无人发言？静默困境的文化根源</div>
+    <div class="section-desc">作者亲历投标失败复盘会：项目经理讲完目的请自由发言——目光扫视两三回，无人对接，有人埋头有人发呆。约1分钟静默后只能点名发言，每个人都把发言当成击鼓传花。惠普前CEO卡莉·菲奥莉娜也发现高层会议上「大家都很礼貌但不坦诚」。中国传统文化中的「枪打出头鸟」和缺乏就事论事的辩论文化，使得团队复盘天然面临发言障碍。</div>
+    <div class="quote-block">
+      「他们很礼貌，但是并不坦诚。没人会直接反驳别人，但其实每个人的脸上都写着愠怒，会后又会跟我打别人的小报告。表现不佳的官僚结构最后总会表现得一团和气。」
+      <div class="quote-author">—— 卡莉·菲奥莉娜，惠普前CEO</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 推诿案例 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">推诿案例</div>
+    <div class="section-title t-03">责任多米诺：销售→设计→财务→采购→俄罗斯矿山</div>
+    <div class="section-desc">年终亏损复盘会上演经典责任推诿链：销售经理→缺少新产品（设计）→研发经费减少（财务）→采购经费挤占（采购）→原材料涨价→俄罗斯矿山地震。一条完整的多米诺骨牌将责任推向遥远的俄罗斯矿山——无人承担责任，问题消失在「客观原因」中。静默与闹哄哄看似矛盾，实则同源：都源于不良的复盘文化。</div>
+    <div class="flow-row">
+      <div class="flow-step">📉<br>销售：<br>缺新产品</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🎨<br>设计：<br>经费不足</div><div class="flow-arrow">→</div>
+      <div class="flow-step">💰<br>财务：<br>采购挤占</div><div class="flow-arrow">→</div>
+      <div class="flow-step">📦<br>采购：<br>原料涨价</div><div class="flow-arrow">→</div>
+      <div class="flow-step end">🌋<br>俄罗斯<br>矿山地震！</div>
+    </div>
+    <div class="alert-box" style="margin-top:12px;">
+      <div class="alert-title">🤔 追问：如果矿山不地震呢？</div>
+      <p>责任链会停止在某个人面前吗？不会——还会找到「汇率波动」「运输延误」「政策调整」等更多「客观原因」。问题的本质不是找到了什么理由，而是大家都在找理由。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 山头文化 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">山头文化</div>
+    <div class="section-title t-04">隐性山头的掩护游戏：A与B的真实案例</div>
+    <div class="section-desc">作者在咨询公司中层会议上亲历的经典场景：A（知识研究部）与B（方案推广部）形成隐性山头。当老板追问B为什么推广概念未出现时，A主动「揽责」，B则为A的做法提供「正当性」注解。最终推广失败的责任从A和B身上完全转移到「竞争对手」身上。真相是：B忙于办出国手续忘记了这件事。隐性山头的掩护让复盘完全失效。</div>
+    <div class="dual-grid">
+      <div class="dual-card yes"><div class="dual-icon">🛡️</div><div class="dual-text"><h4>显性山头（部门）</h4><p>公开为部门辩护，有合法外衣——事后被领导表扬，资源倾斜。每个部门领导都希望成员为部门辩护。</p></div></div>
+      <div class="dual-card no"><div class="dual-icon">🕵️</div><div class="dual-text"><h4>隐性山头（同盟）</h4><p>以「掩护」和「佐证」面目出现，互相提供观点支持、反驳指责、分担责任——让复盘完全偏离真相。</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 成功框架 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">成功框架</div>
+    <div class="section-title t-05">三种角色 + 8个步骤：团队复盘的成功框架</div>
+    <div class="section-desc">团队复盘的成功需要三个要素：①正面复盘文化——复盘是探寻真相的大会，不是秋后算账或寻找替罪羊；②三种角色分工——引导人（保证方向）、设问人（引导思考）、叙述人（叙述事件+回答问题）；③清晰流程——回顾目标→结果比对→叙述过程→自我剖析→众人设问→总结规律→案例佐证→复盘归档。三者齐备，「一个成功的团队复盘是可以期待的」。</div>
+    <div class="data-row">
+      <div class="data-card d1"><div class="data-big">🧭</div><div class="data-name">引导人</div><div class="data-sm">保证复盘顺利进行<br>避免讨论偏离<br>设定的方向</div></div>
+      <div class="data-card d2"><div class="data-big">💬</div><div class="data-name">设问人</div><div class="data-sm">通过提问<br>引导大家的思考<br>可相互转化</div></div>
+      <div class="data-card d1"><div class="data-big">📖</div><div class="data-name">叙述人</div><div class="data-sm">叙述复盘事件情况<br>回答设问人问题<br>可相互转化</div></div>
+    </div>
+    <div class="flow-row" style="margin-top:14px;">
+      <div class="flow-step">①回顾<br>目标</div><div class="flow-arrow">→</div>
+      <div class="flow-step">②结果<br>比对</div><div class="flow-arrow">→</div>
+      <div class="flow-step">③叙述<br>过程</div><div class="flow-arrow">→</div>
+      <div class="flow-step">④自我<br>剖析</div><div class="flow-arrow">→</div>
+      <div class="flow-step">⑤众人<br>设问</div><div class="flow-arrow">→</div>
+      <div class="flow-step">⑥总结<br>规律</div><div class="flow-arrow">→</div>
+      <div class="flow-step">⑦案例<br>佐证</div><div class="flow-arrow">→</div>
+      <div class="flow-step end">⑧复盘<br>归档</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">团队复盘的核心挑战不在于方法和流程——联想8步法已足够清晰——而在于文化和人性。一次失败的团队复盘，根本原因往往不是「这次复盘本身」出了问题，而是企业的复盘文化出了问题。复盘不能是秋后算账的大会，不能是推卸责任的大会，而必须是探寻真相的大会。当每个人在复盘时「都是安全的」，三种角色各司其职，8个步骤稳步推进，团队复盘才能真正发挥「重新把做过的事情过一遍，发现规律」的价值。</div>
+</div>
+
+<div class="footer">
+  来源：陈中《复盘+：把经验转化为能力》第二十七章「团队复盘」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>
