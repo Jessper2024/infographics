@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>节前末班车</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px;}
+.container{max-width:880px;width:100%;}
+.back-catalog{text-align:right;margin-bottom:4px;}
+.back-catalog a{font-size:12px;color:#888;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+.lang-switch{text-align:right;margin-bottom:12px;}
+.lang-btn{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+h1{font-family:'FZXPYZS',serif;font-size:32px;font-weight:bold;color:#1a1a1a;line-height:1.35;margin-bottom:8px;}
+.subtitle{font-size:14px;color:#888;line-height:1.6;margin-bottom:24px;}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);border-radius:2px;margin-bottom:28px;}
+.chapter-overview{background:#fff;border-left:4px solid #4f46e5;border-radius:8px;padding:18px 22px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.chapter-overview p{font-size:14px;color:#444;line-height:1.75;}
+.chapter-overview strong{color:#1a1a1a;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi{background:#fff;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.kpi-num{font-family:'FZXPYZS',serif;font-size:24px;font-weight:bold;line-height:1.3;}
+.kpi-label{font-size:12px;color:#888;margin-top:4px;line-height:1.4;}
+.section-01,.section-02,.section-03,.section-04,.section-05{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.num-01,.num-02,.num-03,.num-04,.num-05{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:bold;flex-shrink:0;}
+.num-01{background:#dc2626;}
+.num-02{background:#ea580c;}
+.num-03{background:#ca8a04;}
+.num-04{background:#4f46e5;}
+.num-05{background:#db2777;}
+.section-title{font-family:'FZXPYZS',serif;font-size:19px;font-weight:bold;color:#1a1a1a;}
+.section-body{font-size:14px;color:#444;line-height:1.85;}
+.section-body p{margin-bottom:10px;}
+.section-body p:last-child{margin-bottom:0;}
+.section-body strong{color:#1a1a1a;}
+.section-body .bluf{font-weight:bold;color:#1a1a1a;font-size:14px;display:block;margin-bottom:6px;}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.dual-card{background:#faf8f5;border-radius:10px;padding:14px 16px;}
+.dual-card-label{font-size:12px;color:#888;margin-bottom:4px;}
+.dual-card-value{font-size:15px;color:#1a1a1a;font-weight:bold;}
+.data-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0;}
+.data-card{background:#faf8f5;border-radius:10px;padding:12px 10px;text-align:center;}
+.data-num{font-size:18px;font-weight:bold;color:#dc2626;font-family:'FZXPYZS',serif;}
+.data-label{font-size:11px;color:#888;margin-top:2px;line-height:1.3;}
+.before-after{display:flex;align-items:center;gap:12px;margin:10px 0;justify-content:center;}
+.before-tag{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 16px;font-size:14px;color:#dc2626;font-weight:bold;}
+.after-tag{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;padding:8px 16px;font-size:14px;color:#059669;font-weight:bold;}
+.arrow-big{font-size:20px;color:#888;}
+.arrow-row{display:flex;align-items:center;gap:10px;margin:10px 0;flex-wrap:wrap;}
+.arrow-tag{background:#faf8f5;border-radius:8px;padding:8px 14px;font-size:13px;color:#444;}
+.arrow-sep{color:#888;font-size:16px;}
+.case-quote{background:#faf8f5;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0;font-size:14px;color:#444;line-height:1.8;font-style:italic;}
+.warn-box{background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13px;color:#92400e;line-height:1.7;}
+.warn-box strong{color:#92400e;}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:8px;padding:20px 24px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:bold;margin-bottom:6px;letter-spacing:2px;}
+.takeaway p{font-size:14px;color:#444;line-height:1.8;}
+.takeaway strong{color:#1a1a1a;}
+.footer{text-align:center;font-size:12px;color:#aaa;padding:20px 0 0;line-height:1.8;}
+@media(max-width:768px){
+  body{padding:20px 12px 40px;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .dual-grid{grid-template-columns:1fr;}
+  .data-row{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog"><a href="目录.html">← 返回文档目录</a></div>
+
+<div class="lang-switch"><a class="lang-btn" href="节前末班车-doc016-info-en.html" target="_blank">中文 / English</a></div>
+
+<h1>节前末班车</h1>
+
+<p class="subtitle">猫笔刀 · 2024/09/29 · 微信公众平台</p>
+
+<div class="divider"></div>
+
+<div class="chapter-overview">
+<p><strong>十一长假前最后一篇，写于 9·30 历史性暴涨前夜。</strong> 周五上交所宕机导致行情严重失真——真实大盘被隐藏了约 2% 涨幅，实际已在 3150 附近。周末利好密集落地：开户暴增五六倍、银证转账指数飙升到 2017 年日均的 704%、债市资金被虹吸大跌。技术指标已经严重超买，但极端行情中指标暂时失效。作者的判断：「与其害怕回调，不如预防踏空」。文末附常规月底征稿费。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num" style="color:#dc2626;">3000-4000亿</div>
+    <div class="kpi-label">上交所宕机<br>损失成交量</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ea580c;">5-6倍</div>
+    <div class="kpi-label">开户申请<br>周环比暴增</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ca8a04;">7.04</div>
+    <div class="kpi-label">银证转账指数<br>2017日均的704%</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#4f46e5;">+2%</div>
+    <div class="kpi-label">隐性涨幅<br>周一补涨预判</div>
+  </div>
+</div>
+
+<!-- 区块01: 宕机复盘 -->
+<div class="section-01">
+  <div class="section-header">
+    <div class="num-01">01</div>
+    <div class="section-title">周五复盘：上交所宕机与隐性涨幅</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">上交所服务器宕机造成全天近一半时间交易困难，行情严重失真——真实大盘已到 3150 附近，而非显示的 3087。</span>
+    <p>周五上证指数收盘 <strong>3087 点</strong>，但三个独立信号指向隐性涨幅约 2%：</p>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">2-3%</div>
+        <div class="data-label">沪深300 ETF<br>溢价幅度</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">历史极值</div>
+        <div class="data-label">IF/IC/IH期货<br>升水幅度</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">~3150</div>
+        <div class="data-label">隐性真实<br>大盘点位</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#4f46e5;">正常</div>
+        <div class="data-label">深交所<br>交易功能</div>
+      </div>
+    </div>
+    <p>市场用提前溢价的方式对交易所故障进行了补偿——<strong>周一开盘只要上交所正常，必然有 2% 左右的补涨。</strong>小知识：代码 6 开头是上交所，0 和 3 开头是深交所。</p>
+  </div>
+</div>
+
+<!-- 区块02: 周末利好 -->
+<div class="section-02">
+  <div class="section-header">
+    <div class="num-02">02</div>
+    <div class="section-title">周末利好密集落地：政策、开户、资金三重共振</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">外盘小涨、利好持续落地、市场情绪高涨、资金跑步入场——整个证券圈都在极力烘托牛市氛围。</span>
+    <p>周五夜盘 A50 期货再涨 1.5%，虽不如周三周四但最后时刻快速拉升。政策上：</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <div class="dual-card-label">📋 上市公司回购增持</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">低息贷款加速落地</div>
+      </div>
+      <div class="dual-card">
+        <div class="dual-card-label">🏃 宽松政策</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">ZZJ 会议部署跑步推进</div>
+      </div>
+    </div>
+    <p><strong>开户申请暴增五六倍</strong>——合作券商反馈员工加班加点，已很难抽出人力单独服务。</p>
+    <div class="arrow-row">
+      <div class="arrow-tag">0.66</div><div class="arrow-sep">→</div>
+      <div class="arrow-tag">2.15</div><div class="arrow-sep">→</div>
+      <div class="arrow-tag">1.40</div><div class="arrow-sep">→</div>
+      <div class="arrow-tag">4.40</div><div class="arrow-sep">→</div>
+      <div class="arrow-tag" style="background:#fef2f2;border:1px solid #fecaca;color:#dc2626;font-weight:bold;">7.04</div>
+    </div>
+    <p style="font-size:12px;color:#888;">工行银证转账指数走势（基准=2017年日均值）。7.04 意味着周五大盘资金流入是 2017 年日均的 <strong>704%</strong>。</p>
+    <p>股市说到底就是一个蓄水池游戏——<strong>进来的钱多了，水面自然就会上涨。</strong></p>
+  </div>
+</div>
+
+<!-- 区块03: 市场分歧 -->
+<div class="section-03">
+  <div class="section-header">
+    <div class="num-03">03</div>
+    <div class="section-title">疯狂中的分歧：谁在买，谁在卖</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">买卖买卖，有买亦有卖——周五 1.5 万亿成交背后是巨大的市场分歧。</span>
+    <p>涨了就抛、解套就跑的大有人在，只是新入场的资金足够多，<strong>才能顶着抛压向上冲。</strong>整个证券圈挨了三年半的毒打，好不容易扬眉吐气，都想着借这一波干票大的。</p>
+    <div class="case-quote">🐱 作者的冷眼：至于喊牛的有多少是真的信，有多少是想再涨高点好出货——那就难说了。</div>
+    <p>关于技术指标：周四就已经严重超买，周五无论如何都不应该涨——但周五不但涨了，还是暴涨。<strong>极端行情技术指标会短暂失效，可能就 3-4 个交易日，但这 3-4 个交易日已经可以发生很多离谱的事情。</strong></p>
+  </div>
+</div>
+
+<!-- 区块04: 短期判断 -->
+<div class="section-04">
+  <div class="section-header">
+    <div class="num-04">04</div>
+    <div class="section-title">短期判断：与其怕回调，不如防踏空</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">综合各类信息判断，1-2 个交易日内大跌可能性小——踏空风险大于回调风险。</span>
+    <p>这是作者在 9·30 暴涨前夜的明确判断：</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <div class="dual-card-label">⚠️ 回调风险</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">1-2日内大跌可能性小，极端行情技术指标暂时失效</div>
+      </div>
+      <div class="dual-card">
+        <div class="dual-card-label">🚀 踏空风险</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">更需预防：3-4个交易日窗口内可以发生很多离谱的事</div>
+      </div>
+    </div>
+    <div class="warn-box"><strong>⚠️ 债市警告：</strong>股市行情开始虹吸资金，周五债券市场集体大跌——债基罕见单日跌 0.14%。如果 A 股行情延续，债基回调可能持续。摩根斯坦利认为沪深 300 还有 10% 上涨空间。</div>
+  </div>
+</div>
+
+<!-- 区块05: 外溢效应 -->
+<div class="section-05">
+  <div class="section-header">
+    <div class="num-05">05</div>
+    <div class="section-title">外溢效应：降准落地、房贷利率、限购松绑</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">央行的宽松政策在落地推进，而房地产限购可能即将全面退出历史舞台。</span>
+    <p>三项政策落地：</p>
+    <div class="data-row" style="grid-template-columns:repeat(3,1fr);">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">-0.5%</div>
+        <div class="data-label">存款准备金率<br>9/27起下调</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">1.7→1.5%</div>
+        <div class="data-label">7天逆回购<br>操作利率</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">≈-0.5%</div>
+        <div class="data-label">存量房贷利率<br>10月底前协商</div>
+      </div>
+    </div>
+    <p>更大信号：<strong>北京上海限购可能全面松绑</strong>（除北京中央区）。作者此前预言——<strong>在限购全部解除之前，房市不可能止跌。</strong>这是 30 年大周期的拐点，想绑着手打赢通缩是不可能的。但即使全面解禁，政策底和市场底也从来不一致。</p>
+    <div class="case-quote">🏠 对普通人：买房决定要比买股票慎重得多——股票见势不妙鼠标点两下就能出货，房子的买卖进出要磨掉你一层皮。</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">核心结论</div>
+  <p>这篇写于 9·30 历史性暴涨前夜的文章，是一份珍贵的「事前判断」而非事后总结。<strong>上交所宕机隐藏了约 2% 的真实涨幅，银证转账指数飙到 2017 年日均的 7 倍，开户暴增五六倍——所有这些信号都在指向同一件事：钱在疯了一样地涌入股市。</strong><br><br>但猫笔刀没有丢掉冷静。他指出了关键细节：1.5 万亿成交不仅有 1.5 万亿的买盘，也有 1.5 万亿的卖盘——<strong>涨了就抛、解套就跑的大有人在</strong>，「喊牛的有多少是真的信，有多少是想再涨高点好出货——那就难说了」。<br><br>同时也捕捉到了正在发生的结构性外溢：<strong>债市资金被虹吸大跌，限购政策即将退出历史舞台。股市的疯牛不是孤立事件——它在重塑整个中国资产版图。</strong></p>
+</div>
+
+<div class="footer">节前末班车 · 猫笔刀 · 2024/09/29 · mp.weixin.qq.com</div>
+
+</div>
+</body>
+</html>

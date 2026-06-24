@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Last Train Before the Holiday</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px;}
+.container{max-width:880px;width:100%;}
+.back-catalog{text-align:right;margin-bottom:4px;}
+.back-catalog a{font-size:12px;color:#888;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+.lang-switch{text-align:right;margin-bottom:12px;}
+.lang-btn{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+h1{font-family:'FZXPYZS',serif;font-size:32px;font-weight:bold;color:#1a1a1a;line-height:1.35;margin-bottom:8px;}
+.subtitle{font-size:14px;color:#888;line-height:1.6;margin-bottom:24px;}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);border-radius:2px;margin-bottom:28px;}
+.chapter-overview{background:#fff;border-left:4px solid #4f46e5;border-radius:8px;padding:18px 22px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.chapter-overview p{font-size:14px;color:#444;line-height:1.75;}
+.chapter-overview strong{color:#1a1a1a;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi{background:#fff;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.kpi-num{font-family:'FZXPYZS',serif;font-size:24px;font-weight:bold;line-height:1.3;}
+.kpi-label{font-size:12px;color:#888;margin-top:4px;line-height:1.4;}
+.section-01,.section-02,.section-03,.section-04,.section-05{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.num-01,.num-02,.num-03,.num-04,.num-05{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:bold;flex-shrink:0;}
+.num-01{background:#dc2626;}
+.num-02{background:#ea580c;}
+.num-03{background:#ca8a04;}
+.num-04{background:#4f46e5;}
+.num-05{background:#db2777;}
+.section-title{font-family:'FZXPYZS',serif;font-size:19px;font-weight:bold;color:#1a1a1a;}
+.section-body{font-size:14px;color:#444;line-height:1.85;}
+.section-body p{margin-bottom:10px;}
+.section-body p:last-child{margin-bottom:0;}
+.section-body strong{color:#1a1a1a;}
+.section-body .bluf{font-weight:bold;color:#1a1a1a;font-size:14px;display:block;margin-bottom:6px;}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.dual-card{background:#faf8f5;border-radius:10px;padding:14px 16px;}
+.dual-card-label{font-size:12px;color:#888;margin-bottom:4px;}
+.dual-card-value{font-size:15px;color:#1a1a1a;font-weight:bold;}
+.data-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0;}
+.data-card{background:#faf8f5;border-radius:10px;padding:12px 10px;text-align:center;}
+.data-num{font-size:18px;font-weight:bold;color:#dc2626;font-family:'FZXPYZS',serif;}
+.data-label{font-size:11px;color:#888;margin-top:2px;line-height:1.3;}
+.before-after{display:flex;align-items:center;gap:12px;margin:10px 0;justify-content:center;}
+.before-tag{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 16px;font-size:14px;color:#dc2626;font-weight:bold;}
+.after-tag{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;padding:8px 16px;font-size:14px;color:#059669;font-weight:bold;}
+.arrow-big{font-size:20px;color:#888;}
+.arrow-row{display:flex;align-items:center;gap:10px;margin:10px 0;flex-wrap:wrap;}
+.arrow-tag{background:#faf8f5;border-radius:8px;padding:8px 14px;font-size:13px;color:#444;}
+.arrow-sep{color:#888;font-size:16px;}
+.case-quote{background:#faf8f5;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0;font-size:14px;color:#444;line-height:1.8;font-style:italic;}
+.warn-box{background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13px;color:#92400e;line-height:1.7;}
+.warn-box strong{color:#92400e;}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:8px;padding:20px 24px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:bold;margin-bottom:6px;letter-spacing:2px;}
+.takeaway p{font-size:14px;color:#444;line-height:1.8;}
+.takeaway strong{color:#1a1a1a;}
+.footer{text-align:center;font-size:12px;color:#aaa;padding:20px 0 0;line-height:1.8;}
+@media(max-width:768px){
+  body{padding:20px 12px 40px;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .dual-grid{grid-template-columns:1fr;}
+  .data-row{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog"><a href="目录.html">← Back to Document Index</a></div>
+
+<div class="lang-switch"><a class="lang-btn" href="节前末班车-doc016-info-zh.html" target="_blank">中文 / English</a></div>
+
+<h1>Last Train Before the Holiday</h1>
+
+<p class="subtitle">By Mao Bidao · 2024/09/29 · WeChat Official Account</p>
+
+<div class="divider"></div>
+
+<div class="chapter-overview">
+<p><strong>The final dispatch before the National Day holiday, written on the eve of the historic 9/30 surge.</strong> Friday's Shanghai Exchange outage severely distorted prices—the true market level was hiding ~2% of gains, already near 3150 rather than the reported 3087. Over the weekend, bullish signals stacked up: new account applications surged 5-6x, the ICBC bank-to-broker transfer index hit 704% of the 2017 daily average, and bond funds sold off as money fled to equities. Technical indicators were already screaming overbought, but in extreme moves they temporarily fail. The author's verdict: "Rather than fear a pullback, guard against missing out." Closes with the regular end-of-month reader tip drive.</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num" style="color:#dc2626;">300-400B</div>
+    <div class="kpi-label">Volume Lost to<br>Exchange Outage</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ea580c;">5-6×</div>
+    <div class="kpi-label">New Account<br>Applications Surge</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ca8a04;">7.04</div>
+    <div class="kpi-label">Bank-Broker Index<br>704% of 2017 Avg</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#4f46e5;">+2%</div>
+    <div class="kpi-label">Hidden Gains<br>Monday Catch-Up</div>
+  </div>
+</div>
+
+<!-- Section 01 -->
+<div class="section-01">
+  <div class="section-header">
+    <div class="num-01">01</div>
+    <div class="section-title">Friday Recap: Shanghai Exchange Crash and Hidden Gains</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">The Shanghai Exchange server outage made trading difficult for nearly half the day—the true market was around 3150, not the reported 3087.</span>
+    <p>Friday's Shanghai Composite closed at <strong>3087</strong>, but three independent signals pointed to ~2% of hidden gains:</p>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">2-3%</div>
+        <div class="data-label">CSI 300 ETF<br>Premium</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">Record</div>
+        <div class="data-label">IF/IC/IH Futures<br>Contango</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">~3150</div>
+        <div class="data-label">Hidden True<br>Market Level</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#4f46e5;">Normal</div>
+        <div class="data-label">Shenzhen<br>Exchange</div>
+      </div>
+    </div>
+    <p>The market priced in compensation for the outage through premiums—<strong>Monday would inevitably see ~2% catch-up gains as long as Shanghai operated normally.</strong> Quick tip: 6-prefix codes = Shanghai, 0 and 3 = Shenzhen.</p>
+  </div>
+</div>
+
+<!-- Section 02 -->
+<div class="section-02">
+  <div class="section-header">
+    <div class="num-02">02</div>
+    <div class="section-title">Weekend Bullish Cascade: Policy, Accounts, Capital—Triple Resonance</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">Offshore futures rising, policy measures landing, sentiment boiling, capital flooding in—the entire securities industry was hyping the bull market narrative.</span>
+    <p>A50 futures rose another 1.5% in Friday night trading. On the policy front:</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <div class="dual-card-label">📋 Listed Company Buybacks</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">Low-interest loans accelerating rollout</div>
+      </div>
+      <div class="dual-card">
+        <div class="dual-card-label">🏃 Easing Policies</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">Politburo directives sprinting toward implementation</div>
+      </div>
+    </div>
+    <p><strong>New account applications surged 5-6×.</strong> Partner brokerages reported staff working overtime, unable to spare personnel for individual service.</p>
+    <div class="arrow-row">
+      <div class="arrow-tag">0.66</div><div class="arrow-sep">→</div>
+      <div class="arrow-tag">2.15</div><div class="arrow-sep">→</div>
+      <div class="arrow-tag">1.40</div><div class="arrow-sep">→</div>
+      <div class="arrow-tag">4.40</div><div class="arrow-sep">→</div>
+      <div class="arrow-tag" style="background:#fef2f2;border:1px solid #fecaca;color:#dc2626;font-weight:bold;">7.04</div>
+    </div>
+    <p style="font-size:12px;color:#888;">ICBC Bank-to-Broker Transfer Index (baseline = 2017 daily avg). 7.04 means Friday's inflow was <strong>704%</strong> of the 2017 daily average.</p>
+    <p>The stock market at its core is a reservoir: <strong>more money in → water level rises.</strong></p>
+  </div>
+</div>
+
+<!-- Section 03 -->
+<div class="section-03">
+  <div class="section-header">
+    <div class="num-03">03</div>
+    <div class="section-title">Divergence Amid the Frenzy: Who's Buying, Who's Selling</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">Every trade has a buyer and a seller—Friday's ¥1.5T volume concealed enormous disagreement.</span>
+    <p>Plenty of people sold into strength and fled at break-even; only the sheer volume of new money <strong>pushed through the selling pressure to keep rising.</strong> The entire industry, beaten down for three and a half years, was finally getting to flex—everyone wanted to make this wave count.</p>
+    <div class="case-quote">🐱 The author's cold eye: As for how many bull-callers truly believe it and how many just want prices higher so they can offload—that's hard to say.</div>
+    <p>On technical indicators: Thursday was already severely overbought; by all logic Friday should not have risen. But it did—spectacularly. <strong>In extreme moves, technical indicators temporarily fail—maybe only 3-4 trading days, but those 3-4 days can produce some truly absurd outcomes.</strong></p>
+  </div>
+</div>
+
+<!-- Section 04 -->
+<div class="section-04">
+  <div class="section-header">
+    <div class="num-04">04</div>
+    <div class="section-title">Short-Term Call: Rather Fear Missing Out Than a Pullback</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">Taking all information together: a crash within 1-2 trading days is unlikely—the risk of missing the move exceeds the risk of a pullback.</span>
+    <p>This was the author's clear verdict on the eve of the 9/30 explosion:</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <div class="dual-card-label">⚠️ Pullback Risk</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">Crash unlikely in 1-2 days; technical indicators temporarily invalid in extreme moves</div>
+      </div>
+      <div class="dual-card">
+        <div class="dual-card-label">🚀 FOMO Risk</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">The bigger danger: a 3-4 day window can produce absurd outcomes</div>
+      </div>
+    </div>
+    <div class="warn-box"><strong>⚠️ Bond Warning:</strong> The equity rally is siphoning capital—bond market sold off sharply Friday, with bond funds rarely dropping 0.14% in a single day. If the A-share rally continues, bond corrections may persist. Morgan Stanley sees another 10% upside for CSI 300.</div>
+  </div>
+</div>
+
+<!-- Section 05 -->
+<div class="section-05">
+  <div class="section-header">
+    <div class="num-05">05</div>
+    <div class="section-title">Spillover: RRR Cut, Mortgage Rates, Purchase Limits Lifted</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">The central bank's easing is materializing, and housing purchase restrictions may be about to exit history entirely.</span>
+    <p>Three policy implementations:</p>
+    <div class="data-row" style="grid-template-columns:repeat(3,1fr);">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">-0.5%</div>
+        <div class="data-label">Reserve Requirement<br>Ratio Cut 9/27</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">1.7→1.5%</div>
+        <div class="data-label">7-Day Reverse<br>Repo Rate</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">≈-0.5%</div>
+        <div class="data-label">Existing Mortgage<br>Renegotiation by Oct</div>
+      </div>
+    </div>
+    <p>The bigger signal: <strong>Beijing and Shanghai purchase limits may be fully lifted</strong> (except Beijing's central district). The author's earlier prediction—<strong>the housing market cannot bottom until all purchase restrictions are removed.</strong> This is a 30-year cycle inflection point; trying to beat deflation with one hand tied behind your back is absurd. But even with full deregulation, the policy bottom and market bottom never coincide.</p>
+    <div class="case-quote">🏠 For ordinary people: a home purchase decision deserves far more caution than a stock trade—stocks you can exit with two mouse clicks; buying and selling property will strip a layer off your skin.</div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">Core Takeaway</div>
+  <p>Written on the eve of the historic 9/30 surge, this dispatch is a rare piece of <strong>ex-ante judgment, not hindsight.</strong> The Shanghai Exchange outage concealed ~2% of real gains, the bank-to-broker index hit 7× the 2017 daily average, and new accounts surged 5-6×—all pointing to the same thing: <strong>money was flooding into equities with manic intensity.</strong><br><br>Yet Mao Bidao kept his cool. He flagged the critical detail: ¥1.5T in volume means ¥1.5T in selling alongside ¥1.5T in buying—<strong>plenty of people were dumping into strength and fleeing at break-even.</strong> "As for how many bull-callers truly believe it and how many just want higher prices to offload—that's hard to say."<br><br>He also captured the structural spillover underway: <strong>bond funds hemorrhaging capital to equities, and housing purchase restrictions about to exit history. The stock market's manic bull was not an isolated event—it was reshaping the entire Chinese asset landscape.</strong></p>
+</div>
+
+<div class="footer">Last Train Before the Holiday · By Mao Bidao · 2024/09/29 · mp.weixin.qq.com</div>
+
+</div>
+</body>
+</html>
