@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>今天我太沮丧了 · 猫笔刀</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px;}
+.container{max-width:880px;width:100%;}
+.lang-switch{text-align:right;margin-bottom:12px;}
+.lang-btn{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+.back-catalog{text-align:right;margin-bottom:4px;}
+.back-catalog a{font-size:12px;color:#888;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+h1{font-family:'FZXPYZS','PingFang SC',serif;font-size:32px;font-weight:bold;color:#1a1a1a;line-height:1.3;margin-bottom:8px;}
+.subtitle{font-size:14px;color:#888;line-height:1.5;margin-bottom:20px;}
+.divider{height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);border:0;margin-bottom:24px;border-radius:2px;}
+.chapter-overview{background:#f0f4ff;border-left:4px solid #4f46e5;padding:16px 20px;border-radius:0 8px 8px 0;margin-bottom:24px;}
+.chapter-overview p{font-size:15px;color:#333;line-height:1.7;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi-card{background:#fff;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.kpi-num{font-family:'FZXPYZS',serif;font-size:26px;font-weight:bold;}
+.kpi-label{font-size:12px;color:#888;margin-top:4px;}
+.c01{color:#dc2626;} .c02{color:#ea580c;} .c03{color:#ca8a04;} .c04{color:#4f46e5;}
+.section{padding:20px 24px;border-radius:12px;margin-bottom:16px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.04);}
+.section h2{font-family:'FZXPYZS','PingFang SC',serif;font-size:20px;margin-bottom:12px;}
+.section p{font-size:15px;line-height:1.8;color:#333;margin-bottom:10px;}
+.section p:last-child{margin-bottom:0;}
+.section .bold-lead{font-weight:bold;}
+.section-01{border-top:3px solid #dc2626;} .section-01 h2{color:#dc2626;}
+.num-01{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;background:#dc2626;color:#fff;border-radius:50%;font-size:14px;margin-right:8px;}
+.section-02{border-top:3px solid #ea580c;} .section-02 h2{color:#ea580c;}
+.num-02{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;background:#ea580c;color:#fff;border-radius:50%;font-size:14px;margin-right:8px;}
+.section-03{border-top:3px solid #ca8a04;} .section-03 h2{color:#ca8a04;}
+.num-03{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;background:#ca8a04;color:#fff;border-radius:50%;font-size:14px;margin-right:8px;}
+.section-04{border-top:3px solid #4f46e5;} .section-04 h2{color:#4f46e5;}
+.num-04{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;background:#4f46e5;color:#fff;border-radius:50%;font-size:14px;margin-right:8px;}
+.section-05{border-top:3px solid #db2777;} .section-05 h2{color:#db2777;}
+.num-05{display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;background:#db2777;color:#fff;border-radius:50%;font-size:14px;margin-right:8px;}
+.data-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+.data-card{background:#f9f9f9;border-radius:8px;padding:12px 16px;}
+.data-card .data-label{font-size:12px;color:#888;margin-bottom:4px;}
+.data-card .data-value{font-size:18px;font-weight:bold;color:#1a1a1a;}
+.data-card .data-desc{font-size:12px;color:#999;margin-top:2px;}
+.flow-row{display:flex;gap:6px;align-items:center;margin:12px 0;flex-wrap:wrap;}
+.flow-box{background:#fff;border:1px solid #e0dcd4;border-radius:8px;padding:8px 14px;font-size:13px;color:#333;text-align:center;flex:1;min-width:80px;}
+.flow-arrow{font-size:18px;color:#ccc;flex-shrink:0;}
+.quote-box{background:#f9f9f9;border-left:3px solid #ea580c;padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:14px;line-height:1.7;color:#555;font-style:italic;}
+.takeaway{background:#fff;border-left:4px solid #dc2626;padding:16px 20px;border-radius:0 8px 8px 0;margin-top:20px;margin-bottom:24px;}
+.takeaway p{font-size:15px;font-weight:bold;color:#1a1a1a;line-height:1.7;}
+.footer{text-align:center;padding:20px 0;font-size:12px;color:#999;border-top:1px solid #e0dcd4;margin-top:12px;}
+.footer p{margin-bottom:4px;}
+@media(max-width:768px){body{padding:20px 12px 40px;}.kpi-row{grid-template-columns:repeat(2,1fr);}.data-row{grid-template-columns:1fr;}.flow-row{flex-direction:column;}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a href="目录.html">← 返回文档目录</a></div>
+<div class="lang-switch"><a class="lang-btn" href="今天我太沮丧了-doc013-info-en.html" target="_blank">中文 / English</a></div>
+<h1>今天我太沮丧了</h1>
+<p class="subtitle">来源：猫笔刀 · 微信公众号 · 2025年8月2日｜《浪浪山的小妖怪》影评7.6分 · 宗庆后遗产案全貌 · 读者被骗4万</p>
+<hr class="divider">
+<div class="chapter-overview">
+<p>三件事：①《浪浪山的小妖怪》公映——影片完成度高但走了保守套路，失去原作神韵，评分<strong>7.6</strong>；② 宗庆后遗产案——宗庆后2024年1月手书遗嘱为3子女设立信托（每人<strong>7亿美元</strong>），宗馥莉推翻协议只给利息不给本金，兄妹对簿公堂；③ 读者被野鸡App骗<strong>4万元</strong>——低价要约收购骗局，推荐该App的公众号已被封禁。</p>
+</div>
+<div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-num c01">7.6分</div><div class="kpi-label">《浪浪山》评分</div></div>
+  <div class="kpi-card"><div class="kpi-num c02">7亿美元</div><div class="kpi-label">每人信托本金</div></div>
+  <div class="kpi-card"><div class="kpi-num c03">200亿</div><div class="kpi-label">娃哈哈股份继承争议</div></div>
+  <div class="kpi-card"><div class="kpi-num c04">4万元</div><div class="kpi-label">读者被骗金额</div></div>
+</div>
+<div class="section section-01">
+<h2><span class="num-01">01</span>《浪浪山的小妖怪》——保守的优秀，丧失了"边角料"神韵</h2>
+<p><span class="bold-lead">作者7.6分评价：完成度高，讲了一个蛮新颖的故事，但剧本走着走着走回了传统套路框架。</span></p>
+<p>原作《小妖怪的夏天》出圈是因为从小妖怪角度描写西游记原著里没有台词、没有姓名的"边角料"故事。主角小猪妖像极了平凡打工人。电影版高潮给几个主角开了"作弊器"搞得很热血——这样处理不差，但显得不特别了。</p>
+<div class="flow-row">
+  <div class="flow-box">原作<br>边角料视角</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">平民代入感<br>现象级出圈</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">电影版<br>保守套路</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">7.6分<br>丧失独特性</div>
+</div>
+<p>作者认为这是一个比较保守的优秀模版，"肯定能获得不错的票房成绩，但却丧失了成为现象级爆款的可能性"。同时对《南京照相馆》的领先地位不构成威胁，上海电影股票要降预期。</p>
+</div>
+<div class="section section-02">
+<h2><span class="num-02">02</span>宗庆后遗产案——从信托安排到兄妹翻脸</h2>
+<p><span class="bold-lead">财新报道揭开了宗庆后遗产案全貌：两份遗嘱→兄妹协议→宗馥莉推翻→对簿公堂。</span></p>
+<div class="data-row">
+  <div class="data-card"><div class="data-label">2024年1月</div><div class="data-value" style="font-size:15px;">手书遗嘱</div><div class="data-desc">3子女每人7亿美元信托，本金不动，利息由子女及子孙支配，排除配偶</div></div>
+  <div class="data-card"><div class="data-label">2024年2月2日</div><div class="data-value" style="font-size:15px;">第二份遗嘱</div><div class="data-desc">内地资产+部分境外→宗馥莉、施幼真、宗庆后母亲；嘱宗馥莉为弟妹设信托</div></div>
+  <div class="data-card"><div class="data-label">2024年2月25日</div><div class="data-value" style="font-size:15px;">宗庆后去世</div><div class="data-desc">肺癌</div></div>
+  <div class="data-card"><div class="data-label">2024年3月15日</div><div class="data-value" style="font-size:15px;">四兄妹协议</div><div class="data-desc">宗馥莉履约，三人承认2/2遗嘱有效</div></div>
+</div>
+<div class="flow-row">
+  <div class="flow-box">宗馥莉<br>推翻协议</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">信托只有利息<br>不给本金</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">三宗弟妹<br>对簿公堂</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">要21亿美元<br>信托+200亿股份</div>
+</div>
+<p>大儿子宗继昌已提交1989年出生证明，申请与宗庆后留存血液样本DNA比对，结果9月公布。</p>
+<div class="quote-box">"1989年……生这个孩子的时候宗馥莉7岁，宗庆后和原配施幼真应该还没离婚，这事在那个年代算挺出格的了，乱呀。"</div>
+</div>
+<div class="section section-03">
+<h2><span class="num-03">03</span>读者被骗4万——"引力荟"低价要约收购骗局</h2>
+<p><span class="bold-lead">作者的朋友/多年读者被野鸡聊天软件"引力荟"引流到一个叫"yxzj"的股票软件，以低价要约收购为诱饵被骗走4万元。</span></p>
+<div class="flow-row">
+  <div class="flow-box">公众号<br>推荐</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">下载引力荟<br>聊天软件</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">"老师"引导<br>下载yxzj</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">打折股票<br>充4万</div>
+</div>
+<p>作者列出的常识性漏洞：①没有比市价还低的要约收购；②要约收购不会分给散户；③正规券商不会用全英文字母做App名；④券商入金不可能到贸易账户；⑤正规聊天软件不可能在App Store外下载安装。推荐该App的公众号已被腾讯永久封禁，注册主体为百货店个体户——典型黑产皮包公司。</p>
+<div class="quote-box">"我一直自我感觉良好的觉得看我公众号的应该都是认知较高的都市精英，今天真是啪啪打脸。"</div>
+</div>
+<div class="section section-04">
+<h2><span class="num-04">04</span>假冒名人带盘炒股——另一个骗局</h2>
+<p><span class="bold-lead">作者还提到有人信了网上假冒他本人的账号，带盘炒股收益提成，结果亏了十几万。</span></p>
+<p>作者回应：公众号日均阅读量四五十万，不可能一个一个联系读者加好友；七八年前就管理很大规模的资产，肯定不会带几十万的散户炒股。</p>
+<p>三条底线：不主动加读者好友、不带盘炒股、不搞收益提成。凡是要求加好友、带盘、分成的一律是假冒。</p>
+</div>
+<div class="section section-05">
+<h2><span class="num-05">05</span>三个沮丧源叠加——电影失望 + 遗产狗血 + 读者被骗</h2>
+<p><span class="bold-lead">作者最后表示"越写越气，越写越沮丧"——三件事同时叠加。</span></p>
+<p>电影期待落空：自己期待的电影没达到预期，走了保守套路而非另辟蹊径。遗产案越来越狗血：原以为宗庆后有妥善安排，结果宗馥莉推翻协议导致兄妹撕破脸。读者被骗：一个每天看他文章好几年的读者，竟然被如此低级的骗局骗走4万——这对作者的自我认知（"看我公众号的都是认知较高的都市精英"）是直接打击。</p>
+</div>
+<div class="takeaway">
+<p>三件事：①《浪浪山的小妖怪》7.6分——保守的优秀，失去原作"边角料"神韵；② 宗庆后遗嘱安排3子女各7亿美元信托→宗馥莉推翻协议只给利息不给本金→三弟妹起诉要21亿信托+200亿股份；③ 读者被"引力荟"以低价要约收购骗走4万——推荐公众号已被封禁。作者被三重沮丧叠加打穿。</p>
+</div>
+<div class="footer">
+<p>今天我太沮丧了 · 猫笔刀 · 2025年8月2日</p>
+<p>文章来源：微信公众号 mp.weixin.qq.com</p>
+<p>&copy; 2025 · 本文为公开文章·仅作信息图整理</p>
+</div>
+</div>
+</body>
+</html>
