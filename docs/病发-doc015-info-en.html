@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Outbreak</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px;}
+.container{max-width:880px;width:100%;}
+.back-catalog{text-align:right;margin-bottom:4px;}
+.back-catalog a{font-size:12px;color:#888;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+.lang-switch{text-align:right;margin-bottom:12px;}
+.lang-btn{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+h1{font-family:'FZXPYZS',serif;font-size:32px;font-weight:bold;color:#1a1a1a;line-height:1.35;margin-bottom:8px;}
+.subtitle{font-size:14px;color:#888;line-height:1.6;margin-bottom:24px;}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);border-radius:2px;margin-bottom:28px;}
+.chapter-overview{background:#fff;border-left:4px solid #4f46e5;border-radius:8px;padding:18px 22px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.chapter-overview p{font-size:14px;color:#444;line-height:1.75;}
+.chapter-overview strong{color:#1a1a1a;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi{background:#fff;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.kpi-num{font-family:'FZXPYZS',serif;font-size:24px;font-weight:bold;line-height:1.3;}
+.kpi-label{font-size:12px;color:#888;margin-top:4px;line-height:1.4;}
+.section-01,.section-02,.section-03,.section-04,.section-05{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.num-01,.num-02,.num-03,.num-04,.num-05{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:bold;flex-shrink:0;}
+.num-01{background:#dc2626;}
+.num-02{background:#ea580c;}
+.num-03{background:#ca8a04;}
+.num-04{background:#4f46e5;}
+.num-05{background:#db2777;}
+.section-title{font-family:'FZXPYZS',serif;font-size:19px;font-weight:bold;color:#1a1a1a;}
+.section-body{font-size:14px;color:#444;line-height:1.85;}
+.section-body p{margin-bottom:10px;}
+.section-body p:last-child{margin-bottom:0;}
+.section-body strong{color:#1a1a1a;}
+.section-body .bluf{font-weight:bold;color:#1a1a1a;font-size:14px;display:block;margin-bottom:6px;}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.dual-card{background:#faf8f5;border-radius:10px;padding:14px 16px;}
+.dual-card-label{font-size:12px;color:#888;margin-bottom:4px;}
+.dual-card-value{font-size:15px;color:#1a1a1a;font-weight:bold;}
+.before-after{display:flex;align-items:center;gap:12px;margin:10px 0;justify-content:center;}
+.before-tag{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 16px;font-size:14px;color:#dc2626;font-weight:bold;}
+.after-tag{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;padding:8px 16px;font-size:14px;color:#059669;font-weight:bold;}
+.arrow-big{font-size:20px;color:#888;}
+.flow-row{display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap;justify-content:center;}
+.flow-step{background:#faf8f5;border-radius:10px;padding:10px 16px;text-align:center;font-size:13px;color:#444;}
+.flow-step .flow-num{font-size:20px;font-weight:bold;color:#4f46e5;font-family:'FZXPYZS',serif;}
+.flow-arrow{color:#888;font-size:16px;}
+.case-quote{background:#faf8f5;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0;font-size:14px;color:#444;line-height:1.8;font-style:italic;}
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0;}
+.data-card{background:#faf8f5;border-radius:10px;padding:12px 14px;text-align:center;}
+.data-num{font-size:20px;font-weight:bold;color:#dc2626;font-family:'FZXPYZS',serif;}
+.data-label{font-size:12px;color:#888;margin-top:2px;}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:8px;padding:20px 24px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:bold;margin-bottom:6px;letter-spacing:2px;}
+.takeaway p{font-size:14px;color:#444;line-height:1.8;}
+.takeaway strong{color:#1a1a1a;}
+.footer{text-align:center;font-size:12px;color:#aaa;padding:20px 0 0;line-height:1.8;}
+@media(max-width:768px){
+  body{padding:20px 12px 40px;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .dual-grid{grid-template-columns:1fr;}
+  .data-row{grid-template-columns:repeat(2,1fr);}
+  .flow-row{gap:4px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog"><a href="目录.html">← Back to Document Index</a></div>
+
+<div class="lang-switch"><a class="lang-btn" href="病发-doc015-info-zh.html" target="_blank">中文 / English</a></div>
+
+<h1>Outbreak</h1>
+
+<p class="subtitle">By Mao Bidao · 2024/09/30 · WeChat Official Account</p>
+
+<div class="divider"></div>
+
+<div class="chapter-overview">
+<p><strong>In five trading days, A-shares delivered a rally unseen in 34 years—but the author says this isn't "recovery," it's "a different kind of illness breaking out."</strong> A sober dispatch written at the peak of the September 2024 frenzy: from a neighbor with zero financial knowledge urgently opening an account, to the "random confidence nuclear explosion" triggered by the September 26 Politburo meeting, to the cruelly narrow window of "3 years of decline and halving → 5 days of 33% rebound." Those who broke and exited before the rally won't come back. The article closes with the author's candid breakdown of his reader-supported business model.</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num" style="color:#dc2626;">¥2.6T</div>
+    <div class="kpi-label">9/30 Combined<br>Volume (Record)</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ea580c;">5 Days</div>
+    <div class="kpi-label">Rally Window<br>34-Year First</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ca8a04;">33%</div>
+    <div class="kpi-label">5-Day Rebound<br>Halved → Surged</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#4f46e5;">56K</div>
+    <div class="kpi-label">Readers Tipped<br>Avg ¥2 Each</div>
+  </div>
+</div>
+
+<!-- Section 01 -->
+<div class="section-01">
+  <div class="section-header">
+    <div class="num-01">01</div>
+    <div class="section-title">Earth-Shattering: A Rally Unseen in 34 Years</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">A-share performance over five trading days surpassed every precedent in 34 years of history—sheer buying power hoisted the entire market.</span>
+    <p>On September 30, combined volume hit <strong>¥2.6 trillion</strong>, a new all-time record. Just one week earlier, on September 23, volume was only ¥550 billion—a world of difference in the span of days.</p>
+    <div class="before-after">
+      <div class="before-tag">9/23: ¥550B</div>
+      <div class="arrow-big">→</div>
+      <div class="after-tag">9/30: ¥2.6T</div>
+    </div>
+    <p>This rally overturned traditional technical indicators and patterns. Raw force overwhelmed nuance—<strong>overloaded liquidity broke the market, producing a wild rally no technical framework could constrain.</strong></p>
+  </div>
+</div>
+
+<!-- Section 02 -->
+<div class="section-02">
+  <div class="section-header">
+    <div class="num-02">02</div>
+    <div class="section-title">Spillover Effect: When Your Neighbor Asks How to Open an Account</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">Explosive profit-making began spreading to marginal populations—a neighbor with zero financial background opened an account in 5 minutes and immediately wanted to buy.</span>
+    <p>The author's neighbor messaged on WeChat asking about opening a brokerage account. She ran a traditional business and had never touched finance before. The author sent her a referral code with a caution about market risk. Five minutes later she said she'd opened the account and asked if she could buy immediately—<strong>she didn't even understand what "funding an account" meant but was desperate to get in.</strong> Turned out the clearing house was overloaded with new account applications that day; no new accounts could be opened.</p>
+    <div class="flow-row">
+      <div class="flow-step"><div class="flow-num">①</div>Media Frenzy</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">②</div>Marginal Inflows</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">③</div>Returnees</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">④</div>Liquidity Overload</div>
+    </div>
+    <p>This small episode signals something larger: <strong>A-shares had truly broken into mainstream consciousness.</strong> New money plus returning veteran investors → massive short-term inflows → a rally no technical framework could constrain.</p>
+  </div>
+</div>
+
+<!-- Section 03 -->
+<div class="section-03">
+  <div class="section-header">
+    <div class="num-03">03</div>
+    <div class="section-title">Random Confidence Nuclear Explosion: Why This Time?</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">When the September 26 Politburo meeting content was released, the market suddenly bought in—but the author admits he still hasn't fully figured out the causality.</span>
+    <p>The surface trigger: the Fed's major rate cut followed by China's more aggressive easing policy. But over the preceding year and a half, the government had rolled out multiple rescue packages—for housing, for stocks, macro-level—<strong>each previous policy announcement met a poor market response, sometimes even accelerating declines.</strong></p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <div class="dual-card-label">❌ Previous Rescue Attempts</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:14px;line-height:1.6;">Housing, stock market, macro—serious policies with real intent. But the market didn't accept them, sometimes accelerating the decline.</div>
+      </div>
+      <div class="dual-card">
+        <div class="dual-card-label">✅ 9/26 Politburo Meeting</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:14px;line-height:1.6;">More substantial, but nothing qualitatively transformed vs. prior policy. Yet the market suddenly accepted it. Leaders didn't expect it, experts didn't expect it, retail investors were shocked too.</div>
+      </div>
+    </div>
+    <p>The author's conclusion: <strong>a fairly random confidence nuclear explosion, releasing three years of suppressed emotional potential energy all at once.</strong> Capital markets always harbor enormous uncertainty—they can't be planned, they don't obey administrative commands.</p>
+  </div>
+</div>
+
+<!-- Section 04 -->
+<div class="section-04">
+  <div class="section-header">
+    <div class="num-04">04</div>
+    <div class="section-title">Too Narrow a Window: 3 Years of Decline → 5 Days of 33% Rebound</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">The window is too narrow: you can't catch it without enduring enough suffering. Worse, many couldn't withstand the prolonged torment and broke before the rebound arrived.</span>
+    <p>From an investment perspective, this market is deeply unfriendly to ordinary investors. <strong>Three years of grinding decline, halving portfolios—then five trading days of 33% rebound.</strong></p>
+    <div class="case-quote">💔 Those who broke and exited before the rebound—how will they view these days of surging prices? Resentment, bitterness, despair, envy. The author's assessment: <strong>most of them won't choose to come back.</strong></div>
+    <p>The author's long-awaited 3500-point level was within touching distance—one more push after the holiday. <strong>Three years of torment, finally about to be released.</strong> But this is not a market that is friendly to ordinary investors.</p>
+  </div>
+</div>
+
+<!-- Section 05 -->
+<div class="section-05">
+  <div class="section-header">
+    <div class="num-05">05</div>
+    <div class="section-title">"Rather Than Getting Better, It's More Like a Different Illness Breaking Out"</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">When someone asked "is everything getting better?", the author gave an answer that neither rained on the celebratory parade nor said something he didn't believe.</span>
+    <p>This is the essay's core metaphor: <strong>"Rather than getting better, A-shares right now are more like a different kind of illness breaking out."</strong> Not recovery—a changed set of symptoms. The previous illness was three years of chronic wasting decline. The current illness is five days of irrational euphoric surge. Both stem from the same underlying condition: <strong>a market structure incapable of delivering stable returns to ordinary investors.</strong></p>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">600-700K</div>
+        <div class="data-label">Words Written<br>Per Year</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">600K</div>
+        <div class="data-label">Daily Active<br>Readers</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">≈¥2/person</div>
+        <div class="data-label">Avg Tip Amount<br>90% Give ¥1</div>
+      </div>
+    </div>
+    <p>The article closes with a candid breakdown of the author's business model: six tip drives per year, totaling several hundred thousand yuan. He's clear about his position—<strong>"We count the labor, not the glory."</strong> He treats his readership traffic with care, never casually monetizing it. Writing the blog is part of his life, genuinely enjoyable, which is why he's kept at it for years.</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">Core Takeaway</div>
+  <p>The late-September 2024 A-share rally was a mirror: <strong>it reflected the deepest irrationality of financial markets—three years of suppressed emotion can release in a single random confidence explosion, and technical patterns, policy expectations, and professional judgment all fail in the face of liquidity overload.</strong><br><br>Mao Bidao didn't join the euphoria. His diagnosis—"a different kind of illness breaking out"—strips the bull market of its "recovery narrative." The illness didn't heal; it just switched symptoms. The prior phase was chronic wasting decline (slowly killing holders). The current phase is explosive euphoria (luring new entrants, punishing those who quit midway).<br><br><strong>Same underlying condition: a market structure with an extremely narrow window, fundamentally unfriendly to ordinary investors. 33% in five days sounds like good news—but only if you survived three years of being halved first.</strong></p>
+</div>
+
+<div class="footer">Outbreak · By Mao Bidao · 2024/09/30 · mp.weixin.qq.com</div>
+
+</div>
+</body>
+</html>

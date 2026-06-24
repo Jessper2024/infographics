@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>病发</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px;}
+.container{max-width:880px;width:100%;}
+.back-catalog{text-align:right;margin-bottom:4px;}
+.back-catalog a{font-size:12px;color:#888;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+.lang-switch{text-align:right;margin-bottom:12px;}
+.lang-btn{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+h1{font-family:'FZXPYZS',serif;font-size:32px;font-weight:bold;color:#1a1a1a;line-height:1.35;margin-bottom:8px;}
+.subtitle{font-size:14px;color:#888;line-height:1.6;margin-bottom:24px;}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);border-radius:2px;margin-bottom:28px;}
+.chapter-overview{background:#fff;border-left:4px solid #4f46e5;border-radius:8px;padding:18px 22px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.chapter-overview p{font-size:14px;color:#444;line-height:1.75;}
+.chapter-overview strong{color:#1a1a1a;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi{background:#fff;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.kpi-num{font-family:'FZXPYZS',serif;font-size:24px;font-weight:bold;line-height:1.3;}
+.kpi-label{font-size:12px;color:#888;margin-top:4px;line-height:1.4;}
+.section-01,.section-02,.section-03,.section-04,.section-05{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.num-01,.num-02,.num-03,.num-04,.num-05{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:bold;flex-shrink:0;}
+.num-01{background:#dc2626;}
+.num-02{background:#ea580c;}
+.num-03{background:#ca8a04;}
+.num-04{background:#4f46e5;}
+.num-05{background:#db2777;}
+.section-title{font-family:'FZXPYZS',serif;font-size:19px;font-weight:bold;color:#1a1a1a;}
+.section-body{font-size:14px;color:#444;line-height:1.85;}
+.section-body p{margin-bottom:10px;}
+.section-body p:last-child{margin-bottom:0;}
+.section-body strong{color:#1a1a1a;}
+.section-body .bluf{font-weight:bold;color:#1a1a1a;font-size:14px;display:block;margin-bottom:6px;}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.dual-card{background:#faf8f5;border-radius:10px;padding:14px 16px;}
+.dual-card-label{font-size:12px;color:#888;margin-bottom:4px;}
+.dual-card-value{font-size:15px;color:#1a1a1a;font-weight:bold;}
+.before-after{display:flex;align-items:center;gap:12px;margin:10px 0;justify-content:center;}
+.before-tag{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:8px 16px;font-size:14px;color:#dc2626;font-weight:bold;}
+.after-tag{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;padding:8px 16px;font-size:14px;color:#059669;font-weight:bold;}
+.arrow-big{font-size:20px;color:#888;}
+.flow-row{display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap;justify-content:center;}
+.flow-step{background:#faf8f5;border-radius:10px;padding:10px 16px;text-align:center;font-size:13px;color:#444;}
+.flow-step .flow-num{font-size:20px;font-weight:bold;color:#4f46e5;font-family:'FZXPYZS',serif;}
+.flow-arrow{color:#888;font-size:16px;}
+.case-quote{background:#faf8f5;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0;font-size:14px;color:#444;line-height:1.8;font-style:italic;}
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0;}
+.data-card{background:#faf8f5;border-radius:10px;padding:12px 14px;text-align:center;}
+.data-num{font-size:20px;font-weight:bold;color:#dc2626;font-family:'FZXPYZS',serif;}
+.data-label{font-size:12px;color:#888;margin-top:2px;}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:8px;padding:20px 24px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:bold;margin-bottom:6px;letter-spacing:2px;}
+.takeaway p{font-size:14px;color:#444;line-height:1.8;}
+.takeaway strong{color:#1a1a1a;}
+.footer{text-align:center;font-size:12px;color:#aaa;padding:20px 0 0;line-height:1.8;}
+@media(max-width:768px){
+  body{padding:20px 12px 40px;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .dual-grid{grid-template-columns:1fr;}
+  .data-row{grid-template-columns:repeat(2,1fr);}
+  .flow-row{gap:4px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog"><a href="目录.html">← 返回文档目录</a></div>
+
+<div class="lang-switch"><a class="lang-btn" href="病发-doc015-info-en.html" target="_blank">中文 / English</a></div>
+
+<h1>病发</h1>
+
+<p class="subtitle">猫笔刀 · 2024/09/30 · 微信公众平台</p>
+
+<div class="divider"></div>
+
+<div class="chapter-overview">
+<p><strong>A 股在 5 个交易日内完成了 34 年未曾见过的爆发——但作者说这不是「好起来了」，而是「另一种病发作了」。</strong> 一篇写于 2024 年 9 月 30 日市场癫狂顶点的冷静观察：从邻居零基础紧急开户的微观切片，到 926 政治局会议触发的随机信心核爆，再到「3 年阴跌腰斩→5 天反弹 33%」的过窄窗口——那些在反弹前崩溃退出的人不会再回来了。文末附作者对稿费模式的坦诚自述。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num" style="color:#dc2626;">2.6万亿</div>
+    <div class="kpi-label">9/30 两市成交额<br>历史新高</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ea580c;">5天</div>
+    <div class="kpi-label">反弹窗口<br>34年未见</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ca8a04;">33%</div>
+    <div class="kpi-label">5日反弹幅度<br>腰斩→暴涨</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#4f46e5;">5.6万人</div>
+    <div class="kpi-label">当日打赏读者<br>人均 ¥2</div>
+  </div>
+</div>
+
+<!-- 区块01: 天崩地裂 -->
+<div class="section-01">
+  <div class="section-header">
+    <div class="num-01">01</div>
+    <div class="section-title">天崩地裂：34年来从未见过的行情</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">A 股最近 5 个交易日的表现超越了之前 34 年的所有先例，硬靠着泼天的买盘兜起了整个大盘。</span>
+    <p>9 月 30 日两市成交额 <strong>2.6 万亿</strong>，刷新历史记录。而上周一（9 月 23 日）大盘只成交了 5500 亿——短短一个星期，天上地下，恍如隔世。</p>
+    <div class="before-after">
+      <div class="before-tag">9/23 成交 5500亿</div>
+      <div class="arrow-big">→</div>
+      <div class="after-tag">9/30 成交 2.6万亿</div>
+    </div>
+    <p>这波行情颠覆了传统意义上的技术指标和规律，真就是<strong>一力降十会</strong>——过载的流动性撑爆了市场，出现了技术规律都无法约束的狂野行情。</p>
+  </div>
+</div>
+
+<!-- 区块02: 出圈 -->
+<div class="section-02">
+  <div class="section-header">
+    <div class="num-02">02</div>
+    <div class="section-title">出圈效应：当小区邻居开始问开户</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">爆炸的赚钱效应开始向边际外人群扩散——零金融基础的邻居，5分钟开完户就想立刻买票。</span>
+    <p>作者小区的邻居在微信上询问开户——做传统生意的，此前对金融零接触。作者给了开户码并善意提醒风险，但对方 5 分钟后就说开完了，问能不能立刻买，<strong>连「入金」是什么都没搞清楚就着急上车。</strong>结果当天中登那边大量申请拥堵，开不出新户。</p>
+    <div class="flow-row">
+      <div class="flow-step"><div class="flow-num">①</div>舆论发酵</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">②</div>边际人群入场</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">③</div>老股民杀回马枪</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">④</div>流动性过载</div>
+    </div>
+    <p>这件小事说明了一个信号：<strong>A 股真的出圈了。</strong>新增资金 + 回马枪老股民 → 短期内巨量资金涌入 → 狂野行情。</p>
+  </div>
+</div>
+
+<!-- 区块03: 随机信心核爆 -->
+<div class="section-03">
+  <div class="section-header">
+    <div class="num-03">03</div>
+    <div class="section-title">随机信心核爆：为什么是这一次？</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">926 政治局会议内容公布后市场突然就认了——但作者承认，这中间的因果自己到现在也没彻底想明白。</span>
+    <p>明面导火索是美联储大降息 + 中国政府推进更大力度的宽松刺激。但过去一年半里，政府已陆陆续续出台过多项救市政策，力度不小、诚意也有，<strong>之前每一次利好到股市的反馈都不好</strong>，有时甚至加速下跌。</p>
+    <div class="dual-grid">
+      <div class="dual-card">
+        <div class="dual-card-label">❌ 之前多次救市</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:14px;line-height:1.6;">房市、股市、宏观……政策力度不能说小，诚意也是有的——但市场不认，甚至加速下跌。</div>
+      </div>
+      <div class="dual-card">
+        <div class="dual-card-label">✅ 9/26 政治局会议</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:14px;line-height:1.6;">出的东西多，但和之前比谈不上质的飞跃——市场突然就认了。领导没想到，专家没想到，股民自己也吓一跳。</div>
+      </div>
+    </div>
+    <p>作者的结论：<strong>就是一次挺随机的信心核爆，把压抑了 3 年的情绪势能一下子释放出来。</strong>资本市场永远蕴含着巨大的不确定性——它不能计划，也不听行政指挥。</p>
+  </div>
+</div>
+
+<!-- 区块04: 过窄的窗口 -->
+<div class="section-04">
+  <div class="section-header">
+    <div class="num-04">04</div>
+    <div class="section-title">过窄的窗口：3年阴跌腰斩 → 5天反弹33%</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">窗口期太窄：不承受足够多的苦难，你很难蹲到它。更糟的是，很多人经受不住折磨，在反弹前崩溃退出了。</span>
+    <p>从投资角度而言，这样的市场对普通投资者极不友好。<strong>3 年阴跌腰斩，然后 5 个交易日反弹 33%。</strong></p>
+    <div class="case-quote">💔 那些在反弹前崩溃退出的人——他们会怎么看待这几天的反弹？不甘、愤懑、绝望、嫉恨。作者判断：<strong>他们中的大部分人都不会选择再回来了。</strong></div>
+    <p>作者心心念念的 3500 点，眼瞅着节后一蹬腿的事——<strong>3 年的折磨终于要解脱了。</strong>但这不是一个对普遍投资者友好的市场。</p>
+  </div>
+</div>
+
+<!-- 区块05: 另一种病发作 -->
+<div class="section-05">
+  <div class="section-header">
+    <div class="num-05">05</div>
+    <div class="section-title">「比起好起来了，更像是另一种病发作了」</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">当有人问「是不是一切都好起来了」，作者给出了一个在大喜日子里既不扫兴也不违心的回答。</span>
+    <p>这是全文的核心隐喻：<strong>「相比起好起来了，现在的 A 股更像是另一种病发作了。」</strong>——不是康复，是换了一种症状。之前的病是 3 年阴跌的慢性消耗，现在的病是 5 天爆拉的非理性癫狂。两种病都来自同一个病灶：一个无法为普遍投资者提供稳定回报的市场结构。</p>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">60-70万字</div>
+        <div class="data-label">年产出正文</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">60万人</div>
+        <div class="data-label">日均活跃读者</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">≈¥2/人</div>
+        <div class="data-label">打赏人均<br>90%给1元</div>
+      </div>
+    </div>
+    <p>文末坦诚自述稿费模式：一年六次征稿费，加起来大几十万。作者对自己有一个清楚的定位——<strong>「咱们不计功劳只算苦劳」</strong>，对宝贵的流量资源一直很审慎，不会随便拿读者出去挣钱。写公众号是生活的一部分，很有乐趣，所以才能坚持很多年。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">核心结论</div>
+  <p>2024 年 9 月底的 A 股行情是一面镜子：<strong>它照出了金融市场最深层的非理性——3 年的压抑可以在一次随机信心核爆中瞬间释放，而技术规律、政策预期、专业判断在过载的流动性面前全部失效。</strong><br><br>猫笔刀没有在癫狂中跟着狂欢。他用「另一种病发作了」这个诊断把牛市从「复苏叙事」中剥离出来——病没有好，只是换了症状。前一阶段的病是阴跌消耗（缓慢杀死持有者），现在的病是爆拉狂欢（诱惑新入场者 + 惩罚中途退出者）。<br><br><strong>同一个病灶：一个窗口极窄、对普通投资者不友好的市场结构。5 天涨 33% 听起来是好事——但前提是你得先在 3 年腰斩里活下来。</strong></p>
+</div>
+
+<div class="footer">病发 · 猫笔刀 · 2024/09/30 · mp.weixin.qq.com</div>
+
+</div>
+</body>
+</html>
