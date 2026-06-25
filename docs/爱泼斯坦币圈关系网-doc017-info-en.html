@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>I Used Claude to Analyze 260K Records and Uncovered Epstein's Crypto Network</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px;}
+.container{max-width:880px;width:100%;}
+.back-catalog{text-align:right;margin-bottom:4px;}
+.back-catalog a{font-size:12px;color:#888;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+.lang-switch{text-align:right;margin-bottom:12px;}
+.lang-btn{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+h1{font-family:'FZXPYZS',serif;font-size:28px;font-weight:bold;color:#1a1a1a;line-height:1.35;margin-bottom:8px;}
+.subtitle{font-size:14px;color:#888;line-height:1.6;margin-bottom:24px;}
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);border-radius:2px;margin-bottom:28px;}
+.chapter-overview{background:#fff;border-left:4px solid #4f46e5;border-radius:8px;padding:18px 22px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.chapter-overview p{font-size:14px;color:#444;line-height:1.75;}
+.chapter-overview strong{color:#1a1a1a;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi{background:#fff;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.kpi-num{font-family:'FZXPYZS',serif;font-size:24px;font-weight:bold;line-height:1.3;}
+.kpi-label{font-size:12px;color:#888;margin-top:4px;line-height:1.4;}
+.section-01,.section-02,.section-03,.section-04,.section-05{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.num-01,.num-02,.num-03,.num-04,.num-05{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:bold;flex-shrink:0;}
+.num-01{background:#dc2626;}
+.num-02{background:#ea580c;}
+.num-03{background:#ca8a04;}
+.num-04{background:#4f46e5;}
+.num-05{background:#db2777;}
+.section-title{font-family:'FZXPYZS',serif;font-size:19px;font-weight:bold;color:#1a1a1a;}
+.section-body{font-size:14px;color:#444;line-height:1.85;}
+.section-body p{margin-bottom:10px;}
+.section-body p:last-child{margin-bottom:0;}
+.section-body strong{color:#1a1a1a;}
+.section-body .bluf{font-weight:bold;color:#1a1a1a;font-size:14px;display:block;margin-bottom:6px;}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.dual-card{background:#faf8f5;border-radius:10px;padding:14px 16px;}
+.dual-card-label{font-size:12px;color:#888;margin-bottom:4px;}
+.dual-card-value{font-size:14px;color:#1a1a1a;font-weight:bold;line-height:1.5;}
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0;}
+.data-card{background:#faf8f5;border-radius:10px;padding:12px 14px;text-align:center;}
+.data-num{font-size:20px;font-weight:bold;color:#dc2626;font-family:'FZXPYZS',serif;}
+.data-label{font-size:12px;color:#888;margin-top:2px;}
+.timeline{position:relative;margin:14px 0;padding-left:20px;}
+.timeline-item{position:relative;padding:8px 0 8px 20px;border-left:2px solid #e8e0d5;font-size:14px;color:#444;line-height:1.7;}
+.timeline-item::before{content:'';position:absolute;left:-6px;top:14px;width:10px;height:10px;border-radius:50%;background:#4f46e5;}
+.timeline-item .tl-date{font-size:12px;color:#888;margin-bottom:2px;}
+.flow-row{display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap;}
+.flow-step{background:#faf8f5;border-radius:10px;padding:10px 14px;text-align:center;font-size:12px;color:#444;}
+.flow-step .flow-num{font-size:18px;font-weight:bold;color:#4f46e5;font-family:'FZXPYZS',serif;}
+.flow-arrow{color:#888;font-size:14px;}
+.case-quote{background:#faf8f5;border-left:3px solid #4f46e5;border-radius:8px;padding:16px 20px;margin:12px 0;font-size:14px;color:#444;line-height:1.8;font-style:italic;}
+.warn-box{background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13px;color:#92400e;line-height:1.7;}
+.warn-box strong{color:#92400e;}
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:8px;padding:20px 24px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.takeaway-label{font-size:12px;color:#dc2626;font-weight:bold;margin-bottom:6px;letter-spacing:2px;}
+.takeaway p{font-size:14px;color:#444;line-height:1.8;}
+.takeaway strong{color:#1a1a1a;}
+.footer{text-align:center;font-size:12px;color:#aaa;padding:20px 0 0;line-height:1.8;}
+@media(max-width:768px){
+  body{padding:20px 12px 40px;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .dual-grid{grid-template-columns:1fr;}
+  .data-row{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog"><a href="目录.html">← Back to Document Index</a></div>
+
+<div class="lang-switch"><a class="lang-btn" href="爱泼斯坦币圈关系网-doc017-info-zh.html" target="_blank">中文 / English</a></div>
+
+<h1>I Used Claude to Analyze 260K Records and Uncovered Epstein's Crypto Network</h1>
+
+<p class="subtitle">By David · TechFlow · 2026/02/05</p>
+
+<div class="divider"></div>
+
+<div class="chapter-overview">
+<p><strong>Epstein was not a bystander in crypto—he was more like an information broker.</strong> Using Claude to analyze an open-source GitHub database (Epstein Doc Explorer) containing 260K+ structured relationship records, the author refined 1,628 initial keyword hits through three rounds of filtering down to high-confidence connections. Discoveries include: Brock Pierce (Tether co-founder) demoing Bitcoin to ex-Treasury Secretary Larry Summers at Epstein's mansion dining table; Blockchain Capital's complete fundraising materials in Epstein's files; Bitcoin Core developer Jeremy Rubin directly requesting research funding; and Epstein's money flowing into MIT's Digital Currency Initiative. The conclusion: Epstein positioned himself at the intersection of crypto entrepreneurs, policymakers, and academic researchers—applying the same playbook he used across other domains.</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num" style="color:#dc2626;">260K+</div>
+    <div class="kpi-label">Database Records<br>Structured Triples</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ea580c;">3 Rounds</div>
+    <div class="kpi-label">Keyword Refinement<br>1,628 → High-Conf</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#ca8a04;">5 Lines</div>
+    <div class="kpi-label">Core Connections<br>People + Money + Orgs</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:#4f46e5;">2008 → 2019</div>
+    <div class="kpi-label">Timeline Span<br>Whitepaper → Libra</div>
+  </div>
+</div>
+
+<!-- Section 01 -->
+<div class="section-01">
+  <div class="section-header">
+    <div class="num-01">01</div>
+    <div class="section-title">Methodology: Open-Source DB + Claude + Three-Round Keyword Convergence</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">With no coding background, the author systematically screened 260K+ relationship records using a GitHub database and Claude-assisted analysis.</span>
+    <p>As Epstein files were being declassified, the author wondered if anyone in crypto was implicated. Thousands of PDFs couldn't be manually searched. He discovered <strong>Epstein Doc Explorer</strong> on GitHub—a project that used AI to structure data from the House Oversight Committee's public Epstein files. The core data lives in <code>rdf_triples</code> table within <code>document_analysis.db</code>, with each record in the format: who-did-what-to-whom-when-where.</p>
+    
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">266MB</div>
+        <div class="data-label">Full Database<br>Not Just Index</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">1,628</div>
+        <div class="data-label">Round 1 Hits<br>25 Keywords</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">3 Steps</div>
+        <div class="data-label">Progressive Narrowing<br>Broad → Targeted</div>
+      </div>
+    </div>
+
+    <p><strong>Two pitfalls encountered:</strong> ① GitHub downloaded only an index file, not the 266MB real database—Claude helped diagnose. ② Initial 25-keyword query returned 1,628 records with heavy noise (e.g., "Goldman Sachs" matched 90% economic reports).</p>
+
+    <div class="flow-row">
+      <div class="flow-step"><div class="flow-num">①</div>Broad Keywords<br>25 terms → 1,628</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">②</div>Missed Terms<br>Libra, Stablecoin</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">③</div>Action-Only Filter<br>Search what they did</div>
+    </div>
+    <p>Round 3 was decisive: search only the "what they did" field for Bitcoin/Crypto/Blockchain—every hit was a high-confidence connection. Cross-referenced across all three rounds to produce the core findings.</p>
+  </div>
+</div>
+
+<!-- Section 02 -->
+<div class="section-02">
+  <div class="section-header">
+    <div class="num-02">02</div>
+    <div class="section-title">Brock Pierce: A Bitcoin Roadshow at Epstein's Mansion</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">The Tether co-founder demoed Bitcoin to ex-Treasury Secretary Larry Summers in the dining room of Epstein's Manhattan mansion—the most vivid record in the entire database.</span>
+    <p><strong>Brock Pierce's credentials:</strong> Tether co-founder, Bitcoin Foundation Chairman, Blockchain Capital co-founder. Multiple face-to-face meetings at Epstein's Upper East Side mansion.</p>
+    
+    <div class="dual-grid">
+      <div class="dual-card">
+        <div class="dual-card-label">🍽️ The Bitcoin Demo</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">Pierce demoed Bitcoin to ex-Treasury Secretary Summers in the dining room. Summers expressed investment risk concerns but also "offered opportunities" to Pierce. Epstein pulled Pierce aside for a private conversation in the front hall, then brought him back to the dining room. The two also discussed crypto volatility one-on-one.</div>
+      </div>
+      <div class="dual-card">
+        <div class="dual-card-label">📧 The 2015 Matchmaking Email</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">Alex Yablon specifically wrote to Epstein asking him to arrange a discussion between Pierce and Summers about Bitcoin—proving these meetings were deliberately organized, not casual dinner conversation.</div>
+      </div>
+    </div>
+
+    <p><strong>Deeper ties revealed by new DOJ files (Decrypt's reporting on 3M+ pages):</strong></p>
+    <div class="data-row" style="grid-template-columns:repeat(4,1fr);">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">2011 → 2019</div>
+        <div class="data-label">Email Exchanges<br>Far Beyond Dinners</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">$500</div>
+        <div class="data-label">Pierce Excitedly<br>Reported BTC Milestone</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">Mt.Gox</div>
+        <div class="data-label">Tried to Recruit<br>Epstein for Buyout</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#4f46e5;">Winklevoss</div>
+        <div class="data-label">Offered Intro to<br>Bitcoin Billionaires</div>
+      </div>
+    </div>
+    <p>Origin point: In 2011, Pierce attended a small invite-only conference called "Mindshift" in the Virgin Islands—the conference's purpose was to rehabilitate Epstein's image after his 2008 sex crime conviction. Afterward, Epstein's assistant Lesley Groff marked Pierce as one of Epstein's "favorites" and passed along his contact details.</p>
+  </div>
+</div>
+
+<!-- Section 03 -->
+<div class="section-03">
+  <div class="section-header">
+    <div class="num-03">03</div>
+    <div class="section-title">Blockchain Capital: Complete Fundraising Materials + Epstein Actually Invested</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">A full crypto VC fundraising deck appeared in Epstein's files—82 structured records covering portfolio companies, service providers, and legal counsel. Evidence confirms he invested in Coinbase and Blockstream.</span>
+    <p><strong>Blockchain Capital:</strong> Founded 2013 in San Francisco. Co-founders: Bart Stephens, Brad Stephens, Brock Pierce. One of the earliest dedicated crypto VCs.</p>
+    
+    <div class="dual-grid">
+      <div class="dual-card">
+        <div class="dual-card-label">📋 The Fundraising Deck</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">CCP II LP complete investment memorandum. Portfolio: Coinbase Series C, Kraken Series A, Ripple Series A, Blockstream Series A, BitGo, LedgerX, itBit, ABRA. Service providers: Sidley Austin (legal), SVB (banking), Xapo/BitGo (custody).</div>
+      </div>
+      <div class="dual-card">
+        <div class="dual-card-label">💰 Confirmed Investments</div>
+        <div class="dual-card-value" style="font-weight:normal;font-size:13px;line-height:1.6;">Decrypt's reporting on new DOJ files confirms: Epstein invested in Coinbase (opportunity brought by Pierce) and Blockstream (Adam Back's Bitcoin infrastructure company). Blockchain Capital stated Epstein ultimately invested independently of Pierce's firm.</div>
+      </div>
+    </div>
+    <p>A fundraising memorandum appearing in someone's personal files has one standard interpretation in finance: <strong>this person was approached as a potential LP.</strong> Given Pierce was both a Blockchain Capital co-founder and the person demoing Bitcoin at Epstein's dinner table, the two threads likely connect—demo Bitcoin to build interest, then hand over the fund's fundraising materials. A complete roadshow pipeline.</p>
+  </div>
+</div>
+
+<!-- Section 04 -->
+<div class="section-04">
+  <div class="section-header">
+    <div class="num-04">04</div>
+    <div class="section-title">Bitcoin Core Developer & MIT Digital Currency Initiative</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">Bitcoin Core contributor Jeremy Rubin proactively asked Epstein for research funding—Epstein replied with a structured three-option funding proposal. On the same chain, MIT's Digital Currency Initiative was funded with Epstein's money.</span>
+    
+    <p><strong>Jeremy Rubin:</strong> Bitcoin Core contributor, BIP-119 (OP_CTV) proposal author, affiliated with MIT Digital Currency Initiative.</p>
+    <div class="data-row">
+      <div class="data-card">
+        <div class="data-num" style="color:#dc2626;">2017/2/1</div>
+        <div class="data-label">Discussed Bitcoin<br>Regulatory Outlook</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ea580c;">2017/2/4</div>
+        <div class="data-label">Reported to Epstein<br>On Japan Teaching</div>
+      </div>
+      <div class="data-card">
+        <div class="data-num" style="color:#ca8a04;">2015/12</div>
+        <div class="data-label">Directly Emailed<br>Requesting Funding</div>
+      </div>
+    </div>
+
+    <div class="case-quote">💬 Epstein's three funding options in reply: ① Pay Rubin a salary directly; ② Rubin opens a company, Epstein invests (more paperwork required); ③ Fund Rubin's research (tax advantages available).—A Bitcoin Core developer proactively sought funding, and Epstein responded with a structured, sophisticated proposal.</div>
+
+    <p><strong>Joi Ito & the MIT DCI money trail:</strong> MIT Media Lab's former director accepted Epstein funding (reported by The New Yorker in 2019). But the database adds a detail that was unclear at the time—the money was specifically designated: "Joichi Ito used gift funds to finance MIT Media Lab Digital Currency Initiative." The funds were directed into cryptocurrency research, not the lab's general operating pool.</p>
+
+    <div class="flow-row">
+      <div class="flow-step"><div class="flow-num">💰</div>Epstein's<br>Money</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">🏛️</div>MIT Media Lab<br>Joi Ito</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">🔬</div>DCI: Digital<br>Currency Research</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-num">👨‍💻</div>Rubin & Other<br>Core Devs</div>
+    </div>
+
+    <div class="warn-box"><strong>Unanswered question:</strong> Did Epstein, by funding academic research, gain access to Bitcoin core developers and potentially influence Bitcoin's infrastructure-level research direction? The data cannot prove this, but the chain of "money → institution → developer → direct communication" exists in the database records. (Note: all findings are from an open-source database + Claude-assisted analysis; this is a provisional data snapshot, not a final conclusion.)</div>
+  </div>
+</div>
+
+<!-- Section 05 -->
+<div class="section-05">
+  <div class="section-header">
+    <div class="num-05">05</div>
+    <div class="section-title">Epstein Himself: A Decade-Long Crypto Engagement Trajectory, 2008 → 2019</div>
+  </div>
+  <div class="section-body">
+    <span class="bluf">Chronologically ordering Epstein's own crypto-related records reveals a clear evolution—from "being demoed to" around the time of the Bitcoin whitepaper, to independently analyzing Libra two weeks before his arrest.</span>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">~2008</div>
+        Earliest crypto-related records—the Bitcoin whitepaper had just been published, with perhaps a few thousand people globally aware of it. His information network reached the earliest cohort.
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2011</div>
+        Mindshift conference. Brock Pierce marked as one of Epstein's "favorites." Connection established.
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2015</div>
+        Pierce demos Bitcoin to ex-Treasury Secretary Summers at the mansion. Email matchmaking for follow-ups. Blockchain Capital fundraising materials appear. MIT DCI launches.
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2017</div>
+        Discusses Bitcoin regulatory politics and outlook with Rubin—no longer the one being educated.
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2018</div>
+        Incorporates crypto into geopolitical agenda alongside John Kerry and Qatar—a level upgrade in engagement.
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2019/6/24</div>
+        Produces detailed Libra analysis within 6 days of whitepaper release. Arrested July 6—in his last two weeks of freedom, he was analyzing Facebook's stablecoin proposal.
+      </div>
+    </div>
+
+    <p><strong>Two observations:</strong> ① His crypto interest was not a sudden curiosity in any single year—it's an unbroken decade-long thread. ② The depth kept escalating: being educated in 2008 → discussing regulatory politics in 2017 → folding it into geopolitical agenda in 2018 → independently analyzing Libra in 2019.</p>
+
+    <p><strong>Notably absent from the database:</strong> CZ, SBF, Brian Armstrong, Vitalik Buterin, Winklevoss twins—no direct interaction records found within currently processed files. Vitalik has one entry ("authored What is Ethereum") but it cites public materials, not interpersonal connections. (Absence from the database ≠ no connection; only that no evidence exists in the currently available records.)</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-label">Core Takeaway</div>
+  <p><strong>Epstein was not an investor in the crypto industry. He wasn't a technical participant either—he wrote no code, launched no token, built nothing on-chain. But he clearly wasn't a passive bystander.</strong> What he was doing looks more like an <strong>information broker</strong>: arranging for Pierce to demo Bitcoin to an ex-Treasury Secretary in his own dining room, holding Blockchain Capital's complete fundraising deck, discussing regulatory politics with a Bitcoin Core developer, funding MIT's digital currency research, and analyzing Facebook's Libra in his final two weeks of freedom.<br><br>The common thread across all these behaviors: <strong>positioning himself at the intersection of information flows—the connective node between crypto entrepreneurs, policymakers, and academic researchers.</strong> This mirrors his playbook in every other domain (funded scientists without doing science himself; arranged political meetings without holding office). Crypto was simply the latest field to which he applied the same methodology.<br><br>The possible differentiator: <strong>crypto was going through its critical window of transition from underground to mainstream between 2008 and 2019—a phase where the industry was uniquely dependent on informal networks for policy insight and capital access.</strong> And that, precisely, was what Epstein was best at providing.</p>
+</div>
+
+<div class="footer">I Used Claude to Analyze 260K Records and Uncovered Epstein's Crypto Network · By David · TechFlow · 2026/02/05 · techflowpost.com</div>
+
+</div>
+</body>
+</html>
