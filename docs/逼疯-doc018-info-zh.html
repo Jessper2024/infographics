@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>逼疯 — 猫笔刀 · 2026/06/25</title>
+<style>
+@font-face{font-family:'FZXPYZS';src:url('../方正屏显雅宋简体.TTF') format('truetype');font-weight:normal;font-style:normal;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#f5f1eb;font-family:'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:40px 20px 60px;}
+.container{max-width:880px;width:100%;}
+
+/* 返回目录 */
+.back-catalog{text-align:right;margin-bottom:4px;}
+.back-catalog a{font-size:12px;color:#888;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+
+/* 语言切换 */
+.lang-switch{text-align:right;margin-bottom:12px;}
+.lang-switch a.lang-btn{font-size:13px;color:#4f46e5;text-decoration:none;font-family:'FZXPYZS','PingFang SC',serif;}
+
+/* 标题 */
+h1{font-family:'FZXPYZS',serif;font-size:32px;font-weight:bold;color:#1a1a1a;margin-bottom:8px;line-height:1.3;}
+.subtitle{font-size:14px;color:#888;margin-bottom:20px;line-height:1.6;}
+.divider{height:3px;background:linear-gradient(90deg,#dc2626,#ea580c);margin:20px 0 28px;border-radius:2px;}
+
+/* 章节概述 */
+.chapter-overview{background:#fff;border-left:4px solid #4f46e5;border-radius:8px;padding:16px 20px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.chapter-overview p{font-size:14px;color:#333;line-height:1.7;}
+
+/* KPI 指标卡 */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.kpi{background:#fff;border-radius:12px;padding:14px 10px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.kpi-num{font-family:'FZXPYZS',serif;font-size:26px;font-weight:bold;}
+.kpi-label{font-size:12px;color:#888;margin-top:2px;}
+.kpi .c01{color:#dc2626;}
+.kpi .c02{color:#ea580c;}
+.kpi .c03{color:#ca8a04;}
+.kpi .c04{color:#4f46e5;}
+
+/* Section */
+.section-01,.section-02,.section-03,.section-04,.section-05{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.04);position:relative;overflow:hidden;}
+.section-01{border-left:4px solid #dc2626;}
+.section-02{border-left:4px solid #ea580c;}
+.section-03{border-left:4px solid #ca8a04;}
+.section-04{border-left:4px solid #4f46e5;}
+.section-05{border-left:4px solid #db2777;}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.num-01,.num-02,.num-03,.num-04,.num-05{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:bold;color:#fff;flex-shrink:0;}
+.num-01{background:#dc2626;}
+.num-02{background:#ea580c;}
+.num-03{background:#ca8a04;}
+.num-04{background:#4f46e5;}
+.num-05{background:#db2777;}
+.section-title{font-size:17px;font-weight:bold;color:#1a1a1a;}
+.section-body{font-size:14px;color:#333;line-height:1.75;}
+.section-body .bluf{font-weight:bold;color:#1a1a1a;}
+
+/* 流程图 */
+.flow-row{display:flex;align-items:center;gap:8px;margin:12px 0;flex-wrap:wrap;}
+.flow-step{background:#fef3c7;border:1px solid #fcd34d;border-radius:8px;padding:8px 14px;font-size:13px;text-align:center;color:#92400e;flex:1;min-width:80px;}
+.flow-arrow{color:#ca8a04;font-size:16px;}
+
+/* 对比卡 */
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+.dual-card{background:#f8fafc;border-radius:8px;padding:12px 14px;}
+.dual-card .label{font-size:11px;color:#888;margin-bottom:4px;}
+.dual-card .value{font-size:15px;font-weight:bold;color:#1a1a1a;}
+.dual-card.good{border-left:3px solid #16a34a;}
+.dual-card.bad{border-left:3px solid #dc2626;}
+
+/* 数据块 */
+.data-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0;}
+.data-card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;}
+.data-card .num{font-family:'FZXPYZS',serif;font-size:22px;font-weight:bold;color:#dc2626;}
+.data-card .tag{font-size:11px;color:#888;margin-top:2px;}
+
+/* Takeaway */
+.takeaway{background:#fff;border-left:4px solid #dc2626;border-radius:8px;padding:18px 22px;margin-top:8px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.takeaway-title{font-size:15px;font-weight:bold;color:#dc2626;margin-bottom:6px;}
+.takeaway p{font-size:14px;color:#333;line-height:1.7;}
+
+/* Footer */
+.footer{margin-top:28px;text-align:center;font-size:12px;color:#999;line-height:1.8;}
+
+/* 移动端 */
+@media(max-width:768px){
+  body{padding:20px 12px 40px;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .dual-grid,.data-row{grid-template-columns:1fr;}
+  .flow-row{flex-direction:column;}
+  .flow-arrow{transform:rotate(90deg);}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="back-catalog">
+  <a href="目录.html" class="back-catalog-btn">← 返回文档目录</a>
+</div>
+
+<div class="lang-switch">
+  <a class="lang-btn" href="逼疯-doc018-info-en.html" target="_blank">中文 / English</a>
+</div>
+
+<h1>逼疯</h1>
+<p class="subtitle">市场从回购忽悠到 AI 抽血，从涨价传到加息逼宫——每一层都在逼人站队。输不起的局，别玩。</p>
+<div class="divider"></div>
+
+<div class="chapter-overview">
+  <p>猫笔刀 2026年6月25日夜报，以五粮液回购失信开篇、美光财报核爆为中轴、A股分化逼站队为现实落脚、最后以宏观通胀数据收尾。全篇串联起一个共同的主题：<strong>市场在各个层面都在"逼"参与者做选择</strong>——上市公司逼股东信任、AI逼资金站队、通胀逼央行加息。作者给出的建议只有一个：输不起的局，别玩。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num c01">1%</div>
+    <div class="kpi-label">五粮液回购执行率</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c02">+346%</div>
+    <div class="kpi-label">美光营收同比增速</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c03">84.9%</div>
+    <div class="kpi-label">美光毛利率</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c04">−13.6%</div>
+    <div class="kpi-label">A股年内中位数</div>
+  </div>
+</div>
+
+<!-- Section 01 -->
+<div class="section-01">
+  <div class="section-header">
+    <div class="num-01">01</div>
+    <div class="section-title">五粮液回购失信：80亿承诺 vs 1亿执行</div>
+  </div>
+  <div class="section-body">
+    <p><span class="bluf">五粮液4月底公布80-100亿"赎罪式"回购计划，2个月过去仅执行了1亿，回购率不足2%。</span></p>
+    <p>同期股价下跌23%，股东充当了炮灰。回购计划明文规定12个月执行期，前两个月买不买、买多少完全由公司自由裁决——法律上没问题，道义上却寒了人心。</p>
+
+    <div class="dual-grid">
+      <div class="dual-card bad">
+        <div class="label">承诺</div>
+        <div class="value">80-100亿回购</div>
+      </div>
+      <div class="dual-card bad">
+        <div class="label">实际</div>
+        <div class="value">仅 1 亿（2个月）</div>
+      </div>
+    </div>
+
+    <p>作者点评：<span class="bluf">"上市公司回购时便宜的每一块钱，都是绝望股东割下来的肉。"</span>有责任感的公司不应如此算计自己的股东。如果由作者操作，会每月等额回购，给市场确定性。万科当年也是这般投机，差点被宝能偷家。</p>
+  </div>
+</div>
+
+<!-- Section 02 -->
+<div class="section-02">
+  <div class="section-header">
+    <div class="num-02">02</div>
+    <div class="section-title">美光财报核爆：存储超级周期的确定性</div>
+  </div>
+  <div class="section-body">
+    <p><span class="bluf">美光科技Q2财报数据全面炸裂：营收414亿美元（+346% YoY），净利润282亿（+14倍），毛利率84.9%且下季度指引86%。</span></p>
+
+    <div class="data-row">
+      <div class="data-card">
+        <div class="num">414亿</div>
+        <div class="tag">营收（美元）</div>
+      </div>
+      <div class="data-card">
+        <div class="num">282亿</div>
+        <div class="tag">净利润（美元）</div>
+      </div>
+      <div class="data-card">
+        <div class="num">84.9%</div>
+        <div class="tag">毛利率</div>
+      </div>
+    </div>
+
+    <p>HBM（AI高带宽内存）2026全年产能已全部签约售罄，扩产周期18-24个月。<span class="bluf">公司判断供需紧缺至少持续到2027年底，2028年才小幅缓解。</span></p>
+    <p>针对"AI应用端不挣钱是否会砍单"的疑虑：美光、三星、海力士签的是3-5年长期协议，有保底采购量，照付不误。大厂共识是算力底层是AI时代基建，必须在生态链上占坑卡位。</p>
+  </div>
+</div>
+
+<!-- Section 03 -->
+<div class="section-03">
+  <div class="section-header">
+    <div class="num-03">03</div>
+    <div class="section-title">A股逼站队：AI抽血，小市值被碾碎</div>
+  </div>
+  <div class="section-body">
+    <p><span class="bluf">美光财报刺激盘后+17%，市值单日增2000亿美元（≈2个长江电力），直接决定了次日A股剧本：AI板块吃掉全市场流动性，传统板块和老登股集体躺平当"血包"。</span></p>
+
+    <div class="flow-row">
+      <div class="flow-step">美光财报</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">SK海力士+13%<br>三星+5.3%</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">A股AI抽血</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">小市值<br>每天-2~3%</div>
+    </div>
+
+    <p>小市值从年内领跑变为垫底板块。A股中位数当日-1.9%，年内累计约-13.6%。<span class="bluf">1/3个股上涨、2/3下跌的格局持续，"市场在逼着场内每一个人站队"。</span>量化基金发现小盘策略失灵后，集体调整策略抱团AI，加剧了虹吸效应。</p>
+    <p>作者坦言自己重仓中证500指数，就是因为厌倦了A股不停切换的风格，讨厌再做风格站队的选择题。</p>
+  </div>
+</div>
+
+<!-- Section 04 -->
+<div class="section-04">
+  <div class="section-header">
+    <div class="num-04">04</div>
+    <div class="section-title">涨价链传导：内存→苹果→消费者</div>
+  </div>
+  <div class="section-body">
+    <p><span class="bluf">苹果因内存芯片和存储器涨价，上调Mac、iPad和家居设备价格15-18%。</span>苹果表示此前已自行消化部分成本压力，但现在扛不住了，只能向消费者传导。</p>
+
+    <div class="flow-row">
+      <div class="flow-step">存储芯片<br>涨价</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">苹果成本<br>上升</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">产品涨价<br>+15~18%</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">中低端<br>消费萎缩</div>
+    </div>
+
+    <p><span class="bluf">未来几年中低端电子消费品市场将显著萎缩</span>——对器件涨价最敏感的客群首当其冲。便宜手机可能三年、四年甚至五年不换。</p>
+  </div>
+</div>
+
+<!-- Section 05 -->
+<div class="section-05">
+  <div class="section-header">
+    <div class="num-05">05</div>
+    <div class="section-title">宏观逼宫：PCE超预期，加息阴影重返</div>
+  </div>
+  <div class="section-body">
+    <p><span class="bluf">美国5月PCE同比上涨4.1%（4月3.8%），核心PCE同比3.4%。</span>通胀粘性超预期，机构预计美联储9月就可能认真考虑加息选项。</p>
+
+    <div class="dual-grid">
+      <div class="dual-card bad">
+        <div class="label">5月 PCE 同比</div>
+        <div class="value">4.1%（↑ 从 3.8%）</div>
+      </div>
+      <div class="dual-card bad">
+        <div class="label">核心 PCE 同比</div>
+        <div class="value">3.4%</div>
+      </div>
+    </div>
+
+    <p>另一条连锁反应：<span class="bluf">追高黄金5500的人已回撤30%扛不住</span>——"胆子越大的人越容易输不起"。美光盘后+17%的暴涨到开盘已回落至+9%，AI板块集体回调，一切要看次日韩国股市才能判剧本。</p>
+  </div>
+</div>
+
+<!-- Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-title">📌 核心结论</div>
+  <p><span class="bluf">输不起的局，别玩。</span>市场从回购忽悠到AI抽血、从涨价传导到加息阴影，每一层都在逼人做选择。面对逼站队的市场，散户最理性的策略不是选对边，而是<strong>不参与自己输不起的游戏</strong>。作者的选择是重仓中证500指数——不赌风格，不赌方向，用分散化避免被任何一股力量"逼疯"。</p>
+</div>
+
+<div class="footer">
+  <p>猫笔刀 · 微信公众号夜报</p>
+  <p>2026年6月25日</p>
+  <p>信息图由 AI 自动生成，仅供阅读参考</p>
+</div>
+
+</div>
+</body>
+</html>
