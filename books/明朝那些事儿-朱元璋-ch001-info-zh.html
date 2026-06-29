@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明朝那些事儿 · 引子「石人一只眼」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; }
+
+h1 {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 32px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 10px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.8;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* ── Chapter Overview ── */
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 18px 22px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.9;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .scqa-item { margin-bottom: 6px; }
+  .scqa-label {
+    font-weight: bold; color: #4f46e5; font-size: 13px;
+    letter-spacing: 1px; display: inline-block; width: 52px;
+  }
+
+  /* ── KPI Row ── */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi {
+    background: #fff; border-radius: 12px; padding: 14px 10px;
+    text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-num {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 24px; font-weight: bold; margin-bottom: 4px;
+  }
+  .kpi-num.c01 { color: #dc2626; }
+  .kpi-num.c02 { color: #ea580c; }
+  .kpi-num.c03 { color: #ca8a04; }
+  .kpi-num.c04 { color: #4f46e5; }
+  .kpi-label { font-size: 12px; color: #888; }
+
+  /* ── Section Base ── */
+  .section {
+    background: #fff; border-radius: 14px; margin-bottom: 18px;
+    padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 18px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .section-title {
+    font-size: 17px; margin-bottom: 8px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* ── Visualization: Dual Grid ── */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px 18px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 {
+    font-size: 13px; color: #1a1a1a; margin-bottom: 4px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* ── Visualization: Flow Row ── */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* ── Visualization: Confusion Table ── */
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .confusion-arrow { flex-shrink: 0; font-size: 18px; color: #ca8a04; }
+  .confusion-right { flex: 1.2; font-size: 13px; color: #713f12; }
+  .confusion-divider {
+    text-align: center; font-size: 11px; color: #a16207;
+    margin: 8px 0 6px; letter-spacing: 2px;
+  }
+
+  /* ── Visualization: Data Row ── */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 16px 14px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name {
+    font-size: 14px; font-weight: bold; color: #831843; margin-bottom: 4px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* ── Takeaway ── */
+  .takeaway {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 8px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 15px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* ── Back Catalog ── */
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  /* ── Lang Switch ── */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: .03em;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity .15s;
+  }
+  .lang-btn:hover { opacity: .75; }
+
+  @media (max-width: 768px) {
+    body { padding: 20px 12px 40px; }
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    h1 { font-size: 26px; }
+    .container { padding: 0 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 1. Back Catalog -->
+<div class="back-catalog">
+  <a class="back-catalog-btn" href="../books/目录.html" target="_blank">← 返回图书目录</a>
+</div>
+
+<!-- 2. Lang Switch -->
+<div class="lang-switch">
+  <a class="lang-btn" href="明朝那些事儿-朱元璋-ch001-info-en.html" target="_blank">中文 / English</a>
+</div>
+
+<!-- 3. H1 Title -->
+<h1>明朝那些事儿 · 引子「石人一只眼」</h1>
+
+<!-- 4. Subtitle -->
+<p class="subtitle">以史料为根基、以年代与人物为主线，用通俗小说的笔法重述正史——作者自述写作初衷与方法论，告诉你：历史本身很精彩，完全可以写得好看。</p>
+
+<!-- 5. Divider -->
+<div class="divider"></div>
+
+<!-- 6. Chapter Overview (SCQA) -->
+<div class="chapter-overview">
+  <div class="scqa-item"><span class="scqa-label">情境</span> 本文覆盖1344—1644年三百年明史，以二十余种正史文献为基础，融入小说笔法与心理分析。</div>
+  <div class="scqa-item"><span class="scqa-label">冲突</span> 传统史著"学究气"厚重晦涩，多数读者对正史望而却步；通俗文学又常失之虚构，与史实脱节。</div>
+  <div class="scqa-item"><span class="scqa-label">问题</span> 如何兼顾正史的严谨性与阅读的趣味性，让普通读者轻松读懂三百年大明兴衰？</div>
+  <div class="scqa-item"><span class="scqa-label">回答</span> 以史料为脊梁，以小说笔法为血肉，以年代与人物为主线——打造"好看的正史"。</div>
+</div>
+
+<!-- 7. KPI Row -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num c01">6个月</div>
+    <div class="kpi-label">构思沉淀</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c02">20+</div>
+    <div class="kpi-label">史料来源</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c03">300年</div>
+    <div class="kpi-label">时间跨度</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c04">20余种</div>
+    <div class="kpi-label">明代典籍</div>
+  </div>
+</div>
+
+<!-- 8. Section 01 — 正史为体，通俗为用 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="section-title t-01">正史为体，通俗为用：形式之辨</div>
+    <div class="section-desc"><strong>本书是一部"好看的正史"——并非小说，而是以史料为根基、以通俗笔法为外壳的正史作品。</strong>作者开篇即划定边界：文中绝大多数历史事件和人物对话均有史料出处（含《明实录》《明史》《明通鉴》等二十余种），写作手法虽借鉴小说，内容绝不虚构。严肃与可读并非对立——它们是一枚硬币的两面。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">📚</div>
+        <div class="dual-text">
+          <h4>传统学究史观</h4>
+          <p>故作高深，行文晦涩。读者须有深厚底子方能入门，将历史束之高阁，沦为象牙塔内的自娱自乐。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">✨</div>
+        <div class="dual-text">
+          <h4>"好看的正史"路线</h4>
+          <p>史料是脊梁，笔法是血肉。以通俗语言承载严肃史实——好看的是形式，可靠的是内核。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. Section 02 — 史料为脊：二十余种正史文献 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="section-title t-02">史料为脊：二十余种明代典籍支撑</div>
+    <div class="section-desc"><strong>本书以《明实录》《明通鉴》《明史》《明史纪事本末》等二十余种明代官方史料和笔记杂谈为基础，确保历史事件的可信度。</strong>这是本书区别于纯文学虚构的关键所在。作者虽然在行文中加入小说笔法与心理分析，但从未脱离史料记载——每一项重要陈述皆有出处可追溯。</div>
+    <div class="flow-row">
+      <div class="flow-step">📜<br>正史文献<br>二十余种</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🔍<br>史料核实<br>逐句溯源</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">✍️<br>通俗表达<br>小说笔法</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">✅<br>"好看的正史"<br>形式与内容统一</div>
+    </div>
+  </div>
+</div>
+
+<!-- 10. Section 03 — 打破学究气：写作动机与方法 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="section-title t-03">打破学究气：写作动机与三大原则</div>
+    <div class="section-desc"><strong>作者自陈写作动因：早年浸淫学究书，痛恨故作高深之作——"历史本身很精彩，所有的历史都可以写得很好看"。</strong>全书写作遵循三大原则：以史料为根基、以年代与人物为双主线、融入心理分析与制度评价——三者共同服务于"好看"这一核心目标。</div>
+    <div class="confusion-table">
+      <div class="confusion-divider">▸ 写作原则对比</div>
+      <div class="confusion-row">
+        <div class="confusion-left">史料优先</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">所有核心事件与对话均有文献依据，出处不一一列举以保流畅</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">双主线叙事</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">以年代推进+以人物贯穿——让三百年历史有迹可循、有血有肉</div>
+      </div>
+      <div class="confusion-row">
+        <div class="confusion-left">心理与制度点评</div>
+        <div class="confusion-arrow">→</div>
+        <div class="confusion-right">不仅写"发生了什么"，更分析"为什么发生"——加入现代视角的评价维度</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 11. Section 04 — 体裁之外：叙事策略的五重架构 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="section-title t-04">体裁之外：叙事策略的五重架构</div>
+    <div class="section-desc"><strong>作者坦承体裁之困——既非小说、亦非史书，却认定"体裁似乎并不重要"。</strong>本书的叙事架构可拆解为五重策略：史料考据打底、年代框架串联、人物性格刻画、心理动机推演、制度经济点评——五者合一，以"好看"为首要目标，不拘泥于学术分类。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">📜</div>
+        <div class="data-name">史料考据</div>
+        <div class="data-sm">二十余种明代典籍<br>事件与对话均可溯源<br>严肃性基石</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📅</div>
+        <div class="data-name">年代框架</div>
+        <div class="data-sm">以年代为时间轴<br>串联三百年历史节点<br>结构清晰不混乱</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">👤</div>
+        <div class="data-name">人物刻画</div>
+        <div class="data-sm">具体人物为主线<br>心理分析增深度<br>历史变得有温度</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 12. Section 05 — "好看"的三重境界 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="section-title t-05">"好看"的三重境界：从可读到可传</div>
+    <div class="section-desc"><strong>全书追求的"好看"分三层递进：准确可信是底线，引人入胜是手段，引发思考是升华。</strong>底层是史料可靠——任何虚构都将使全书崩塌；中层是叙事流畅——让读者"轻松中了解历史"；顶层是思想深度——让读者在读完后有所回味，有所反思。三层合一方为"好看的正史"。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">✅</div>
+        <div class="data-name">准确可信</div>
+        <div class="data-sm">史料为根基<br>事件有出处<br>虚构为零容忍</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">📖</div>
+        <div class="data-name">引人入胜</div>
+        <div class="data-sm">小说笔法驱动<br>轻松易读<br>读起来放不下</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">💡</div>
+        <div class="data-name">引发思考</div>
+        <div class="data-sm">制度评价<br>心理分析<br>读后有所回味</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 13. Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">本书以二十余种明代正史典籍为坚实根基，用小说笔法包裹严肃史实——证明"好看"与"可靠"绝非对立。<strong>作者以"轻松中了解历史"为终极目标，打破了传统史学"学究气"的壁垒，开创了通俗正史的全新范式。</strong>历史不必枯燥，正史同样可以引人入胜。</div>
+</div>
+
+<!-- 14. Footer -->
+<div class="footer">
+  明朝那些事儿 · 引子「石人一只眼」· 信息图 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明朝那些事儿 · 朱元璋 第八章「可怕的陈友谅」</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', 'STSong', Georgia, serif;
+    display: flex; justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+.container {
+    max-width: 880px; width: 100%;
+    padding: 40px 32px 60px;
+  }
+
+h1 {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 36px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 8px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.7;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 16px 20px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .chapter-overview p { margin: 0; }
+
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 14px; margin-bottom: 18px;
+  }
+  .kpi-card {
+    background: #ffffff; border-radius: 14px;
+    padding: 18px 16px; text-align: center;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+    border: 1px solid #e8e0d5;
+  }
+  .kpi-big {
+    font-size: 26px; font-weight: bold; color: #dc2626;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px; color: #888; line-height: 1.5;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .section {
+    background: #ffffff; border-radius: 14px;
+    margin-bottom: 18px; padding: 24px 28px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+    display: flex; gap: 20px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: bold;
+    padding: 2px 10px; border-radius: 10px; margin-bottom: 8px;
+    letter-spacing: 1px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .tag-01 { background: #fef2f2; color: #dc2626; }
+  .tag-02 { background: #fff7ed; color: #ea580c; }
+  .tag-03 { background: #fefce8; color: #ca8a04; }
+  .tag-04 { background: #eef2ff; color: #4f46e5; }
+  .tag-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-title {
+    font-size: 18px; margin-bottom: 10px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; }
+  .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 { font-size: 14px; color: #1a1a1a; margin-bottom: 4px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; font-weight: bold; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 20px 16px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 28px; margin-bottom: 6px; }
+  .data-name { font-size: 15px; font-weight: bold; color: #831843; margin-bottom: 6px; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif; }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  .confusion-table { margin-top: 10px; }
+  .confusion-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .confusion-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+  .confusion-arrow {
+    flex-shrink: 0; font-size: 18px; color: #ca8a04; font-weight: bold;
+  }
+  .confusion-right {
+    flex: 1; font-size: 13px; color: #713f12;
+  }
+  .confusion-divider { text-align: center; font-size: 11px; color: #a16207; margin: 10px 0 6px; letter-spacing: 2px; }
+
+  .takeaway {
+    background: #ffffff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 24px 32px; margin-bottom: 18px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 16px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+  }
+
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: .03em;
+    font-family: 'FZXPYZS', 'PingFang SC', 'Noto Serif SC', serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity .15s;
+  }
+  .lang-btn:hover { opacity: .75; }
+
+  @media (max-width: 768px) {
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; padding-top: 20px; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row, .kpi-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .confusion-row { flex-direction: column; align-items: stretch; }
+    .confusion-left { text-align: center; }
+    .container { padding: 0 8px; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="back-catalog"><a class="back-catalog-btn" href="../books/目录.html" target="_blank">← 返回图书目录</a></div>
+<div class="lang-switch">
+  <a class="lang-btn" target="_blank" href="明朝那些事儿-朱元璋-ch009-info-en.html">中文 / English</a>
+</div>
+
+<h1>明朝那些事儿 · 朱元璋<br>第八章「可怕的陈友谅」</h1>
+<p class="subtitle">
+  弑君夺位、称帝建汉、水军称霸——陈友谅以残暴与才能崛起为朱元璋最强对手
+<div class="chapter-overview">
+  <p><strong>情境：</strong>朱元璋攻占应天后，长江流域形成三强鼎立——朱元璋据应天、张士诚据平江、徐寿辉/陈友谅据上游。<strong>冲突：</strong>陈友谅弑杀徐寿辉、吞并天完国，以十万水军顺江而下，成为朱元璋最可怕的敌人。<strong>问题：</strong>如何对抗兵力与水军均占优势的陈友谅？<strong>回答：</strong>朱元璋以战略定力避其锋芒，刘基力主决战龙湾，以智谋与伏击制胜。</p>
+</div>
+</p>
+<div class="divider"></div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-big">1360</div>
+    <div class="kpi-label">陈友谅弑君<br>称帝建汉之年</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-big">10万</div>
+    <div class="kpi-label">汉军顺江而下<br>进攻应天兵力</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-big">1万</div>
+    <div class="kpi-label">朱元璋水军<br>悬殊对比</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-big">3000</div>
+    <div class="kpi-label">常遇春<br>坑杀降兵</div>
+  </div>
+</div>
+
+<!-- 01: 陈友谅崛起 -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="tag tag-01">崛起之路</div>
+    <div class="section-title t-01">心黑手狠——陈友谅的崛起密码</div>
+    <div class="section-desc"><strong>陈友谅以背信弃义为阶梯：</strong>先杀丞相倪文俊（对其有知遇之恩），再杀大将赵普胜（对其极为尊重），最后弑杀主子徐寿辉，以铁锤碎颅于五通庙。每一步背叛都让他权力更上一层楼，但也让他失去了最重要的东西——人心。他的成功学只有八个字：心黑手狠，胆大妄为。</div>
+    <div class="flow-row">
+      <div class="flow-step">参加徐寿辉<br>起义军</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">杀倪文俊<br>夺丞相位</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">杀赵普胜<br>除异己</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">弑徐寿辉<br>称帝建汉</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02: 弑君夺位 -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="tag tag-02">称帝建汉</div>
+    <div class="section-title t-02">五通庙的雨夜——弑君夺位</div>
+    <div class="section-desc"><strong>至正二十年六月十六日，暴风雨中：</strong>陈友谅在采石五通庙以"匡扶之功"邀请徐寿辉拜神，趁其不备令卫士以铁锤碎其头颅。随后在血泊中登基为帝，定国号为"汉"，年号"大义"。一个弑君夺位的人竟敢以"大义"为年号，这是他向天下宣示：仁义道德皆是狗屁，实力与暴力才是唯一准则。</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">1360</div>
+        <div class="data-name">称帝年份</div>
+        <div class="data-sm">至正二十年<br>六月十六日</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">汉</div>
+        <div class="data-name">国号</div>
+        <div class="data-sm">年号"大义"<br>悖论式命名</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">10万</div>
+        <div class="data-name">顺江兵力</div>
+        <div class="data-sm">号称无敌<br>舰队庞大</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03: 常遇春 -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="tag tag-03">名将登场</div>
+    <div class="section-title t-03">狂人常遇春——天生的先锋材料</div>
+    <div class="section-desc"><strong>常遇春以"我要当先锋"开局：</strong>投奔朱元璋时不过是个吃不饱饭的难民，却敢开口就要先锋印。他用采石之战证明了自己——单枪匹马持长戈跃上敌岸，连杀数人开辟滩头阵地。此后每战必先登，身先士卒。然而他有个致命弱点：嗜好杀降，且是不道德的那种——活埋。这个嗜好将带来大祸。</div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">✅</div>
+        <div class="dual-text">
+          <h4>勇猛无敌</h4>
+          <p>天生先锋材料，善于骑兵突破，采石之战持长戈撑杆跳登岸，每战先登，勇不可当。</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>嗜杀成性</h4>
+          <p>杀降不祥，坑杀三千俘虏，只为挑衅陈友谅。此举激怒强敌，差点招来灭顶之灾。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04: 战略博弈 -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="tag tag-04">三方博弈</div>
+    <div class="section-title t-04">张士诚与朱元璋——百仗交锋</div>
+    <div class="section-desc"><strong>陈友谅未控权前，张士诚是最活跃的对手：</strong>至正十六年朱元璋克应天后，双方大小上百仗。朱元璋曾试图谈判，张士诚回信"从哪里来滚回哪里去"。龙潭之战，徐达、常遇春大败张军；第二年常遇春攻克常州，身中三箭仍坚持作战。张军兵力更强却惨败，印证了"千军易得，一将难求"。</div>
+    <div class="confusion-table">
+      <div class="confusion-row">
+        <div class="confusion-left">张士诚</div>
+        <div class="confusion-arrow">→ 特点 →</div>
+        <div class="confusion-right">器小无远见，富甲一方却无大志，免江浙赋税得民心，但非枭雄</div>
+      </div>
+      <div class="confusion-divider">VS</div>
+      <div class="confusion-row">
+        <div class="confusion-left">朱元璋</div>
+        <div class="confusion-arrow">→ 策略 →</div>
+        <div class="confusion-right">先礼后兵，谈判不成则军事压制，倚重徐达、常遇春等名将</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05: 决战前夜 -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="tag tag-05">决战导火索</div>
+    <div class="section-title t-05">龙湾之战前的暗流涌动</div>
+    <div class="section-desc"><strong>常遇春坑杀三千俘虏后，留下活口传话：</strong>"我是常遇春，是我打败了你！"这彻底激怒了陈友谅。至正二十年，陈友谅率十万水军顺江而下，战船名"混江龙""塞断江""撞倒山"，三层楼高、火炮齐备。与此同时，朱元璋得到关键人物刘基（刘伯温），此人懂天文、善谋略，将在龙湾之战中力挽狂澜。</div>
+    <div class="flow-row">
+      <div class="flow-step">常遇春<br>坑杀三千降兵</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">陈友谅<br>震怒</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">十万水军<br>顺江而下</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">刘基登场<br>龙湾决战</div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 核心结论</div>
+  <div class="takeaway-text">陈友谅是朱元璋一生中最可怕的对手——兵力更强、水军无敌、野心更大。但暴力与背信无法赢得人心：杀倪文俊、赵普胜、徐寿辉让他军心瓦解；坑杀三千降兵更激怒了整个长江流域。朱元璋以战略定力避其锋芒，以智谋（康茂才诈降、龙湾伏击）弥补兵力差距。历史证明：能打胜仗的人很多，但能赢得人心的人，才能夺取天下。</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  明朝那些事儿 · 朱元璋篇 第八章<br>
+  信息图设计 · 2026年6月 · 仅供学习参考
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Those Ming Matters · Zhu Yunwen · Ch.30 "One Step From Victory"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 32px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 10px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.8;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* Chapter Overview */
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 18px 22px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.9;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .scqa-item { margin-bottom: 6px; }
+  .scqa-label {
+    font-weight: bold; color: #4f46e5; font-size: 13px;
+    letter-spacing: 1px; display: inline-block; width: 52px;
+  }
+
+  /* KPI Row */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi {
+    background: #fff; border-radius: 12px; padding: 14px 10px;
+    text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-num {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 24px; font-weight: bold; margin-bottom: 4px;
+  }
+  .kpi-num.c01 { color: #dc2626; }
+  .kpi-num.c02 { color: #ea580c; }
+  .kpi-num.c03 { color: #ca8a04; }
+  .kpi-num.c04 { color: #4f46e5; }
+  .kpi-label { font-size: 12px; color: #888; }
+
+  /* Section Base */
+  .section {
+    background: #fff; border-radius: 14px; margin-bottom: 18px;
+    padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 18px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .section-title {
+    font-size: 17px; margin-bottom: 8px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* Visualization: Dual Grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px 18px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 {
+    font-size: 13px; color: #1a1a1a; margin-bottom: 4px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Visualization: Flow Row */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Visualization: Data Row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 16px 14px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name {
+    font-size: 14px; font-weight: bold; color: #831843; margin-bottom: 4px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Visualization: Risk Table */
+  .risk-table { margin-top: 10px; }
+  .risk-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .risk-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .risk-arrow { flex-shrink: 0; font-size: 18px; color: #ca8a04; }
+  .risk-right { flex: 1.2; font-size: 13px; color: #713f12; }
+  .risk-divider {
+    text-align: center; font-size: 11px; color: #a16207;
+    margin: 8px 0 6px; letter-spacing: 2px;
+  }
+
+  /* Takeaway */
+  .takeaway {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 8px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 15px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* Back Catalog */
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  /* Lang Switch */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: .03em;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity .15s;
+  }
+  .lang-btn:hover { opacity: .75; }
+
+  @media (max-width: 768px) {
+    body { padding: 20px 12px 40px; }
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .risk-row { flex-direction: column; align-items: stretch; }
+    .risk-left { text-align: center; }
+    h1 { font-size: 26px; }
+    .container { padding: 0 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 1. Back Catalog -->
+<div class="back-catalog">
+  <a class="back-catalog-btn" href="../books/目录.html" target="_blank">← 返回图书目录</a>
+</div>
+
+<!-- 2. Lang Switch -->
+<div class="lang-switch">
+  <a class="lang-btn" href="明朝那些事儿-朱允炆-ch031-info-zh.html" target="_blank">中文 / English</a>
+</div>
+
+<!-- 3. H1 Title -->
+<h1>明朝那些事儿 · 朱允炆 · 第三十章<br>"One Step From Victory"</h1>
+
+<!-- 4. Subtitle -->
+<p class="subtitle">1401–1402 CE: After Dongchang's catastrophic defeat, Zhu Di nearly collapsed psychologically — but rallied with Da Yan's brutal honesty. Third sandstorm sealed victory at Jiahe; the final push toward the capital began.</p>
+
+<!-- 5. Divider -->
+<div class="divider"></div>
+
+<!-- 6. Chapter Overview (SCQA) -->
+<div class="chapter-overview">
+  <div class="scqa-item"><span class="scqa-label">Situation</span> After Dongchang, Zhu Di's elite army was shattered and his best general Zhang Yu was dead. His subordinates, facing years of terror, openly demanded retreat — mutiny was brewing.</div>
+  <div class="scqa-item"><span class="scqa-label">Conflict</span> Zhu Di confronted his darkest night: internal army dissent, elite forces destroyed, and a psychological terror that made victory feel impossible.</div>
+  <div class="scqa-item"><span class="scqa-label">Question</span> How does a commander rebuild an army's will to fight after total military and psychological defeat?</div>
+  <div class="scqa-item"><span class="scqa-label">Answer</span> Public grief ritual for Zhang Yu + personal reconnaissance under "bulletproof vest" + third sandstorm miracle + Zhu Neng's rallying speech — will forged in crisis.</div>
+</div>
+
+<!-- 7. KPI Row -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num c01">3×</div>
+    <div class="kpi-label">Sandstorms Reshaped War</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c02">2</div>
+    <div class="kpi-label">Top Generals Killed</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c03">1</div>
+    <div class="kpi-label">No-Harm Edict's Deadly Cost</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c04">4yr</div>
+    <div class="kpi-label">Total Jingnan Campaign</div>
+  </div>
+</div>
+
+<!-- 8. Section 01 — Dongchang Catastrophe: Zhu Di's Closest Call -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="section-title t-01">Dongchang Catastrophe: Zhu Di's Closest Call With Death</div>
+    <div class="section-desc"><strong>At Dongchang, Zhu Di personally led the cavalry charge, broke through left flank, attacked center — and fell into Sheng Yong's encirclement trap.</strong> Three horses shot beneath him, arrows exhausted, sword shattered. He was saved by Zhu Neng, who broke through enemy lines with personal bodyguards; Zhang Yu charged after him but arrived too late — hacked to pieces by vengeful Southern soldiers. The Northern elite army was almost completely destroyed. Yet Zhu Di himself was unharmed: Southern firepower and bows "dare not target Zhu Di directly" — the no-harm edict's bulletproof effect at its peak. <strong>Zhu Yunwen's mercy physically pulled his uncle back from death's door.</strong></div>
+    <div class="flow-row">
+      <div class="flow-step">🐴<br>Attack Left Flank<br>Repelled</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🎯<br>Attack Center<br>Into Encirclement</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚔️<br>3 Horses Shot<br>Sword Broken</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🛡️<br>Zhu Neng Saves Him<br>Zhang Yu Dies</div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. Section 02 — No-Harm Paradox: The Southern Army's Institutional Failure -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="section-title t-02">No-Harm Paradox: The Southern Army's Greatest Institutional Error</div>
+    <div class="section-desc"><strong>Dongchang revealed a surreal truth: the safest person on the battlefield was not Sheng Yong (the Southern commander), but Zhu Di (the enemy general).</strong> Sheng Yong's firepower killed most of the Northern Army — but weapons "dare not target Zhu Di himself." The logic: Southern soldiers calculated that if Zhu Di and Zhu Yunwen eventually reconciled, anyone who killed Zhu Di would face purging. <strong>The no-harm edict's deepest effect was not its text, but its signal — "reconciliation is possible" — which made soldiers agonizingly hesitant to kill Zhu Di.</strong> He survived two near-death battles because of this single order.</div>
+    <div class="risk-table">
+      <div class="risk-divider">▸ Three Layers of Unintended Consequence</div>
+      <div class="risk-row">
+        <div class="risk-left">Zhu Yunwen's Intent</div>
+        <div class="risk-arrow">→</div>
+        <div class="risk-right">Preserve family bonds; avoid "uncle-killer" stigma on the throne</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-left">Soldier Psychology</div>
+        <div class="risk-arrow">→</div>
+        <div class="risk-right">"If they reconcile, killing Zhu Di means purging me" — held fire in hesitation</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-left">Battlefield Result</div>
+        <div class="risk-arrow">→</div>
+        <div class="risk-right">Zhu Di unharmed in two near-annihilation battles — reversed both outcomes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10. Section 03 — Fear: Zhu Di's Darkest Night -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="section-title t-03">Fear: Zhu Di's Darkest Night and Psychological Collapse</div>
+    <div class="section-desc"><strong>After Dongchang, Zhu Di sat alone in darkness — a broken man confronting the abyss of three years of terror.</strong> Every day was potentially his last; every battle could be his final one. He confided to Da Yan: "If this campaign continues, it would be better to become a monk with you — that would be a kind of happiness." Da Yan grabbed his sleeve and roared: "My lord, there is no turning back! We have committed treason — failure means only death!" <strong>Zhu Di lowered his head, then lifted it — cold resolve replacing despair. "Yes, you are right. We have no retreat."</strong> The terror never left him — but from that night, he learned to use it as fuel rather than let it destroy him.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">😱</div>
+        <div class="data-name">Daily Terror</div>
+        <div class="data-sm">Every day could be last<br>Every battle might be final<br>No rest, no peace</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🧘</div>
+        <div class="data-name">Da Yan's Brutal Truth</div>
+        <div class="data-sm">"There is no retreat!"<br>"Failure = death"<br>Forced Zhu Di to face reality</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">⚔️</div>
+        <div class="data-name">No Exit Strategy</div>
+        <div class="data-sm">Rebellion has two ends only<br>Success = throne<br>Failure = execution</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 11. Section 04 — Battle of Jiahe: Third Sandstorm and Tan Yuan's Death -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="section-title t-04">Battle of Jiahe: Third Sandstorm and Tan Yuan's Fatal Mistake</div>
+    <div class="section-desc"><strong>March 1401 — Battle of Jiahe: Zhu Di personally led a daredevil scout team across enemy lines. Protected by his no-harm "bulletproof vest," he calmly surveyed Sheng Yong's formation and returned unscathed.</strong> During the assault, general Tan Yuan mistook a probing attack for the main offensive, charged prematurely, and was killed. His death inadvertently broke the tactical stalemate — Zhu Di seized the moment for a counterattack. Next day: a third sandstorm arose from clear skies, northeast winds blowing sand into Southern soldiers' eyes — Zhu Di's third "jackpot." <strong>Without these three sandstorms, Zhu Di's grave could already be harvesting crops.</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>Zhu Di's Personal Recon</h4>
+          <p>Led daredevil scouts through enemy lines. No-harm edict made him untargetable — completed survey in broad daylight.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">💀</div>
+        <div class="dual-text">
+          <h4>Tan Yuan's Mistake</h4>
+          <p>Mistook probing attack for main assault, charged prematurely, was killed. Death broke the stalemate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 12. Section 05 — Creative Breakthrough: Bypassing Jinan for the Capital -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="section-title t-05">Creative Breakthrough: From "Must Take Shandong" to Capital Dash</div>
+    <div class="section-desc"><strong>Despite continuous victories, Zhu Di felt unprecedented despair — his territory was just three prefectures (Beiping, Baoding, Yongping) against Zhu Yunwen's national control. He believed his campaign would end with him captured by a foot soldier.</strong> Then palace eunuch intelligence arrived: the capital's defenses were thin. But Shandong lay across the path — how to bypass? Da Yan shattered the mental trap: reaching the capital doesn't require taking Shandong. December 1401: Zhu Di's last gamble. "This expedition is our final battle — no retreat, live or die!" January 1402: crossing at Guantao, sweeping through Dong'a and Dongping, striking Xuzhou directly — bypassing Shandong's defenses, racing for the capital.</div>
+    <div class="flow-row">
+      <div class="flow-step">🔄<br>Da Yan Breaks<br>Mental Trap</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🎯<br>Final Resolve<br>No Retreat</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚔️<br>Dash to Xuzhou<br>Bypass Shandong</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🏰<br>Target:<br>THE CAPITAL</div>
+    </div>
+  </div>
+</div>
+
+<!-- 13. Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">Dongchang was the campaign's definitive turning point. <strong>Sheng Yong became the first commander to defeat Zhu Di in open battle — but three sandstorms and the no-harm edict allowed Zhu Di to survive two near-annihilation defeats.</strong> Zhu Di's darkest night, confronted by Da Yan's brutal truth, forged unbreakable resolve. <strong>From Jiahe's third sandstorm to the creative breakthrough bypassing Shandong, Zhu Di proved that willpower — "just one more push" — often decides battles when all else seems lost.</strong></div>
+</div>
+
+<!-- 14. Footer -->
+<div class="footer">
+  Those Ming Matters · Zhu Yunwen · Ch.30 "One Step From Victory" · Infographic · For Educational Reference
+</div>
+
+</div>
+</body>
+</html>

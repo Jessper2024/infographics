@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Those Ming Matters · Zhu Yunwen · Ch.28 "A War of Life and Death"</title>
+<style>
+  @font-face {
+    font-family: 'FZXPYZS';
+    src: url('../方正屏显雅宋简体.TTF') format('truetype');
+    font-weight: normal; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f1eb;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC','STSong',Georgia,serif;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 40px 20px 60px;
+  }
+  .container { max-width: 880px; width: 100%; padding: 40px 32px 60px; }
+
+h1 {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 32px; color: #1a1a1a; text-align: center;
+    line-height: 1.4; margin-bottom: 10px; font-weight: normal;
+    letter-spacing: 1.5px;
+  }
+  .subtitle {
+    text-align: center; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.8;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #dc2626, #ea580c);
+    margin: 0 auto 28px; border-radius: 2px;
+  }
+
+  /* Chapter Overview */
+  .chapter-overview {
+    background: #f8f6f3; border-left: 3px solid #4f46e5;
+    border-radius: 8px; padding: 18px 22px; margin: 12px 0 24px;
+    font-size: 14px; color: #555; line-height: 1.9;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .chapter-overview p { margin: 0; }
+  .scqa-item { margin-bottom: 6px; }
+  .scqa-label {
+    font-weight: bold; color: #4f46e5; font-size: 13px;
+    letter-spacing: 1px; display: inline-block; width: 52px;
+  }
+
+  /* KPI Row */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi {
+    background: #fff; border-radius: 12px; padding: 14px 10px;
+    text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-num {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 24px; font-weight: bold; margin-bottom: 4px;
+  }
+  .kpi-num.c01 { color: #dc2626; }
+  .kpi-num.c02 { color: #ea580c; }
+  .kpi-num.c03 { color: #ca8a04; }
+  .kpi-num.c04 { color: #4f46e5; }
+  .kpi-label { font-size: 12px; color: #888; }
+
+  /* Section Base */
+  .section {
+    background: #fff; border-radius: 14px; margin-bottom: 18px;
+    padding: 24px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex; gap: 18px; align-items: flex-start;
+    border-left: 4px solid transparent;
+  }
+  .section-01 { border-left-color: #dc2626; }
+  .section-02 { border-left-color: #ea580c; }
+  .section-03 { border-left-color: #ca8a04; }
+  .section-04 { border-left-color: #4f46e5; }
+  .section-05 { border-left-color: #db2777; }
+
+  .section-num {
+    flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: bold; margin-top: 2px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .num-01 { background: #fef2f2; color: #dc2626; }
+  .num-02 { background: #fff7ed; color: #ea580c; }
+  .num-03 { background: #fefce8; color: #ca8a04; }
+  .num-04 { background: #eef2ff; color: #4f46e5; }
+  .num-05 { background: #fdf2f8; color: #db2777; }
+
+  .section-body { flex: 1; }
+  .section-title {
+    font-size: 17px; margin-bottom: 8px; font-weight: bold; line-height: 1.4;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .t-01 { color: #dc2626; } .t-02 { color: #ea580c; }
+  .t-03 { color: #ca8a04; } .t-04 { color: #4f46e5; } .t-05 { color: #db2777; }
+
+  .section-desc {
+    font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 14px;
+  }
+
+  /* Visualization: Dual Grid */
+  .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .dual-card {
+    border-radius: 12px; padding: 16px 18px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .dual-card.yes { background: #fef2f2; border: 1px solid #fecaca; }
+  .dual-card.no { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .dual-icon { font-size: 22px; flex-shrink: 0; line-height: 1; }
+  .dual-text h4 {
+    font-size: 13px; color: #1a1a1a; margin-bottom: 4px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .dual-text p { font-size: 12px; color: #777; line-height: 1.6; }
+
+  /* Visualization: Flow Row */
+  .flow-row {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .flow-step {
+    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 10px;
+    padding: 10px 12px; text-align: center; min-width: 80px; flex: 1;
+    font-size: 13px; color: #9a3412; line-height: 1.5; font-weight: bold;
+  }
+  .flow-arrow { font-size: 20px; color: #ea580c; flex-shrink: 0; }
+  .flow-step.end { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+  /* Visualization: Data Row */
+  .data-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .data-card {
+    border-radius: 12px; padding: 16px 14px; text-align: center;
+    border: 1px solid #fce7f3;
+  }
+  .data-card.d1 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d2 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-card.d3 { background: #fdf2f8; border-color: #f9a8d4; }
+  .data-big { font-size: 26px; margin-bottom: 6px; }
+  .data-name {
+    font-size: 14px; font-weight: bold; color: #831843; margin-bottom: 4px;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .data-sm { font-size: 12px; color: #9d174d; line-height: 1.6; }
+
+  /* Visualization: Risk Table */
+  .risk-table { margin-top: 10px; }
+  .risk-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 10px 16px;
+  }
+  .risk-left {
+    flex: 1; text-align: right; font-size: 13px; color: #92400e;
+    font-weight: bold; font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+  .risk-arrow { flex-shrink: 0; font-size: 18px; color: #ca8a04; }
+  .risk-right { flex: 1.2; font-size: 13px; color: #713f12; }
+  .risk-divider {
+    text-align: center; font-size: 11px; color: #a16207;
+    margin: 8px 0 6px; letter-spacing: 2px;
+  }
+
+  /* Takeaway */
+  .takeaway {
+    background: #fff; border: 1px solid #e8e0d5; border-radius: 14px;
+    padding: 22px 28px; margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-left: 4px solid #dc2626;
+  }
+  .takeaway-label {
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    font-size: 12px; color: #dc2626; letter-spacing: 2px; margin-bottom: 8px;
+    font-weight: bold;
+  }
+  .takeaway-text {
+    font-size: 15px; color: #1a1a1a; line-height: 1.9;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center; margin-top: 32px; padding-top: 20px;
+    border-top: 1px solid #e8e0d5; color: #bbb; font-size: 13px; line-height: 1.8;
+  }
+
+  /* Back Catalog */
+  .back-catalog { text-align: right; margin-bottom: 4px; }
+  .back-catalog-btn {
+    display: inline-block; padding: 5px 14px; border-radius: 8px;
+    font-size: 12px; text-decoration: none; letter-spacing: .02em;
+    background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe;
+    transition: opacity .15s;
+  }
+  .back-catalog-btn:hover { opacity: .75; }
+
+  /* Lang Switch */
+  .lang-switch { text-align: right; margin-bottom: 16px; }
+  .lang-btn {
+    display: inline-block; padding: 6px 16px; border-radius: 8px;
+    font-size: 13px; text-decoration: none; letter-spacing: .03em;
+    font-family: 'FZXPYZS','PingFang SC','Noto Serif SC',serif;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    transition: opacity .15s;
+  }
+  .lang-btn:hover { opacity: .75; }
+
+  @media (max-width: 768px) {
+    body { padding: 20px 12px 40px; }
+    .section { flex-direction: column; align-items: center; text-align: center; border-left: none; border-top: 4px solid transparent; }
+    .section-01 { border-top-color: #dc2626; } .section-02 { border-top-color: #ea580c; }
+    .section-03 { border-top-color: #ca8a04; } .section-04 { border-top-color: #4f46e5; }
+    .section-05 { border-top-color: #db2777; }
+    .dual-grid, .data-row { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .risk-row { flex-direction: column; align-items: stretch; }
+    .risk-left { text-align: center; }
+    h1 { font-size: 26px; }
+    .container { padding: 0 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 1. Back Catalog -->
+<div class="back-catalog">
+  <a class="back-catalog-btn" href="../books/目录.html" target="_blank">← 返回图书目录</a>
+</div>
+
+<!-- 2. Lang Switch -->
+<div class="lang-switch">
+  <a class="lang-btn" href="明朝那些事儿-朱允炆-ch029-info-zh.html" target="_blank">中文 / English</a>
+</div>
+
+<!-- 3. H1 Title -->
+<h1>明朝那些事儿 · 朱允炆 · 第二十八章<br>"A War of Life and Death"</h1>
+
+<!-- 4. Subtitle -->
+<p class="subtitle">April 1400: The Battle of Baigou River — Li Jinglong's 600,000-strong Southern Army presses on Beiping; Zhu Di turns the tide with elite cavalry, brilliant tactics, and two "divine wind" miracles.</p>
+
+<!-- 5. Divider -->
+<div class="divider"></div>
+
+<!-- 6. Chapter Overview (SCQA) -->
+<div class="chapter-overview">
+  <div class="scqa-item"><span class="scqa-label">Situation</span> In April 1400, the Southern Army launched its largest offensive of the campaign — 600,000 troops under Li Jinglong versus Zhu Di's 100,000-strong Northern Army at Baigou River.</div>
+  <div class="scqa-item"><span class="scqa-label">Conflict</span> Zhu Di faced his greatest crisis: outnumbered 6-to-1, encircled on the riverbank, his best general Zhang Yu killed — while Li Jinglong's sheer numbers created overwhelming pressure.</div>
+  <div class="scqa-item"><span class="scqa-label">Question</span> How could a commander with fewer troops and inferior resources reverse a seemingly lost battle and seize battlefield initiative?</div>
+  <div class="scqa-item"><span class="scqa-label">Answer</span> Central-break cavalry charge + exploiting opponent's errors + Zhu Yunwen's "no-harm" edict as a bulletproof vest + two sandstorm miracles — a masterclass in asymmetric warfare.</div>
+</div>
+
+<!-- 7. KPI Row -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num c01">600K</div>
+    <div class="kpi-label">Li Jinglong's Army</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c02">100K+</div>
+    <div class="kpi-label">Zhu Di's Army</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c03">100K+</div>
+    <div class="kpi-label">Southern Casualties</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-num c04">2×</div>
+    <div class="kpi-label">Sandstorm Miracles</div>
+  </div>
+</div>
+
+<!-- 8. Section 01 — Beiping Defense: Zhu Gaochi's Ice City -->
+<div class="section section-01">
+  <div class="section-num num-01">01</div>
+  <div class="section-body">
+    <div class="section-title t-01">Beiping Defense: Zhu Gaochi's "Ice City" Miracle</div>
+    <div class="section-desc"><strong>Li Jinglong besieged Beiping with 500,000 troops; the defender was Zhu Di's eldest son Zhu Gaochi — a lame, disabled man whom many dismissed as useless.</strong> Southern forces used heavy artillery, scaled walls in human waves, and briefly broke through Shuncheng Gate. City women fought with bricks and tiles to boost morale. Zhu Gaochi ordered soldiers to pour water on walls overnight — by dawn Beiping had become an impregnable "ice city." This defense earned him the political capital that later secured his imperial throne.</div>
+    <div class="dual-grid">
+      <div class="dual-card yes">
+        <div class="dual-icon">🏰</div>
+        <div class="dual-text">
+          <h4>Zhu Gaochi's Strategy</h4>
+          <p>Disabled yet resolute — the "Ice City" tactic turned Beiping into an unconquerable fortress and built his political capital.</p>
+        </div>
+      </div>
+      <div class="dual-card no">
+        <div class="dual-icon">❌</div>
+        <div class="dual-text">
+          <h4>Li Jinglong's Failure</h4>
+          <p>500,000 troops failed utterly. Stopped Qu Nieng from breaching the gate out of jealousy — military incompetence on full display.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. Section 02 — Battle of Zhengcunwa: Cavalry Central Break -->
+<div class="section section-02">
+  <div class="section-num num-02">02</div>
+  <div class="section-body">
+    <div class="section-title t-02">Battle of Zhengcunwa: Mongol Cavalry & Central Break</div>
+    <div class="section-desc"><strong>Zhu Di returned with the elite Duoyan Three Wei Mongol cavalry, dramatically raising his army's combat power — and faced Li Jinglong at Zhengcunwa, 20 km from Beijing.</strong> The Mongol cavalry executed a central-breakthrough charge, smashing seven Southern camps. Advisor Ma Sanbao identified Li Jinglong's center as the weak point; Zhu Di launched a flanking pincer attack and Li Jinglong fled overnight. Key outcome: Ma Sanbao was rewarded with imperial surname "Zheng" — becoming the legendary Zheng He.</div>
+    <div class="flow-row">
+      <div class="flow-step">🐴<br>Duoyan Three Wei<br>Cavalry Join</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">⚔️<br>Central Break<br>Smashed 7 Camps</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">🎯<br>Ma Sanbao<br>Advised Pincer</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step end">🏆<br>Li Jinglong<br>Fled Overnight</div>
+    </div>
+  </div>
+</div>
+
+<!-- 10. Section 03 — Baigou River: Zhu Di's Darkest Hour & Reversal -->
+<div class="section section-03">
+  <div class="section-num num-03">03</div>
+  <div class="section-body">
+    <div class="section-title t-03">Baigou River: Zhu Di's Darkest Hour & Miraculous Reversal</div>
+    <div class="section-desc"><strong>April 1400 — Baigou River was Zhu Di's most dangerous moment of the entire campaign.</strong> Pioneer commander Ping An bypassed the Northern vanguard and struck the rear; Qu Nieng's coordinated assault nearly annihilated Zhu Di. Zhu Di, encircled on the riverbank, fought with bow, sword, and three successive horses — arrows exhausted, sword broken, horses killed. As Qiu Fu's frontal attack failed, Qu Nieng pressed the final assault — then a divine wind broke the Southern flagpole. Southern troops scattered in superstitious panic. Zhu Di counterattacked; Li Jinglong abandoned his army and fled south. Xu Huizu's rear-guard action saved the Southern Army from total destruction.</div>
+    <div class="data-row">
+      <div class="data-card d1">
+        <div class="data-big">⚔️</div>
+        <div class="data-name">Ping An's Flank</div>
+        <div class="data-sm">Bypassed Northern vanguard<br>Struck Zhu Di's rear<br>Zhu Di encircled</div>
+      </div>
+      <div class="data-card d2">
+        <div class="data-big">🪁</div>
+        <div class="data-name">Divine Wind</div>
+        <div class="data-sm">Flagpole broke by wind<br>Southern Army panicked<br>Zhu Di counterattacked</div>
+      </div>
+      <div class="data-card d3">
+        <div class="data-big">🛡️</div>
+        <div class="data-name">Xu Huizu's Guard</div>
+        <div class="data-sm">Zhu Yunwen's pre-deployment<br>Saved Southern main force<br>Fuel for next counterattack</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 11. Section 04 — The "No-Harm" Edict: Zhu Di's Bulletproof Vest -->
+<div class="section section-04">
+  <div class="section-num num-04">04</div>
+  <div class="section-body">
+    <div class="section-title t-04">The "No-Harm" Edict: Zhu Di's Institutional Bulletproof Vest</div>
+    <div class="section-desc"><strong>Throughout the Jingnan Campaign, Zhu Yunwen issued a standing order: do not harm Zhu Di's person.</strong> This edict gave Zhu Di a systematic battlefield advantage — Southern soldiers dared not fire arrows or strike him directly. At Baigou River, Zhu Di survived multiple close encounters because no soldier would bear responsibility for killing the emperor's uncle. At Jiahe,盛庸's firepower could not target Zhu Di himself. <strong>The edict's deepest effect was psychological: soldiers calculated that if Zhu Di and Zhu Yunwen ever reconciled, the man who killed Zhu Di would be purged — this "reconciliation expectation" made Zhu Di the safest person on the battlefield.</strong></div>
+    <div class="risk-table">
+      <div class="risk-divider">▸ The Edict's Double-Edged Effect</div>
+      <div class="risk-row">
+        <div class="risk-left">Zhu Yunwen's Intent</div>
+        <div class="risk-arrow">→</div>
+        <div class="risk-right">Protect family bonds; avoid "uncle-killer" stigma on the throne</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-left">Actual Effect</div>
+        <div class="risk-arrow">→</div>
+        <div class="risk-right">Zhu Di led charges without fear; Southern soldiers held fire, bound by fear of future reprisal</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-left">Strategic Cost</div>
+        <div class="risk-arrow">→</div>
+        <div class="risk-right">Zhu Di had a de facto "invincible" status — turning two near-defeats into victories</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 12. Section 05 — Li Jinglong: The Southern "Supply Captain" -->
+<div class="section section-05">
+  <div class="section-num num-05">05</div>
+  <div class="section-body">
+    <div class="section-title t-05">Li Jinglong: The Southern Army's Unwitting Supply Captain</div>
+    <div class="section-desc"><strong>Son of famed general Li Wenzhong, Li Jinglong achieved infamy through staggering incompetence — becoming, in effect, Zhu Di's greatest ally within the Southern Army.</strong> Four catastrophic mistakes defined his command: stopping Qu Nieng from breaching Beiping's gate out of jealousy; abandoning his entire army overnight to flee south; deserting Dezhou and leaving over 1 million shi of grain for Zhu Di's forces; and finally opening Jinchuan Gate alongside Gu Wang Zhu Xi to let the Northern Army into Nanjing. <strong>Zhu Di's assessment: "A soft egg with a hard shell."</strong></div>
+    <div class="dual-grid">
+      <div class="dual-card no">
+        <div class="dual-icon">🤦</div>
+        <div class="dual-text">
+          <h4>Four Fatal Blunders</h4>
+          <p>Stopped Qu Nieng; abandoned army; left Dezhou's grain; opened Jinchuan Gate. Each gift to Zhu Di cost the South dearly.</p>
+        </div>
+      </div>
+      <div class="dual-card yes">
+        <div class="dual-icon">🎯</div>
+        <div class="dual-text">
+          <h4>Zhu Di's Read</h4>
+          <p>"Soft egg inside a hard shell" — Zhu Di consistently exploited Li's predictable weaknesses to turn defeat into victory.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 13. Takeaway -->
+<div class="takeaway">
+  <div class="takeaway-label">🔑 Key Takeaway</div>
+  <div class="takeaway-text">The Battle of Baigou River was the decisive turning point of the Jingnan Campaign. <strong>Zhu Di defeated a 600,000-strong Southern Army with just over 100,000 troops through four critical advantages: cavalry central-break tactics, two sandstorm "miracles," Li Jinglong's catastrophic incompetence repeatedly feeding strategic resources to the North, and Zhu Yunwen's no-harm edict granting Zhu Di de facto battlefield invincibility.</strong> After this battle, Zhu Di controlled the initiative — and Zhu Yunwen's strongest military force was strategically destroyed.</div>
+</div>
+
+<!-- 14. Footer -->
+<div class="footer">
+  Those Ming Matters · Zhu Yunwen · Ch.28 "A War of Life and Death" · Infographic · For Educational Reference
+</div>
+
+</div>
+</body>
+</html>
